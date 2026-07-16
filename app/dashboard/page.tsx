@@ -1,7 +1,5 @@
-export default function DashboardPage() {
-  return (
-    <div className='flex items-center justify-center min-h-screen'>
-      <h1 className='text-4xl font-bold'>Dashboard</h1>
-    </div>
-  );
+import StudentPage from "../student/page";
+
+export default function GenericDashboardPage() {
+  return <StudentPage />;
 }

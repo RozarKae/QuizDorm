@@ -68,3 +68,22 @@
     --color-muted-foreground: 210 10% 70%;
   }
 }
+
+/* Landing page utilities */
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(10px, -10px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255,255,255,0.45);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+}
