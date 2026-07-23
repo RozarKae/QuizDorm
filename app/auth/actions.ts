@@ -21,7 +21,7 @@ export async function signInWithEmail(formData: FormData) {
 
   const result = loginSchema.safeParse({ email, password });
   if (!result.success) {
-    return { error: result.error.errors[0].message };
+    return { error: result.error.issues[0].message };
   }
 
   const supabase = await createClient();
@@ -48,7 +48,7 @@ export async function signUpWithEmail(formData: FormData) {
 
   const result = signupSchema.safeParse({ name, email, password, role });
   if (!result.success) {
-    return { error: result.error.errors[0].message };
+    return { error: result.error.issues[0].message };
   }
 
   const username = email.split("@")[0] + Math.floor(Math.random() * 1000);

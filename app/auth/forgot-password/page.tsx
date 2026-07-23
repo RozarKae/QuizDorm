@@ -8,14 +8,29 @@ import AuthFooter from "@/components/auth/AuthFooter";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { resetPasswordRequest } from "../actions";
+import { toast } from "sonner";
 
 export default function ForgotPasswordPage() {
   const [submitted, setSubmitted] = useState(false);
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = () => {
-    if (email) {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
+    setErrorMsg("");
+
+    const formData = new FormData(e.currentTarget);
+    const res = await resetPasswordRequest(formData);
+
+    if (res.error) {
+      setErrorMsg(res.error);
+      toast.error(res.error);
+      setLoading(false);
+    } else {
       setSubmitted(true);
+      toast.success("Password reset email sent!");
     }
   };
 
@@ -27,6 +42,13 @@ export default function ForgotPasswordPage() {
             title="Reset Password"
             subtitle="Enter your email address and we'll send you a link to reset your password."
           />
+          
+          {errorMsg && (
+            <div className="p-3 mb-4 rounded-xl text-xs font-semibold bg-red-100 dark:bg-red-950/30 text-red-600 dark:text-red-400">
+              {errorMsg}
+            </div>
+          )}
+
           <AuthForm onSubmit={handleSubmit}>
             <div className="space-y-2">
               <label
@@ -37,16 +59,21 @@ export default function ForgotPasswordPage() {
               </label>
               <Input
                 id="email"
+                name="email"
                 type="email"
                 placeholder="you@example.com"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full"
+                className="w-full font-medium"
               />
             </div>
-            <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white mt-2">
-              Send Reset Link
+            <Button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-primary hover:bg-primary/90 text-white mt-2 font-semibold rounded-xl py-6"
+            >
+              {loading ? "Sending reset link..." : "Send Reset Link"}
             </Button>
           </AuthForm>
           <AuthFooter>
@@ -80,7 +107,7 @@ export default function ForgotPasswordPage() {
           <Button
             type="button"
             variant="outline"
-            className="w-full border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-850"
+            className="w-full border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-850 py-6 rounded-xl"
             onClick={() => setSubmitted(false)}
           >
             Re-enter Email
