@@ -7,7 +7,7 @@ import {
   QuickActionCard,
   ActivityCard,
 } from "@/components/dashboard/DashboardComponents";
-import { Award, BookOpen, Clock, Users } from "lucide-react";
+import { Award, BookOpen, Clock, Users, School, Megaphone, Calendar } from "lucide-react";
 
 export default function TeacherPage() {
   const stats = [
@@ -26,8 +26,8 @@ export default function TeacherPage() {
   return (
     <DashboardContainer>
       <PageHeader
-        title="Teacher Dashboard"
-        description="Build quizzes, assign assessments, grade work, and view performance charts."
+        title="Teacher Portal & Ecosystem"
+        description="Build quizzes, assign assessments, manage classrooms, grade work, and publish notices."
       />
 
       <DashboardGrid>
@@ -43,27 +43,39 @@ export default function TeacherPage() {
       </DashboardGrid>
 
       <div className="grid gap-6 md:grid-cols-3">
-        <div className="md:col-span-2">
-          <DashboardCard title="Teacher Controls" description="Create and administer assessments.">
+        <div className="md:col-span-2 space-y-6">
+          <DashboardCard title="Teacher Operations & Classroom Tools" description="Create and administer assessments.">
             <div className="grid gap-4 sm:grid-cols-2 mt-2">
               <QuickActionCard
-                title="Create a New Quiz"
-                description="Design interactive questions, configure time limits, and set up options."
-                href="/teacher/settings"
-                actionLabel="Draft quiz"
+                title="Classrooms & Roster"
+                description="Manage Grade 12-A & 11-B classrooms, student rosters, and co-teachers."
+                href="/dashboard/classes"
+                actionLabel="Manage Classes"
               />
               <QuickActionCard
-                title="Grade Center"
-                description="Review pending student submissions and leave remarks."
-                href="/teacher/reports"
-                actionLabel="Open Gradebook"
+                title="Assign Quiz to Class"
+                description="Publish quizzes with deadlines, attempt rules, and timer controls."
+                href="/dashboard/assignments"
+                actionLabel="Assign Quiz"
+              />
+              <QuickActionCard
+                title="Announcements Publisher"
+                description="Post targeted notices and instructions to specific student classes."
+                href="/dashboard/announcements"
+                actionLabel="Post Notice"
+              />
+              <QuickActionCard
+                title="Academic Calendar"
+                description="View scheduled quiz dates, assignment deadlines, and competitions."
+                href="/dashboard/calendar"
+                actionLabel="View Calendar"
               />
             </div>
           </DashboardCard>
         </div>
 
         <div>
-          <ActivityCard title="Classroom Submissions" items={activities} />
+          <ActivityCard title="Classroom Submissions & Activity" items={activities} />
         </div>
       </div>
     </DashboardContainer>

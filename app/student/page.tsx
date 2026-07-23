@@ -7,7 +7,7 @@ import {
   QuickActionCard,
   ActivityCard,
 } from "@/components/dashboard/DashboardComponents";
-import { Award, BookOpen, Clock, Play } from "lucide-react";
+import { Award, BookOpen, Clock, Play, Calendar, Bell, History } from "lucide-react";
 
 export default function StudentPage() {
   const stats = [
@@ -26,8 +26,8 @@ export default function StudentPage() {
   return (
     <DashboardContainer>
       <PageHeader
-        title="Student Portal"
-        description="Access classrooms, take assignments, practice quizzes, and view grades."
+        title="Student Portal & Learning Center"
+        description="Access assigned quizzes, homework, classroom notices, and test records."
       />
 
       <DashboardGrid>
@@ -44,19 +44,31 @@ export default function StudentPage() {
 
       <div className="grid gap-6 md:grid-cols-3">
         <div className="md:col-span-2">
-          <DashboardCard title="Learning Center" description="Participate in active classrooms and study groups.">
+          <DashboardCard title="Assigned Tasks & Classroom Learning" description="Participate in active classrooms and study groups.">
             <div className="grid gap-4 sm:grid-cols-2 mt-2">
               <QuickActionCard
-                title="Practice Assessments"
-                description="Hone your skills on catalog quizzes before main tests."
-                href="/student/analytics"
-                actionLabel="Practice now"
+                title="Assigned Quizzes & Homework"
+                description="View assigned quizzes with due dates and submit homework."
+                href="/dashboard/assignments"
+                actionLabel="View Assignments"
               />
               <QuickActionCard
-                title="Classrooms & Subjects"
-                description="Browse active modules and teacher assignments."
-                href="/student/reports"
-                actionLabel="Enter Classrooms"
+                title="Classroom Notices"
+                description="Read announcements published by your subject teachers."
+                href="/dashboard/announcements"
+                actionLabel="Read Notices"
+              />
+              <QuickActionCard
+                title="Academic Agenda Calendar"
+                description="Check test dates, competition times, and submission deadlines."
+                href="/dashboard/calendar"
+                actionLabel="View Calendar"
+              />
+              <QuickActionCard
+                title="Quiz Attempt History"
+                description="Review past test answers, score percentage, and explanations."
+                href="/dashboard/quizzes/history"
+                actionLabel="View Attempts"
               />
             </div>
           </DashboardCard>

@@ -13,6 +13,12 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
+  Database,
+  Building2,
+  School,
+  BookOpen,
+  Calendar,
+  Megaphone,
 } from "lucide-react";
 import Logo from "@/components/layout/Logo";
 import { dashboardNavConfig } from "@/config/dashboard-nav";
@@ -38,9 +44,15 @@ export default function Sidebar({
 
   const iconMap: Record<string, React.ReactNode> = {
     dashboard: <LayoutDashboard className="h-5 w-5" />,
+    organization: <Building2 className="h-5 w-5" />,
+    school: <School className="h-5 w-5" />,
+    assignments: <BookOpen className="h-5 w-5" />,
+    bank: <Database className="h-5 w-5" />,
     quizzes: <HelpCircle className="h-5 w-5" />,
     builder: <PlusSquare className="h-5 w-5" />,
     competitions: <Trophy className="h-5 w-5" />,
+    calendar: <Calendar className="h-5 w-5" />,
+    announcements: <Megaphone className="h-5 w-5" />,
     leaderboard: <Award className="h-5 w-5" />,
     profile: <User className="h-5 w-5" />,
     settings: <Settings className="h-5 w-5" />,
