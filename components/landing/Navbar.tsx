@@ -21,12 +21,11 @@ export default function Navbar() {
   }, []);
 
   const navItems = [
-    { name: "Features", href: "#features" },
-    { name: "Schools", href: "#audience" },
-    { name: "Teachers", href: "#audience" },
-    { name: "Students", href: "#audience" },
-    { name: "Pricing (Coming Soon)", href: "#" },
-    { name: "About", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "Features", href: "/features" },
+    { name: "About", href: "/about" },
+    { name: "Pricing", href: "/pricing" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
@@ -34,12 +33,12 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           scrolled
-            ? "bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 py-3"
+            ? "bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 py-3 shadow-sm"
             : "bg-transparent py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          <Link href="/">
+          <Link href="/" className="flex items-center space-x-2">
             <Logo />
           </Link>
 
@@ -49,7 +48,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-slate-600 dark:text-slate-350 hover:text-primary transition-colors duration-200"
+                className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200"
               >
                 {item.name}
               </Link>
@@ -59,12 +58,12 @@ export default function Navbar() {
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
             <Link href="/auth/login">
-              <Button variant="ghost" className="text-sm font-medium">
+              <Button variant="ghost" className="text-sm font-medium text-gray-700 dark:text-gray-200">
                 Login
               </Button>
             </Link>
             <Link href="/auth/register">
-              <Button className="bg-primary hover:bg-primary/90 text-white font-medium rounded-xl text-sm">
+              <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl text-sm px-5 py-2 shadow-sm">
                 Get Started
               </Button>
             </Link>
@@ -79,7 +78,7 @@ export default function Navbar() {
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
             >
-              <Menu className="h-6 w-6 text-slate-700 dark:text-slate-300" />
+              <Menu className="h-6 w-6 text-gray-700 dark:text-gray-300" />
             </Button>
           </div>
         </div>
@@ -94,7 +93,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileOpen(false)}
-              className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 md:hidden"
+              className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm z-50 md:hidden"
             />
             <motion.div
               initial={{ x: "100%" }}
@@ -112,7 +111,7 @@ export default function Navbar() {
                     onClick={() => setMobileOpen(false)}
                     aria-label="Close menu"
                   >
-                    <X className="h-6 w-6 text-slate-700 dark:text-slate-300" />
+                    <X className="h-6 w-6 text-gray-700 dark:text-gray-300" />
                   </Button>
                 </div>
 
@@ -122,23 +121,23 @@ export default function Navbar() {
                       key={item.name}
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
-                      className="text-base font-semibold text-slate-900 dark:text-white hover:text-primary transition-colors flex items-center justify-between"
+                      className="text-base font-semibold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors flex items-center justify-between"
                     >
                       <span>{item.name}</span>
-                      <ChevronRight className="h-4 w-4 text-slate-400" />
+                      <ChevronRight className="h-4 w-4 text-gray-400" />
                     </Link>
                   ))}
                 </nav>
               </div>
 
-              <div className="space-y-4 pt-6 border-t border-slate-100 dark:border-gray-800">
-                <Link href="/auth/login" className="block w-full">
-                  <Button variant="outline" className="w-full text-sm font-medium py-6 rounded-xl">
+              <div className="space-y-4 pt-6 border-t border-gray-100 dark:border-gray-800">
+                <Link href="/auth/login" className="block w-full" onClick={() => setMobileOpen(false)}>
+                  <Button variant="outline" className="w-full text-sm font-medium py-5 rounded-xl">
                     Login
                   </Button>
                 </Link>
-                <Link href="/auth/register" className="block w-full">
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-white font-medium py-6 rounded-xl text-sm">
+                <Link href="/auth/register" className="block w-full" onClick={() => setMobileOpen(false)}>
+                  <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-5 rounded-xl text-sm">
                     Get Started
                   </Button>
                 </Link>

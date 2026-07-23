@@ -31,9 +31,9 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
         className="flex items-center space-x-2 focus:outline-none hover:opacity-80 transition-opacity"
         aria-label="User profile menu"
       >
-        <Avatar className="h-8 w-8 border border-gray-200 dark:border-gray-800">
+        <Avatar className="h-9 w-9 border border-gray-200 dark:border-gray-800">
           <AvatarImage src="" alt="Avatar" />
-          <AvatarFallback className="bg-primary/10 text-primary font-bold text-xs uppercase">
+          <AvatarFallback className="bg-indigo-600 text-white font-bold text-xs uppercase">
             {role.substring(0, 2)}
           </AvatarFallback>
         </Avatar>
@@ -46,50 +46,50 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.15 }}
-            className="absolute right-0 mt-2 w-48 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-lg py-1 z-50 overflow-hidden"
+            className="absolute right-0 mt-2 w-52 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 shadow-xl py-1.5 z-50 overflow-hidden"
           >
-            <div className="px-4 py-2 border-b border-gray-100 dark:border-gray-800">
+            <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-900">
               <p className="text-xs font-semibold text-gray-900 dark:text-white capitalize">
-                {role} User
+                {role} Account
               </p>
-              <p className="text-[10px] text-gray-500 dark:text-gray-400 truncate">
+              <p className="text-[11px] text-gray-500 dark:text-gray-400 truncate">
                 {role}@quizdorm.com
               </p>
             </div>
 
             <Link
-              href={`/${role}/profile`}
+              href="/dashboard/profile"
               onClick={() => setOpen(false)}
-              className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="flex items-center space-x-2.5 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
             >
-              <User className="h-4 w-4" />
+              <User className="h-4 w-4 text-indigo-500" />
               <span>Profile</span>
             </Link>
 
             <Link
-              href={`/${role}/settings`}
+              href="/dashboard/settings"
               onClick={() => setOpen(false)}
-              className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="flex items-center space-x-2.5 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
             >
-              <Settings className="h-4 w-4" />
+              <Settings className="h-4 w-4 text-indigo-500" />
               <span>Settings</span>
             </Link>
 
             <Link
-              href={`/${role}/help`}
+              href="/contact"
               onClick={() => setOpen(false)}
-              className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              className="flex items-center space-x-2.5 px-4 py-2.5 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
             >
-              <HelpCircle className="h-4 w-4" />
-              <span>Help</span>
+              <HelpCircle className="h-4 w-4 text-indigo-500" />
+              <span>Support & Help</span>
             </Link>
 
-            <div className="border-t border-gray-100 dark:border-gray-800 my-1" />
+            <div className="border-t border-gray-100 dark:border-gray-900 my-1" />
 
             <Link
               href="/auth/login"
               onClick={() => setOpen(false)}
-              className="flex items-center space-x-2 px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors"
+              className="flex items-center space-x-2.5 px-4 py-2.5 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors font-medium"
             >
               <LogOut className="h-4 w-4" />
               <span>Logout</span>

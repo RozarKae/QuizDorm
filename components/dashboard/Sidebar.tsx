@@ -4,10 +4,12 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import {
   LayoutDashboard,
-  BarChart3,
-  FileText,
-  Settings,
+  HelpCircle,
+  PlusSquare,
+  Trophy,
+  Award,
   User,
+  Settings,
   ChevronLeft,
   ChevronRight,
   X,
@@ -32,16 +34,16 @@ export default function Sidebar({
   setCollapsed,
 }: SidebarProps) {
   const pathname = usePathname();
-  const config = dashboardNavConfig[role];
-
-  if (!config) return null;
+  const config = dashboardNavConfig[role] || dashboardNavConfig.student;
 
   const iconMap: Record<string, React.ReactNode> = {
     dashboard: <LayoutDashboard className="h-5 w-5" />,
-    analytics: <BarChart3 className="h-5 w-5" />,
-    reports: <FileText className="h-5 w-5" />,
-    settings: <Settings className="h-5 w-5" />,
+    quizzes: <HelpCircle className="h-5 w-5" />,
+    builder: <PlusSquare className="h-5 w-5" />,
+    competitions: <Trophy className="h-5 w-5" />,
+    leaderboard: <Award className="h-5 w-5" />,
     profile: <User className="h-5 w-5" />,
+    settings: <Settings className="h-5 w-5" />,
   };
 
   const navItems = config.items;
@@ -51,27 +53,27 @@ export default function Sidebar({
       {/* Mobile drawer overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-40 bg-gray-600/50 backdrop-blur-sm md:hidden transition-opacity duration-300"
+          className="fixed inset-0 z-40 bg-gray-900/50 backdrop-blur-sm md:hidden transition-opacity duration-300"
           onClick={onClose}
         />
       )}
 
       {/* Sidebar container */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex h-full flex-col transition-all duration-300 md:sticky md:z-25 ${
+        className={`fixed inset-y-0 left-0 z-50 flex h-full flex-col transition-all duration-300 md:sticky md:top-0 md:z-20 ${
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
-        } ${collapsed ? "w-16" : "w-64"}`}
+        } ${collapsed ? "w-20" : "w-64"}`}
       >
-        <div className="flex h-full flex-col justify-between bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div className="flex h-full flex-col justify-between bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-850 shadow-sm transition-colors duration-300">
           <div>
             {/* Header */}
-            <div className="flex h-16 items-center justify-between px-4 border-b border-gray-200 dark:border-gray-800">
-              <Link href="/" className="flex items-center space-x-2">
+            <div className="flex h-16 items-center justify-between px-4 border-b border-gray-100 dark:border-gray-900">
+              <Link href="/dashboard" className="flex items-center space-x-2">
                 {!collapsed ? (
                   <Logo />
                 ) : (
-                  <div className="p-1 rounded-full bg-primary/10 text-primary">
-                    <LayoutDashboard className="h-6 w-6" />
+                  <div className="p-2 rounded-xl bg-indigo-600 text-white shadow-sm">
+                    <LayoutDashboard className="h-5 w-5" />
                   </div>
                 )}
               </Link>
@@ -87,25 +89,38 @@ export default function Sidebar({
             </div>
 
             {/* Navigation Items */}
-            <nav className="space-y-1 px-3 py-4">
+            <nav className="space-y-1.5 px-3 py-4">
               {navItems.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href));
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
                     onClick={onClose}
-                    className={`flex items-center space-x-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                    className={`flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-150 ${
                       isActive
-                        ? "bg-primary text-white"
-                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900"
+                        ? "bg-indigo-600 text-white shadow-sm font-semibold"
+                        : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-gray-900 dark:hover:text-white"
                     }`}
                     title={collapsed ? item.name : undefined}
                   >
-                    <div className="flex-shrink-0">
-                      {item.icon ? iconMap[item.icon] : <LayoutDashboard className="h-5 w-5" />}
+                    <div className="flex items-center space-x-3 min-w-0">
+                      <div className="flex-shrink-0">
+                        {item.icon ? iconMap[item.icon] : <LayoutDashboard className="h-5 w-5" />}
+                      </div>
+                      {!collapsed && <span className="truncate">{item.name}</span>}
                     </div>
-                    {!collapsed && <span className="truncate">{item.name}</span>}
+                    {!collapsed && item.badge && (
+                      <span
+                        className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full ${
+                          isActive
+                            ? "bg-white/20 text-white"
+                            : "bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400"
+                        }`}
+                      >
+                        {item.badge}
+                      </span>
+                    )}
                   </Link>
                 );
               })}
@@ -113,15 +128,15 @@ export default function Sidebar({
           </div>
 
           {/* Collapse Toggle Button (Desktop Only) */}
-          <div className="hidden md:block p-4 border-t border-gray-200 dark:border-gray-800">
+          <div className="hidden md:block p-3 border-t border-gray-100 dark:border-gray-900">
             <Button
-              variant="outline"
-              size="icon"
+              variant="ghost"
               onClick={() => setCollapsed(!collapsed)}
-              className="w-full flex items-center justify-center py-2 h-9 border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+              className="w-full flex items-center justify-center py-2.5 h-10 border border-gray-200 dark:border-gray-800 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
               aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             >
               {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+              {!collapsed && <span className="ml-2 text-xs font-medium">Collapse Menu</span>}
             </Button>
           </div>
         </div>
