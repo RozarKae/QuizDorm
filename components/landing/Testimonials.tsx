@@ -2,8 +2,9 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Star } from "lucide-react";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import SectionDivider from "@/components/ui/section-divider";
 
 const testimonials = [
   {
@@ -37,17 +38,17 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="py-24 bg-gray-50/60 dark:bg-gray-900/40 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">
-            Trusted by Educators
+    <section className="py-28 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+          <span className="text-xs font-semibold uppercase tracking-widest text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3.5 py-1.5 rounded-full">
+            Trusted Worldwide
+          </span>
+          <h2 className="font-heading text-4xl sm:text-5xl font-bold text-white tracking-tight pt-2">
+            Endorsed by Top Educational Leaders
           </h2>
-          <p className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-            Loved by Schools & Institutes Worldwide
-          </p>
-          <p className="mt-4 text-base text-gray-600 dark:text-gray-400">
-            See how top educational institutions drive student engagement and streamline assessment with QuizDorm.
+          <p className="text-base sm:text-lg text-[#B8BCC8] leading-relaxed">
+            See how premier institutions elevate student engagement and streamline quiz evaluation with QuizDorm.
           </p>
         </div>
 
@@ -55,43 +56,45 @@ export default function Testimonials() {
           {testimonials.map((t, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, filter: "blur(8px)", y: 24 }}
+              whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-white dark:bg-gray-950 p-8 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between hover:shadow-md transition-all duration-300"
+              transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="p-8 rounded-[24px] bg-white/[0.05] backdrop-blur-[20px] border border-white/[0.08] flex flex-col justify-between hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300 hover:-translate-y-1.5 shadow-2xl shadow-black/40"
             >
               <div>
-                <div className="flex items-center space-x-1 mb-4 text-amber-400">
+                <div className="flex items-center space-x-1 mb-6 text-amber-400">
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400" />
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed italic mb-6">
+                <p className="text-slate-300 text-sm leading-relaxed italic mb-8 font-normal">
                   &ldquo;{t.quote}&rdquo;
                 </p>
               </div>
 
-              <div className="flex items-center space-x-4 pt-4 border-t border-gray-100 dark:border-gray-900">
-                <Avatar className="h-11 w-11 border border-indigo-100 dark:border-indigo-900">
-                  <AvatarFallback className="bg-indigo-600 text-white font-bold text-sm">
+              <div className="flex items-center space-x-4 pt-6 border-t border-white/[0.06]">
+                <Avatar className="h-11 w-11 border border-blue-500/30">
+                  <AvatarFallback className="bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-bold text-sm">
                     {t.avatar}
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white">
+                  <h4 className="text-sm font-semibold text-white">
                     {t.author}
                   </h4>
-                  <p className="text-xs text-indigo-600 dark:text-indigo-400 font-medium">
+                  <p className="text-xs text-blue-400 font-medium">
                     {t.role}
                   </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">{t.organization}</p>
+                  <p className="text-xs text-[#6B7280]">{t.organization}</p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <SectionDivider variant="glow" />
     </section>
   );
 }

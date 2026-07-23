@@ -2,42 +2,46 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function CTA() {
   return (
-    <section className="py-24 bg-white dark:bg-gray-950 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-28 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, filter: "blur(10px)", y: 30 }}
+          whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="relative rounded-3xl overflow-hidden px-8 py-16 sm:py-24 sm:px-12 bg-primary shadow-2xl flex flex-col items-center text-center space-y-8"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative rounded-[28px] overflow-hidden p-10 sm:p-20 bg-white/[0.05] backdrop-blur-[24px] border border-white/[0.12] shadow-2xl shadow-blue-950/40 flex flex-col items-center text-center space-y-8"
         >
-          {/* Subtle background abstract blobs */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-primary via-indigo-900 to-violet-850 opacity-95" />
-          <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-blue-400/10 blur-2xl pointer-events-none" />
-          <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-purple-400/10 blur-2xl pointer-events-none" />
+          {/* Subtle background abstract glows */}
+          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-blue-600/20 via-emerald-500/20 to-indigo-600/20 blur-3xl pointer-events-none rounded-full" />
 
           <div className="relative z-10 max-w-2xl space-y-4">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Ready to transform learning?
+            <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3.5 py-1.5 rounded-full inline-block">
+              Get Started Today
+            </span>
+            <h2 className="font-heading text-4xl sm:text-5xl font-bold text-white tracking-tight pt-2">
+              Ready to Elevate Your Institution?
             </h2>
-            <p className="text-base sm:text-lg text-white/80 leading-relaxed">
-              Create an account today and empower your classroom or organization with gamified quizzes and real-time analytical reports.
+            <p className="text-base sm:text-lg text-[#B8BCC8] leading-relaxed">
+              Join thousands of educators and students leveraging AI-powered quizzes, live arena battles, and deep analytical reports today.
             </p>
           </div>
 
-          <div className="relative z-10 flex flex-wrap justify-center gap-4">
+          <div className="relative z-10 flex flex-wrap justify-center gap-4 pt-2">
             <Link href="/auth/register">
-              <Button className="bg-white text-primary hover:bg-slate-50 font-bold py-6 px-8 rounded-2xl text-base shadow-lg">
-                Start Now
+              <Button size="lg" className="rounded-[16px] px-8 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 text-white font-semibold text-base shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all">
+                <Sparkles className="h-5 w-5 mr-1" />
+                Start Creating Free
               </Button>
             </Link>
-            <Link href="#">
-              <Button variant="outline" className="border-white/20 hover:bg-white/10 text-white hover:text-white font-bold py-6 px-8 rounded-2xl text-base">
-                Contact Us
+            <Link href="/contact">
+              <Button size="lg" variant="outline" className="rounded-[16px] px-8 border-white/10 bg-white/[0.05] hover:bg-white/[0.09] text-white font-semibold text-base backdrop-blur-md group">
+                <span>Talk to Sales</span>
+                <ArrowRight className="h-4 w-4 ml-1 text-[#B8BCC8] group-hover:text-white group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
           </div>

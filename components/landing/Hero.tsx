@@ -2,7 +2,17 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Play, Sparkles, Award, TrendingUp, CheckCircle } from "lucide-react";
+import {
+  Sparkles,
+  Play,
+  TrendingUp,
+  Award,
+  Zap,
+  CheckCircle2,
+  Users,
+  BrainCircuit,
+  ArrowRight,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
@@ -11,135 +21,217 @@ export default function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.12,
+        delayChildren: 0.1,
       },
     },
   } as const;
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } },
+    hidden: { opacity: 0, filter: "blur(10px)", y: 24 },
+    visible: {
+      opacity: 1,
+      filter: "blur(0px)",
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
   } as const;
 
-  const mockupStudents = [
-    { name: "Alex Johnson", score: 98, badge: "Grandmaster", rank: "1st" },
-    { name: "Sarah Connor", score: 94, badge: "Expert", rank: "2nd" },
-    { name: "David Kim", score: 91, badge: "Pro Student", rank: "3rd" },
+  const leaderboardData = [
+    { name: "Alex Chen", score: 2840, rank: "1st", badge: "Grandmaster", avatar: "AC", color: "from-amber-400 to-yellow-500" },
+    { name: "Sofia Rivera", score: 2690, rank: "2nd", badge: "AI Scholar", avatar: "SR", color: "from-slate-300 to-slate-400" },
+    { name: "David Kim", score: 2510, rank: "3rd", badge: "Quiz Master", avatar: "DK", color: "from-amber-600 to-amber-700" },
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden bg-slate-50 dark:bg-gray-950 transition-colors duration-300">
-      {/* Premium background gradient blobs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute top-1/2 -left-40 w-[450px] h-[450px] rounded-full bg-indigo-500/5 blur-3xl" />
-      </div>
+    <section className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-24 overflow-hidden">
+      {/* Background Soft Lighting Orbs */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-tr from-blue-600/10 via-emerald-500/10 to-indigo-600/10 blur-[130px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
         
         {/* Left Side Content */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-8 text-left"
+          className="lg:col-span-6 space-y-8 text-left"
         >
-          <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
-            <Sparkles className="h-4 w-4" />
-            <span>Interactive Gamified Quizzing</span>
+          {/* AI Badge Pill */}
+          <motion.div variants={itemVariants} className="inline-flex items-center space-x-2.5 bg-white/[0.05] border border-white/10 backdrop-blur-xl px-4 py-2 rounded-full text-xs font-medium text-blue-400 shadow-xl">
+            <BrainCircuit className="h-4 w-4 text-blue-400 animate-pulse" />
+            <span className="text-white/90">AI-Powered Educational Platform</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
           </motion.div>
 
+          {/* Large Headline */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl sm:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight"
+            className="font-heading text-5xl sm:text-6xl xl:text-7xl font-bold tracking-tight text-white leading-[1.08]"
           >
-            Learn. <br />
-            Compete. <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-indigo-600 dark:from-blue-400 dark:to-violet-450">
-              Become a Champion.
+            The Future of <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-blue-300">
+              Interactive
+            </span>{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-emerald-400">
+              Learning.
             </span>
           </motion.h1>
 
+          {/* Short Description */}
           <motion.p
             variants={itemVariants}
-            className="text-lg sm:text-xl text-slate-600 dark:text-slate-350 max-w-lg leading-relaxed"
+            className="text-lg sm:text-xl text-[#B8BCC8] max-w-xl leading-relaxed font-normal"
           >
-            QuizDorm is a modern quiz learning platform for schools, teachers and students. Create, play, and monitor progress inside a premium workspace.
+            Empower educators and inspire students with AI-crafted quizzes, real-time live competition arenas, and deep performance analytics built for modern institutions.
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+          {/* Two Primary CTAs */}
+          <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-2">
             <Link href="/auth/register">
-              <Button className="bg-primary hover:bg-primary/90 text-white font-semibold py-6 px-8 rounded-2xl text-base shadow-lg shadow-primary/20 hover:shadow-primary/35 transform hover:-translate-y-0.5 transition-all">
-                Get Started
+              <Button size="lg" className="rounded-[16px] px-8 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 text-white font-semibold text-base shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all">
+                <Sparkles className="h-5 w-5 mr-1" />
+                Start Creating
               </Button>
             </Link>
             <Link href="#features">
-              <Button variant="outline" className="border-slate-200 dark:border-gray-800 hover:bg-slate-100 dark:hover:bg-gray-900 font-semibold py-6 px-8 rounded-2xl text-base">
-                Explore Platform
+              <Button size="lg" variant="outline" className="rounded-[16px] px-8 border-white/10 bg-white/[0.05] hover:bg-white/[0.09] text-white font-semibold text-base backdrop-blur-md">
+                <Play className="h-4 w-4 mr-1 text-emerald-400 fill-emerald-400" />
+                Watch Demo
               </Button>
             </Link>
           </motion.div>
+
+          {/* Key Metric Badges */}
+          <motion.div variants={itemVariants} className="pt-6 grid grid-cols-3 gap-6 border-t border-white/[0.08]">
+            <div>
+              <p className="font-heading text-2xl font-bold text-white">99.8%</p>
+              <p className="text-xs text-[#6B7280] mt-0.5">Uptime & Speed</p>
+            </div>
+            <div>
+              <p className="font-heading text-2xl font-bold text-white">10M+</p>
+              <p className="text-xs text-[#6B7280] mt-0.5">Questions Solved</p>
+            </div>
+            <div>
+              <p className="font-heading text-2xl font-bold text-white">500+</p>
+              <p className="text-xs text-[#6B7280] mt-0.5">Schools & Academies</p>
+            </div>
+          </motion.div>
         </motion.div>
 
-        {/* Right Side Mockup Area */}
+        {/* Right Side Floating Holographic Dashboard Preview */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 40 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 80, damping: 18, delay: 0.25 }}
-          className="relative flex items-center justify-center lg:justify-end"
+          initial={{ opacity: 0, filter: "blur(12px)", scale: 0.94, y: 30 }}
+          animate={{ opacity: 1, filter: "blur(0px)", scale: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="lg:col-span-6 relative flex items-center justify-center"
         >
-          {/* Main Dashboard Card */}
-          <div className="relative w-full max-w-md bg-white/70 dark:bg-gray-900/70 border border-slate-200/50 dark:border-gray-800/50 backdrop-blur-xl rounded-3xl p-6 shadow-2xl space-y-6">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-gray-800">
-              <div className="flex items-center space-x-2">
-                <span className="h-3.5 w-3.5 rounded-full bg-red-400" />
-                <span className="h-3.5 w-3.5 rounded-full bg-yellow-400" />
-                <span className="h-3.5 w-3.5 rounded-full bg-green-400" />
+          {/* Main Holographic Container */}
+          <div className="relative w-full max-w-lg bg-white/[0.05] backdrop-blur-[24px] border border-white/[0.12] rounded-[28px] p-6 sm:p-8 shadow-2xl shadow-blue-950/50 space-y-6 hover:border-white/25 transition-all duration-500 group overflow-hidden">
+            
+            {/* Holographic Top Glow Effect */}
+            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-40 bg-blue-500/20 blur-3xl rounded-full pointer-events-none" />
+
+            {/* Dashboard Header Bar */}
+            <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
+              <div className="flex items-center space-x-3">
+                <div className="flex space-x-1.5">
+                  <span className="h-3 w-3 rounded-full bg-rose-500/80 inline-block" />
+                  <span className="h-3 w-3 rounded-full bg-amber-500/80 inline-block" />
+                  <span className="h-3 w-3 rounded-full bg-emerald-500/80 inline-block" />
+                </div>
+                <span className="text-xs font-mono font-medium text-[#B8BCC8]">quizdorm.ai/live-arena</span>
               </div>
-              <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500 tracking-wider">
-                Live Quiz Arena
-              </span>
+              <div className="flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full text-[11px] font-medium text-emerald-400">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
+                <span>Live Arena Active</span>
+              </div>
             </div>
 
-            {/* Simulated Quiz Stats Widget */}
+            {/* Animated Stats Cards Row */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-gray-950 border border-slate-100 dark:border-gray-800/80">
-                <div className="flex items-center space-x-2 text-slate-500 dark:text-slate-450 text-xs">
-                  <TrendingUp className="h-4 w-4 text-green-500" />
-                  <span>Accuracy</span>
+              <div className="p-4 rounded-[20px] bg-white/[0.04] border border-white/[0.08] relative overflow-hidden group-hover:border-blue-500/30 transition-colors">
+                <div className="flex items-center justify-between text-xs text-[#B8BCC8]">
+                  <span>Avg Accuracy</span>
+                  <TrendingUp className="h-4 w-4 text-emerald-400" />
                 </div>
-                <p className="text-xl font-extrabold text-slate-900 dark:text-white mt-1">94.8%</p>
+                <div className="mt-2 flex items-baseline justify-between">
+                  <span className="font-heading text-2xl font-bold text-white">96.4%</span>
+                  <span className="text-xs font-medium text-emerald-400">+4.2%</span>
+                </div>
+                {/* Mini SVG Trend Line */}
+                <div className="mt-3 h-1.5 w-full bg-white/[0.06] rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-blue-500 to-emerald-400 w-[96%]" />
+                </div>
               </div>
-              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-gray-950 border border-slate-100 dark:border-gray-800/80">
-                <div className="flex items-center space-x-2 text-slate-500 dark:text-slate-450 text-xs">
-                  <Award className="h-4 w-4 text-yellow-500" />
-                  <span>Rank</span>
+
+              <div className="p-4 rounded-[20px] bg-white/[0.04] border border-white/[0.08] relative overflow-hidden group-hover:border-emerald-500/30 transition-colors">
+                <div className="flex items-center justify-between text-xs text-[#B8BCC8]">
+                  <span>Global Rank</span>
+                  <Award className="h-4 w-4 text-amber-400" />
                 </div>
-                <p className="text-xl font-extrabold text-slate-900 dark:text-white mt-1">#1 Top Student</p>
+                <div className="mt-2 flex items-baseline justify-between">
+                  <span className="font-heading text-2xl font-bold text-white">#1 Top Squad</span>
+                  <span className="text-xs font-medium text-amber-400">Master</span>
+                </div>
+                <div className="mt-3 h-1.5 w-full bg-white/[0.06] rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-amber-500 to-yellow-300 w-[88%]" />
+                </div>
               </div>
             </div>
 
-            {/* Leaderboard Mockup list */}
-            <div className="space-y-3">
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white">Active Leaderboard</h3>
+            {/* Simulated AI Question Card Preview */}
+            <div className="p-4 rounded-[20px] bg-white/[0.04] border border-white/[0.08] space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-blue-400 flex items-center space-x-1">
+                  <Zap className="h-3.5 w-3.5 text-blue-400 mr-1" />
+                  <span>Question 04 / 10</span>
+                </span>
+                <span className="text-[11px] text-[#6B7280] font-mono">15s left</span>
+              </div>
+              <p className="text-sm font-medium text-white leading-snug">
+                Which organelle is responsible for generating cellular ATP in eukaryotic organisms?
+              </p>
+
+              {/* Options */}
+              <div className="grid grid-cols-2 gap-2 pt-1">
+                <div className="p-2.5 rounded-[12px] bg-white/[0.03] border border-white/[0.06] text-xs text-slate-300">
+                  A. Ribosome
+                </div>
+                <div className="p-2.5 rounded-[12px] bg-emerald-500/15 border border-emerald-500/40 text-xs text-emerald-300 font-semibold flex items-center justify-between">
+                  <span>B. Mitochondria</span>
+                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
+                </div>
+              </div>
+            </div>
+
+            {/* Live Leaderboard List */}
+            <div className="space-y-3 pt-1">
+              <div className="flex items-center justify-between">
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-[#B8BCC8]">Live Tournament Standings</h4>
+                <span className="text-[11px] text-blue-400 hover:underline cursor-pointer flex items-center">
+                  <span>View All</span>
+                  <ArrowRight className="h-3 w-3 ml-1" />
+                </span>
+              </div>
               <div className="space-y-2">
-                {mockupStudents.map((student) => (
+                {leaderboardData.map((player) => (
                   <div
-                    key={student.name}
-                    className="flex items-center justify-between p-3 rounded-xl bg-slate-50/50 dark:bg-gray-950/50 border border-slate-100/50 dark:border-gray-800/30 hover:bg-slate-50 dark:hover:bg-gray-950 transition-colors"
+                    key={player.name}
+                    className="flex items-center justify-between p-2.5 rounded-[14px] bg-white/[0.03] border border-white/[0.06] hover:bg-white/[0.06] transition-colors"
                   >
                     <div className="flex items-center space-x-3">
-                      <div className="h-8 w-8 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold uppercase">
-                        {student.name.substring(0, 2)}
+                      <div className={`h-8 w-8 rounded-full bg-gradient-to-br ${player.color} text-slate-950 flex items-center justify-center text-xs font-bold shadow-md`}>
+                        {player.avatar}
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-slate-900 dark:text-white">{student.name}</p>
-                        <p className="text-[10px] text-slate-500 dark:text-slate-450">{student.badge}</p>
+                        <p className="text-xs font-semibold text-white">{player.name}</p>
+                        <p className="text-[10px] text-[#6B7280]">{player.badge}</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className="text-xs font-extrabold text-slate-900 dark:text-white">{student.score} pts</p>
-                      <p className="text-[10px] font-bold text-green-500">{student.rank}</p>
+                      <p className="text-xs font-bold text-white">{player.score} pts</p>
+                      <p className="text-[10px] font-semibold text-emerald-400">{player.rank}</p>
                     </div>
                   </div>
                 ))}
@@ -147,28 +239,37 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Floating badge elements */}
-          <div className="absolute top-10 -left-6 md:-left-12 p-3 bg-white dark:bg-gray-900 border border-slate-200/50 dark:border-gray-800/50 backdrop-blur-md rounded-2xl shadow-xl flex items-center space-x-3 pointer-events-none transform -rotate-6">
-            <span className="p-2 rounded-xl bg-green-100 dark:bg-green-950/30 text-green-600 dark:text-green-400">
-              <CheckCircle className="h-5 w-5" />
-            </span>
-            <div>
-              <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">Quiz Complete</p>
-              <p className="text-xs font-bold text-slate-900 dark:text-white">+250 XP earned</p>
+          {/* Holographic Floating Widget 1 - Left */}
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-6 -left-6 sm:-left-10 p-3.5 bg-white/[0.06] backdrop-blur-2xl border border-white/15 rounded-[20px] shadow-2xl flex items-center space-x-3 pointer-events-none z-20 max-w-xs"
+          >
+            <div className="p-2.5 rounded-[14px] bg-blue-500/20 text-blue-400 border border-blue-500/30">
+              <Sparkles className="h-5 w-5" />
             </div>
-          </div>
-
-          <div className="absolute bottom-10 -right-6 p-3 bg-white dark:bg-gray-900 border border-slate-200/50 dark:border-gray-800/50 backdrop-blur-md rounded-2xl shadow-xl flex items-center space-x-3 pointer-events-none transform rotate-3">
-            <span className="p-2 rounded-xl bg-yellow-100 dark:bg-yellow-950/30 text-yellow-600 dark:text-yellow-400">
-              <Play className="h-5 w-5" />
-            </span>
             <div>
-              <p className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase">Live Battle</p>
-              <p className="text-xs font-bold text-slate-900 dark:text-white">Chemistry Cup Arena</p>
+              <p className="text-[11px] font-semibold text-white">AI Generator</p>
+              <p className="text-[10px] text-[#B8BCC8]">10 Questions in 1.2s</p>
             </div>
-          </div>
+          </motion.div>
 
+          {/* Holographic Floating Widget 2 - Right */}
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute -bottom-6 -right-6 sm:-right-8 p-3.5 bg-white/[0.06] backdrop-blur-2xl border border-white/15 rounded-[20px] shadow-2xl flex items-center space-x-3 pointer-events-none z-20"
+          >
+            <div className="p-2.5 rounded-[14px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+              <Users className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-[11px] font-semibold text-white">1,420 Players</p>
+              <p className="text-[10px] text-emerald-400 font-medium">Live Battle Mode</p>
+            </div>
+          </motion.div>
         </motion.div>
+
       </div>
     </section>
   );

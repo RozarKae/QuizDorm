@@ -2,38 +2,39 @@
 
 import { motion } from "framer-motion";
 import { Sparkles, Swords, Trophy, Activity, Users, School } from "lucide-react";
+import SectionDivider from "@/components/ui/section-divider";
 
 export default function Features() {
   const list = [
     {
       title: "Interactive Learning",
       description: "Engage students with rich media questions, timed challenges, and flashcard modes designed to boost retention.",
-      icon: <Sparkles className="h-6 w-6 text-blue-500" />,
+      icon: <Sparkles className="h-6 w-6 text-blue-400" />,
     },
     {
       title: "Live Quiz Battles",
       description: "Host real-time competitions with classrooms or institutions, complete with live lobbies and game lobbies.",
-      icon: <Swords className="h-6 w-6 text-red-500" />,
+      icon: <Swords className="h-6 w-6 text-emerald-400" />,
     },
     {
       title: "Leaderboards",
       description: "Motivate students through friendly competition. Displays national, school-wide, and classroom standings.",
-      icon: <Trophy className="h-6 w-6 text-yellow-500" />,
+      icon: <Trophy className="h-6 w-6 text-amber-400" />,
     },
     {
       title: "Progress Tracking",
       description: "Detailed dashboard analytics help students map their improvement and focus areas over academic periods.",
-      icon: <Activity className="h-6 w-6 text-green-500" />,
+      icon: <Activity className="h-6 w-6 text-blue-400" />,
     },
     {
       title: "Teacher Dashboard",
       description: "Auto-grade submissions, manage subjects, invite student codes, and analyze grade curves automatically.",
-      icon: <Users className="h-6 w-6 text-purple-500" />,
+      icon: <Users className="h-6 w-6 text-indigo-400" />,
     },
     {
       title: "School Management",
       description: "Centralized licensing, multi-department course management, and aggregate reports for administrators.",
-      icon: <School className="h-6 w-6 text-indigo-500" />,
+      icon: <School className="h-6 w-6 text-emerald-400" />,
     },
   ];
 
@@ -48,24 +49,24 @@ export default function Features() {
   } as const;
 
   const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } },
+    hidden: { opacity: 0, filter: "blur(8px)", y: 24 },
+    show: { opacity: 1, filter: "blur(0px)", y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
   } as const;
 
   return (
-    <section id="features" className="py-24 bg-white dark:bg-gray-950 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="features" className="py-28 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <h2 className="text-sm font-bold text-primary uppercase tracking-widest">
-            Core Features
+        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+          <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3.5 py-1.5 rounded-full">
+            Core Architecture
+          </span>
+          <h2 className="font-heading text-4xl sm:text-5xl font-bold text-white tracking-tight pt-2">
+            Engineered for Academic Mastery
           </h2>
-          <p className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Everything you need to master learning
-          </p>
-          <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400">
-            QuizDorm bridges the gap between study guides and gamified entertainment, offering key tools for students, teachers, and admins.
+          <p className="text-base sm:text-lg text-[#B8BCC8] leading-relaxed">
+            QuizDorm bridges the gap between static study guides and real-time interactive intelligence for modern learners and educators.
           </p>
         </div>
 
@@ -81,21 +82,23 @@ export default function Features() {
             <motion.div
               key={feature.title}
               variants={item}
-              className="group p-8 rounded-3xl border border-slate-200/60 dark:border-gray-800/60 bg-slate-50/30 dark:bg-gray-900/30 hover:bg-white dark:hover:bg-gray-900 hover:shadow-xl hover:border-primary/25 dark:hover:border-primary/25 transition-all duration-300 transform hover:-translate-y-1"
+              className="group p-8 rounded-[24px] bg-white/[0.05] backdrop-blur-[20px] border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300 hover:-translate-y-1.5 shadow-2xl shadow-black/40 hover:shadow-blue-500/10 relative overflow-hidden"
             >
-              <div className="p-3 bg-white dark:bg-gray-800 rounded-2xl w-fit shadow-sm border border-slate-100 dark:border-gray-700/80 mb-6 group-hover:scale-110 transition-transform">
+              <div className="p-3.5 bg-white/[0.05] border border-white/10 rounded-[18px] w-fit shadow-md mb-6 group-hover:scale-110 group-hover:border-blue-500/30 transition-all duration-300">
                 {feature.icon}
               </div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3">
+              <h3 className="font-heading text-xl font-bold text-white mb-3">
                 {feature.title}
               </h3>
-              <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+              <p className="text-sm text-[#B8BCC8] leading-relaxed font-normal">
                 {feature.description}
               </p>
             </motion.div>
           ))}
         </motion.div>
       </div>
+
+      <SectionDivider variant="glow" />
     </section>
   );
 }
