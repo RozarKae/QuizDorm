@@ -1,0 +1,48 @@
+import { PromptTemplate } from "@/lib/types/ai";
+
+export const PROMPT_TEMPLATE_LIBRARY: PromptTemplate[] = [
+  {
+    id: "tpl-question-gen-v1",
+    category: "Question Generation",
+    name: "Standard Question Generator Template",
+    description: "Generates curriculum-aligned MCQ and multi-choice assessment items with explanations.",
+    systemPrompt: "You are QuizDorm AI, an expert educational assessment author specializing in curriculum-aligned question design.",
+    userPromptTemplate: "Generate {{count}} {{difficulty}} difficulty questions for subject '{{subject}}' on topic '{{topic}}'. Format as valid JSON array.",
+    requiredVariables: ["count", "difficulty", "subject", "topic"],
+    version: 1,
+    updatedAt: "2026-07-24",
+  },
+  {
+    id: "tpl-ocr-enhance-v1",
+    category: "OCR Enhancement",
+    name: "OCR Text & Math Cleanup Template",
+    description: "Fixes OCR scanning typos, formats mathematical equations into LaTeX, and structures options.",
+    systemPrompt: "You are QuizDorm OCR Intelligence, specialized in restoring damaged document scans and formatting math equations.",
+    userPromptTemplate: "Clean up the following OCR raw text, fix typos, format math into LaTeX, and output structured question object:\n\n{{rawText}}",
+    requiredVariables: ["rawText"],
+    version: 1,
+    updatedAt: "2026-07-24",
+  },
+  {
+    id: "tpl-quality-review-v1",
+    category: "Quality Review",
+    name: "Pedagogical Quality Audit Template",
+    description: "Evaluates question clarity, distractor quality, and difficulty level alignment.",
+    systemPrompt: "You are QuizDorm Quality Inspector, analyzing question ambiguity, options distractor plausibility, and answer keys.",
+    userPromptTemplate: "Analyze the following question item for pedagogical clarity, distractors, and accurate answer key:\n\n{{questionItemJson}}",
+    requiredVariables: ["questionItemJson"],
+    version: 1,
+    updatedAt: "2026-07-24",
+  },
+  {
+    id: "tpl-explanation-v1",
+    category: "Explanation",
+    name: "Step-by-Step Solution Explainer",
+    description: "Generates clear step-by-step solution breakdowns for student feedback.",
+    systemPrompt: "You are QuizDorm Master Tutor, providing encouraging step-by-step explanations for students.",
+    userPromptTemplate: "Explain why the correct answer is correct for the question '{{questionTitle}}' with options '{{optionsJson}}'.",
+    requiredVariables: ["questionTitle", "optionsJson"],
+    version: 1,
+    updatedAt: "2026-07-24",
+  },
+];

@@ -1,3 +1,14 @@
+import {
+  HotspotRegion,
+  DragDropCategory,
+  DragDropItem,
+  DiagramLabelPin,
+  TimelineEventItem,
+  VideoTimestampMarker,
+  CodeQuestionData,
+  InteractiveMapRegion,
+} from "./media";
+
 export type QuestionType =
   | "mcq_single"
   | "mcq_multiple"
@@ -5,7 +16,16 @@ export type QuestionType =
   | "fill_in_the_blank"
   | "match_following"
   | "sequence_ordering"
-  | "image_based";
+  | "image_based"
+  // Phase 2.2 Interactive & Multimedia Question Types
+  | "hotspot"
+  | "drag_drop_categorize"
+  | "diagram_labeling"
+  | "timeline_ordering"
+  | "audio_listening"
+  | "video_timestamp"
+  | "code_snippet"
+  | "interactive_map";
 
 export type DifficultyLevel = "Easy" | "Medium" | "Hard";
 
@@ -14,6 +34,8 @@ export interface QuestionOption {
   text: string;
   isCorrect?: boolean;
   image?: string;
+  audioUrl?: string;
+  videoUrl?: string;
   explanation?: string;
 }
 
@@ -21,17 +43,21 @@ export interface MatchPair {
   id: string;
   leftItem: string;
   rightItem: string;
+  leftImageUrl?: string;
+  rightImageUrl?: string;
+  leftAudioUrl?: string;
 }
 
 export interface SequenceItem {
   id: string;
   text: string;
   order: number;
+  imageUrl?: string;
 }
 
 export interface QuestionItem {
   id: string;
-  title: string;
+  title: string; // Supports Markdown, LaTeX equations, Rich Text HTML
   description?: string;
   type: QuestionType;
   subject: string;
@@ -44,11 +70,41 @@ export interface QuestionItem {
   explanation?: string;
   hints?: string[];
   tags: string[];
-  image?: string;
+
+  // Media attachments
+  image?: string; // Main image URL
+  audioUrl?: string; // Audio question file URL
+  videoUrl?: string; // Embedded video URL
+  transcript?: string; // Audio/Video transcript
+
+  // Interactive Question Type Schemas
   options: QuestionOption[];
   matchingPairs?: MatchPair[];
   sequenceItems?: SequenceItem[];
   fillBlanks?: string[];
+
+  // Hotspot
+  hotspotRegions?: HotspotRegion[];
+
+  // Drag and Drop Categorization
+  dragDropCategories?: DragDropCategory[];
+  dragDropItems?: DragDropItem[];
+
+  // Diagram Labeling
+  diagramLabels?: DiagramLabelPin[];
+
+  // Timeline
+  timelineEvents?: TimelineEventItem[];
+
+  // Video Timestamp Quizzes
+  videoTimestampMarkers?: VideoTimestampMarker[];
+
+  // Code Questions
+  codeData?: CodeQuestionData;
+
+  // Interactive Map
+  mapRegions?: InteractiveMapRegion[];
+
   createdAt: string;
   updatedAt: string;
 }

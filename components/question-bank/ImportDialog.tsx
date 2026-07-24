@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Upload, FileSpreadsheet, FileCode, FileText, Download, CheckCircle2 } from "lucide-react";
+import { Upload, FileSpreadsheet, FileCode, FileText, Download, ScanText, ArrowRight } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import Link from "next/link";
 
 interface ImportDialogProps {
   open: boolean;
@@ -39,15 +40,37 @@ export function ImportDialog({ open, onOpenChange, onImportSuccess }: ImportDial
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md">
+      <DialogContent className="max-w-md rounded-3xl p-6">
         <DialogHeader>
           <DialogTitle className="flex items-center text-gray-900 dark:text-white">
             <Upload className="w-5 h-5 text-indigo-600 mr-2" /> Import Questions
           </DialogTitle>
-          <DialogDescription>
-            Bulk import questions from CSV, Excel or JSON files into your question bank.
+          <DialogDescription className="text-xs">
+            Bulk import questions from CSV, Excel, JSON or launch the AI OCR Document Intelligence Workspace.
           </DialogDescription>
         </DialogHeader>
+
+        {/* AI OCR Callout */}
+        <div className="p-3.5 rounded-2xl bg-gradient-to-r from-indigo-900 to-slate-900 text-white space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold flex items-center">
+              <ScanText className="w-4 h-4 mr-1.5 text-indigo-300" /> AI Document Digitizer & OCR
+            </span>
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500 text-white">
+              Phase 2.1
+            </span>
+          </div>
+          <p className="text-[11px] text-indigo-100/80">
+            Import scanned PDFs, Word docs, photos & handwritten notes with automated math, table, and question detection.
+          </p>
+          <Link
+            href="/dashboard/ocr"
+            onClick={() => onOpenChange(false)}
+            className="inline-flex items-center text-xs font-bold text-indigo-300 hover:text-white pt-1"
+          >
+            Open OCR Workspace <ArrowRight className="w-3.5 h-3.5 ml-1" />
+          </Link>
+        </div>
 
         <div className="space-y-4 py-2">
           {/* Format selection */}
@@ -113,10 +136,10 @@ export function ImportDialog({ open, onOpenChange, onImportSuccess }: ImportDial
         </div>
 
         <DialogFooter className="mt-4">
-          <Button variant="outline" onClick={() => onOpenChange(false)}>
+          <Button variant="outline" onClick={() => onOpenChange(false)} className="rounded-xl text-xs">
             Cancel
           </Button>
-          <Button onClick={handleImport} disabled={loading} className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold">
+          <Button onClick={handleImport} disabled={loading} className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl">
             {loading ? "Importing..." : "Start Import"}
           </Button>
         </DialogFooter>

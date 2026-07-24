@@ -27,6 +27,7 @@ import {
   Tag,
   CheckSquare,
   Database,
+  ScanText,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -153,6 +154,11 @@ export default function QuestionBankPage() {
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
+          <Link href="/dashboard/ocr">
+            <Button size="sm" variant="outline" className="text-xs bg-indigo-50 dark:bg-indigo-950/50 border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 font-bold">
+              <ScanText className="w-3.5 h-3.5 mr-1.5 text-indigo-600" /> AI OCR Digitizer
+            </Button>
+          </Link>
           <Button variant="outline" size="sm" onClick={() => setCategoryOpen(true)} className="text-xs">
             <BookOpen className="w-3.5 h-3.5 mr-1.5" /> Taxonomy Manager
           </Button>
