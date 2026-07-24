@@ -82,10 +82,10 @@ export function AnimatedLeaderboard({ participants, onNextQuestion, isHost = tru
 
               {/* Movement indicator */}
               <div className="flex items-center text-xs font-bold w-10">
-                {p.rankChange > 0 ? (
-                  <span className="text-emerald-600 flex items-center"><ArrowUp className="w-3.5 h-3.5 mr-0.5" />+{p.rankChange}</span>
-                ) : p.rankChange < 0 ? (
-                  <span className="text-red-500 flex items-center"><ArrowDown className="w-3.5 h-3.5 mr-0.5" />{p.rankChange}</span>
+                {(p.rankChange || 0) > 0 ? (
+                  <span className="text-emerald-600 flex items-center"><ArrowUp className="w-3.5 h-3.5 mr-0.5" />+{(p.rankChange || 0)}</span>
+                ) : (p.rankChange || 0) < 0 ? (
+                  <span className="text-red-500 flex items-center"><ArrowDown className="w-3.5 h-3.5 mr-0.5" />{(p.rankChange || 0)}</span>
                 ) : (
                   <span className="text-gray-400 flex items-center"><Minus className="w-3.5 h-3.5 mr-0.5" />=</span>
                 )}
@@ -97,7 +97,7 @@ export function AnimatedLeaderboard({ participants, onNextQuestion, isHost = tru
                 </div>
                 <div>
                   <p className="text-sm font-bold text-gray-900 dark:text-white">{p.name}</p>
-                  {p.streak >= 3 && (
+                  {(p.streak || 0) >= 3 && (
                     <span className="inline-flex items-center text-[10px] text-amber-600 font-bold">
                       <Flame className="w-3 h-3 mr-0.5 fill-current" /> {p.streak} Streak!
                     </span>
