@@ -50,6 +50,8 @@ const defaultNavItems: NavItem[] = [
   { name: "Intervention Center", href: "/dashboard/performance/interventions", icon: "risk_interventions", badge: "Interventions" },
   { name: "Community Hub", href: "/dashboard/community", icon: "community_hub", badge: "Social Learning" },
   { name: "Quiz Clubs & Mentors", href: "/dashboard/community/clubs", icon: "quiz_clubs", badge: "Clubs" },
+  { name: "Global Directory", href: "/dashboard/global", icon: "global_directory", badge: "v3.0 Release" },
+  { name: "Curriculum Exchange", href: "/dashboard/global/exchange", icon: "curriculum_exchange", badge: "Global Cloud" },
   { name: "AI Admin Panel", href: "/admin/ai", icon: "ai_admin", badge: "AI Engine" },
   { name: "Quizzes", href: "/dashboard/quizzes", icon: "quizzes" },
   { name: "Question Builder", href: "/dashboard/quizzes/builder", icon: "builder" },

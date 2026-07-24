@@ -96,7 +96,7 @@ export function useLiveCompetition(competition: CompetitionItem, questions: Ques
     // Calculate speed bonus
     const speedBonus = Math.round(questionTimeRemaining * 10);
     setParticipants((prev) =>
-      prev.map((p) => (p.id === "p1" ? { ...p, score: p.score + 100 + speedBonus, streak: p.streak + 1 } : p))
+      prev.map((p) => (p.id === "p1" ? { ...p, score: p.score + 100 + speedBonus, streak: (p.streak || 0) + 1 } : p))
     );
   };
 

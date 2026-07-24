@@ -45,6 +45,8 @@ import {
   Sparkles,
   TrendingUp,
   Users,
+  Globe,
+  Share2,
 } from "lucide-react";
 import Logo from "@/components/layout/Logo";
 import { dashboardNavConfig } from "@/config/dashboard-nav";
@@ -105,6 +107,8 @@ export default function Sidebar({
     risk_interventions: <ShieldAlert className="h-5 w-5" />,
     community_hub: <Users className="h-5 w-5" />,
     quiz_clubs: <MessageSquare className="h-5 w-5" />,
+    global_directory: <Globe className="h-5 w-5" />,
+    curriculum_exchange: <Share2 className="h-5 w-5" />,
     ai_admin: <Cpu className="h-5 w-5" />,
     quizzes: <HelpCircle className="h-5 w-5" />,
     builder: <PlusSquare className="h-5 w-5" />,
