@@ -29,11 +29,11 @@ export function CreatorStorefrontHeader({ profile }: CreatorStorefrontHeaderProp
         <div className="flex items-center space-x-4 font-mono text-xs">
           <div className="text-center p-2.5 rounded-xl bg-white/10">
             <span className="text-gray-400 text-[10px] block font-sans">Total Sales</span>
-            <span className="font-bold text-emerald-400 text-sm">${profile.totalSalesUSD.toLocaleString()}</span>
+            <span className="font-bold text-emerald-400 text-sm">${(profile.totalSalesUSD ?? profile.totalEarningsUSD ?? 0).toLocaleString()}</span>
           </div>
           <div className="text-center p-2.5 rounded-xl bg-white/10">
             <span className="text-gray-400 text-[10px] block font-sans">Followers</span>
-            <span className="font-bold text-indigo-300 text-sm">{profile.followersCount.toLocaleString()}</span>
+            <span className="font-bold text-indigo-300 text-sm">{(profile.followersCount ?? 0).toLocaleString()}</span>
           </div>
         </div>
       </div>

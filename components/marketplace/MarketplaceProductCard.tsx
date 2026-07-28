@@ -32,7 +32,7 @@ export function MarketplaceProductCard({ product, onBuyNow }: MarketplaceProduct
           <span className="flex items-center text-amber-500 font-bold">
             <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500 mr-1" /> {product.rating} ({product.reviewsCount})
           </span>
-          <span className="font-mono">{product.downloadsCount.toLocaleString()} Downloads</span>
+          <span className="font-mono">{(product.downloadsCount ?? product.downloadCount ?? 0).toLocaleString()} Downloads</span>
         </div>
 
         <div className="flex items-center justify-between pt-1">

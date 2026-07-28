@@ -1,52 +1,129 @@
-export type ProductCategory = "question_bank" | "quiz_pack" | "exam_paper" | "ai_prompt_library" | "curriculum_kit" | "competition_pack";
+export type LicenseType = 
+  | "single_use" 
+  | "personal" 
+  | "institutional" 
+  | "unlimited" 
+  | "commercial" 
+  | "classroom" 
+  | "school"
+  | "enterprise";
 
-export type LicenseType = "personal" | "classroom" | "school" | "organization" | "enterprise";
+export type ProductCategory = 
+  | "Question Banks" 
+  | "Quiz Templates" 
+  | "Courses" 
+  | "Lesson Plans" 
+  | "E-books" 
+  | "Worksheets" 
+  | "AI Prompts" 
+  | "Plugins & API"
+  | "question_bank"
+  | "ai_prompt_library"
+  | "competition_pack"
+  | "quiz_template"
+  | "course_pack";
 
 export interface MarketplaceProduct {
   id: string;
+  creatorId?: string;
   title: string;
-  description: string;
   category: ProductCategory;
-  creatorId: string;
   creatorName: string;
   creatorAvatarUrl?: string;
   priceUSD: number;
   rating: number;
   reviewsCount: number;
-  downloadsCount: number;
-  licenseType: LicenseType;
-  featured: boolean;
-  tags: string[];
-  previewQuestionsCount: number;
-  createdAt: string;
+  downloadCount?: number;
+  downloadsCount?: number;
+  previewUrl?: string;
+  isFeatured?: boolean;
+  featured?: boolean;
+  isInstitutionalEligible?: boolean;
+  description?: string;
+  previewQuestionsCount?: number;
+  licenseType?: LicenseType;
+  tags?: string[];
+  createdAt?: string;
 }
 
 export interface CreatorProfile {
-  id: string;
+  id?: string;
+  creatorId?: string;
   name: string;
-  bio: string;
-  storefrontSlug: string;
-  verifiedBadge: boolean;
-  totalSalesUSD: number;
-  totalProducts: number;
-  followersCount: number;
+  storeName?: string;
+  tagline?: string;
+  totalProductsCount?: number;
+  totalProducts?: number;
+  totalEarningsUSD?: number;
+  totalSalesUSD?: number;
+  ratingAverage?: number;
+  rating?: number;
+  verifiedCreator?: boolean;
+  verifiedBadge?: boolean;
+  storefrontSlug?: string;
+  followersCount?: number;
+  bio?: string;
+  topSellingProduct?: string;
+}
+
+export interface CreatorPayout {
+  id?: string;
+  payoutId?: string;
+  creatorId: string;
+  amountUSD: number;
+  payoutDate?: string;
+  requestedAt?: string;
+  status: "Pending" | "Completed" | "Processing" | "completed" | "processing" | "pending";
+}
+
+export interface InstitutionalLicense {
+  licenseId: string;
+  institutionName: string;
+  productTitle: string;
+  seatCount: number;
+  unitPriceUSD: number;
+  totalPriceUSD: number;
+  validityMonths: number;
+}
+
+export interface EducationalService {
+  serviceId: string;
+  title: string;
+  providerName: string;
+  hourlyRateUSD: number;
   rating: number;
+  category: "Tutoring" | "Curriculum Consulting" | "Question Paper Drafting" | "AI Education";
+  availableSlots: string[];
+}
+
+export interface ShoppingCartItem {
+  productId: string;
+  title: string;
+  priceUSD: number;
+  quantity: number;
 }
 
 export interface ProductReview {
   id: string;
   productId: string;
   reviewerName: string;
-  rating: number;
+  ratingStars: number;
   comment: string;
-  createdAt: string;
-  verifiedPurchase: boolean;
+  date: string;
+  isVerifiedPurchase: boolean;
 }
 
-export interface CreatorPayout {
-  id: string;
-  creatorId: string;
-  amountUSD: number;
-  status: "completed" | "processing" | "pending";
-  requestedAt: string;
+export interface AIMarketplaceRecommendation {
+  productId: string;
+  title: string;
+  matchScorePercent: number;
+  recommendationReason: string;
+}
+
+export interface MarketplaceSalesAnalytics {
+  totalGrossRevenueUSD: number;
+  totalOrdersCount: number;
+  averageOrderValueUSD: number;
+  topCategoryBySales: string;
+  activeSellersCount: number;
 }

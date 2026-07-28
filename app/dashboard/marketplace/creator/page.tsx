@@ -45,7 +45,7 @@ export default function CreatorStudioPage() {
       <CreatorStorefrontHeader profile={profile} />
 
       {/* Revenue Analytics & 80/20 Revenue Share */}
-      <CreatorRevenueCard totalSalesUSD={profile.totalSalesUSD} />
+      <CreatorRevenueCard totalSalesUSD={profile.totalSalesUSD ?? profile.totalEarningsUSD ?? 0} />
 
       {/* Product Publish Wizard Modal */}
       <ProductPublishWizardModal open={publishModalOpen} onOpenChange={setPublishModalOpen} />

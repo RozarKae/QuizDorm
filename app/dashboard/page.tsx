@@ -14,6 +14,12 @@ import {
   CheckCircle2,
   PlayCircle,
   Award,
+  GraduationCap,
+  ShieldCheck,
+  BookOpen,
+  Sparkles,
+  ShoppingBag,
+  Cloud,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -49,6 +55,60 @@ export default function DashboardHomePage() {
             Manage your quizzes, launch live competitions, inspect leaderboard rankings, and build questions effortlessly.
           </p>
           <div className="pt-3 flex flex-wrap items-center gap-3">
+            <Link href="/dashboard/cloud-ops">
+              <Button className="bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-400 hover:from-indigo-600 hover:to-emerald-500 text-white font-extrabold rounded-xl px-5 py-2.5 shadow-md text-sm">
+                <Cloud className="w-4 h-4 mr-2 text-white" />
+                Global EduCloud OS (Phase 4.9)
+              </Button>
+            </Link>
+            <Link href="/dashboard/marketplace">
+              <Button className="bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl px-5 py-2.5 shadow-sm text-sm border border-white/20">
+                <ShoppingBag className="w-4 h-4 mr-2 text-emerald-300" />
+                Marketplace (4.8)
+              </Button>
+            </Link>
+            <Link href="/dashboard/certifications">
+              <Button className="bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl px-5 py-2.5 shadow-sm text-sm border border-white/20">
+                <Award className="w-4 h-4 mr-2 text-amber-300" />
+                Global Certifications (4.7)
+              </Button>
+            </Link>
+            <Link href="/dashboard/research-studio">
+              <Button className="bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl px-5 py-2.5 shadow-sm text-sm border border-white/20">
+                <BookOpen className="w-4 h-4 mr-2 text-purple-300" />
+                Research Studio (4.6)
+              </Button>
+            </Link>
+            <Link href="/dashboard/administration">
+              <Button className="bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl px-5 py-2.5 shadow-sm text-sm border border-white/20">
+                <Building2 className="w-4 h-4 mr-2 text-blue-300" />
+                Academic Admin ERP (4.5)
+              </Button>
+            </Link>
+            <Link href="/dashboard/ai-assistant">
+              <Button className="bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl px-5 py-2.5 shadow-sm text-sm border border-white/20">
+                <Sparkles className="w-4 h-4 mr-2 text-amber-300 fill-amber-300" />
+                AI Assistant (4.4)
+              </Button>
+            </Link>
+            <Link href="/dashboard/lms">
+              <Button className="bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl px-5 py-2.5 shadow-sm text-sm border border-white/20">
+                <BookOpen className="w-4 h-4 mr-2 text-purple-300" />
+                LMS Platform (4.3)
+              </Button>
+            </Link>
+            <Link href="/dashboard/examination">
+              <Button className="bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl px-5 py-2.5 shadow-sm text-sm border border-white/20">
+                <ShieldCheck className="w-4 h-4 mr-2 text-amber-300" />
+                Examination Platform (4.2)
+              </Button>
+            </Link>
+            <Link href="/dashboard/classroom">
+              <Button className="bg-white/20 hover:bg-white/30 text-white font-bold rounded-xl px-5 py-2.5 shadow-sm text-sm border border-white/20">
+                <GraduationCap className="w-4 h-4 mr-2 text-emerald-300" />
+                Digital Classroom Suite (4.1)
+              </Button>
+            </Link>
             <Link href="/dashboard/quizzes/builder">
               <Button className="bg-white text-indigo-600 hover:bg-gray-100 font-semibold rounded-xl px-5 py-2.5 shadow-sm text-sm">
                 <PlusSquare className="w-4 h-4 mr-2" />
