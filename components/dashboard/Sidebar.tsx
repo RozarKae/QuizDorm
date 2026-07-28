@@ -138,15 +138,15 @@ export default function Sidebar({
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         } ${collapsed ? "w-20" : "w-64"}`}
       >
-        <div className="flex h-full flex-col justify-between bg-white dark:bg-gray-950 border-r border-gray-200 dark:border-gray-850 shadow-sm transition-colors duration-300">
+        <div className="flex h-full flex-col justify-between bg-white border-r border-slate-200 transition-colors duration-300">
           <div>
             {/* Header */}
-            <div className="flex h-16 items-center justify-between px-4 border-b border-gray-100 dark:border-gray-900">
+            <div className="flex h-16 items-center justify-between px-4 border-b border-slate-200">
               <Link href="/dashboard" className="flex items-center space-x-2">
                 {!collapsed ? (
                   <Logo />
                 ) : (
-                  <div className="p-2 rounded-xl bg-indigo-600 text-white shadow-sm">
+                  <div className="p-2 rounded-lg bg-slate-900 text-white">
                     <LayoutDashboard className="h-5 w-5" />
                   </div>
                 )}
@@ -155,7 +155,7 @@ export default function Sidebar({
                 variant="ghost"
                 size="icon"
                 onClick={onClose}
-                className="md:hidden text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+                className="md:hidden text-slate-500 hover:text-slate-900"
                 aria-label="Close sidebar"
               >
                 <X className="h-5 w-5" />
@@ -163,7 +163,7 @@ export default function Sidebar({
             </div>
 
             {/* Navigation Items */}
-            <nav className="space-y-1.5 px-3 py-4">
+            <nav className="space-y-1 px-3 py-4">
               {navItems.map((item) => {
                 const isActive = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href));
                 return (
@@ -171,10 +171,10 @@ export default function Sidebar({
                     key={item.href}
                     href={item.href}
                     onClick={onClose}
-                    className={`flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-150 ${
+                    className={`flex items-center justify-between rounded-md px-3 py-2 text-xs font-semibold transition-colors ${
                       isActive
-                        ? "bg-indigo-600 text-white shadow-sm font-semibold"
-                        : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 hover:text-gray-900 dark:hover:text-white"
+                        ? "bg-slate-900 text-white"
+                        : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
                     }`}
                     title={collapsed ? item.name : undefined}
                   >
@@ -186,10 +186,10 @@ export default function Sidebar({
                     </div>
                     {!collapsed && item.badge && (
                       <span
-                        className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full ${
+                        className={`text-[9px] uppercase font-mono font-bold px-2 py-0.5 rounded ${
                           isActive
-                            ? "bg-white/20 text-white"
-                            : "bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400"
+                            ? "bg-slate-800 text-white"
+                            : "bg-slate-100 text-slate-600"
                         }`}
                       >
                         {item.badge}
@@ -202,11 +202,11 @@ export default function Sidebar({
           </div>
 
           {/* Collapse Toggle Button (Desktop Only) */}
-          <div className="hidden md:block p-3 border-t border-gray-100 dark:border-gray-900">
+          <div className="hidden md:block p-3 border-t border-slate-200">
             <Button
               variant="ghost"
               onClick={() => setCollapsed(!collapsed)}
-              className="w-full flex items-center justify-center py-2.5 h-10 border border-gray-200 dark:border-gray-800 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+              className="w-full flex items-center justify-center py-2 h-9 border border-slate-200 rounded-md hover:bg-slate-100 text-slate-500 hover:text-slate-900"
               aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             >
               {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
