@@ -52,9 +52,15 @@ export function QuestionCard({ question, isSelected, onSelectToggle, onDelete }:
         </h3>
 
         <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500 mb-4">
-          <span className="font-semibold text-indigo-600 dark:text-indigo-400">{question.subject}</span>
+          <span className="font-semibold text-indigo-600 dark:text-indigo-400">{question.topic || question.subject}</span>
           <span>•</span>
-          <span>{question.category}</span>
+          <span>{question.subject}</span>
+          {(question.gradeLevel || question.grade) && (
+            <>
+              <span>•</span>
+              <span className="text-slate-500 dark:text-slate-400">{question.gradeLevel || question.grade}</span>
+            </>
+          )}
           <span>•</span>
           <span className="font-mono">{question.marks} {question.marks === 1 ? "Mark" : "Marks"}</span>
         </div>

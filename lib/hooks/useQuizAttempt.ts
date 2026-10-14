@@ -1,12 +1,38 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { QuizItem } from "@/lib/types/quiz";
 import { QuizAttempt, AttemptStatus } from "@/lib/types/attempt";
 import { QuestionItem } from "@/lib/types/question";
+import { prepareQuizAttemptSession } from "@/lib/data/quizzes";
 
-export function useQuizAttempt(quiz: QuizItem, attemptId?: string) {
-  const storageKey = `qd_attempt_${quiz.id}`;
+export function useQuizAttempt(
+  quiz: QuizItem,
+  attemptId?: string,
+  options?: { forceShuffleQuestions?: boolean; forceShuffleOptions?: boolean }
+) {
+  const effectiveAttemptId = attemptId || `att-${quiz.id}`;
+  const storageKey = `qd_attempt_${quiz.id}_${effectiveAttemptId}`;
+
+  // Initialize or restore attempt-specific randomized questions
+  const [attemptQuestions, setAttemptQuestions] = useState<QuestionItem[]>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem(storageKey);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed.questions) && parsed.questions.length > 0) {
+            return parsed.questions;
+          }
+        }
+      } catch {
+        // Ignore storage read error
+      }
+    }
+    // Fresh randomized session according to quiz settings
+    const sessionQuiz = prepareQuizAttemptSession(quiz, options);
+    return sessionQuiz.questions;
+  });
 
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answers, setAnswers] = useState<Record<string, any>>({});
@@ -24,6 +50,9 @@ export function useQuizAttempt(quiz: QuizItem, attemptId?: string) {
         if (parsed.answers) setAnswers(parsed.answers);
         if (parsed.markedForReview) setMarkedForReview(parsed.markedForReview);
         if (parsed.timeRemainingSeconds) setTimeRemainingSeconds(parsed.timeRemainingSeconds);
+        if (Array.isArray(parsed.questions) && parsed.questions.length > 0) {
+          setAttemptQuestions(parsed.questions);
+        }
       }
     } catch {
       // Ignore storage errors
@@ -40,6 +69,7 @@ export function useQuizAttempt(quiz: QuizItem, attemptId?: string) {
             answers,
             markedForReview,
             timeRemainingSeconds,
+            questions: attemptQuestions,
             updatedAt: new Date().toISOString(),
           })
         );
@@ -47,7 +77,7 @@ export function useQuizAttempt(quiz: QuizItem, attemptId?: string) {
         // Ignore
       }
     }
-  }, [answers, markedForReview, timeRemainingSeconds, status, storageKey]);
+  }, [answers, markedForReview, timeRemainingSeconds, status, storageKey, attemptQuestions]);
 
   // Submit Handler
   const submitQuiz = useCallback(
@@ -57,7 +87,7 @@ export function useQuizAttempt(quiz: QuizItem, attemptId?: string) {
       let unansweredCount = 0;
       let score = 0;
 
-      quiz.questions.forEach((q) => {
+      attemptQuestions.forEach((q) => {
         const userAnswer = answers[q.id];
         if (userAnswer === undefined || userAnswer === null || userAnswer === "") {
           unansweredCount++;
@@ -67,13 +97,21 @@ export function useQuizAttempt(quiz: QuizItem, attemptId?: string) {
           if (q.type === "mcq_single" || q.type === "image_based") {
             const correctOpt = q.options.find((o) => o.isCorrect);
             isCorrect = correctOpt?.id === userAnswer;
+          } else if (q.type === "mcq_multiple") {
+            const correctIds = q.options.filter((o) => o.isCorrect).map((o) => o.id).sort();
+            const userArr = Array.isArray(userAnswer) ? [...userAnswer].sort() : [];
+            isCorrect =
+              correctIds.length === userArr.length &&
+              correctIds.every((val, index) => val === userArr[index]);
           } else if (q.type === "true_false") {
-            isCorrect = String(userAnswer).toLowerCase() === "true";
+            const correctOpt = q.options.find((o) => o.isCorrect);
+            const expectedStr = correctOpt ? correctOpt.text.toLowerCase() : "true";
+            isCorrect = String(userAnswer).toLowerCase() === expectedStr;
           } else if (q.type === "fill_in_the_blank") {
             const val = String(userAnswer).trim().toLowerCase();
             isCorrect = (q.fillBlanks || []).some((b) => b.toLowerCase() === val);
           } else {
-            isCorrect = true; // Default match/seq credit
+            isCorrect = false;
           }
 
           if (isCorrect) {
@@ -81,11 +119,14 @@ export function useQuizAttempt(quiz: QuizItem, attemptId?: string) {
             score += q.marks;
           } else {
             incorrectCount++;
+            if (q.negativeMarks) {
+              score -= q.negativeMarks;
+            }
           }
         }
       });
 
-      const totalMarks = quiz.totalMarks || quiz.questions.reduce((acc, q) => acc + q.marks, 0);
+      const totalMarks = quiz.totalMarks || attemptQuestions.reduce((acc, q) => acc + q.marks, 0);
       const percentage = Math.round((score / (totalMarks || 1)) * 100);
       const isPassed = percentage >= quiz.passMarks;
       const timeTakenSeconds = quiz.durationMinutes * 60 - timeRemainingSeconds;
@@ -111,7 +152,7 @@ export function useQuizAttempt(quiz: QuizItem, attemptId?: string) {
         correctCount,
         incorrectCount,
         unansweredCount,
-        questions: quiz.questions,
+        questions: attemptQuestions,
       };
 
       setStatus(reason === "timeout" ? "timed_out" : "submitted");
@@ -126,7 +167,7 @@ export function useQuizAttempt(quiz: QuizItem, attemptId?: string) {
 
       return resultAttempt;
     },
-    [answers, markedForReview, timeRemainingSeconds, quiz, storageKey, attemptId]
+    [answers, markedForReview, timeRemainingSeconds, quiz, storageKey, attemptId, attemptQuestions]
   );
 
   // Timer Tick Hook
@@ -177,6 +218,7 @@ export function useQuizAttempt(quiz: QuizItem, attemptId?: string) {
     status,
     submittedAttempt,
     submitQuiz,
-    currentQuestion: quiz.questions[currentIdx] as QuestionItem | undefined,
+    questions: attemptQuestions,
+    currentQuestion: attemptQuestions[currentIdx] as QuestionItem | undefined,
   };
 }

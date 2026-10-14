@@ -11,7 +11,17 @@ export async function middleware(request: NextRequest) {
 
   let user = null;
 
-  if (supabaseUrl && supabaseAnonKey) {
+  // Support demo test accounts (Teacher, School, Student)
+  const demoCookie = request.cookies.get("quizdorm_demo_session")?.value;
+  if (demoCookie) {
+    try {
+      user = JSON.parse(demoCookie);
+    } catch {
+      // Ignore
+    }
+  }
+
+  if (!user && supabaseUrl && supabaseAnonKey && !supabaseUrl.includes("your-supabase-project")) {
     try {
       const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
         cookies: {
@@ -51,6 +61,23 @@ export async function middleware(request: NextRequest) {
 
     if (isAuthRoute && !pathname.startsWith("/auth/verify-email") && !pathname.startsWith("/auth/reset-password")) {
       // Authenticated user accessing auth page -> redirect to dashboard
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
+
+    // Role-Based Access Control (RBAC) enforcement
+    if (pathname.startsWith("/admin") && role !== "admin") {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
+
+    if (pathname.startsWith("/school") && !["school", "admin"].includes(role)) {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
+
+    if (pathname.startsWith("/teacher") && !["teacher", "school", "admin"].includes(role)) {
+      return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
+
+    if (pathname.startsWith("/student") && !["student", "teacher", "school", "admin"].includes(role)) {
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
   } else {

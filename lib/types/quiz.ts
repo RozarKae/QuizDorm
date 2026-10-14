@@ -1,5 +1,6 @@
 import { QuestionItem, DifficultyLevel } from "./question";
 
+export type { DifficultyLevel };
 export type QuizStatus = "Draft" | "Published" | "Archived";
 
 export interface QuizItem {
@@ -10,6 +11,9 @@ export interface QuizItem {
   instructions?: string;
   category: string;
   subject: string;
+  topic?: string;
+  gradeLevel?: string;
+  grade?: string;
   difficulty: DifficultyLevel;
   durationMinutes: number;
   totalMarks: number;

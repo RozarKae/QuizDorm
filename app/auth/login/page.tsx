@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import AuthCard from "@/components/auth/AuthCard";
 import AuthHeader from "@/components/auth/AuthHeader";
 import AuthForm from "@/components/auth/AuthForm";
@@ -10,19 +10,36 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
-import { signInWithEmail, signInWithGoogle } from "../actions";
+import { signInWithEmail, signInWithGoogle, TEST_ACCOUNTS } from "../actions";
 import { toast } from "sonner";
+import { Sparkles, GraduationCap, School, UserCheck } from "lucide-react";
 
 function LoginContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const redirectedFrom = searchParams.get("redirectedFrom");
-  const role = searchParams.get("role");
+  const roleParam = searchParams.get("role");
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
+  useEffect(() => {
+    if (roleParam === "student") {
+      setEmail("student@quizdorm.com");
+      setPassword("Password123!");
+    } else if (roleParam === "teacher") {
+      setEmail("teacher@quizdorm.com");
+      setPassword("Password123!");
+    } else if (roleParam === "school") {
+      setEmail("school@quizdorm.com");
+      setPassword("Password123!");
+    }
+  }, [roleParam]);
+
   const getRoleDisplayName = () => {
-    switch (role) {
+    switch (roleParam) {
       case "student":
         return "Student";
       case "teacher":
@@ -38,12 +55,24 @@ function LoginContent() {
 
   const roleName = getRoleDisplayName();
 
+  const handleQuickFill = (roleKey: "student" | "teacher" | "school") => {
+    const acc = TEST_ACCOUNTS[`${roleKey}@quizdorm.com`];
+    if (acc) {
+      setEmail(acc.email);
+      setPassword(acc.password);
+      toast.info(`Filled ${acc.role.toUpperCase()} test credentials: ${acc.email}`);
+    }
+  };
+
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setErrorMsg("");
 
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+
     const res = await signInWithEmail(formData);
 
     if (res.error) {
@@ -52,6 +81,9 @@ function LoginContent() {
       setLoading(false);
     } else {
       toast.success("Logged in successfully!");
+      if (typeof window !== "undefined" && (res as any).user) {
+        localStorage.setItem("quizdorm_demo_user", JSON.stringify((res as any).user));
+      }
       const target = redirectedFrom || res.redirectUrl || "/dashboard";
       router.push(target);
     }
@@ -85,13 +117,79 @@ function LoginContent() {
         </div>
       )}
 
+      {/* Quick Test Accounts Interactive Panel */}
+      <div className="p-3.5 mb-5 rounded-2xl border border-indigo-100 dark:border-indigo-900/50 bg-indigo-50/50 dark:bg-indigo-950/30 space-y-2">
+        <div className="flex items-center justify-between text-xs">
+          <span className="font-bold text-indigo-900 dark:text-indigo-200 flex items-center">
+            <Sparkles className="w-3.5 h-3.5 mr-1.5 text-indigo-600" />
+            Quick Test Accounts (Click to Auto-fill)
+          </span>
+          <span className="text-[10px] text-indigo-600 dark:text-indigo-400 font-semibold">Ready to Test</span>
+        </div>
+        <div className="grid grid-cols-3 gap-2">
+          <button
+            type="button"
+            onClick={() => handleQuickFill("student")}
+            className={`p-2 rounded-xl border text-left transition-all shadow-xs ${
+              email === "student@quizdorm.com"
+                ? "border-indigo-600 bg-white dark:bg-gray-900 ring-2 ring-indigo-500/20"
+                : "border-indigo-200/80 dark:border-indigo-800 bg-white/80 dark:bg-gray-900/80 hover:border-indigo-400"
+            }`}
+          >
+            <div className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 flex items-center">
+              <GraduationCap className="w-3 h-3 mr-1" /> Student
+            </div>
+            <div className="text-[10px] text-gray-500 truncate mt-0.5">student@quizdorm.com</div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleQuickFill("teacher")}
+            className={`p-2 rounded-xl border text-left transition-all shadow-xs ${
+              email === "teacher@quizdorm.com"
+                ? "border-indigo-600 bg-white dark:bg-gray-900 ring-2 ring-indigo-500/20"
+                : "border-indigo-200/80 dark:border-indigo-800 bg-white/80 dark:bg-gray-900/80 hover:border-indigo-400"
+            }`}
+          >
+            <div className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 flex items-center">
+              <UserCheck className="w-3 h-3 mr-1" /> Teacher
+            </div>
+            <div className="text-[10px] text-gray-500 truncate mt-0.5">teacher@quizdorm.com</div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleQuickFill("school")}
+            className={`p-2 rounded-xl border text-left transition-all shadow-xs ${
+              email === "school@quizdorm.com"
+                ? "border-indigo-600 bg-white dark:bg-gray-900 ring-2 ring-indigo-500/20"
+                : "border-indigo-200/80 dark:border-indigo-800 bg-white/80 dark:bg-gray-900/80 hover:border-indigo-400"
+            }`}
+          >
+            <div className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 flex items-center">
+              <School className="w-3 h-3 mr-1" /> School
+            </div>
+            <div className="text-[10px] text-gray-500 truncate mt-0.5">school@quizdorm.com</div>
+          </button>
+        </div>
+      </div>
+
       <AuthForm onSubmit={handleFormSubmit}>
         <div className="space-y-4">
           <div className="space-y-1.5">
             <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Email Address
             </label>
-            <Input id="email" name="email" type="email" placeholder="you@example.com" required className="w-full font-medium" />
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="you@example.com"
+              required
+              className="w-full font-medium"
+            />
           </div>
 
           <div className="space-y-1.5">
@@ -103,7 +201,15 @@ function LoginContent() {
                 Forgot Password?
               </Link>
             </div>
-            <PasswordInput id="password" name="password" placeholder="••••••••" required className="w-full" />
+            <PasswordInput
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••"
+              required
+              className="w-full"
+            />
           </div>
 
           <div className="flex items-center">

@@ -1,91 +1,39 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { QuizItem } from "@/lib/types/quiz";
 import { useQuizAttempt } from "@/lib/hooks/useQuizAttempt";
+import { getQuizById, ALL_DEFAULT_QUIZZES } from "@/lib/data/quizzes";
 import { QuizTimer } from "@/components/quiz-engine/QuizTimer";
 import { QuestionPalette } from "@/components/quiz-engine/QuestionPalette";
 import { QuestionRenderer } from "@/components/quiz-engine/QuestionRenderer";
 import { SubmissionModal } from "@/components/quiz-engine/SubmissionModal";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Bookmark, RotateCcw, Send, AlertTriangle } from "lucide-react";
+import { ChevronLeft, ChevronRight, Bookmark, RotateCcw, Send } from "lucide-react";
 import { toast } from "sonner";
 
-const mockActiveQuiz: QuizItem = {
-  id: "q-101",
-  title: "Advanced Algebra & Calculus Challenge",
-  category: "Mathematics",
-  subject: "Algebra",
-  difficulty: "Hard",
-  durationMinutes: 45,
-  totalMarks: 100,
-  passMarks: 60,
-  status: "Published",
-  randomizeQuestions: false,
-  shuffleOptions: false,
-  createdAt: "Jul 2026",
-  updatedAt: "Jul 2026",
-  questions: [
-    {
-      id: "q-1",
-      title: "What is the derivative of f(x) = x^3 + 4x^2 - 5x + 7?",
-      type: "mcq_single",
-      subject: "Mathematics",
-      category: "Algebra",
-      topic: "Calculus",
-      difficulty: "Medium",
-      marks: 4,
-      timeLimitSeconds: 60,
-      options: [
-        { id: "opt-1", text: "3x^2 + 8x - 5", isCorrect: true },
-        { id: "opt-2", text: "3x^2 + 4x - 5", isCorrect: false },
-        { id: "opt-3", text: "x^2 + 8x - 5", isCorrect: false },
-      ],
-      tags: ["calculus"],
-      createdAt: "Jul 2026",
-      updatedAt: "Jul 2026",
-    },
-    {
-      id: "q-2",
-      title: "Which of the following organic compounds contain a benzene ring?",
-      type: "mcq_multiple",
-      subject: "Science",
-      category: "Chemistry",
-      topic: "Organic Chemistry",
-      difficulty: "Hard",
-      marks: 5,
-      timeLimitSeconds: 90,
-      options: [
-        { id: "o1", text: "Toluene", isCorrect: true },
-        { id: "o2", text: "Phenol", isCorrect: true },
-        { id: "o3", text: "Methane", isCorrect: false },
-      ],
-      tags: ["chemistry"],
-      createdAt: "Jul 2026",
-      updatedAt: "Jul 2026",
-    },
-    {
-      id: "q-3",
-      title: "Light travels faster in water than in vacuum.",
-      type: "true_false",
-      subject: "Science",
-      category: "Physics",
-      topic: "Optics",
-      difficulty: "Easy",
-      marks: 2,
-      timeLimitSeconds: 30,
-      options: [],
-      tags: ["physics"],
-      createdAt: "Jul 2026",
-      updatedAt: "Jul 2026",
-    },
-  ],
-};
-
-export default function DistractionFreeQuizEnginePage({ params }: { params: { id: string } }) {
+export default function DistractionFreeQuizEnginePage({
+  params,
+}: {
+  params: Promise<{ id: string }> | { id: string };
+}) {
   const router = useRouter();
   const [submitModalOpen, setSubmitModalOpen] = useState(false);
+
+  const unwrappedParams =
+    typeof (params as any)?.then === "function"
+      ? React.use(params as Promise<{ id: string }>)
+      : (params as { id: string });
+  const quizId = unwrappedParams.id;
+
+  // Retrieve active quiz from repository or fallback
+  const targetQuiz = useMemo(() => {
+    return getQuizById(quizId) || ALL_DEFAULT_QUIZZES[0];
+  }, [quizId]);
+
+  // Stable attempt session ID
+  const [attemptId] = useState(() => `att-${Date.now()}`);
 
   const {
     currentIdx,
@@ -98,17 +46,17 @@ export default function DistractionFreeQuizEnginePage({ params }: { params: { id
     timeRemainingSeconds,
     status,
     submitQuiz,
+    questions,
     currentQuestion,
-  } = useQuizAttempt(mockActiveQuiz, `att-${Date.now()}`);
+  } = useQuizAttempt(targetQuiz, attemptId);
 
-  const questions = mockActiveQuiz.questions;
   const answeredCount = Object.keys(answers).length;
   const unansweredCount = questions.length - answeredCount;
 
   const handleConfirmSubmit = () => {
     const attempt = submitQuiz("manual");
     toast.success("Quiz submitted successfully!");
-    router.push(`/dashboard/quizzes/${params.id}/result/${attempt.id}`);
+    router.push(`/dashboard/quizzes/${quizId}/result/${attempt.id}`);
   };
 
   const formatTime = (totalSec: number) => {
@@ -117,7 +65,13 @@ export default function DistractionFreeQuizEnginePage({ params }: { params: { id
     return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
   };
 
-  if (!currentQuestion) return null;
+  if (!currentQuestion) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center bg-gray-50 dark:bg-gray-950">
+        <p className="text-sm text-gray-500">Loading quiz attempt session...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 z-50 bg-gray-50 dark:bg-gray-950 flex flex-col justify-between overflow-hidden">
@@ -125,14 +79,19 @@ export default function DistractionFreeQuizEnginePage({ params }: { params: { id
       <header className="bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-850 px-6 py-3.5 flex items-center justify-between shadow-sm">
         <div>
           <h2 className="text-base font-bold text-gray-900 dark:text-white truncate max-w-xs sm:max-w-md">
-            {mockActiveQuiz.title}
+            {targetQuiz.title}
           </h2>
-          <p className="text-xs text-gray-400">Distraction-Free Exam Engine</p>
+          <p className="text-xs text-gray-400">
+            {targetQuiz.topic ? `Topic: ${targetQuiz.topic} • ` : ""}Shuffled Exam Attempt
+          </p>
         </div>
 
         <div className="flex items-center space-x-4">
           <QuizTimer timeRemainingSeconds={timeRemainingSeconds} />
-          <Button onClick={() => setSubmitModalOpen(true)} className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl">
+          <Button
+            onClick={() => setSubmitModalOpen(true)}
+            className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl"
+          >
             <Send className="w-3.5 h-3.5 mr-1.5" /> Submit Quiz
           </Button>
         </div>
@@ -187,7 +146,12 @@ export default function DistractionFreeQuizEnginePage({ params }: { params: { id
           </Button>
 
           {answers[currentQuestion.id] !== undefined && (
-            <Button variant="ghost" size="sm" onClick={() => clearAnswer(currentQuestion.id)} className="text-xs text-gray-500 hover:text-red-600">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => clearAnswer(currentQuestion.id)}
+              className="text-xs text-gray-500 hover:text-red-600"
+            >
               <RotateCcw className="w-3.5 h-3.5 mr-1" /> Clear Answer
             </Button>
           )}
@@ -205,11 +169,19 @@ export default function DistractionFreeQuizEnginePage({ params }: { params: { id
           </Button>
 
           {currentIdx < questions.length - 1 ? (
-            <Button size="sm" onClick={() => setCurrentIdx(currentIdx + 1)} className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl">
+            <Button
+              size="sm"
+              onClick={() => setCurrentIdx(currentIdx + 1)}
+              className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl"
+            >
               Next <ChevronRight className="w-4 h-4 ml-1" />
             </Button>
           ) : (
-            <Button size="sm" onClick={() => setSubmitModalOpen(true)} className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl">
+            <Button
+              size="sm"
+              onClick={() => setSubmitModalOpen(true)}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl"
+            >
               Finish & Submit
             </Button>
           )}

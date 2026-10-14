@@ -50,6 +50,24 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
       async function getInitialSession() {
         try {
+          if (typeof window !== "undefined") {
+            const demoRaw = localStorage.getItem("quizdorm_demo_user");
+            if (demoRaw) {
+              const demoUser = JSON.parse(demoRaw);
+              setRole(demoUser.role);
+              setProfile({
+                id: demoUser.id,
+                name: demoUser.name,
+                email: demoUser.email,
+                role: demoUser.role,
+                createdAt: "Oct 2026",
+                updatedAt: new Date().toISOString(),
+              });
+              setIsLoading(false);
+              return;
+            }
+          }
+
           const {
             data: { session: activeSession },
           } = await supabase.auth.getSession();
@@ -106,6 +124,10 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
   const logout = async () => {
     try {
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("quizdorm_demo_user");
+        document.cookie = "quizdorm_demo_session=; path=/; max-age=0;";
+      }
       const supabase = createClient();
       await supabase.auth.signOut();
     } catch {

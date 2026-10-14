@@ -65,7 +65,10 @@ export interface QuestionItem {
   topic: string;
   subtopic?: string;
   difficulty: DifficultyLevel;
+  gradeLevel?: string;
+  grade?: string;
   marks: number;
+  negativeMarks?: number;
   timeLimitSeconds: number;
   explanation?: string;
   hints?: string[];
