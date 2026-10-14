@@ -5,40 +5,7 @@ import { cookies } from "next/headers";
 import { z } from "zod";
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
-
-export const TEST_ACCOUNTS: Record<string, {
-  id: string;
-  email: string;
-  name: string;
-  role: "student" | "teacher" | "school" | "admin";
-  password: string;
-  redirectUrl: string;
-}> = {
-  "teacher@quizdorm.com": {
-    id: "usr-teacher-01",
-    email: "teacher@quizdorm.com",
-    name: "Prof. Sarah Jenkins",
-    role: "teacher",
-    password: "Password123!",
-    redirectUrl: "/teacher",
-  },
-  "school@quizdorm.com": {
-    id: "usr-school-01",
-    email: "school@quizdorm.com",
-    name: "Oakridge Academy Admin",
-    role: "school",
-    password: "Password123!",
-    redirectUrl: "/school",
-  },
-  "student@quizdorm.com": {
-    id: "usr-student-01",
-    email: "student@quizdorm.com",
-    name: "Alex Rivera",
-    role: "student",
-    password: "Password123!",
-    redirectUrl: "/student",
-  },
-};
+import { TEST_ACCOUNTS } from "./constants";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address format"),

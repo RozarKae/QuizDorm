@@ -10,7 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
-import { signInWithEmail, signInWithGoogle, TEST_ACCOUNTS } from "../actions";
+import { signInWithEmail, signInWithGoogle } from "../actions";
+import { TEST_ACCOUNTS } from "../constants";
 import { toast } from "sonner";
 import { Sparkles, GraduationCap, School, UserCheck } from "lucide-react";
 
@@ -56,11 +57,12 @@ function LoginContent() {
   const roleName = getRoleDisplayName();
 
   const handleQuickFill = (roleKey: "student" | "teacher" | "school") => {
+    setErrorMsg("");
     const acc = TEST_ACCOUNTS[`${roleKey}@quizdorm.com`];
     if (acc) {
       setEmail(acc.email);
       setPassword(acc.password);
-      toast.info(`Filled ${acc.role.toUpperCase()} test credentials: ${acc.email}`);
+      toast.info(`Filled ${acc.role.toUpperCase()} credentials: ${acc.email}`);
     }
   };
 
@@ -85,7 +87,7 @@ function LoginContent() {
         localStorage.setItem("quizdorm_demo_user", JSON.stringify((res as any).user));
       }
       const target = redirectedFrom || res.redirectUrl || "/dashboard";
-      router.push(target);
+      window.location.href = target;
     }
   };
 
@@ -130,11 +132,10 @@ function LoginContent() {
           <button
             type="button"
             onClick={() => handleQuickFill("student")}
-            className={`p-2 rounded-xl border text-left transition-all shadow-xs ${
-              email === "student@quizdorm.com"
+            className={`p-2 rounded-xl border text-left transition-all shadow-xs ${email === "student@quizdorm.com"
                 ? "border-indigo-600 bg-white dark:bg-gray-900 ring-2 ring-indigo-500/20"
                 : "border-indigo-200/80 dark:border-indigo-800 bg-white/80 dark:bg-gray-900/80 hover:border-indigo-400"
-            }`}
+              }`}
           >
             <div className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 flex items-center">
               <GraduationCap className="w-3 h-3 mr-1" /> Student
@@ -145,11 +146,10 @@ function LoginContent() {
           <button
             type="button"
             onClick={() => handleQuickFill("teacher")}
-            className={`p-2 rounded-xl border text-left transition-all shadow-xs ${
-              email === "teacher@quizdorm.com"
+            className={`p-2 rounded-xl border text-left transition-all shadow-xs ${email === "teacher@quizdorm.com"
                 ? "border-indigo-600 bg-white dark:bg-gray-900 ring-2 ring-indigo-500/20"
                 : "border-indigo-200/80 dark:border-indigo-800 bg-white/80 dark:bg-gray-900/80 hover:border-indigo-400"
-            }`}
+              }`}
           >
             <div className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 flex items-center">
               <UserCheck className="w-3 h-3 mr-1" /> Teacher
@@ -160,11 +160,10 @@ function LoginContent() {
           <button
             type="button"
             onClick={() => handleQuickFill("school")}
-            className={`p-2 rounded-xl border text-left transition-all shadow-xs ${
-              email === "school@quizdorm.com"
+            className={`p-2 rounded-xl border text-left transition-all shadow-xs ${email === "school@quizdorm.com"
                 ? "border-indigo-600 bg-white dark:bg-gray-900 ring-2 ring-indigo-500/20"
                 : "border-indigo-200/80 dark:border-indigo-800 bg-white/80 dark:bg-gray-900/80 hover:border-indigo-400"
-            }`}
+              }`}
           >
             <div className="text-[11px] font-bold text-indigo-600 dark:text-indigo-400 flex items-center">
               <School className="w-3 h-3 mr-1" /> School
