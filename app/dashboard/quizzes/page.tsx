@@ -20,6 +20,7 @@ import {
   GraduationCap,
   Sparkles,
   BookOpen,
+  FileText,
 } from "lucide-react";
 import { QuizItem } from "@/lib/types/quiz";
 import {
@@ -168,6 +169,12 @@ export default function QuizzesListPage() {
           </p>
         </div>
         <div className="flex items-center space-x-3">
+          <Link href="/create-quiz">
+            <Button variant="outline" className="border-rose-200 dark:border-rose-900/60 bg-rose-50/50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 hover:bg-rose-100 text-sm font-semibold rounded-xl">
+              <FileText className="w-4 h-4 mr-1.5 text-rose-600" />
+              Upload PDF to Quiz
+            </Button>
+          </Link>
           <Button
             onClick={() => {
               setInstantTopic(topicFilter !== "All" ? topicFilter : "All");

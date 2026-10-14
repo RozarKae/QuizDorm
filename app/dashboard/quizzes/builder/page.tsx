@@ -236,6 +236,11 @@ export default function QuizBuilderPage() {
               <p className="text-xs text-gray-500">Reorder questions or add questions from the Question Bank</p>
             </div>
             <div className="flex items-center space-x-2">
+              <Link href="/create-quiz">
+                <Button size="sm" variant="outline" className="border-rose-200 dark:border-rose-900/50 text-rose-600 dark:text-rose-400 hover:bg-rose-50 text-xs font-semibold rounded-xl">
+                  <FileText className="w-3.5 h-3.5 mr-1 text-rose-600" /> Upload PDF to Quiz
+                </Button>
+              </Link>
               <Button onClick={() => setPickerOpen(true)} size="sm" className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl">
                 <Plus className="w-3.5 h-3.5 mr-1" /> Add from Question Bank
               </Button>

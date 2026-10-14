@@ -9,10 +9,18 @@ import { QuestionTypeBadge } from "@/components/question-bank/QuestionTypeBadge"
 import { QuizQuestionPickerModal } from "@/components/quiz-builder/QuizQuestionPickerModal";
 import { QuizPreviewModal } from "@/components/quiz-builder/QuizPreviewModal";
 import { saveQuiz, generateInstantQuiz } from "@/lib/data/quizzes";
+import { OCREngineService } from "@/lib/ocr/engine";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import Logo from "@/components/layout/Logo";
 import {
   ArrowLeft,
@@ -29,6 +37,10 @@ import {
   CheckCircle2,
   Play,
   BookOpen,
+  FileText,
+  Upload,
+  FileCheck,
+  Loader2,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -84,6 +96,74 @@ export default function CreateOwnQuizPage() {
   // Modal dialog states
   const [pickerOpen, setPickerOpen] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
+  const [pdfModalOpen, setPdfModalOpen] = useState(false);
+  const [isProcessingPdf, setIsProcessingPdf] = useState(false);
+  const [pdfProgress, setPdfProgress] = useState(0);
+  const [pdfStatusText, setPdfStatusText] = useState("");
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+  const handleProcessPdfFile = async (file: File | { name: string; type: string; content?: string }) => {
+    setIsProcessingPdf(true);
+    setPdfProgress(15);
+    setPdfStatusText("Scanning document structure & text...");
+
+    try {
+      const result = await OCREngineService.processDocument(
+        file,
+        {
+          language: "auto",
+          mode: "printed",
+          provider: "mock",
+          autoNumbering: true,
+          autoTopicDetection: true,
+          autoDifficultyDetection: true,
+          virusScanPassed: true,
+        },
+        (progress, step) => {
+          setPdfProgress(progress);
+          setPdfStatusText(step);
+        }
+      );
+
+      const rawQuestions = result.detectedQuestions || (result as any).questions || [];
+      const extractedItems: QuestionItem[] = rawQuestions.map((eq, i) => ({
+        id: eq.id || `pdf-q-${Date.now()}-${i}`,
+        title: eq.title,
+        type: eq.type || "mcq_single",
+        subject: eq.subject || category,
+        category: eq.category || category,
+        topic: eq.topic || category,
+        difficulty: eq.difficulty || difficulty,
+        marks: eq.marks || 4,
+        timeLimitSeconds: eq.timeLimitSeconds || 60,
+        tags: [category.toLowerCase(), "pdf-extracted"],
+        options: (eq.options || []).map((opt, oIdx) => ({
+          id: opt.id || `opt-${oIdx + 1}`,
+          text: opt.text,
+          isCorrect: opt.isCorrect,
+        })),
+        explanation: eq.explanation,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      }));
+
+      if (extractedItems.length > 0) {
+        setQuestions((prev) => [...prev, ...extractedItems]);
+        const cleanedName = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
+        setTitle(`Quiz: ${cleanedName}`);
+        toast.success(`Extracted ${extractedItems.length} questions from ${file.name}!`);
+        setPdfModalOpen(false);
+      } else {
+        toast.info("No questions detected in document.");
+      }
+    } catch (err: any) {
+      toast.error(err.message || "Failed to process PDF document");
+    } finally {
+      setIsProcessingPdf(false);
+      setPdfProgress(0);
+      setPdfStatusText("");
+    }
+  };
 
   const totalMarks = questions.reduce((acc, q) => acc + (q.marks || 1), 0);
 
@@ -274,7 +354,15 @@ export default function CreateOwnQuizPage() {
                 Customize question items, configure timer limits, shuffle algorithms, and test live immediately.
               </p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPdfModalOpen(true)}
+                className="text-xs bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800 hover:bg-rose-100 flex items-center gap-1.5 font-semibold"
+              >
+                <FileText className="w-3.5 h-3.5 text-rose-600" /> Upload PDF / Document
+              </Button>
               <Button
                 variant="outline"
                 size="sm"
@@ -291,6 +379,40 @@ export default function CreateOwnQuizPage() {
                 <Layers className="w-3.5 h-3.5" /> Pick from Bank
               </Button>
             </div>
+          </div>
+        </div>
+
+        {/* Quick PDF Import Card Banner */}
+        <div className="bg-gradient-to-r from-rose-500/10 via-indigo-500/10 to-blue-500/10 border border-rose-200/80 dark:border-rose-900/40 rounded-3xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
+          <div className="flex items-center space-x-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-600 to-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-rose-500/20">
+              <FileText className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                Upload PDF to Generate Live Quiz
+                <span className="text-[10px] uppercase font-extrabold px-2 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300">
+                  OCR AI
+                </span>
+              </h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                Upload your exam paper, question bank sheet, or study notes. The AI extracts questions, options, and answers automatically.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <Button
+              onClick={() => setPdfModalOpen(true)}
+              size="sm"
+              className="bg-rose-600 hover:bg-rose-700 text-white font-semibold text-xs rounded-xl px-4 py-2 shadow-sm flex items-center gap-1.5"
+            >
+              <Upload className="w-3.5 h-3.5" /> Upload Document / PDF
+            </Button>
+            <Link href="/dashboard/ocr">
+              <Button variant="outline" size="sm" className="text-xs rounded-xl">
+                Batch OCR Studio →
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -648,6 +770,127 @@ export default function CreateOwnQuizPage() {
         onOpenChange={setPreviewOpen}
         quiz={previewQuizObject}
       />
+
+      {/* PDF Upload Modal */}
+      <Dialog open={pdfModalOpen} onOpenChange={setPdfModalOpen}>
+        <DialogContent className="max-w-2xl bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-800">
+          <DialogHeader>
+            <DialogTitle className="flex items-center text-lg font-bold text-slate-900 dark:text-white">
+              <FileText className="w-5 h-5 text-rose-600 mr-2" /> Upload Document / PDF to Generate Quiz
+            </DialogTitle>
+            <DialogDescription>
+              Upload your question paper, notes, or test syllabus. The AI OCR engine extracts questions, options, and answers directly into your quiz.
+            </DialogDescription>
+          </DialogHeader>
+
+          {isProcessingPdf ? (
+            <div className="py-12 px-6 flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="relative">
+                <Loader2 className="w-12 h-12 text-rose-600 animate-spin" />
+                <FileText className="w-5 h-5 text-rose-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+              </div>
+              <div className="space-y-1">
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                  Scanning Document ({pdfProgress}%)
+                </h4>
+                <p className="text-xs text-slate-500">{pdfStatusText}</p>
+              </div>
+              <div className="w-full max-w-xs bg-slate-100 dark:bg-gray-800 rounded-full h-2 overflow-hidden">
+                <div
+                  className="bg-gradient-to-r from-rose-500 to-indigo-600 h-full transition-all duration-300 rounded-full"
+                  style={{ width: `${pdfProgress}%` }}
+                />
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-5 py-2">
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={(e) => {
+                  if (e.target.files && e.target.files[0]) {
+                    handleProcessPdfFile(e.target.files[0]);
+                  }
+                }}
+                accept=".pdf,.docx,.txt,.png,.jpg,.jpeg"
+                className="hidden"
+              />
+
+              {/* Drag and Drop Zone */}
+              <div
+                onClick={() => fileInputRef.current?.click()}
+                className="border-2 border-dashed border-slate-300 dark:border-gray-700 hover:border-rose-500 rounded-2xl p-8 text-center cursor-pointer transition-colors bg-slate-50 dark:bg-gray-950/50 hover:bg-rose-50/20"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-950/60 text-rose-600 mx-auto flex items-center justify-center mb-3">
+                  <Upload className="w-6 h-6" />
+                </div>
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-1">
+                  Click to Browse or Drag & Drop PDF
+                </h4>
+                <p className="text-xs text-slate-500">
+                  Supports PDF, Word (.docx), Plain Text (.txt), and scanned test sheets up to 50MB
+                </p>
+              </div>
+
+              {/* Instant Test Sample Documents */}
+              <div className="space-y-2">
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+                  Or Test with Sample Examination Papers (1-Click)
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleProcessPdfFile({
+                        name: "Physics_Thermodynamics_Final_Exam.pdf",
+                        type: "application/pdf",
+                      })
+                    }
+                    className="p-2.5 rounded-xl border border-slate-200 dark:border-gray-800 text-left hover:border-rose-400 bg-white dark:bg-gray-950 transition-all text-xs"
+                  >
+                    <div className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+                      <FileCheck className="w-3.5 h-3.5 text-rose-600" /> Physics Exam.pdf
+                    </div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">Thermodynamics & Optics</div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleProcessPdfFile({
+                        name: "Mathematics_Calculus_Practice_Sheet.pdf",
+                        type: "application/pdf",
+                      })
+                    }
+                    className="p-2.5 rounded-xl border border-slate-200 dark:border-gray-800 text-left hover:border-indigo-400 bg-white dark:bg-gray-950 transition-all text-xs"
+                  >
+                    <div className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+                      <FileCheck className="w-3.5 h-3.5 text-indigo-600" /> Calculus Sheet.pdf
+                    </div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">Quadratic & Integrals</div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleProcessPdfFile({
+                        name: "Cell_Biology_Midterm_Paper.pdf",
+                        type: "application/pdf",
+                      })
+                    }
+                    className="p-2.5 rounded-xl border border-slate-200 dark:border-gray-800 text-left hover:border-emerald-400 bg-white dark:bg-gray-950 transition-all text-xs"
+                  >
+                    <div className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
+                      <FileCheck className="w-3.5 h-3.5 text-emerald-600" /> Biology Paper.pdf
+                    </div>
+                    <div className="text-[10px] text-slate-500 mt-0.5">Cell Structure & DNA</div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
