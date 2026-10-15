@@ -16,7 +16,7 @@ interface SessionQrCardProps {
 export function getCanonicalJoinUrl(code: string): string {
   const norm = code.trim().toUpperCase();
   const envUrl = process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_SITE_URL;
-  let origin = "https://quizclassroom.versal.app";
+  let origin = "https://quizclassroom.vercel.app";
   if (envUrl && !envUrl.includes("localhost")) {
     origin = envUrl.replace(/\/+$/, "");
   } else if (typeof window !== "undefined" && window.location.origin && !window.location.origin.includes("localhost")) {

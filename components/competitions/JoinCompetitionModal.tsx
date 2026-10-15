@@ -101,7 +101,7 @@ export function JoinCompetitionModal({ open, onOpenChange, onJoinSuccess }: Join
             <QrCode className="w-7 h-7 text-[#2855F5] mx-auto" />
             <p className="text-xs font-semibold text-foreground">Or scan host QR Code from your phone</p>
             <p className="text-[10px] text-muted-foreground font-mono">
-              Open https://quizclassroom.versal.app/join from any mobile device
+              Open https://quizclassroom.vercel.app/join from any mobile device
             </p>
           </div>
 

@@ -23,7 +23,7 @@ export function WinnerPodiumScreen({ participants, competitionTitle }: WinnerPod
     const url =
       typeof window !== "undefined"
         ? window.location.href
-        : process.env.NEXT_PUBLIC_APP_URL || "https://quizclassroom.versal.app";
+        : process.env.NEXT_PUBLIC_APP_URL || "https://quizclassroom.vercel.app";
 
     if (typeof navigator !== "undefined" && navigator.share) {
       try {
