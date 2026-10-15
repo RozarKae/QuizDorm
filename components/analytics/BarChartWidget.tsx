@@ -10,27 +10,29 @@ export function BarChartWidget({ title, data }: BarChartWidgetProps) {
   const maxVal = Math.max(...data.map((d) => d.value), 100);
 
   return (
-    <div className="bg-white dark:bg-gray-950 p-6 rounded-3xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-4">
-      <h3 className="text-sm font-bold text-gray-900 dark:text-white flex items-center justify-between">
-        <span>{title}</span>
-        <BarChart3 className="w-4 h-4 text-indigo-600" />
-      </h3>
+    <div className="bg-card p-6 rounded-[3px] border border-border space-y-4">
+      <div className="flex items-center justify-between border-b border-border pb-3">
+        <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-foreground">
+          {title}
+        </h3>
+        <BarChart3 className="w-3.5 h-3.5 text-[#2855F5]" />
+      </div>
 
-      <div className="space-y-3 pt-2">
+      <div className="space-y-3 pt-1">
         {data.map((item, idx) => {
           const widthPct = Math.round((item.value / maxVal) * 100);
           return (
-            <div key={idx} className="space-y-1">
-              <div className="flex justify-between text-xs font-semibold">
-                <span className="text-gray-700 dark:text-gray-300">{item.label}</span>
-                <span className="text-indigo-600 font-mono">{item.value}%</span>
+            <div key={idx} className="space-y-1.5">
+              <div className="flex justify-between text-xs">
+                <span className="text-foreground font-medium text-xs">{item.label}</span>
+                <span className="text-[#2855F5] font-mono font-bold text-xs">{item.value}%</span>
               </div>
-              <div className="h-2.5 w-full bg-gray-100 dark:bg-gray-900 rounded-full overflow-hidden">
+              <div className="h-2 w-full bg-muted rounded-[2px] overflow-hidden border border-border/50">
                 <div
-                  className="h-full rounded-full transition-all duration-500"
+                  className="h-full rounded-[1px] transition-all duration-500"
                   style={{
                     width: `${widthPct}%`,
-                    backgroundColor: item.color || "#4F46E5",
+                    backgroundColor: item.color || "#2855F5",
                   }}
                 />
               </div>
@@ -41,3 +43,4 @@ export function BarChartWidget({ title, data }: BarChartWidgetProps) {
     </div>
   );
 }
+

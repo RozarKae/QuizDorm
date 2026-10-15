@@ -74,39 +74,39 @@ export default function DistractionFreeQuizEnginePage({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-gray-50 dark:bg-gray-950 flex flex-col justify-between overflow-hidden">
+    <div className="fixed inset-0 z-50 bg-background text-foreground flex flex-col justify-between overflow-hidden">
       {/* Header Bar */}
-      <header className="bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-850 px-6 py-3.5 flex items-center justify-between shadow-sm">
+      <header className="bg-card border-b border-border px-6 py-3 flex items-center justify-between shadow-xs">
         <div>
-          <h2 className="text-base font-bold text-gray-900 dark:text-white truncate max-w-xs sm:max-w-md">
+          <h2 className="text-sm font-bold font-display text-foreground truncate max-w-xs sm:max-w-md">
             {targetQuiz.title}
           </h2>
-          <p className="text-xs text-gray-400">
-            {targetQuiz.topic ? `Topic: ${targetQuiz.topic} • ` : ""}Shuffled Exam Attempt
+          <p className="text-[11px] font-mono text-muted-foreground mt-0.5">
+            {targetQuiz.topic ? `Topic: ${targetQuiz.topic} / ` : ""}Verified Assessment Session
           </p>
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3">
           <QuizTimer timeRemainingSeconds={timeRemainingSeconds} />
           <Button
             onClick={() => setSubmitModalOpen(true)}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl"
+            className="bg-cobalt hover:bg-cobalt/90 text-white text-xs font-mono font-semibold rounded-[3px] h-8 shadow-xs"
           >
-            <Send className="w-3.5 h-3.5 mr-1.5" /> Submit Quiz
+            <Send className="w-3.5 h-3.5 mr-1.5" /> Submit Assessment
           </Button>
         </div>
       </header>
 
       {/* Progress Bar */}
-      <div className="h-1 w-full bg-gray-200 dark:bg-gray-900">
+      <div className="h-1 w-full bg-border">
         <div
-          className="h-full bg-indigo-600 transition-all duration-300"
+          className="h-full bg-cobalt transition-all duration-300"
           style={{ width: `${((currentIdx + 1) / questions.length) * 100}%` }}
         />
       </div>
 
       {/* Content Body */}
-      <main className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <main className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left 8 cols: Question Renderer */}
         <div className="lg:col-span-8">
           <QuestionRenderer
@@ -129,16 +129,16 @@ export default function DistractionFreeQuizEnginePage({
       </main>
 
       {/* Navigation Footer */}
-      <footer className="bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-850 px-6 py-3.5 flex items-center justify-between">
+      <footer className="bg-card border-t border-border px-6 py-3 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Button
             variant="outline"
             size="sm"
             onClick={() => toggleMarkForReview(currentQuestion.id)}
-            className={`text-xs ${
+            className={`text-xs font-mono rounded-[3px] h-8 ${
               markedForReview.includes(currentQuestion.id)
-                ? "bg-amber-100 text-amber-800 border-amber-300 dark:bg-amber-950 dark:text-amber-300 font-bold"
-                : ""
+                ? "bg-coral/10 text-coral border-coral font-bold"
+                : "border-border text-muted-foreground hover:text-foreground"
             }`}
           >
             <Bookmark className="w-3.5 h-3.5 mr-1" />
@@ -150,20 +150,20 @@ export default function DistractionFreeQuizEnginePage({
               variant="ghost"
               size="sm"
               onClick={() => clearAnswer(currentQuestion.id)}
-              className="text-xs text-gray-500 hover:text-red-600"
+              className="text-xs font-mono text-muted-foreground hover:text-coral h-8 rounded-[2px]"
             >
-              <RotateCcw className="w-3.5 h-3.5 mr-1" /> Clear Answer
+              <RotateCcw className="w-3.5 h-3.5 mr-1" /> Reset Answer
             </Button>
           )}
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2">
           <Button
             variant="outline"
             size="sm"
             disabled={currentIdx === 0}
             onClick={() => setCurrentIdx(currentIdx - 1)}
-            className="text-xs"
+            className="text-xs font-mono border-border rounded-[3px] h-8"
           >
             <ChevronLeft className="w-4 h-4 mr-1" /> Previous
           </Button>
@@ -172,7 +172,7 @@ export default function DistractionFreeQuizEnginePage({
             <Button
               size="sm"
               onClick={() => setCurrentIdx(currentIdx + 1)}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl"
+              className="bg-foreground text-background hover:bg-foreground/90 text-xs font-mono font-semibold rounded-[3px] h-8"
             >
               Next <ChevronRight className="w-4 h-4 ml-1" />
             </Button>
@@ -180,9 +180,9 @@ export default function DistractionFreeQuizEnginePage({
             <Button
               size="sm"
               onClick={() => setSubmitModalOpen(true)}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-xl"
+              className="bg-cobalt hover:bg-cobalt/90 text-white text-xs font-mono font-semibold rounded-[3px] h-8 shadow-xs"
             >
-              Finish & Submit
+              Finish &amp; Submit
             </Button>
           )}
         </div>

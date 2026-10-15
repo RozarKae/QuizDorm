@@ -49,9 +49,19 @@ export async function proxy(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname;
 
+  // Public live arena routes (allow QR, direct link, and PIN join without forced login)
+  const isPublicLiveRoute =
+    pathname === "/join" ||
+    pathname.startsWith("/join/") ||
+    pathname.startsWith("/student/live/join") ||
+    pathname.startsWith("/live") ||
+    pathname.startsWith("/api/live");
+
   // Paths requiring authentication
   const protectedRoutes = ["/admin", "/school", "/teacher", "/student", "/dashboard"];
-  const isProtectedRoute = protectedRoutes.some((route) => pathname === route || pathname.startsWith(`${route}/`));
+  const isProtectedRoute =
+    !isPublicLiveRoute &&
+    protectedRoutes.some((route) => pathname === route || pathname.startsWith(`${route}/`));
 
   // Public Auth paths
   const isAuthRoute = pathname.startsWith("/auth");

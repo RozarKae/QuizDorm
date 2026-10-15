@@ -1,0 +1,1894 @@
+[
+  {
+    "id": "qb-area01-0021",
+    "area": "Area 1",
+    "sourcePage": 9,
+    "title": "Where is the national headquarters of the Reserve Bank of India (RBI) located?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Mumbai",
+    "options": [
+      "Kolkata",
+      "Mumbai",
+      "Bengaluru",
+      "New Delhi"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The headquarters of Reserve Bank of India (RBI) is situated in Mumbai."
+  },
+  {
+    "id": "qb-area01-0004",
+    "area": "Area 1",
+    "sourcePage": 2,
+    "title": "Where was the main UPSC centenary celebration held on 1 October 2026?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Bharat Mandapam, New Delhi",
+    "options": [
+      "Rashtrapati Bhavan, New Delhi",
+      "Yashobhoomi, New Delhi",
+      "Vigyan Bhawan, New Delhi",
+      "Bharat Mandapam, New Delhi"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "Fidelity to PDF source (Current Affairs / Prospective compilation dated October 2026)",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The main UPSC centenary celebration was held at Bharat Mandapam, New Delhi, attended by Prime Minister Narendra Modi."
+  },
+  {
+    "id": "qb-area01-0001",
+    "area": "Area 1",
+    "sourcePage": 1,
+    "title": "In which year was the Union Public Service Commission (UPSC) established in India?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "1926",
+    "options": [
+      "1926",
+      "1919",
+      "1935",
+      "1947"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The Union Public Service Commission (UPSC) was established in 1926 following the Lee Commission recommendations."
+  },
+  {
+    "id": "qb-area01-0024",
+    "area": "Area 1",
+    "sourcePage": 9,
+    "title": "Where is the national headquarters of the Securities and Exchange Board of India (SEBI) located?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Mumbai",
+    "options": [
+      "Ahmedabad",
+      "Kolkata",
+      "New Delhi",
+      "Mumbai"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The headquarters of Securities and Exchange Board of India (SEBI) is situated in Mumbai."
+  },
+  {
+    "id": "qb-area01-0009",
+    "area": "Area 1",
+    "sourcePage": 3,
+    "title": "Who was announced on 6 October 2026 as the 29th Chief of the Air Staff (CAS) of the Indian Air Force?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Air Marshal Ashutosh Dixit",
+    "options": [
+      "Air Marshal V. Narayanan",
+      "Air Marshal Ashutosh Dixit",
+      "Air Chief Marshal Amar Preet Singh",
+      "Air Marshal Harivansh"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "Fidelity to PDF source (Current Affairs / Prospective compilation dated October 2026)",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Air Marshal Ashutosh Dixit was appointed as the 29th Chief of the Air Staff, taking charge on 31 October 2026."
+  },
+  {
+    "id": "qb-area01-0008",
+    "area": "Area 1",
+    "sourcePage": 3,
+    "title": "Into how many thematic pillars are the 375 permissible works under VB\u2013G RAM G organized?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Four",
+    "options": [
+      "Five",
+      "Six",
+      "Three",
+      "Four"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The 375 works are organized into four pillars: Water Security (128), Core Rural Infrastructure (111), Livelihood-related (98), and Extreme Weather & Disaster Preparedness (38)."
+  },
+  {
+    "id": "qb-area10-0015",
+    "area": "Area 10",
+    "sourcePage": 228,
+    "title": "Which iconic freshwater lake in Manipur is internationally renowned for its floating biomass rings known as 'phumdis'?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Loktak Lake",
+    "options": [
+      "Wular Lake",
+      "Sambhar Lake",
+      "Loktak Lake",
+      "Chilika Lake"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Loktak Lake in Manipur is famous for its floating phumdis and houses the Keibul Lamjao National Park."
+  },
+  {
+    "id": "qb-area10-0009",
+    "area": "Area 10",
+    "sourcePage": 220,
+    "title": "Which national park in Madhya Pradesh is the centerpiece location for India's Project Cheetah reintroduction programme?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Kuno National Park",
+    "options": [
+      "Ranthambore National Park",
+      "Kuno National Park",
+      "Kanha National Park",
+      "Bandhavgarh National Park"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Kuno National Park in Madhya Pradesh received the first batches of wild cheetahs from Namibia and South Africa in 2022."
+  },
+  {
+    "id": "qb-area10-0007",
+    "area": "Area 10",
+    "sourcePage": 219,
+    "title": "Which animal is officially designated as the National Heritage Animal of India?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Indian Elephant",
+    "options": [
+      "One-horned Rhinoceros",
+      "Indian Elephant",
+      "Bengal Tiger",
+      "Snow Leopard"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The Indian Elephant (Elephas maximus) was declared India's National Heritage Animal in 2010."
+  },
+  {
+    "id": "qb-area10-0006",
+    "area": "Area 10",
+    "sourcePage": 219,
+    "title": "What is the binomial scientific name of the Bengal tiger, India's national animal?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Panthera tigris",
+    "options": [
+      "Panthera tigris",
+      "Panthera pardus",
+      "Panthera leo",
+      "Panthera uncia"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The scientific name of the tiger is Panthera tigris."
+  },
+  {
+    "id": "qb-area10-0019",
+    "area": "Area 10",
+    "sourcePage": 238,
+    "title": "In which atmospheric layer is the protective ozone layer predominantly concentrated?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Stratosphere",
+    "options": [
+      "Troposphere",
+      "Mesosphere",
+      "Thermosphere",
+      "Stratosphere"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The stratospheric ozone layer absorbs harmful ultraviolet-B radiation emitted by the Sun."
+  },
+  {
+    "id": "qb-area10-0014",
+    "area": "Area 10",
+    "sourcePage": 228,
+    "title": "In which Iranian city was the international convention on wetlands of international importance signed in 1971?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Ramsar",
+    "options": [
+      "Shiraz",
+      "Isfahan",
+      "Tehran",
+      "Ramsar"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The Ramsar Convention on Wetlands was signed in the Iranian city of Ramsar on the shores of the Caspian Sea in 1971."
+  },
+  {
+    "id": "qb-area11-0004",
+    "area": "Area 11",
+    "sourcePage": 245,
+    "title": "Which is the world's smallest continent by land area?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Australia",
+    "options": [
+      "Antarctica",
+      "Europe",
+      "South America",
+      "Australia"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Australia is the smallest continent by land area."
+  },
+  {
+    "id": "qb-area11-0003",
+    "area": "Area 11",
+    "sourcePage": 245,
+    "title": "Which of the following is recognized as the largest continent by both land area and population?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Asia",
+    "options": [
+      "Europe",
+      "Africa",
+      "North America",
+      "Asia"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Asia is the largest of Earth's seven continents."
+  },
+  {
+    "id": "qb-area11-0007",
+    "area": "Area 11",
+    "sourcePage": 247,
+    "title": "What is the capital city of the Indian State of Arunachal Pradesh?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Itanagar",
+    "options": [
+      "Shillong",
+      "Itanagar",
+      "Imphal",
+      "Dispur"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The capital city of Arunachal Pradesh is Itanagar."
+  },
+  {
+    "id": "qb-area11-0015",
+    "area": "Area 11",
+    "sourcePage": 247,
+    "title": "What is the capital city of the Indian State of Madhya Pradesh?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Bhopal",
+    "options": [
+      "Gwalior",
+      "Jabalpur",
+      "Indore",
+      "Bhopal"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The capital city of Madhya Pradesh is Bhopal."
+  },
+  {
+    "id": "qb-area11-0016",
+    "area": "Area 11",
+    "sourcePage": 247,
+    "title": "What is the capital city of the Indian State of Maharashtra?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Mumbai",
+    "options": [
+      "Pune",
+      "Nashik",
+      "Nagpur",
+      "Mumbai"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The capital city of Maharashtra is Mumbai."
+  },
+  {
+    "id": "qb-area11-0034",
+    "area": "Area 11",
+    "sourcePage": 252,
+    "title": "Which two major Indian peninsular rivers flow westwards across rift valleys and drain into the Arabian Sea?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Narmada and Tapi",
+    "options": [
+      "Narmada and Tapi",
+      "Ganga and Yamuna",
+      "Godavari and Krishna",
+      "Mahanadi and Kaveri"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "While most major Indian rivers flow eastward into the Bay of Bengal, Narmada and Tapi flow west into the Arabian Sea."
+  },
+  {
+    "id": "qb-area12-bk-019",
+    "area": "Area 12",
+    "sourcePage": 289,
+    "title": "Who wrote the acclaimed literary work 'Treasure Island'?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Robert Louis Stevenson",
+    "options": [
+      "H. G. Wells",
+      "Robert Louis Stevenson",
+      "Jules Verne",
+      "Daniel Defoe"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "'Treasure Island' was written by Robert Louis Stevenson."
+  },
+  {
+    "id": "qb-area12-0002",
+    "area": "Area 12",
+    "sourcePage": 278,
+    "title": "Who penned the verses of both India's national anthem ('Jana Gana Mana') and Bangladesh's national anthem ('Amar Sonar Bangla')?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Rabindranath Tagore",
+    "options": [
+      "Bankim Chandra Chattopadhyay",
+      "Rabindranath Tagore",
+      "Kazi Nazrul Islam",
+      "Subramania Bharati"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Rabindranath Tagore composed the national anthems of both India and Bangladesh."
+  },
+  {
+    "id": "qb-area12-bk-016",
+    "area": "Area 12",
+    "sourcePage": 284,
+    "title": "Who wrote the acclaimed literary work 'The Lion, the Witch and the Wardrobe'?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "C. S. Lewis",
+    "options": [
+      "Roald Dahl",
+      "Enid Blyton",
+      "J. R. R. Tolkien",
+      "C. S. Lewis"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "'The Lion, the Witch and the Wardrobe' was written by C. S. Lewis."
+  },
+  {
+    "id": "qb-area12-0013",
+    "area": "Area 12",
+    "sourcePage": 281,
+    "title": "Who is the author of the internationally celebrated classic literary work 'The Little Prince'?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Antoine de Saint-Exup\u00e9ry",
+    "options": [
+      "Marcel Proust",
+      "Victor Hugo",
+      "Antoine de Saint-Exup\u00e9ry",
+      "Albert Camus"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "'The Little Prince' was written by Antoine de Saint-Exup\u00e9ry."
+  },
+  {
+    "id": "qb-area12-bk-015",
+    "area": "Area 12",
+    "sourcePage": 283,
+    "title": "Who wrote the acclaimed literary work 'The Lord of the Rings'?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "J. R. R. Tolkien",
+    "options": [
+      "J. R. R. Tolkien",
+      "C. S. Lewis",
+      "J. K. Rowling",
+      "Philip Pullman"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "'The Lord of the Rings' was written by J. R. R. Tolkien."
+  },
+  {
+    "id": "qb-area12-bk-007",
+    "area": "Area 12",
+    "sourcePage": 277,
+    "title": "Who wrote the acclaimed literary work 'Five Point Someone'?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Chetan Bhagat",
+    "options": [
+      "Chetan Bhagat",
+      "Ravinder Singh",
+      "Amish Tripathi",
+      "Durjoy Datta"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "'Five Point Someone' was written by Chetan Bhagat."
+  },
+  {
+    "id": "qb-area13-0008",
+    "area": "Area 13",
+    "sourcePage": 302,
+    "title": "Which Indian classical dance form originated in the state of Andhra Pradesh?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Kuchipudi",
+    "options": [
+      "Bharatanatyam",
+      "Kathakali",
+      "Kuchipudi",
+      "Kathak"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Kuchipudi is the classical dance tradition of Andhra Pradesh."
+  },
+  {
+    "id": "qb-area13-0016",
+    "area": "Area 13",
+    "sourcePage": 305,
+    "title": "'Bihu' is a celebrated traditional folk dance originating from which Indian State?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Assam",
+    "options": [
+      "Odisha",
+      "Meghalaya",
+      "West Bengal",
+      "Assam"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Bihu is a vibrant folk dance belonging to Assam."
+  },
+  {
+    "id": "qb-area13-0020",
+    "area": "Area 13",
+    "sourcePage": 314,
+    "title": "The famous traditional art form 'Madhubani painting' is indigenous to which Indian State?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Bihar",
+    "options": [
+      "Rajasthan",
+      "Maharashtra",
+      "Bihar",
+      "Odisha"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Madhubani painting is a celebrated traditional visual art heritage of Bihar."
+  },
+  {
+    "id": "qb-area13-0009",
+    "area": "Area 13",
+    "sourcePage": 302,
+    "title": "Which Indian classical dance form originated in the state of Odisha?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Odissi",
+    "options": [
+      "Kathak",
+      "Bharatanatyam",
+      "Odissi",
+      "Kathakali"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Odissi is the classical dance tradition of Odisha."
+  },
+  {
+    "id": "qb-area13-0001",
+    "area": "Area 13",
+    "sourcePage": 299,
+    "title": "Which landmark film released in 1913 directed by Dadasaheb Phalke is recognized as India's first full-length feature film?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Raja Harishchandra",
+    "options": [
+      "Raja Harishchandra",
+      "Ayodhyecha Raja",
+      "Alam Ara",
+      "Kisan Kanya"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Raja Harishchandra (1913) directed by Dadasaheb Phalke was India's first full-length silent feature film."
+  },
+  {
+    "id": "qb-area13-0006",
+    "area": "Area 13",
+    "sourcePage": 302,
+    "title": "Which Indian classical dance form originated in the state of Tamil Nadu?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Bharatanatyam",
+    "options": [
+      "Kuchipudi",
+      "Kathak",
+      "Kathakali",
+      "Bharatanatyam"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Bharatanatyam is the classical dance tradition of Tamil Nadu."
+  },
+  {
+    "id": "qb-area14-ext-008",
+    "area": "Area 14",
+    "sourcePage": 330,
+    "title": "Which infectious bacterial disease is caused by Mycobacterium tuberculosis?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Tuberculosis (TB)",
+    "options": [
+      "Tetanus",
+      "Cholera",
+      "Typhoid",
+      "Tuberculosis (TB)"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Verified fact from health syllabus: Tuberculosis (TB)."
+  },
+  {
+    "id": "qb-area14-ext-002",
+    "area": "Area 14",
+    "sourcePage": 335,
+    "title": "What primary function is performed by canine teeth in the human mouth?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Tearing food",
+    "options": [
+      "Grinding food",
+      "Tearing food",
+      "Cutting food",
+      "Filtering food"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Verified fact from health syllabus: Tearing food."
+  },
+  {
+    "id": "qb-area14-0021",
+    "area": "Area 14",
+    "sourcePage": 339,
+    "title": "Which Scottish physician and microbiologist discovered the world's first effective natural antibiotic, Penicillin, in 1928?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Alexander Fleming",
+    "options": [
+      "Edward Jenner",
+      "Louis Pasteur",
+      "Robert Koch",
+      "Alexander Fleming"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Sir Alexander Fleming discovered penicillin from Penicillium notatum mould in 1928."
+  },
+  {
+    "id": "qb-area14-0010",
+    "area": "Area 14",
+    "sourcePage": 326,
+    "title": "What is the smallest bone in the human body, located within the middle ear cavity?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Stapes",
+    "options": [
+      "Stapes",
+      "Malleus",
+      "Incus",
+      "Phalanx"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The stapes (stirrup bone) in the middle ear is the smallest bone in the human body."
+  },
+  {
+    "id": "qb-area14-0007",
+    "area": "Area 14",
+    "sourcePage": 326,
+    "title": "In which organ of the human digestive tract does the vast majority of nutrient absorption take place?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Small intestine",
+    "options": [
+      "Small intestine",
+      "Stomach",
+      "Large intestine",
+      "Oesophagus"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The majority of nutrient absorption occurs across the villi of the small intestine."
+  },
+  {
+    "id": "qb-area14-ext-005",
+    "area": "Area 14",
+    "sourcePage": 335,
+    "title": "How many teeth are contained in a complete adult permanent dentition set?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "32 teeth",
+    "options": [
+      "30 teeth",
+      "36 teeth",
+      "28 teeth",
+      "32 teeth"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Verified fact from health syllabus: 32 teeth."
+  },
+  {
+    "id": "qb-area15-ext-002",
+    "area": "Area 15",
+    "sourcePage": 373,
+    "title": "In networking, what does 'HTTP' stand for?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Hypertext Transfer Protocol",
+    "options": [
+      "Home Tool Transfer Packet",
+      "High Text Transfer Path",
+      "Hypertext Transfer Protocol",
+      "Hyperlink Text Transmission Protocol"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Verified fact: Hypertext Transfer Protocol."
+  },
+  {
+    "id": "qb-area15-0004",
+    "area": "Area 15",
+    "sourcePage": 356,
+    "title": "What does the storage acronym 'SSD' stand for in modern high-speed computer drives?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Solid-State Drive",
+    "options": [
+      "System Storage Disk",
+      "Solid-State Drive",
+      "Synchronous Storage Device",
+      "Secure Serial Drive"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "SSD stands for Solid-State Drive, which uses flash memory and is much faster and more shock-resistant than spinning hard disks."
+  },
+  {
+    "id": "qb-area15-0003",
+    "area": "Area 15",
+    "sourcePage": 355,
+    "title": "Which computer memory is volatile and temporary, losing its stored information immediately when power is turned off?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "RAM (Random Access Memory)",
+    "options": [
+      "ROM (Read-Only Memory)",
+      "RAM (Random Access Memory)",
+      "Hard Disk Drive",
+      "Flash Memory Drive"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "RAM (Random Access Memory) is temporary working memory that clears when power is lost."
+  },
+  {
+    "id": "qb-area15-0013",
+    "area": "Area 15",
+    "sourcePage": 370,
+    "title": "Which organization developed and operates India's Unified Payments Interface (UPI) infrastructure for real-time mobile bank transfers?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "National Payments Corporation of India (NPCI)",
+    "options": [
+      "National Payments Corporation of India (NPCI)",
+      "NITI Aayog",
+      "Reserve Bank of India (RBI)",
+      "State Bank of India (SBI)"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "UPI was developed and is operated by the National Payments Corporation of India (NPCI)."
+  },
+  {
+    "id": "qb-area15-ext-011",
+    "area": "Area 15",
+    "sourcePage": 372,
+    "title": "Which multinational technology company is the dominant designer of Graphics Processing Units (GPUs) used in modern AI computing?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "NVIDIA",
+    "options": [
+      "Intel",
+      "Qualcomm",
+      "AMD",
+      "NVIDIA"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Verified fact: NVIDIA."
+  },
+  {
+    "id": "qb-area15-0012",
+    "area": "Area 15",
+    "sourcePage": 368,
+    "title": "What security practice adds an extra layer of protection by requiring two distinct verification methods (such as a password plus an OTP code)?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Two-Factor Authentication (2FA)",
+    "options": [
+      "Single Sign-On (SSO)",
+      "Open Access Protocol",
+      "Data De-duplication",
+      "Two-Factor Authentication (2FA)"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "2FA / Multi-Factor Authentication requires two different forms of authentication to verify identity."
+  },
+  {
+    "id": "qb-area16-ext-003",
+    "area": "Area 16",
+    "sourcePage": 401,
+    "title": "On which date is World Tuberculosis (TB) Day observed globally by the WHO?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "24 March",
+    "options": [
+      "4 February",
+      "7 April",
+      "24 March",
+      "1 December"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Verified observance date: 24 March."
+  },
+  {
+    "id": "qb-area16-0008",
+    "area": "Area 16",
+    "sourcePage": 389,
+    "title": "Which date commemorates the birth anniversary of hockey legend Major Dhyan Chand as India's National Sports Day?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "29 August",
+    "options": [
+      "29 August",
+      "5 September",
+      "29 July",
+      "15 August"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "National Sports Day is celebrated on 29 August on the birth anniversary of Major Dhyan Chand."
+  },
+  {
+    "id": "qb-area16-0006",
+    "area": "Area 16",
+    "sourcePage": 387,
+    "title": "In whose honour is National Doctors' Day celebrated in India on 1 July, marking both his birth and death anniversaries?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Dr. Bidhan Chandra Roy",
+    "options": [
+      "Dr. Bidhan Chandra Roy",
+      "Dr. Homi Bhabha",
+      "Dr. A. P. J. Abdul Kalam",
+      "Dr. B. R. Ambedkar"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "National Doctors' Day honours renowned physician and former West Bengal Chief Minister Dr. Bidhan Chandra Roy."
+  },
+  {
+    "id": "qb-area16-ext-010",
+    "area": "Area 16",
+    "sourcePage": 402,
+    "title": "On which date is International Literacy Day observed worldwide by UNESCO?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "8 September",
+    "options": [
+      "14 September",
+      "5 September",
+      "2 October",
+      "8 September"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Verified observance date: 8 September."
+  },
+  {
+    "id": "qb-area16-0013",
+    "area": "Area 16",
+    "sourcePage": 391,
+    "title": "The United Nations observes 2 October, the birth anniversary of Mahatma Gandhi, as which international day?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "International Day of Non-Violence",
+    "options": [
+      "International Day of Peace",
+      "World Human Rights Day",
+      "International Day of Non-Violence",
+      "International Day of Education"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "2 October is recognized globally by the UN as the International Day of Non-Violence."
+  },
+  {
+    "id": "qb-area16-ext-013",
+    "area": "Area 16",
+    "sourcePage": 403,
+    "title": "On which date is World Food Day celebrated under the Food and Agriculture Organization (FAO)?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "16 October",
+    "options": [
+      "24 October",
+      "16 September",
+      "16 October",
+      "10 December"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Verified observance date: 16 October."
+  },
+  {
+    "id": "qb-area17-ext-005",
+    "area": "Area 17",
+    "sourcePage": 419,
+    "title": "Which tiger reserve in Tamil Nadu forms an important wildlife corridor in Erode district?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Sathyamangalam Tiger Reserve",
+    "options": [
+      "Anamalai Tiger Reserve",
+      "Sathyamangalam Tiger Reserve",
+      "Periyar Tiger Reserve",
+      "Mudumalai Tiger Reserve"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Verified Tamil Nadu heritage fact: Sathyamangalam Tiger Reserve."
+  },
+  {
+    "id": "qb-area17-0006",
+    "area": "Area 17",
+    "sourcePage": 414,
+    "title": "Which famous industry or craft is the Tamil Nadu city of Sivakasi traditionally renowned for across India?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Fireworks, safety matches, and commercial printing",
+    "options": [
+      "Fireworks, safety matches, and commercial printing",
+      "Leather tanning",
+      "Tea processing",
+      "Lock manufacturing"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Sivakasi is nationally famous for Fireworks, safety matches, and commercial printing."
+  },
+  {
+    "id": "qb-area17-ext-016",
+    "area": "Area 17",
+    "sourcePage": 437,
+    "title": "Which Grandmaster from Chennai became India's first undisputed World Chess Champion in the modern era in 2000?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Viswanathan Anand",
+    "options": [
+      "D. Gukesh",
+      "Pentala Harikrishna",
+      "Viswanathan Anand",
+      "R. Praggnanandhaa"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Verified Tamil Nadu heritage fact: Viswanathan Anand."
+  },
+  {
+    "id": "qb-area17-0019",
+    "area": "Area 17",
+    "sourcePage": 430,
+    "title": "Jallikattu is a traditional classical dance form performed during the Chithirai festival in Madurai.",
+    "type": "true_false",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "False",
+    "options": [
+      "True",
+      "False"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Jallikattu is NOT a dance; it is a traditional bull-taming sporting event conducted during the Pongal harvest festival, particularly on Mattu Pongal."
+  },
+  {
+    "id": "qb-area17-ext-004",
+    "area": "Area 17",
+    "sourcePage": 418,
+    "title": "Which tiger reserve in Tamil Nadu is located in the Nilgiris district?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Mudumalai Tiger Reserve",
+    "options": [
+      "Mudumalai Tiger Reserve",
+      "Kalakkad Mundanthurai",
+      "Anamalai Tiger Reserve",
+      "Sathyamangalam Tiger Reserve"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Verified Tamil Nadu heritage fact: Mudumalai Tiger Reserve."
+  },
+  {
+    "id": "qb-area17-0013",
+    "area": "Area 17",
+    "sourcePage": 416,
+    "title": "Which river is the lifeline agricultural river system of central Tamil Nadu, forming the fertile delta at Thanjavur?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Cauvery River",
+    "options": [
+      "Thamirabarani River",
+      "Pennaiyar River",
+      "Vaigai River",
+      "Cauvery River"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The Cauvery is the principal river of Tamil Nadu, nurturing the fertile rice bowl of the Thanjavur delta."
+  },
+  {
+    "id": "qb-area18-0003",
+    "area": "Area 18",
+    "sourcePage": 456,
+    "title": "Which rocky hill complex near Madurai contains ancient Jain cave shelters and valuable Tamil-Brahmi rock inscriptions?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Samanar Hills",
+    "options": [
+      "Shevaroy Hills",
+      "Palani Hills",
+      "Yercaud Hills",
+      "Samanar Hills"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Samanar Hills (Samanar Malai) in Keelakkuilkudi near Madurai preserves ancient Jain rock shelters and Tamil-Brahmi inscriptions."
+  },
+  {
+    "id": "qb-area18-0002",
+    "area": "Area 18",
+    "sourcePage": 455,
+    "title": "Which famous palace complex in Madurai with grand arches and giant pillars was constructed in the 17th century by King Thirumalai Nayak?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Thirumalai Nayakkar Palace",
+    "options": [
+      "Tamukkam Palace",
+      "Thanjavur Maratha Palace",
+      "Padmanabhapuram Palace",
+      "Thirumalai Nayakkar Palace"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Thirumalai Nayakkar Palace in Madurai is celebrated for its imposing Indo-Saracenic columns and arches."
+  },
+  {
+    "id": "qb-area18-0008",
+    "area": "Area 18",
+    "sourcePage": 465,
+    "title": "What is the name of the traditional high-speed snake boat race held during the Onam festival in the backwaters of Kerala?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Vallam Kali",
+    "options": [
+      "Kalaripayattu",
+      "Jallikattu",
+      "Kambala",
+      "Vallam Kali"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Vallam Kali is the traditional snake boat race celebrated during the harvest festival of Onam in Kerala."
+  },
+  {
+    "id": "qb-area18-0013",
+    "area": "Area 18",
+    "sourcePage": 472,
+    "title": "What is the name of the welfare initiative in Tamil Nadu providing free public bus travel for women and transgender persons?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Vetri Payanam",
+    "options": [
+      "Amma Unavagam",
+      "Kalaignar Magalir Urimai",
+      "Pudhumai Penn",
+      "Vetri Payanam"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The 'Vetri Payanam' scheme provides free travel for women and transgender passengers across designated public buses in Tamil Nadu."
+  },
+  {
+    "id": "qb-area18-0005",
+    "area": "Area 18",
+    "sourcePage": 460,
+    "title": "Which highly fragrant floral specialty of Madurai possesses an official Geographical Indication (GI) tag?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "Madurai Malli (Jasmine)",
+    "options": [
+      "Madurai Malli (Jasmine)",
+      "Kodaikanal Kurinji",
+      "Nilgiri Orchid",
+      "Thanjavur Rose"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Madurai Malli is the famous GI-tagged jasmine variety grown extensively in the Madurai region."
+  },
+  {
+    "id": "qb-area18-0017",
+    "area": "Area 18",
+    "sourcePage": 475,
+    "title": "How many revenue mandals were officially declared drought-affected across 21 districts of Andhra Pradesh for the 2026 Kharif season?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 3-5",
+    "correctAnswer": "388 mandals",
+    "options": [
+      "450 mandals",
+      "180 mandals",
+      "250 mandals",
+      "388 mandals"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "Fidelity to PDF source (Current Affairs / Prospective compilation dated October 2026)",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Andhra Pradesh declared 388 mandals in 21 districts drought-affected due to rainfall deficits during the 2026 Kharif season."
+  },
+  {
+    "id": "qb-area02-0015",
+    "area": "Area 2",
+    "sourcePage": 21,
+    "title": "Where was the second ASEAN\u2013India Maritime Exercise (AIME-2026) conducted?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Subic Bay, Philippines",
+    "options": [
+      "Gulf of Thailand",
+      "Malacca Strait",
+      "Subic Bay, Philippines",
+      "Singapore Strait"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "Fidelity to PDF source (Current Affairs / Prospective compilation dated October 2026)",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "AIME-2026 was conducted in Subic Bay, Philippines, featuring Indian Navy ships INS Sahyadri and INS Kulish under the theme 'Anchored in Trust, United at Sea'."
+  },
+  {
+    "id": "qb-area02-0007",
+    "area": "Area 2",
+    "sourcePage": 16,
+    "title": "Where is the global headquarters of the Inter-Parliamentary Union (IPU) located?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Geneva, Switzerland",
+    "options": [
+      "Brussels, Belgium",
+      "New York, USA",
+      "Geneva, Switzerland",
+      "Vienna, Austria"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Founded in 1889, the Inter-Parliamentary Union is headquartered in Geneva, Switzerland."
+  },
+  {
+    "id": "qb-area02-0025",
+    "area": "Area 2",
+    "sourcePage": 25,
+    "title": "What is the official capital city of Brazil?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Bras\u00edlia",
+    "options": [
+      "Bras\u00edlia",
+      "S\u00e3o Paulo",
+      "Rio de Janeiro",
+      "Salvador"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The capital of Brazil is Bras\u00edlia."
+  },
+  {
+    "id": "qb-area02-0018",
+    "area": "Area 2",
+    "sourcePage": 22,
+    "title": "In which city is the headquarters of the International Monetary Fund (IMF) located?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Washington, D.C.",
+    "options": [
+      "Washington, D.C.",
+      "New York",
+      "London",
+      "Geneva"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The headquarters of International Monetary Fund (IMF) is in Washington, D.C.."
+  },
+  {
+    "id": "qb-area02-0030",
+    "area": "Area 2",
+    "sourcePage": 25,
+    "title": "What is the official capital city of New Zealand?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Wellington",
+    "options": [
+      "Christchurch",
+      "Hamilton",
+      "Wellington",
+      "Auckland"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The capital of New Zealand is Wellington."
+  },
+  {
+    "id": "qb-area03-0021",
+    "area": "Area 3",
+    "sourcePage": 53,
+    "title": "A Republic is a state where the head of state is a hereditary monarch rather than an elected official.",
+    "type": "true_false",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "False",
+    "options": [
+      "True",
+      "False"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "In a Republic, the head of state is elected by the people or their representatives, not a hereditary monarch."
+  },
+  {
+    "id": "qb-area03-0012",
+    "area": "Area 3",
+    "sourcePage": 45,
+    "title": "What is the popular title of the legislation providing 33% reservation for women in Indian legislatures?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Nari Shakti Vandan Adhiniyam",
+    "options": [
+      "Beti Bachao Beti Padhao",
+      "Pradhan Mantri Matru Vandana Yojana",
+      "Nari Shakti Vandan Adhiniyam",
+      "Mahila Samman Yojana"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The legislation is popularly titled the 'Nari Shakti Vandan Adhiniyam'."
+  },
+  {
+    "id": "qb-area03-0006",
+    "area": "Area 3",
+    "sourcePage": 40,
+    "title": "Who serves as India's Chief Election Commissioner (CEC) leading the Election Commission of India?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Gyanesh Kumar",
+    "options": [
+      "Gyanesh Kumar",
+      "Sushil Chandra",
+      "Sunil Arora",
+      "Rajiv Kumar"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Gyanesh Kumar serves as India's Chief Election Commissioner."
+  },
+  {
+    "id": "qb-area03-0020",
+    "area": "Area 3",
+    "sourcePage": 52,
+    "title": "What term describes a political system with a constitutional division of powers between the Union government and individual States?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Federalism",
+    "options": [
+      "Federalism",
+      "Monarchy",
+      "Secularism",
+      "Unitary rule"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Federalism is the division of legislative and administrative powers between Union and State governments."
+  },
+  {
+    "id": "qb-area03-0018",
+    "area": "Area 3",
+    "sourcePage": 51,
+    "title": "Which key constitutional reform was enacted by the 103rd Amendment of the Constitution of India?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "10% reservation for Economically Weaker Sections (EWS)",
+    "options": [
+      "OBC commission status",
+      "10% reservation for Economically Weaker Sections (EWS)",
+      "GST implementation",
+      "SC/ST reservation extension"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The 103rd Amendment enacted 10% reservation for Economically Weaker Sections (EWS)."
+  },
+  {
+    "id": "qb-area04-0007",
+    "area": "Area 4",
+    "sourcePage": 63,
+    "title": "How many Artificial Intelligence Centres of Excellence had been approved across Indian States and UTs as of August 2026?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "58",
+    "options": [
+      "75",
+      "58",
+      "40",
+      "22"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "Fidelity to PDF source (Current Affairs / Prospective compilation dated October 2026)",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The government reported 58 approved AI Centres of Excellence as of August 2026, with 22 already initiated across 13 States/UTs."
+  },
+  {
+    "id": "qb-area04-0011",
+    "area": "Area 4",
+    "sourcePage": 65,
+    "title": "What physical distance was successfully bridged in India's first free-space Quantum Key Distribution (QKD) demonstration in Gujarat?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "5.56 km",
+    "options": [
+      "15.0 km",
+      "5.56 km",
+      "2.45 km",
+      "10.25 km"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "India demonstrated its first free-space QKD link over 5.56 km in Gujarat involving QNu Labs, BISAG-N, and IIT Gandhinagar."
+  },
+  {
+    "id": "qb-area04-0005",
+    "area": "Area 4",
+    "sourcePage": 61,
+    "title": "How many Technology Innovation Hubs (TIHs) have been established under the NM-ICPS across premier academic institutions?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "25",
+    "options": [
+      "30",
+      "50",
+      "15",
+      "25"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "25 Technology Innovation Hubs have been established under NM-ICPS at leading institutions across India."
+  },
+  {
+    "id": "qb-area04-0012",
+    "area": "Area 4",
+    "sourcePage": 66,
+    "title": "Which Indian Institute of Technology was actively involved in demonstrating the first free-space QKD link?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "IIT Gandhinagar",
+    "options": [
+      "IIT Bombay",
+      "IIT Madras",
+      "IIT Delhi",
+      "IIT Gandhinagar"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "IIT Gandhinagar partnered with QNu Labs and BISAG-N in the 5.56 km free-space QKD demonstration."
+  },
+  {
+    "id": "qb-area04-0015",
+    "area": "Area 4",
+    "sourcePage": 72,
+    "title": "Which chemical element is the primary foundational material used in modern semiconductor chip manufacturing?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Silicon",
+    "options": [
+      "Aluminum",
+      "Copper",
+      "Carbon",
+      "Silicon"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Silicon is the standard semiconductor element used in the vast majority of integrated circuits and computer processors."
+  },
+  {
+    "id": "qb-area05-0003",
+    "area": "Area 5",
+    "sourcePage": 82,
+    "title": "On which date did Chandrayaan-3 successfully achieve a soft landing on the lunar south polar region?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "23 August 2023",
+    "options": [
+      "24 September 2023",
+      "23 August 2023",
+      "14 July 2023",
+      "2 September 2023"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Chandrayaan-3 soft-landed near the lunar south pole on 23 August 2023."
+  },
+  {
+    "id": "qb-area05-0007",
+    "area": "Area 5",
+    "sourcePage": 83,
+    "title": "What is the orbital destination of India's first dedicated solar observatory mission, Aditya-L1?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Sun-Earth L1 Lagrange point",
+    "options": [
+      "Sun-Earth L2 point",
+      "Low Earth Orbit",
+      "Lunar Polar Orbit",
+      "Sun-Earth L1 Lagrange point"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Aditya-L1 operates in a halo orbit around the first Sun-Earth Lagrange point (L1), approximately 1.5 million km from Earth."
+  },
+  {
+    "id": "qb-area05-0019",
+    "area": "Area 5",
+    "sourcePage": 99,
+    "title": "The Moon's rotational period on its axis is approximately equal to its orbital period around the Earth (about 27.3 days).",
+    "type": "true_false",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "True",
+    "options": [
+      "True",
+      "False"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Because of synchronous rotation (tidal locking), both the orbital and rotational periods are approximately 27.3 days, keeping the same face towards Earth."
+  },
+  {
+    "id": "qb-area05-0009",
+    "area": "Area 5",
+    "sourcePage": 85,
+    "title": "What primary physical property of cosmic radiation does India's XPoSat satellite observe from celestial sources?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "X-ray polarisation",
+    "options": [
+      "Gamma-ray burst velocity",
+      "Infrared thermal emission",
+      "Gravitational wave frequency",
+      "X-ray polarisation"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "XPoSat (X-ray Polarimeter Satellite) is dedicated to studying the polarisation of cosmic X-rays from black holes, neutron stars, and pulsars."
+  },
+  {
+    "id": "qb-area05-ext-004",
+    "area": "Area 5",
+    "sourcePage": 88,
+    "title": "What is the planned mission objective of India's upcoming Chandrayaan-4 lunar mission?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Lunar sample return to Earth",
+    "options": [
+      "Manned lunar landing",
+      "Permanent lunar south pole base",
+      "Lunar sample return to Earth",
+      "Lunar orbit communication relay"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Verified science/space fact: Lunar sample return to Earth."
+  },
+  {
+    "id": "qb-area06-0016",
+    "area": "Area 6",
+    "sourcePage": 122,
+    "title": "Whom did India's D. Gukesh defeat in 2024 to become the youngest undisputed World Chess Champion in history?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Ding Liren",
+    "options": [
+      "Hikaru Nakamura",
+      "Ding Liren",
+      "Magnus Carlsen",
+      "Ian Nepomniachtchi"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "D. Gukesh defeated Ding Liren in 2024 at age 18 to become the youngest undisputed World Chess Champion."
+  },
+  {
+    "id": "qb-area06-0014",
+    "area": "Area 6",
+    "sourcePage": 118,
+    "title": "Which city will host the 2028 Summer Olympic Games?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Los Angeles, USA",
+    "options": [
+      "Los Angeles, USA",
+      "Brisbane, Australia",
+      "London, UK",
+      "Paris, France"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The 2028 Summer Olympic Games will take place in Los Angeles, California, USA."
+  },
+  {
+    "id": "qb-area06-0010",
+    "area": "Area 6",
+    "sourcePage": 113,
+    "title": "Which country did India defeat in both the men's and women's kabaddi finals at the 2026 Asian Games?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Iran",
+    "options": [
+      "Iran",
+      "Pakistan",
+      "South Korea",
+      "Bangladesh"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "Fidelity to PDF source (Current Affairs / Prospective compilation dated October 2026)",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "India achieved double gold in Kabaddi, with both men's and women's teams defeating Iran."
+  },
+  {
+    "id": "qb-area06-0009",
+    "area": "Area 6",
+    "sourcePage": 112,
+    "title": "Which country did the Indian women's cricket team defeat by 147 runs to win the 2026 Asian Games gold medal?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Sri Lanka",
+    "options": [
+      "Sri Lanka",
+      "South Africa",
+      "Pakistan",
+      "Bangladesh"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "Fidelity to PDF source (Current Affairs / Prospective compilation dated October 2026)",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "India's women's cricket team defeated Sri Lanka by 147 runs to secure the gold medal."
+  },
+  {
+    "id": "qb-area06-0012",
+    "area": "Area 6",
+    "sourcePage": 114,
+    "title": "Who created sporting history by becoming the first Indian woman to win an Asian Games gold medal in golf?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Pranavi Urs",
+    "options": [
+      "Avani Prashanth",
+      "Diksha Dagar",
+      "Aditi Ashok",
+      "Pranavi Urs"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Pranavi Urs made history by winning India's first ever women's golf gold medal at the Asian Games."
+  },
+  {
+    "id": "qb-area07-0002",
+    "area": "Area 7",
+    "sourcePage": 133,
+    "title": "The Bharat Ratna is India's highest military decoration for wartime gallantry.",
+    "type": "true_false",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "False",
+    "options": [
+      "True",
+      "False"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The Bharat Ratna is India's highest civilian award, not a military award. The highest military gallantry award is the Param Vir Chakra."
+  },
+  {
+    "id": "qb-area07-0008",
+    "area": "Area 7",
+    "sourcePage": 141,
+    "title": "Who became the first Indian ever to win an Academy Award (Oscar), winning for Best Costume Design for the film 'Gandhi' (1982)?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Bhanu Athaiya",
+    "options": [
+      "A. R. Rahman",
+      "Bhanu Athaiya",
+      "Resul Pookutty",
+      "Satyajit Ray"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Bhanu Athaiya won the Academy Award for Best Costume Design in 1983 for 'Gandhi', becoming India's first Oscar winner."
+  },
+  {
+    "id": "qb-area07-0018",
+    "area": "Area 7",
+    "sourcePage": 150,
+    "title": "The Pritzker Prize is regarded as the highest international honour in which creative professional field?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Architecture",
+    "options": [
+      "Sculpture",
+      "Cinematography",
+      "Musical composition",
+      "Architecture"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The Pritzker Architecture Prize is widely recognized as the Nobel Prize of architecture."
+  },
+  {
+    "id": "qb-area07-0013",
+    "area": "Area 7",
+    "sourcePage": 145,
+    "title": "What is recognized as India's oldest and most prestigious literary award for lifetime contributions to Indian literature?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Jnanpith Award",
+    "options": [
+      "Bhartiya Bhasha Parishad Award",
+      "Saraswati Samman",
+      "Sahitya Akademi Award",
+      "Jnanpith Award"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The Jnanpith Award is India's highest and oldest literary award."
+  },
+  {
+    "id": "qb-area07-0006",
+    "area": "Area 7",
+    "sourcePage": 136,
+    "title": "For which landmark discovery in physics was Sir C. V. Raman awarded the Nobel Prize in 1930?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Raman Effect (inelastic scattering of light)",
+    "options": [
+      "Raman Effect (inelastic scattering of light)",
+      "Cosmic ray cascade theory",
+      "Photoelectric effect in semiconductors",
+      "Nuclear fission in heavy elements"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Sir C. V. Raman won the 1930 Nobel Prize in Physics for his discovery of the Raman Effect."
+  },
+  {
+    "id": "qb-area08-0013",
+    "area": "Area 8",
+    "sourcePage": 171,
+    "title": "Who is celebrated as the 'Father of the White Revolution' in India for spearheading Operation Flood and making India self-sufficient in milk production?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Dr. Verghese Kurien",
+    "options": [
+      "Sam Pitroda",
+      "Dr. Verghese Kurien",
+      "Dr. M. S. Swaminathan",
+      "Dr. Norman Borlaug"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Dr. Verghese Kurien engineered Operation Flood, transforming dairy development in India as the Father of the White Revolution."
+  },
+  {
+    "id": "qb-area08-0009",
+    "area": "Area 8",
+    "sourcePage": 167,
+    "title": "Which prominent cricket player stepped down from the captaincy of India's women's national cricket team in October 2026?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Harmanpreet Kaur",
+    "options": [
+      "Harmanpreet Kaur",
+      "Smriti Mandhana",
+      "Shafali Verma",
+      "Deepti Sharma"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "Fidelity to PDF source (Current Affairs / Prospective compilation dated October 2026)",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Harmanpreet Kaur stepped down as captain of the Indian women's cricket team in October 2026 while continuing her career as an active player."
+  },
+  {
+    "id": "qb-area08-0003",
+    "area": "Area 8",
+    "sourcePage": 157,
+    "title": "Before assuming office as the 15th Vice-President of India, C. P. Radhakrishnan previously served as the Governor of which State?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Maharashtra",
+    "options": [
+      "Jharkhand",
+      "Maharashtra",
+      "Telangana",
+      "Kerala"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "C. P. Radhakrishnan served as the Governor of Maharashtra before being elected Vice-President."
+  },
+  {
+    "id": "qb-area08-0007",
+    "area": "Area 8",
+    "sourcePage": 163,
+    "title": "To which country does 2026 Nobel Chemistry laureate Henri Kagan belong?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "France",
+    "options": [
+      "United States",
+      "France",
+      "Germany",
+      "Japan"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "Fidelity to PDF source (Current Affairs / Prospective compilation dated October 2026)",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Henri Kagan is a distinguished French chemist recognized for groundbreaking contributions to asymmetric synthesis."
+  },
+  {
+    "id": "qb-area08-0015",
+    "area": "Area 8",
+    "sourcePage": 174,
+    "title": "Which legendary playback singer was lovingly known as the 'Nightingale of India' and received the Bharat Ratna in 2001?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Lata Mangeshkar",
+    "options": [
+      "M. S. Subbulakshmi",
+      "Asha Bhosle",
+      "P. Susheela",
+      "Lata Mangeshkar"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Lata Mangeshkar was revered as the Nightingale of India for seven decades of legendary playback singing."
+  },
+  {
+    "id": "qb-area09-0019",
+    "area": "Area 9",
+    "sourcePage": 205,
+    "title": "What corpus was approved by the Union Cabinet in October 2026 for the dedicated SME Growth Fund?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "\u20b910,000 crore",
+    "options": [
+      "\u20b920,000 crore",
+      "\u20b910,000 crore",
+      "\u20b95,000 crore",
+      "\u20b92,500 crore"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "Fidelity to PDF source (Current Affairs / Prospective compilation dated October 2026)",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The Union Cabinet approved the \u20b910,000 crore SME Growth Fund to foster expansion in small and medium enterprises."
+  },
+  {
+    "id": "qb-area09-0011",
+    "area": "Area 9",
+    "sourcePage": 194,
+    "title": "How much effective capital expenditure (Capex) was allocated by the Union Government for FY2026\u201327?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "\u20b917.15 lakh crore",
+    "options": [
+      "\u20b911.11 lakh crore",
+      "\u20b914.00 lakh crore",
+      "\u20b917.15 lakh crore",
+      "\u20b922.50 lakh crore"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "Fidelity to PDF source (Current Affairs / Prospective compilation dated October 2026)",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "Effective capital expenditure for FY2026\u201327 was budgeted at \u20b917.15 lakh crore, representing approximately 4.4% of GDP."
+  },
+  {
+    "id": "qb-area09-0007",
+    "area": "Area 9",
+    "sourcePage": 191,
+    "title": "Under its statutory monetary policy framework, what headline consumer price inflation (CPI) percentage does the RBI target?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "4%",
+    "options": [
+      "2%",
+      "6%",
+      "5%",
+      "4%"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The RBI operates under a mandated inflation target of 4% within an allowable tolerance band of 2% to 6%."
+  },
+  {
+    "id": "qb-area09-0016",
+    "area": "Area 9",
+    "sourcePage": 200,
+    "title": "How many major constituent companies are tracked by the Bombay Stock Exchange (BSE) benchmark Sensex index?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "30",
+    "options": [
+      "50",
+      "30",
+      "100",
+      "500"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The BSE Sensex tracks 30 financially sound, actively traded companies."
+  },
+  {
+    "id": "qb-area09-0013",
+    "area": "Area 9",
+    "sourcePage": 195,
+    "title": "Who serves as the official chairperson of the Goods and Services Tax (GST) Council in India?",
+    "type": "mcq_single",
+    "gradeLevel": "Grade 6-8",
+    "correctAnswer": "Union Finance Minister",
+    "options": [
+      "RBI Governor",
+      "NITI Aayog CEO",
+      "Prime Minister of India",
+      "Union Finance Minister"
+    ],
+    "classification": "SOURCE-SUPPORTED AND INTERNALLY CONSISTENT",
+    "factCheckBasis": "PDF Ground Truth",
+    "notes": "Verified against source passage on cited page.",
+    "explanation": "The GST Council is constitutionally chaired by the Union Finance Minister."
+  }
+]

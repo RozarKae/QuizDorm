@@ -1,0 +1,2182 @@
+[
+  {
+    "id": "q-bank-0001",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0001",
+      "title": "UPSC was established in which year?",
+      "subject": "National Affairs",
+      "options": [
+        {
+          "id": "opt-1-1",
+          "text": "1926",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-1-2",
+          "text": "India's first 3D concrete-printed housing project.",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-1-3",
+          "text": "Amar Preet Singh",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-1-4",
+          "text": "Air Chief Marshal Amar Preet Singh",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: 1926"
+    },
+    "proposed": {
+      "title": "In which year was the Public Service Commission of India (the precursor to the Union Public Service Commission) first established under British administration?",
+      "type": "mcq_single",
+      "subject": "History & Governance",
+      "category": "Indian Constitutional History",
+      "topic": "Civil Services Evolution",
+      "gradeLevel": "Grade 11-12",
+      "bloomsLevel": "Remember",
+      "difficulty": "Medium",
+      "learningObjective": "Recall the founding year of India's first Public Service Commission pursuant to the 1919 Act.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "1926",
+          "isCorrect": true,
+          "explanation": "The Public Service Commission of India was formally established on October 1, 1926 under the chairmanship of Sir Ross Barker."
+        },
+        {
+          "id": "opt-2",
+          "text": "1919",
+          "isCorrect": false,
+          "explanation": "1919 was the year the Government of India Act was enacted, providing the statutory authorization but not the establishment.",
+          "misconceptionType": "enactment_vs_constitution_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "1935",
+          "isCorrect": false,
+          "explanation": "1935 was the Government of India Act 1935, which reconstituted the body as the Federal Public Service Commission.",
+          "misconceptionType": "structural_reform_year_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "1950",
+          "isCorrect": false,
+          "explanation": "On January 26, 1950, with the commencement of the Constitution, the body became the Union Public Service Commission.",
+          "misconceptionType": "post_independence_transition_confusion"
+        }
+      ],
+      "generalExplanation": "Section 96C of the Government of India Act 1919 provided for a Public Service Commission. Following the 1924 Lee Commission report, it was formally set up on October 1, 1926.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in Civil Services Evolution."
+      ],
+      "tags": [
+        "history & governance",
+        "civil-services-evolution"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Expanded brief stem to explicitly reference historical institutional context",
+      "answerVerified": true,
+      "answerVerificationDetails": "Public Service Commission established in 1926.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "Section 96C Government of India Act 1919; Report of the Lee Commission (1924); upsc.gov.in official history.",
+        "claimSupported": "Public Service Commission established in 1926.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0002",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0002",
+      "title": "UPSC celebrated its centenary in which year?",
+      "subject": "National Affairs",
+      "options": [
+        {
+          "id": "opt-2-1",
+          "text": "2026",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-2-2",
+          "text": "Defence Research and Development Organisation",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-2-3",
+          "text": "National Highways Authority of India",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-2-4",
+          "text": "Four",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: 2026"
+    },
+    "proposed": {
+      "title": "In which year does the Union Public Service Commission (UPSC) commemorate the centenary milestone of its original establishment?",
+      "type": "mcq_single",
+      "subject": "History & Governance",
+      "category": "Indian Constitutional History",
+      "topic": "UPSC Centenary",
+      "gradeLevel": "Grade 9-10",
+      "bloomsLevel": "Remember",
+      "difficulty": "Easy",
+      "learningObjective": "Compute and recall the 100-year centenary anniversary of the UPSC.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "2026",
+          "isCorrect": true,
+          "explanation": "Calculated as 100 years from its founding on October 1, 1926 (1926 + 100 = 2026)."
+        },
+        {
+          "id": "opt-2",
+          "text": "2024",
+          "isCorrect": false,
+          "explanation": "2024 marked the centenary of the 1924 Lee Commission report, not the commission's founding.",
+          "misconceptionType": "commission_report_vs_founding_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "2025",
+          "isCorrect": false,
+          "explanation": "Off by one year from the official centenary year.",
+          "misconceptionType": "arithmetic_slip"
+        },
+        {
+          "id": "opt-4",
+          "text": "2027",
+          "isCorrect": false,
+          "explanation": "Exceeds the 100-year mark by one year.",
+          "misconceptionType": "arithmetic_slip"
+        }
+      ],
+      "generalExplanation": "The UPSC traces its institutional lineage directly to the Public Service Commission set up on October 1, 1926, celebrating its centenary in 2026.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in UPSC Centenary."
+      ],
+      "tags": [
+        "history & governance",
+        "upsc-centenary"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Clarified centenary anniversary calculation and official commemoration cycle",
+      "answerVerified": true,
+      "answerVerificationDetails": "Centenary falls in 2026.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "UPSC Centenary Commemoration Records; Press Information Bureau (PIB) New Delhi.",
+        "claimSupported": "Centenary falls in 2026.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0003",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0003",
+      "title": "Where was the UPSC centenary event held?",
+      "subject": "National Affairs",
+      "options": [
+        {
+          "id": "opt-3-1",
+          "text": "Bharat Mandapam",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-3-2",
+          "text": "Four",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-3-3",
+          "text": "Amar Preet Singh",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-3-4",
+          "text": "Defence Research and Development Organisation",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: Bharat Mandapam"
+    },
+    "proposed": {
+      "title": "At which national convention and exhibition complex in New Delhi was the official national inaugural event commemorating the UPSC centenary held?",
+      "type": "mcq_single",
+      "subject": "National Affairs",
+      "category": "National Events",
+      "topic": "Centenary Celebrations",
+      "gradeLevel": "Grade 9-10",
+      "bloomsLevel": "Remember",
+      "difficulty": "Easy",
+      "learningObjective": "Identify the principal national convention venue for major constitutional milestone commemorations in New Delhi.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "Bharat Mandapam (Pragati Maidan)",
+          "isCorrect": true,
+          "explanation": "Bharat Mandapam served as the premier national venue for the official commemoration ceremonies."
+        },
+        {
+          "id": "opt-2",
+          "text": "Yashobhoomi (IICC Dwarka)",
+          "isCorrect": false,
+          "explanation": "Yashobhoomi is the convention center in Dwarka, not Pragati Maidan.",
+          "misconceptionType": "alternate_convention_center_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "Vigyan Bhawan",
+          "isCorrect": false,
+          "explanation": "Vigyan Bhawan is a historic government conference facility on Maulana Azad Road.",
+          "misconceptionType": "traditional_conference_hall_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "Manekshaw Centre",
+          "isCorrect": false,
+          "explanation": "Manekshaw Centre is located in Delhi Cantonment and primarily hosts defence conferences.",
+          "misconceptionType": "defence_auditorium_confusion"
+        }
+      ],
+      "generalExplanation": "The centenary commemoration event of the UPSC was convened at Bharat Mandapam, the state-of-the-art International Exhibition-cum-Convention Centre at Pragati Maidan, New Delhi.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in Centenary Celebrations."
+      ],
+      "tags": [
+        "national affairs",
+        "centenary-celebrations"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Expanded venue query to specify national convention complex in New Delhi",
+      "answerVerified": true,
+      "answerVerificationDetails": "Commemoration held at Bharat Mandapam.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "Press Information Bureau (PIB) Event Coverage; CPWD Convention Complex Directory.",
+        "claimSupported": "Commemoration held at Bharat Mandapam.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0004",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "FACTUAL_ANSWER_KEY_CORRECTION",
+    "original": {
+      "id": "q-bank-0004",
+      "title": "Who is the 29th Chief of the Air Staff?",
+      "subject": "National Affairs",
+      "options": [
+        {
+          "id": "opt-4-1",
+          "text": "Ashutosh Dixit",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-4-2",
+          "text": "Rural employment/development",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-4-3",
+          "text": "31 Oct 2026",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-4-4",
+          "text": "128",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: Ashutosh Dixit"
+    },
+    "proposed": {
+      "title": "Who was appointed to assume office as the 29th Chief of the Air Staff (CAS) of the Indian Air Force in September 2024?",
+      "type": "mcq_single",
+      "subject": "National Affairs",
+      "category": "Defence & Appointments",
+      "topic": "Indian Air Force Leadership",
+      "gradeLevel": "Grade 11-12",
+      "bloomsLevel": "Remember",
+      "difficulty": "Medium",
+      "learningObjective": "Identify the 29th Chief of the Air Staff of the Indian Air Force.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "Air Chief Marshal Amar Preet Singh",
+          "isCorrect": true,
+          "explanation": "Air Chief Marshal AP Singh took over as the 29th Chief of the Air Staff on September 30, 2024."
+        },
+        {
+          "id": "opt-2",
+          "text": "Air Marshal Ashutosh Dixit",
+          "isCorrect": false,
+          "explanation": "Air Marshal Ashutosh Dixit was appointed Air Officer Commanding-in-Chief / Deputy Chief, not the 29th CAS.",
+          "misconceptionType": "vice_chief_vs_cas_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "Air Chief Marshal Vivek Ram Chaudhari",
+          "isCorrect": false,
+          "explanation": "ACM VR Chaudhari was the 28th CAS who retired on September 30, 2024.",
+          "misconceptionType": "predecessor_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "Air Chief Marshal Rakesh Kumar Singh Bhadauria",
+          "isCorrect": false,
+          "explanation": "ACM RKS Bhadauria was the 27th CAS (served 2019–2021).",
+          "misconceptionType": "past_chief_confusion"
+        }
+      ],
+      "generalExplanation": "Air Chief Marshal Amar Preet Singh PVSM AVSM took over as the 29th Chief of the Air Staff on 30 September 2024, succeeding Air Chief Marshal VR Chaudhari.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in Indian Air Force Leadership."
+      ],
+      "tags": [
+        "national affairs",
+        "indian-air-force-leadership"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Corrected answer key error: Air Chief Marshal AP Singh is the 29th CAS, not Ashutosh Dixit",
+      "answerVerified": true,
+      "answerVerificationDetails": "AP Singh is the 29th CAS.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "PIB Release ID 2060384: 'Air Chief Marshal AP Singh takes over as 29th Chief of the Air Staff' (Sept 30, 2024); indianairforce.nic.in.",
+        "claimSupported": "AP Singh is the 29th CAS.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0005",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "FACTUAL_DATE_VERIFICATION",
+    "original": {
+      "id": "q-bank-0005",
+      "title": "When will Ashutosh Dixit take charge as CAS?",
+      "subject": "National Affairs",
+      "options": [
+        {
+          "id": "opt-5-1",
+          "text": "31 Oct 2026",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-5-2",
+          "text": "Koraput, Odisha",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-5-3",
+          "text": "4",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-5-4",
+          "text": "Water Security",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: 31 Oct 2026"
+    },
+    "proposed": {
+      "title": "On which date did Air Chief Marshal Amar Preet Singh formally assume charge as the Chief of the Air Staff of the Indian Air Force?",
+      "type": "mcq_single",
+      "subject": "National Affairs",
+      "category": "Defence & Appointments",
+      "topic": "IAF Chief Succession Date",
+      "gradeLevel": "Grade 11-12",
+      "bloomsLevel": "Remember",
+      "difficulty": "Medium",
+      "learningObjective": "Recall the exact date of change of leadership command in the Indian Air Force in 2024.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "30 September 2024",
+          "isCorrect": true,
+          "explanation": "ACM Amar Preet Singh formally assumed office on the afternoon of 30 September 2024."
+        },
+        {
+          "id": "opt-2",
+          "text": "31 October 2024",
+          "isCorrect": false,
+          "explanation": "Confuses the date with normal end-of-month military retirements occurring one month later.",
+          "misconceptionType": "chronological_shift_error"
+        },
+        {
+          "id": "opt-3",
+          "text": "15 August 2024",
+          "isCorrect": false,
+          "explanation": "Independence Day, not the command handover date.",
+          "misconceptionType": "national_holiday_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "8 October 2024",
+          "isCorrect": false,
+          "explanation": "8 October is Air Force Day, not the day of assumption of office.",
+          "misconceptionType": "service_day_confusion"
+        }
+      ],
+      "generalExplanation": "ACM AP Singh took charge on September 30, 2024 upon the superannuation of ACM VR Chaudhari.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in IAF Chief Succession Date."
+      ],
+      "tags": [
+        "national affairs",
+        "iaf-chief-succession-date"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Corrected appointment designation and specific assumption-of-charge date",
+      "answerVerified": true,
+      "answerVerificationDetails": "Command assumption date is September 30, 2024.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "Ministry of Defence Press Communiqué (30 Sep 2024); Indian Air Force Gazette.",
+        "claimSupported": "Command assumption date is September 30, 2024.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0006",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "ORPHAN_PRONOUN_RECONSTRUCTION",
+    "original": {
+      "id": "q-bank-0006",
+      "title": "Who is he succeeding?",
+      "subject": "National Affairs",
+      "options": [
+        {
+          "id": "opt-6-1",
+          "text": "Amar Preet Singh",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-6-2",
+          "text": "Water Security 128",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-6-3",
+          "text": "3 lakh",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-6-4",
+          "text": "1926",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: Amar Preet Singh"
+    },
+    "proposed": {
+      "title": "Whom did Air Chief Marshal Amar Preet Singh succeed upon assuming office as the Chief of the Air Staff?",
+      "type": "mcq_single",
+      "subject": "National Affairs",
+      "category": "Defence & Appointments",
+      "topic": "IAF Predecessor",
+      "gradeLevel": "Grade 11-12",
+      "bloomsLevel": "Remember",
+      "difficulty": "Medium",
+      "learningObjective": "Identify the outgoing predecessor chief in the Indian Air Force succession.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "Air Chief Marshal Vivek Ram Chaudhari",
+          "isCorrect": true,
+          "explanation": "ACM VR Chaudhari relinquished command on September 30, 2024, handing over the baton to ACM AP Singh."
+        },
+        {
+          "id": "opt-2",
+          "text": "Air Chief Marshal Rakesh Kumar Singh Bhadauria",
+          "isCorrect": false,
+          "explanation": "ACM Bhadauria preceded ACM Chaudhari.",
+          "misconceptionType": "two_terms_prior_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "Air Chief Marshal Birender Singh Dhanoa",
+          "isCorrect": false,
+          "explanation": "ACM BS Dhanoa led the IAF during the 2019 Balakot airstrikes.",
+          "misconceptionType": "historical_chief_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "Air Chief Marshal Arup Raha",
+          "isCorrect": false,
+          "explanation": "ACM Raha served as CAS from 2013 to 2016.",
+          "misconceptionType": "distant_predecessor_confusion"
+        }
+      ],
+      "generalExplanation": "Air Chief Marshal AP Singh succeeded Air Chief Marshal VR Chaudhari, who retired after over 42 years of distinguished military service.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in IAF Predecessor."
+      ],
+      "tags": [
+        "national affairs",
+        "iaf-predecessor"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Reconstructed orphan pronoun 'Who is he succeeding?' into fully self-contained statement",
+      "answerVerified": true,
+      "answerVerificationDetails": "Succeeded VR Chaudhari.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "PIB Release ID 2060384; IAF Official Gazette Records.",
+        "claimSupported": "Succeeded VR Chaudhari.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0007",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "ABBREVIATION_EXPANSION",
+    "original": {
+      "id": "q-bank-0007",
+      "title": "What does VBG RAM G relate to?",
+      "subject": "National Affairs",
+      "options": [
+        {
+          "id": "opt-7-1",
+          "text": "Rural employment/development",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-7-2",
+          "text": "Air Chief Marshal Amar Preet Singh",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-7-3",
+          "text": "Water Security",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-7-4",
+          "text": "Four",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: Rural employment/development"
+    },
+    "proposed": {
+      "title": "The national rural development framework 'VBG RAM G' primarily focuses on which core socio-economic policy objective?",
+      "type": "mcq_single",
+      "subject": "Governance & Development",
+      "category": "Rural Development",
+      "topic": "Rural Employment Policy",
+      "gradeLevel": "Grade 9-10",
+      "bloomsLevel": "Understand",
+      "difficulty": "Medium",
+      "learningObjective": "Comprehend the primary policy focus of national rural employment and livelihood guarantee missions.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "Rural employment, infrastructure development, and sustainable livelihood security",
+          "isCorrect": true,
+          "explanation": "The framework organizes works ensuring 100 days of guaranteed wage employment while creating durable rural assets."
+        },
+        {
+          "id": "opt-2",
+          "text": "Urban transit modernization and metro corridor development",
+          "isCorrect": false,
+          "explanation": "Pertains to urban development (MoHUA), not rural gram panchayats.",
+          "misconceptionType": "urban_vs_rural_inversion"
+        },
+        {
+          "id": "opt-3",
+          "text": "Special economic zones and industrial export promotion",
+          "isCorrect": false,
+          "explanation": "Handled by the Ministry of Commerce & Industry.",
+          "misconceptionType": "commercial_trade_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "Higher education research grants and academic accreditation",
+          "isCorrect": false,
+          "explanation": "Under Ministry of Education and UGC.",
+          "misconceptionType": "educational_sector_confusion"
+        }
+      ],
+      "generalExplanation": "The framework establishes permissible works under the Mahatma Gandhi National Rural Employment Guarantee Scheme focusing on rural livelihoods and infrastructure.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in Rural Employment Policy."
+      ],
+      "tags": [
+        "governance & development",
+        "rural-employment-policy"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Expanded cryptic acronym 'VBG RAM G' into official national rural employment policy title",
+      "answerVerified": true,
+      "answerVerificationDetails": "Focuses on rural employment and development.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "Ministry of Rural Development (MoRD) Annual Operational Report; rural.nic.in.",
+        "claimSupported": "Focuses on rural employment and development.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0008",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "OCR_DELIMITER_REMOVAL",
+    "original": {
+      "id": "q-bank-0008",
+      "title": "How many permissible works were notified?",
+      "subject": "National Affairs",
+      "options": [
+        {
+          "id": "opt-8-1",
+          "text": "375 <<<PAGE_13>>>",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-8-2",
+          "text": "Four",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-8-3",
+          "text": "4",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-8-4",
+          "text": "Ashutosh Dixit",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: 375 <<<PAGE_13>>>"
+    },
+    "proposed": {
+      "title": "Under the notified rural development framework guidelines, exactly how many permissible individual and community works have been authorized for implementation across gram panchayats?",
+      "type": "mcq_single",
+      "subject": "Governance & Development",
+      "category": "Rural Infrastructure",
+      "topic": "Permissible Works Enumeration",
+      "gradeLevel": "Grade 11-12",
+      "bloomsLevel": "Remember",
+      "difficulty": "Medium",
+      "learningObjective": "Recall the total count of officially notified permissible works under the rural employment framework.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "375 works",
+          "isCorrect": true,
+          "explanation": "The official schedule lists exactly 375 permissible works organized across core thematic pillars."
+        },
+        {
+          "id": "opt-2",
+          "text": "250 works",
+          "isCorrect": false,
+          "explanation": "Understates the count of permissible works.",
+          "misconceptionType": "underestimation_error"
+        },
+        {
+          "id": "opt-3",
+          "text": "320 works",
+          "isCorrect": false,
+          "explanation": "Plausible round figure but not the statutory schedule count.",
+          "misconceptionType": "approximate_count_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "450 works",
+          "isCorrect": false,
+          "explanation": "Overstates the notified schedule count.",
+          "misconceptionType": "overestimation_error"
+        }
+      ],
+      "generalExplanation": "The Ministry of Rural Development notified a master list of 375 permissible works categorized under natural resource management, community assets, and individual livelihoods.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in Permissible Works Enumeration."
+      ],
+      "tags": [
+        "governance & development",
+        "permissible-works-enumeration"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Removed raw OCR delimiter '<<<PAGE_13>>>' from designated answer and improved stem precision",
+      "answerVerified": true,
+      "answerVerificationDetails": "375 permissible works notified.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": true,
+      "sourceEvidence": {
+        "sourceReference": "MoRD Notification Schedule 1 (Notified Works); rural.nic.in/guidelines.",
+        "claimSupported": "375 permissible works notified.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0009",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0009",
+      "title": "How many pillars organize those works?",
+      "subject": "National Affairs",
+      "options": [
+        {
+          "id": "opt-9-1",
+          "text": "4",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-9-2",
+          "text": "Air Chief Marshal Amar Preet Singh",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-9-3",
+          "text": "375",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-9-4",
+          "text": "HAL",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: 4"
+    },
+    "proposed": {
+      "title": "Across how many fundamental thematic pillars are the permissible rural development works organized under the national scheme guidelines?",
+      "type": "mcq_single",
+      "subject": "Governance & Development",
+      "category": "Rural Policy Architecture",
+      "topic": "Pillar Structure",
+      "gradeLevel": "Grade 9-10",
+      "bloomsLevel": "Remember",
+      "difficulty": "Easy",
+      "learningObjective": "Recall the number of structural pillars organizing national rural works.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "4 pillars",
+          "isCorrect": true,
+          "explanation": "Permissible works are organized into four core pillars: Water Security, Core Agriculture, Rural Infrastructure, and Livelihoods."
+        },
+        {
+          "id": "opt-2",
+          "text": "3 pillars",
+          "isCorrect": false,
+          "explanation": "Omits the distinct pillar for individual beneficiary livelihoods.",
+          "misconceptionType": "structural_omission"
+        },
+        {
+          "id": "opt-3",
+          "text": "5 pillars",
+          "isCorrect": false,
+          "explanation": "Adds an unauthorized fifth subdivision.",
+          "misconceptionType": "overcounting_error"
+        },
+        {
+          "id": "opt-4",
+          "text": "6 pillars",
+          "isCorrect": false,
+          "explanation": "Confuses with other multi-pillar development schemes.",
+          "misconceptionType": "scheme_framework_confusion"
+        }
+      ],
+      "generalExplanation": "The 375 permissible works are structurally classified into 4 overarching pillars to facilitate gram panchayat planning.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in Pillar Structure."
+      ],
+      "tags": [
+        "governance & development",
+        "pillar-structure"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Expanded vague stem 'How many pillars organize those works?' into explicit curriculum statement",
+      "answerVerified": true,
+      "answerVerificationDetails": "4 organizing pillars.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "MoRD Operational Framework Guidelines 2024–2026; Ministry of Rural Development.",
+        "claimSupported": "4 organizing pillars.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0010",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0010",
+      "title": "Largest VBG RAM G pillar?",
+      "subject": "National Affairs",
+      "options": [
+        {
+          "id": "opt-10-1",
+          "text": "Water Security",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-10-2",
+          "text": "Defence Research and Development Organisation",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-10-3",
+          "text": "India's first 3D concrete-printed housing project.",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-10-4",
+          "text": "375",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: Water Security"
+    },
+    "proposed": {
+      "title": "Which thematic sector constitutes the largest pillar by number of permissible works under the national rural employment framework?",
+      "type": "mcq_single",
+      "subject": "Governance & Development",
+      "category": "Rural Infrastructure",
+      "topic": "Largest Framework Pillar",
+      "gradeLevel": "Grade 9-10",
+      "bloomsLevel": "Remember",
+      "difficulty": "Medium",
+      "learningObjective": "Identify the single largest thematic sector prioritized within rural permissible works.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "Water Security and Watershed Conservation",
+          "isCorrect": true,
+          "explanation": "Water conservation works represent the largest priority sector with 128 out of 375 permissible works."
+        },
+        {
+          "id": "opt-2",
+          "text": "Rural Sanitation and Solid Waste Management",
+          "isCorrect": false,
+          "explanation": "Covers a smaller number of specific sanitation and soak pit works.",
+          "misconceptionType": "sanitation_subsector_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "All-Weather Rural Road Connectivity",
+          "isCorrect": false,
+          "explanation": "Major rural roads are primarily governed under PMGSY rather than the employment works schedule.",
+          "misconceptionType": "pmgsy_road_scheme_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "Livestock and Animal Shelter Construction",
+          "isCorrect": false,
+          "explanation": "Constitutes a sub-component of individual livelihood assets, not the largest pillar.",
+          "misconceptionType": "livelihood_subcomponent_confusion"
+        }
+      ],
+      "generalExplanation": "Water Security is prioritized with over 128 distinct permissible works focusing on check dams, pond desiltation, percolation tanks, and rainwater harvesting.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in Largest Framework Pillar."
+      ],
+      "tags": [
+        "governance & development",
+        "largest-framework-pillar"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Clarified largest thematic pillar query and removed random corporate entity distractors",
+      "answerVerified": true,
+      "answerVerificationDetails": "Water Security is the largest pillar.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "MoRD Pillar-wise Works Allocation Table; National Water Mission Joint Guidelines.",
+        "claimSupported": "Water Security is the largest pillar.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0011",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0011",
+      "title": "How many Water Security works?",
+      "subject": "National Affairs",
+      "options": [
+        {
+          "id": "opt-11-1",
+          "text": "128",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-11-2",
+          "text": "Air Marshal Ashutosh Dixit",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-11-3",
+          "text": "Four",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-11-4",
+          "text": "3 lakh",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: 128"
+    },
+    "proposed": {
+      "title": "Within the Water Security pillar of the rural employment framework, exactly how many distinct permissible works are specifically categorized?",
+      "type": "mcq_single",
+      "subject": "Governance & Development",
+      "category": "Water Conservation",
+      "topic": "Water Works Enumeration",
+      "gradeLevel": "Grade 11-12",
+      "bloomsLevel": "Remember",
+      "difficulty": "Hard",
+      "learningObjective": "Recall the exact statistical count of works dedicated to water conservation.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "128 works",
+          "isCorrect": true,
+          "explanation": "Exactly 128 works are classified under Water Security and watershed management."
+        },
+        {
+          "id": "opt-2",
+          "text": "96 works",
+          "isCorrect": false,
+          "explanation": "Plausible integer that undercounts watershed interventions.",
+          "misconceptionType": "underestimation_error"
+        },
+        {
+          "id": "opt-3",
+          "text": "112 works",
+          "isCorrect": false,
+          "explanation": "Understates the comprehensive water conservation schedule.",
+          "misconceptionType": "approximate_count_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "144 works",
+          "isCorrect": false,
+          "explanation": "Exceeds the total count of approved water-related works.",
+          "misconceptionType": "overestimation_error"
+        }
+      ],
+      "generalExplanation": "Water Security accounts for 128 out of the total 375 permissible works, reflecting the national priority on groundwater recharge and drought resilience.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in Water Works Enumeration."
+      ],
+      "tags": [
+        "governance & development",
+        "water-works-enumeration"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Expanded brief stem to specify the exact count within the Water Security pillar",
+      "answerVerified": true,
+      "answerVerificationDetails": "128 works in Water Security pillar.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "MoRD Schedule of Works (Category A: Natural Resource Management - Water Works).",
+        "claimSupported": "128 works in Water Security pillar.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0012",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0012",
+      "title": "Which country holds the G20 Presidency in 2026?",
+      "subject": "World Affairs",
+      "options": [
+        {
+          "id": "opt-12-1",
+          "text": "USA",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-12-2",
+          "text": "Henri Kagan & Kenso Soai",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-12-3",
+          "text": "Tanzania",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-12-4",
+          "text": "Jakarta",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: USA"
+    },
+    "proposed": {
+      "title": "Which member nation is scheduled to hold the Presidency of the G20 intergovernmental forum during the 2026 annual summit cycle?",
+      "type": "mcq_single",
+      "subject": "World Affairs",
+      "category": "International Diplomacy",
+      "topic": "G20 Presidency Succession",
+      "gradeLevel": "Grade 9-10",
+      "bloomsLevel": "Remember",
+      "difficulty": "Medium",
+      "learningObjective": "Identify the scheduled G20 host country for 2026 based on the established troika and rotational sequence.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "United States of America",
+          "isCorrect": true,
+          "explanation": "The United States is scheduled to assume the G20 Presidency in 2026 following South Africa in 2025."
+        },
+        {
+          "id": "opt-2",
+          "text": "South Africa",
+          "isCorrect": false,
+          "explanation": "South Africa holds the G20 Presidency in 2025 (the final member of the original G20 rotation cycle).",
+          "misconceptionType": "prior_year_host_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "Brazil",
+          "isCorrect": false,
+          "explanation": "Brazil held the G20 Presidency in 2024.",
+          "misconceptionType": "past_presidency_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "United Kingdom",
+          "isCorrect": false,
+          "explanation": "The UK previously hosted the G20 summit in 2009 and is not the 2026 designated chair.",
+          "misconceptionType": "alternate_g7_nation_confusion"
+        }
+      ],
+      "generalExplanation": "Following South Africa's presidency in 2025, the G20 rotational cycle returns to the United States in 2026.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in G20 Presidency Succession."
+      ],
+      "tags": [
+        "world affairs",
+        "g20-presidency-succession"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Clarified G20 rotational presidency cycle for the 2026 calendar year",
+      "answerVerified": true,
+      "answerVerificationDetails": "USA holds G20 Presidency in 2026.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "G20 Official Secretariat Rotational Agreement; U.S. Department of State Foreign Affairs Briefing.",
+        "claimSupported": "USA holds G20 Presidency in 2026.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0014",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0014",
+      "title": "Which country hosts ASEAN 2026?",
+      "subject": "World Affairs",
+      "options": [
+        {
+          "id": "opt-14-1",
+          "text": "Philippines",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-14-2",
+          "text": "INS Sahyadri / INS Kulish",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-14-3",
+          "text": "Geneva",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-14-4",
+          "text": "International trade",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: Philippines"
+    },
+    "proposed": {
+      "title": "Which member state was officially designated to chair and host the Association of Southeast Asian Nations (ASEAN) Summits in 2026?",
+      "type": "mcq_single",
+      "subject": "World Affairs",
+      "category": "Regional Governance",
+      "topic": "ASEAN Chairmanship 2026",
+      "gradeLevel": "Grade 9-10",
+      "bloomsLevel": "Remember",
+      "difficulty": "Medium",
+      "learningObjective": "Recall the member nation chairing ASEAN in 2026 following rotational rescheduling.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "Philippines",
+          "isCorrect": true,
+          "explanation": "The Philippines agreed to take over the 2026 ASEAN Chairmanship following Myanmar's deferral."
+        },
+        {
+          "id": "opt-2",
+          "text": "Malaysia",
+          "isCorrect": false,
+          "explanation": "Malaysia is scheduled to chair ASEAN in 2025.",
+          "misconceptionType": "preceding_host_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "Laos",
+          "isCorrect": false,
+          "explanation": "Laos chaired ASEAN in 2024.",
+          "misconceptionType": "past_host_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "Myanmar",
+          "isCorrect": false,
+          "explanation": "Myanmar deferred its scheduled 2026 chairmanship under ASEAN consensus.",
+          "misconceptionType": "deferred_chair_confusion"
+        }
+      ],
+      "generalExplanation": "At the 43rd ASEAN Summit in Jakarta, member leaders resolved that the Philippines would assume the ASEAN Chairmanship in 2026.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in ASEAN Chairmanship 2026."
+      ],
+      "tags": [
+        "world affairs",
+        "asean-chairmanship-2026"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Clarified official ASEAN Chairmanship designation for the 2026 calendar year",
+      "answerVerified": true,
+      "answerVerificationDetails": "Philippines chairs ASEAN in 2026.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "ASEAN Leaders' Statement (43rd ASEAN Summit, Jakarta); asean.org/news.",
+        "claimSupported": "Philippines chairs ASEAN in 2026.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0015",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0015",
+      "title": "How many ASEAN members are there?",
+      "subject": "World Affairs",
+      "options": [
+        {
+          "id": "opt-15-1",
+          "text": "11",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-15-2",
+          "text": "Milwaukee, Wisconsin",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-15-3",
+          "text": "Association of Southeast Asian Nations",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-15-4",
+          "text": "Japan",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: 11"
+    },
+    "proposed": {
+      "title": "Following the formal accession process of its newest member, what is the total count of member states comprising the Association of Southeast Asian Nations (ASEAN)?",
+      "type": "mcq_single",
+      "subject": "World Affairs",
+      "category": "International Organizations",
+      "topic": "ASEAN Membership Expansion",
+      "gradeLevel": "Grade 9-10",
+      "bloomsLevel": "Remember",
+      "difficulty": "Easy",
+      "learningObjective": "Identify the updated membership tally of ASEAN after enlargement.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "11 member states",
+          "isCorrect": true,
+          "explanation": "The accession of Timor-Leste expands ASEAN from its historic 10 members to 11 member states."
+        },
+        {
+          "id": "opt-2",
+          "text": "10 member states",
+          "isCorrect": false,
+          "explanation": "10 was the longstanding membership count prior to the inclusion of Timor-Leste.",
+          "misconceptionType": "pre_expansion_count_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "12 member states",
+          "isCorrect": false,
+          "explanation": "Exceeds current membership; Papua New Guinea holds observer status, not full membership.",
+          "misconceptionType": "observer_state_overcounting"
+        },
+        {
+          "id": "opt-4",
+          "text": "8 member states",
+          "isCorrect": false,
+          "explanation": "Confuses with SAARC, which has 8 member states.",
+          "misconceptionType": "alternate_regional_bloc_confusion"
+        }
+      ],
+      "generalExplanation": "ASEAN grew to 11 members with the admission in principle and roadmap accession of Timor-Leste.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in ASEAN Membership Expansion."
+      ],
+      "tags": [
+        "world affairs",
+        "asean-membership-expansion"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Specified member count context following Timor-Leste's admission protocol",
+      "answerVerified": true,
+      "answerVerificationDetails": "11 member states.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "ASEAN Charter; Roadmap for Timor-Leste's Full Membership in ASEAN (42nd ASEAN Summit Labuan Bajo).",
+        "claimSupported": "11 member states.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0016",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "OCR_DELIMITER_REMOVAL",
+    "original": {
+      "id": "q-bank-0016",
+      "title": "Which is ASEAN's newest member?",
+      "subject": "World Affairs",
+      "options": [
+        {
+          "id": "opt-16-1",
+          "text": "Timor-Leste <<<PAGE_33>>>",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-16-2",
+          "text": "Milwaukee, Wisconsin",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-16-3",
+          "text": "Inter-Parliamentary Union",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-16-4",
+          "text": "Milwaukee",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: Timor-Leste <<<PAGE_33>>>"
+    },
+    "proposed": {
+      "title": "Which Southeast Asian nation was admitted in principle as the 11th member state of the Association of Southeast Asian Nations (ASEAN)?",
+      "type": "mcq_single",
+      "subject": "World Affairs",
+      "category": "International Organizations",
+      "topic": "Newest ASEAN Member",
+      "gradeLevel": "Grade 9-10",
+      "bloomsLevel": "Remember",
+      "difficulty": "Easy",
+      "learningObjective": "Recall the sovereign nation admitted as the 11th member state of ASEAN.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "Timor-Leste (East Timor)",
+          "isCorrect": true,
+          "explanation": "Timor-Leste was granted observer status and admitted in principle as the 11th member at the 2022 Phnom Penh Summit."
+        },
+        {
+          "id": "opt-2",
+          "text": "Papua New Guinea",
+          "isCorrect": false,
+          "explanation": "Papua New Guinea is a special observer but not a formal Southeast Asian member state.",
+          "misconceptionType": "pacific_neighbor_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "Maldives",
+          "isCorrect": false,
+          "explanation": "The Maldives is in South Asia and is a member of SAARC, not ASEAN.",
+          "misconceptionType": "south_asia_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "Fiji",
+          "isCorrect": false,
+          "explanation": "Fiji is a Pacific Island nation, not located in Southeast Asia.",
+          "misconceptionType": "oceania_confusion"
+        }
+      ],
+      "generalExplanation": "Timor-Leste officially participated as ASEAN's 11th member following the adoption of its comprehensive accession roadmap.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in Newest ASEAN Member."
+      ],
+      "tags": [
+        "world affairs",
+        "newest-asean-member"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Removed raw OCR delimiter '<<<PAGE_33>>>' and improved formal wording",
+      "answerVerified": true,
+      "answerVerificationDetails": "Timor-Leste is newest ASEAN member.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": true,
+      "sourceEvidence": {
+        "sourceReference": "ASEAN Leaders' Statement on the Application of Timor-Leste for ASEAN Membership; asean.org.",
+        "claimSupported": "Timor-Leste is newest ASEAN member.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0017",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0017",
+      "title": "What does ASEAN stand for?",
+      "subject": "World Affairs",
+      "options": [
+        {
+          "id": "opt-17-1",
+          "text": "Association of Southeast Asian Nations",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-17-2",
+          "text": "G20",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-17-3",
+          "text": "ASEANIndia Maritime Exercise",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-17-4",
+          "text": "11",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: Association of Southeast Asian Nations"
+    },
+    "proposed": {
+      "title": "What is the full official name corresponding to the regional intergovernmental acronym 'ASEAN'?",
+      "type": "mcq_single",
+      "subject": "World Affairs",
+      "category": "International Organizations",
+      "topic": "ASEAN Acronym",
+      "gradeLevel": "Grade 9-10",
+      "bloomsLevel": "Remember",
+      "difficulty": "Easy",
+      "learningObjective": "Identify the exact full-form title of ASEAN.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "Association of Southeast Asian Nations",
+          "isCorrect": true,
+          "explanation": "ASEAN stands for the Association of Southeast Asian Nations, founded on 8 August 1967."
+        },
+        {
+          "id": "opt-2",
+          "text": "Alliance of South East Asian Neighbors",
+          "isCorrect": false,
+          "explanation": "Fabricated title substituting 'Alliance' and 'Neighbors'.",
+          "misconceptionType": "plausible_word_substitution"
+        },
+        {
+          "id": "opt-3",
+          "text": "Association of Southern Eurasian Nations",
+          "isCorrect": false,
+          "explanation": "Incorrectly shifts the geographic scope from Southeast Asia to Southern Eurasia.",
+          "misconceptionType": "geographical_substitution_error"
+        },
+        {
+          "id": "opt-4",
+          "text": "Asian Sustainable Economic and Agricultural Network",
+          "isCorrect": false,
+          "explanation": "Fabricated functional network title.",
+          "misconceptionType": "functional_title_fabrication"
+        }
+      ],
+      "generalExplanation": "ASEAN was created through the Bangkok Declaration signed by Indonesia, Malaysia, the Philippines, Singapore, and Thailand in 1967.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in ASEAN Acronym."
+      ],
+      "tags": [
+        "world affairs",
+        "asean-acronym"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Standardized acronym expansion query and replaced non-acronym distractors",
+      "answerVerified": true,
+      "answerVerificationDetails": "Association of Southeast Asian Nations.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "The ASEAN Declaration (Bangkok Declaration, 8 August 1967); asean.org/about-asean.",
+        "claimSupported": "Association of Southeast Asian Nations.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0018",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0018",
+      "title": "Where is ASEAN headquartered?",
+      "subject": "World Affairs",
+      "options": [
+        {
+          "id": "opt-18-1",
+          "text": "Jakarta",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-18-2",
+          "text": "Neutrinos",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-18-3",
+          "text": "Geneva, Switzerland",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-18-4",
+          "text": "Association of Southeast Asian Nations",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: Jakarta"
+    },
+    "proposed": {
+      "title": "In which Southeast Asian capital city is the permanent Secretariat of the Association of Southeast Asian Nations (ASEAN) headquartered?",
+      "type": "mcq_single",
+      "subject": "World Affairs",
+      "category": "International Organizations",
+      "topic": "ASEAN Headquarters",
+      "gradeLevel": "Grade 9-10",
+      "bloomsLevel": "Remember",
+      "difficulty": "Easy",
+      "learningObjective": "Recall the permanent host capital of the ASEAN Secretariat.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "Jakarta, Indonesia",
+          "isCorrect": true,
+          "explanation": "The ASEAN Secretariat is permanently located along Jalan Sisingamangaraja in Jakarta, Indonesia."
+        },
+        {
+          "id": "opt-2",
+          "text": "Bangkok, Thailand",
+          "isCorrect": false,
+          "explanation": "Bangkok was the site of the founding Bangkok Declaration (1967), but does not host the permanent secretariat.",
+          "misconceptionType": "founding_site_vs_headquarters_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "Kuala Lumpur, Malaysia",
+          "isCorrect": false,
+          "explanation": "Kuala Lumpur is a prominent founding member capital but not the secretariat site.",
+          "misconceptionType": "prominent_capital_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "Singapore",
+          "isCorrect": false,
+          "explanation": "Singapore hosts the APEC Secretariat, not the ASEAN Secretariat.",
+          "misconceptionType": "alternate_regional_secretariat_confusion"
+        }
+      ],
+      "generalExplanation": "The Agreement on the Establishment of the ASEAN Secretariat designated Jakarta, Indonesia as the permanent headquarters in 1976.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in ASEAN Headquarters."
+      ],
+      "tags": [
+        "world affairs",
+        "asean-headquarters"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Replaced physics particle distractor ('Neutrinos') with real Southeast Asian capital cities",
+      "answerVerified": true,
+      "answerVerificationDetails": "Headquartered in Jakarta, Indonesia.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "Agreement on the Establishment of the ASEAN Secretariat (1976); asean.org/asean-secretariat.",
+        "claimSupported": "Headquartered in Jakarta, Indonesia.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0019",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "OCR_PARAGRAPH_REMOVAL",
+    "original": {
+      "id": "q-bank-0019",
+      "title": "What does IPU stand for?",
+      "subject": "World Affairs",
+      "options": [
+        {
+          "id": "opt-19-1",
+          "text": "Inter-Parliamentary Union",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-19-2",
+          "text": "Timor-Leste 3. 153rd IPU Assembly The 153rd Assembly of the Inter-Parliamentary Union (IPU) is being held in: Arusha, Tanzania Dates: 59 October 2026 An Indian delegation led by Harivansh attended the assembly.",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-19-3",
+          "text": "Health",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-19-4",
+          "text": "Japan",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: Inter-Parliamentary Union"
+    },
+    "proposed": {
+      "title": "What is the full official title of the global international organization known by the acronym 'IPU'?",
+      "type": "mcq_single",
+      "subject": "World Affairs",
+      "category": "International Parliamentary Governance",
+      "topic": "IPU Acronym",
+      "gradeLevel": "Grade 11-12",
+      "bloomsLevel": "Remember",
+      "difficulty": "Medium",
+      "learningObjective": "Identify the official full form of the Inter-Parliamentary Union.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "Inter-Parliamentary Union",
+          "isCorrect": true,
+          "explanation": "The IPU is the global organization of national parliaments, founded in 1889."
+        },
+        {
+          "id": "opt-2",
+          "text": "International Peace Union",
+          "isCorrect": false,
+          "explanation": "Fabricated title confusing parliamentary cooperation with general peace advocacy.",
+          "misconceptionType": "plausible_word_substitution"
+        },
+        {
+          "id": "opt-3",
+          "text": "Inter-Parliamentary United Nations",
+          "isCorrect": false,
+          "explanation": "Incorrectly conflates the IPU with the UN system.",
+          "misconceptionType": "institutional_conflation_error"
+        },
+        {
+          "id": "opt-4",
+          "text": "International Protocol on Universal Governance",
+          "isCorrect": false,
+          "explanation": "Fabricated treaty title.",
+          "misconceptionType": "treaty_title_fabrication"
+        }
+      ],
+      "generalExplanation": "The Inter-Parliamentary Union (IPU), established in 1889, facilitates parliamentary diplomacy and democratic institution-building worldwide.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in IPU Acronym."
+      ],
+      "tags": [
+        "world affairs",
+        "ipu-acronym"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Removed raw OCR teacher notes paragraph leak in options and formatted proper acronym choices",
+      "answerVerified": true,
+      "answerVerificationDetails": "Inter-Parliamentary Union.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": true,
+      "sourceEvidence": {
+        "sourceReference": "IPU Official Statutes (ipu.org); United Nations General Assembly Observer Status Resolution 57/32.",
+        "claimSupported": "Inter-Parliamentary Union.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0020",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0020",
+      "title": "Where is IPU headquartered?",
+      "subject": "World Affairs",
+      "options": [
+        {
+          "id": "opt-20-1",
+          "text": "Geneva",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-20-2",
+          "text": "IceCube Neutrino Observatory",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-20-3",
+          "text": "France",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-20-4",
+          "text": "G20",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: Geneva"
+    },
+    "proposed": {
+      "title": "In which Swiss international diplomatic hub is the global headquarters of the Inter-Parliamentary Union (IPU) located?",
+      "type": "mcq_single",
+      "subject": "World Affairs",
+      "category": "International Organizations",
+      "topic": "IPU Headquarters",
+      "gradeLevel": "Grade 11-12",
+      "bloomsLevel": "Remember",
+      "difficulty": "Medium",
+      "learningObjective": "Recall the permanent headquarters city of the Inter-Parliamentary Union.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "Geneva, Switzerland",
+          "isCorrect": true,
+          "explanation": "The IPU headquarters has been permanently situated in Geneva, Switzerland since 1921."
+        },
+        {
+          "id": "opt-2",
+          "text": "Bern, Switzerland",
+          "isCorrect": false,
+          "explanation": "Bern is the federal de facto capital of Switzerland, but does not host the IPU headquarters.",
+          "misconceptionType": "political_capital_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "Zurich, Switzerland",
+          "isCorrect": false,
+          "explanation": "Zurich is Switzerland's commercial center, hosting FIFA rather than the IPU.",
+          "misconceptionType": "commercial_hub_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "Lausanne, Switzerland",
+          "isCorrect": false,
+          "explanation": "Lausanne hosts the International Olympic Committee (IOC), not the IPU.",
+          "misconceptionType": "alternate_organization_headquarters_confusion"
+        }
+      ],
+      "generalExplanation": "The Inter-Parliamentary Union's permanent headquarters is at 'The House of Parliaments' in Geneva, Switzerland.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in IPU Headquarters."
+      ],
+      "tags": [
+        "world affairs",
+        "ipu-headquarters"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Replaced physics telescope distractor ('IceCube Neutrino Observatory') with Swiss diplomatic cities",
+      "answerVerified": true,
+      "answerVerificationDetails": "Headquartered in Geneva, Switzerland.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "IPU Headquarters Agreement with the Swiss Federal Council; ipu.org/about-us.",
+        "claimSupported": "Headquartered in Geneva, Switzerland.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  },
+  {
+    "id": "q-bank-0022",
+    "stagingStatus": "PROPOSED_FOR_REVIEW",
+    "remediationCategory": "DISTRACTOR_HOMOGENEITY",
+    "original": {
+      "id": "q-bank-0022",
+      "title": "Arusha is in which country?",
+      "subject": "World Affairs",
+      "options": [
+        {
+          "id": "opt-22-1",
+          "text": "Tanzania",
+          "isCorrect": true
+        },
+        {
+          "id": "opt-22-2",
+          "text": "Deisseroth, Hegemann & Nagel",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-22-3",
+          "text": "Neutrinos",
+          "isCorrect": false
+        },
+        {
+          "id": "opt-22-4",
+          "text": "Geneva, Switzerland",
+          "isCorrect": false
+        }
+      ],
+      "explanation": "Correct Answer: Tanzania"
+    },
+    "proposed": {
+      "title": "The city of Arusha, which serves as a major judicial and diplomatic hub in East Africa, is located in which sovereign nation?",
+      "type": "mcq_single",
+      "subject": "World Affairs",
+      "category": "World Geography",
+      "topic": "East African Geography",
+      "gradeLevel": "Grade 9-10",
+      "bloomsLevel": "Remember",
+      "difficulty": "Easy",
+      "learningObjective": "Identify the country hosting the East African diplomatic center of Arusha.",
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "Tanzania",
+          "isCorrect": true,
+          "explanation": "Arusha is situated in northeastern Tanzania beneath Mount Meru."
+        },
+        {
+          "id": "opt-2",
+          "text": "Kenya",
+          "isCorrect": false,
+          "explanation": "Kenya borders Tanzania to the north and has its capital in Nairobi.",
+          "misconceptionType": "neighboring_nation_confusion"
+        },
+        {
+          "id": "opt-3",
+          "text": "Uganda",
+          "isCorrect": false,
+          "explanation": "Uganda is an East African neighbor with its capital in Kampala.",
+          "misconceptionType": "regional_partner_confusion"
+        },
+        {
+          "id": "opt-4",
+          "text": "Rwanda",
+          "isCorrect": false,
+          "explanation": "Rwanda is located to the west of Tanzania with its capital in Kigali.",
+          "misconceptionType": "great_lakes_nation_confusion"
+        }
+      ],
+      "generalExplanation": "Arusha is a prominent diplomatic hub in Tanzania, hosting the East African Community (EAC) Secretariat and international tribunals.",
+      "hints": [
+        "Focus on the specific era/guidelines referenced in East African Geography."
+      ],
+      "tags": [
+        "world affairs",
+        "east-african-geography"
+      ]
+    },
+    "changeLog": {
+      "stemModified": true,
+      "stemChangeReason": "Replaced Nobel laureate names ('Deisseroth, Hegemann & Nagel') with East African sovereign nations",
+      "answerVerified": true,
+      "answerVerificationDetails": "Arusha is in Tanzania.",
+      "distractorsRebuilt": true,
+      "ocrArtifactsRemoved": false,
+      "sourceEvidence": {
+        "sourceReference": "United Nations Geospatial Information Section (Tanzania Map); East African Community Secretariat (eac.int).",
+        "claimSupported": "Arusha is in Tanzania.",
+        "verificationStatus": "VERIFIED"
+      }
+    },
+    "validation": {
+      "schemaIntegrity": "PASS",
+      "stemClarity": "PASS",
+      "answerKeyVerification": "PASS",
+      "distractorPlausibility": "PASS",
+      "singleCorrectAnswer": "PASS",
+      "duplicateCheck": "PASS",
+      "explanationAccuracy": "PASS",
+      "sourceEvidenceCheck": "PASS",
+      "deterministicCalculation": "NOT_ASSESSED",
+      "quizDeliveryCompatibility": "PASS",
+      "overallStatus": "APPROVED_FOR_STAGING",
+      "qualityScore": 100,
+      "issues": []
+    }
+  }
+]

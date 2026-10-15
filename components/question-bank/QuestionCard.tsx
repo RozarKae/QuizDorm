@@ -14,10 +14,32 @@ interface QuestionCardProps {
 }
 
 export function QuestionCard({ question, isSelected, onSelectToggle, onDelete }: QuestionCardProps) {
+  const getDifficultyBadge = (diff: string) => {
+    if (diff === "Hard") {
+      return (
+        <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] font-bold bg-coral/10 text-coral border border-coral/30">
+          Hard
+        </span>
+      );
+    }
+    if (diff === "Medium") {
+      return (
+        <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] font-bold bg-muted text-foreground border border-border">
+          Medium
+        </span>
+      );
+    }
+    return (
+      <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] font-bold bg-acid/20 text-foreground border border-acid/50">
+        Easy
+      </span>
+    );
+  };
+
   return (
     <div
-      className={`bg-white dark:bg-gray-950 p-6 rounded-2xl border transition-all duration-200 shadow-sm hover:shadow-md flex flex-col justify-between ${
-        isSelected ? "border-indigo-500 ring-2 ring-indigo-500/20 bg-indigo-50/20 dark:bg-indigo-950/20" : "border-gray-100 dark:border-gray-850"
+      className={`bg-card p-5 rounded-[3px] border transition-colors shadow-xs flex flex-col justify-between ${
+        isSelected ? "border-cobalt ring-1 ring-cobalt bg-cobalt/5" : "border-border hover:border-cobalt/40"
       }`}
     >
       <div>
@@ -28,74 +50,64 @@ export function QuestionCard({ question, isSelected, onSelectToggle, onDelete }:
                 type="checkbox"
                 checked={isSelected}
                 onChange={() => onSelectToggle(question.id)}
-                className="w-4 h-4 text-indigo-600 rounded cursor-pointer mt-0.5"
+                className="w-3.5 h-3.5 text-cobalt border-border rounded-[2px] cursor-pointer mt-0.5 focus:ring-cobalt"
               />
             )}
             <QuestionTypeBadge type={question.type} />
           </div>
 
-          <Badge
-            className={
-              question.difficulty === "Hard"
-                ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300 text-[10px]"
-                : question.difficulty === "Medium"
-                ? "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300 text-[10px]"
-                : "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 text-[10px]"
-            }
-          >
-            {question.difficulty}
-          </Badge>
+          {getDifficultyBadge(question.difficulty)}
         </div>
 
-        <h3 className="text-base font-bold text-gray-900 dark:text-white line-clamp-2 mb-2 leading-snug">
+        <h3 className="font-display text-sm font-semibold text-foreground line-clamp-2 mb-2 leading-snug">
           {question.title}
         </h3>
 
-        <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500 mb-4">
-          <span className="font-semibold text-indigo-600 dark:text-indigo-400">{question.topic || question.subject}</span>
-          <span>•</span>
+        <div className="flex flex-wrap items-center gap-1.5 font-mono text-[11px] text-muted-foreground mb-3">
+          <span className="font-semibold text-cobalt">{question.topic || question.subject}</span>
+          <span>/</span>
           <span>{question.subject}</span>
           {(question.gradeLevel || question.grade) && (
             <>
-              <span>•</span>
-              <span className="text-slate-500 dark:text-slate-400">{question.gradeLevel || question.grade}</span>
+              <span>/</span>
+              <span>{question.gradeLevel || question.grade}</span>
             </>
           )}
-          <span>•</span>
-          <span className="font-mono">{question.marks} {question.marks === 1 ? "Mark" : "Marks"}</span>
+          <span>/</span>
+          <span className="text-foreground font-semibold">{question.marks} {question.marks === 1 ? "Mark" : "Marks"}</span>
         </div>
 
         {/* Options summary */}
         {question.options && question.options.length > 0 && (
-          <div className="space-y-1.5 mb-4">
+          <div className="space-y-1.5 mb-3 font-mono text-xs">
             {question.options.slice(0, 3).map((opt) => (
               <div
                 key={opt.id}
-                className={`text-xs p-2 rounded-xl border flex items-center justify-between ${
+                className={`p-2 rounded-[2px] border flex items-center justify-between ${
                   opt.isCorrect
-                    ? "border-emerald-200 bg-emerald-50/50 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-100 font-semibold"
-                    : "border-gray-100 dark:border-gray-900 text-gray-600 dark:text-gray-400"
+                    ? "border-cobalt/40 bg-cobalt/5 text-foreground font-semibold"
+                    : "border-border bg-background/50 text-muted-foreground"
                 }`}
               >
                 <span className="truncate">{opt.text}</span>
-                {opt.isCorrect && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 ml-1" />}
+                {opt.isCorrect && <CheckCircle2 className="w-3.5 h-3.5 text-cobalt shrink-0 ml-1" />}
               </div>
             ))}
             {question.options.length > 3 && (
-              <span className="text-[11px] text-gray-400 italic">+{question.options.length - 3} more options</span>
+              <span className="text-[10px] font-mono text-muted-foreground italic">+{question.options.length - 3} more options</span>
             )}
           </div>
         )}
 
         {/* Tags */}
         {question.tags && question.tags.length > 0 && (
-          <div className="flex flex-wrap items-center gap-1.5 mb-4">
+          <div className="flex flex-wrap items-center gap-1.5 mb-3">
             {question.tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="inline-flex items-center text-[10px] font-medium px-2 py-0.5 rounded-full bg-gray-100 dark:bg-gray-850 text-gray-600 dark:text-gray-300"
+                className="inline-flex items-center text-[9px] font-mono uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] bg-muted text-muted-foreground border border-border"
               >
-                <Tag className="w-2.5 h-2.5 mr-1 text-gray-400" />
+                <Tag className="w-2.5 h-2.5 mr-1 text-muted-foreground" />
                 {tag}
               </span>
             ))}
@@ -103,13 +115,13 @@ export function QuestionCard({ question, isSelected, onSelectToggle, onDelete }:
         )}
       </div>
 
-      <div className="pt-4 border-t border-gray-100 dark:border-gray-900 flex items-center justify-between">
-        <span className="text-[11px] text-gray-400">Topic: {question.topic}</span>
+      <div className="pt-3 border-t border-border flex items-center justify-between text-[11px] font-mono text-muted-foreground">
+        <span className="truncate max-w-[180px]">REF: {question.id}</span>
 
         <div className="flex items-center space-x-1">
           <Link href={`/dashboard/questions/${question.id}/edit`}>
-            <Button variant="ghost" size="icon" className="h-8 w-8 text-indigo-600 hover:bg-indigo-50" title="Edit Question">
-              <Edit className="w-4 h-4" />
+            <Button variant="ghost" size="icon" className="h-7 w-7 rounded-[2px] text-muted-foreground hover:text-foreground hover:bg-muted" title="Edit Question">
+              <Edit className="w-3.5 h-3.5" />
             </Button>
           </Link>
           {onDelete && (
@@ -117,10 +129,10 @@ export function QuestionCard({ question, isSelected, onSelectToggle, onDelete }:
               variant="ghost"
               size="icon"
               onClick={() => onDelete(question.id)}
-              className="h-8 w-8 text-red-600 hover:bg-red-50"
+              className="h-7 w-7 rounded-[2px] text-coral hover:bg-coral/10"
               title="Delete Question"
             >
-              <Trash2 className="w-4 h-4" />
+              <Trash2 className="w-3.5 h-3.5" />
             </Button>
           )}
         </div>

@@ -15,19 +15,19 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="border-b border-slate-200 bg-white py-3 px-6 sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto flex items-center justify-between">
+    <header className="border-b border-border bg-card/90 backdrop-blur-md py-3 px-6 sticky top-0 z-50 transition-colors duration-200">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <Logo />
         </Link>
-        <nav className="flex items-center space-x-6 text-xs text-slate-600 font-medium">
+        <nav className="hidden md:flex items-center space-x-6 text-xs font-mono uppercase tracking-wider text-muted-foreground font-medium">
           {navItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className={`hover:text-slate-900 transition-colors ${
+              className={`hover:text-foreground transition-colors ${
                 item.name === "Create Quiz"
-                  ? "text-indigo-600 font-bold hover:text-indigo-800"
+                  ? "text-cobalt font-semibold"
                   : ""
               }`}
             >
@@ -35,22 +35,23 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center space-x-2.5">
+        <div className="flex items-center space-x-2">
           <Link href="/create-quiz">
             <Button
               size="sm"
-              className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl px-3.5 py-1.5 shadow-sm"
+              variant="outline"
+              className="text-xs font-mono border-border hover:bg-muted rounded-[3px] px-3 h-8"
             >
               + Create Quiz
             </Button>
           </Link>
           <Link href="/auth/login">
-            <Button variant="ghost" size="sm" className="text-xs text-slate-600">
+            <Button variant="ghost" size="sm" className="text-xs font-mono text-muted-foreground hover:text-foreground rounded-[3px] px-3 h-8">
               Sign In
             </Button>
           </Link>
           <Link href="/auth/register">
-            <Button size="sm" className="bg-slate-900 text-white text-xs rounded-xl px-3 py-1.5">
+            <Button size="sm" className="bg-cobalt hover:bg-cobalt/90 text-white text-xs font-mono font-medium rounded-[3px] px-3.5 h-8 shadow-xs">
               Get Started
             </Button>
           </Link>

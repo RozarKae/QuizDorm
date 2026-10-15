@@ -54,19 +54,23 @@ export default function Features() {
   } as const;
 
   return (
-    <section id="features" className="py-28 relative z-10">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="features" className="py-20 relative z-10 border-b border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3.5 py-1.5 rounded-full">
-            Core Architecture
-          </span>
-          <h2 className="font-heading text-4xl sm:text-5xl font-bold text-white tracking-tight pt-2">
-            Engineered for Academic Mastery
-          </h2>
-          <p className="text-base sm:text-lg text-[#B8BCC8] leading-relaxed">
-            QuizDorm bridges the gap between static study guides and real-time interactive intelligence for modern learners and educators.
+        <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-border mb-12 gap-6">
+          <div className="space-y-2 max-w-2xl">
+            <div className="inline-flex items-center space-x-2">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-cobalt font-semibold">
+                SYSTEM CAPABILITIES // ARCHITECTURE
+              </span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
+              Engineered for Academic Rigor & Speed
+            </h2>
+          </div>
+          <p className="text-sm font-normal text-muted-foreground max-w-md leading-relaxed">
+            From verified multi-domain question banks to instant classroom arena battles and institutional analytics.
           </p>
         </div>
 
@@ -75,30 +79,42 @@ export default function Features() {
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {list.map((feature) => (
+          {list.map((feature, idx) => (
             <motion.div
               key={feature.title}
               variants={item}
-              className="group p-8 rounded-[24px] bg-white/[0.05] backdrop-blur-[20px] border border-white/[0.08] hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300 hover:-translate-y-1.5 shadow-2xl shadow-black/40 hover:shadow-blue-500/10 relative overflow-hidden"
+              className="group p-6 rounded-[3px] bg-card border border-border hover:border-cobalt/50 transition-colors shadow-xs relative flex flex-col justify-between"
             >
-              <div className="p-3.5 bg-white/[0.05] border border-white/10 rounded-[18px] w-fit shadow-md mb-6 group-hover:scale-110 group-hover:border-blue-500/30 transition-all duration-300">
-                {feature.icon}
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-2 bg-muted rounded-[2px] text-foreground border border-border group-hover:border-cobalt/40 transition-colors">
+                    {feature.icon}
+                  </div>
+                  <span className="font-mono text-[11px] text-muted-foreground font-semibold">
+                    {(idx + 1).toString().padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="font-display text-lg font-bold text-foreground mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed font-normal">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="font-heading text-xl font-bold text-white mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-sm text-[#B8BCC8] leading-relaxed font-normal">
-                {feature.description}
-              </p>
+
+              <div className="pt-6 mt-6 border-t border-border/60 flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-muted-foreground group-hover:text-cobalt transition-colors">
+                <span>Production Capability</span>
+                <span>Ready &rarr;</span>
+              </div>
             </motion.div>
           ))}
         </motion.div>
       </div>
 
-      <SectionDivider variant="glow" />
+      <SectionDivider variant="editorial" label="ONBOARDING WORKFLOW" />
     </section>
   );
 }

@@ -1,7 +1,7 @@
 import { QuestionItem, DifficultyLevel, QuestionType } from "@/lib/types/question";
 import importedQuestionsJson from "./imported-questions.json";
 
-export const STORAGE_KEY_QUESTIONS = "quizdorm_question_bank_v1";
+export const STORAGE_KEY_QUESTIONS = "quizdorm_question_bank_v3";
 
 // Base questions that existed initially in mock files
 export const INITIAL_BASE_QUESTIONS: QuestionItem[] = [
@@ -96,7 +96,12 @@ export function getStoredQuestions(): QuestionItem[] {
       return ALL_DEFAULT_QUESTIONS;
     }
     const parsed = JSON.parse(raw) as QuestionItem[];
-    if (!Array.isArray(parsed) || parsed.length === 0) {
+    if (
+      !Array.isArray(parsed) ||
+      parsed.length === 0 ||
+      parsed.some((q) => q.id.startsWith("q-bank-")) ||
+      parsed.length < ALL_DEFAULT_QUESTIONS.length
+    ) {
       localStorage.setItem(STORAGE_KEY_QUESTIONS, JSON.stringify(ALL_DEFAULT_QUESTIONS));
       return ALL_DEFAULT_QUESTIONS;
     }

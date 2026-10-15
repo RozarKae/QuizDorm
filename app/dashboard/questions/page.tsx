@@ -201,65 +201,65 @@ export default function QuestionBankPage() {
   return (
     <div className="space-y-6">
       {/* Header & Main Actions */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
-            <Database className="w-6 h-6 text-indigo-600 mr-2" /> Question Bank
+          <h1 className="text-2xl font-bold font-display text-foreground flex items-center">
+            <Database className="w-5 h-5 text-cobalt mr-2" /> Question Bank
             {isLoaded && (
-              <span className="ml-3 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-900">
-                {questions.length} Questions
+              <span className="ml-3 font-mono text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-[2px] bg-acid text-ink border border-acid">
+                {questions.length} Items // Verified
               </span>
             )}
           </h1>
-          <p className="text-sm text-gray-500">
-            Topic-organized repository of reusable assessment questions across all subjects
+          <p className="text-xs font-mono text-muted-foreground mt-1">
+            Systematic question taxonomy and specimen repository across 18 academic domains
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
           <Link href="/dashboard/ocr">
-            <Button size="sm" variant="outline" className="text-xs bg-indigo-50 dark:bg-indigo-950/50 border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 font-bold">
-              <ScanText className="w-3.5 h-3.5 mr-1.5 text-indigo-600" /> AI OCR Digitizer
+            <Button size="sm" variant="outline" className="text-xs font-mono border-border rounded-[3px] text-foreground hover:bg-muted h-8">
+              <ScanText className="w-3.5 h-3.5 mr-1.5 text-cobalt" /> AI OCR Digitizer
             </Button>
           </Link>
-          <Button variant="outline" size="sm" onClick={() => setCategoryOpen(true)} className="text-xs">
-            <BookOpen className="w-3.5 h-3.5 mr-1.5" /> Taxonomy
+          <Button variant="outline" size="sm" onClick={() => setCategoryOpen(true)} className="text-xs font-mono border-border rounded-[3px] text-foreground hover:bg-muted h-8">
+            <BookOpen className="w-3.5 h-3.5 mr-1.5 text-cobalt" /> Taxonomy
           </Button>
-          <Button variant="outline" size="sm" onClick={() => setImportOpen(true)} className="text-xs">
+          <Button variant="outline" size="sm" onClick={() => setImportOpen(true)} className="text-xs font-mono border-border rounded-[3px] text-foreground hover:bg-muted h-8">
             <Upload className="w-3.5 h-3.5 mr-1.5" /> Import
           </Button>
-          <Button variant="outline" size="sm" onClick={() => setExportOpen(true)} className="text-xs">
+          <Button variant="outline" size="sm" onClick={() => setExportOpen(true)} className="text-xs font-mono border-border rounded-[3px] text-foreground hover:bg-muted h-8">
             <Download className="w-3.5 h-3.5 mr-1.5" /> Export
           </Button>
           <Link href="/dashboard/questions/new">
-            <Button size="sm" className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl">
-              <Plus className="w-4 h-4 mr-1.5" /> Add Question
+            <Button size="sm" className="bg-cobalt hover:bg-cobalt/90 text-white font-mono text-xs font-semibold rounded-[3px] h-8 shadow-xs">
+              <Plus className="w-3.5 h-3.5 mr-1.5" /> Add Question
             </Button>
           </Link>
         </div>
       </div>
 
       {/* Primary Organization: Topic Selector Pills */}
-      <div className="bg-white dark:bg-gray-950 p-4 rounded-2xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-3">
-        <div className="flex items-center justify-between text-xs text-gray-500">
-          <span className="font-semibold flex items-center text-gray-700 dark:text-gray-300">
-            <Layers className="w-3.5 h-3.5 mr-1.5 text-indigo-600" /> Primary Topic Browse
+      <div className="bg-card p-4 rounded-[3px] border border-border shadow-xs space-y-3">
+        <div className="flex items-center justify-between text-xs text-muted-foreground font-mono">
+          <span className="font-semibold flex items-center text-foreground uppercase tracking-wider text-[11px]">
+            <Layers className="w-3.5 h-3.5 mr-1.5 text-cobalt" /> Knowledge Domains
           </span>
-          <span className="text-xs">
-            Showing {filteredQuestions.length} of {questions.length} questions
+          <span className="text-[11px]">
+            Showing {filteredQuestions.length} of {questions.length} items
           </span>
         </div>
 
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin font-mono">
           <button
             onClick={() => setSelectedTopic("All")}
-            className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+            className={`px-2.5 py-1 rounded-[2px] text-xs font-medium whitespace-nowrap transition-colors border ${
               selectedTopic === "All"
-                ? "bg-indigo-600 text-white shadow-sm"
-                : "bg-gray-50 dark:bg-gray-900 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                ? "bg-foreground text-background font-bold border-foreground shadow-xs"
+                : "bg-background text-muted-foreground border-border hover:border-cobalt/50"
             }`}
           >
-            All Topics ({questions.length})
+            All Domains ({questions.length})
           </button>
           {topTopics.map((topic) => {
             const count = questions.filter((q) => q.topic === topic).length;
@@ -268,10 +268,10 @@ export default function QuestionBankPage() {
               <button
                 key={topic}
                 onClick={() => setSelectedTopic(isSelected ? "All" : topic)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`px-2.5 py-1 rounded-[2px] text-xs whitespace-nowrap transition-colors border ${
                   isSelected
-                    ? "bg-indigo-600 text-white shadow-sm"
-                    : "bg-gray-50 dark:bg-gray-900 text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-100 dark:border-gray-800"
+                    ? "bg-foreground text-background font-bold border-foreground shadow-xs"
+                    : "bg-background text-muted-foreground border-border hover:border-cobalt/50"
                 }`}
               >
                 {topic} <span className="opacity-75 text-[10px]">({count})</span>
@@ -282,23 +282,23 @@ export default function QuestionBankPage() {
       </div>
 
       {/* Filter Bar with Secondary Filters */}
-      <div className="bg-white dark:bg-gray-950 p-4 rounded-2xl border border-gray-100 dark:border-gray-850 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-4">
+      <div className="bg-card p-4 rounded-[3px] border border-border shadow-xs flex flex-col lg:flex-row items-center justify-between gap-3">
         <div className="relative w-full lg:w-72">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-muted-foreground" />
           <Input
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search questions, answers, #tags..."
-            className="pl-9 h-10 bg-gray-50 dark:bg-gray-900 text-xs"
+            className="pl-8 h-8 bg-background border-border text-xs rounded-[3px] font-mono"
           />
         </div>
 
-        <div className="flex flex-wrap items-center gap-2.5 w-full lg:w-auto">
+        <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto">
           {/* Topic Select */}
           <Select
             value={selectedTopic}
             onChange={(e) => setSelectedTopic(e.target.value)}
-            className="h-10 text-xs font-medium min-w-[150px]"
+            className="h-8 text-xs font-mono min-w-[140px] rounded-[3px]"
             options={[
               { value: "All", label: "All Topics" },
               ...topicsList.map((t) => ({ value: t, label: t })),
@@ -309,9 +309,9 @@ export default function QuestionBankPage() {
           <Select
             value={selectedGrade}
             onChange={(e) => setSelectedGrade(e.target.value)}
-            className="h-10 text-xs font-medium min-w-[140px]"
+            className="h-8 text-xs font-mono min-w-[130px] rounded-[3px]"
             options={[
-              { value: "All", label: "Grade: All Levels" },
+              { value: "All", label: "Grade: All" },
               ...gradesList.map((g) => ({ value: g, label: g })),
             ]}
           />
@@ -320,7 +320,7 @@ export default function QuestionBankPage() {
           <Select
             value={selectedSubject}
             onChange={(e) => setSelectedSubject(e.target.value)}
-            className="h-10 text-xs font-medium min-w-[140px]"
+            className="h-8 text-xs font-mono min-w-[130px] rounded-[3px]"
             options={[
               { value: "All", label: "All Subjects" },
               ...subjectsList.map((s) => ({ value: s, label: s })),
@@ -331,7 +331,7 @@ export default function QuestionBankPage() {
           <Select
             value={selectedDifficulty}
             onChange={(e) => setSelectedDifficulty(e.target.value)}
-            className="h-10 text-xs font-medium"
+            className="h-8 text-xs font-mono rounded-[3px]"
             options={[
               { value: "All", label: "All Difficulties" },
               { value: "Easy", label: "Easy" },
@@ -344,7 +344,7 @@ export default function QuestionBankPage() {
           <Select
             value={selectedType}
             onChange={(e) => setSelectedType(e.target.value)}
-            className="h-10 text-xs font-medium"
+            className="h-8 text-xs font-mono rounded-[3px]"
             options={[
               { value: "All", label: "All Formats" },
               { value: "mcq_single", label: "MCQ Single" },
@@ -354,22 +354,22 @@ export default function QuestionBankPage() {
           />
 
           {/* View mode toggle */}
-          <div className="flex items-center space-x-1 bg-gray-100 dark:bg-gray-900 p-1 rounded-xl">
+          <div className="flex items-center space-x-0.5 bg-muted p-0.5 rounded-[2px] border border-border">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setViewMode("grid")}
-              className={`h-8 w-8 ${viewMode === "grid" ? "bg-white dark:bg-gray-800 text-indigo-600 shadow-sm" : "text-gray-400"}`}
+              className={`h-7 w-7 rounded-[2px] ${viewMode === "grid" ? "bg-card text-foreground shadow-xs font-bold" : "text-muted-foreground"}`}
             >
-              <LayoutGrid className="w-4 h-4" />
+              <LayoutGrid className="w-3.5 h-3.5" />
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setViewMode("table")}
-              className={`h-8 w-8 ${viewMode === "table" ? "bg-white dark:bg-gray-800 text-indigo-600 shadow-sm" : "text-gray-400"}`}
+              className={`h-7 w-7 rounded-[2px] ${viewMode === "table" ? "bg-card text-foreground shadow-xs font-bold" : "text-muted-foreground"}`}
             >
-              <List className="w-4 h-4" />
+              <List className="w-3.5 h-3.5" />
             </Button>
           </div>
         </div>
@@ -377,32 +377,32 @@ export default function QuestionBankPage() {
 
       {/* Active Filter Indicator */}
       {(selectedTopic !== "All" || selectedGrade !== "All" || selectedSubject !== "All" || selectedDifficulty !== "All" || searchTerm) && (
-        <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500">
-          <span>Active filters:</span>
+        <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-muted-foreground">
+          <span className="uppercase text-[10px]">Filters:</span>
           {selectedTopic !== "All" && (
-            <Badge className="bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300">
-              Topic: {selectedTopic}
-            </Badge>
+            <span className="bg-muted text-foreground border border-border px-1.5 py-0.5 rounded-[2px] text-[10px]">
+              Domain: {selectedTopic}
+            </span>
           )}
           {selectedGrade !== "All" && (
-            <Badge className="bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300">
+            <span className="bg-muted text-foreground border border-border px-1.5 py-0.5 rounded-[2px] text-[10px]">
               Grade: {selectedGrade}
-            </Badge>
+            </span>
           )}
           {selectedSubject !== "All" && (
-            <Badge className="bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300">
+            <span className="bg-muted text-foreground border border-border px-1.5 py-0.5 rounded-[2px] text-[10px]">
               Subject: {selectedSubject}
-            </Badge>
+            </span>
           )}
           {selectedDifficulty !== "All" && (
-            <Badge className="bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300">
-              Difficulty: {selectedDifficulty}
-            </Badge>
+            <span className="bg-muted text-foreground border border-border px-1.5 py-0.5 rounded-[2px] text-[10px]">
+              Diff: {selectedDifficulty}
+            </span>
           )}
           {searchTerm && (
-            <Badge className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+            <span className="bg-muted text-foreground border border-border px-1.5 py-0.5 rounded-[2px] text-[10px]">
               Query: &quot;{searchTerm}&quot;
-            </Badge>
+            </span>
           )}
           <button
             onClick={() => {
@@ -451,68 +451,76 @@ export default function QuestionBankPage() {
         </div>
       ) : (
         /* Table View */
-        <div className="bg-white dark:bg-gray-950 rounded-3xl border border-gray-100 dark:border-gray-850 shadow-sm overflow-hidden p-6">
+        <div className="bg-card rounded-[3px] border border-border shadow-xs overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-sm text-gray-600 dark:text-gray-300">
-              <thead className="bg-gray-50 dark:bg-gray-900 text-xs uppercase font-semibold text-gray-500 border-b border-gray-100 dark:border-gray-850">
+            <table className="w-full text-left text-xs font-mono text-foreground">
+              <thead className="bg-muted/40 text-[10px] uppercase tracking-wider font-semibold text-muted-foreground border-b border-border">
                 <tr>
-                  <th className="py-3.5 px-4">
+                  <th className="py-3 px-4">
                     <input
                       type="checkbox"
                       checked={selectedIds.length === paginatedQuestions.length && paginatedQuestions.length > 0}
                       onChange={handleSelectAll}
-                      className="w-4 h-4 text-indigo-600 rounded cursor-pointer"
+                      className="w-3.5 h-3.5 text-cobalt rounded-[2px] border-border cursor-pointer"
                     />
                   </th>
-                  <th className="py-3.5 px-4">Format</th>
-                  <th className="py-3.5 px-4">Question</th>
-                  <th className="py-3.5 px-4">Topic / Subject</th>
-                  <th className="py-3.5 px-4">Grade / Level</th>
-                  <th className="py-3.5 px-4">Difficulty</th>
-                  <th className="py-3.5 px-4">Marks</th>
-                  <th className="py-3.5 px-4 text-right">Actions</th>
+                  <th className="py-3 px-4">Format</th>
+                  <th className="py-3 px-4">Question</th>
+                  <th className="py-3 px-4">Domain / Subject</th>
+                  <th className="py-3 px-4">Grade</th>
+                  <th className="py-3 px-4">Difficulty</th>
+                  <th className="py-3 px-4">Marks</th>
+                  <th className="py-3 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-100 dark:divide-gray-900">
+              <tbody className="divide-y divide-border">
                 {paginatedQuestions.map((q) => (
-                  <tr key={q.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-900/50 transition-colors">
-                    <td className="py-4 px-4">
+                  <tr key={q.id} className="hover:bg-muted/40 transition-colors">
+                    <td className="py-3 px-4">
                       <input
                         type="checkbox"
                         checked={selectedIds.includes(q.id)}
                         onChange={() => handleSelectToggle(q.id)}
-                        className="w-4 h-4 text-indigo-600 rounded cursor-pointer"
+                        className="w-3.5 h-3.5 text-cobalt rounded-[2px] border-border cursor-pointer"
                       />
                     </td>
-                    <td className="py-4 px-4">
+                    <td className="py-3 px-4">
                       <QuestionTypeBadge type={q.type} />
                     </td>
-                    <td className="py-4 px-4 font-semibold text-gray-900 dark:text-white max-w-xs">
+                    <td className="py-3 px-4 font-semibold text-foreground max-w-xs font-display">
                       <div className="line-clamp-2">{q.title}</div>
                     </td>
-                    <td className="py-4 px-4 text-xs font-medium text-gray-600 dark:text-gray-400">
-                      <div className="font-bold text-gray-900 dark:text-gray-200">{q.topic || "General"}</div>
-                      <div className="text-[11px] text-gray-400">{q.subject}</div>
+                    <td className="py-3 px-4 text-xs font-mono">
+                      <div className="font-bold text-foreground">{q.topic || "General"}</div>
+                      <div className="text-[10px] text-muted-foreground">{q.subject}</div>
                     </td>
-                    <td className="py-4 px-4 text-xs font-medium text-gray-500">
+                    <td className="py-3 px-4 text-xs font-mono text-muted-foreground">
                       {q.gradeLevel || q.grade || "All Levels"}
                     </td>
-                    <td className="py-4 px-4 text-xs font-semibold">{q.difficulty}</td>
-                    <td className="py-4 px-4 font-mono text-xs font-bold text-indigo-600">{q.marks} pts</td>
-                    <td className="py-4 px-4 text-right">
+                    <td className="py-3 px-4 text-xs">
+                      {q.difficulty === "Hard" ? (
+                        <span className="text-coral font-bold uppercase text-[10px]">Hard</span>
+                      ) : q.difficulty === "Medium" ? (
+                        <span className="text-foreground uppercase text-[10px]">Medium</span>
+                      ) : (
+                        <span className="text-acid dark:text-acid font-bold uppercase text-[10px]">Easy</span>
+                      )}
+                    </td>
+                    <td className="py-3 px-4 font-mono text-xs font-bold">{q.marks} pts</td>
+                    <td className="py-3 px-4 text-right">
                       <div className="flex items-center justify-end space-x-1">
                         <Link href={`/dashboard/questions/${q.id}/edit`}>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-indigo-600">
-                            <Edit className="w-4 h-4" />
+                          <Button variant="ghost" size="icon" className="h-7 w-7 rounded-[2px] text-muted-foreground hover:text-foreground">
+                            <Edit className="w-3.5 h-3.5" />
                           </Button>
                         </Link>
                         <Button
                           variant="ghost"
                           size="icon"
                           onClick={() => handleDeleteOne(q.id)}
-                          className="h-8 w-8 text-red-600"
+                          className="h-7 w-7 rounded-[2px] text-coral hover:bg-coral/10"
                         >
-                          <Trash2 className="w-4 h-4" />
+                          <Trash2 className="w-3.5 h-3.5" />
                         </Button>
                       </div>
                     </td>

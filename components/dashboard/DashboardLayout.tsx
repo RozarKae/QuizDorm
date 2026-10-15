@@ -15,7 +15,7 @@ export default function DashboardLayout({ children, role }: DashboardLayoutProps
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <div className="flex h-screen overflow-hidden bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
+    <div className="flex h-screen overflow-hidden bg-background text-foreground transition-colors duration-200">
       {/* Sidebar Navigation */}
       <Sidebar
         role={role}

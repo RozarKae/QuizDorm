@@ -1,15 +1,73 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ink: #111318;
+  --color-ink-dark: #090A0D;
+  --color-ink-subtle: #1F232D;
+  
+  --color-warm-ivory: #F7F5EF;
+  --color-warm-ivory-muted: #EFECE3;
+  --color-soft-neutral: #E7E5DF;
+  --color-soft-neutral-dark: #262B37;
+  
+  --color-cobalt: #2855F5;
+  --color-cobalt-hover: #1E44D6;
+  
+  --color-acid-lime: #DFFF43;
+  --color-acid-lime-hover: #CEEF2A;
+  
+  --color-signal-coral: #E85D3F;
+  --color-signal-coral-hover: #D04B2E;
+
+  --font-display: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
 @layer base {
   :root {
-    --background: #ffffff;
-    --foreground: #111827;
-    --card: #ffffff;
-    --card-foreground: #111827;
-    --border: #e5e7eb;
-    --input: #e5e7eb;
-    --ring: #111827;
-    --radius: 0.375rem;
+    --background: #F7F5EF;
+    --foreground: #111318;
+    --card: #FFFFFF;
+    --card-foreground: #111318;
+    --border: #E7E5DF;
+    --border-strong: #111318;
+    --input: #E7E5DF;
+    --ring: #2855F5;
+    --radius: 0.25rem;
+    
+    --primary: #2855F5;
+    --primary-foreground: #FFFFFF;
+    --secondary: #E7E5DF;
+    --secondary-foreground: #111318;
+    --accent: #DFFF43;
+    --accent-foreground: #111318;
+    --destructive: #E85D3F;
+    --destructive-foreground: #FFFFFF;
+    --muted: #EFECE3;
+    --muted-foreground: #5F6674;
+  }
+
+  .dark {
+    --background: #0E1015;
+    --foreground: #F7F5EF;
+    --card: #161922;
+    --card-foreground: #F7F5EF;
+    --border: #262B37;
+    --border-strong: #3E4658;
+    --input: #262B37;
+    --ring: #3864F8;
+    --radius: 0.25rem;
+
+    --primary: #3864F8;
+    --primary-foreground: #FFFFFF;
+    --secondary: #1F232D;
+    --secondary-foreground: #F7F5EF;
+    --accent: #DFFF43;
+    --accent-foreground: #111318;
+    --destructive: #E85D3F;
+    --destructive-foreground: #FFFFFF;
+    --muted: #1B1E28;
+    --muted-foreground: #8F97A8;
   }
 
   * {
@@ -19,6 +77,65 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: var(--font-sans);
+    letter-spacing: -0.011em;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+}
+
+/* Editorial Intelligence Utility Classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.editorial-card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.editorial-card:hover {
+  border-color: var(--border-strong);
+}
+
+.editorial-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.5rem;
+  border-radius: 2px;
+  border: 1px solid currentColor;
+}
+
+.editorial-tag-lime {
+  background-color: #DFFF43;
+  color: #111318;
+  border-color: #DFFF43;
+}
+
+.editorial-tag-cobalt {
+  background-color: #2855F5;
+  color: #FFFFFF;
+  border-color: #2855F5;
+}
+
+.editorial-tag-coral {
+  background-color: #E85D3F;
+  color: #FFFFFF;
+  border-color: #E85D3F;
+}
+
+.editorial-rule {
+  border-top: 1px solid var(--border);
 }

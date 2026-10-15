@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# backups and local reports
+lib/data/backups/
+step_*.md
+
+# python bytecode
+__pycache__/
+*.pyc

@@ -1,0 +1,78 @@
+[
+  {
+    "question": {
+      "id": "qb-area11-0001",
+      "title": "How long does the planet Earth take to complete one full rotation on its axis, causing day and night?",
+      "description": "Source: Current Affairs Study Material — Area 11 (Page 245)",
+      "type": "mcq_single",
+      "subject": "Geography",
+      "category": "Indian & World Geography",
+      "topic": "Earth Science",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Earth completes one rotation on its axis in approximately 24 hours, producing day and night.",
+      "generalExplanation": "Earth completes one rotation on its axis in approximately 24 hours, producing day and night.",
+      "hints": [
+        "Topic: Earth Science"
+      ],
+      "tags": [
+        "geography",
+        "earth science",
+        "area-11",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "12 hours",
+          "isCorrect": false,
+          "explanation": "Incorrect. '12 hours' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "48 hours",
+          "isCorrect": false,
+          "explanation": "Incorrect. '48 hours' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "24 hours",
+          "isCorrect": true,
+          "explanation": "Correct. Earth completes one rotation on its axis in approximately 24 hours, producing day and night."
+        },
+        {
+          "id": "opt-4",
+          "text": "365 days",
+          "isCorrect": false,
+          "explanation": "Incorrect. '365 days' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 245",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 245,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 245,
+        "sourceArea": "Area 11",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    },
+    "issues": [
+      {
+        "code": "UNIT_INCONSISTENCY_DISTRACTOR",
+        "field": "distractors",
+        "severity": "error",
+        "message": "Correct answer unit ('hours') does not match distractor unit ('days').",
+        "suggestedFix": "Ensure all choices use 'hours'."
+      }
+    ],
+    "score": 68
+  }
+]

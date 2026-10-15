@@ -5,27 +5,33 @@ import { ArrowUpRight, Sparkles, Activity } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-// 1. PageHeader
+// 1. PageHeader — Editorial Masthead Style
 interface PageHeaderProps {
   title: string;
   description?: string;
+  eyebrow?: string;
   children?: React.ReactNode;
 }
 
-export function PageHeader({ title, description, children }: PageHeaderProps) {
+export function PageHeader({ title, description, eyebrow, children }: PageHeaderProps) {
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between pb-2">
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between pb-5 border-b border-border">
       <div className="space-y-1">
-        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+        {eyebrow && (
+          <p className="font-mono text-[10px] uppercase tracking-widest font-bold text-[#2855F5]">
+            {eyebrow}
+          </p>
+        )}
+        <h1 className="font-display text-2xl sm:text-3xl font-black tracking-tight text-foreground uppercase">
           {title}
         </h1>
         {description && (
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl leading-relaxed">
             {description}
           </p>
         )}
       </div>
-      {children && <div className="flex items-center gap-2">{children}</div>}
+      {children && <div className="flex items-center gap-2 shrink-0">{children}</div>}
     </div>
   );
 }
@@ -38,7 +44,7 @@ export function DashboardContainer({ children }: { children: React.ReactNode }) 
 // 3. DashboardGrid
 export function DashboardGrid({ children }: { children: React.ReactNode }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
       {children}
     </div>
   );
@@ -47,13 +53,16 @@ export function DashboardGrid({ children }: { children: React.ReactNode }) {
 // 4. SectionTitle
 export function SectionTitle({ title }: { title: string }) {
   return (
-    <h2 className="text-lg font-bold text-gray-900 dark:text-white pb-1">
-      {title}
-    </h2>
+    <div className="flex items-center gap-2 pb-1">
+      <div className="w-1.5 h-3.5 bg-[#2855F5]" />
+      <h2 className="font-display text-sm font-bold uppercase tracking-wider text-foreground">
+        {title}
+      </h2>
+    </div>
   );
 }
 
-// 5. StatsCard
+// 5. StatsCard — High Precision Metric Tile
 interface StatsCardProps {
   title: string;
   value: string | number;
@@ -64,30 +73,30 @@ interface StatsCardProps {
 
 export function StatsCard({ title, value, change, isPositive = true, icon }: StatsCardProps) {
   return (
-    <Card className="border border-gray-200 dark:border-gray-800 bg-white/60 dark:bg-gray-900/60 backdrop-blur-md shadow-sm">
-      <CardContent className="p-6">
-        <div className="flex items-center justify-between">
-          <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-            {title}
-          </p>
-          {icon && <div className="text-gray-400 dark:text-gray-500">{icon}</div>}
-        </div>
-        <div className="mt-2 flex items-baseline justify-between">
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">
-            {value}
-          </p>
-          {change && (
-            <span
-              className={`inline-flex items-center text-xs font-medium ${
-                isPositive ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"
-              }`}
-            >
-              {change}
-            </span>
-          )}
-        </div>
-      </CardContent>
-    </Card>
+    <div className="p-4 rounded-[3px] bg-card border border-border hover:border-foreground/30 transition-colors flex flex-col justify-between">
+      <div className="flex items-center justify-between pb-2 border-b border-border/40">
+        <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+          {title}
+        </p>
+        {icon && <div className="text-muted-foreground/70">{icon}</div>}
+      </div>
+      <div className="mt-3 flex items-baseline justify-between">
+        <p className="font-display text-2xl sm:text-3xl font-black text-foreground tabular-nums tracking-tight">
+          {value}
+        </p>
+        {change && (
+          <span
+            className={`inline-flex items-center px-1.5 py-0.5 rounded-[2px] font-mono text-[10px] font-bold ${
+              isPositive
+                ? "bg-[#DFFF43] text-[#111318]"
+                : "bg-[#E85D3F]/15 text-[#E85D3F]"
+            }`}
+          >
+            {change}
+          </span>
+        )}
+      </div>
+    </div>
   );
 }
 
@@ -101,17 +110,19 @@ interface DashboardCardProps {
 
 export function DashboardCard({ title, description, children, className }: DashboardCardProps) {
   return (
-    <Card className={`border border-gray-200 dark:border-gray-800 bg-white/60 dark:bg-gray-900/60 backdrop-blur-md shadow-sm ${className || ""}`}>
-      <CardHeader className="p-6">
-        <CardTitle className="text-lg font-bold text-gray-900 dark:text-white">{title}</CardTitle>
-        {description && <CardDescription className="text-xs">{description}</CardDescription>}
-      </CardHeader>
-      <CardContent className="px-6 pb-6 pt-0">{children}</CardContent>
-    </Card>
+    <div className={`p-5 rounded-[3px] bg-card border border-border ${className || ""}`}>
+      <div className="pb-3 mb-4 border-b border-border/60 flex flex-col gap-0.5">
+        <h3 className="font-display text-sm sm:text-base font-bold text-foreground uppercase tracking-tight">
+          {title}
+        </h3>
+        {description && <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>}
+      </div>
+      <div>{children}</div>
+    </div>
   );
 }
 
-// 7. QuickActionCard
+// 7. QuickActionCard — Editorial Action Tile
 interface QuickActionCardProps {
   title: string;
   description: string;
@@ -128,25 +139,26 @@ export function QuickActionCard({
   actionLabel = "Start",
 }: QuickActionCardProps) {
   return (
-    <Card className="border border-gray-200 dark:border-gray-800 bg-white/60 dark:bg-gray-900/60 backdrop-blur-md hover:border-primary/50 dark:hover:border-primary/50 transition-all shadow-sm">
-      <CardContent className="p-6 flex flex-col h-full justify-between">
-        <div className="space-y-2">
-          <div className="flex items-center space-x-3 text-primary">
-            {icon || <Sparkles className="h-5 w-5" />}
-            <h3 className="text-base font-bold text-gray-900 dark:text-white">{title}</h3>
-          </div>
-          <p className="text-xs text-gray-500 dark:text-gray-400">{description}</p>
+    <Link
+      href={href}
+      className="group block p-4 rounded-[3px] bg-card border border-border hover:border-[#2855F5] transition-colors relative"
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex items-center gap-2.5 text-[#2855F5]">
+          {icon || <Sparkles className="h-4 w-4" />}
+          <h4 className="font-display text-sm font-bold text-foreground group-hover:text-[#2855F5] transition-colors">
+            {title}
+          </h4>
         </div>
-        <div className="mt-4 pt-2">
-          <Link href={href}>
-            <Button size="sm" className="w-full flex items-center justify-center space-x-1">
-              <span>{actionLabel}</span>
-              <ArrowUpRight className="h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
-      </CardContent>
-    </Card>
+        <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-[#2855F5] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+      </div>
+      <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+        {description}
+      </p>
+      <div className="mt-3 flex items-center gap-1 font-mono text-[10px] uppercase font-bold text-[#2855F5] tracking-wider">
+        <span>{actionLabel}</span>
+      </div>
+    </Link>
   );
 }
 
@@ -154,59 +166,56 @@ export function QuickActionCard({
 interface ActivityItem {
   id: string;
   title: string;
+  description: string;
   time: string;
-  description?: string;
 }
 
-export function ActivityCard({ title, items }: { title: string; items: ActivityItem[] }) {
+export function ActivityCard({
+  title = "Recent Activity",
+  activities,
+  items,
+}: {
+  title?: string;
+  activities?: ActivityItem[];
+  items?: ActivityItem[];
+}) {
+  const list = items || activities || [];
+
   return (
-    <DashboardCard title={title} description="Your most recent activities and changes">
-      <div className="flow-root">
-        <ul className="-mb-8">
-          {items.map((item, itemIdx) => (
-            <li key={item.id}>
-              <div className="relative pb-8">
-                {itemIdx !== items.length - 1 ? (
-                  <span
-                    className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-gray-800"
-                    aria-hidden="true"
-                  />
-                ) : null}
-                <div className="relative flex space-x-3">
-                  <div>
-                    <span className="h-8 w-8 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                      <Activity className="h-4 w-4" />
-                    </span>
-                  </div>
-                  <div className="flex-1 min-w-0 pt-1.5">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white">
-                      {item.title}
-                    </p>
-                    {item.description && (
-                      <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                        {item.description}
-                      </p>
-                    )}
-                    <span className="text-[10px] text-gray-400 dark:text-gray-500 block mt-1">
-                      {item.time}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+    <div className="p-4 rounded-[3px] bg-card border border-border">
+      <div className="flex items-center gap-2 pb-3 mb-3 border-b border-border/60">
+        <Activity className="h-4 w-4 text-[#2855F5]" />
+        <h4 className="font-display text-xs uppercase font-bold tracking-wider text-foreground">
+          {title}
+        </h4>
       </div>
-    </DashboardCard>
+      <div className="divide-y divide-border/50">
+        {list.map((act) => (
+          <div key={act.id} className="py-2.5 first:pt-0 last:pb-0 flex items-start justify-between gap-2">
+            <div>
+              <p className="text-xs font-semibold text-foreground">{act.title}</p>
+              <p className="text-[11px] text-muted-foreground mt-0.5">{act.description}</p>
+            </div>
+            <span className="font-mono text-[10px] text-muted-foreground whitespace-nowrap">
+              {act.time}
+            </span>
+          </div>
+        ))}
+        {list.length === 0 && (
+          <p className="py-4 text-center text-xs font-mono text-muted-foreground">No recent events logged</p>
+        )}
+      </div>
+    </div>
   );
 }
 
 // 9. EmptyDashboard
 interface EmptyDashboardProps {
   title: string;
-  description: string;
+  description?: string;
   actionLabel?: string;
   onAction?: () => void;
+  icon?: React.ReactNode;
 }
 
 export function EmptyDashboard({
@@ -214,43 +223,29 @@ export function EmptyDashboard({
   description,
   actionLabel,
   onAction,
+  icon,
 }: EmptyDashboardProps) {
   return (
-    <div className="text-center py-12 px-4 rounded-2xl border border-dashed border-gray-300 dark:border-gray-800 bg-white/30 dark:bg-gray-900/30 backdrop-blur-sm">
-      <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-400">
-        <Sparkles className="h-6 w-6" />
+    <div className="p-8 sm:p-12 rounded-[3px] bg-card border border-border border-dashed text-center flex flex-col items-center justify-center space-y-3">
+      <div className="w-10 h-10 rounded-[2px] bg-muted/60 border border-border flex items-center justify-center text-muted-foreground">
+        {icon || <Activity className="w-5 h-5 text-[#2855F5]" />}
       </div>
-      <h3 className="mt-4 text-base font-bold text-gray-900 dark:text-white">{title}</h3>
-      <p className="mt-2 text-xs text-gray-500 dark:text-gray-400 max-w-sm mx-auto">{description}</p>
-      {actionLabel && onAction && (
-        <div className="mt-6">
-          <Button onClick={onAction} className="bg-primary hover:bg-primary/90 text-white">
-            {actionLabel}
-          </Button>
-        </div>
+      <div className="space-y-1 max-w-md">
+        <h3 className="font-display text-sm sm:text-base font-bold text-foreground uppercase tracking-tight">
+          {title}
+        </h3>
+        {description && <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>}
+      </div>
+      {actionLabel && (
+        <Button
+          size="sm"
+          onClick={onAction}
+          className="mt-2 bg-[#2855F5] hover:bg-[#1f44c7] text-white font-mono text-xs tracking-wider rounded-[3px]"
+        >
+          {actionLabel}
+        </Button>
       )}
     </div>
   );
 }
 
-// 10. Breadcrumb (alternative standalone display if needed)
-export function Breadcrumb({ items }: { items: { name: string; href: string }[] }) {
-  return (
-    <nav className="flex text-sm text-gray-500 dark:text-gray-400 space-x-1 items-center">
-      {items.map((item, idx) => (
-        <div key={item.href} className="flex items-center space-x-1">
-          {idx > 0 && <span>/</span>}
-          {idx === items.length - 1 ? (
-            <span className="font-semibold text-gray-900 dark:text-white capitalize">
-              {item.name}
-            </span>
-          ) : (
-            <Link href={item.href} className="hover:text-primary transition-colors capitalize">
-              {item.name}
-            </Link>
-          )}
-        </div>
-      ))}
-    </nav>
-  );
-}

@@ -1,0 +1,1927 @@
+[
+  {
+    "id": "qb-area05-0006",
+    "title": "Which annual date is designated as National Space Day in India to commemorate the Chandrayaan-3 landing?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area05-0006",
+      "title": "Which annual date is designated as National Space Day in India to commemorate the Chandrayaan-3 landing?",
+      "description": "Source: Current Affairs Study Material — Area 5 (Page 83)",
+      "type": "mcq_single",
+      "subject": "Science & Astronomy",
+      "category": "Space Exploration",
+      "topic": "National Observances",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 6-8",
+      "grade": "Grade 6-8",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "National Space Day is celebrated annually in India on 23 August to commemorate the historic landing of Chandrayaan-3.",
+      "generalExplanation": "National Space Day is celebrated annually in India on 23 August to commemorate the historic landing of Chandrayaan-3.",
+      "hints": [
+        "Topic: National Observances"
+      ],
+      "tags": [
+        "science & astronomy",
+        "national observances",
+        "area-5",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "2 September",
+          "isCorrect": false,
+          "explanation": "Incorrect. '2 September' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "23 August",
+          "isCorrect": true,
+          "explanation": "Correct. National Space Day is celebrated annually in India on 23 August to commemorate the historic landing of Chandrayaan-3."
+        },
+        {
+          "id": "opt-3",
+          "text": "28 February",
+          "isCorrect": false,
+          "explanation": "Incorrect. '28 February' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "14 July",
+          "isCorrect": false,
+          "explanation": "Incorrect. '14 July' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 83",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 83,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 83,
+        "sourceArea": "Area 5",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area06-0002",
+    "title": "What was India's final standing on the overall medal tally at the 2026 Asian Games in Aichi-Nagoya?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area06-0002",
+      "title": "What was India's final standing on the overall medal tally at the 2026 Asian Games in Aichi-Nagoya?",
+      "description": "Source: Current Affairs Study Material — Area 6 (Page 107)",
+      "type": "mcq_single",
+      "subject": "Sports & Athletics",
+      "category": "Major Tournaments",
+      "topic": "Asian Games",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 6-8",
+      "grade": "Grade 6-8",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "India placed 4th overall behind China, Japan, and South Korea, finishing with 85 total medals.",
+      "generalExplanation": "India placed 4th overall behind China, Japan, and South Korea, finishing with 85 total medals.",
+      "hints": [
+        "Topic: Asian Games"
+      ],
+      "tags": [
+        "sports & athletics",
+        "asian games",
+        "area-6",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "3rd",
+          "isCorrect": false,
+          "explanation": "Incorrect. '3rd' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "2nd",
+          "isCorrect": false,
+          "explanation": "Incorrect. '2nd' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "1st",
+          "isCorrect": false,
+          "explanation": "Incorrect. '1st' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "4th",
+          "isCorrect": true,
+          "explanation": "Correct. India placed 4th overall behind China, Japan, and South Korea, finishing with 85 total medals."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 107",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 107,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 107,
+        "sourceArea": "Area 6",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area11-0001",
+    "title": "How long does the planet Earth take to complete one full rotation on its axis, causing day and night?",
+    "status": "QUARANTINED",
+    "score": 68,
+    "issues": [
+      {
+        "code": "UNIT_INCONSISTENCY_DISTRACTOR",
+        "field": "distractors",
+        "severity": "error",
+        "message": "Correct answer unit ('hours') does not match distractor unit ('days').",
+        "suggestedFix": "Ensure all choices use 'hours'."
+      }
+    ],
+    "question": {
+      "id": "qb-area11-0001",
+      "title": "How long does the planet Earth take to complete one full rotation on its axis, causing day and night?",
+      "description": "Source: Current Affairs Study Material — Area 11 (Page 245)",
+      "type": "mcq_single",
+      "subject": "Geography",
+      "category": "Indian & World Geography",
+      "topic": "Earth Science",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Earth completes one rotation on its axis in approximately 24 hours, producing day and night.",
+      "generalExplanation": "Earth completes one rotation on its axis in approximately 24 hours, producing day and night.",
+      "hints": [
+        "Topic: Earth Science"
+      ],
+      "tags": [
+        "geography",
+        "earth science",
+        "area-11",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "12 hours",
+          "isCorrect": false,
+          "explanation": "Incorrect. '12 hours' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "48 hours",
+          "isCorrect": false,
+          "explanation": "Incorrect. '48 hours' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "24 hours",
+          "isCorrect": true,
+          "explanation": "Correct. Earth completes one rotation on its axis in approximately 24 hours, producing day and night."
+        },
+        {
+          "id": "opt-4",
+          "text": "365 days",
+          "isCorrect": false,
+          "explanation": "Incorrect. '365 days' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 245",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 245,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 245,
+        "sourceArea": "Area 11",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-0001",
+    "title": "On which date did the Constitution of India formally come into effect in 1950, commemorated annually as Republic Day?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-0001",
+      "title": "On which date did the Constitution of India formally come into effect in 1950, commemorated annually as Republic Day?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 384)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "National & International Days",
+      "topic": "National Days",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "India became a Republic on 26 January 1950 when the Constitution officially came into effect.",
+      "generalExplanation": "India became a Republic on 26 January 1950 when the Constitution officially came into effect.",
+      "hints": [
+        "Topic: National Days"
+      ],
+      "tags": [
+        "general knowledge",
+        "national days",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "26 January",
+          "isCorrect": true,
+          "explanation": "Correct. India became a Republic on 26 January 1950 when the Constitution officially came into effect."
+        },
+        {
+          "id": "opt-2",
+          "text": "15 August",
+          "isCorrect": false,
+          "explanation": "Incorrect. '15 August' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "2 October",
+          "isCorrect": false,
+          "explanation": "Incorrect. '2 October' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "26 November",
+          "isCorrect": false,
+          "explanation": "Incorrect. '26 November' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 384",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 384,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 384,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-0003",
+    "title": "World Water Day is celebrated globally on 22 March, while international Earth Day is observed on which date?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-0003",
+      "title": "World Water Day is celebrated globally on 22 March, while international Earth Day is observed on which date?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 386)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "National & International Days",
+      "topic": "Environmental Days",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "World Water Day is on 22 March, whereas Earth Day is celebrated on 22 April.",
+      "generalExplanation": "World Water Day is on 22 March, whereas Earth Day is celebrated on 22 April.",
+      "hints": [
+        "Topic: Environmental Days"
+      ],
+      "tags": [
+        "general knowledge",
+        "environmental days",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "5 June",
+          "isCorrect": false,
+          "explanation": "Incorrect. '5 June' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "22 May",
+          "isCorrect": false,
+          "explanation": "Incorrect. '22 May' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "22 April",
+          "isCorrect": true,
+          "explanation": "Correct. World Water Day is on 22 March, whereas Earth Day is celebrated on 22 April."
+        },
+        {
+          "id": "opt-4",
+          "text": "21 March",
+          "isCorrect": false,
+          "explanation": "Incorrect. '21 March' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 386",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 386,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 386,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-0004",
+    "title": "On which annual date is World Environment Day observed globally under the leadership of the UNEP?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-0004",
+      "title": "On which annual date is World Environment Day observed globally under the leadership of the UNEP?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 386)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "National & International Days",
+      "topic": "Environmental Days",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "World Environment Day is celebrated internationally on 5 June.",
+      "generalExplanation": "World Environment Day is celebrated internationally on 5 June.",
+      "hints": [
+        "Topic: Environmental Days"
+      ],
+      "tags": [
+        "general knowledge",
+        "environmental days",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "16 September",
+          "isCorrect": false,
+          "explanation": "Incorrect. '16 September' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "8 June",
+          "isCorrect": false,
+          "explanation": "Incorrect. '8 June' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "5 June",
+          "isCorrect": true,
+          "explanation": "Correct. World Environment Day is celebrated internationally on 5 June."
+        },
+        {
+          "id": "opt-4",
+          "text": "22 April",
+          "isCorrect": false,
+          "explanation": "Incorrect. '22 April' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 386",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 386,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 386,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-0007",
+    "title": "On which date is Kargil Vijay Diwas observed across India to honour the Armed Forces' victory in the 1999 Kargil conflict?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-0007",
+      "title": "On which date is Kargil Vijay Diwas observed across India to honour the Armed Forces' victory in the 1999 Kargil conflict?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 388)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "National & International Days",
+      "topic": "Military Memorials",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Kargil Vijay Diwas is observed on 26 July every year.",
+      "generalExplanation": "Kargil Vijay Diwas is observed on 26 July every year.",
+      "hints": [
+        "Topic: Military Memorials"
+      ],
+      "tags": [
+        "general knowledge",
+        "military memorials",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "8 October",
+          "isCorrect": false,
+          "explanation": "Incorrect. '8 October' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "16 December",
+          "isCorrect": false,
+          "explanation": "Incorrect. '16 December' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "26 July",
+          "isCorrect": true,
+          "explanation": "Correct. Kargil Vijay Diwas is observed on 26 July every year."
+        },
+        {
+          "id": "opt-4",
+          "text": "15 August",
+          "isCorrect": false,
+          "explanation": "Incorrect. '15 August' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 388",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 388,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 388,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-0008",
+    "title": "Which date commemorates the birth anniversary of hockey legend Major Dhyan Chand as India's National Sports Day?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-0008",
+      "title": "Which date commemorates the birth anniversary of hockey legend Major Dhyan Chand as India's National Sports Day?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 389)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "National & International Days",
+      "topic": "Sports Observances",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "National Sports Day is celebrated on 29 August on the birth anniversary of Major Dhyan Chand.",
+      "generalExplanation": "National Sports Day is celebrated on 29 August on the birth anniversary of Major Dhyan Chand.",
+      "hints": [
+        "Topic: Sports Observances"
+      ],
+      "tags": [
+        "general knowledge",
+        "sports observances",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "29 August",
+          "isCorrect": true,
+          "explanation": "Correct. National Sports Day is celebrated on 29 August on the birth anniversary of Major Dhyan Chand."
+        },
+        {
+          "id": "opt-2",
+          "text": "5 September",
+          "isCorrect": false,
+          "explanation": "Incorrect. '5 September' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "29 July",
+          "isCorrect": false,
+          "explanation": "Incorrect. '29 July' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "15 August",
+          "isCorrect": false,
+          "explanation": "Incorrect. '15 August' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 389",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 389,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 389,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-0016",
+    "title": "On which date did the Constituent Assembly adopt the Constitution of India in 1949, now celebrated as Constitution Day (Samvidhan Divas)?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-0016",
+      "title": "On which date did the Constituent Assembly adopt the Constitution of India in 1949, now celebrated as Constitution Day (Samvidhan Divas)?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 392)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "National & International Days",
+      "topic": "Constitutional History",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "The Constitution was adopted on 26 November 1949 and came into force on 26 January 1950.",
+      "generalExplanation": "The Constitution was adopted on 26 November 1949 and came into force on 26 January 1950.",
+      "hints": [
+        "Topic: Constitutional History"
+      ],
+      "tags": [
+        "general knowledge",
+        "constitutional history",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "26 January",
+          "isCorrect": false,
+          "explanation": "Incorrect. '26 January' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "9 December",
+          "isCorrect": false,
+          "explanation": "Incorrect. '9 December' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "15 August",
+          "isCorrect": false,
+          "explanation": "Incorrect. '15 August' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "26 November",
+          "isCorrect": true,
+          "explanation": "Correct. The Constitution was adopted on 26 November 1949 and came into force on 26 January 1950."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 392",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 392,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 392,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-0018",
+    "title": "On which date is United Nations Day celebrated globally to commemorate the coming into force of the UN Charter in 1945?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-0018",
+      "title": "On which date is United Nations Day celebrated globally to commemorate the coming into force of the UN Charter in 1945?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 397)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "National & International Days",
+      "topic": "UN Observances",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "United Nations Day is celebrated annually on 24 October.",
+      "generalExplanation": "United Nations Day is celebrated annually on 24 October.",
+      "hints": [
+        "Topic: UN Observances"
+      ],
+      "tags": [
+        "general knowledge",
+        "un observances",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "24 October",
+          "isCorrect": true,
+          "explanation": "Correct. United Nations Day is celebrated annually on 24 October."
+        },
+        {
+          "id": "opt-2",
+          "text": "21 September",
+          "isCorrect": false,
+          "explanation": "Incorrect. '21 September' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "10 December",
+          "isCorrect": false,
+          "explanation": "Incorrect. '10 December' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "5 June",
+          "isCorrect": false,
+          "explanation": "Incorrect. '5 June' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 397",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 397,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 397,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-0019",
+    "title": "On which date is Human Rights Day observed globally to commemorate the Universal Declaration of Human Rights adopted in 1948?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-0019",
+      "title": "On which date is Human Rights Day observed globally to commemorate the Universal Declaration of Human Rights adopted in 1948?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 398)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "National & International Days",
+      "topic": "Human Rights",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Human Rights Day is celebrated on 10 December every year.",
+      "generalExplanation": "Human Rights Day is celebrated on 10 December every year.",
+      "hints": [
+        "Topic: Human Rights"
+      ],
+      "tags": [
+        "general knowledge",
+        "human rights",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "11 December",
+          "isCorrect": false,
+          "explanation": "Incorrect. '11 December' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "10 December",
+          "isCorrect": true,
+          "explanation": "Correct. Human Rights Day is celebrated on 10 December every year."
+        },
+        {
+          "id": "opt-3",
+          "text": "24 October",
+          "isCorrect": false,
+          "explanation": "Incorrect. '24 October' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "20 November",
+          "isCorrect": false,
+          "explanation": "Incorrect. '20 November' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 398",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 398,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 398,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-001",
+    "title": "On which date is World Wetlands Day celebrated globally to mark the 1971 Ramsar Convention?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-001",
+      "title": "On which date is World Wetlands Day celebrated globally to mark the 1971 Ramsar Convention?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 400)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 2 February.",
+      "generalExplanation": "Verified observance date: 2 February.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "5 June",
+          "isCorrect": false,
+          "explanation": "Incorrect. '5 June' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "22 April",
+          "isCorrect": false,
+          "explanation": "Incorrect. '22 April' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "2 February",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 2 February."
+        },
+        {
+          "id": "opt-4",
+          "text": "22 March",
+          "isCorrect": false,
+          "explanation": "Incorrect. '22 March' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 400",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 400,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 400,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-002",
+    "title": "On which date is International Women's Day celebrated annually across the world?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-002",
+      "title": "On which date is International Women's Day celebrated annually across the world?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 401)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 8 March.",
+      "generalExplanation": "Verified observance date: 8 March.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "21 June",
+          "isCorrect": false,
+          "explanation": "Incorrect. '21 June' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "8 September",
+          "isCorrect": false,
+          "explanation": "Incorrect. '8 September' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "8 March",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 8 March."
+        },
+        {
+          "id": "opt-4",
+          "text": "11 February",
+          "isCorrect": false,
+          "explanation": "Incorrect. '11 February' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 401",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 401,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 401,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-003",
+    "title": "On which date is World Tuberculosis (TB) Day observed globally by the WHO?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-003",
+      "title": "On which date is World Tuberculosis (TB) Day observed globally by the WHO?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 401)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 24 March.",
+      "generalExplanation": "Verified observance date: 24 March.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "4 February",
+          "isCorrect": false,
+          "explanation": "Incorrect. '4 February' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "7 April",
+          "isCorrect": false,
+          "explanation": "Incorrect. '7 April' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "24 March",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 24 March."
+        },
+        {
+          "id": "opt-4",
+          "text": "1 December",
+          "isCorrect": false,
+          "explanation": "Incorrect. '1 December' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 401",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 401,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 401,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-004",
+    "title": "On which date is World Malaria Day observed to promote global malaria prevention?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-004",
+      "title": "On which date is World Malaria Day observed to promote global malaria prevention?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 401)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 25 April.",
+      "generalExplanation": "Verified observance date: 25 April.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "7 April",
+          "isCorrect": false,
+          "explanation": "Incorrect. '7 April' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "25 April",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 25 April."
+        },
+        {
+          "id": "opt-3",
+          "text": "24 March",
+          "isCorrect": false,
+          "explanation": "Incorrect. '24 March' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "31 May",
+          "isCorrect": false,
+          "explanation": "Incorrect. '31 May' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 401",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 401,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 401,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-005",
+    "title": "On which date is World No Tobacco Day observed globally to highlight the health hazards of tobacco?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-005",
+      "title": "On which date is World No Tobacco Day observed globally to highlight the health hazards of tobacco?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 401)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 31 May.",
+      "generalExplanation": "Verified observance date: 31 May.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "5 June",
+          "isCorrect": false,
+          "explanation": "Incorrect. '5 June' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "7 April",
+          "isCorrect": false,
+          "explanation": "Incorrect. '7 April' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "14 June",
+          "isCorrect": false,
+          "explanation": "Incorrect. '14 June' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "31 May",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 31 May."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 401",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 401,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 401,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-006",
+    "title": "On which date is World Oceans Day celebrated globally for marine conservation?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-006",
+      "title": "On which date is World Oceans Day celebrated globally for marine conservation?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 401)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 8 June.",
+      "generalExplanation": "Verified observance date: 8 June.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "22 April",
+          "isCorrect": false,
+          "explanation": "Incorrect. '22 April' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "8 June",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 8 June."
+        },
+        {
+          "id": "opt-3",
+          "text": "5 June",
+          "isCorrect": false,
+          "explanation": "Incorrect. '5 June' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "22 March",
+          "isCorrect": false,
+          "explanation": "Incorrect. '22 March' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 401",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 401,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 401,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-007",
+    "title": "On which date is World Blood Donor Day celebrated annually on 14 June?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-007",
+      "title": "On which date is World Blood Donor Day celebrated annually on 14 June?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 401)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 14 June.",
+      "generalExplanation": "Verified observance date: 14 June.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "1 July",
+          "isCorrect": false,
+          "explanation": "Incorrect. '1 July' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "12 August",
+          "isCorrect": false,
+          "explanation": "Incorrect. '12 August' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "7 April",
+          "isCorrect": false,
+          "explanation": "Incorrect. '7 April' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "14 June",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 14 June."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 401",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 401,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 401,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-008",
+    "title": "On which date is World Hepatitis Day observed to increase global awareness of viral hepatitis?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-008",
+      "title": "On which date is World Hepatitis Day observed to increase global awareness of viral hepatitis?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 402)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 28 July.",
+      "generalExplanation": "Verified observance date: 28 July.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "1 July",
+          "isCorrect": false,
+          "explanation": "Incorrect. '1 July' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "28 July",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 28 July."
+        },
+        {
+          "id": "opt-3",
+          "text": "14 June",
+          "isCorrect": false,
+          "explanation": "Incorrect. '14 June' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "26 July",
+          "isCorrect": false,
+          "explanation": "Incorrect. '26 July' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 402",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 402,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 402,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-009",
+    "title": "On which date is International Youth Day observed by the United Nations?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-009",
+      "title": "On which date is International Youth Day observed by the United Nations?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 402)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 12 August.",
+      "generalExplanation": "Verified observance date: 12 August.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "15 August",
+          "isCorrect": false,
+          "explanation": "Incorrect. '15 August' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "12 August",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 12 August."
+        },
+        {
+          "id": "opt-3",
+          "text": "14 November",
+          "isCorrect": false,
+          "explanation": "Incorrect. '14 November' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "5 September",
+          "isCorrect": false,
+          "explanation": "Incorrect. '5 September' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 402",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 402,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 402,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-010",
+    "title": "On which date is International Literacy Day observed worldwide by UNESCO?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-010",
+      "title": "On which date is International Literacy Day observed worldwide by UNESCO?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 402)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 8 September.",
+      "generalExplanation": "Verified observance date: 8 September.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "14 September",
+          "isCorrect": false,
+          "explanation": "Incorrect. '14 September' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "5 September",
+          "isCorrect": false,
+          "explanation": "Incorrect. '5 September' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "2 October",
+          "isCorrect": false,
+          "explanation": "Incorrect. '2 October' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "8 September",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 8 September."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 402",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 402,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 402,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-011",
+    "title": "On which date is Hindi Diwas celebrated across India?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-011",
+      "title": "On which date is Hindi Diwas celebrated across India?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 402)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 14 September.",
+      "generalExplanation": "Verified observance date: 14 September.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "15 September",
+          "isCorrect": false,
+          "explanation": "Incorrect. '15 September' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "14 September",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 14 September."
+        },
+        {
+          "id": "opt-3",
+          "text": "5 September",
+          "isCorrect": false,
+          "explanation": "Incorrect. '5 September' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "26 January",
+          "isCorrect": false,
+          "explanation": "Incorrect. '26 January' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 402",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 402,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 402,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-012",
+    "title": "On which date is World Tourism Day observed by the UN Tourism organization?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-012",
+      "title": "On which date is World Tourism Day observed by the UN Tourism organization?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 403)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 27 September.",
+      "generalExplanation": "Verified observance date: 27 September.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "24 October",
+          "isCorrect": false,
+          "explanation": "Incorrect. '24 October' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "16 October",
+          "isCorrect": false,
+          "explanation": "Incorrect. '16 October' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "21 September",
+          "isCorrect": false,
+          "explanation": "Incorrect. '21 September' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "27 September",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 27 September."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 403",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 403,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 403,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-013",
+    "title": "On which date is World Food Day celebrated under the Food and Agriculture Organization (FAO)?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-013",
+      "title": "On which date is World Food Day celebrated under the Food and Agriculture Organization (FAO)?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 403)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 16 October.",
+      "generalExplanation": "Verified observance date: 16 October.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "24 October",
+          "isCorrect": false,
+          "explanation": "Incorrect. '24 October' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "16 September",
+          "isCorrect": false,
+          "explanation": "Incorrect. '16 September' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "16 October",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 16 October."
+        },
+        {
+          "id": "opt-4",
+          "text": "10 December",
+          "isCorrect": false,
+          "explanation": "Incorrect. '10 December' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 403",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 403,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 403,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-014",
+    "title": "On which date is World Diabetes Day celebrated globally on 14 November?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-014",
+      "title": "On which date is World Diabetes Day celebrated globally on 14 November?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 403)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 14 November.",
+      "generalExplanation": "Verified observance date: 14 November.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "1 December",
+          "isCorrect": false,
+          "explanation": "Incorrect. '1 December' does not match the verified source record."
+        },
+        {
+          "id": "opt-2",
+          "text": "7 April",
+          "isCorrect": false,
+          "explanation": "Incorrect. '7 April' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "24 March",
+          "isCorrect": false,
+          "explanation": "Incorrect. '24 March' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "14 November",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 14 November."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 403",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 403,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 403,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-015",
+    "title": "On which date is World AIDS Day observed globally to raise awareness about HIV?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-015",
+      "title": "On which date is World AIDS Day observed globally to raise awareness about HIV?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 403)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 1 December.",
+      "generalExplanation": "Verified observance date: 1 December.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "1 December",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 1 December."
+        },
+        {
+          "id": "opt-2",
+          "text": "14 November",
+          "isCorrect": false,
+          "explanation": "Incorrect. '14 November' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "10 December",
+          "isCorrect": false,
+          "explanation": "Incorrect. '10 December' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "24 October",
+          "isCorrect": false,
+          "explanation": "Incorrect. '24 October' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 403",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 403,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 403,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  },
+  {
+    "id": "qb-area16-ext-016",
+    "title": "On which date is International Mountain Day observed by the UN on 11 December?",
+    "status": "APPROVED",
+    "score": 100,
+    "issues": [],
+    "question": {
+      "id": "qb-area16-ext-016",
+      "title": "On which date is International Mountain Day observed by the UN on 11 December?",
+      "description": "Source: Current Affairs Study Material — Area 16 (Page 403)",
+      "type": "mcq_single",
+      "subject": "General Knowledge",
+      "category": "Important Days & Dates",
+      "topic": "Days & Events",
+      "difficulty": "Easy",
+      "gradeLevel": "Grade 3-5",
+      "grade": "Grade 3-5",
+      "marks": 1,
+      "timeLimitSeconds": 60,
+      "explanation": "Verified observance date: 11 December.",
+      "generalExplanation": "Verified observance date: 11 December.",
+      "hints": [
+        "Topic: Days & Events"
+      ],
+      "tags": [
+        "general knowledge",
+        "days & events",
+        "area-16",
+        "pdf-rebuild",
+        "verified-source"
+      ],
+      "options": [
+        {
+          "id": "opt-1",
+          "text": "11 December",
+          "isCorrect": true,
+          "explanation": "Correct. Verified observance date: 11 December."
+        },
+        {
+          "id": "opt-2",
+          "text": "22 December",
+          "isCorrect": false,
+          "explanation": "Incorrect. '22 December' does not match the verified source record."
+        },
+        {
+          "id": "opt-3",
+          "text": "5 June",
+          "isCorrect": false,
+          "explanation": "Incorrect. '5 June' does not match the verified source record."
+        },
+        {
+          "id": "opt-4",
+          "text": "10 December",
+          "isCorrect": false,
+          "explanation": "Incorrect. '10 December' does not match the verified source record."
+        }
+      ],
+      "source": "Source PDF media_1791985307979.pdf, Page 403",
+      "sourceDocument": "media_1791985307979.pdf",
+      "sourcePage": 403,
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "metadata": {
+        "sourcePdf": "media_1791985307979.pdf",
+        "sourcePage": 403,
+        "sourceArea": "Area 16",
+        "provenance": "SOURCE_KNOWLEDGE_PIPELINE",
+        "validationStatus": "APPROVED"
+      }
+    }
+  }
+]

@@ -1,0 +1,966 @@
+[
+  {
+    "id": "qb-area01-0001",
+    "area": "Area 1",
+    "page": 1,
+    "title": "In which year was the Union Public Service Commission (UPSC) established in India?",
+    "correct": "1926",
+    "options": [
+      "1926",
+      "1919",
+      "1935",
+      "1947"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The Union Public Service Commission (UPSC) was established in 1926 following the Lee Commission recommendations."
+  },
+  {
+    "id": "qb-area01-0016",
+    "area": "Area 1",
+    "page": 6,
+    "title": "Which manufacturing division delivered its 2,000th aero-engine in October 2026, marking six decades of aero-engine production?",
+    "correct": "HAL Koraput, Odisha",
+    "options": [
+      "HAL Koraput, Odisha",
+      "HAL Kanpur, Uttar Pradesh",
+      "HAL Bengaluru, Karnataka",
+      "HAL Nashik, Maharashtra"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Hindustan Aeronautics Limited (HAL) Koraput division in Odisha achieved the milestone of delivering its 2,000th aero-engine."
+  },
+  {
+    "id": "qb-area01-0030",
+    "area": "Area 1",
+    "page": 13,
+    "title": "A free-flow tolling system requires vehicles to stop at barriers to scan physical toll receipts.",
+    "correct": "False",
+    "options": [
+      "True",
+      "False"
+    ],
+    "type": "true_false",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "A Multi-Lane Free Flow tolling system is barrierless, allowing vehicles to pass without stopping at conventional physical toll gates."
+  },
+  {
+    "id": "qb-area10-0001",
+    "area": "Area 10",
+    "page": 214,
+    "title": "In which year was the Paris Agreement on climate change adopted under the UNFCCC?",
+    "correct": "2015",
+    "options": [
+      "2010",
+      "2018",
+      "2015",
+      "2021"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The Paris Agreement was adopted by 196 parties at COP21 in Paris on 12 December 2015."
+  },
+  {
+    "id": "qb-area10-0018",
+    "area": "Area 10",
+    "page": 237,
+    "title": "What catastrophic mountain hazard does the meteorological abbreviation 'GLOF' stand for?",
+    "correct": "Glacial Lake Outburst Flood",
+    "options": [
+      "Glacial Lake Outburst Flood",
+      "Glacial Low-Oxygen Freezing",
+      "Gravitational Lithosphere Oceanic Fault",
+      "Geothermal Landslide Outflow Formation"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": false,
+    "explanation": "GLOF stands for Glacial Lake Outburst Flood, a sudden catastrophic breach and drainage of glacial meltwater lakes in high mountain ranges."
+  },
+  {
+    "id": "qb-area05-ext-016",
+    "area": "Area 10",
+    "page": 240,
+    "title": "Which international convention regulates global trade in specimens of endangered wild animals and plants?",
+    "correct": "CITES",
+    "options": [
+      "Ramsar Convention",
+      "CBD",
+      "CITES",
+      "UNFCCC"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Verified science/space fact: CITES."
+  },
+  {
+    "id": "qb-area11-0002",
+    "area": "Area 11",
+    "page": 245,
+    "title": "What is the name of the imaginary line at 0\u00b0 latitude that divides the Earth into the Northern and Southern Hemispheres?",
+    "correct": "Equator",
+    "options": [
+      "Arctic Circle",
+      "Prime Meridian",
+      "Tropic of Cancer",
+      "Equator"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The Equator is the 0\u00b0 latitude line dividing the Northern and Southern hemispheres."
+  },
+  {
+    "id": "qb-area11-0028",
+    "area": "Area 11",
+    "page": 248,
+    "title": "Which is India's smallest Union Territory by land area, situated in the Arabian Sea?",
+    "correct": "Lakshadweep",
+    "options": [
+      "Daman and Diu",
+      "Chandigarh",
+      "Lakshadweep",
+      "Puducherry"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Lakshadweep, with its capital at Kavaratti, is India's smallest Union Territory."
+  },
+  {
+    "id": "qb-area11-ut-004",
+    "area": "Area 11",
+    "page": 248,
+    "title": "What is the administrative capital of the Union Territory of Puducherry?",
+    "correct": "Puducherry",
+    "options": [
+      "Yanam",
+      "Mahe",
+      "Karaikal",
+      "Puducherry"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The administrative capital of Puducherry is Puducherry."
+  },
+  {
+    "id": "qb-area12-0001",
+    "area": "Area 12",
+    "page": 277,
+    "title": "What term describes a published written account of a person's life composed by that person themselves?",
+    "correct": "Autobiography",
+    "options": [
+      "Anthology",
+      "Monograph",
+      "Autobiography",
+      "Biography"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "An autobiography is the life story of a person written by that person themselves."
+  },
+  {
+    "id": "qb-area12-bk-003",
+    "area": "Area 12",
+    "page": 277,
+    "title": "Who wrote the acclaimed literary work 'The God of Small Things'?",
+    "correct": "Arundhati Roy",
+    "options": [
+      "Kiran Desai",
+      "Anita Desai",
+      "Jhumpa Lahiri",
+      "Arundhati Roy"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": false,
+    "explanation": "'The God of Small Things' was written by Arundhati Roy."
+  },
+  {
+    "id": "qb-area12-bk-024",
+    "area": "Area 12",
+    "page": 291,
+    "title": "Who wrote the acclaimed literary work 'Charlotte's Web'?",
+    "correct": "E. B. White",
+    "options": [
+      "Dr. Seuss",
+      "E. B. White",
+      "Beverly Cleary",
+      "Roald Dahl"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": false,
+    "explanation": "'Charlotte's Web' was written by E. B. White."
+  },
+  {
+    "id": "qb-area13-0001",
+    "area": "Area 13",
+    "page": 299,
+    "title": "Which landmark film released in 1913 directed by Dadasaheb Phalke is recognized as India's first full-length feature film?",
+    "correct": "Raja Harishchandra",
+    "options": [
+      "Raja Harishchandra",
+      "Ayodhyecha Raja",
+      "Alam Ara",
+      "Kisan Kanya"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Raja Harishchandra (1913) directed by Dadasaheb Phalke was India's first full-length silent feature film."
+  },
+  {
+    "id": "qb-area13-0013",
+    "area": "Area 13",
+    "page": 305,
+    "title": "'Bhangra' is a celebrated traditional folk dance originating from which Indian State?",
+    "correct": "Punjab",
+    "options": [
+      "Punjab",
+      "Haryana",
+      "Rajasthan",
+      "Gujarat"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Bhangra is a vibrant folk dance belonging to Punjab."
+  },
+  {
+    "id": "qb-area13-0023",
+    "area": "Area 13",
+    "page": 314,
+    "title": "The famous traditional art form 'Tanjore painting' is indigenous to which Indian State?",
+    "correct": "Tamil Nadu",
+    "options": [
+      "Karnataka",
+      "Andhra Pradesh",
+      "Tamil Nadu",
+      "Kerala"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Tanjore painting is a celebrated traditional visual art heritage of Tamil Nadu."
+  },
+  {
+    "id": "qb-area14-0001",
+    "area": "Area 14",
+    "page": 323,
+    "title": "Which human organ is recognized as the largest organ of the human body overall?",
+    "correct": "Skin",
+    "options": [
+      "Brain",
+      "Lungs",
+      "Skin",
+      "Liver"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The skin is the largest organ of the human body, serving as a protective barrier and sensory organ."
+  },
+  {
+    "id": "qb-area14-0021",
+    "area": "Area 14",
+    "page": 339,
+    "title": "Which Scottish physician and microbiologist discovered the world's first effective natural antibiotic, Penicillin, in 1928?",
+    "correct": "Alexander Fleming",
+    "options": [
+      "Edward Jenner",
+      "Louis Pasteur",
+      "Robert Koch",
+      "Alexander Fleming"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Sir Alexander Fleming discovered penicillin from Penicillium notatum mould in 1928."
+  },
+  {
+    "id": "qb-area14-ext-015",
+    "area": "Area 14",
+    "page": 339,
+    "title": "Who discovered X-rays in 1895, earning the inaugural Nobel Prize in Physics?",
+    "correct": "Wilhelm Conrad R\u00f6ntgen",
+    "options": [
+      "Ernest Rutherford",
+      "Max Planck",
+      "Marie Curie",
+      "Wilhelm Conrad R\u00f6ntgen"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Verified fact from health syllabus: Wilhelm Conrad R\u00f6ntgen."
+  },
+  {
+    "id": "qb-area15-0001",
+    "area": "Area 15",
+    "page": 354,
+    "title": "What does the foundational computer hardware acronym 'CPU' stand for?",
+    "correct": "Central Processing Unit",
+    "options": [
+      "Core Program Utility",
+      "Central Processing Unit",
+      "Computer Processing Unit",
+      "Central Printing Unit"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "CPU stands for Central Processing Unit, commonly called the brain of the computer."
+  },
+  {
+    "id": "qb-area15-0017",
+    "area": "Area 15",
+    "page": 373,
+    "title": "In digital technology and computing, what does the abbreviation 'QR code' stand for?",
+    "correct": "Quick Response code",
+    "options": [
+      "Query Route code",
+      "Queue Register code",
+      "Quantum Record code",
+      "Quick Response code"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": false,
+    "explanation": "'QR code' stands for Quick Response code."
+  },
+  {
+    "id": "qb-area15-ext-012",
+    "area": "Area 15",
+    "page": 376,
+    "title": "What is the primary computer architecture function of the Graphics Processing Unit (GPU)?",
+    "correct": "Accelerating mathematical parallel processing for graphics and AI workloads",
+    "options": [
+      "Regulating power supply voltages",
+      "Executing operating system boot sequences",
+      "Storing long-term read-only BIOS code",
+      "Accelerating mathematical parallel processing for graphics and AI workloads"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Verified fact: Accelerating mathematical parallel processing for graphics and AI workloads."
+  },
+  {
+    "id": "qb-area16-0002",
+    "area": "Area 16",
+    "page": 385,
+    "title": "Which landmark scientific discovery is commemorated every year on 28 February as India's National Science Day?",
+    "correct": "Raman Effect (discovered by Sir C. V. Raman in 1928)",
+    "options": [
+      "Discovery of the Zero by Aryabhata",
+      "Raman Effect (discovered by Sir C. V. Raman in 1928)",
+      "Discovery of Cosmic Radiations by Homi Bhabha",
+      "Successful launch of Aryabhata satellite"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "National Science Day on 28 February commemorates the discovery of the Raman Effect by Sir C. V. Raman."
+  },
+  {
+    "id": "qb-area16-0012",
+    "area": "Area 16",
+    "page": 390,
+    "title": "Which environmental date commemorates the signing of the Montreal Protocol on substances that deplete the ozone layer?",
+    "correct": "World Ozone Day (16 September)",
+    "options": [
+      "World Water Day (22 March)",
+      "World Environment Day (5 June)",
+      "Earth Day (22 April)",
+      "World Ozone Day (16 September)"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": false,
+    "explanation": "World Ozone Day is celebrated annually on 16 September."
+  },
+  {
+    "id": "qb-area16-0020",
+    "area": "Area 16",
+    "page": 395,
+    "title": "Which day celebrated on 20 May raises global awareness about the ecological importance of pollinators such as honeybees?",
+    "correct": "World Bee Day",
+    "options": [
+      "World Wildlife Day",
+      "World Bee Day",
+      "World Animal Day",
+      "Earth Day"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "World Bee Day is observed on 20 May to recognize the critical role of bees and other pollinators in ecosystems."
+  },
+  {
+    "id": "qb-area17-0001",
+    "area": "Area 17",
+    "page": 412,
+    "title": "What is the official state animal of Tamil Nadu, native to the rocky crags of the Western Ghats?",
+    "correct": "Nilgiri tahr",
+    "options": [
+      "Bengal tiger",
+      "Lion-tailed macaque",
+      "Indian elephant",
+      "Nilgiri tahr"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The state animal of Tamil Nadu is the Nilgiri tahr (an endangered mountain ungulate), NOT the tiger."
+  },
+  {
+    "id": "qb-area17-ext-001",
+    "area": "Area 17",
+    "page": 416,
+    "title": "Which hill station in the Western Ghats of Tamil Nadu is famously known as the 'Princess of Hill Stations'?",
+    "correct": "Kodaikanal (Palani Hills)",
+    "options": [
+      "Ooty (Nilgiris)",
+      "Valparai (Anamalai Hills)",
+      "Yercaud (Shevaroy Hills)",
+      "Kodaikanal (Palani Hills)"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": false,
+    "explanation": "Verified Tamil Nadu heritage fact: Kodaikanal (Palani Hills)."
+  },
+  {
+    "id": "qb-area17-ext-020",
+    "area": "Area 17",
+    "page": 463,
+    "title": "What is the height of the monumental stone statue of saint-poet Thiruvalluvar erected on an island off Kanyakumari?",
+    "correct": "133 feet (representing 133 chapters of Thirukkural)",
+    "options": [
+      "150 feet",
+      "108 feet",
+      "133 feet (representing 133 chapters of Thirukkural)",
+      "100 feet"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Verified Tamil Nadu heritage fact: 133 feet (representing 133 chapters of Thirukkural)."
+  },
+  {
+    "id": "qb-area18-0001",
+    "area": "Area 18",
+    "page": 453,
+    "title": "Which historic southern city in Tamil Nadu is famously known as the 'Athens of the East' and the 'Temple City'?",
+    "correct": "Madurai",
+    "options": [
+      "Thanjavur",
+      "Kanchipuram",
+      "Madurai",
+      "Tiruchirappalli"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Madurai is celebrated as the 'Athens of the East' because of its ancient cultural heritage, Greek trade ties, and towering temple architecture."
+  },
+  {
+    "id": "qb-area18-0010",
+    "area": "Area 18",
+    "page": 468,
+    "title": "In which Indian State is the sacred pilgrimage shrine of Sri Venkateswara Temple on Tirumala hills situated?",
+    "correct": "Andhra Pradesh",
+    "options": [
+      "Tamil Nadu",
+      "Telangana",
+      "Karnataka",
+      "Andhra Pradesh"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": false,
+    "explanation": "Tirupati and the Sri Venkateswara Temple on Tirumala are located in Andhra Pradesh (Tirupati district), NOT in Tamil Nadu."
+  },
+  {
+    "id": "qb-area18-0018",
+    "area": "Area 18",
+    "page": 476,
+    "title": "Which deep-water multi-purpose commercial transshipment port project is located near Thiruvananthapuram in Kerala?",
+    "correct": "Vizhinjam International Seaport",
+    "options": [
+      "Kollam Port",
+      "Vizhinjam International Seaport",
+      "Cochin Port",
+      "Beypore Port"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 3-5",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Vizhinjam Port in Kerala is an international deep-water multipurpose container transshipment hub."
+  },
+  {
+    "id": "qb-area02-0001",
+    "area": "Area 2",
+    "page": 14,
+    "title": "Which country holds the G20 Presidency in 2026?",
+    "correct": "United States",
+    "options": [
+      "Brazil",
+      "South Africa",
+      "India",
+      "United States"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The United States holds the G20 Presidency in 2026."
+  },
+  {
+    "id": "qb-area02-0028",
+    "area": "Area 2",
+    "page": 25,
+    "title": "What is the official capital city of Japan?",
+    "correct": "Tokyo",
+    "options": [
+      "Tokyo",
+      "Kyoto",
+      "Hiroshima",
+      "Osaka"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The capital of Japan is Tokyo."
+  },
+  {
+    "id": "qb-area02-cap-019",
+    "area": "Area 2",
+    "page": 263,
+    "title": "What is the capital city of Pakistan?",
+    "correct": "Islamabad",
+    "options": [
+      "Lahore",
+      "Rawalpindi",
+      "Karachi",
+      "Islamabad"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The capital city of Pakistan is Islamabad."
+  },
+  {
+    "id": "qb-area03-0001",
+    "area": "Area 3",
+    "page": 37,
+    "title": "Which numbered President of India is Droupadi Murmu?",
+    "correct": "15th",
+    "options": [
+      "15th",
+      "13th",
+      "14th",
+      "16th"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Droupadi Murmu took office in July 2022 as the 15th President of India."
+  },
+  {
+    "id": "qb-area03-0011",
+    "area": "Area 3",
+    "page": 45,
+    "title": "What percentage of seats is reserved for women in the Lok Sabha and State Assemblies under the 106th Constitutional Amendment?",
+    "correct": "33%",
+    "options": [
+      "50%",
+      "30%",
+      "25%",
+      "33%"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The Constitution (106th Amendment) Act, 2023 provides 33% reservation for women in the Lok Sabha and State Legislative Assemblies."
+  },
+  {
+    "id": "qb-area03-0021",
+    "area": "Area 3",
+    "page": 53,
+    "title": "A Republic is a state where the head of state is a hereditary monarch rather than an elected official.",
+    "correct": "False",
+    "options": [
+      "True",
+      "False"
+    ],
+    "type": "true_false",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "In a Republic, the head of state is elected by the people or their representatives, not a hereditary monarch."
+  },
+  {
+    "id": "qb-area04-0001",
+    "area": "Area 4",
+    "page": 58,
+    "title": "What is the total financial outlay approved for India's Research, Development and Innovation (RDI) Scheme?",
+    "correct": "\u20b91 lakh crore",
+    "options": [
+      "\u20b950,000 crore",
+      "\u20b92 lakh crore",
+      "\u20b91 lakh crore",
+      "\u20b975,000 crore"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The RDI Scheme has an overall outlay of \u20b91 lakh crore over 6 years to promote private-sector R&D in strategic technologies."
+  },
+  {
+    "id": "qb-area04-0009",
+    "area": "Area 4",
+    "page": 64,
+    "title": "How many supercomputers were deployed under India's National Supercomputing Mission (NSM) by September 2026?",
+    "correct": "40",
+    "options": [
+      "40",
+      "25",
+      "50",
+      "32"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "40 supercomputers with an aggregate compute capacity of approximately 68 petaflops were deployed under NSM by September 2026."
+  },
+  {
+    "id": "qb-area04-0016",
+    "area": "Area 4",
+    "page": 75,
+    "title": "Machine Learning is an umbrella concept that encompasses all forms of Artificial Intelligence.",
+    "correct": "False",
+    "options": [
+      "True",
+      "False"
+    ],
+    "type": "true_false",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Machine Learning is a subset/approach within Artificial Intelligence, not the reverse."
+  },
+  {
+    "id": "qb-area05-0001",
+    "area": "Area 5",
+    "page": 81,
+    "title": "In which year was the Indian Space Research Organisation (ISRO) formally established?",
+    "correct": "1969",
+    "options": [
+      "1972",
+      "1962",
+      "1975",
+      "1969"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "ISRO was founded in 1969 under the Department of Space, with headquarters in Bengaluru."
+  },
+  {
+    "id": "qb-area05-0011",
+    "area": "Area 5",
+    "page": 87,
+    "title": "Who became the first Indian to visit the International Space Station (ISS) as part of the Axiom-4 mission in 2025?",
+    "correct": "Group Captain Shubhanshu Shukla",
+    "options": [
+      "Group Captain Angad Pratap",
+      "Captain Prashanth Balakrishnan Nair",
+      "Group Captain Shubhanshu Shukla",
+      "Wing Commander Rakesh Sharma"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Group Captain Shubhanshu Shukla became the first Indian to visit the ISS and the second Indian citizen in space after Rakesh Sharma."
+  },
+  {
+    "id": "qb-area05-ext-004",
+    "area": "Area 5",
+    "page": 88,
+    "title": "What is the planned mission objective of India's upcoming Chandrayaan-4 lunar mission?",
+    "correct": "Lunar sample return to Earth",
+    "options": [
+      "Manned lunar landing",
+      "Permanent lunar south pole base",
+      "Lunar sample return to Earth",
+      "Lunar orbit communication relay"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Verified science/space fact: Lunar sample return to Earth."
+  },
+  {
+    "id": "qb-area06-0001",
+    "area": "Area 6",
+    "page": 107,
+    "title": "Which city and prefecture hosted the 20th Asian Games from September to October 2026?",
+    "correct": "Aichi-Nagoya, Japan",
+    "options": [
+      "Tokyo, Japan",
+      "Doha, Qatar",
+      "Hangzhou, China",
+      "Aichi-Nagoya, Japan"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The 20th Asian Games were held in the Aichi-Nagoya region of Japan from 19 September to 4 October 2026."
+  },
+  {
+    "id": "qb-area06-0011",
+    "area": "Area 6",
+    "page": 113,
+    "title": "Which Indian boxer won the gold medal in the women's 75 kg category at the 2026 Asian Games?",
+    "correct": "Lovlina Borgohain",
+    "options": [
+      "Lovlina Borgohain",
+      "Parveen Hooda",
+      "Mary Kom",
+      "Nikhat Zareen"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Lovlina Borgohain secured gold in the women's 75 kg boxing event."
+  },
+  {
+    "id": "qb-area06-0020",
+    "area": "Area 6",
+    "page": 127,
+    "title": "FIDE is the international governing body for competitive professional football.",
+    "correct": "False",
+    "options": [
+      "True",
+      "False"
+    ],
+    "type": "true_false",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "FIDE (F\u00e9d\u00e9ration Internationale des \u00c9checs) is the governing body for chess. Football is governed by FIFA."
+  },
+  {
+    "id": "qb-area07-0001",
+    "area": "Area 7",
+    "page": 132,
+    "title": "In which year was the Bharat Ratna, India's highest civilian honour, instituted?",
+    "correct": "1954",
+    "options": [
+      "1969",
+      "1950",
+      "1947",
+      "1954"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The Bharat Ratna was instituted on 2 January 1954 by the President of India."
+  },
+  {
+    "id": "qb-area07-0010",
+    "area": "Area 7",
+    "page": 143,
+    "title": "Which major American entertainment award recognizes excellence in Broadway theatre productions?",
+    "correct": "Tony Awards",
+    "options": [
+      "Emmy Awards",
+      "Tony Awards",
+      "Grammy Awards",
+      "Oscar Awards"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The Antoinette Perry Awards for Excellence in Broadway Theatre, commonly known as the Tony Awards, honour live Broadway productions."
+  },
+  {
+    "id": "qb-area07-0018",
+    "area": "Area 7",
+    "page": 150,
+    "title": "The Pritzker Prize is regarded as the highest international honour in which creative professional field?",
+    "correct": "Architecture",
+    "options": [
+      "Sculpture",
+      "Cinematography",
+      "Musical composition",
+      "Architecture"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "The Pritzker Architecture Prize is widely recognized as the Nobel Prize of architecture."
+  },
+  {
+    "id": "qb-area08-0001",
+    "area": "Area 8",
+    "page": 155,
+    "title": "Which parliamentary constituency does Prime Minister Narendra Modi represent in the Lok Sabha?",
+    "correct": "Varanasi",
+    "options": [
+      "Gandhinagar",
+      "Lucknow",
+      "New Delhi",
+      "Varanasi"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Prime Minister Narendra Modi represents the Varanasi constituency in Uttar Pradesh."
+  },
+  {
+    "id": "qb-area08-0010",
+    "area": "Area 8",
+    "page": 168,
+    "title": "Which Indian mathematician from the Indian Institute of Science (IISc), Bengaluru, was awarded the prestigious Ramanujan Prize in 2026 for work in algebraic number theory?",
+    "correct": "Mahesh Kakde",
+    "options": [
+      "Mahesh Kakde",
+      "Neena Gupta",
+      "Manjul Bhargava",
+      "Akshay Venkatesh"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Professor Mahesh Kakde of IISc Bengaluru was awarded the 2026 Ramanujan Prize for outstanding contributions to algebraic number theory."
+  },
+  {
+    "id": "qb-area08-0019",
+    "area": "Area 8",
+    "page": 177,
+    "title": "Who serves as the Secretary-General of the United Nations headquartered in New York?",
+    "correct": "Ant\u00f3nio Guterres",
+    "options": [
+      "Kofi Annan",
+      "Ban Ki-moon",
+      "Ant\u00f3nio Guterres",
+      "Boutros Boutros-Ghali"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": false,
+    "explanation": "Ant\u00f3nio Guterres is the Secretary-General of the United Nations."
+  },
+  {
+    "id": "qb-area09-0001",
+    "area": "Area 9",
+    "page": 185,
+    "title": "What does the foundational economic abbreviation 'GDP' stand for?",
+    "correct": "Gross Domestic Product",
+    "options": [
+      "General Domestic Price",
+      "Global Domestic Production",
+      "Gross Development Plan",
+      "Gross Domestic Product"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "GDP stands for Gross Domestic Product, representing the total monetary value of final goods and services produced within a country's borders."
+  },
+  {
+    "id": "qb-area09-0011",
+    "area": "Area 9",
+    "page": 194,
+    "title": "How much effective capital expenditure (Capex) was allocated by the Union Government for FY2026\u201327?",
+    "correct": "\u20b917.15 lakh crore",
+    "options": [
+      "\u20b911.11 lakh crore",
+      "\u20b914.00 lakh crore",
+      "\u20b917.15 lakh crore",
+      "\u20b922.50 lakh crore"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Effective capital expenditure for FY2026\u201327 was budgeted at \u20b917.15 lakh crore, representing approximately 4.4% of GDP."
+  },
+  {
+    "id": "qb-area09-0020",
+    "area": "Area 9",
+    "page": 205,
+    "title": "According to the World Bank's October 2026 update, private AI investment in India expanded to how much in 2025?",
+    "correct": "US$4.1 billion",
+    "options": [
+      "US$2.5 billion",
+      "US$4.1 billion",
+      "US$1.2 billion",
+      "US$8.0 billion"
+    ],
+    "type": "mcq_single",
+    "grade": "Grade 6-8",
+    "single_correct": true,
+    "source_matched": true,
+    "explanation": "Private AI investment in India grew rapidly from US$1.2 billion in 2024 to US$4.1 billion in 2025."
+  }
+]

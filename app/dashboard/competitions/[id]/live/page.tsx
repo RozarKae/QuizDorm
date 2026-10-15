@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
-import { CompetitionItem } from "@/lib/types/competition";
-import { QuestionItem } from "@/lib/types/question";
-import { useLiveCompetition } from "@/lib/hooks/useLiveCompetition";
+import { useParams, useSearchParams } from "next/navigation";
+import { useLiveArena } from "@/lib/hooks/useLiveArena";
 import { CompetitionLobby } from "@/components/competitions/CompetitionLobby";
 import { HostControlPanel } from "@/components/competitions/HostControlPanel";
 import { LiveQuestionSession } from "@/components/competitions/LiveQuestionSession";
@@ -12,86 +11,42 @@ import { AnimatedLeaderboard } from "@/components/competitions/AnimatedLeaderboa
 import { WinnerPodiumScreen } from "@/components/competitions/WinnerPodiumScreen";
 import { LiveAnalyticsCard } from "@/components/competitions/LiveAnalyticsCard";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Monitor, User } from "lucide-react";
-import { toast } from "sonner";
+import { ArrowLeft, Monitor, User, AlertCircle, RefreshCw } from "lucide-react";
+import { useAuth } from "@/components/auth/AuthProvider";
 
-const mockCompItem: CompetitionItem = {
-  id: "comp-1",
-  title: "National Science & Olympiad Championship 2026",
-  description: "Compete against students nationwide in real-time.",
-  quizId: "q-101",
-  quizTitle: "Advanced Science & Physics Olympiad",
-  code: "QD-8492",
-  hostId: "usr-1",
-  hostName: "Oakridge Quiz Federation",
-  status: "Live",
-  startDate: "Jul 23, 2026",
-  startTime: "07:30 PM",
-  durationMinutes: 45,
-  maxParticipants: 1000,
-  currentParticipantsCount: 840,
-  isPublic: true,
-  negativeMarking: true,
-  timeBonus: true,
-  participants: [],
-  announcements: [],
-  createdAt: "Jul 2026",
-  updatedAt: "Jul 2026",
-};
+function LiveArenaContent() {
+  const routeParams = useParams();
+  const searchParams = useSearchParams();
+  const { profile } = useAuth();
 
-const mockCompQuestions: QuestionItem[] = [
-  {
-    id: "q-1",
-    title: "What is the derivative of f(x) = x^3 + 4x^2 - 5x + 7?",
-    type: "mcq_single",
-    subject: "Mathematics",
-    category: "Algebra",
-    topic: "Calculus",
-    difficulty: "Medium",
-    marks: 4,
-    timeLimitSeconds: 30,
-    options: [
-      { id: "opt-1", text: "3x^2 + 8x - 5", isCorrect: true },
-      { id: "opt-2", text: "3x^2 + 4x - 5", isCorrect: false },
-      { id: "opt-3", text: "x^2 + 8x - 5", isCorrect: false },
-    ],
-    tags: ["calculus"],
-    createdAt: "Jul 2026",
-    updatedAt: "Jul 2026",
-  },
-  {
-    id: "q-2",
-    title: "Which of the following organic compounds contain a benzene ring?",
-    type: "mcq_multiple",
-    subject: "Science",
-    category: "Chemistry",
-    topic: "Organic Chemistry",
-    difficulty: "Hard",
-    marks: 5,
-    timeLimitSeconds: 30,
-    options: [
-      { id: "o1", text: "Toluene", isCorrect: true },
-      { id: "o2", text: "Phenol", isCorrect: true },
-      { id: "o3", text: "Methane", isCorrect: false },
-    ],
-    tags: ["chemistry"],
-    createdAt: "Jul 2026",
-    updatedAt: "Jul 2026",
-  },
-];
+  const id = (routeParams?.id as string) || "comp-1";
+  const codeParam = searchParams.get("code") || (id.startsWith("QD-") ? id : "QD-8492");
+  const roleParam = searchParams.get("role");
+  const initialHostSecret = searchParams.get("hostSecret") || undefined;
 
-export default function LiveCompetitionEnginePage({ params }: { params: { id: string } }) {
-  const [userRole, setUserRole] = useState<"host" | "participant">("host");
+  const [userRole, setUserRole] = useState<"host" | "participant">(
+    roleParam === "participant" ? "participant" : "host"
+  );
 
   const {
+    session,
     stage,
+    status,
     currentQIndex,
     currentQuestion,
+    totalQuestions,
     questionTimeRemaining,
     isPaused,
     participants,
     announcements,
     userAnswerSubmitted,
+    selectedOptionId,
+    submissionsCount,
+    isLoading,
+    connectionError,
+    currentParticipant,
+    joinSession,
+    submitAnswer,
     startCompetition,
     nextQuestionOrPodium,
     pauseCompetition,
@@ -101,34 +56,108 @@ export default function LiveCompetitionEnginePage({ params }: { params: { id: st
     endCompetition,
     postAnnouncement,
     kickParticipant,
-    submitAnswer,
-  } = useLiveCompetition(mockCompItem, mockCompQuestions);
+  } = useLiveArena({
+    code: codeParam,
+    isHost: userRole === "host",
+    hostSecret: initialHostSecret,
+    participantName: profile?.name || "Contender",
+    autoJoin: userRole === "participant",
+  });
+
+  // If user role changes to participant, ensure enrollment
+  useEffect(() => {
+    if (userRole === "participant" && session && !currentParticipant) {
+      joinSession(profile?.name || "Contender", profile?.avatar);
+    }
+  }, [userRole, session, currentParticipant, profile, joinSession]);
+
+  if (isLoading && !session) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-3 font-mono text-xs">
+        <RefreshCw className="w-6 h-6 animate-spin text-[#2855F5]" />
+        <p className="text-muted-foreground">Connecting to Live Arena Engine ({codeParam})...</p>
+      </div>
+    );
+  }
+
+  if (connectionError && !session) {
+    return (
+      <div className="max-w-md mx-auto my-12 p-6 rounded-[4px] border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/30 text-center space-y-4">
+        <AlertCircle className="w-10 h-10 text-red-600 mx-auto" />
+        <h2 className="text-base font-bold text-red-900 dark:text-red-200">Unable to Connect to Arena</h2>
+        <p className="text-xs text-red-700 dark:text-red-300">{connectionError}</p>
+        <div className="pt-2 flex justify-center gap-3">
+          <Link href="/dashboard/competitions">
+            <Button variant="outline" size="sm" className="text-xs font-mono">
+              Return to Competitions
+            </Button>
+          </Link>
+          <Link href="/student/live/join">
+            <Button size="sm" className="bg-[#2855F5] text-white text-xs font-mono">
+              Enter Different PIN
+            </Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const competitionItem = {
+    id: session?.id || id,
+    title: session?.title || "National Science & Olympiad Championship 2026",
+    description: session?.description || "Compete against students nationwide in real-time.",
+    quizId: "q-101",
+    quizTitle: session?.quizTitle || "Advanced Science & Physics Olympiad",
+    code: session?.code || codeParam,
+    hostId: "usr-1",
+    hostName: session?.hostName || "Oakridge Quiz Federation",
+    status: (session?.status === "WAITING" ? "Lobby" : session?.status === "ACTIVE" ? "Live" : "Ended") as any,
+    startDate: "Today",
+    startTime: "Live Now",
+    durationMinutes: session?.settings?.durationMinutes || 45,
+    maxParticipants: session?.settings?.maxParticipants || 1000,
+    currentParticipantsCount: participants.length,
+    isPublic: true,
+    negativeMarking: session?.settings?.negativeMarking ?? true,
+    timeBonus: session?.settings?.timeBonus ?? true,
+    participants,
+    announcements,
+  };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-7xl mx-auto">
       {/* Top Header & Role Switcher */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <Link href="/dashboard/competitions" className="inline-flex items-center text-xs font-medium text-gray-500 hover:text-gray-900 dark:hover:text-white">
-          <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Exit Room
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-4">
+        <Link
+          href="/dashboard/competitions"
+          className="inline-flex items-center text-xs font-mono text-muted-foreground hover:text-foreground"
+        >
+          <ArrowLeft className="w-3.5 h-3.5 mr-1" /> EXIT ARENA
         </Link>
 
-        {/* Role view toggle for testing */}
-        <div className="flex items-center space-x-2 bg-gray-100 dark:bg-gray-900 p-1 rounded-xl">
+        {/* Role view toggle for testing & multi-context verification */}
+        <div className="flex items-center space-x-1.5 bg-card border border-border p-1 rounded-[3px]">
           <button
+            type="button"
             onClick={() => setUserRole("host")}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center ${
-              userRole === "host" ? "bg-white dark:bg-gray-800 text-indigo-600 shadow-sm" : "text-gray-400"
+            className={`px-3 py-1.5 rounded-[2px] text-xs font-mono font-bold transition-all flex items-center ${
+              userRole === "host"
+                ? "bg-[#2855F5] text-white shadow-xs"
+                : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            <Monitor className="w-3.5 h-3.5 mr-1" /> Host View Mode
+            <Monitor className="w-3.5 h-3.5 mr-1.5" /> Host Control Desk
           </button>
           <button
+            type="button"
             onClick={() => setUserRole("participant")}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center ${
-              userRole === "participant" ? "bg-white dark:bg-gray-800 text-indigo-600 shadow-sm" : "text-gray-400"
+            className={`px-3 py-1.5 rounded-[2px] text-xs font-mono font-bold transition-all flex items-center ${
+              userRole === "participant"
+                ? "bg-[#2855F5] text-white shadow-xs"
+                : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            <User className="w-3.5 h-3.5 mr-1" /> Participant View Mode
+            <User className="w-3.5 h-3.5 mr-1.5" /> Participant View
           </button>
         </div>
       </div>
@@ -149,10 +178,11 @@ export default function LiveCompetitionEnginePage({ params }: { params: { id: st
       {/* STAGE 1: LOBBY */}
       {stage === "lobby" && (
         <CompetitionLobby
-          competition={mockCompItem}
+          competition={competitionItem}
           participants={participants}
           announcements={announcements}
           isHost={userRole === "host"}
+          currentParticipantName={currentParticipant?.name || profile?.name}
           onStartCompetition={startCompetition}
           onPostAnnouncement={postAnnouncement}
           onKickParticipant={kickParticipant}
@@ -161,19 +191,31 @@ export default function LiveCompetitionEnginePage({ params }: { params: { id: st
 
       {/* STAGE 2: LIVE QUESTION SESSION */}
       {stage === "question" && currentQuestion && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           <div className="lg:col-span-8">
             <LiveQuestionSession
               question={currentQuestion}
               questionNumber={currentQIndex + 1}
-              totalQuestions={mockCompQuestions.length}
+              totalQuestions={totalQuestions || 5}
               timeRemaining={questionTimeRemaining}
               userAnswerSubmitted={userAnswerSubmitted}
+              selectedOptionId={selectedOptionId}
+              isHost={userRole === "host"}
+              submissionsCount={submissionsCount}
+              totalParticipants={participants.length}
               onOptionSubmit={submitAnswer}
             />
           </div>
           <div className="lg:col-span-4">
-            <LiveAnalyticsCard participantCount={participants.length} />
+            <LiveAnalyticsCard
+              participantCount={participants.length}
+              accuracyPercentage={submissionsCount > 0 ? 85 : 0}
+              averageResponseTimeSec={
+                currentQuestion?.timeLimitSeconds
+                  ? Math.max(1, currentQuestion.timeLimitSeconds - questionTimeRemaining)
+                  : 12
+              }
+            />
           </div>
         </div>
       )}
@@ -184,6 +226,8 @@ export default function LiveCompetitionEnginePage({ params }: { params: { id: st
           participants={participants}
           onNextQuestion={nextQuestionOrPodium}
           isHost={userRole === "host"}
+          questionExplanation={currentQuestion?.explanation}
+          correctOptionText={currentQuestion?.options?.find((o) => o.isCorrect)?.text}
         />
       )}
 
@@ -191,9 +235,17 @@ export default function LiveCompetitionEnginePage({ params }: { params: { id: st
       {stage === "winner_podium" && (
         <WinnerPodiumScreen
           participants={participants}
-          competitionTitle={mockCompItem.title}
+          competitionTitle={competitionItem.title}
         />
       )}
     </div>
+  );
+}
+
+export default function LiveCompetitionEnginePage() {
+  return (
+    <Suspense fallback={<div className="font-mono text-xs text-muted-foreground p-8">Loading Arena...</div>}>
+      <LiveArenaContent />
+    </Suspense>
   );
 }

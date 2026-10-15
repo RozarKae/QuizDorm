@@ -1,14 +1,18 @@
 import { QuestionItem } from "@/lib/types/question";
 import { DistractorAnalysis } from "@/lib/types/quality";
+import { QuestionIntelligenceValidator } from "./questionIntelligenceValidator";
 
 export class DistractorAnalyzer {
+  /**
+   * Deep pedagogical analysis of question distractors
+   */
   public static analyzeDistractors(question: Partial<QuestionItem>): DistractorAnalysis {
     const options = question.options || [];
     const suggestions: string[] = [];
 
     if (options.length === 0) {
       return {
-        plausibilityScore: 50,
+        plausibilityScore: 0,
         lengthBalanced: true,
         patternBiasDetected: false,
         optionDistributionIssue: true,
@@ -16,36 +20,46 @@ export class DistractorAnalyzer {
       };
     }
 
-    // 1. Length balance check
-    const lengths = options.map((o) => o.text.length);
-    const minL = Math.min(...lengths);
-    const maxL = Math.max(...lengths);
-    const lengthBalanced = maxL - minL <= 30;
+    // Run the deep QuestionIntelligenceValidator
+    const validation = QuestionIntelligenceValidator.validate(question as any);
 
-    if (!lengthBalanced) {
-      suggestions.push("Option lengths are significantly imbalanced. Students can guess longer options.");
-    }
-
-    // 2. Pattern bias check (e.g. 'All of the above' or 'None of the above')
-    const patternBiasDetected = options.some(
-      (o) => o.text.toLowerCase().includes("all of the above") || o.text.toLowerCase().includes("none of the above")
+    // Extract all distractor and option-related issues
+    const distractorIssues = validation.issues.filter(
+      (i) => i.field === "distractors" || i.field === "options" || i.field === "answer"
     );
 
-    if (patternBiasDetected) {
-      suggestions.push("Avoid using 'All of the above' or 'None of the above' to maintain item discrimination.");
-    }
+    distractorIssues.forEach((issue) => {
+      suggestions.push(`${issue.message}${issue.suggestedFix ? ` (Fix: ${issue.suggestedFix})` : ""}`);
+    });
 
-    // 3. Plausibility Score
-    let plausibilityScore = 88;
-    if (!lengthBalanced) plausibilityScore -= 15;
-    if (patternBiasDetected) plausibilityScore -= 10;
-    if (options.length < 4) plausibilityScore -= 10;
+    // 1. Length balance check
+    const lengths = options.map((o) => (o.text || "").length);
+    const minL = Math.min(...lengths);
+    const maxL = Math.max(...lengths);
+    const lengthBalanced = maxL - minL <= 35;
+
+    // 2. Pattern bias check (e.g. 'All of the above' or 'None of the above')
+    const patternBiasDetected = options.some((o) => {
+      const text = (o.text || "").toLowerCase();
+      return (
+        text.includes("all of the above") ||
+        text.includes("none of the above") ||
+        text.includes("both a and b")
+      );
+    });
+
+    // Option count issue
+    const optionDistributionIssue =
+      question.type === "true_false" ? options.length !== 2 : options.length < 3 || options.length > 5;
+
+    // Plausibility score derived from distractor homogeneity score
+    const plausibilityScore = validation.distractorHomogeneityScore;
 
     return {
-      plausibilityScore: Math.max(0, plausibilityScore),
+      plausibilityScore,
       lengthBalanced,
       patternBiasDetected,
-      optionDistributionIssue: options.length < 3,
+      optionDistributionIssue,
       suggestions,
     };
   }

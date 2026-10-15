@@ -1,0 +1,86 @@
+[
+  {
+    "category": "Headquarters",
+    "entity": "RBI",
+    "value": "Mumbai",
+    "page": 9
+  },
+  {
+    "category": "Headquarters",
+    "entity": "ISRO",
+    "value": "Bengaluru",
+    "page": 9
+  },
+  {
+    "category": "Headquarters",
+    "entity": "DRDO",
+    "value": "New Delhi",
+    "page": 9
+  },
+  {
+    "category": "Headquarters",
+    "entity": "UPSC",
+    "value": "New Delhi",
+    "page": 9
+  },
+  {
+    "category": "Headquarters",
+    "entity": "SEBI",
+    "value": "Mumbai",
+    "page": 9
+  },
+  {
+    "category": "Headquarters",
+    "entity": "NABARD",
+    "value": "Mumbai",
+    "page": 9
+  },
+  {
+    "category": "Headquarters",
+    "entity": "UIDAI",
+    "value": "New Delhi",
+    "page": 9
+  },
+  {
+    "category": "Headquarters",
+    "entity": "NHAI",
+    "value": "New Delhi",
+    "page": 9
+  },
+  {
+    "category": "Headquarters",
+    "entity": "DST Science & technology policy",
+    "value": "New Delhi",
+    "page": 68
+  },
+  {
+    "category": "Headquarters",
+    "entity": "IMF",
+    "value": "Washington, D.C.",
+    "page": 198
+  },
+  {
+    "category": "Headquarters",
+    "entity": "WTO",
+    "value": "Geneva",
+    "page": 199
+  },
+  {
+    "category": "Headquarters",
+    "entity": "ADB",
+    "value": "Manila",
+    "page": 199
+  },
+  {
+    "category": "Headquarters",
+    "entity": "OECD",
+    "value": "Paris",
+    "page": 199
+  },
+  {
+    "category": "Headquarters",
+    "entity": "OPEC",
+    "value": "Vienna",
+    "page": 199
+  }
+]

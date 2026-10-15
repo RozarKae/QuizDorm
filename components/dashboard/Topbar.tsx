@@ -30,14 +30,14 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
   const breadcrumbs = getBreadcrumbs();
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b border-slate-200 bg-white px-4 sm:px-6">
+    <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b border-border bg-card px-4 sm:px-6">
       <div className="flex items-center space-x-3 md:space-x-4">
         {/* Toggle Button for Mobile */}
         <Button
           variant="ghost"
           size="icon"
           onClick={onMenuClick}
-          className="md:hidden text-slate-600 hover:text-slate-900"
+          className="md:hidden text-muted-foreground hover:text-foreground rounded-[3px]"
           aria-label="Open sidebar"
         >
           <Menu className="h-5 w-5" />
@@ -51,21 +51,21 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
         </div>
 
         {/* Desktop Breadcrumbs */}
-        <nav className="hidden md:flex items-center space-x-1.5 text-xs text-slate-500 font-medium">
-          <Link href={`/${role}`} className="hover:text-slate-900 transition-colors capitalize">
+        <nav className="hidden md:flex items-center space-x-2 text-xs font-mono text-muted-foreground">
+          <Link href={`/${role}`} className="hover:text-foreground transition-colors uppercase tracking-wider text-[11px]">
             {role === "admin" ? "Platform Admin" : `${role} Portal`}
           </Link>
           {breadcrumbs.map((crumb) => {
             if (crumb.name.toLowerCase() === role.toLowerCase()) return null;
             return (
-              <div key={crumb.href} className="flex items-center space-x-1.5">
-                <span className="text-slate-300">/</span>
+              <div key={crumb.href} className="flex items-center space-x-2">
+                <span className="text-border">/</span>
                 {crumb.isLast ? (
-                  <span className="font-semibold text-slate-900 capitalize">
+                  <span className="font-semibold text-foreground uppercase tracking-wider text-[11px]">
                     {crumb.name}
                   </span>
                 ) : (
-                  <Link href={crumb.href} className="hover:text-slate-900 transition-colors capitalize">
+                  <Link href={crumb.href} className="hover:text-foreground transition-colors uppercase tracking-wider text-[11px]">
                     {crumb.name}
                   </Link>
                 )}
@@ -75,14 +75,14 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
         </nav>
       </div>
 
-      <div className="flex items-center space-x-2 sm:space-x-4">
+      <div className="flex items-center space-x-2 sm:space-x-3">
         {/* Search Input */}
         <div className="relative hidden sm:block w-48 md:w-64">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-2.5 top-2.5 h-3.5 w-3.5 text-muted-foreground" />
           <Input
             type="search"
             placeholder="Search platform..."
-            className="pl-9 h-9 w-full bg-slate-50 border-slate-200 text-xs text-slate-900 placeholder:text-slate-400 rounded-md focus-visible:ring-blue-600"
+            className="pl-8 h-8 w-full bg-muted/40 border-border text-xs text-foreground placeholder:text-muted-foreground rounded-[3px] focus-visible:ring-cobalt"
           />
         </div>
 
@@ -90,21 +90,21 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
         <Button
           variant="ghost"
           size="icon"
-          className="sm:hidden text-slate-600 hover:text-slate-900"
+          className="sm:hidden text-muted-foreground hover:text-foreground rounded-[3px]"
           aria-label="Search"
         >
-          <Search className="h-5 w-5" />
+          <Search className="h-4 w-4" />
         </Button>
 
         {/* Notifications Button */}
         <Button
           variant="ghost"
           size="icon"
-          className="relative text-slate-600 hover:text-slate-900"
+          className="relative text-muted-foreground hover:text-foreground rounded-[3px]"
           aria-label="Notifications"
         >
-          <Bell className="h-5 w-5" />
-          <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-blue-600" />
+          <Bell className="h-4 w-4" />
+          <span className="absolute top-2 right-2 h-1.5 w-1.5 rounded-full bg-coral ring-2 ring-card" />
         </Button>
 
         {/* User Profile */}

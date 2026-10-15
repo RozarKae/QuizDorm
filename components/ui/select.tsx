@@ -10,7 +10,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
     return (
       <select
         className={cn(
-          "flex h-10 w-full rounded-xl border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-600 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-gray-900 dark:text-gray-100 transition-colors shadow-sm",
+          "flex h-9 w-full rounded-[3px] border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground outline-none transition-colors focus-visible:border-[#2855F5] focus-visible:ring-1 focus-visible:ring-[#2855F5] disabled:cursor-not-allowed disabled:opacity-40 cursor-pointer",
           className
         )}
         ref={ref}
@@ -18,7 +18,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
       >
         {options
           ? options.map((opt) => (
-              <option key={opt.value} value={opt.value}>
+              <option key={opt.value} value={opt.value} className="bg-card text-foreground">
                 {opt.label}
               </option>
             ))

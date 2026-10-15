@@ -15,11 +15,15 @@ interface WeakTopicsHeatmapProps {
 
 export function WeakTopicsHeatmap({ topics }: WeakTopicsHeatmapProps) {
   return (
-    <div className="bg-white dark:bg-gray-950 p-6 rounded-3xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-4">
-      <h3 className="text-sm font-bold text-gray-900 dark:text-white flex items-center justify-between">
-        <span className="flex items-center"><Flame className="w-4 h-4 text-red-500 mr-2" /> Topic Weakness Heatmap</span>
-        <Badge className="bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300 text-[10px]">Action Needed</Badge>
-      </h3>
+    <div className="bg-card p-6 rounded-[3px] border border-border space-y-4">
+      <div className="flex items-center justify-between border-b border-border pb-3">
+        <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-foreground flex items-center">
+          <Flame className="w-3.5 h-3.5 text-[#E85D3F] mr-1.5" /> Topic Weakness Heatmap
+        </h3>
+        <Badge variant="outline" className="border-[#E85D3F]/40 bg-[#E85D3F]/10 text-[#E85D3F] text-[9px] font-mono uppercase tracking-widest rounded-[2px]">
+          ACTION NEEDED
+        </Badge>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {topics.map((item, idx) => {
@@ -27,20 +31,22 @@ export function WeakTopicsHeatmap({ topics }: WeakTopicsHeatmapProps) {
           return (
             <div
               key={idx}
-              className={`p-4 rounded-2xl border transition-all ${
+              className={`p-4 rounded-[2px] border transition-all ${
                 isHighAlert
-                  ? "bg-red-50/50 dark:bg-red-950/30 border-red-200 dark:border-red-900/50"
-                  : "bg-amber-50/50 dark:bg-amber-950/30 border-amber-200 dark:border-amber-900/50"
+                  ? "bg-[#E85D3F]/5 border-[#E85D3F]/30"
+                  : "bg-muted/40 border-border"
               }`}
             >
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-[11px] font-semibold text-gray-500">{item.subject}</span>
-                <span className={`text-xs font-mono font-extrabold ${isHighAlert ? "text-red-600" : "text-amber-600"}`}>
-                  {item.incorrectRate}% Error Rate
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">{item.subject}</span>
+                <span className={`text-xs font-mono font-extrabold ${isHighAlert ? "text-[#E85D3F]" : "text-foreground"}`}>
+                  {item.incorrectRate}% ERROR
                 </span>
               </div>
-              <h4 className="text-sm font-bold text-gray-900 dark:text-white">{item.topic}</h4>
-              <p className="text-[10px] text-gray-400 mt-1">Avg Speed: {item.avgSpeedSec}s per question</p>
+              <h4 className="text-xs font-bold font-display text-foreground leading-snug">{item.topic}</h4>
+              <p className="text-[10px] font-mono text-muted-foreground mt-2 border-t border-border/40 pt-1.5">
+                LATENCY: {item.avgSpeedSec}s / ITEM
+              </p>
             </div>
           );
         })}
@@ -48,3 +54,4 @@ export function WeakTopicsHeatmap({ topics }: WeakTopicsHeatmapProps) {
     </div>
   );
 }
+

@@ -1,45 +1,33 @@
 import { QuestionItem } from "@/lib/types/question";
 import { QualityScoreBreakdown, AnswerValidation } from "@/lib/types/quality";
+import { QuestionIntelligenceValidator } from "./questionIntelligenceValidator";
 
 export class QuestionQualityAnalyzer {
   /**
    * Evaluate overall quality score (0-100) and breakdown metrics for a question item
    */
   public static analyzeQuality(question: Partial<QuestionItem>): QualityScoreBreakdown {
-    const text = question.title || "";
+    const text = (question.title || "").trim();
     const options = question.options || [];
+
+    // Run deep quality gates
+    const deepResult = QuestionIntelligenceValidator.validate(question as any);
 
     // 1. Grammar & Spelling Score
     let grammarScore = 95;
     if (text.length < 15) grammarScore -= 20;
-    if (/[a-z]/.test(text[0])) grammarScore -= 10; // lower-case start
-    if (!/[.?!:]$/.test(text.trim())) grammarScore -= 5; // missing trailing punctuation
+    if (/[a-z]/.test(text[0])) grammarScore -= 10;
+    if (!/[.?!:]$/.test(text)) grammarScore -= 5;
 
-    // 2. Clarity & Ambiguity Score
-    let clarityScore = 90;
-    if (text.includes("???") || text.includes("...")) clarityScore -= 15;
-    if (text.length > 250) clarityScore -= 10; // overly wordy
-    if (text.length < 20) clarityScore -= 10; // too short/vague
+    // 2. Clarity & Ambiguity Score (Uses deep stem clarity score)
+    const clarityScore = deepResult.stemClarityScore;
 
-    // 3. Option Distractor Quality Score
-    let distractorScore = 85;
-    if (options.length > 0) {
-      const correctCount = options.filter((o) => o.isCorrect).length;
-      if (correctCount === 0) distractorScore -= 40;
-      if (options.length < 3) distractorScore -= 20;
+    // 3. Option Distractor Quality Score (Uses deep distractor homogeneity score)
+    const distractorScore = deepResult.distractorHomogeneityScore;
 
-      // Check option length variance
-      const lengths = options.map((o) => o.text.length);
-      const minL = Math.min(...lengths);
-      const maxL = Math.max(...lengths);
-      if (maxL - minL > 40) distractorScore -= 15; // length imbalance gives away answer
-    } else if (question.type === "mcq_single" || question.type === "mcq_multiple") {
-      distractorScore = 30;
-    }
-
-    // 4. Accuracy Score
-    let accuracyScore = 92;
-    if (!question.explanation || question.explanation.length < 10) accuracyScore -= 15;
+    // 4. Accuracy & Explanation Score
+    let accuracyScore = 90;
+    if (!question.explanation || question.explanation.length < 10) accuracyScore -= 20;
 
     // 5. Readability Score
     let readabilityScore = 88;
@@ -50,14 +38,18 @@ export class QuestionQualityAnalyzer {
     let fairnessScore = 95;
 
     // Calculate weighted overall score
-    const overallScore = Math.round(
+    let overallScore = Math.round(
       grammarScore * 0.15 +
         clarityScore * 0.25 +
-        distractorScore * 0.25 +
-        accuracyScore * 0.2 +
+        distractorScore * 0.3 +
+        accuracyScore * 0.15 +
         readabilityScore * 0.1 +
         fairnessScore * 0.05
     );
+
+    // Apply penalty for hard validation errors
+    const errorCount = deepResult.issues.filter((i) => i.severity === "error").length;
+    overallScore = Math.max(0, overallScore - errorCount * 15);
 
     return {
       grammarScore: Math.max(0, grammarScore),
@@ -71,30 +63,24 @@ export class QuestionQualityAnalyzer {
   }
 
   /**
-   * Validate answer key consistency
+   * Validate answer key consistency and option integrity
    */
   public static validateAnswerKey(question: Partial<QuestionItem>): AnswerValidation {
+    const deepResult = QuestionIntelligenceValidator.validate(question as any);
     const options = question.options || [];
-    const issues: string[] = [];
     const correctOptions = options.filter((o) => o.isCorrect);
 
-    if (question.type === "mcq_single" || question.type === "image_based") {
-      if (correctOptions.length === 0) issues.push("No correct answer selected.");
-      if (correctOptions.length > 1) issues.push("Multiple correct answers marked for a single-choice MCQ.");
-    } else if (question.type === "mcq_multiple") {
-      if (correctOptions.length === 0) issues.push("No correct answer selected for multiple-choice MCQ.");
-    }
-
-    if (!question.explanation || question.explanation.trim().length === 0) {
-      issues.push("Missing step-by-step answer explanation.");
-    }
+    const issues: string[] = deepResult.issues
+      .filter((i) => i.field === "answer" || i.field === "options" || i.field === "distractors")
+      .map((i) => i.message);
 
     return {
-      isValid: issues.length === 0,
+      isValid: deepResult.issues.filter((i) => i.severity === "error").length === 0,
       hasCorrectAnswer: correctOptions.length > 0,
-      hasMultipleAnswersWhenSingleExpected: question.type === "mcq_single" && correctOptions.length > 1,
+      hasMultipleAnswersWhenSingleExpected:
+        question.type === "mcq_single" && correctOptions.length > 1,
       contradictionDetected: false,
-      missingAnswerExplanation: !question.explanation,
+      missingAnswerExplanation: !question.explanation || question.explanation.trim().length === 0,
       issues,
     };
   }

@@ -302,32 +302,32 @@ export default function CreateOwnQuizPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-gray-950 flex flex-col">
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
       {/* Top Navigation */}
-      <header className="border-b border-slate-200 dark:border-gray-800 bg-white dark:bg-gray-900 py-3.5 px-6 sticky top-0 z-40 backdrop-blur-md">
+      <header className="border-b border-border bg-card py-3 px-6 sticky top-0 z-40 backdrop-blur-md">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-3">
             <Link href="/" className="flex items-center space-x-2">
               <Logo />
             </Link>
-            <span className="hidden sm:inline-block text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
-              Quiz Creator Studio
+            <span className="hidden sm:inline-block font-mono text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-[2px] bg-acid text-ink border border-acid">
+              QUIZ BUILDER STUDIO
             </span>
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2">
             <Button
               variant="outline"
               size="sm"
               onClick={() => setPreviewOpen(true)}
-              className="text-xs flex items-center gap-1.5"
+              className="text-xs font-mono border-border rounded-[3px] h-8 flex items-center gap-1.5"
             >
-              <Eye className="w-3.5 h-3.5" /> Preview Exam
+              <Eye className="w-3.5 h-3.5 text-cobalt" /> Preview Exam
             </Button>
             <Button
               size="sm"
               onClick={() => handleSaveAndTake(true)}
-              className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold text-xs rounded-xl shadow-md flex items-center gap-1.5"
+              className="bg-cobalt hover:bg-cobalt/90 text-white font-mono text-xs font-semibold rounded-[3px] h-8 shadow-xs flex items-center gap-1.5"
             >
               <Play className="w-3.5 h-3.5 fill-current" /> Publish & Take Now
             </Button>
@@ -336,21 +336,21 @@ export default function CreateOwnQuizPage() {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
+      <main className="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
         {/* Navigation Breadcrumb */}
         <div>
           <Link
             href="/"
-            className="inline-flex items-center text-xs font-medium text-slate-500 hover:text-slate-900 dark:hover:text-white mb-3"
+            className="inline-flex items-center text-xs font-mono uppercase tracking-wider text-muted-foreground hover:text-foreground mb-3"
           >
             <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back to Home
           </Link>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border">
             <div>
-              <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                Create Your Own Quiz
+              <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-foreground tracking-tight">
+                Create Assessment Challenge
               </h1>
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="text-xs font-mono text-muted-foreground mt-1">
                 Customize question items, configure timer limits, shuffle algorithms, and test live immediately.
               </p>
             </div>
@@ -359,43 +359,43 @@ export default function CreateOwnQuizPage() {
                 variant="outline"
                 size="sm"
                 onClick={() => setPdfModalOpen(true)}
-                className="text-xs bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-300 border-rose-200 dark:border-rose-800 hover:bg-rose-100 flex items-center gap-1.5 font-semibold"
+                className="text-xs font-mono border-border rounded-[3px] h-8 hover:bg-muted flex items-center gap-1.5 font-semibold text-foreground"
               >
-                <FileText className="w-3.5 h-3.5 text-rose-600" /> Upload PDF / Document
+                <FileText className="w-3.5 h-3.5 text-cobalt" /> Upload Document
               </Button>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={handleGenerateAIQuestions}
-                className="text-xs bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 flex items-center gap-1.5"
+                className="text-xs font-mono border-border rounded-[3px] h-8 hover:bg-muted flex items-center gap-1.5"
               >
-                <Sparkles className="w-3.5 h-3.5 text-indigo-600" /> Auto-Fill with AI
+                <Sparkles className="w-3.5 h-3.5 text-cobalt" /> Auto-Fill (AI)
               </Button>
               <Button
                 size="sm"
                 onClick={() => setPickerOpen(true)}
-                className="text-xs bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 font-semibold flex items-center gap-1.5"
+                className="text-xs font-mono bg-foreground text-background font-semibold rounded-[3px] h-8 flex items-center gap-1.5"
               >
-                <Layers className="w-3.5 h-3.5" /> Pick from Bank
+                <Layers className="w-3.5 h-3.5 text-acid" /> Pick from Bank
               </Button>
             </div>
           </div>
         </div>
 
         {/* Quick PDF Import Card Banner */}
-        <div className="bg-gradient-to-r from-rose-500/10 via-indigo-500/10 to-blue-500/10 border border-rose-200/80 dark:border-rose-900/40 rounded-3xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
+        <div className="bg-card border border-border rounded-[3px] p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
           <div className="flex items-center space-x-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-rose-600 to-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-rose-500/20">
-              <FileText className="w-6 h-6" />
+            <div className="w-10 h-10 rounded-[2px] bg-muted border border-border text-foreground flex items-center justify-center shrink-0">
+              <FileText className="w-5 h-5 text-cobalt" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                Upload PDF to Generate Live Quiz
-                <span className="text-[10px] uppercase font-extrabold px-2 py-0.5 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-300">
-                  OCR AI
+              <h3 className="text-sm font-bold font-display text-foreground flex items-center gap-2">
+                Upload PDF / Exam Paper to Generate Live Quiz
+                <span className="text-[9px] uppercase font-mono font-bold px-1.5 py-0.5 rounded-[2px] bg-acid text-ink">
+                  OCR Engine
                 </span>
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <p className="text-xs font-mono text-muted-foreground mt-0.5">
                 Upload your exam paper, question bank sheet, or study notes. The AI extracts questions, options, and answers automatically.
               </p>
             </div>
@@ -404,27 +404,27 @@ export default function CreateOwnQuizPage() {
             <Button
               onClick={() => setPdfModalOpen(true)}
               size="sm"
-              className="bg-rose-600 hover:bg-rose-700 text-white font-semibold text-xs rounded-xl px-4 py-2 shadow-sm flex items-center gap-1.5"
+              className="bg-cobalt hover:bg-cobalt/90 text-white font-mono text-xs rounded-[3px] px-3.5 h-8 shadow-xs flex items-center gap-1.5"
             >
-              <Upload className="w-3.5 h-3.5" /> Upload Document / PDF
+              <Upload className="w-3.5 h-3.5" /> Upload Document
             </Button>
             <Link href="/dashboard/ocr">
-              <Button variant="outline" size="sm" className="text-xs rounded-xl">
-                Batch OCR Studio →
+              <Button variant="outline" size="sm" className="text-xs font-mono border-border rounded-[3px] h-8 hover:bg-muted">
+                Batch OCR &rarr;
               </Button>
             </Link>
           </div>
         </div>
 
         {/* Quiz Configuration Card */}
-        <div className="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-gray-800 shadow-sm space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-100 dark:border-gray-800 pb-4">
-            <h2 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-indigo-600" /> Quiz Details & Settings
+        <div className="bg-card p-6 rounded-[3px] border border-border shadow-xs space-y-6">
+          <div className="flex items-center justify-between border-b border-border pb-4">
+            <h2 className="text-base font-bold font-display text-foreground flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-cobalt" /> Assessment Details & Parameters
             </h2>
-            <Badge className="bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs">
-              {questions.length} Questions • {totalMarks} Total Marks
-            </Badge>
+            <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-[2px] bg-muted border border-border text-foreground">
+              {questions.length} Items &bull; {totalMarks} Total Marks
+            </span>
           </div>
 
           <div className="space-y-4">
@@ -643,29 +643,31 @@ export default function CreateOwnQuizPage() {
             {questions.map((question, index) => (
               <div
                 key={question.id || index}
-                className="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-slate-200 dark:border-gray-800 shadow-xs flex items-start justify-between gap-4 transition-all hover:border-indigo-200 dark:hover:border-indigo-900"
+                className="bg-card p-4 rounded-[3px] border border-border shadow-xs flex items-start justify-between gap-4 transition-colors hover:border-cobalt/40"
               >
                 <div className="space-y-2 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="w-6 h-6 rounded-lg bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-bold text-xs flex items-center justify-center">
-                      {index + 1}
+                    <span className="w-5 h-5 rounded-[2px] bg-foreground text-background font-mono font-bold text-[10px] flex items-center justify-center">
+                      {(index + 1).toString().padStart(2, "0")}
                     </span>
                     <QuestionTypeBadge type={question.type} />
-                    <Badge
-                      className={
-                        question.difficulty === "Hard"
-                          ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300 text-[10px]"
-                          : question.difficulty === "Medium"
-                          ? "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300 text-[10px]"
-                          : "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 text-[10px]"
-                      }
-                    >
-                      {question.difficulty}
-                    </Badge>
-                    <span className="text-xs text-slate-400">• {question.marks || 1} mark(s)</span>
+                    {question.difficulty === "Hard" ? (
+                      <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] font-bold bg-coral/10 text-coral border border-coral/30">
+                        Hard
+                      </span>
+                    ) : question.difficulty === "Medium" ? (
+                      <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] font-bold bg-muted text-foreground border border-border">
+                        Medium
+                      </span>
+                    ) : (
+                      <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] font-bold bg-acid/20 text-foreground border border-acid/50">
+                        Easy
+                      </span>
+                    )}
+                    <span className="font-mono text-[11px] text-muted-foreground">&bull; {question.marks || 1} mark(s)</span>
                   </div>
 
-                  <h3 className="font-semibold text-sm text-slate-900 dark:text-white leading-snug">
+                  <h3 className="font-display font-semibold text-sm text-foreground leading-snug">
                     {question.title}
                   </h3>
 
@@ -674,17 +676,17 @@ export default function CreateOwnQuizPage() {
                       {question.options.map((opt, oIdx) => (
                         <div
                           key={opt.id || oIdx}
-                          className={`text-xs px-2.5 py-1.5 rounded-lg border flex items-center justify-between ${
+                          className={`text-xs font-mono px-2.5 py-1.5 rounded-[2px] border flex items-center justify-between ${
                             opt.isCorrect
-                              ? "bg-emerald-50 dark:bg-emerald-950/30 border-emerald-200 dark:border-emerald-900/50 text-emerald-800 dark:text-emerald-300 font-medium"
-                              : "bg-slate-50 dark:bg-gray-800/50 border-slate-200 dark:border-gray-800 text-slate-600 dark:text-slate-400"
+                              ? "bg-cobalt/5 border-cobalt/40 text-foreground font-semibold"
+                              : "bg-background/60 border-border text-muted-foreground"
                           }`}
                         >
                           <span className="truncate">
-                            {String.fromCharCode(65 + oIdx)}. {opt.text}
+                            <span className="font-bold mr-1.5">{String.fromCharCode(65 + oIdx)}.</span> {opt.text}
                           </span>
                           {opt.isCorrect && (
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 ml-1.5" />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-cobalt shrink-0 ml-1.5" />
                           )}
                         </div>
                       ))}
@@ -692,13 +694,13 @@ export default function CreateOwnQuizPage() {
                   )}
                 </div>
 
-                <div className="flex items-center space-x-1 shrink-0 pt-1">
+                <div className="flex items-center space-x-0.5 shrink-0 pt-0.5">
                   <Button
                     variant="ghost"
                     size="sm"
                     disabled={index === 0}
                     onClick={() => handleMoveQuestion(index, "up")}
-                    className="p-1 h-7 w-7 text-slate-400 hover:text-slate-700"
+                    className="p-1 h-7 w-7 rounded-[2px] text-muted-foreground hover:text-foreground"
                     title="Move Up"
                   >
                     <ArrowUp className="w-3.5 h-3.5" />
@@ -708,7 +710,7 @@ export default function CreateOwnQuizPage() {
                     size="sm"
                     disabled={index === questions.length - 1}
                     onClick={() => handleMoveQuestion(index, "down")}
-                    className="p-1 h-7 w-7 text-slate-400 hover:text-slate-700"
+                    className="p-1 h-7 w-7 rounded-[2px] text-muted-foreground hover:text-foreground"
                     title="Move Down"
                   >
                     <ArrowDown className="w-3.5 h-3.5" />
@@ -717,7 +719,7 @@ export default function CreateOwnQuizPage() {
                     variant="ghost"
                     size="sm"
                     onClick={() => handleRemoveQuestion(question.id)}
-                    className="p-1 h-7 w-7 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40"
+                    className="p-1 h-7 w-7 rounded-[2px] text-coral hover:bg-coral/10"
                     title="Delete Question"
                   >
                     <Trash2 className="w-3.5 h-3.5" />

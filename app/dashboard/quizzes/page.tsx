@@ -154,115 +154,125 @@ export default function QuizzesListPage() {
   };
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center space-x-2">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Topic-Based Quizzes</h1>
-            <Badge className="bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 font-medium text-xs">
-              Primary Organization
-            </Badge>
+    <div className="space-y-6 max-w-7xl mx-auto">
+      {/* Editorial Header */}
+      <div className="border border-border bg-card p-6 rounded-[3px] space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-4">
+          <div className="space-y-1">
+            <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-muted-foreground">
+              <span className="w-1.5 h-1.5 bg-[#2855F5] rounded-full" />
+              <span>CURRICULAR CATALOG // ASSESSMENT DIRECTORY</span>
+            </div>
+            <div className="flex items-center space-x-2.5">
+              <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-foreground">
+                Domain Assessments
+              </h1>
+              <Badge variant="outline" className="border-[#2855F5]/40 bg-[#2855F5]/10 text-[#2855F5] font-mono text-[9px] uppercase tracking-widest rounded-[2px]">
+                {quizzes.length} ASSESSMENTS
+              </Badge>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Standardized assessments organized by subject domain, with verified scoring keys and timer parameters.
+            </p>
           </div>
-          <p className="text-sm text-gray-500 mt-1">
-            Browse and take assessments organized primarily by subject topic, with optional grade and difficulty filters.
-          </p>
-        </div>
-        <div className="flex items-center space-x-3">
-          <Link href="/create-quiz">
-            <Button variant="outline" className="border-rose-200 dark:border-rose-900/60 bg-rose-50/50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 hover:bg-rose-100 text-sm font-semibold rounded-xl">
-              <FileText className="w-4 h-4 mr-1.5 text-rose-600" />
-              Upload PDF to Quiz
-            </Button>
-          </Link>
-          <Button
-            onClick={() => {
-              setInstantTopic(topicFilter !== "All" ? topicFilter : "All");
-              setInstantModalOpen(true);
-            }}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl shadow-sm"
-          >
-            <Zap className="w-4 h-4 mr-1.5 fill-current" />
-            Instant Quiz
-          </Button>
-          <Link href="/dashboard/quizzes/builder">
-            <Button variant="outline" className="border-gray-300 dark:border-gray-800 text-sm">
-              <HelpCircle className="w-4 h-4 mr-2" />
-              Builder
-            </Button>
-          </Link>
-          <Link href="/dashboard/quizzes/new">
-            <Button className="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-xl">
-              <Plus className="w-4 h-4 mr-2" />
-              Create Quiz
-            </Button>
-          </Link>
-        </div>
-      </div>
 
-      {/* TOPIC BROWSER PILLS (Primary Way Users Browse) */}
-      <div className="bg-white dark:bg-gray-950 p-5 rounded-2xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-3">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2 text-xs font-bold text-gray-600 dark:text-gray-300 uppercase tracking-wider">
-            <Layers className="w-4 h-4 text-indigo-600" />
-            <span>Browse By Topic ({topicsSummary.length} Topics)</span>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link href="/create-quiz">
+              <Button variant="outline" size="sm" className="border-border text-xs font-mono tracking-wider rounded-[3px]">
+                <FileText className="w-3.5 h-3.5 mr-1.5 text-[#2855F5]" />
+                IMPORT PDF
+              </Button>
+            </Link>
+            <Button
+              size="sm"
+              onClick={() => {
+                setInstantTopic(topicFilter !== "All" ? topicFilter : "All");
+                setInstantModalOpen(true);
+              }}
+              className="bg-[#2855F5] hover:bg-[#1f44c7] text-white text-xs font-mono tracking-wider rounded-[3px]"
+            >
+              <Zap className="w-3.5 h-3.5 mr-1.5 fill-current" />
+              INSTANT QUIZ
+            </Button>
+            <Link href="/dashboard/quizzes/builder">
+              <Button variant="outline" size="sm" className="border-border text-xs font-mono tracking-wider rounded-[3px]">
+                <HelpCircle className="w-3.5 h-3.5 mr-1.5" />
+                BUILDER
+              </Button>
+            </Link>
+            <Link href="/dashboard/quizzes/new">
+              <Button size="sm" className="bg-[#111318] hover:bg-[#20242c] text-white dark:bg-white dark:text-[#111318] text-xs font-mono tracking-wider rounded-[3px]">
+                <Plus className="w-3.5 h-3.5 mr-1.5" />
+                COMPOSE
+              </Button>
+            </Link>
           </div>
-          {topicFilter !== "All" && (
+        </div>
+
+        {/* TOPIC BROWSER PILLS (Primary Way Users Browse) */}
+        <div className="space-y-2.5 pt-1">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2 text-[10px] font-mono font-bold uppercase tracking-widest text-muted-foreground">
+              <Layers className="w-3.5 h-3.5 text-[#2855F5]" />
+              <span>Browse By Curricular Domain ({topicsSummary.length} Domains)</span>
+            </div>
+            {topicFilter !== "All" && (
+              <button
+                onClick={() => setTopicFilter("All")}
+                className="text-[10px] font-mono text-[#2855F5] hover:underline"
+              >
+                RESET TO ALL
+              </button>
+            )}
+          </div>
+
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-thin">
             <button
               onClick={() => setTopicFilter("All")}
-              className="text-xs text-indigo-600 hover:underline font-semibold"
-            >
-              Reset to All Topics
-            </button>
-          )}
-        </div>
-
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
-          <button
-            onClick={() => setTopicFilter("All")}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap shrink-0 ${
-              topicFilter === "All"
-                ? "bg-indigo-600 text-white shadow-sm ring-2 ring-indigo-300 dark:ring-indigo-900"
-                : "bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-200"
-            }`}
-          >
-            All Topics ({quizzes.length})
-          </button>
-          {topicsSummary.slice(0, 12).map((ts) => (
-            <button
-              key={ts.topic}
-              onClick={() => setTopicFilter(ts.topic)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap shrink-0 flex items-center space-x-1.5 ${
-                topicFilter === ts.topic
-                  ? "bg-indigo-600 text-white shadow-sm ring-2 ring-indigo-300 dark:ring-indigo-900 font-bold"
-                  : "bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-200"
+              className={`px-3 py-1 rounded-[2px] text-xs font-mono uppercase tracking-wider transition-all whitespace-nowrap shrink-0 border ${
+                topicFilter === "All"
+                  ? "bg-[#2855F5] text-white border-[#2855F5] font-bold"
+                  : "bg-background border-border text-muted-foreground hover:text-foreground"
               }`}
             >
-              <span>{ts.topic}</span>
-              <span
-                className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+              All Domains ({quizzes.length})
+            </button>
+            {topicsSummary.slice(0, 12).map((ts) => (
+              <button
+                key={ts.topic}
+                onClick={() => setTopicFilter(ts.topic)}
+                className={`px-2.5 py-1 rounded-[2px] text-xs font-mono uppercase tracking-wider transition-all whitespace-nowrap shrink-0 flex items-center space-x-1.5 border ${
                   topicFilter === ts.topic
-                    ? "bg-white/20 text-white"
-                    : "bg-gray-200 dark:bg-gray-800 text-gray-500"
+                    ? "bg-[#2855F5] text-white border-[#2855F5] font-bold"
+                    : "bg-background border-border text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {ts.questionCount} Qs
-              </span>
-            </button>
-          ))}
+                <span>{ts.topic}</span>
+                <span
+                  className={`text-[9px] px-1 py-0 rounded-[1px] font-mono ${
+                    topicFilter === ts.topic
+                      ? "bg-white/20 text-white"
+                      : "bg-muted text-muted-foreground"
+                  }`}
+                >
+                  {ts.questionCount}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* FILTER & SEARCH BAR */}
-      <div className="bg-white dark:bg-gray-950 p-4 rounded-2xl border border-gray-100 dark:border-gray-850 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-4">
+      <div className="bg-card p-4 rounded-[3px] border border-border flex flex-col lg:flex-row items-center justify-between gap-4">
         {/* Search */}
         <div className="relative w-full lg:w-72">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search title, topic, ID..."
-            className="pl-9 h-10 bg-gray-50 dark:bg-gray-900"
+            className="pl-9 h-9 bg-background text-xs font-mono rounded-[3px] border-border"
           />
         </div>
 
@@ -270,33 +280,33 @@ export default function QuizzesListPage() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full lg:w-auto">
           {/* Topic Select */}
           <div className="min-w-[140px]">
-            <label className="block text-[10px] font-bold text-gray-400 mb-1 uppercase">Topic</label>
+            <label className="block text-[9px] font-mono font-bold text-muted-foreground mb-1 uppercase tracking-widest">Topic</label>
             <Select
               value={topicFilter}
               onChange={(e) => setTopicFilter(e.target.value)}
-              className="h-9 text-xs font-medium"
+              className="h-8 text-xs font-mono rounded-[2px] border-border"
               options={allTopicsList.map((t) => ({ value: t, label: t === "All" ? "All Topics" : t }))}
             />
           </div>
 
           {/* Optional Grade Filter */}
           <div className="min-w-[130px]">
-            <label className="block text-[10px] font-bold text-gray-400 mb-1 uppercase">Grade Filter</label>
+            <label className="block text-[9px] font-mono font-bold text-muted-foreground mb-1 uppercase tracking-widest">Grade</label>
             <Select
               value={gradeFilter}
               onChange={(e) => setGradeFilter(e.target.value)}
-              className="h-9 text-xs font-medium"
+              className="h-8 text-xs font-mono rounded-[2px] border-border"
               options={allGradesList.map((g) => ({ value: g, label: g === "All" ? "All Grades" : g }))}
             />
           </div>
 
           {/* Optional Difficulty Filter */}
           <div className="min-w-[120px]">
-            <label className="block text-[10px] font-bold text-gray-400 mb-1 uppercase">Difficulty</label>
+            <label className="block text-[9px] font-mono font-bold text-muted-foreground mb-1 uppercase tracking-widest">Difficulty</label>
             <Select
               value={difficultyFilter}
               onChange={(e) => setDifficultyFilter(e.target.value)}
-              className="h-9 text-xs font-medium"
+              className="h-8 text-xs font-mono rounded-[2px] border-border"
               options={[
                 { value: "All", label: "All Difficulties" },
                 { value: "Easy", label: "Easy" },
@@ -308,11 +318,11 @@ export default function QuizzesListPage() {
 
           {/* Optional Subject Filter */}
           <div className="min-w-[130px]">
-            <label className="block text-[10px] font-bold text-gray-400 mb-1 uppercase">Subject</label>
+            <label className="block text-[9px] font-mono font-bold text-muted-foreground mb-1 uppercase tracking-widest">Subject</label>
             <Select
               value={subjectFilter}
               onChange={(e) => setSubjectFilter(e.target.value)}
-              className="h-9 text-xs font-medium"
+              className="h-8 text-xs font-mono rounded-[2px] border-border"
               options={allSubjectsList.map((s) => ({ value: s, label: s === "All" ? "All Subjects" : s }))}
             />
           </div>
@@ -338,87 +348,88 @@ export default function QuizzesListPage() {
             return (
               <div
                 key={quiz.id}
-                className="bg-white dark:bg-gray-950 rounded-2xl border border-gray-100 dark:border-gray-850 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group"
+                className="bg-card rounded-[3px] border border-border p-6 hover:border-[#2855F5] transition-all flex flex-col justify-between group"
               >
                 <div>
                   {/* Topic and Difficulty Header */}
                   <div className="flex items-center justify-between mb-3 gap-2">
-                    <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 truncate max-w-[180px]">
+                    <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-muted text-foreground border border-border truncate max-w-[180px]">
                       {quiz.topic || quiz.category}
                     </span>
                     <Badge
-                      className={
+                      variant="outline"
+                      className={`text-[9px] font-mono uppercase tracking-widest rounded-[2px] px-1.5 py-0 ${
                         quiz.difficulty === "Hard"
-                          ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
+                          ? "border-[#E85D3F]/40 bg-[#E85D3F]/10 text-[#E85D3F]"
                           : quiz.difficulty === "Medium"
-                          ? "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
-                          : "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
-                      }
+                          ? "border-[#DFFF43]/40 bg-[#DFFF43]/10 text-foreground"
+                          : "border-[#2855F5]/40 bg-[#2855F5]/10 text-[#2855F5]"
+                      }`}
                     >
                       {quiz.difficulty}
                     </Badge>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base font-bold text-gray-900 dark:text-white line-clamp-2 mb-2 group-hover:text-indigo-600 transition-colors">
+                  <h3 className="text-base font-bold font-display text-foreground line-clamp-2 mb-2 group-hover:text-[#2855F5] transition-colors">
                     {quiz.title}
                   </h3>
 
-                  {/* Metadata Chips: Grade, Subject, Questions, Duration */}
-                  <div className="flex flex-wrap items-center gap-2 text-xs text-gray-500 mb-4">
+                  {/* Metadata Chips */}
+                  <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-muted-foreground mb-4">
                     {(quiz.gradeLevel || quiz.grade) && (
-                      <span className="flex items-center text-slate-600 dark:text-slate-400 font-medium bg-slate-100 dark:bg-slate-900 px-2 py-0.5 rounded-lg text-[11px]">
-                        <GraduationCap className="w-3 h-3 mr-1 text-slate-500" />
+                      <span className="flex items-center bg-muted/60 px-1.5 py-0.5 rounded-[2px] text-[10px]">
+                        <GraduationCap className="w-3 h-3 mr-1 text-muted-foreground" />
                         {quiz.gradeLevel || quiz.grade}
                       </span>
                     )}
-                    <span className="flex items-center">
-                      <HelpCircle className="w-3.5 h-3.5 mr-1 text-gray-400" />
-                      {questionsCount} Questions
+                    <span className="flex items-center text-[10px]">
+                      <HelpCircle className="w-3 h-3 mr-1 text-muted-foreground" />
+                      {questionsCount} QUESTIONS
                     </span>
-                    <span className="flex items-center">
-                      <Clock className="w-3.5 h-3.5 mr-1 text-gray-400" />
-                      {quiz.durationMinutes} mins
+                    <span className="flex items-center text-[10px]">
+                      <Clock className="w-3 h-3 mr-1 text-muted-foreground" />
+                      {quiz.durationMinutes} MINS
                     </span>
                   </div>
 
                   {quiz.description && (
-                    <p className="text-xs text-gray-500 line-clamp-2 mb-4 leading-relaxed">
+                    <p className="text-xs text-muted-foreground line-clamp-2 mb-4 leading-relaxed">
                       {quiz.description}
                     </p>
                   )}
                 </div>
 
-                {/* Card Footer with Instant Play & Controls */}
-                <div className="pt-4 border-t border-gray-100 dark:border-gray-900 flex items-center justify-between">
+                {/* Card Footer */}
+                <div className="pt-4 border-t border-border flex items-center justify-between">
                   <Link href={`/dashboard/quizzes/${quiz.id}/take`}>
                     <Button
                       size="sm"
-                      className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl px-4 shadow-sm"
+                      className="bg-[#2855F5] hover:bg-[#1f44c7] text-white font-mono text-xs tracking-wider rounded-[3px] px-3.5"
                     >
-                      <Play className="w-3.5 h-3.5 mr-1 fill-current" /> Take Quiz
+                      <Play className="w-3.5 h-3.5 mr-1 fill-current" /> TAKE QUIZ
                     </Button>
                   </Link>
 
                   <div className="flex items-center space-x-1">
                     <Link href={`/dashboard/quizzes/${quiz.id}`}>
-                      <Button variant="ghost" size="icon" className="h-8 w-8 text-gray-500 hover:text-gray-900" title="View Details">
-                        <Eye className="w-4 h-4" />
+                      <Button variant="ghost" size="icon" className="h-7 w-7 text-muted-foreground hover:text-foreground rounded-[2px]" title="View Details">
+                        <Eye className="w-3.5 h-3.5" />
                       </Button>
                     </Link>
                     <Link href={`/dashboard/quizzes/${quiz.id}/edit`}>
-                      <Button variant="ghost" size="icon" className="h-8 w-8 text-indigo-600 hover:bg-indigo-50" title="Edit Quiz">
-                        <Edit className="w-4 h-4" />
+                      <Button variant="ghost" size="icon" className="h-7 w-7 text-[#2855F5] hover:bg-[#2855F5]/10 rounded-[2px]" title="Edit Quiz">
+                        <Edit className="w-3.5 h-3.5" />
                       </Button>
                     </Link>
                     <Button
                       variant="ghost"
                       size="icon"
                       onClick={() => setDeleteTargetId(quiz.id)}
-                      className="h-8 w-8 text-red-600 hover:bg-red-50"
+                      className="h-7 w-7 text-[#E85D3F] hover:bg-[#E85D3F]/10 rounded-[2px]"
                       title="Delete Quiz"
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Trash2 className="w-3.5 h-3.5" />
                     </Button>
                   </div>
                 </div>

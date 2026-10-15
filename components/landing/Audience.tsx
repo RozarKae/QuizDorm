@@ -33,52 +33,60 @@ export default function Audience() {
   ];
 
   return (
-    <section id="audience" className="py-28 relative z-10">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="audience" className="py-20 relative z-10 border-b border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3.5 py-1.5 rounded-full">
-            Tailored Experiences
-          </span>
-          <h2 className="font-heading text-4xl sm:text-5xl font-bold text-white tracking-tight pt-2">
-            Designed for Every Educational Role
-          </h2>
-          <p className="text-base sm:text-lg text-[#B8BCC8] leading-relaxed">
-            Choose your learning portal to experience tailored tools, interactive dashboards, and real-time collaboration.
+        <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-border mb-12 gap-6">
+          <div className="space-y-2 max-w-2xl">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-cobalt font-semibold">
+              ROLE ARCHITECTURE // ADAPTATION
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
+              Dedicated Interfaces for Every Stakeholder
+            </h2>
+          </div>
+          <p className="text-sm font-normal text-muted-foreground max-w-md leading-relaxed">
+            Tailored permissions, specialized tooling, and custom workflows configured for students, instructors, and campus administrators.
           </p>
         </div>
 
         {/* Audience Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {cards.map((card, index) => (
             <motion.div
               key={card.title}
-              initial={{ opacity: 0, filter: "blur(8px)", y: 24 }}
-              whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="flex h-full"
             >
-              <Card className="flex flex-col justify-between h-full w-full">
-                <CardContent className="p-0 flex flex-col h-full justify-between space-y-8">
+              <Card className="flex flex-col justify-between h-full w-full rounded-[3px] border border-border bg-card p-6 hover:border-cobalt/40 transition-colors shadow-xs">
+                <CardContent className="p-0 flex flex-col h-full justify-between space-y-6">
                   <div className="space-y-4">
-                    <div className="p-3.5 bg-white/[0.05] border border-white/10 rounded-[18px] w-fit shadow-md">
-                      {card.icon}
+                    <div className="flex items-center justify-between pb-4 border-b border-border">
+                      <div className="p-2 bg-muted rounded-[2px] text-foreground border border-border">
+                        {card.icon}
+                      </div>
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">
+                        PROFILE 0{index + 1}
+                      </span>
                     </div>
-                    <h3 className="font-heading text-2xl font-bold text-white">
+
+                    <h3 className="font-display text-xl font-bold text-foreground">
                       {card.title}
                     </h3>
-                    <p className="text-sm text-[#B8BCC8] leading-relaxed font-normal">
+                    <p className="text-xs text-muted-foreground leading-relaxed font-normal">
                       {card.description}
                     </p>
                   </div>
 
-                  <div className="pt-2">
+                  <div className="pt-4 border-t border-border">
                     <Link href={card.href} className="w-full block">
-                      <Button variant="outline" className="w-full justify-between group">
+                      <Button variant="outline" className="w-full justify-between group rounded-[3px] border-border text-xs font-mono h-9 hover:bg-muted text-foreground">
                         <span>{card.action}</span>
-                        <ArrowRight className="h-4 w-4 text-[#B8BCC8] group-hover:text-white group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="h-3.5 w-3.5 text-muted-foreground group-hover:text-cobalt group-hover:translate-x-1 transition-all" />
                       </Button>
                     </Link>
                   </div>
@@ -89,7 +97,7 @@ export default function Audience() {
         </div>
       </div>
 
-      <SectionDivider variant="glow" />
+      <SectionDivider variant="editorial" label="TELEMETRY INDEX" />
     </section>
   );
 }

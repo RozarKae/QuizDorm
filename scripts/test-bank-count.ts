@@ -1,0 +1,5 @@
+import { ALL_DEFAULT_QUESTIONS, PDF_IMPORTED_QUESTIONS, INITIAL_BASE_QUESTIONS } from "../lib/data/question-bank";
+
+console.log("PDF_IMPORTED_QUESTIONS count:", PDF_IMPORTED_QUESTIONS.length);
+console.log("INITIAL_BASE_QUESTIONS count:", INITIAL_BASE_QUESTIONS.length);
+console.log("ALL_DEFAULT_QUESTIONS count:", ALL_DEFAULT_QUESTIONS.length);

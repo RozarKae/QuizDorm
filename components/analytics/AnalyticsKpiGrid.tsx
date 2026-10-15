@@ -12,26 +12,23 @@ export function AnalyticsKpiGrid({ metrics }: AnalyticsKpiGridProps) {
       {metrics.map((m, idx) => (
         <div
           key={idx}
-          className="bg-white dark:bg-gray-950 p-5 rounded-2xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-2"
+          className="bg-card p-5 rounded-[3px] border border-border space-y-2"
         >
-          <p className="text-xs font-semibold text-gray-400 truncate">{m.title}</p>
-
-          <div className="flex items-baseline justify-between">
-            <p className="text-2xl font-extrabold text-gray-900 dark:text-white font-mono">{m.value}</p>
-
+          <div className="flex items-center justify-between">
+            <p className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground truncate">{m.title}</p>
             <div
-              className={`inline-flex items-center text-[10px] font-bold px-2 py-0.5 rounded-full ${
+              className={`inline-flex items-center text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-[2px] ${
                 m.trend === "up"
-                  ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+                  ? "bg-[#DFFF43]/20 text-foreground border border-[#DFFF43]/40"
                   : m.trend === "down"
-                  ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
-                  : "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300"
+                  ? "bg-[#E85D3F]/15 text-[#E85D3F] border border-[#E85D3F]/30"
+                  : "bg-muted text-muted-foreground border border-border"
               }`}
             >
               {m.trend === "up" ? (
-                <TrendingUp className="w-3 h-3 mr-0.5" />
+                <TrendingUp className="w-3 h-3 mr-0.5 text-[#2855F5]" />
               ) : m.trend === "down" ? (
-                <TrendingDown className="w-3 h-3 mr-0.5" />
+                <TrendingDown className="w-3 h-3 mr-0.5 text-[#E85D3F]" />
               ) : (
                 <Minus className="w-3 h-3 mr-0.5" />
               )}
@@ -39,9 +36,11 @@ export function AnalyticsKpiGrid({ metrics }: AnalyticsKpiGridProps) {
             </div>
           </div>
 
-          <p className="text-[10px] text-gray-400 font-medium">{m.timeframe}</p>
+          <p className="text-2xl sm:text-3xl font-extrabold text-foreground font-mono tracking-tight">{m.value}</p>
+          <p className="text-[10px] font-mono text-muted-foreground">{m.timeframe}</p>
         </div>
       ))}
     </div>
   );
 }
+

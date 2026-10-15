@@ -49,130 +49,147 @@ export default function QuizDetailsPage({
   };
 
   return (
-    <div className="space-y-8 max-w-5xl mx-auto">
-      <div>
+    <div className="space-y-6 max-w-5xl mx-auto">
+      {/* Navigation & Header */}
+      <div className="border border-border bg-card p-6 sm:p-8 rounded-[3px] space-y-5">
         <Link
           href="/dashboard/quizzes"
-          className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 dark:hover:text-white mb-4"
+          className="inline-flex items-center text-xs font-mono text-muted-foreground hover:text-foreground transition-colors"
         >
-          <ArrowLeft className="w-4 h-4 mr-1" /> Back to Quizzes
+          <ArrowLeft className="w-3.5 h-3.5 mr-1" /> RETURN TO CATALOG
         </Link>
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div>
-            <div className="flex flex-wrap items-center gap-2 mb-2">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-border pb-6">
+          <div className="space-y-2">
+            <div className="flex flex-wrap items-center gap-2">
               {quiz.topic && (
-                <Badge className="bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 font-bold border border-indigo-200 dark:border-indigo-800">
+                <Badge variant="outline" className="border-[#2855F5]/40 bg-[#2855F5]/10 text-[#2855F5] font-mono text-[9px] uppercase tracking-widest rounded-[2px]">
                   <Layers className="w-3 h-3 mr-1" />
                   {quiz.topic}
                 </Badge>
               )}
-              <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300">
+              <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-muted text-muted-foreground border border-border">
                 {quiz.subject || quiz.category}
               </span>
               {(quiz.gradeLevel || quiz.grade) && (
-                <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 flex items-center">
+                <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-muted text-muted-foreground border border-border flex items-center">
                   <GraduationCap className="w-3 h-3 mr-1" />
                   {quiz.gradeLevel || quiz.grade}
                 </span>
               )}
               <Badge
-                className={
+                variant="outline"
+                className={`text-[9px] font-mono uppercase tracking-widest rounded-[2px] ${
                   quiz.difficulty === "Hard"
-                    ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
+                    ? "border-[#E85D3F]/40 bg-[#E85D3F]/10 text-[#E85D3F]"
                     : quiz.difficulty === "Medium"
-                    ? "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
-                    : "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
-                }
+                    ? "border-[#DFFF43]/40 bg-[#DFFF43]/10 text-foreground"
+                    : "border-[#2855F5]/40 bg-[#2855F5]/10 text-[#2855F5]"
+                }`}
               >
                 {quiz.difficulty}
               </Badge>
-              <span className="text-xs text-emerald-600 font-semibold">● Published</span>
+              <span className="text-[10px] font-mono text-[#2855F5] font-bold">● PUBLISHED</span>
             </div>
 
-            <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white">
+            <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-foreground">
               {quiz.title}
             </h1>
-            <p className="text-sm text-gray-500 mt-2 max-w-2xl">
+            <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl leading-relaxed">
               {quiz.description || "Comprehensive topical assessment challenge designed to test your core mastery."}
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
-            <Button variant="outline" onClick={handleShare} className="border-gray-300 dark:border-gray-800">
-              <Share2 className="w-4 h-4 mr-2" /> Share
+          <div className="flex flex-wrap items-center gap-2.5 shrink-0 pt-2 sm:pt-0">
+            <Button variant="outline" size="sm" onClick={handleShare} className="text-xs font-mono tracking-wider rounded-[3px] border-border">
+              <Share2 className="w-3.5 h-3.5 mr-1.5" /> SHARE
             </Button>
             <Link href={`/dashboard/quizzes/${quiz.id}/take`}>
-              <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md shadow-indigo-600/20">
-                <Play className="w-4 h-4 mr-2 fill-current" /> Start Quiz
+              <Button size="sm" className="bg-[#2855F5] hover:bg-[#1f44c7] text-white font-mono text-xs tracking-wider rounded-[3px]">
+                <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> START QUIZ
               </Button>
             </Link>
           </div>
         </div>
-      </div>
 
-      {/* Metrics Row */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="bg-white dark:bg-gray-950 p-5 rounded-2xl border border-gray-100 dark:border-gray-850 text-center shadow-sm">
-          <HelpCircle className="w-6 h-6 text-indigo-600 mx-auto mb-2" />
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">{questionsCount}</p>
-          <p className="text-xs text-gray-500">Total Questions</p>
-        </div>
-        <div className="bg-white dark:bg-gray-950 p-5 rounded-2xl border border-gray-100 dark:border-gray-850 text-center shadow-sm">
-          <Clock className="w-6 h-6 text-emerald-600 mx-auto mb-2" />
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">{quiz.durationMinutes} mins</p>
-          <p className="text-xs text-gray-500">Time Limit</p>
-        </div>
-        <div className="bg-white dark:bg-gray-950 p-5 rounded-2xl border border-gray-100 dark:border-gray-850 text-center shadow-sm">
-          <Award className="w-6 h-6 text-amber-600 mx-auto mb-2" />
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">{totalMarks} pts</p>
-          <p className="text-xs text-gray-500">Total Points</p>
-        </div>
-        <div className="bg-white dark:bg-gray-950 p-5 rounded-2xl border border-gray-100 dark:border-gray-850 text-center shadow-sm">
-          <Sparkles className="w-6 h-6 text-purple-600 mx-auto mb-2" />
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">
-            {quiz.randomizeQuestions ? "Enabled" : "Standard"}
-          </p>
-          <p className="text-xs text-gray-500">Question Shuffle</p>
+        {/* Metrics Row */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
+          <div className="border border-border bg-background/60 p-4 rounded-[2px] space-y-1">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">TOTAL QUESTIONS</span>
+              <HelpCircle className="w-3.5 h-3.5 text-[#2855F5]" />
+            </div>
+            <p className="text-2xl font-mono font-extrabold text-foreground">{questionsCount}</p>
+            <p className="text-[10px] font-mono text-muted-foreground">Standardized items</p>
+          </div>
+
+          <div className="border border-border bg-background/60 p-4 rounded-[2px] space-y-1">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">TIME LIMIT</span>
+              <Clock className="w-3.5 h-3.5 text-[#2855F5]" />
+            </div>
+            <p className="text-2xl font-mono font-extrabold text-foreground">{quiz.durationMinutes}m</p>
+            <p className="text-[10px] font-mono text-muted-foreground">Countdown timer</p>
+          </div>
+
+          <div className="border border-border bg-background/60 p-4 rounded-[2px] space-y-1">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">TOTAL POINTS</span>
+              <Award className="w-3.5 h-3.5 text-[#DFFF43]" />
+            </div>
+            <p className="text-2xl font-mono font-extrabold text-foreground">{totalMarks}p</p>
+            <p className="text-[10px] font-mono text-muted-foreground">Deterministic scale</p>
+          </div>
+
+          <div className="border border-border bg-background/60 p-4 rounded-[2px] space-y-1">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">SHUFFLE RUNTIME</span>
+              <Sparkles className="w-3.5 h-3.5 text-[#2855F5]" />
+            </div>
+            <p className="text-2xl font-mono font-extrabold text-foreground">
+              {quiz.randomizeQuestions ? "Active" : "Standard"}
+            </p>
+            <p className="text-[10px] font-mono text-muted-foreground">Fresh per attempt</p>
+          </div>
         </div>
       </div>
 
       {/* Questions Preview List */}
-      <div className="bg-white dark:bg-gray-950 p-6 rounded-3xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
-            <HelpCircle className="w-4 h-4 mr-2 text-indigo-600" />
+      <div className="bg-card p-6 rounded-[3px] border border-border space-y-4">
+        <div className="flex items-center justify-between border-b border-border pb-3">
+          <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-foreground flex items-center">
+            <HelpCircle className="w-3.5 h-3.5 mr-1.5 text-[#2855F5]" />
             Included Questions ({questionsCount})
           </h2>
-          <span className="text-xs text-gray-500">
-            Shuffled fresh per attempt on start
+          <span className="text-[10px] font-mono text-muted-foreground">
+            SHUFFLED FRESH PER ATTEMPT
           </span>
         </div>
 
-        <div className="space-y-3 divide-y divide-gray-100 dark:divide-gray-900">
+        <div className="space-y-2.5 divide-y divide-border">
           {quiz.questions?.slice(0, 10).map((q, idx) => (
-            <div key={q.id || idx} className="pt-3 first:pt-0 flex items-start justify-between gap-4">
+            <div key={q.id || idx} className="pt-2.5 first:pt-0 flex items-start justify-between gap-4">
               <div className="space-y-1">
-                <div className="flex items-center space-x-2 text-[11px] text-gray-500">
-                  <span className="font-semibold text-indigo-600">Q{idx + 1}</span>
+                <div className="flex items-center space-x-2 text-[10px] font-mono text-muted-foreground">
+                  <span className="font-bold text-[#2855F5]">ITEM 0{idx + 1}</span>
                   <span>•</span>
                   <span>{q.topic || q.subject}</span>
                   <span>•</span>
-                  <span>{q.marks || 1} mark</span>
+                  <span>{q.marks || 1} PT</span>
                 </div>
-                <p className="text-xs font-semibold text-gray-800 dark:text-gray-200 line-clamp-2">
+                <p className="text-xs font-semibold text-foreground line-clamp-2">
                   {q.title}
                 </p>
               </div>
-              <Badge variant="outline" className="text-[10px] shrink-0">
+              <Badge variant="outline" className="text-[9px] font-mono uppercase tracking-widest rounded-[2px] shrink-0 border-border">
                 {q.difficulty}
               </Badge>
             </div>
           ))}
 
           {questionsCount > 10 && (
-            <div className="pt-3 text-center text-xs text-gray-500 italic">
-              + {questionsCount - 10} more questions included in this quiz challenge
+            <div className="pt-3 text-center text-xs font-mono text-muted-foreground">
+              + {questionsCount - 10} additional verified questions in bank
             </div>
           )}
         </div>
@@ -180,3 +197,4 @@ export default function QuizDetailsPage({
     </div>
   );
 }
+

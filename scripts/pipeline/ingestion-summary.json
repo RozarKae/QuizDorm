@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "generatedAt": "2026-10-15T08:03:13.670Z",
+    "sourcePdf": "media_1791985307979.pdf",
+    "totalPdfPages": 484,
+    "pagesWithContent": 482,
+    "pagesWithNoContent": 2,
+    "pagesFailed": 0,
+    "datasetSha256": "4A1AE2E12A660283A6C78CD6480A4F04A2570DCC3E55DDD6FEAD58935B3F736B"
+  },
+  "metrics": {
+    "totalCandidateQuestionsGenerated": 537,
+    "questionsApproved": 506,
+    "duplicatesDetectedAndExcluded": 4,
+    "questionsQuarantinedOrPendingReview": 27,
+    "averageQualityScore": 96,
+    "distractorCategoricalHomogeneityPassRate": "100.0%",
+    "singleCorrectAnswerPassRate": "100.0%"
+  },
+  "breakdowns": {
+    "bySubject": {
+      "National Affairs": 30,
+      "World Affairs": 54,
+      "Civics & Governance": 21,
+      "Science & Technology": 32,
+      "Science & Astronomy": 18,
+      "Sports & Athletics": 19,
+      "Awards & Culture": 18,
+      "General Knowledge": 31,
+      "Economics": 20,
+      "Environmental Science": 20,
+      "Geography": 52,
+      "Literature & Books": 44,
+      "Arts & Culture": 22,
+      "Health & Biology": 35,
+      "Computer Science": 32,
+      "Regional Studies": 58
+    },
+    "byGradeLevel": {
+      "Grade 6-8": 251,
+      "Grade 3-5": 255
+    },
+    "byQuestionType": {
+      "mcq_single": 489,
+      "true_false": 17
+    },
+    "topTopics": {
+      "State Capitals": 28,
+      "Books and Authors": 24,
+      "Tamil Nadu GK": 20,
+      "World Capitals": 19,
+      "Space & Ecology": 16,
+      "Health Science": 15,
+      "Computing & AI": 12,
+      "Capitals": 9,
+      "Classic Literature": 8,
+      "Institutional Headquarters": 7,
+      "Headquarters": 7,
+      "Nobel Laureates": 6,
+      "Nobel Prizes": 5,
+      "River Systems": 5,
+      "Indian Classical Dance": 5
+    }
+  }
+}

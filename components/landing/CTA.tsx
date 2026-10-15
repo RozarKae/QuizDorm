@@ -2,46 +2,48 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function CTA() {
   return (
-    <section className="py-28 relative z-10">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 relative z-10 border-b border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, filter: "blur(10px)", y: 30 }}
-          whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative rounded-[28px] overflow-hidden p-10 sm:p-20 bg-white/[0.05] backdrop-blur-[24px] border border-white/[0.12] shadow-2xl shadow-blue-950/40 flex flex-col items-center text-center space-y-8"
+          transition={{ duration: 0.5 }}
+          className="relative rounded-[3px] border border-border p-8 sm:p-14 bg-foreground text-background shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-8"
         >
-          {/* Subtle background abstract glows */}
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-tr from-blue-600/20 via-emerald-500/20 to-indigo-600/20 blur-3xl pointer-events-none rounded-full" />
-
-          <div className="relative z-10 max-w-2xl space-y-4">
-            <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3.5 py-1.5 rounded-full inline-block">
-              Get Started Today
-            </span>
-            <h2 className="font-heading text-4xl sm:text-5xl font-bold text-white tracking-tight pt-2">
-              Ready to Elevate Your Institution?
+          <div className="space-y-3 max-w-2xl">
+            <div className="inline-flex items-center space-x-2">
+              <span className="font-mono text-[10px] uppercase tracking-widest px-1.5 py-0.5 rounded-[2px] bg-acid text-ink font-bold">
+                ENROLLMENT ACTIVE
+              </span>
+              <span className="font-mono text-[11px] text-background/70">
+                // INSTITUTION LICENSING
+              </span>
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight">
+              Deploy Editorial Intelligence Across Your Campus
             </h2>
-            <p className="text-base sm:text-lg text-[#B8BCC8] leading-relaxed">
-              Join thousands of educators and students leveraging AI-powered quizzes, live arena battles, and deep analytical reports today.
+            <p className="text-xs sm:text-sm text-background/80 leading-relaxed font-normal">
+              Empower educators with verified question banks, live multi-campus tournaments, and real-time performance analytics.
             </p>
           </div>
 
-          <div className="relative z-10 flex flex-wrap justify-center gap-4 pt-2">
+          <div className="flex flex-wrap items-center gap-3">
             <Link href="/auth/register">
-              <Button size="lg" className="rounded-[16px] px-8 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 text-white font-semibold text-base shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all">
-                <Sparkles className="h-5 w-5 mr-1" />
-                Start Creating Free
+              <Button size="sm" className="bg-cobalt hover:bg-cobalt/90 text-white font-mono text-xs font-semibold rounded-[3px] px-5 h-10 shadow-xs flex items-center gap-2">
+                <Sparkles className="h-3.5 w-3.5 text-acid" />
+                <span>Begin Institutional Setup</span>
               </Button>
             </Link>
             <Link href="/contact">
-              <Button size="lg" variant="outline" className="rounded-[16px] px-8 border-white/10 bg-white/[0.05] hover:bg-white/[0.09] text-white font-semibold text-base backdrop-blur-md group">
-                <span>Talk to Sales</span>
-                <ArrowRight className="h-4 w-4 ml-1 text-[#B8BCC8] group-hover:text-white group-hover:translate-x-1 transition-transform" />
+              <Button size="sm" variant="outline" className="border-background/30 bg-transparent hover:bg-background/10 text-background font-mono text-xs rounded-[3px] px-4 h-10 flex items-center gap-1.5">
+                <span>Contact Academic Team</span>
+                <ArrowRight className="h-3.5 w-3.5" />
               </Button>
             </Link>
           </div>

@@ -35,58 +35,65 @@ const testimonials = [
     rating: 5,
   },
 ];
-
 export default function Testimonials() {
   return (
-    <section className="py-28 relative z-10">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-widest text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3.5 py-1.5 rounded-full">
-            Trusted Worldwide
-          </span>
-          <h2 className="font-heading text-4xl sm:text-5xl font-bold text-white tracking-tight pt-2">
-            Endorsed by Top Educational Leaders
-          </h2>
-          <p className="text-base sm:text-lg text-[#B8BCC8] leading-relaxed">
-            See how premier institutions elevate student engagement and streamline quiz evaluation with QuizDorm.
+    <section className="py-20 relative z-10 border-b border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-border mb-12 gap-6">
+          <div className="space-y-2 max-w-2xl">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-cobalt font-semibold">
+              INSTITUTIONAL ENDORSEMENTS // DISPATCH
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground tracking-tight">
+              Validated by Premier Academic Institutions
+            </h2>
+          </div>
+          <p className="text-sm font-normal text-muted-foreground max-w-md leading-relaxed">
+            Leading department heads, Olympiad coaches, and academic directors recount platform adoption and measurable exam outcomes.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, filter: "blur(8px)", y: 24 }}
-              whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="p-8 rounded-[24px] bg-white/[0.05] backdrop-blur-[20px] border border-white/[0.08] flex flex-col justify-between hover:border-white/20 hover:bg-white/[0.07] transition-all duration-300 hover:-translate-y-1.5 shadow-2xl shadow-black/40"
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="p-6 rounded-[3px] bg-card border border-border flex flex-col justify-between hover:border-cobalt/40 transition-colors shadow-xs"
             >
               <div>
-                <div className="flex items-center space-x-1 mb-6 text-amber-400">
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  ))}
+                <div className="flex items-center justify-between pb-4 border-b border-border mb-4">
+                  <div className="flex items-center space-x-1 text-acid font-mono text-xs">
+                    {Array.from({ length: t.rating }).map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-cobalt text-cobalt" />
+                    ))}
+                  </div>
+                  <span className="font-mono text-[10px] text-muted-foreground">
+                    REVIEW #{idx + 1}
+                  </span>
                 </div>
-                <p className="text-slate-300 text-sm leading-relaxed italic mb-8 font-normal">
+
+                <p className="text-foreground text-xs leading-relaxed italic mb-6 font-normal">
                   &ldquo;{t.quote}&rdquo;
                 </p>
               </div>
 
-              <div className="flex items-center space-x-4 pt-6 border-t border-white/[0.06]">
-                <Avatar className="h-11 w-11 border border-blue-500/30">
-                  <AvatarFallback className="bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-bold text-sm">
+              <div className="flex items-center space-x-3 pt-4 border-t border-border">
+                <Avatar className="h-9 w-9 rounded-[3px] border border-border">
+                  <AvatarFallback className="bg-primary text-primary-foreground font-mono text-xs font-bold rounded-[3px]">
                     {t.avatar}
                   </AvatarFallback>
                 </Avatar>
                 <div>
-                  <h4 className="text-sm font-semibold text-white">
+                  <h4 className="text-xs font-bold font-display text-foreground">
                     {t.author}
                   </h4>
-                  <p className="text-xs text-blue-400 font-medium">
+                  <p className="text-[11px] text-cobalt font-mono">
                     {t.role}
                   </p>
-                  <p className="text-xs text-[#6B7280]">{t.organization}</p>
+                  <p className="text-[10px] text-muted-foreground font-mono">{t.organization}</p>
                 </div>
               </div>
             </motion.div>
@@ -94,7 +101,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <SectionDivider variant="glow" />
+      <SectionDivider variant="editorial" label="NEXT STEP" />
     </section>
   );
 }

@@ -138,16 +138,16 @@ export default function Sidebar({
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         } ${collapsed ? "w-20" : "w-64"}`}
       >
-        <div className="flex h-full flex-col justify-between bg-white border-r border-slate-200 transition-colors duration-300">
+        <div className="flex h-full flex-col justify-between bg-card border-r border-border transition-colors duration-200">
           <div>
             {/* Header */}
-            <div className="flex h-16 items-center justify-between px-4 border-b border-slate-200">
+            <div className="flex h-16 items-center justify-between px-4 border-b border-border">
               <Link href="/dashboard" className="flex items-center space-x-2">
                 {!collapsed ? (
                   <Logo />
                 ) : (
-                  <div className="p-2 rounded-lg bg-slate-900 text-white">
-                    <LayoutDashboard className="h-5 w-5" />
+                  <div className="p-2 rounded-[3px] bg-primary text-primary-foreground font-mono text-xs font-bold tracking-tight">
+                    QD
                   </div>
                 )}
               </Link>
@@ -155,7 +155,7 @@ export default function Sidebar({
                 variant="ghost"
                 size="icon"
                 onClick={onClose}
-                className="md:hidden text-slate-500 hover:text-slate-900"
+                className="md:hidden text-muted-foreground hover:text-foreground rounded-[3px]"
                 aria-label="Close sidebar"
               >
                 <X className="h-5 w-5" />
@@ -163,7 +163,7 @@ export default function Sidebar({
             </div>
 
             {/* Navigation Items */}
-            <nav className="space-y-1 px-3 py-4">
+            <nav className="space-y-0.5 px-3 py-3 overflow-y-auto max-h-[calc(100vh-8rem)]">
               {navItems.map((item) => {
                 const isActive = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href));
                 return (
@@ -171,25 +171,25 @@ export default function Sidebar({
                     key={item.href}
                     href={item.href}
                     onClick={onClose}
-                    className={`flex items-center justify-between rounded-md px-3 py-2 text-xs font-semibold transition-colors ${
+                    className={`flex items-center justify-between rounded-[3px] px-3 py-2 text-xs transition-colors ${
                       isActive
-                        ? "bg-slate-900 text-white"
-                        : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                        ? "bg-foreground text-background font-semibold shadow-xs"
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground font-normal"
                     }`}
                     title={collapsed ? item.name : undefined}
                   >
                     <div className="flex items-center space-x-3 min-w-0">
-                      <div className="flex-shrink-0">
-                        {item.icon ? iconMap[item.icon] : <LayoutDashboard className="h-5 w-5" />}
+                      <div className={`flex-shrink-0 ${isActive ? "text-acid dark:text-acid" : ""}`}>
+                        {item.icon ? iconMap[item.icon] : <LayoutDashboard className="h-4 w-4" />}
                       </div>
-                      {!collapsed && <span className="truncate">{item.name}</span>}
+                      {!collapsed && <span className="truncate tracking-tight">{item.name}</span>}
                     </div>
                     {!collapsed && item.badge && (
                       <span
-                        className={`text-[9px] uppercase font-mono font-bold px-2 py-0.5 rounded ${
+                        className={`text-[9px] uppercase font-mono tracking-widest px-1.5 py-0.5 rounded-[2px] ${
                           isActive
-                            ? "bg-slate-800 text-white"
-                            : "bg-slate-100 text-slate-600"
+                            ? "bg-background/20 text-background dark:text-foreground font-bold"
+                            : "bg-muted text-muted-foreground font-medium border border-border"
                         }`}
                       >
                         {item.badge}
@@ -202,15 +202,15 @@ export default function Sidebar({
           </div>
 
           {/* Collapse Toggle Button (Desktop Only) */}
-          <div className="hidden md:block p-3 border-t border-slate-200">
+          <div className="hidden md:block p-3 border-t border-border">
             <Button
-              variant="ghost"
+              variant="outline"
               onClick={() => setCollapsed(!collapsed)}
-              className="w-full flex items-center justify-center py-2 h-9 border border-slate-200 rounded-md hover:bg-slate-100 text-slate-500 hover:text-slate-900"
+              className="w-full flex items-center justify-center py-2 h-8 text-xs font-mono border-border rounded-[3px] hover:bg-muted text-muted-foreground hover:text-foreground"
               aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             >
-              {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
-              {!collapsed && <span className="ml-2 text-xs font-medium">Collapse Menu</span>}
+              {collapsed ? <ChevronRight className="h-3.5 w-3.5" /> : <ChevronLeft className="h-3.5 w-3.5" />}
+              {!collapsed && <span className="ml-2 tracking-wider uppercase text-[10px]">Collapse</span>}
             </Button>
           </div>
         </div>

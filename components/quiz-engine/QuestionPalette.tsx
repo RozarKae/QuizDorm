@@ -18,34 +18,34 @@ export function QuestionPalette({
   onSelectQuestion,
 }: QuestionPaletteProps) {
   return (
-    <div className="bg-white dark:bg-gray-950 p-5 rounded-3xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-4">
-      <h4 className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300 flex items-center justify-between">
+    <div className="bg-card p-4 rounded-[3px] border border-border shadow-xs space-y-4">
+      <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-foreground flex items-center justify-between">
         <span>Question Palette</span>
-        <span className="text-[10px] text-gray-400 font-normal">{questions.length} Items</span>
+        <span className="text-[10px] text-muted-foreground font-normal">{questions.length} Items</span>
       </h4>
 
       {/* Legend */}
-      <div className="grid grid-cols-2 gap-2 text-[10px] text-gray-500 pb-2 border-b border-gray-100 dark:border-gray-900">
+      <div className="grid grid-cols-2 gap-2 text-[10px] font-mono text-muted-foreground pb-2 border-b border-border">
         <div className="flex items-center space-x-1.5">
-          <span className="w-3 h-3 rounded-md bg-emerald-500 inline-block" />
+          <span className="w-2.5 h-2.5 rounded-[2px] bg-cobalt inline-block" />
           <span>Answered</span>
         </div>
         <div className="flex items-center space-x-1.5">
-          <span className="w-3 h-3 rounded-md bg-gray-200 dark:bg-gray-800 inline-block" />
+          <span className="w-2.5 h-2.5 rounded-[2px] bg-muted border border-border inline-block" />
           <span>Unanswered</span>
         </div>
         <div className="flex items-center space-x-1.5">
-          <span className="w-3 h-3 rounded-md bg-amber-500 inline-block" />
+          <span className="w-2.5 h-2.5 rounded-[2px] bg-coral inline-block" />
           <span>Marked Review</span>
         </div>
         <div className="flex items-center space-x-1.5">
-          <span className="w-3 h-3 rounded-md border-2 border-indigo-600 inline-block" />
+          <span className="w-2.5 h-2.5 rounded-[2px] border-2 border-foreground inline-block" />
           <span>Current Item</span>
         </div>
       </div>
 
       {/* Grid Palette */}
-      <div className="grid grid-cols-5 gap-2 max-h-56 overflow-y-auto pr-1">
+      <div className="grid grid-cols-5 gap-1.5 max-h-56 overflow-y-auto pr-1">
         {questions.map((q, idx) => {
           const isAnswered = answers[q.id] !== undefined && answers[q.id] !== null && answers[q.id] !== "";
           const isMarked = markedForReview.includes(q.id);
@@ -55,21 +55,21 @@ export function QuestionPalette({
             <button
               key={q.id}
               onClick={() => onSelectQuestion(idx)}
-              className={`relative h-10 w-full rounded-xl text-xs font-bold transition-all flex items-center justify-center ${
+              className={`relative h-8 w-full rounded-[2px] text-xs font-mono font-bold transition-colors flex items-center justify-center border ${
                 isCurrent
-                  ? "ring-2 ring-indigo-600 ring-offset-2 font-extrabold shadow-sm"
-                  : ""
+                  ? "ring-1 ring-foreground border-foreground font-extrabold shadow-xs"
+                  : "border-border"
               } ${
                 isMarked
-                  ? "bg-amber-500 text-white shadow-sm"
+                  ? "bg-coral text-white border-coral"
                   : isAnswered
-                  ? "bg-emerald-500 text-white shadow-sm"
-                  : "bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-200"
+                  ? "bg-cobalt text-white border-cobalt"
+                  : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
               }`}
             >
               <span>{idx + 1}</span>
               {isMarked && (
-                <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-300 ring-1 ring-white" />
+                <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-white" />
               )}
             </button>
           );

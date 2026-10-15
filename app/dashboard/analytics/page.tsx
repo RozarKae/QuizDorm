@@ -90,37 +90,48 @@ export default function AnalyticsHubPage() {
   ];
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 max-w-7xl mx-auto">
       {/* Header & Perspective Switcher */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
-            <BarChart3 className="w-6 h-6 text-indigo-600 mr-2" /> Analytics & Performance Insights
-          </h1>
-          <p className="text-sm text-gray-500">Real-time performance analytics, charts, heatmaps, and report generator</p>
+      <div className="border border-border bg-card p-6 rounded-[3px] space-y-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-4">
+          <div className="space-y-1">
+            <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-muted-foreground">
+              <span className="w-1.5 h-1.5 bg-[#2855F5] rounded-full" />
+              <span>EDITORIAL ANALYTICS // TELEMETRY HUB</span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-foreground flex items-center">
+              <BarChart3 className="w-6 h-6 text-[#2855F5] mr-2" /> Performance Intelligence
+            </h1>
+            <p className="text-xs text-muted-foreground">
+              Real-time cohort telemetry, question error distributions, and verifiable instructional reports.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <Select
+              value={rolePerspective}
+              onChange={(e) => setRolePerspective(e.target.value as any)}
+              options={[
+                { value: "Teacher", label: "Teacher Perspective" },
+                { value: "Student", label: "Student Perspective" },
+                { value: "Organization", label: "Organization Admin Perspective" },
+                { value: "SuperAdmin", label: "Platform Super Admin View" },
+              ]}
+              className="text-xs font-mono font-medium w-52 rounded-[3px] border-border"
+            />
+
+            <Button
+              onClick={() => setExportOpen(true)}
+              className="bg-[#2855F5] hover:bg-[#1f44c7] text-white font-mono text-xs tracking-wider rounded-[3px]"
+            >
+              <Download className="w-3.5 h-3.5 mr-1.5" /> EXPORT DOSSIER
+            </Button>
+          </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
-          <Select
-            value={rolePerspective}
-            onChange={(e) => setRolePerspective(e.target.value as any)}
-            options={[
-              { value: "Teacher", label: "Teacher Perspective" },
-              { value: "Student", label: "Student Perspective" },
-              { value: "Organization", label: "Organization Admin Perspective" },
-              { value: "SuperAdmin", label: "Platform Super Admin View" },
-            ]}
-            className="text-xs font-bold w-52"
-          />
-
-          <Button onClick={() => setExportOpen(true)} className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl">
-            <Download className="w-4 h-4 mr-1.5" /> Generate Report
-          </Button>
-        </div>
+        {/* KPI Stat Cards */}
+        <AnalyticsKpiGrid metrics={metricsMap[rolePerspective]} />
       </div>
-
-      {/* KPI Stat Cards */}
-      <AnalyticsKpiGrid metrics={metricsMap[rolePerspective]} />
 
       {/* Main Visualization Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

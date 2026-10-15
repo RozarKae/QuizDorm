@@ -8,42 +8,49 @@ interface PerformanceInsightsCardProps {
 
 export function PerformanceInsightsCard({ insights }: PerformanceInsightsCardProps) {
   return (
-    <div className="bg-white dark:bg-gray-950 p-6 rounded-3xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-4">
-      <h3 className="text-sm font-bold text-gray-900 dark:text-white flex items-center">
-        <Sparkles className="w-4 h-4 text-amber-500 mr-2" /> Performance & Instructional Insights
-      </h3>
+    <div className="bg-card p-6 rounded-[3px] border border-border space-y-4">
+      <div className="border-b border-border pb-3 flex items-center justify-between">
+        <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-foreground flex items-center">
+          <Sparkles className="w-3.5 h-3.5 text-[#2855F5] mr-1.5" /> Performance & Instructional Insights
+        </h3>
+        <span className="text-[10px] font-mono text-muted-foreground">AI RECOMMENDATIONS</span>
+      </div>
 
       <div className="space-y-3">
         {insights.map((item) => (
           <div
             key={item.id}
-            className={`p-4 rounded-2xl border space-y-1 text-xs transition-all ${
+            className={`p-4 rounded-[2px] border space-y-2 text-xs transition-all ${
               item.type === "warning"
-                ? "bg-amber-50/60 dark:bg-amber-950/40 border-amber-200 dark:border-amber-900/50"
+                ? "bg-[#E85D3F]/5 border-[#E85D3F]/30"
                 : item.type === "success"
-                ? "bg-emerald-50/60 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-900/50"
-                : "bg-indigo-50/60 dark:bg-indigo-950/40 border-indigo-200 dark:border-indigo-900/50"
+                ? "bg-[#DFFF43]/10 border-[#DFFF43]/40"
+                : "bg-muted/30 border-border"
             }`}
           >
-            <div className="flex items-center justify-between font-bold text-gray-900 dark:text-white">
-              <span className="flex items-center">
+            <div className="flex items-center justify-between">
+              <span className="flex items-center font-bold font-display text-xs text-foreground">
                 {item.type === "warning" ? (
-                  <AlertTriangle className="w-4 h-4 text-amber-600 mr-1.5 shrink-0" />
+                  <AlertTriangle className="w-3.5 h-3.5 text-[#E85D3F] mr-1.5 shrink-0" />
                 ) : item.type === "success" ? (
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 mr-1.5 shrink-0" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#2855F5] mr-1.5 shrink-0" />
                 ) : (
-                  <Info className="w-4 h-4 text-indigo-600 mr-1.5 shrink-0" />
+                  <Info className="w-3.5 h-3.5 text-[#2855F5] mr-1.5 shrink-0" />
                 )}
                 {item.title}
               </span>
+              <span className="text-[9px] font-mono uppercase tracking-widest px-1.5 py-0.5 rounded-[2px] bg-background border border-border text-muted-foreground">
+                {item.type}
+              </span>
             </div>
-            <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{item.description}</p>
-            <p className="text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 pt-1">
-              💡 Action: {item.recommendation}
-            </p>
+            <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
+            <div className="text-[11px] font-mono text-[#2855F5] pt-1 border-t border-border/40">
+              ACTION: {item.recommendation}
+            </div>
           </div>
         ))}
       </div>
     </div>
   );
 }
+

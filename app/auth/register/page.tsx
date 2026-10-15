@@ -74,7 +74,7 @@ export default function RegisterPage() {
       />
 
       {errorMsg && (
-        <div className="p-3 mb-4 rounded-xl text-xs font-semibold bg-red-100 dark:bg-red-950/30 text-red-600 dark:text-red-400">
+        <div className="p-3 mb-4 rounded-[2px] text-xs font-mono font-medium bg-destructive/10 text-destructive border border-destructive/30">
           {errorMsg}
         </div>
       )}
@@ -82,21 +82,21 @@ export default function RegisterPage() {
       <AuthForm onSubmit={handleFormSubmit}>
         <div className="space-y-4">
           <div className="space-y-1.5">
-            <label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Full Name
+            <label htmlFor="name" className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+              Full Legal Name
             </label>
-            <Input id="name" name="name" type="text" placeholder="Jane Doe" required className="w-full font-medium" />
+            <Input id="name" name="name" type="text" placeholder="Jane Doe" required className="w-full font-mono text-xs h-9 rounded-[3px] border-border" />
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Email Address
+            <label htmlFor="email" className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+              Institutional Email
             </label>
-            <Input id="email" name="email" type="email" placeholder="jane@school.edu" required className="w-full font-medium" />
+            <Input id="email" name="email" type="email" placeholder="jane@school.edu" required className="w-full font-mono text-xs h-9 rounded-[3px] border-border" />
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="role" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label htmlFor="role" className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
               Select Role
             </label>
             <select
@@ -104,16 +104,16 @@ export default function RegisterPage() {
               name="role"
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="flex h-10 w-full rounded-xl border border-gray-300 dark:border-gray-800 bg-white dark:bg-gray-950 px-3 py-2 text-sm text-gray-900 dark:text-gray-100"
+              className="flex h-9 w-full rounded-[3px] border border-border bg-card px-3 py-2 text-xs font-mono text-foreground focus-visible:ring-1 focus-visible:ring-cobalt"
             >
-              <option value="student">Student</option>
-              <option value="teacher">Teacher</option>
-              <option value="school">School Admin</option>
+              <option value="student">Student Account</option>
+              <option value="teacher">Teacher / Instructor</option>
+              <option value="school">School / Campus Admin</option>
             </select>
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="password" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label htmlFor="password" className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
               Password
             </label>
             <PasswordInput
@@ -123,13 +123,13 @@ export default function RegisterPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full"
+              className="w-full font-mono text-xs h-9 rounded-[3px] border-border"
             />
             <PasswordStrengthIndicator password={password} />
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="confirmPassword" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label htmlFor="confirmPassword" className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
               Confirm Password
             </label>
             <PasswordInput
@@ -139,7 +139,7 @@ export default function RegisterPage() {
               required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full"
+              className="w-full font-mono text-xs h-9 rounded-[3px] border-border"
             />
           </div>
 
@@ -150,11 +150,11 @@ export default function RegisterPage() {
                 name="terms"
                 type="checkbox"
                 required
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                className="h-3.5 w-3.5 text-cobalt focus:ring-cobalt border-border rounded-[2px]"
               />
             </div>
-            <div className="ml-2 text-xs">
-              <label htmlFor="terms" className="text-gray-700 dark:text-gray-300">
+            <div className="ml-2 text-xs font-mono text-muted-foreground">
+              <label htmlFor="terms">
                 I accept the Terms of Service and Privacy Policy.
               </label>
             </div>
@@ -164,18 +164,18 @@ export default function RegisterPage() {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white mt-5 font-semibold rounded-xl py-6"
+          className="w-full bg-cobalt hover:bg-cobalt/90 text-white mt-5 font-mono text-xs font-semibold rounded-[3px] h-10 shadow-xs"
         >
-          {loading ? "Creating Account..." : "Create Account"}
+          {loading ? "Creating Account..." : "Create Account &rarr;"}
         </Button>
       </AuthForm>
 
-      <div className="relative my-6">
+      <div className="relative my-5">
         <div className="absolute inset-0 flex items-center" aria-hidden="true">
-          <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
+          <div className="w-full border-t border-border"></div>
         </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-white dark:bg-gray-900 px-2 text-gray-500 dark:text-gray-400">
+        <div className="relative flex justify-center text-[10px] uppercase font-mono tracking-wider">
+          <span className="bg-card px-2 text-muted-foreground">
             Or sign up with
           </span>
         </div>
@@ -186,9 +186,9 @@ export default function RegisterPage() {
           variant="outline"
           type="button"
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center space-x-2 border-gray-300 dark:border-gray-700 py-5 rounded-xl text-gray-700 dark:text-gray-200"
+          className="w-full flex items-center justify-center space-x-2 border-border h-9 rounded-[3px] text-xs font-mono text-foreground hover:bg-muted"
         >
-          <svg className="h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg className="h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
             <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
             <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22-.03-.63z" fill="#FBBC05" />
@@ -199,9 +199,9 @@ export default function RegisterPage() {
       </div>
 
       <AuthFooter>
-        <p className="text-xs text-gray-500 dark:text-gray-400">
+        <p className="text-xs font-mono text-muted-foreground">
           Already have an account?{" "}
-          <Link href="/auth/login" className="text-indigo-600 dark:text-indigo-400 hover:underline font-medium">
+          <Link href="/auth/login" className="text-cobalt hover:underline font-semibold">
             Log In
           </Link>
         </p>

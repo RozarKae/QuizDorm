@@ -18,16 +18,20 @@ export function QuizTimer({ timeRemainingSeconds }: QuizTimerProps) {
 
   return (
     <div
-      className={`flex items-center space-x-2 px-4 py-2 rounded-full border transition-all ${
+      className={`flex items-center space-x-2 px-3 py-1.5 rounded-[2px] border transition-colors font-mono text-xs ${
         isCritical
-          ? "bg-red-500 text-white border-red-600 animate-pulse shadow-md font-extrabold"
+          ? "bg-coral/10 text-coral border-coral font-bold animate-pulse"
           : isWarning
-          ? "bg-amber-100 text-amber-900 border-amber-300 dark:bg-amber-950 dark:text-amber-300 font-bold"
-          : "bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 border-gray-200 dark:border-gray-800 font-bold"
+          ? "bg-muted text-foreground border-border font-semibold"
+          : "bg-card text-foreground border-border font-semibold shadow-xs"
       }`}
     >
-      {isCritical ? <AlertTriangle className="w-4 h-4" /> : <Clock className="w-4 h-4 text-indigo-500" />}
-      <span className="text-sm font-mono tracking-wider">{formatTime(timeRemainingSeconds)}</span>
+      {isCritical ? (
+        <AlertTriangle className="w-3.5 h-3.5 text-coral shrink-0" />
+      ) : (
+        <Clock className="w-3.5 h-3.5 text-cobalt shrink-0" />
+      )}
+      <span className="tracking-wider tabular-nums font-bold text-xs">{formatTime(timeRemainingSeconds)}</span>
     </div>
   );
 }

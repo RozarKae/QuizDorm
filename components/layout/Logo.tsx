@@ -1,15 +1,23 @@
-export default function Logo() {
+import React from "react";
+
+export default function Logo({ className = "" }: { className?: string }) {
   return (
-    <div className="flex items-center space-x-2">
-      <svg
-        className="h-8 w-8 text-primary"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path d="M12 2L2 7l10 5 10-5-10-5zm0 7.5L4.5 7 12 3.5 19.5 7 12 9.5zM4 9v9l8 4 8-4V9l-8 4-8-4z" />
-      </svg>
-      <span className="font-bold text-xl text-primary">QuizDorm</span>
+    <div className={`flex items-center gap-2.5 select-none ${className}`}>
+      {/* Editorial Intelligence Monogram Icon */}
+      <div className="relative flex items-center justify-center w-7 h-7 bg-[#111318] dark:bg-[#F7F5EF] rounded-[2px] border border-border">
+        <span className="font-display font-black text-xs text-[#F7F5EF] dark:text-[#111318] tracking-tighter">
+          QD
+        </span>
+        <div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 bg-[#DFFF43] border border-[#111318]" />
+      </div>
+
+      {/* Editorial Wordmark */}
+      <div className="flex items-baseline">
+        <span className="font-display font-black text-lg tracking-tight text-foreground uppercase">
+          QUIZ<span className="text-[#2855F5]">DORM</span>
+        </span>
+        <span className="inline-block w-1 h-1 bg-[#DFFF43] ml-0.5" />
+      </div>
     </div>
   );
 }

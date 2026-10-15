@@ -5,31 +5,33 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center rounded-[16px] border border-transparent font-medium whitespace-nowrap transition-all duration-200 outline-none select-none focus-visible:ring-2 focus-visible:ring-blue-500/50 disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 cursor-pointer",
+  "inline-flex shrink-0 items-center justify-center rounded-[3px] border border-transparent font-medium whitespace-nowrap transition-colors duration-150 outline-none select-none focus-visible:ring-2 focus-visible:ring-[#2855F5]/60 disabled:pointer-events-none disabled:opacity-40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 cursor-pointer tracking-tight",
   {
     variants: {
       variant: {
         default:
-          "bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 text-white font-semibold shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 active:translate-y-0 shimmer-effect border-blue-400/20",
+          "bg-[#2855F5] hover:bg-[#1E44D6] text-white font-semibold active:bg-[#1534AA] border-[#2855F5]",
         outline:
-          "border border-white/10 bg-white/[0.05] text-white hover:bg-white/[0.09] hover:border-white/20 hover:-translate-y-0.5 active:translate-y-0 backdrop-blur-md shadow-none",
+          "border border-border bg-transparent text-foreground hover:bg-foreground/5 hover:border-foreground/40 active:bg-foreground/10",
         secondary:
-          "border border-white/10 bg-white/[0.05] text-white hover:bg-white/[0.08] hover:border-white/20 hover:-translate-y-0.5 active:translate-y-0 backdrop-blur-md",
+          "border border-border bg-muted text-foreground hover:bg-muted/80 hover:border-foreground/30 active:bg-muted/60",
         ghost:
-          "text-slate-300 hover:bg-white/[0.06] hover:text-white backdrop-blur-sm",
+          "text-foreground/80 hover:bg-foreground/5 hover:text-foreground active:bg-foreground/10",
         destructive:
-          "bg-gradient-to-r from-red-600 to-rose-600 text-white font-semibold shadow-lg shadow-red-500/20 hover:shadow-red-500/35 hover:-translate-y-0.5 active:translate-y-0",
-        link: "text-blue-400 underline-offset-4 hover:underline p-0 h-auto font-normal",
+          "bg-[#E85D3F] hover:bg-[#D04B2E] text-white font-semibold active:bg-[#B33B22] border-[#E85D3F]",
+        lime:
+          "bg-[#DFFF43] hover:bg-[#CEEF2A] text-[#111318] font-bold active:bg-[#BBDD18] border-[#DFFF43]",
+        link: "text-[#2855F5] underline-offset-4 hover:underline p-0 h-auto font-normal",
       },
       size: {
-        default: "h-11 px-5 py-2.5 text-sm gap-2",
-        xs: "h-8 px-3 text-xs gap-1.5 rounded-[12px] [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-9 px-4 text-xs gap-1.5 rounded-[14px] [&_svg:not([class*='size-'])]:size-3.5",
-        lg: "h-13 px-7 text-base gap-2.5 rounded-[18px]",
-        icon: "size-11 rounded-[16px]",
-        "icon-xs": "size-8 rounded-[12px] [&_svg:not([class*='size-'])]:size-3",
-        "icon-sm": "size-9 rounded-[14px]",
-        "icon-lg": "size-13 rounded-[18px]",
+        default: "h-10 px-4 py-2 text-xs uppercase tracking-wider font-semibold gap-2",
+        xs: "h-7 px-2.5 text-[11px] uppercase tracking-wider font-semibold gap-1.5 [&_svg:not([class*='size-'])]:size-3",
+        sm: "h-8 px-3 text-xs uppercase tracking-wider font-semibold gap-1.5 [&_svg:not([class*='size-'])]:size-3.5",
+        lg: "h-12 px-6 text-sm uppercase tracking-wider font-bold gap-2.5",
+        icon: "size-10",
+        "icon-xs": "size-7 [&_svg:not([class*='size-'])]:size-3",
+        "icon-sm": "size-8",
+        "icon-lg": "size-12",
       },
     },
     defaultVariants: {

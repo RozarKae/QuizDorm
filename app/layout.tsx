@@ -32,9 +32,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} dark h-full antialiased selection:bg-blue-500/30 selection:text-blue-200`}
+      className={`${spaceGrotesk.variable} ${inter.variable} dark h-full antialiased selection:bg-[#2855F5] selection:text-white`}
     >
-      <body className="min-h-full flex flex-col bg-[#09090B] text-white font-sans overflow-x-hidden relative">
+      <body className="min-h-full flex flex-col bg-background text-foreground font-sans overflow-x-hidden relative transition-colors duration-150">
         <AnimatedBackground />
         <MouseGlow />
         <AuthProvider>{children}</AuthProvider>

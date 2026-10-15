@@ -27,95 +27,95 @@ export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: s
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-8">
+    <div className="max-w-3xl mx-auto space-y-6">
       <div>
-        <Link href="/dashboard/quizzes" className="inline-flex items-center text-xs font-medium text-gray-500 hover:text-gray-900 dark:hover:text-white mb-4">
+        <Link href="/dashboard/quizzes" className="inline-flex items-center text-xs font-mono uppercase tracking-wider text-muted-foreground hover:text-foreground mb-4">
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back to Quizzes
         </Link>
-        <div className="flex flex-wrap items-center gap-2 mb-2">
+        <div className="flex flex-wrap items-center gap-2 mb-2 font-mono">
           {quiz.topic && (
-            <Badge className="bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 font-bold">
-              <Layers className="w-3 h-3 mr-1" />
+            <span className="bg-acid text-ink font-bold text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[2px] border border-acid">
               {quiz.topic}
-            </Badge>
+            </span>
           )}
-          <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 font-medium">
+          <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-muted border border-border text-foreground font-medium">
             {quiz.subject || quiz.category}
           </span>
           {(quiz.gradeLevel || quiz.grade) && (
-            <Badge variant="outline" className="text-slate-600 dark:text-slate-400 border-slate-300">
-              <GraduationCap className="w-3 h-3 mr-1" />
+            <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-muted border border-border text-foreground font-medium">
               {quiz.gradeLevel || quiz.grade}
-            </Badge>
+            </span>
           )}
-          <Badge
-            className={
-              quiz.difficulty === "Hard"
-                ? "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
-                : quiz.difficulty === "Medium"
-                ? "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
-                : "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
-            }
-          >
-            {quiz.difficulty}
-          </Badge>
+          {quiz.difficulty === "Hard" ? (
+            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] font-bold bg-coral/10 text-coral border border-coral/30">
+              Hard
+            </span>
+          ) : quiz.difficulty === "Medium" ? (
+            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] font-bold bg-muted text-foreground border border-border">
+              Medium
+            </span>
+          ) : (
+            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] font-bold bg-acid/20 text-foreground border border-acid/50">
+              Easy
+            </span>
+          )}
         </div>
-        <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white">
+        <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-foreground tracking-tight">
           {quiz.title}
         </h1>
-        <p className="text-sm text-gray-500 mt-2">
+        <p className="text-xs font-mono text-muted-foreground mt-2">
           {quiz.description || "Official assessment testing knowledge retention, accuracy, and quick critical thinking."}
         </p>
       </div>
 
       {/* Overview Stats */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="p-4 bg-white dark:bg-gray-950 rounded-2xl border border-gray-100 dark:border-gray-850 text-center">
-          <HelpCircle className="w-5 h-5 text-indigo-600 mx-auto mb-1" />
-          <p className="text-xl font-extrabold text-gray-900 dark:text-white">{questionsCount}</p>
-          <p className="text-[11px] text-gray-400">Total Questions</p>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="p-4 bg-card rounded-[3px] border border-border text-center shadow-xs">
+          <HelpCircle className="w-4 h-4 text-cobalt mx-auto mb-1" />
+          <p className="text-xl font-extrabold font-display text-foreground tabular-nums">{questionsCount}</p>
+          <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Questions</p>
         </div>
-        <div className="p-4 bg-white dark:bg-gray-950 rounded-2xl border border-gray-100 dark:border-gray-850 text-center">
-          <Clock className="w-5 h-5 text-emerald-600 mx-auto mb-1" />
-          <p className="text-xl font-extrabold text-gray-900 dark:text-white">{quiz.durationMinutes} Mins</p>
-          <p className="text-[11px] text-gray-400">Duration</p>
+        <div className="p-4 bg-card rounded-[3px] border border-border text-center shadow-xs">
+          <Clock className="w-4 h-4 text-cobalt mx-auto mb-1" />
+          <p className="text-xl font-extrabold font-display text-foreground tabular-nums">{quiz.durationMinutes}m</p>
+          <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Duration</p>
         </div>
-        <div className="p-4 bg-white dark:bg-gray-950 rounded-2xl border border-gray-100 dark:border-gray-850 text-center">
-          <Award className="w-5 h-5 text-amber-500 mx-auto mb-1" />
-          <p className="text-xl font-extrabold text-gray-900 dark:text-white">{totalMarks}</p>
-          <p className="text-[11px] text-gray-400">Total Marks</p>
+        <div className="p-4 bg-card rounded-[3px] border border-border text-center shadow-xs">
+          <Award className="w-4 h-4 text-cobalt mx-auto mb-1" />
+          <p className="text-xl font-extrabold font-display text-foreground tabular-nums">{totalMarks}</p>
+          <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Marks</p>
         </div>
-        <div className="p-4 bg-white dark:bg-gray-950 rounded-2xl border border-gray-100 dark:border-gray-850 text-center">
-          <ShieldCheck className="w-5 h-5 text-blue-600 mx-auto mb-1" />
-          <p className="text-xl font-extrabold text-gray-900 dark:text-white">{passMarksPercent}%</p>
-          <p className="text-[11px] text-gray-400">Pass Percentage</p>
+        <div className="p-4 bg-card rounded-[3px] border border-border text-center shadow-xs">
+          <ShieldCheck className="w-4 h-4 text-cobalt mx-auto mb-1" />
+          <p className="text-xl font-extrabold font-display text-foreground tabular-nums">{passMarksPercent}%</p>
+          <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Passing Score</p>
         </div>
       </div>
 
       {/* Rules & Instructions */}
-      <div className="bg-white dark:bg-gray-950 p-6 rounded-3xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-4">
-        <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
-          <AlertCircle className="w-5 h-5 text-amber-500 mr-2" /> Exam Rules & Shuffling Instructions
+      <div className="bg-card p-6 rounded-[3px] border border-border shadow-xs space-y-4">
+        <h3 className="text-sm font-bold font-display text-foreground flex items-center">
+          <AlertCircle className="w-4 h-4 text-coral mr-2" /> Assessment Protocols & Instructions
         </h3>
-        <ul className="space-y-2 text-xs text-gray-600 dark:text-gray-300 leading-relaxed list-disc list-inside">
+        <ul className="space-y-2 text-xs font-mono text-muted-foreground leading-relaxed list-disc list-inside">
           <li>Questions are freshly randomized for each attempt to test true recall.</li>
           <li>Answer options are randomized while preserving the original correct answer mapping.</li>
-          <li>The countdown timer starts as soon as you click <strong>Start Quiz Now</strong>.</li>
+          <li>The countdown timer starts as soon as you click <strong>Start Assessment Now</strong>.</li>
           <li>Your progress is safely stored in browser session storage.</li>
           <li>You can mark questions for review and jump across items using the question palette.</li>
-          <li>The quiz will automatically submit when the countdown timer reaches zero.</li>
+          <li>The assessment will automatically submit when the countdown timer reaches zero.</li>
         </ul>
       </div>
 
       {/* Action CTA */}
-      <div className="flex justify-end space-x-3">
+      <div className="flex justify-end space-x-3 pt-2">
         <Link href="/dashboard/quizzes">
-          <Button variant="outline" className="px-6 rounded-xl">
+          <Button variant="outline" className="px-5 rounded-[3px] font-mono text-xs border-border h-9">
             Cancel
           </Button>
         </Link>
-        <Button onClick={handleStart} className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl px-8 py-3 text-sm shadow-md">
-          <Play className="w-4 h-4 mr-2 fill-current" /> Start Quiz Now
+        <Button onClick={handleStart} className="bg-cobalt hover:bg-cobalt/90 text-white font-mono text-xs font-semibold rounded-[3px] px-6 h-9 shadow-xs">
+          <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> Start Assessment Now
         </Button>
       </div>
     </div>

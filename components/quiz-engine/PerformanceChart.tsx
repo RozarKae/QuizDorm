@@ -13,23 +13,23 @@ export function PerformanceChart({ percentage, isPassed, score, totalMarks }: Pe
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-gray-950 rounded-3xl border border-gray-100 dark:border-gray-850 shadow-sm relative text-center">
+    <div className="flex flex-col items-center justify-center p-6 bg-card rounded-[3px] border border-border relative text-center">
       <div className="relative w-40 h-40 flex items-center justify-center">
         <svg className="w-full h-full transform -rotate-90">
           <circle
             cx="80"
             cy="80"
             r={radius}
-            className="stroke-gray-100 dark:stroke-gray-900"
-            strokeWidth="12"
+            className="stroke-muted"
+            strokeWidth="10"
             fill="transparent"
           />
           <circle
             cx="80"
             cy="80"
             r={radius}
-            className={`transition-all duration-1000 ${isPassed ? "stroke-emerald-500" : "stroke-red-500"}`}
-            strokeWidth="12"
+            className={`transition-all duration-1000 ${isPassed ? "stroke-[#2855F5]" : "stroke-[#E85D3F]"}`}
+            strokeWidth="10"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
             strokeLinecap="round"
@@ -38,22 +38,23 @@ export function PerformanceChart({ percentage, isPassed, score, totalMarks }: Pe
         </svg>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-3xl font-extrabold font-mono text-gray-900 dark:text-white">{percentage}%</span>
-          <span className="text-[11px] font-semibold text-gray-400">{score} / {totalMarks} pts</span>
+          <span className="text-3xl font-extrabold font-mono text-foreground">{percentage}%</span>
+          <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider">{score} / {totalMarks} PTS</span>
         </div>
       </div>
 
       <div className="mt-4">
         <span
-          className={`inline-block px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+          className={`inline-block px-3 py-1 rounded-[2px] text-[10px] font-mono font-bold uppercase tracking-widest border ${
             isPassed
-              ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
-              : "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
+              ? "bg-[#DFFF43]/20 text-foreground border-[#DFFF43]/40"
+              : "bg-[#E85D3F]/15 text-[#E85D3F] border-[#E85D3F]/30"
           }`}
         >
-          {isPassed ? "Passed 🎉" : "Failed Needs Improvement"}
+          {isPassed ? "ASSESSMENT PASSED" : "NEEDS REVISION"}
         </span>
       </div>
     </div>
   );
 }
+

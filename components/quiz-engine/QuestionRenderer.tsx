@@ -21,27 +21,27 @@ export function QuestionRenderer({
   showExplanation = false,
 }: QuestionRendererProps) {
   return (
-    <div className="bg-white dark:bg-gray-950 p-6 sm:p-8 rounded-3xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-6">
+    <div className="bg-card p-6 sm:p-8 rounded-[3px] border border-border shadow-xs space-y-6">
       {/* Header Info */}
-      <div className="flex items-center justify-between pb-3 border-b border-gray-100 dark:border-gray-900">
+      <div className="flex items-center justify-between pb-3 border-b border-border">
         <div className="flex items-center space-x-2">
           <QuestionTypeBadge type={question.type} />
-          <span className="text-xs text-gray-400 font-medium">{question.category}</span>
+          <span className="font-mono text-[11px] text-muted-foreground">{question.category || question.subject}</span>
         </div>
-        <Badge className="bg-indigo-50 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 font-mono text-xs">
+        <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-[2px] bg-muted border border-border text-foreground">
           {question.marks} {question.marks === 1 ? "Mark" : "Marks"}
-        </Badge>
+        </span>
       </div>
 
       {/* Statement & Image */}
       <div className="space-y-4">
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white leading-relaxed">
+        <h3 className="font-display text-lg sm:text-xl font-bold text-foreground leading-snug">
           {question.title}
         </h3>
 
         {question.image && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={question.image} alt="Question Diagram" className="rounded-2xl max-h-56 object-contain border border-gray-100 dark:border-gray-900 mx-auto" />
+          <img src={question.image} alt="Question Diagram" className="rounded-[2px] max-h-56 object-contain border border-border mx-auto bg-background p-2" />
         )}
       </div>
 
@@ -49,7 +49,7 @@ export function QuestionRenderer({
 
       {/* 1, 2, 7: MCQ Single / MCQ Multiple / Image Based */}
       {(question.type === "mcq_single" || question.type === "mcq_multiple" || question.type === "image_based") && (
-        <div className="space-y-3 pt-2">
+        <div className="space-y-2.5 pt-2">
           {question.options.map((opt, idx) => {
             const isSelected =
               question.type === "mcq_multiple"
@@ -70,19 +70,23 @@ export function QuestionRenderer({
                     onAnswerChange(opt.id);
                   }
                 }}
-                className={`p-4 rounded-2xl border text-sm font-medium cursor-pointer transition-all flex items-center justify-between ${
+                className={`p-3.5 rounded-[2px] border text-xs font-mono cursor-pointer transition-colors flex items-center justify-between ${
                   isSelected
-                    ? "border-indigo-600 bg-indigo-50/50 dark:bg-indigo-950/40 text-indigo-900 dark:text-indigo-100 font-bold ring-1 ring-indigo-500 shadow-sm"
-                    : "border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-900"
+                    ? "border-cobalt bg-cobalt/5 text-foreground font-semibold ring-1 ring-cobalt shadow-xs"
+                    : "border-border bg-background/60 text-muted-foreground hover:border-cobalt/40 hover:text-foreground"
                 }`}
               >
                 <div className="flex items-center space-x-3">
-                  <span className="w-6 h-6 rounded-full bg-gray-100 dark:bg-gray-800 text-xs font-bold flex items-center justify-center shrink-0">
+                  <span className={`w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 border ${
+                    isSelected
+                      ? "bg-cobalt text-white border-cobalt"
+                      : "bg-muted text-foreground border-border"
+                  }`}>
                     {String.fromCharCode(65 + idx)}
                   </span>
                   <span>{opt.text}</span>
                 </div>
-                {isSelected && <CheckCircle2 className="w-5 h-5 text-indigo-600 shrink-0" />}
+                {isSelected && <CheckCircle2 className="w-4 h-4 text-cobalt shrink-0" />}
               </div>
             );
           })}
@@ -91,14 +95,14 @@ export function QuestionRenderer({
 
       {/* 3: True / False */}
       {question.type === "true_false" && (
-        <div className="grid grid-cols-2 gap-4 pt-2">
+        <div className="grid grid-cols-2 gap-3 pt-2">
           <button
             type="button"
             onClick={() => onAnswerChange("true")}
-            className={`p-5 rounded-2xl border font-bold text-sm transition-all ${
+            className={`p-4 rounded-[2px] border font-mono text-xs font-bold transition-colors ${
               String(userAnswer).toLowerCase() === "true"
-                ? "border-indigo-600 bg-indigo-50 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 shadow-sm"
-                : "border-gray-200 dark:border-gray-800 text-gray-700 hover:bg-gray-50"
+                ? "border-cobalt bg-cobalt/10 text-cobalt ring-1 ring-cobalt"
+                : "border-border bg-background text-muted-foreground hover:border-cobalt/40 hover:text-foreground"
             }`}
           >
             TRUE
@@ -106,10 +110,10 @@ export function QuestionRenderer({
           <button
             type="button"
             onClick={() => onAnswerChange("false")}
-            className={`p-5 rounded-2xl border font-bold text-sm transition-all ${
+            className={`p-4 rounded-[2px] border font-mono text-xs font-bold transition-colors ${
               String(userAnswer).toLowerCase() === "false"
-                ? "border-indigo-600 bg-indigo-50 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 shadow-sm"
-                : "border-gray-200 dark:border-gray-800 text-gray-700 hover:bg-gray-50"
+                ? "border-cobalt bg-cobalt/10 text-cobalt ring-1 ring-cobalt"
+                : "border-border bg-background text-muted-foreground hover:border-cobalt/40 hover:text-foreground"
             }`}
           >
             FALSE
