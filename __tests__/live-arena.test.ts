@@ -233,7 +233,7 @@ test("QR Code Generation: Canonical HTTPS join URL is valid and scannable", asyn
   assert.equal(canonicalUrl.includes("localhost"), false);
   assert.equal(canonicalUrl.includes("127.0.0.1"), false);
   assert.equal(canonicalUrl.includes("code=QD-8492"), true);
-  assert.ok(canonicalUrl.includes("quizclassroom.versal.app") || canonicalUrl.includes("quizclassroom.vercel.app"));
+  assert.ok(canonicalUrl.includes("quizclassroom.vercel.app"));
 
   // Generate real QR code data URL
   const qrDataUri = await QRCode.toDataURL(canonicalUrl, {
