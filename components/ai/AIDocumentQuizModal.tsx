@@ -128,7 +128,7 @@ export function AIDocumentQuizModal({
   open,
   onOpenChange,
   onQuestionsAdded,
-  defaultSubject = "Science",
+  defaultSubject = "",
   defaultTopic = "",
   defaultDifficulty = "Medium",
 }: AIDocumentQuizModalProps) {
@@ -147,11 +147,19 @@ export function AIDocumentQuizModal({
   const [subject, setSubject] = useState(defaultSubject);
   const [topic, setTopic] = useState(defaultTopic);
   const [difficulty, setDifficulty] = useState<DifficultyLevel>(defaultDifficulty);
-  const [questionCount, setQuestionCount] = useState<number>(5);
+  const [questionCount, setQuestionCount] = useState<number>(10);
+  const [isCustomCount, setIsCustomCount] = useState<boolean>(false);
+  const [customCountInput, setCustomCountInput] = useState<string>("30");
   const [selectedQuestionTypes, setSelectedQuestionTypes] = useState<string[]>([
     "mcq_single",
+    "mcq_multiple",
     "true_false",
     "fill_in_the_blank",
+    "match_following",
+    "drag_drop_categorize",
+    "error_spotting",
+    "sequence_ordering",
+    "assertion_reasoning",
   ]);
 
   // Telemetry & Progress
@@ -272,12 +280,16 @@ export function AIDocumentQuizModal({
         setTelemetryStepText("Synthesizing deep pedagogical questions via Google Gemini...");
       }, 1500);
 
+      const effectiveCount = isCustomCount
+        ? Math.min(50, Math.max(1, parseInt(customCountInput || "30", 10)))
+        : questionCount;
+
       const formData = new FormData();
       formData.append("file", selectedFile);
-      if (subject) formData.append("subject", subject);
-      if (topic) formData.append("topic", topic);
+      if (subject.trim()) formData.append("subject", subject.trim());
+      if (topic.trim()) formData.append("topic", topic.trim());
       formData.append("difficulty", difficulty);
-      formData.append("questionCount", String(questionCount));
+      formData.append("questionCount", String(effectiveCount));
       formData.append("questionTypes", JSON.stringify(selectedQuestionTypes));
 
       const response = await fetch("/api/ai/pdf-to-quiz", {
@@ -301,6 +313,9 @@ export function AIDocumentQuizModal({
 
       if (timerRef.current) clearInterval(timerRef.current);
 
+      if (data.detectedSubject && !subject) setSubject(data.detectedSubject);
+      if (data.detectedTopic && !topic) setTopic(data.detectedTopic);
+
       // Format to QuestionItem array
       const rawQuestions: any[] = data.questions || [];
       const formatted: QuestionItem[] = rawQuestions.map((q: any, idx: number) => {
@@ -310,9 +325,9 @@ export function AIDocumentQuizModal({
           title: q.title || `Question ${idx + 1}`,
           description: q.description || undefined,
           type: (q.type as QuestionType) || "mcq_single",
-          subject: q.subject || subject || "General",
-          category: q.category || subject || "General",
-          topic: q.topic || topic || "Curriculum Unit",
+          subject: q.subject || data.detectedSubject || subject || "General",
+          category: q.category || data.detectedSubject || subject || "General",
+          topic: q.topic || data.detectedTopic || topic || "Curriculum Unit",
           subtopic: q.subtopic || undefined,
           difficulty: itemDifficulty,
           marks: q.marks || (itemDifficulty === "Hard" ? 5 : itemDifficulty === "Medium" ? 4 : 2),
@@ -328,9 +343,25 @@ export function AIDocumentQuizModal({
             rightItem: mp.rightItem,
           })),
           fillBlanks: q.fillBlanks || [],
+          sequenceItems: q.sequenceItems,
+          dragDropCategories: (q.dragDropCategories || []).map((c: any) => ({
+            id: c.id,
+            name: c.name || c.title || c.id,
+            title: c.title || c.name || c.id,
+          })),
+          dragDropItems: (q.dragDropItems || []).map((item: any) => ({
+            id: item.id,
+            text: item.text,
+            targetCategoryId: item.targetCategoryId || item.categoryId || "",
+            categoryId: item.categoryId || item.targetCategoryId || "",
+          })),
           explanation: q.explanation || "Curriculum-derived solution rationale.",
           hints: q.hints || [],
-          tags: [subject.toLowerCase(), "gemini-ai", "doc-generated"].filter(Boolean),
+          tags: [
+            (q.subject || data.detectedSubject || subject || "general").toLowerCase(),
+            "gemini-ai",
+            "pdf-generated",
+          ].filter(Boolean),
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         };
@@ -648,53 +679,80 @@ export function AIDocumentQuizModal({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-[rgba(160,190,170,0.1)]">
               {/* Subject */}
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#A0AEA5] mb-1.5">
-                  Target Subject
+                <label className="block text-xs font-mono uppercase tracking-wider text-[#A0AEA5] mb-1.5 flex items-center justify-between">
+                  <span>Target Subject</span>
+                  <span className="text-[10px] text-[#69786F] normal-case">(optional)</span>
                 </label>
                 <input
                   type="text"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  placeholder="e.g. Science, Biology, Computer Science"
-                  className="w-full bg-[#070B0A] border border-[rgba(160,190,170,0.2)] rounded-[5px] px-3 py-2 text-sm text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]"
+                  placeholder="Auto-detected from document (or e.g. Biology)"
+                  className="w-full bg-[#070B0A] border border-[rgba(160,190,170,0.2)] rounded-[5px] px-3 py-2 text-sm text-[#F2F7F3] focus:outline-none focus:border-[#65F59A] placeholder:text-[#4A5750]"
                 />
               </div>
 
               {/* Topic */}
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#A0AEA5] mb-1.5">
-                  Specific Topic / Unit
+                <label className="block text-xs font-mono uppercase tracking-wider text-[#A0AEA5] mb-1.5 flex items-center justify-between">
+                  <span>Specific Topic / Unit</span>
+                  <span className="text-[10px] text-[#69786F] normal-case">(optional)</span>
                 </label>
                 <input
                   type="text"
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
-                  placeholder="e.g. Mitosis, CAP Theorem, Photosynthesis"
-                  className="w-full bg-[#070B0A] border border-[rgba(160,190,170,0.2)] rounded-[5px] px-3 py-2 text-sm text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]"
+                  placeholder="Auto-detected from document (or e.g. Mitosis)"
+                  className="w-full bg-[#070B0A] border border-[rgba(160,190,170,0.2)] rounded-[5px] px-3 py-2 text-sm text-[#F2F7F3] focus:outline-none focus:border-[#65F59A] placeholder:text-[#4A5750]"
                 />
               </div>
 
               {/* Question Count */}
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-[#A0AEA5] mb-1.5">
-                  Question Count
-                </label>
-                <div className="grid grid-cols-5 gap-1.5">
-                  {[3, 5, 8, 10, 15].map((count) => (
-                    <button
-                      key={count}
-                      type="button"
-                      onClick={() => setQuestionCount(count)}
-                      className={`py-1.5 rounded-[4px] font-mono text-xs font-semibold border transition-all ${
-                        questionCount === count
-                          ? "bg-[rgba(101,245,154,0.2)] border-[#65F59A] text-[#65F59A]"
-                          : "bg-[#070B0A] border-[rgba(160,190,170,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3]"
-                      }`}
-                    >
-                      {count}
-                    </button>
-                  ))}
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5]">
+                    Question Count: <span className="text-[#65F59A] font-bold">{isCustomCount ? customCountInput || "1" : questionCount}</span>
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => setIsCustomCount(!isCustomCount)}
+                    className="text-[10px] font-mono uppercase text-[#38D9B0] hover:underline"
+                  >
+                    {isCustomCount ? "Use Presets" : "+ Custom Number"}
+                  </button>
                 </div>
+
+                {isCustomCount ? (
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="number"
+                      min={1}
+                      max={50}
+                      value={customCountInput}
+                      onChange={(e) => setCustomCountInput(e.target.value)}
+                      placeholder="Enter 1 - 50..."
+                      className="w-full bg-[#070B0A] border border-[#65F59A] rounded-[4px] px-3 py-1.5 text-xs font-mono font-bold text-[#65F59A] focus:outline-none"
+                    />
+                    <span className="text-[11px] font-mono text-[#69786F] shrink-0">Max: 50</span>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-5 gap-1.5">
+                    {[5, 10, 15, 20, 30].map((count) => (
+                      <button
+                        key={count}
+                        type="button"
+                        onClick={() => setQuestionCount(count)}
+                        className={`py-1.5 rounded-[4px] font-mono text-xs font-semibold border transition-all ${
+                          questionCount === count
+                            ? "bg-[rgba(101,245,154,0.2)] border-[#65F59A] text-[#65F59A]"
+                            : "bg-[#070B0A] border-[rgba(160,190,170,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3]"
+                        }`}
+                      >
+                        {count}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Difficulty */}
@@ -727,15 +785,51 @@ export function AIDocumentQuizModal({
 
             {/* Question Types Checkboxes */}
             <div className="pt-2 border-t border-[rgba(160,190,170,0.1)]">
-              <label className="block text-xs font-mono uppercase tracking-wider text-[#A0AEA5] mb-2">
-                Supported Question Types
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              <div className="flex items-center justify-between mb-2">
+                <label className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5]">
+                  Question Types ({selectedQuestionTypes.length} Selected)
+                </label>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setSelectedQuestionTypes([
+                        "mcq_single",
+                        "mcq_multiple",
+                        "true_false",
+                        "fill_in_the_blank",
+                        "match_following",
+                        "drag_drop_categorize",
+                        "error_spotting",
+                        "sequence_ordering",
+                        "assertion_reasoning",
+                      ])
+                    }
+                    className="text-[10px] font-mono uppercase text-[#65F59A] hover:underline"
+                  >
+                    Select All
+                  </button>
+                  <span className="text-[#69786F] text-[10px]">•</span>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedQuestionTypes(["mcq_single"])}
+                    className="text-[10px] font-mono uppercase text-[#A0AEA5] hover:underline"
+                  >
+                    Reset
+                  </button>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 {[
                   { id: "mcq_single", label: "Single Choice MCQ" },
                   { id: "mcq_multiple", label: "Multi-Select MCQ" },
                   { id: "true_false", label: "True / False" },
                   { id: "fill_in_the_blank", label: "Fill in Blanks" },
+                  { id: "match_following", label: "Match the Following" },
+                  { id: "drag_drop_categorize", label: "Drag & Drop Grouping" },
+                  { id: "error_spotting", label: "Error Spotting" },
+                  { id: "sequence_ordering", label: "Sequence Ordering" },
+                  { id: "assertion_reasoning", label: "Assertion & Reason" },
                 ].map((typeItem) => {
                   const isChecked = selectedQuestionTypes.includes(typeItem.id);
                   return (
@@ -758,7 +852,7 @@ export function AIDocumentQuizModal({
                       >
                         {isChecked && <Check className="w-2.5 h-2.5 stroke-[3]" />}
                       </div>
-                      <span>{typeItem.label}</span>
+                      <span className="truncate">{typeItem.label}</span>
                     </button>
                   );
                 })}
@@ -971,6 +1065,71 @@ export function AIDocumentQuizModal({
                               }
                               className="w-full bg-transparent text-xs text-[#F2F7F3] focus:outline-none"
                             />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Matching Pairs Display */}
+                  {question.matchingPairs && question.matchingPairs.length > 0 && (
+                    <div className="space-y-1.5">
+                      <label className="block text-[10px] font-mono uppercase tracking-wider text-[#69786F]">
+                        Matching Pairs
+                      </label>
+                      <div className="space-y-1.5">
+                        {question.matchingPairs.map((pair, pIdx) => (
+                          <div key={pair.id || pIdx} className="grid grid-cols-2 gap-2 text-xs font-mono">
+                            <div className="p-2 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)] text-[#F2F7F3]">
+                              <span className="text-[#65F59A] font-bold mr-1.5">{pIdx + 1}.</span> {pair.leftItem}
+                            </div>
+                            <div className="p-2 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)] text-[#38D9B0]">
+                              <span className="text-[#A0AEA5] mr-1.5">→</span> {pair.rightItem}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Sequence Items Display */}
+                  {question.sequenceItems && question.sequenceItems.length > 0 && (
+                    <div className="space-y-1.5">
+                      <label className="block text-[10px] font-mono uppercase tracking-wider text-[#69786F]">
+                        Sequential Order (Steps 1-{question.sequenceItems.length})
+                      </label>
+                      <div className="space-y-1">
+                        {question.sequenceItems.map((seq, sIdx) => (
+                          <div key={seq.id || sIdx} className="p-2 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)] text-xs font-mono flex items-center gap-2">
+                            <span className="w-5 h-5 rounded-[2px] bg-[#17251E] text-[#65F59A] font-bold flex items-center justify-center shrink-0 border border-[rgba(101,245,154,0.3)] text-[10px]">
+                              {seq.order || sIdx + 1}
+                            </span>
+                            <span className="text-[#F2F7F3]">{seq.text}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Drag & Drop Categories Display */}
+                  {question.dragDropCategories && question.dragDropCategories.length > 0 && (
+                    <div className="space-y-1.5">
+                      <label className="block text-[10px] font-mono uppercase tracking-wider text-[#69786F]">
+                        Drag & Drop Category Buckets
+                      </label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
+                        {question.dragDropCategories.map((cat) => (
+                          <div key={cat.id} className="p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] space-y-1.5">
+                            <div className="font-bold text-[#65F59A]">{(cat as any).title || cat.name || cat.id}</div>
+                            <div className="flex flex-wrap gap-1">
+                              {(question.dragDropItems || [])
+                                .filter((i) => i.categoryId === cat.id || i.targetCategoryId === cat.id)
+                                .map((item) => (
+                                  <span key={item.id} className="px-2 py-0.5 rounded-[3px] bg-[#17251E] text-[#A0AEA5] border border-[rgba(160,190,170,0.1)] text-[11px]">
+                                    {item.text}
+                                  </span>
+                                ))}
+                            </div>
                           </div>
                         ))}
                       </div>

@@ -120,15 +120,13 @@ export class OCREngineService {
                 handwritingRecognition: 90,
               },
             };
-          } else if (!data.success && data.error && !data.error.includes("GEMINI_API_KEY")) {
-            throw new Error(data.error);
+          } else if (!data.success && data.error) {
+            throw new Error(`AI Extraction Error: ${data.error}`);
           }
         }
       } catch (docErr: any) {
-        if (docErr.message && !docErr.message.includes("fetch") && !docErr.message.includes("network")) {
-          throw docErr;
-        }
-        console.warn("AI Document-to-quiz endpoint error, using fallback provider:", docErr);
+        console.error("AI Document-to-quiz endpoint failure:", docErr);
+        throw new Error(docErr.message || "Failed to extract questions from uploaded document via AI.");
       }
     }
 

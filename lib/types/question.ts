@@ -16,10 +16,12 @@ export type QuestionType =
   | "fill_in_the_blank"
   | "match_following"
   | "sequence_ordering"
+  | "drag_drop_categorize"
+  | "error_spotting"
+  | "assertion_reasoning"
   | "image_based"
   // Phase 2.2 Interactive & Multimedia Question Types
   | "hotspot"
-  | "drag_drop_categorize"
   | "diagram_labeling"
   | "timeline_ordering"
   | "audio_listening"

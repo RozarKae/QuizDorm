@@ -78,6 +78,8 @@ export interface ExtractedQuestion {
   options: ExtractedQuestionOption[];
   matchingPairs?: { id: string; leftItem: string; rightItem: string }[];
   sequenceItems?: { id: string; text: string; order: number }[];
+  dragDropCategories?: { id: string; title: string }[];
+  dragDropItems?: { id: string; text: string; categoryId: string }[];
   fillBlanks?: string[];
   explanation?: string;
   hints?: string[];

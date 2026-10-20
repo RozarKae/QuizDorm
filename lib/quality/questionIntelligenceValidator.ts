@@ -314,6 +314,46 @@ export class QuestionIntelligenceValidator {
       return;
     }
 
+    // Handle Sequence Ordering format
+    if (type === "sequence_ordering") {
+      const items = question.sequenceItems || [];
+      if (items.length < 2) {
+        issues.push({
+          code: "INSUFFICIENT_SEQUENCE_ITEMS",
+          field: "options",
+          severity: "error",
+          message: `Sequence ordering question must have at least 2 steps, found ${items.length}.`,
+          suggestedFix: "Provide at least 2 items to sequence.",
+        });
+      }
+      return;
+    }
+
+    // Handle Drag and Drop Categorization format
+    if (type === "drag_drop_categorize") {
+      const categories = question.dragDropCategories || [];
+      const items = question.dragDropItems || [];
+      if (categories.length < 2) {
+        issues.push({
+          code: "INSUFFICIENT_DRAG_DROP_CATEGORIES",
+          field: "options",
+          severity: "error",
+          message: `Drag & drop question must have at least 2 target categories, found ${categories.length}.`,
+          suggestedFix: "Provide at least 2 categories.",
+        });
+      }
+      if (items.length < 2) {
+        issues.push({
+          code: "INSUFFICIENT_DRAG_DROP_ITEMS",
+          field: "options",
+          severity: "error",
+          message: `Drag & drop question must have at least 2 items to categorize, found ${items.length}.`,
+          suggestedFix: "Provide at least 2 draggable items.",
+        });
+      }
+      return;
+    }
+
     if (options.length === 0) {
       issues.push({
         code: "OPTIONS_EMPTY",
@@ -548,7 +588,12 @@ export class QuestionIntelligenceValidator {
   ): number {
     let score = 100;
     const type = question.type || "mcq_single";
-    if (type === "match_following" || type === "fill_in_the_blank") {
+    if (
+      type === "match_following" ||
+      type === "fill_in_the_blank" ||
+      type === "sequence_ordering" ||
+      type === "drag_drop_categorize"
+    ) {
       return score;
     }
 

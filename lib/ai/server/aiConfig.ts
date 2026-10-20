@@ -36,7 +36,7 @@ export class AIServerConfig {
   ] as const;
 
   public static readonly DEFAULT_MODEL = "gemini-3.5-flash-lite";
-  public static readonly FALLBACK_MODEL = "gemini-flash-lite-latest";
+  public static readonly FALLBACK_MODEL = "gemini-3.8-flash";
 
   /**
    * Check whether GEMINI_API_KEY is configured in server environment

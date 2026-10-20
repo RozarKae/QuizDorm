@@ -79,7 +79,12 @@ export default function DocumentIntelligenceWorkspace() {
   ) => {
     setLoading(true);
     try {
-      const newJob = await OCRJobManager.createJob(file, settings, subject);
+      const targetSubject = subject === "auto" ? undefined : subject;
+      const jobSettings: OCRJobSettings = {
+        ...settings,
+        targetSubject,
+      };
+      const newJob = await OCRJobManager.createJob(file, jobSettings, targetSubject || "Auto-Detected");
       const updatedJobs = OCRJobManager.getJobs();
       setJobs(updatedJobs);
       setSelectedJob(newJob);

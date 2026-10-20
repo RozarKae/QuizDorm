@@ -112,10 +112,20 @@ export async function POST(request: Request) {
     const topic = (formData.get("topic") as string) || undefined;
     const difficulty = (formData.get("difficulty") as any) || "Medium";
     const rawCount = formData.get("questionCount");
-    const questionCount = rawCount ? Math.min(25, Math.max(1, parseInt(String(rawCount), 10))) : 5;
+    const questionCount = rawCount ? Math.min(50, Math.max(1, parseInt(String(rawCount), 10))) : 5;
 
-    // Parse custom question types if provided
-    let questionTypes: any[] = ["mcq_single", "true_false", "fill_in_the_blank", "match_following"];
+    // Parse custom question types if provided (supports all 9 types)
+    let questionTypes: any[] = [
+      "mcq_single",
+      "mcq_multiple",
+      "true_false",
+      "fill_in_the_blank",
+      "match_following",
+      "drag_drop_categorize",
+      "error_spotting",
+      "sequence_ordering",
+      "assertion_reasoning",
+    ];
     const rawTypes = formData.get("questionTypes");
     if (rawTypes && typeof rawTypes === "string") {
       try {
@@ -193,6 +203,20 @@ export async function POST(request: Request) {
           rightItem: mp.rightItem,
         })),
         fillBlanks: q.fillBlanks,
+        sequenceItems: (q as any).sequenceItems?.map((s: any) => ({
+          id: s.id,
+          text: s.text,
+          order: s.order,
+        })),
+        dragDropCategories: (q as any).dragDropCategories?.map((c: any) => ({
+          id: c.id,
+          title: c.title,
+        })),
+        dragDropItems: (q as any).dragDropItems?.map((i: any) => ({
+          id: i.id,
+          text: i.text,
+          categoryId: i.categoryId,
+        })),
         explanation: q.generalExplanation,
         hints: q.hints,
         confidence: {
@@ -244,6 +268,17 @@ export async function GET() {
     provider: health.providerId,
     activeModel: health.model,
     maxUploadSizeBytes: MAX_FILE_SIZE_BYTES,
-    supportedTypes: ["mcq_single", "mcq_multiple", "true_false"],
+    maxQuestionCount: 50,
+    supportedTypes: [
+      "mcq_single",
+      "mcq_multiple",
+      "true_false",
+      "fill_in_the_blank",
+      "match_following",
+      "drag_drop_categorize",
+      "error_spotting",
+      "sequence_ordering",
+      "assertion_reasoning",
+    ],
   });
 }

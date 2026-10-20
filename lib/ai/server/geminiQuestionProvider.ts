@@ -1,5 +1,6 @@
 import { GoogleGenAI } from "@google/genai";
 import { AIServerConfig } from "./aiConfig";
+import { DocumentTextExtractor } from "./pdfTextExtractor";
 import {
   IQuestionIntelligenceProvider,
   RawAIQuestionResponse,
@@ -43,9 +44,14 @@ You must author educational assessment questions following these non-negotiable 
 
 4. SUPPORTED QUESTION TYPES & SPECIFICATIONS:
 - "mcq_single": Single-choice with 4 homogeneous options, exactly one with isCorrect: true.
+- "mcq_multiple": Multi-select question with 4-5 options, 2 or more with isCorrect: true.
 - "true_false": Binary question with exactly two options ("True" and "False"), exactly one with isCorrect: true.
-- "fill_in_the_blank": Stem must include "[blank]" indicator. Must provide accepted answers in "fillBlanks": ["answer1", "alternative2"].
-- "match_following": Stem prompts matching relationship. Must provide "matchingPairs": [{ "id": "m1", "leftItem": "Premise A", "rightItem": "Match A" }, { "id": "m2", "leftItem": "Premise B", "rightItem": "Match B" }]. All left items and right items must be completely distinct and unambiguous.
+- "fill_in_the_blank": Stem must include "[blank]" placeholder. Must provide accepted keywords in "fillBlanks": ["answer1", "alternative2"].
+- "match_following": Stem prompts matching relationships. Must provide "matchingPairs": [{ "id": "m1", "leftItem": "Item 1", "rightItem": "Match 1" }, ...]. All items must be unique and unambiguous.
+- "drag_drop_categorize": Stem prompts grouping items into buckets. Must provide "dragDropCategories": [{ "id": "c1", "title": "Category A" }, { "id": "c2", "title": "Category B" }] and "dragDropItems": [{ "id": "i1", "text": "Item 1", "categoryId": "c1" }, ...].
+- "error_spotting": Stem provides a statement or passage with labeled parts (e.g. "[A] Part 1 [B] Part 2 [C] Part 3 [D] Part 4"). Exactly one option is marked isCorrect: true identifying the flawed part, with explanation of the error and correction.
+- "sequence_ordering": Stem prompts arranging steps/events. Must provide "sequenceItems": [{ "id": "s1", "text": "Step A", "order": 1 }, { "id": "s2", "text": "Step B", "order": 2 }, ...].
+- "assertion_reasoning": Stem provides "Assertion (A): [Premise]\nReason (R): [Explanation]". Options must evaluate truth and causal validity with exactly 1 isCorrect: true.
 
 5. FORMAT:
 - Output MUST be valid, well-formed JSON matching the specified schema.
@@ -201,58 +207,101 @@ export class GeminiQuestionProvider implements IQuestionIntelligenceProvider {
 
     const ai = this.getClient();
     const model = AIServerConfig.getActiveModel(options?.modelOverride);
-    const timeoutMs = options?.timeoutMs || (AIServerConfig.getRequestTimeoutMs() * 2);
 
-    const questionCount = input.questionCount || 5;
-    const allowedTypes = (input.questionTypes || ["mcq_single", "true_false", "fill_in_the_blank", "match_following"]).join(", ");
-    const userPrompt = `You have been provided with an educational document (PDF). Analyze the document thoroughly, extract its core factual curriculum content, and generate exactly ${questionCount} high-quality assessment questions grounded strictly in the document.
+    // Extract raw text from the document directly to ground the model
+    const extractedDoc = DocumentTextExtractor.extractText(buffer, mimeType);
+    const extractedText = extractedDoc.text;
+    const hasText = extractedText && extractedText.length > 20;
 
-Requirements:
-- Target Subject: "${input.subject || "General Academic"}"
-- Target Topic: "${input.topic || "Core Curriculum"}"
+    const questionCount = Math.min(50, Math.max(1, input.questionCount || 5));
+    const baseTimeout = AIServerConfig.getRequestTimeoutMs() * 2;
+    const timeoutMs = options?.timeoutMs || (questionCount > 15 ? Math.max(baseTimeout, 90000) : baseTimeout);
+
+    const allowedTypes = (
+      input.questionTypes || [
+        "mcq_single",
+        "mcq_multiple",
+        "true_false",
+        "fill_in_the_blank",
+        "match_following",
+        "drag_drop_categorize",
+        "error_spotting",
+        "sequence_ordering",
+        "assertion_reasoning",
+      ]
+    ).join(", ");
+
+    const userPrompt = `You have been provided with an educational document (PDF/Text/Image).
+${hasText ? `\n=== SOURCE DOCUMENT EXTRACTED TEXT ===\n${extractedText.slice(0, 45000)}\n=== END OF DOCUMENT TEXT ===\n` : ""}
+
+CRITICAL GROUNDING DIRECTIVE:
+1. You MUST thoroughly analyze the factual, historical, scientific, or conceptual content of the provided document.
+2. ALL questions, answers, and distractors MUST be grounded strictly in the concepts, definitions, events, formulas, and facts present in this document.
+3. DO NOT invent questions about outside domains. If the user provided Target Subject ("${input.subject || "Auto-Detect"}") or Target Topic ("${input.topic || "Auto-Detect"}"), treat them ONLY as general search hints within the document. If the document covers a different topic, ALWAYS extract questions from what is ACTUALLY in the document.
+4. Auto-detect the true document title, primary academic subject, and central topic directly from the document.
+
+Generation Targets:
+- Number of Questions to Generate: exactly ${questionCount}
 - Target Difficulty: "${input.difficulty || "Medium"}"
 - Allowed Question Types: ${allowedTypes}
-- Total Questions to Generate: ${questionCount}
 
 Return a single valid JSON object strictly matching this schema:
 {
-  "documentTitle": "Extracted document title or inferred topic",
-  "summary": "Brief summary of educational concepts tested",
-  "detectedSubject": "${input.subject || "General Academic"}",
-  "detectedTopic": "${input.topic || "Core Curriculum"}",
+  "documentTitle": "Accurate document title or inferred subject unit from content",
+  "summary": "2-3 sentence overview of the concepts covered in this document",
+  "detectedSubject": "Actual primary academic subject of the document (e.g. Physics, History, Biology, Computer Science, Economics)",
+  "detectedTopic": "Actual core topic of the document",
   "questions": [
     {
-      "title": "Unambiguous, self-contained question statement (for fill_in_the_blank include '[blank]')",
+      "title": "Unambiguous question statement (for fill_in_the_blank include '[blank]'; for error_spotting label parts like [A] ... [B] ... [C] ... [D])",
       "context": "Context excerpt from document if needed or null",
-      "type": "mcq_single | true_false | fill_in_the_blank | match_following",
-      "subject": "${input.subject || "General Academic"}",
-      "category": "${input.subject || "General Academic"}",
-      "topic": "${input.topic || "Core Curriculum"}",
-      "subtopic": "Core Principles",
-      "gradeLevel": "Grade 9-10",
+      "type": "mcq_single | mcq_multiple | true_false | fill_in_the_blank | match_following | drag_drop_categorize | error_spotting | sequence_ordering | assertion_reasoning",
+      "subject": "Academic subject of this question",
+      "category": "Academic category",
+      "topic": "Specific topic",
+      "subtopic": "Subtopic concept",
+      "gradeLevel": "Grade 9-12 / Undergraduate",
       "learningObjective": "Pedagogical objective tested (at least 10 chars)",
-      "bloomsLevel": "Understand",
+      "bloomsLevel": "Understand | Apply | Analyze | Evaluate",
       "difficulty": "${input.difficulty || "Medium"}",
       "options": [
         { "id": "opt-1", "text": "Choice A", "isCorrect": true, "explanation": "Why correct" },
         { "id": "opt-2", "text": "Choice B", "isCorrect": false, "explanation": "Why incorrect", "misconceptionType": "common_misconception" }
       ],
       "matchingPairs": [
-        { "id": "m1", "leftItem": "Item 1", "rightItem": "Match 1" },
-        { "id": "m2", "leftItem": "Item 2", "rightItem": "Match 2" }
+        { "id": "m1", "leftItem": "Item 1", "rightItem": "Match 1" }
       ],
       "fillBlanks": ["accepted_answer_keyword"],
-      "generalExplanation": "Step-by-step master solution (at least 15 chars)",
-      "hints": ["Helpful hint"],
-      "tags": ["extracted-quiz"]
+      "sequenceItems": [
+        { "id": "s1", "text": "Chronological Step 1", "order": 1 },
+        { "id": "s2", "text": "Chronological Step 2", "order": 2 }
+      ],
+      "dragDropCategories": [
+        { "id": "c1", "title": "Category 1" },
+        { "id": "c2", "title": "Category 2" }
+      ],
+      "dragDropItems": [
+        { "id": "i1", "text": "Item A", "categoryId": "c1" },
+        { "id": "i2", "text": "Item B", "categoryId": "c2" }
+      ],
+      "generalExplanation": "Comprehensive master explanation with solution steps (min 15 chars)",
+      "hints": ["Helpful pedagogical hint"],
+      "tags": ["document-extracted"]
     }
   ]
 }
-Note for question formats:
-- mcq_single: options has 4 items with exactly 1 isCorrect: true. matchingPairs and fillBlanks omitted or empty.
-- true_false: options has True and False with 1 isCorrect: true. matchingPairs and fillBlanks omitted or empty.
-- fill_in_the_blank: title has '[blank]', fillBlanks has accepted string answers. options can be empty.
-- match_following: matchingPairs has 3-4 unambiguous unique pairs. options can be empty.`;
+
+Formatting Rules per Type:
+- mcq_single: 4 options with exactly 1 isCorrect: true.
+- mcq_multiple: 4-5 options with 2 or more isCorrect: true.
+- true_false: exactly 2 options ("True" and "False") with 1 isCorrect: true.
+- fill_in_the_blank: title has '[blank]', fillBlanks has accepted keywords.
+- match_following: matchingPairs has 3-5 distinct left/right pairs.
+- drag_drop_categorize: dragDropCategories has 2-3 categories, dragDropItems has 4-8 items with categoryId.
+- error_spotting: title has labeled fragments "[A] ... [B] ... [C] ... [D]"; options has the fragments with 1 isCorrect: true identifying the error.
+- sequence_ordering: sequenceItems has 3-5 steps in correct sequential order (1, 2, 3...).
+- assertion_reasoning: title has "Assertion (A): ... \\nReason (R): ...", options has the 4 standard relationship options with 1 isCorrect: true.
+`;
 
     const startTime = Date.now();
     try {
@@ -286,6 +335,7 @@ Note for question formats:
               systemInstruction: SYSTEM_INSTRUCTION,
               responseMimeType: "application/json",
               temperature: 0.2,
+              maxOutputTokens: 16384,
             },
           }),
           timeoutPromise,
@@ -311,6 +361,7 @@ Note for question formats:
                 systemInstruction: SYSTEM_INSTRUCTION,
                 responseMimeType: "application/json",
                 temperature: 0.2,
+                maxOutputTokens: 16384,
               },
             }),
             timeoutPromise,

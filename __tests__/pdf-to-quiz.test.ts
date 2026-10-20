@@ -614,3 +614,163 @@ test("Question Bank Persistence: Successfully stores and deduplicates all 4 ques
   assert.equal(secondImport.imported, 0, "Re-imported questions must be skipped");
   assert.equal(secondImport.skipped, 4, "All 4 duplicates must be skipped");
 });
+
+/**
+ * Suite 7: Document Text Extraction & Expanded Architecture
+ */
+import { DocumentTextExtractor } from "../lib/ai/server/pdfTextExtractor";
+
+test("Document Extractor 1: Extracts text content from decompressed PDF stream", () => {
+  const minimalPdf = Buffer.from(
+    "%PDF-1.4\n1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n" +
+      "2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n" +
+      "3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R >>\nendobj\n" +
+      "4 0 obj\n<< /Length 80 >>\nstream\nBT\n/F1 12 Tf\n50 700 Td\n(Mitochondria generate ATP for eukaryotic cells.) Tj\nET\nendstream\nendobj\n" +
+      "xref\n0 5\n0000000000 65535 f \ntrailer\n<< /Size 5 /Root 1 0 R >>\nstartxref\n300\n%%EOF"
+  );
+
+  const res = DocumentTextExtractor.extractText(minimalPdf, "application/pdf", "biology.pdf");
+  assert.ok(res.text.includes("Mitochondria generate ATP"), `Expected extracted text to contain stream statement, got: ${res.text}`);
+  assert.equal(res.wordCount > 0, true);
+});
+
+test("Document Extractor 2: Reads plaintext and markdown curriculum files directly", () => {
+  const mdBuffer = Buffer.from("# Quantum Physics\nPlanck's constant relates photon energy to frequency: E = hf.");
+  const res = DocumentTextExtractor.extractText(mdBuffer, "text/markdown", "notes.md");
+  assert.ok(res.text.includes("Planck's constant relates photon energy"));
+  assert.equal(res.extractionMethod, "plaintext");
+});
+
+test("Custom Count & Doubled Limit: Allows custom question count up to 50", () => {
+  const custom30 = PdfQuestionGenerationInputSchema.safeParse({ questionCount: 30 });
+  assert.equal(custom30.success, true);
+  if (custom30.success) assert.equal(custom30.data.questionCount, 30);
+
+  const custom50 = PdfQuestionGenerationInputSchema.safeParse({ questionCount: 50 });
+  assert.equal(custom50.success, true);
+  if (custom50.success) assert.equal(custom50.data.questionCount, 50);
+
+  const oversized = PdfQuestionGenerationInputSchema.safeParse({ questionCount: 100 });
+  assert.equal(oversized.success, false, "Should reject count > 50");
+});
+
+test("Expanded Types 1: Validates Error Spotting question format and scoring", () => {
+  const errorSpottingQ = {
+    title: "Identify the flawed segment in the historical statement: [A] In 1776, [B] the Declaration of Independence [C] was drafted by George Washington [D] in Philadelphia.",
+    type: "error_spotting" as const,
+    subject: "History",
+    category: "American History",
+    topic: "Revolutionary War",
+    gradeLevel: "Grade 10",
+    learningObjective: "Identify key authors of foundational American historical texts",
+    bloomsLevel: "Analyze" as const,
+    difficulty: "Medium" as const,
+    options: [
+      { id: "A", text: "[A] In 1776", isCorrect: false, explanation: "1776 is the historically correct year." },
+      { id: "B", text: "[B] the Declaration of Independence", isCorrect: false, explanation: "Correct document name." },
+      { id: "C", text: "[C] was drafted by George Washington", isCorrect: true, explanation: "Drafted by Thomas Jefferson, not George Washington." },
+      { id: "D", text: "[D] in Philadelphia", isCorrect: false, explanation: "Philadelphia is the correct location." },
+    ],
+    generalExplanation: "Thomas Jefferson was the principal author of the Declaration of Independence, while Washington was leading the Continental Army.",
+    hints: ["Consider who the primary author of the committee of five was."],
+    tags: ["history"],
+  };
+
+  const zodCheck = GeneratedQuestionSchema.safeParse(errorSpottingQ);
+  assert.equal(zodCheck.success, true, "Error spotting question should satisfy schema");
+
+  const validation = QuestionIntelligenceValidator.validate(errorSpottingQ);
+  assert.equal(validation.isValid, true, "Valid error spotting question must pass quality gates");
+});
+
+test("Expanded Types 2: Validates Sequence Ordering question format", () => {
+  const sequenceQ = {
+    title: "Arrange the chronological phases of eukaryotic mitosis in correct sequential order from start to finish:",
+    type: "sequence_ordering" as const,
+    subject: "Biology",
+    category: "Cell Biology",
+    topic: "Mitosis",
+    gradeLevel: "Grade 11",
+    learningObjective: "Sequence the continuous stages of nuclear division in mitosis",
+    bloomsLevel: "Understand" as const,
+    difficulty: "Medium" as const,
+    options: [],
+    sequenceItems: [
+      { id: "s1", text: "Prophase", order: 1 },
+      { id: "s2", text: "Metaphase", order: 2 },
+      { id: "s3", text: "Anaphase", order: 3 },
+      { id: "s4", text: "Telophase", order: 4 },
+    ],
+    generalExplanation: "Mitosis sequentially proceeds: Prophase -> Metaphase -> Anaphase -> Telophase.",
+    hints: ["Remember PMAT mnemonic."],
+    tags: ["biology"],
+  };
+
+  const zodCheck = GeneratedQuestionSchema.safeParse(sequenceQ);
+  assert.equal(zodCheck.success, true, "Sequence ordering question should satisfy schema");
+
+  const validation = QuestionIntelligenceValidator.validate(sequenceQ);
+  assert.equal(validation.isValid, true, "Valid sequence ordering question must pass quality gates");
+});
+
+test("Expanded Types 3: Validates Drag and Drop Categorization question format", () => {
+  const dragDropQ = {
+    title: "Categorize the following cellular components into Prokaryotic or Eukaryotic specific structures:",
+    type: "drag_drop_categorize" as const,
+    subject: "Biology",
+    category: "Cytology",
+    topic: "Cell Structure",
+    gradeLevel: "Grade 10",
+    learningObjective: "Differentiate organelle structures between prokaryotic and eukaryotic organisms",
+    bloomsLevel: "Analyze" as const,
+    difficulty: "Hard" as const,
+    options: [],
+    dragDropCategories: [
+      { id: "cat-prok", title: "Prokaryotes" },
+      { id: "cat-euk", title: "Eukaryotes" },
+    ],
+    dragDropItems: [
+      { id: "i1", text: "Nucleoid Region", categoryId: "cat-prok" },
+      { id: "i2", text: "Membrane-bound Mitochondria", categoryId: "cat-euk" },
+      { id: "i3", text: "Endoplasmic Reticulum", categoryId: "cat-euk" },
+    ],
+    generalExplanation: "Prokaryotes lack membrane-bound organelles and possess a nucleoid, whereas Eukaryotes contain mitochondria and ER.",
+    hints: ["Consider which cells contain true nuclei."],
+    tags: ["biology"],
+  };
+
+  const zodCheck = GeneratedQuestionSchema.safeParse(dragDropQ);
+  assert.equal(zodCheck.success, true, "Drag drop categorization should satisfy schema");
+
+  const validation = QuestionIntelligenceValidator.validate(dragDropQ);
+  assert.equal(validation.isValid, true, "Valid drag drop question must pass quality gates");
+});
+
+test("Expanded Types 4: Validates Assertion and Reasoning format", () => {
+  const assertionQ = {
+    title: "Assertion (A): Photosynthesis rates decrease at temperatures above 40°C.\nReason (R): High temperatures denature RuBisCO enzymes in chloroplasts.",
+    type: "assertion_reasoning" as const,
+    subject: "Biology",
+    category: "Plant Physiology",
+    topic: "Photosynthesis",
+    gradeLevel: "Grade 12",
+    learningObjective: "Evaluate thermal denaturation impacts on photosynthetic enzyme catalysis",
+    bloomsLevel: "Evaluate" as const,
+    difficulty: "Hard" as const,
+    options: [
+      { id: "opt-1", text: "Both (A) and (R) are true, and (R) is the correct explanation of (A).", isCorrect: true, explanation: "Thermal denaturation at >40°C halts RuBisCO catalytic carbon fixation." },
+      { id: "opt-2", text: "Both (A) and (R) are true, but (R) is NOT the correct explanation of (A).", isCorrect: false, explanation: "Reason directly explains the Assertion premise." },
+      { id: "opt-3", text: "(A) is true, but (R) is false.", isCorrect: false, explanation: "RuBisCO does denature at excessive temperatures." },
+      { id: "opt-4", text: "(A) is false, but (R) is true.", isCorrect: false, explanation: "Photosynthesis rate does drop severely." },
+    ],
+    generalExplanation: "At temperatures exceeding optimum (>40°C), enzymes like RuBisCO denature, directly causing photosynthetic activity to drop.",
+    hints: ["Analyze temperature effects on enzyme protein folding tertiary structure."],
+    tags: ["biology"],
+  };
+
+  const zodCheck = GeneratedQuestionSchema.safeParse(assertionQ);
+  assert.equal(zodCheck.success, true, "Assertion reasoning should satisfy schema");
+
+  const validation = QuestionIntelligenceValidator.validate(assertionQ);
+  assert.equal(validation.isValid, true, "Valid assertion reasoning question must pass quality gates");
+});

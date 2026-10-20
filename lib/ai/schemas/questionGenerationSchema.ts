@@ -28,6 +28,10 @@ export const QuestionTypeEnum = z.enum([
   "true_false",
   "fill_in_the_blank",
   "match_following",
+  "sequence_ordering",
+  "drag_drop_categorize",
+  "error_spotting",
+  "assertion_reasoning",
 ]);
 export type QuestionType = z.infer<typeof QuestionTypeEnum>;
 
@@ -58,6 +62,29 @@ export const GeneratedMatchPairSchema = z.object({
 export type GeneratedMatchPair = z.infer<typeof GeneratedMatchPairSchema>;
 
 /**
+ * Schema for sequential items in sequence_ordering questions
+ */
+export const GeneratedSequenceItemSchema = z.object({
+  id: z.string().min(1, "Sequence item ID is required"),
+  text: z.string().min(1, "Item text must not be empty"),
+  order: z.number().int(),
+});
+export type GeneratedSequenceItem = z.infer<typeof GeneratedSequenceItemSchema>;
+
+/**
+ * Schema for drag & drop categorization
+ */
+export const GeneratedDragDropCategorySchema = z.object({
+  id: z.string().min(1, "Category ID is required"),
+  title: z.string().min(1, "Category title must not be empty"),
+});
+export const GeneratedDragDropItemSchema = z.object({
+  id: z.string().min(1, "Item ID is required"),
+  text: z.string().min(1, "Item text must not be empty"),
+  categoryId: z.string().min(1, "Target category ID is required"),
+});
+
+/**
  * Runtime Zod schema for structured question generation output
  */
 export const GeneratedQuestionSchema = z
@@ -81,6 +108,9 @@ export const GeneratedQuestionSchema = z
     options: z.array(GeneratedOptionSchema).default([]),
     matchingPairs: z.array(GeneratedMatchPairSchema).optional(),
     fillBlanks: z.array(z.string().min(1)).optional(),
+    sequenceItems: z.array(GeneratedSequenceItemSchema).optional(),
+    dragDropCategories: z.array(GeneratedDragDropCategorySchema).optional(),
+    dragDropItems: z.array(GeneratedDragDropItemSchema).optional(),
     generalExplanation: z
       .string()
       .min(15, "Comprehensive master explanation is required (min 15 characters)"),
@@ -89,7 +119,12 @@ export const GeneratedQuestionSchema = z
   })
   .refine(
     (data) => {
-      if (data.type === "mcq_single" || data.type === "true_false") {
+      if (
+        data.type === "mcq_single" ||
+        data.type === "true_false" ||
+        data.type === "error_spotting" ||
+        data.type === "assertion_reasoning"
+      ) {
         if (!data.options || data.options.length < 2) return false;
         const correctCount = data.options.filter((o) => o.isCorrect).length;
         return correctCount === 1;
@@ -116,11 +151,22 @@ export const GeneratedQuestionSchema = z
           rightSet.size === data.matchingPairs.length
         );
       }
+      if (data.type === "sequence_ordering") {
+        return Array.isArray(data.sequenceItems) && data.sequenceItems.length >= 2;
+      }
+      if (data.type === "drag_drop_categorize") {
+        return (
+          Array.isArray(data.dragDropCategories) &&
+          data.dragDropCategories.length >= 2 &&
+          Array.isArray(data.dragDropItems) &&
+          data.dragDropItems.length >= 2
+        );
+      }
       return true;
     },
     {
       message:
-        "Question must satisfy structural constraints for its type (mcq/true_false: options with 1 correct; fill_in_the_blank: >=1 accepted answer; match_following: >=2 unambiguous pairs).",
+        "Question must satisfy structural constraints for its type (mcq/true_false/error_spotting/assertion_reasoning: 1 correct; fill_in_the_blank: >=1 answer; match_following: >=2 distinct pairs; sequence_ordering: >=2 items; drag_drop_categorize: >=2 categories & items).",
       path: ["options"],
     }
   );
@@ -169,11 +215,21 @@ export const PdfQuestionGenerationInputSchema = z.object({
   subject: z.string().optional().default("General Academic"),
   topic: z.string().optional(),
   difficulty: DifficultyLevelEnum.optional().default("Medium"),
-  questionCount: z.number().int().min(1).max(25).optional().default(5),
+  questionCount: z.number().int().min(1).max(50).optional().default(5),
   questionTypes: z
     .array(QuestionTypeEnum)
     .optional()
-    .default(["mcq_single", "true_false", "fill_in_the_blank", "match_following"]),
+    .default([
+      "mcq_single",
+      "mcq_multiple",
+      "true_false",
+      "fill_in_the_blank",
+      "match_following",
+      "drag_drop_categorize",
+      "error_spotting",
+      "sequence_ordering",
+      "assertion_reasoning",
+    ]),
 });
 export type PdfQuestionGenerationInput = z.infer<
   typeof PdfQuestionGenerationInputSchema

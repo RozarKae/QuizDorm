@@ -14,10 +14,12 @@ export function QuestionTypeBadge({ type }: QuestionTypeBadgeProps) {
     fill_in_the_blank: { label: "Fill Blank", className: "bg-muted text-foreground border border-border" },
     match_following: { label: "Matching", className: "bg-muted text-foreground border border-border" },
     sequence_ordering: { label: "Sequence", className: "bg-muted text-foreground border border-border" },
+    drag_drop_categorize: { label: "Drag & Drop", className: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30" },
+    error_spotting: { label: "Error Spotting", className: "bg-amber-500/10 text-amber-400 border border-amber-500/30" },
+    assertion_reasoning: { label: "Assertion & Reason", className: "bg-purple-500/10 text-purple-400 border border-purple-500/30" },
     image_based: { label: "Image Based", className: "bg-muted text-foreground border border-border" },
     // Phase 2.2 Interactive Types
     hotspot: { label: "Hotspot", className: "bg-muted text-foreground border border-border" },
-    drag_drop_categorize: { label: "Drag & Drop", className: "bg-muted text-foreground border border-border" },
     diagram_labeling: { label: "Diagram", className: "bg-muted text-foreground border border-border" },
     timeline_ordering: { label: "Timeline", className: "bg-muted text-foreground border border-border" },
     audio_listening: { label: "Audio", className: "bg-muted text-foreground border border-border" },

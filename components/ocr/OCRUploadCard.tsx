@@ -15,7 +15,7 @@ interface OCRUploadCardProps {
 
 export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRUploadCardProps) {
   const [dragActive, setDragActive] = useState(false);
-  const [selectedSubject, setSelectedSubject] = useState("Physics");
+  const [selectedSubject, setSelectedSubject] = useState("auto");
   const [cameraActive, setCameraActive] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -92,11 +92,13 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
             onChange={(e) => setSelectedSubject(e.target.value)}
             className="text-xs p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 font-medium text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500"
           >
+            <option value="auto">✨ Auto-Detect from Content (Recommended)</option>
             <option value="Physics">Physics</option>
             <option value="Mathematics">Mathematics</option>
             <option value="Biology">Biology</option>
             <option value="Chemistry">Chemistry</option>
             <option value="Computer Science">Computer Science</option>
+            <option value="History">History</option>
             <option value="General Science">General Science</option>
           </select>
         </div>

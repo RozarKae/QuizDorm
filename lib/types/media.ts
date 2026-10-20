@@ -45,6 +45,7 @@ export interface HotspotRegion {
 export interface DragDropCategory {
   id: string;
   name: string;
+  title?: string;
   dropzoneImageUrl?: string;
 }
 
@@ -53,6 +54,7 @@ export interface DragDropItem {
   text: string;
   imageUrl?: string;
   targetCategoryId: string;
+  categoryId?: string;
 }
 
 export interface DiagramLabelPin {
