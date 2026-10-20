@@ -9,6 +9,7 @@ import { QuestionTypeBadge } from "@/components/question-bank/QuestionTypeBadge"
 import { QuizQuestionPickerModal } from "@/components/quiz-builder/QuizQuestionPickerModal";
 import { QuizPreviewModal } from "@/components/quiz-builder/QuizPreviewModal";
 import { saveQuiz, generateInstantQuiz } from "@/lib/data/quizzes";
+import { importQuestions } from "@/lib/data/question-bank";
 import { OCREngineService } from "@/lib/ocr/engine";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -41,6 +42,7 @@ import {
   Upload,
   FileCheck,
   Loader2,
+  Database,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -118,6 +120,10 @@ export default function CreateOwnQuizPage() {
           autoTopicDetection: true,
           autoDifficultyDetection: true,
           virusScanPassed: true,
+          targetSubject: category,
+          targetTopic: category,
+          targetDifficulty: difficulty,
+          targetQuestionCount: 5,
         },
         (progress, step) => {
           setPdfProgress(progress);
@@ -142,6 +148,12 @@ export default function CreateOwnQuizPage() {
           text: opt.text,
           isCorrect: opt.isCorrect,
         })),
+        matchingPairs: eq.matchingPairs?.map((mp: any) => ({
+          id: mp.id,
+          leftItem: mp.leftItem,
+          rightItem: mp.rightItem,
+        })),
+        fillBlanks: eq.fillBlanks,
         explanation: eq.explanation,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
@@ -293,6 +305,32 @@ export default function CreateOwnQuizPage() {
     }
   };
 
+  const handleImportToQuestionBank = () => {
+    if (questions.length === 0) {
+      toast.error("No questions to import to Question Bank");
+      return;
+    }
+    const { imported, skipped } = importQuestions(questions);
+    if (imported > 0) {
+      toast.success(
+        `Successfully imported ${imported} question${imported === 1 ? "" : "s"} to Question Bank!${
+          skipped > 0 ? ` (${skipped} duplicates skipped)` : ""
+        }`
+      );
+    } else {
+      toast.info(`All ${skipped} question(s) already exist in your Question Bank.`);
+    }
+  };
+
+  const handleImportSingleToQuestionBank = (q: QuestionItem) => {
+    const { imported } = importQuestions([q]);
+    if (imported > 0) {
+      toast.success(`"${q.title.slice(0, 35)}..." imported to Question Bank!`);
+    } else {
+      toast.info("This question is already in your Question Bank.");
+    }
+  };
+
   const previewQuizObject: Partial<QuizItem> = {
     title,
     description,
@@ -316,6 +354,15 @@ export default function CreateOwnQuizPage() {
           </div>
 
           <div className="flex items-center space-x-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleImportToQuestionBank}
+              className="text-xs font-mono border-border rounded-[3px] h-8 flex items-center gap-1.5 hover:bg-muted"
+              title="Import all questions to permanent Question Bank"
+            >
+              <Database className="w-3.5 h-3.5 text-cobalt" /> Import to Question Bank
+            </Button>
             <Button
               variant="outline"
               size="sm"
@@ -355,6 +402,15 @@ export default function CreateOwnQuizPage() {
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleImportToQuestionBank}
+                className="text-xs font-mono border-border rounded-[3px] h-8 hover:bg-muted flex items-center gap-1.5 text-foreground"
+                title="Save current quiz questions to Question Bank"
+              >
+                <Database className="w-3.5 h-3.5 text-cobalt" /> Import to Question Bank
+              </Button>
               <Button
                 variant="outline"
                 size="sm"
@@ -543,7 +599,16 @@ export default function CreateOwnQuizPage() {
               </p>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleImportToQuestionBank}
+                className="text-xs flex items-center gap-1.5 border-border hover:bg-muted font-mono"
+                title="Save all questions in this list to the Question Bank"
+              >
+                <Database className="w-3.5 h-3.5 text-cobalt" /> Import to Question Bank ({questions.length})
+              </Button>
               <Button
                 variant="outline"
                 size="sm"
@@ -698,6 +763,15 @@ export default function CreateOwnQuizPage() {
                   <Button
                     variant="ghost"
                     size="sm"
+                    onClick={() => handleImportSingleToQuestionBank(question)}
+                    className="p-1 h-7 w-7 rounded-[2px] text-muted-foreground hover:text-cobalt hover:bg-cobalt/10"
+                    title="Import this question to Question Bank"
+                  >
+                    <Database className="w-3.5 h-3.5" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
                     disabled={index === 0}
                     onClick={() => handleMoveQuestion(index, "up")}
                     className="p-1 h-7 w-7 rounded-[2px] text-muted-foreground hover:text-foreground"
@@ -742,6 +816,14 @@ export default function CreateOwnQuizPage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+            <Button
+              variant="outline"
+              onClick={handleImportToQuestionBank}
+              className="text-xs font-semibold flex-1 sm:flex-none border-border hover:bg-muted"
+              title="Save all questions in this assessment challenge to the Question Bank"
+            >
+              <Database className="w-3.5 h-3.5 mr-1.5 text-cobalt" /> Import to Question Bank ({questions.length})
+            </Button>
             <Button
               variant="outline"
               onClick={() => handleSaveAndTake(false)}

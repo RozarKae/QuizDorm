@@ -13,11 +13,11 @@ export default function AuthHeader({ title, subtitle }: AuthHeaderProps) {
         <Logo />
       </Link>
       <div className="space-y-1">
-        <h1 className="text-2xl font-bold font-display tracking-tight text-foreground">
+        <h1 className="text-2xl font-bold font-display tracking-tight text-white">
           {title}
         </h1>
         {subtitle && (
-          <p className="text-xs font-mono text-muted-foreground">
+          <p className="text-xs font-mono text-zinc-400 max-w-sm leading-relaxed">
             {subtitle}
           </p>
         )}

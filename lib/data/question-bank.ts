@@ -83,10 +83,20 @@ export const ALL_DEFAULT_QUESTIONS: QuestionItem[] = [
   ...PDF_IMPORTED_QUESTIONS,
 ];
 
+// In-memory store for server-side execution and test environments
+let serverMemoryQuestions: QuestionItem[] | null = null;
+
+function getServerQuestions(): QuestionItem[] {
+  if (!serverMemoryQuestions) {
+    serverMemoryQuestions = [...ALL_DEFAULT_QUESTIONS];
+  }
+  return serverMemoryQuestions;
+}
+
 // Helper to get questions with persistence in browser
 export function getStoredQuestions(): QuestionItem[] {
   if (typeof window === "undefined") {
-    return ALL_DEFAULT_QUESTIONS;
+    return getServerQuestions();
   }
 
   try {
@@ -114,7 +124,10 @@ export function getStoredQuestions(): QuestionItem[] {
 
 // Persist questions to storage
 export function saveStoredQuestions(questions: QuestionItem[]): void {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined") {
+    serverMemoryQuestions = [...questions];
+    return;
+  }
   try {
     localStorage.setItem(STORAGE_KEY_QUESTIONS, JSON.stringify(questions));
     window.dispatchEvent(new Event("quizdorm:questions-updated"));

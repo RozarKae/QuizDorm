@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { OCRJob, OCRJobSettings, ExtractedQuestion } from "@/lib/types/ocr";
+import { QuestionItem } from "@/lib/types/question";
+import { importQuestions } from "@/lib/data/question-bank";
 import { OCRJobManager } from "@/lib/ocr/job-manager";
 import { OCREngineService } from "@/lib/ocr/engine";
 import { OCRUploadCard } from "@/components/ocr/OCRUploadCard";
@@ -152,13 +154,57 @@ export default function DocumentIntelligenceWorkspace() {
   const handleSaveToQuestionBank = (questions: ExtractedQuestion[]) => {
     if (!selectedJob) return;
 
+    // Convert ExtractedQuestion[] to QuestionItem[] for persistent Question Bank
+    const questionItems: QuestionItem[] = questions.map((eq, idx) => ({
+      id: eq.id || `pdf-saved-${Date.now()}-${idx + 1}`,
+      title: eq.title,
+      description: eq.description,
+      type: eq.type,
+      subject: eq.subject || selectedJob.subject || "General Academic",
+      category: eq.category || eq.subject || selectedJob.subject || "General Academic",
+      topic: eq.topic || "Core Principles",
+      subtopic: eq.subtopic,
+      difficulty: eq.difficulty || "Medium",
+      marks: eq.marks || 4,
+      timeLimitSeconds: eq.timeLimitSeconds || 60,
+      options: eq.options.map((opt, oIdx) => ({
+        id: opt.id || `opt-${oIdx + 1}`,
+        text: opt.text,
+        isCorrect: opt.isCorrect,
+      })),
+      matchingPairs: eq.matchingPairs?.map((mp) => ({
+        id: mp.id,
+        leftItem: mp.leftItem,
+        rightItem: mp.rightItem,
+      })),
+      sequenceItems: eq.sequenceItems?.map((si) => ({
+        id: si.id,
+        text: si.text,
+        order: si.order,
+      })),
+      fillBlanks: eq.fillBlanks,
+      explanation: eq.explanation,
+      hints: eq.hints,
+      tags: ["pdf-imported", (eq.subject || "academic").toLowerCase()],
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    }));
+
+    const result = importQuestions(questionItems);
+
     OCRJobManager.updateJobStatus(selectedJob.id, "completed");
     setSelectedJob({ ...selectedJob, status: "completed", currentStep: "Completed" });
     setJobs(OCRJobManager.getJobs());
 
-    toast.success(
-      `Successfully imported ${questions.length} digitised questions from ${selectedJob.fileName} into Question Bank!`
-    );
+    if (result.skipped > 0) {
+      toast.success(
+        `Successfully saved ${result.imported} approved questions to Question Bank! (${result.skipped} duplicates skipped)`
+      );
+    } else {
+      toast.success(
+        `Successfully saved all ${result.imported} questions from ${selectedJob.fileName} to Question Bank!`
+      );
+    }
   };
 
   const handleSplitQuestion = (q: ExtractedQuestion) => {

@@ -3,6 +3,9 @@ import {
   GeneratedQuestionSchema,
   QuestionGenerationInput,
   QuestionGenerationInputSchema,
+  PdfQuestionGenerationInput,
+  PdfQuestionGenerationInputSchema,
+  BatchGeneratedQuestionsSchema,
 } from "../schemas/questionGenerationSchema";
 import {
   IQuestionIntelligenceProvider,
@@ -19,6 +22,29 @@ export interface QuestionIntelligenceResult {
   success: boolean;
   question?: GeneratedQuestion;
   validation: QuestionValidationResult;
+  modelUsed?: string;
+  latencyMs?: number;
+  tokenUsage?: {
+    promptTokens?: number;
+    completionTokens?: number;
+    totalTokens?: number;
+  };
+  error?: string;
+  errorCode?: string;
+}
+
+export interface DocumentQuestionItemResult {
+  question: GeneratedQuestion;
+  validation: QuestionValidationResult;
+}
+
+export interface DocumentQuestionsResult {
+  success: boolean;
+  documentTitle?: string;
+  summary?: string;
+  detectedSubject?: string;
+  detectedTopic?: string;
+  questions: DocumentQuestionItemResult[];
   modelUsed?: string;
   latencyMs?: number;
   tokenUsage?: {
@@ -204,6 +230,146 @@ export class QuestionIntelligenceService {
       success: validation.isValid,
       question: zodResult.data,
       validation,
+      modelUsed: rawResult.modelUsed,
+      latencyMs: rawResult.latencyMs,
+      tokenUsage: rawResult.tokenUsage,
+    };
+  }
+
+  /**
+   * Generate, structure, and validate batch questions from a PDF document buffer
+   */
+  public static async generateBatchFromDocumentBuffer(
+    buffer: Buffer,
+    mimeType: string,
+    rawInput: unknown,
+    options?: {
+      providerOverride?: IQuestionIntelligenceProvider;
+      modelOverride?: string;
+      timeoutMs?: number;
+    }
+  ): Promise<DocumentQuestionsResult> {
+    const parsedInput = PdfQuestionGenerationInputSchema.safeParse(rawInput || {});
+    if (!parsedInput.success) {
+      const errorMsg = parsedInput.error.issues
+        .map((i) => `${i.path.join(".")}: ${i.message}`)
+        .join("; ");
+      return {
+        success: false,
+        questions: [],
+        error: `Invalid input parameters: ${errorMsg}`,
+        errorCode: "INVALID_INPUT",
+      };
+    }
+
+    const provider = options?.providerOverride || this.defaultProvider;
+    if (!provider.generateQuestionsFromDocumentBuffer) {
+      return {
+        success: false,
+        questions: [],
+        error: `Active provider '${provider.id}' does not support direct document processing.`,
+        errorCode: "UNSUPPORTED_OPERATION",
+      };
+    }
+
+    let rawResult;
+    try {
+      rawResult = await provider.generateQuestionsFromDocumentBuffer(
+        buffer,
+        mimeType,
+        parsedInput.data,
+        {
+          modelOverride: options?.modelOverride,
+          timeoutMs: options?.timeoutMs,
+        }
+      );
+    } catch (err: any) {
+      const errorCode =
+        err instanceof AIConfigurationError
+          ? "CONFIGURATION_ERROR"
+          : err instanceof AIProviderError
+            ? "PROVIDER_ERROR"
+            : "EXECUTION_ERROR";
+
+      return {
+        success: false,
+        questions: [],
+        error: err.message || "Failed to process document with AI provider",
+        errorCode,
+      };
+    }
+
+    let parsedJson: any;
+    try {
+      parsedJson = JSON.parse(rawResult.rawJsonString);
+    } catch (jsonErr: any) {
+      return {
+        success: false,
+        questions: [],
+        error: `AI provider produced malformed non-JSON output: ${jsonErr.message}`,
+        errorCode: "MALFORMED_JSON",
+        latencyMs: rawResult.latencyMs,
+      };
+    }
+
+    let rawQuestionsList: any[] = [];
+    let documentTitle: string | undefined = undefined;
+    let summary: string | undefined = undefined;
+    let detectedSubject: string | undefined = undefined;
+    let detectedTopic: string | undefined = undefined;
+
+    if (Array.isArray(parsedJson)) {
+      rawQuestionsList = parsedJson;
+    } else if (parsedJson && typeof parsedJson === "object") {
+      documentTitle = parsedJson.documentTitle;
+      summary = parsedJson.summary;
+      detectedSubject = parsedJson.detectedSubject;
+      detectedTopic = parsedJson.detectedTopic;
+
+      if (Array.isArray(parsedJson.questions)) {
+        rawQuestionsList = parsedJson.questions;
+      }
+    }
+
+    if (rawQuestionsList.length === 0) {
+      return {
+        success: false,
+        questions: [],
+        error: "AI provider did not identify any valid testable questions in the document.",
+        errorCode: "NO_QUESTIONS_GENERATED",
+        latencyMs: rawResult.latencyMs,
+      };
+    }
+
+    const validatedQuestions: DocumentQuestionItemResult[] = [];
+    for (const item of rawQuestionsList) {
+      const zodCheck = GeneratedQuestionSchema.safeParse(item);
+      if (zodCheck.success) {
+        const validation = QuestionIntelligenceValidator.validate(zodCheck.data);
+        validatedQuestions.push({
+          question: zodCheck.data,
+          validation,
+        });
+      }
+    }
+
+    if (validatedQuestions.length === 0) {
+      return {
+        success: false,
+        questions: [],
+        error: "Generated questions failed runtime schema validation.",
+        errorCode: "SCHEMA_VALIDATION_FAILURE",
+        latencyMs: rawResult.latencyMs,
+      };
+    }
+
+    return {
+      success: true,
+      documentTitle,
+      summary,
+      detectedSubject,
+      detectedTopic,
+      questions: validatedQuestions,
       modelUsed: rawResult.modelUsed,
       latencyMs: rawResult.latencyMs,
       tokenUsage: rawResult.tokenUsage,

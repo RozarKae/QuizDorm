@@ -8,6 +8,7 @@ import { QuizItem, QuizStatus } from "@/lib/types/quiz";
 import { QuestionTypeBadge } from "@/components/question-bank/QuestionTypeBadge";
 import { QuizQuestionPickerModal } from "@/components/quiz-builder/QuizQuestionPickerModal";
 import { QuizPreviewModal } from "@/components/quiz-builder/QuizPreviewModal";
+import { importQuestions } from "@/lib/data/question-bank";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
@@ -28,6 +29,7 @@ import {
   CheckCircle2,
   FileText,
   Sparkles,
+  Database,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -112,6 +114,32 @@ export default function QuizBuilderPage() {
     setQuestions([...questions, ...newQuestions]);
   };
 
+  const handleImportToQuestionBank = () => {
+    if (questions.length === 0) {
+      toast.error("No questions to import to Question Bank");
+      return;
+    }
+    const { imported, skipped } = importQuestions(questions);
+    if (imported > 0) {
+      toast.success(
+        `Successfully imported ${imported} question${imported === 1 ? "" : "s"} to Question Bank!${
+          skipped > 0 ? ` (${skipped} duplicates skipped)` : ""
+        }`
+      );
+    } else {
+      toast.info(`All ${skipped} question(s) already exist in your Question Bank.`);
+    }
+  };
+
+  const handleImportSingleToQuestionBank = (q: QuestionItem) => {
+    const { imported } = importQuestions([q]);
+    if (imported > 0) {
+      toast.success(`"${q.title.slice(0, 35)}..." imported to Question Bank!`);
+    } else {
+      toast.info("This question is already in your Question Bank.");
+    }
+  };
+
   const handleSaveQuiz = (newStatus?: QuizStatus) => {
     if (!title) {
       toast.error("Please enter a quiz title");
@@ -147,6 +175,15 @@ export default function QuizBuilderPage() {
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleImportToQuestionBank}
+            className="text-xs"
+            title="Import all questions in this quiz to Question Bank"
+          >
+            <Database className="w-3.5 h-3.5 mr-1.5 text-indigo-600" /> Import to Question Bank
+          </Button>
           <Button variant="outline" size="sm" onClick={() => setPreviewOpen(true)} className="text-xs">
             <Eye className="w-3.5 h-3.5 mr-1.5" /> Exam Simulator Preview
           </Button>
@@ -235,7 +272,16 @@ export default function QuizBuilderPage() {
               <h3 className="text-base font-bold text-gray-900 dark:text-white">Quiz Questions ({questions.length})</h3>
               <p className="text-xs text-gray-500">Reorder questions or add questions from the Question Bank</p>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <Button
+                onClick={handleImportToQuestionBank}
+                variant="outline"
+                size="sm"
+                className="text-xs"
+                title="Import all questions in this quiz to Question Bank"
+              >
+                <Database className="w-3.5 h-3.5 mr-1 text-indigo-600" /> Import to Question Bank ({questions.length})
+              </Button>
               <Link href="/create-quiz">
                 <Button size="sm" variant="outline" className="border-rose-200 dark:border-rose-900/50 text-rose-600 dark:text-rose-400 hover:bg-rose-50 text-xs font-semibold rounded-xl">
                   <FileText className="w-3.5 h-3.5 mr-1 text-rose-600" /> Upload PDF to Quiz
@@ -281,6 +327,15 @@ export default function QuizBuilderPage() {
                   </div>
 
                   <div className="flex items-center space-x-1">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      onClick={() => handleImportSingleToQuestionBank(q)}
+                      className="h-7 w-7 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-950"
+                      title="Import this question to Question Bank"
+                    >
+                      <Database className="w-3.5 h-3.5" />
+                    </Button>
                     <Button variant="ghost" size="icon" onClick={() => handleMoveQuestion(idx, "up")} disabled={idx === 0} className="h-7 w-7 text-gray-400">
                       <ArrowUp className="w-3.5 h-3.5" />
                     </Button>

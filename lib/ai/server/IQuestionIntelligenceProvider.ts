@@ -1,4 +1,7 @@
-import { QuestionGenerationInput } from "../schemas/questionGenerationSchema";
+import {
+  QuestionGenerationInput,
+  PdfQuestionGenerationInput,
+} from "../schemas/questionGenerationSchema";
 
 export class AIProviderError extends Error {
   public readonly provider: string;
@@ -65,5 +68,13 @@ export interface IQuestionIntelligenceProvider {
     options?: { modelOverride?: string; timeoutMs?: number }
   ): Promise<RawAIQuestionResponse>;
 
+  generateQuestionsFromDocumentBuffer?(
+    buffer: Buffer,
+    mimeType: string,
+    input: PdfQuestionGenerationInput,
+    options?: { modelOverride?: string; timeoutMs?: number }
+  ): Promise<RawAIQuestionResponse>;
+
   checkHealth(): Promise<{ configured: boolean; model: string }>;
 }
+

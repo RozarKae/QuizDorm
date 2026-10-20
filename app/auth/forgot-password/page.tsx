@@ -44,7 +44,7 @@ export default function ForgotPasswordPage() {
           />
           
           {errorMsg && (
-            <div className="p-3 mb-4 rounded-xl text-xs font-semibold bg-red-100 dark:bg-red-950/30 text-red-600 dark:text-red-400">
+            <div className="p-3 mb-4 rounded-[4px] text-xs font-semibold bg-red-950/50 border border-red-800 text-red-300">
               {errorMsg}
             </div>
           )}
@@ -53,7 +53,7 @@ export default function ForgotPasswordPage() {
             <div className="space-y-2">
               <label
                 htmlFor="email"
-                className="text-sm font-medium text-gray-700 dark:text-gray-300"
+                className="text-xs font-semibold tracking-wide uppercase text-zinc-300"
               >
                 Email Address
               </label>
@@ -65,21 +65,21 @@ export default function ForgotPasswordPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full font-medium"
+                className="w-full h-11 bg-[#161922] border-[#2A303F] text-white placeholder:text-zinc-500 focus:border-[#3864F8] rounded-[4px]"
               />
             </div>
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-primary hover:bg-primary/90 text-white mt-2 font-semibold rounded-xl py-6"
+              className="w-full h-11 bg-[#3864F8] hover:bg-[#2c53d6] text-white mt-4 font-semibold text-sm rounded-[4px] shadow-sm transition-all flex items-center justify-center space-x-2"
             >
-              {loading ? "Sending reset link..." : "Send Reset Link"}
+              <span>{loading ? "Sending reset link..." : "Send Reset Link →"}</span>
             </Button>
           </AuthForm>
           <AuthFooter>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-zinc-400">
               Remembered your password?{" "}
-              <Link href="/auth/login" className="text-primary hover:underline font-medium">
+              <Link href="/auth/login" className="text-[#3864F8] hover:underline font-semibold">
                 Log In
               </Link>
             </p>
@@ -87,9 +87,9 @@ export default function ForgotPasswordPage() {
         </>
       ) : (
         <div className="text-center py-6 space-y-6">
-          <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
+          <div className="mx-auto flex items-center justify-center h-14 w-14 rounded-full bg-emerald-950/60 border border-emerald-700/60 text-emerald-400">
             <svg
-              className="h-8 w-8"
+              className="h-7 w-7"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -99,23 +99,23 @@ export default function ForgotPasswordPage() {
             </svg>
           </div>
           <div className="space-y-2">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Check Your Email</h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              We&apos;ve sent a password reset link to <strong className="text-gray-800 dark:text-gray-200">{email}</strong>.
+            <h2 className="text-xl font-bold text-white">Check Your Email</h2>
+            <p className="text-xs text-zinc-400">
+              We&apos;ve sent a password reset link to <strong className="text-white font-medium">{email}</strong>.
             </p>
           </div>
           <Button
             type="button"
             variant="outline"
-            className="w-full border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-850 py-6 rounded-xl"
+            className="w-full h-11 border-[#2A303F] bg-[#161922] text-zinc-200 hover:text-white hover:bg-[#1E232F] rounded-[4px]"
             onClick={() => setSubmitted(false)}
           >
             Re-enter Email
           </Button>
           <AuthFooter>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-zinc-400">
               Back to{" "}
-              <Link href="/auth/login" className="text-primary hover:underline font-medium">
+              <Link href="/auth/login" className="text-[#3864F8] hover:underline font-semibold">
                 Log In
               </Link>
             </p>

@@ -108,8 +108,37 @@ export function useQuizAttempt(
             const expectedStr = correctOpt ? correctOpt.text.toLowerCase() : "true";
             isCorrect = String(userAnswer).toLowerCase() === expectedStr;
           } else if (q.type === "fill_in_the_blank") {
-            const val = String(userAnswer).trim().toLowerCase();
-            isCorrect = (q.fillBlanks || []).some((b) => b.toLowerCase() === val);
+            const val = String(userAnswer).trim().toLowerCase().replace(/\s+/g, " ");
+            const acceptedAnswers = [
+              ...(q.fillBlanks || []),
+              ...q.options.filter((o) => o.isCorrect).map((o) => o.text),
+            ].map((a) => String(a).trim().toLowerCase().replace(/\s+/g, " "));
+
+            isCorrect = acceptedAnswers.length > 0 && acceptedAnswers.includes(val);
+          } else if (q.type === "match_following") {
+            const pairs = q.matchingPairs || [];
+            if (pairs.length > 0) {
+              if (typeof userAnswer === "object" && userAnswer !== null && !Array.isArray(userAnswer)) {
+                isCorrect = pairs.every((p) => {
+                  const submitted = (userAnswer as Record<string, string>)[p.id] ?? (userAnswer as Record<string, string>)[p.leftItem];
+                  if (submitted === undefined || submitted === null) return false;
+                  return String(submitted).trim().toLowerCase() === p.rightItem.trim().toLowerCase();
+                });
+              } else if (Array.isArray(userAnswer)) {
+                isCorrect = pairs.every((p) => {
+                  const match = (userAnswer as any[]).find(
+                    (u: any) =>
+                      u.id === p.id ||
+                      (u.leftItem && String(u.leftItem).trim().toLowerCase() === p.leftItem.trim().toLowerCase())
+                  );
+                  return match && String(match.rightItem).trim().toLowerCase() === p.rightItem.trim().toLowerCase();
+                });
+              } else {
+                isCorrect = false;
+              }
+            } else {
+              isCorrect = false;
+            }
           } else {
             isCorrect = false;
           }

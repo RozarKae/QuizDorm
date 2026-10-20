@@ -208,6 +208,112 @@ export class QuestionIntelligenceValidator {
     const options = question.options || [];
     const type = question.type || "mcq_single";
 
+    // Handle Match Following format
+    if (type === "match_following") {
+      const pairs = question.matchingPairs || [];
+      if (pairs.length < 2) {
+        issues.push({
+          code: "INSUFFICIENT_MATCHING_PAIRS",
+          field: "options",
+          severity: "error",
+          message: `Matching question must have at least 2 pairs, found ${pairs.length}.`,
+          suggestedFix: "Provide at least 2 matching pairs.",
+        });
+      }
+
+      const leftItems = new Set<string>();
+      const rightItems = new Set<string>();
+
+      pairs.forEach((p, idx) => {
+        if (!p.leftItem || p.leftItem.trim().length === 0) {
+          issues.push({
+            code: "EMPTY_MATCH_PAIR_LEFT",
+            field: "options",
+            severity: "error",
+            message: `Matching pair #${idx + 1} has an empty left item.`,
+            suggestedFix: "Provide a valid left item.",
+          });
+        } else {
+          const normLeft = p.leftItem.trim().toLowerCase();
+          if (leftItems.has(normLeft)) {
+            issues.push({
+              code: "DUPLICATE_MATCH_PAIR_LEFT",
+              field: "options",
+              severity: "error",
+              message: `Duplicate left item found in pair #${idx + 1} ("${p.leftItem}"). Matches must be unambiguous.`,
+              suggestedFix: "Ensure all left items are distinct.",
+            });
+          }
+          leftItems.add(normLeft);
+        }
+
+        if (!p.rightItem || p.rightItem.trim().length === 0) {
+          issues.push({
+            code: "EMPTY_MATCH_PAIR_RIGHT",
+            field: "options",
+            severity: "error",
+            message: `Matching pair #${idx + 1} has an empty right item.`,
+            suggestedFix: "Provide a valid right item.",
+          });
+        } else {
+          const normRight = p.rightItem.trim().toLowerCase();
+          if (rightItems.has(normRight)) {
+            issues.push({
+              code: "DUPLICATE_MATCH_PAIR_RIGHT",
+              field: "options",
+              severity: "error",
+              message: `Duplicate right item found in pair #${idx + 1} ("${p.rightItem}"). Matches must be unambiguous.`,
+              suggestedFix: "Ensure all right items are distinct.",
+            });
+          }
+          rightItems.add(normRight);
+        }
+      });
+
+      return;
+    }
+
+    // Handle Fill in the Blank format
+    if (type === "fill_in_the_blank") {
+      const blanks = question.fillBlanks || [];
+      const correctOpt = options.filter((o) => o.isCorrect);
+      const validAnswers = [
+        ...blanks.filter((b) => typeof b === "string" && b.trim().length > 0),
+        ...correctOpt.map((o) => o.text.trim()),
+      ];
+
+      if (validAnswers.length === 0) {
+        issues.push({
+          code: "NO_CORRECT_ANSWER_DESIGNATED",
+          field: "answer",
+          severity: "error",
+          message: "No accepted answer is designated for this fill-in-the-blank question.",
+          suggestedFix: "Provide at least one accepted answer in fillBlanks or mark an option as correct.",
+        });
+      }
+
+      const stem = (question.title || "").toLowerCase();
+      const hasBlankIndicator =
+        stem.includes("[blank]") ||
+        stem.includes("___") ||
+        stem.includes("fill in the blank") ||
+        stem.includes("fill in") ||
+        stem.includes("(blank)") ||
+        stem.includes(".....");
+
+      if (!hasBlankIndicator) {
+        issues.push({
+          code: "FILL_BLANK_MISSING_MARKER",
+          field: "title",
+          severity: "warning",
+          message: "Fill in the blank question stem lacks an explicit placeholder (e.g. '[blank]' or '_____').",
+          suggestedFix: "Insert '[blank]' or '_____' at the position where the missing word should be filled.",
+        });
+      }
+
+      return;
+    }
+
     if (options.length === 0) {
       issues.push({
         code: "OPTIONS_EMPTY",
@@ -441,6 +547,11 @@ export class QuestionIntelligenceValidator {
     issues: ValidationIssue[]
   ): number {
     let score = 100;
+    const type = question.type || "mcq_single";
+    if (type === "match_following" || type === "fill_in_the_blank") {
+      return score;
+    }
+
     const options = question.options || [];
     if (options.length < 2) return score;
 

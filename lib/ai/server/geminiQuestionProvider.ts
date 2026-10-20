@@ -8,7 +8,10 @@ import {
   AITimeoutError,
   AIParsingError,
 } from "./IQuestionIntelligenceProvider";
-import { QuestionGenerationInput } from "../schemas/questionGenerationSchema";
+import {
+  QuestionGenerationInput,
+  PdfQuestionGenerationInput,
+} from "../schemas/questionGenerationSchema";
 
 /**
  * System instruction enforcing pedagogical question authoring and distractor intelligence
@@ -38,7 +41,13 @@ You must author educational assessment questions following these non-negotiable 
 - For distractors, specify the "misconceptionType" (e.g. "calculation_error", "confused_concept", "unit_inversion", "chronological_confusion", "common_misconception").
 - Provide a master "generalExplanation" breaking down the solution step-by-step.
 
-4. FORMAT:
+4. SUPPORTED QUESTION TYPES & SPECIFICATIONS:
+- "mcq_single": Single-choice with 4 homogeneous options, exactly one with isCorrect: true.
+- "true_false": Binary question with exactly two options ("True" and "False"), exactly one with isCorrect: true.
+- "fill_in_the_blank": Stem must include "[blank]" indicator. Must provide accepted answers in "fillBlanks": ["answer1", "alternative2"].
+- "match_following": Stem prompts matching relationship. Must provide "matchingPairs": [{ "id": "m1", "leftItem": "Premise A", "rightItem": "Match A" }, { "id": "m2", "leftItem": "Premise B", "rightItem": "Match B" }]. All left items and right items must be completely distinct and unambiguous.
+
+5. FORMAT:
 - Output MUST be valid, well-formed JSON matching the specified schema.
 `;
 
@@ -171,6 +180,183 @@ export class GeminiQuestionProvider implements IQuestionIntelligenceProvider {
       }
       throw new AIProviderError(
         err.message || "Failed to execute Gemini API request",
+        this.id,
+        err.status || 500,
+        this.checkIfRetryable(err)
+      );
+    }
+  }
+
+  public async generateQuestionsFromDocumentBuffer(
+    buffer: Buffer,
+    mimeType: string,
+    input: PdfQuestionGenerationInput,
+    options?: { modelOverride?: string; timeoutMs?: number }
+  ): Promise<RawAIQuestionResponse> {
+    if (!AIServerConfig.isGeminiConfigured()) {
+      throw new AIConfigurationError(
+        "GEMINI_API_KEY is not configured in the server environment. Please set GEMINI_API_KEY in .env.local or your environment variables."
+      );
+    }
+
+    const ai = this.getClient();
+    const model = AIServerConfig.getActiveModel(options?.modelOverride);
+    const timeoutMs = options?.timeoutMs || (AIServerConfig.getRequestTimeoutMs() * 2);
+
+    const questionCount = input.questionCount || 5;
+    const allowedTypes = (input.questionTypes || ["mcq_single", "true_false", "fill_in_the_blank", "match_following"]).join(", ");
+    const userPrompt = `You have been provided with an educational document (PDF). Analyze the document thoroughly, extract its core factual curriculum content, and generate exactly ${questionCount} high-quality assessment questions grounded strictly in the document.
+
+Requirements:
+- Target Subject: "${input.subject || "General Academic"}"
+- Target Topic: "${input.topic || "Core Curriculum"}"
+- Target Difficulty: "${input.difficulty || "Medium"}"
+- Allowed Question Types: ${allowedTypes}
+- Total Questions to Generate: ${questionCount}
+
+Return a single valid JSON object strictly matching this schema:
+{
+  "documentTitle": "Extracted document title or inferred topic",
+  "summary": "Brief summary of educational concepts tested",
+  "detectedSubject": "${input.subject || "General Academic"}",
+  "detectedTopic": "${input.topic || "Core Curriculum"}",
+  "questions": [
+    {
+      "title": "Unambiguous, self-contained question statement (for fill_in_the_blank include '[blank]')",
+      "context": "Context excerpt from document if needed or null",
+      "type": "mcq_single | true_false | fill_in_the_blank | match_following",
+      "subject": "${input.subject || "General Academic"}",
+      "category": "${input.subject || "General Academic"}",
+      "topic": "${input.topic || "Core Curriculum"}",
+      "subtopic": "Core Principles",
+      "gradeLevel": "Grade 9-10",
+      "learningObjective": "Pedagogical objective tested (at least 10 chars)",
+      "bloomsLevel": "Understand",
+      "difficulty": "${input.difficulty || "Medium"}",
+      "options": [
+        { "id": "opt-1", "text": "Choice A", "isCorrect": true, "explanation": "Why correct" },
+        { "id": "opt-2", "text": "Choice B", "isCorrect": false, "explanation": "Why incorrect", "misconceptionType": "common_misconception" }
+      ],
+      "matchingPairs": [
+        { "id": "m1", "leftItem": "Item 1", "rightItem": "Match 1" },
+        { "id": "m2", "leftItem": "Item 2", "rightItem": "Match 2" }
+      ],
+      "fillBlanks": ["accepted_answer_keyword"],
+      "generalExplanation": "Step-by-step master solution (at least 15 chars)",
+      "hints": ["Helpful hint"],
+      "tags": ["extracted-quiz"]
+    }
+  ]
+}
+Note for question formats:
+- mcq_single: options has 4 items with exactly 1 isCorrect: true. matchingPairs and fillBlanks omitted or empty.
+- true_false: options has True and False with 1 isCorrect: true. matchingPairs and fillBlanks omitted or empty.
+- fill_in_the_blank: title has '[blank]', fillBlanks has accepted string answers. options can be empty.
+- match_following: matchingPairs has 3-4 unambiguous unique pairs. options can be empty.`;
+
+    const startTime = Date.now();
+    try {
+      const abortController = new AbortController();
+      let timeoutHandle: NodeJS.Timeout | null = null;
+      const timeoutPromise = new Promise<never>((_, reject) => {
+        timeoutHandle = setTimeout(() => {
+          abortController.abort();
+          reject(new AITimeoutError(timeoutMs, this.id));
+        }, timeoutMs);
+      });
+
+      const contents = [
+        {
+          inlineData: {
+            mimeType: mimeType || "application/pdf",
+            data: buffer.toString("base64"),
+          },
+        },
+        userPrompt,
+      ];
+
+      let response: any;
+      let effectiveModel = model;
+      try {
+        response = await Promise.race([
+          ai.models.generateContent({
+            model: effectiveModel,
+            contents: contents,
+            config: {
+              systemInstruction: SYSTEM_INSTRUCTION,
+              responseMimeType: "application/json",
+              temperature: 0.2,
+            },
+          }),
+          timeoutPromise,
+        ]);
+      } catch (genErr: any) {
+        const isCapacityError =
+          genErr.message?.includes("503") ||
+          genErr.message?.includes("high demand") ||
+          genErr.message?.includes("UNAVAILABLE") ||
+          genErr.status === 503;
+
+        if (
+          isCapacityError &&
+          !options?.modelOverride &&
+          effectiveModel !== AIServerConfig.FALLBACK_MODEL
+        ) {
+          effectiveModel = AIServerConfig.FALLBACK_MODEL;
+          response = await Promise.race([
+            ai.models.generateContent({
+              model: effectiveModel,
+              contents: contents,
+              config: {
+                systemInstruction: SYSTEM_INSTRUCTION,
+                responseMimeType: "application/json",
+                temperature: 0.2,
+              },
+            }),
+            timeoutPromise,
+          ]);
+        } else {
+          throw genErr;
+        }
+      } finally {
+        if (timeoutHandle) clearTimeout(timeoutHandle);
+      }
+
+      const latencyMs = Date.now() - startTime;
+      const rawText = response.text;
+
+      if (!rawText || rawText.trim().length === 0) {
+        throw new AIProviderError(
+          "Gemini API returned an empty text response for the uploaded document.",
+          this.id
+        );
+      }
+
+      const cleanedJson = this.sanitizeJsonString(rawText);
+
+      return {
+        rawJsonString: cleanedJson,
+        modelUsed: effectiveModel,
+        latencyMs,
+        tokenUsage: {
+          promptTokens: response.usageMetadata?.promptTokenCount,
+          completionTokens: response.usageMetadata?.candidatesTokenCount,
+          totalTokens: response.usageMetadata?.totalTokenCount,
+        },
+      };
+    } catch (err: any) {
+      if (err.name === "AbortError" || err.message?.includes("abort")) {
+        throw new AITimeoutError(timeoutMs, this.id);
+      }
+      if (
+        err instanceof AIConfigurationError ||
+        err instanceof AIProviderError ||
+        err instanceof AITimeoutError
+      ) {
+        throw err;
+      }
+      throw new AIProviderError(
+        err.message || "Failed to execute Gemini API document request",
         this.id,
         err.status || 500,
         this.checkIfRetryable(err)

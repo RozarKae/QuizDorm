@@ -178,9 +178,9 @@ export function ImportReviewTable({
 
           <Button
             onClick={() => onSaveToQuestionBank(questions)}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm flex items-center gap-1.5"
           >
-            <CheckCircle2 className="w-4 h-4 mr-1.5" /> Approve & Save All ({questions.length})
+            <CheckCircle2 className="w-4 h-4" /> Import to Question Bank ({questions.length})
           </Button>
         </div>
       </div>
@@ -385,8 +385,132 @@ export function ImportReviewTable({
               </div>
             </div>
 
-            {/* Options Editor */}
-            {currentQ.options && currentQ.options.length > 0 && (
+            {/* Matching Pairs Editor for match_following */}
+            {currentQ.type === "match_following" && (
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-bold text-gray-700 dark:text-gray-300">
+                    Matching Pairs (Left Item ➔ Right Term)
+                  </label>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      const currentPairs = currentQ.matchingPairs || [];
+                      const newPair = {
+                        id: `mp-${Date.now()}`,
+                        leftItem: `New Item ${currentPairs.length + 1}`,
+                        rightItem: `Match ${currentPairs.length + 1}`,
+                      };
+                      handleFieldChange("matchingPairs", [...currentPairs, newPair]);
+                    }}
+                    className="text-xs h-7 rounded-lg"
+                  >
+                    <Plus className="w-3.5 h-3.5 mr-1" /> Add Pair
+                  </Button>
+                </div>
+
+                <div className="space-y-2">
+                  {(currentQ.matchingPairs || []).map((pair, pIdx) => (
+                    <div key={pair.id || pIdx} className="flex items-center space-x-2">
+                      <span className="w-6 text-[10px] font-bold text-gray-400 font-mono">#{pIdx + 1}</span>
+                      <input
+                        type="text"
+                        value={pair.leftItem}
+                        placeholder="Left premise..."
+                        onChange={(e) => {
+                          const updated = (currentQ.matchingPairs || []).map((p, i) =>
+                            i === pIdx ? { ...p, leftItem: e.target.value } : p
+                          );
+                          handleFieldChange("matchingPairs", updated);
+                        }}
+                        className="flex-1 text-xs p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                      />
+                      <span className="text-indigo-500 font-bold text-xs">➔</span>
+                      <input
+                        type="text"
+                        value={pair.rightItem}
+                        placeholder="Right matched term..."
+                        onChange={(e) => {
+                          const updated = (currentQ.matchingPairs || []).map((p, i) =>
+                            i === pIdx ? { ...p, rightItem: e.target.value } : p
+                          );
+                          handleFieldChange("matchingPairs", updated);
+                        }}
+                        className="flex-1 text-xs p-2 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const updated = (currentQ.matchingPairs || []).filter((_, i) => i !== pIdx);
+                          handleFieldChange("matchingPairs", updated);
+                        }}
+                        className="p-2 text-gray-400 hover:text-rose-600 rounded-lg"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Fill in the Blank accepted answers editor */}
+            {currentQ.type === "fill_in_the_blank" && (
+              <div className="space-y-3 pt-2">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-bold text-gray-700 dark:text-gray-300">
+                    Accepted Blank Answers (Keywords)
+                  </label>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      const currentBlanks = currentQ.fillBlanks || [];
+                      handleFieldChange("fillBlanks", [...currentBlanks, ""]);
+                    }}
+                    className="text-xs h-7 rounded-lg"
+                  >
+                    <Plus className="w-3.5 h-3.5 mr-1" /> Add Accepted Answer
+                  </Button>
+                </div>
+
+                <div className="space-y-2">
+                  {(currentQ.fillBlanks && currentQ.fillBlanks.length > 0
+                    ? currentQ.fillBlanks
+                    : [""]
+                  ).map((blank, bIdx) => (
+                    <div key={bIdx} className="flex items-center space-x-2">
+                      <span className="w-6 text-[10px] font-bold text-gray-400 font-mono">#{bIdx + 1}</span>
+                      <input
+                        type="text"
+                        value={blank}
+                        placeholder="e.g. Photosynthesis"
+                        onChange={(e) => {
+                          const list = [...(currentQ.fillBlanks || [""])];
+                          list[bIdx] = e.target.value;
+                          handleFieldChange("fillBlanks", list);
+                        }}
+                        className="flex-1 text-xs p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-mono"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const list = (currentQ.fillBlanks || []).filter((_, i) => i !== bIdx);
+                          handleFieldChange("fillBlanks", list);
+                        }}
+                        className="p-2 text-gray-400 hover:text-rose-600 rounded-lg"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Standard Options Editor for MCQ / True False */}
+            {currentQ.type !== "match_following" && currentQ.type !== "fill_in_the_blank" && currentQ.options && currentQ.options.length > 0 && (
               <div className="space-y-3 pt-2">
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-bold text-gray-700 dark:text-gray-300">
@@ -449,6 +573,20 @@ export function ImportReviewTable({
                 placeholder="Add step-by-step solution explanation..."
                 className="w-full text-xs p-3 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500"
               />
+            </div>
+
+            {/* Editor Action Footer */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
+              <span className="text-xs text-gray-500 font-mono">
+                {questions.length} questions ready for Question Bank
+              </span>
+              <Button
+                type="button"
+                onClick={() => onSaveToQuestionBank(questions)}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm flex items-center gap-1.5 w-full sm:w-auto"
+              >
+                <CheckCircle2 className="w-4 h-4" /> Import to Question Bank ({questions.length})
+              </Button>
             </div>
           </div>
         </div>

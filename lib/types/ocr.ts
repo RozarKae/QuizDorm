@@ -99,6 +99,10 @@ export interface OCRJobSettings {
   autoTopicDetection: boolean;
   autoDifficultyDetection: boolean;
   virusScanPassed: boolean;
+  targetSubject?: string;
+  targetTopic?: string;
+  targetDifficulty?: string;
+  targetQuestionCount?: number;
 }
 
 export interface OCRJob {

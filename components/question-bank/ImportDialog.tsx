@@ -4,6 +4,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import Link from "next/link";
+import { importQuestions } from "@/lib/data/question-bank";
+import { QuestionItem } from "@/lib/types/question";
 
 interface ImportDialogProps {
   open: boolean;
@@ -13,29 +15,136 @@ interface ImportDialogProps {
 
 export function ImportDialog({ open, onOpenChange, onImportSuccess }: ImportDialogProps) {
   const [selectedFormat, setSelectedFormat] = useState<"csv" | "excel" | "json">("csv");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      setSelectedFile(file);
       setFileName(file.name);
     }
   };
 
+  const parseAndImportQuestions = (text: string, format: string) => {
+    try {
+      let itemsToImport: QuestionItem[] = [];
+
+      if (format === "json" || fileName?.endsWith(".json")) {
+        const parsed = JSON.parse(text);
+        const list = Array.isArray(parsed) ? parsed : parsed.questions || [parsed];
+        itemsToImport = list.map((item: any, idx: number) => ({
+          id: item.id || `import-json-${Date.now()}-${idx + 1}`,
+          title: item.title || item.question || item.text || `Imported Question ${idx + 1}`,
+          type: item.type || "mcq_single",
+          subject: item.subject || "General Academic",
+          category: item.category || item.subject || "General Academic",
+          topic: item.topic || "Core Knowledge",
+          difficulty: item.difficulty || "Medium",
+          marks: item.marks || 4,
+          timeLimitSeconds: item.timeLimitSeconds || 60,
+          options: item.options || [
+            { id: "opt-1", text: "True", isCorrect: true },
+            { id: "opt-2", text: "False", isCorrect: false },
+          ],
+          matchingPairs: item.matchingPairs,
+          fillBlanks: item.fillBlanks,
+          explanation: item.explanation,
+          tags: item.tags || ["imported"],
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+        }));
+      } else {
+        // CSV parsing
+        const lines = text.split(/\r?\n/).filter((l) => l.trim().length > 0);
+        // If header exists, skip first line
+        const dataLines = lines[0].toLowerCase().includes("title") || lines[0].toLowerCase().includes("question")
+          ? lines.slice(1)
+          : lines;
+
+        itemsToImport = dataLines.map((line, idx) => {
+          const parts = line.split(",").map((p) => p.trim().replace(/^["']|["']$/g, ""));
+          const qTitle = parts[0] || `Imported Question ${idx + 1}`;
+          const qType = (parts[1] || "mcq_single") as any;
+          const opt1 = parts[2] || "Option A";
+          const opt2 = parts[3] || "Option B";
+          const correctOpt = parts[4] || opt1;
+
+          return {
+            id: `import-csv-${Date.now()}-${idx + 1}`,
+            title: qTitle,
+            type: qType,
+            subject: parts[5] || "General Academic",
+            category: parts[5] || "General Academic",
+            topic: parts[6] || "General",
+            difficulty: "Medium",
+            marks: 4,
+            timeLimitSeconds: 60,
+            options: [
+              { id: "opt-1", text: opt1, isCorrect: correctOpt === opt1 || correctOpt === "A" },
+              { id: "opt-2", text: opt2, isCorrect: correctOpt === opt2 || correctOpt === "B" },
+            ],
+            tags: ["csv-import"],
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+          };
+        });
+      }
+
+      if (itemsToImport.length > 0) {
+        const { imported, skipped } = importQuestions(itemsToImport);
+        if (imported > 0) {
+          toast.success(
+            `Imported ${imported} question${imported === 1 ? "" : "s"} to Question Bank!${
+              skipped > 0 ? ` (${skipped} duplicates skipped)` : ""
+            }`
+          );
+        } else {
+          toast.info(`All ${skipped} question(s) already exist in your Question Bank.`);
+        }
+      } else {
+        toast.info("No valid questions found in file.");
+      }
+    } catch (err: any) {
+      toast.error(`Failed to parse file: ${err.message}`);
+    }
+  };
+
   const handleImport = () => {
-    if (!fileName) {
+    if (!selectedFile && !fileName) {
       toast.error("Please select a file to import");
       return;
     }
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      toast.success(`Successfully imported questions from ${fileName}`);
-      onOpenChange(false);
-      setFileName(null);
-      if (onImportSuccess) onImportSuccess();
-    }, 1000);
+
+    if (selectedFile) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setLoading(false);
+        const text = event.target?.result as string;
+        if (text) {
+          parseAndImportQuestions(text, selectedFormat);
+        }
+        onOpenChange(false);
+        setFileName(null);
+        setSelectedFile(null);
+        if (onImportSuccess) onImportSuccess();
+      };
+      reader.onerror = () => {
+        setLoading(false);
+        toast.error("Error reading file.");
+      };
+      reader.readAsText(selectedFile);
+    } else {
+      setTimeout(() => {
+        setLoading(false);
+        toast.success(`Successfully imported questions from ${fileName}`);
+        onOpenChange(false);
+        setFileName(null);
+        if (onImportSuccess) onImportSuccess();
+      }, 1000);
+    }
   };
 
   return (
@@ -43,7 +152,7 @@ export function ImportDialog({ open, onOpenChange, onImportSuccess }: ImportDial
       <DialogContent className="max-w-md rounded-3xl p-6">
         <DialogHeader>
           <DialogTitle className="flex items-center text-gray-900 dark:text-white">
-            <Upload className="w-5 h-5 text-indigo-600 mr-2" /> Import Questions
+            <Upload className="w-5 h-5 text-indigo-600 mr-2" /> Import to Question Bank
           </DialogTitle>
           <DialogDescription className="text-xs">
             Bulk import questions from CSV, Excel, JSON or launch the AI OCR Document Intelligence Workspace.

@@ -120,55 +120,55 @@ function LoginContent() {
       )}
 
       {/* Quick Test Accounts Interactive Panel */}
-      <div className="p-3.5 mb-5 rounded-[3px] border border-border bg-card space-y-2">
+      <div className="p-3.5 mb-5 rounded-[4px] border border-[#262B37] bg-[#161922] space-y-2">
         <div className="flex items-center justify-between text-xs">
-          <span className="font-mono text-[11px] font-bold text-foreground flex items-center">
-            <Sparkles className="w-3.5 h-3.5 mr-1.5 text-cobalt" />
+          <span className="font-mono text-[11px] font-bold text-white flex items-center">
+            <Sparkles className="w-3.5 h-3.5 mr-1.5 text-[#3864F8]" />
             Quick Presets // Verified Roles
           </span>
-          <span className="font-mono text-[10px] text-cobalt font-semibold uppercase">Auto-Fill</span>
+          <span className="font-mono text-[10px] text-[#3864F8] font-bold uppercase tracking-wider">Auto-Fill</span>
         </div>
         <div className="grid grid-cols-3 gap-2">
           <button
             type="button"
             onClick={() => handleQuickFill("student")}
-            className={`p-2 rounded-[2px] border text-left transition-all ${email === "student@quizdorm.com"
-                ? "border-cobalt bg-muted ring-1 ring-cobalt"
-                : "border-border bg-background hover:border-cobalt/40"
+            className={`p-2 rounded-[3px] border text-left transition-all ${email === "student@quizdorm.com"
+                ? "border-[#3864F8] bg-[#1C2233] ring-1 ring-[#3864F8]"
+                : "border-[#262B37] bg-[#10131B] hover:border-[#3864F8]/50"
               }`}
           >
-            <div className="text-[10px] font-mono font-bold text-cobalt uppercase flex items-center">
+            <div className="text-[10px] font-mono font-bold text-[#3864F8] uppercase flex items-center">
               <GraduationCap className="w-3 h-3 mr-1" /> Student
             </div>
-            <div className="text-[10px] font-mono text-muted-foreground truncate mt-0.5">student@...</div>
+            <div className="text-[10px] font-mono text-zinc-400 truncate mt-0.5">student@...</div>
           </button>
 
           <button
             type="button"
             onClick={() => handleQuickFill("teacher")}
-            className={`p-2 rounded-[2px] border text-left transition-all ${email === "teacher@quizdorm.com"
-                ? "border-cobalt bg-muted ring-1 ring-cobalt"
-                : "border-border bg-background hover:border-cobalt/40"
+            className={`p-2 rounded-[3px] border text-left transition-all ${email === "teacher@quizdorm.com"
+                ? "border-[#3864F8] bg-[#1C2233] ring-1 ring-[#3864F8]"
+                : "border-[#262B37] bg-[#10131B] hover:border-[#3864F8]/50"
               }`}
           >
-            <div className="text-[10px] font-mono font-bold text-cobalt uppercase flex items-center">
+            <div className="text-[10px] font-mono font-bold text-[#3864F8] uppercase flex items-center">
               <UserCheck className="w-3 h-3 mr-1" /> Teacher
             </div>
-            <div className="text-[10px] font-mono text-muted-foreground truncate mt-0.5">teacher@...</div>
+            <div className="text-[10px] font-mono text-zinc-400 truncate mt-0.5">teacher@...</div>
           </button>
 
           <button
             type="button"
             onClick={() => handleQuickFill("school")}
-            className={`p-2 rounded-[2px] border text-left transition-all ${email === "school@quizdorm.com"
-                ? "border-cobalt bg-muted ring-1 ring-cobalt"
-                : "border-border bg-background hover:border-cobalt/40"
+            className={`p-2 rounded-[3px] border text-left transition-all ${email === "school@quizdorm.com"
+                ? "border-[#3864F8] bg-[#1C2233] ring-1 ring-[#3864F8]"
+                : "border-[#262B37] bg-[#10131B] hover:border-[#3864F8]/50"
               }`}
           >
-            <div className="text-[10px] font-mono font-bold text-cobalt uppercase flex items-center">
+            <div className="text-[10px] font-mono font-bold text-[#3864F8] uppercase flex items-center">
               <School className="w-3 h-3 mr-1" /> School
             </div>
-            <div className="text-[10px] font-mono text-muted-foreground truncate mt-0.5">school@...</div>
+            <div className="text-[10px] font-mono text-zinc-400 truncate mt-0.5">school@...</div>
           </button>
         </div>
       </div>
@@ -176,7 +176,7 @@ function LoginContent() {
       <AuthForm onSubmit={handleFormSubmit}>
         <div className="space-y-4">
           <div className="space-y-1.5">
-            <label htmlFor="email" className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+            <label htmlFor="email" className="text-xs font-mono uppercase tracking-wider text-zinc-300 font-semibold">
               Email Address
             </label>
             <Input
@@ -187,16 +187,16 @@ function LoginContent() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
               required
-              className="w-full font-mono text-xs h-9 rounded-[3px] border-border"
+              className="w-full font-mono text-xs h-10 rounded-[3px]"
             />
           </div>
 
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <label htmlFor="password" className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+              <label htmlFor="password" className="text-xs font-mono uppercase tracking-wider text-zinc-300 font-semibold">
                 Password
               </label>
-              <Link href="/auth/forgot-password" className="text-xs text-cobalt hover:underline font-mono">
+              <Link href="/auth/forgot-password" className="text-xs text-[#3864F8] hover:text-[#5B82F9] hover:underline font-mono">
                 Forgot Password?
               </Link>
             </div>
@@ -207,7 +207,7 @@ function LoginContent() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="••••••••"
               required
-              className="w-full font-mono text-xs h-9 rounded-[3px] border-border"
+              className="w-full font-mono text-xs h-10 rounded-[3px]"
             />
           </div>
 
@@ -217,9 +217,9 @@ function LoginContent() {
               name="remember-me"
               type="checkbox"
               defaultChecked
-              className="h-3.5 w-3.5 text-cobalt focus:ring-cobalt border-border rounded-[2px]"
+              className="h-3.5 w-3.5 text-[#3864F8] focus:ring-[#3864F8] border-[#2A303F] bg-[#161922] rounded-[2px]"
             />
-            <label htmlFor="remember-me" className="ml-2 block text-xs font-mono text-muted-foreground">
+            <label htmlFor="remember-me" className="ml-2 block text-xs font-mono text-zinc-300 font-medium cursor-pointer">
               Remember Active Session
             </label>
           </div>
@@ -228,18 +228,18 @@ function LoginContent() {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full bg-cobalt hover:bg-cobalt/90 text-white mt-5 font-mono text-xs font-semibold rounded-[3px] h-10 shadow-xs"
+          className="w-full bg-[#2855F5] hover:bg-[#1E44D6] text-white mt-5 font-mono text-xs font-bold rounded-[3px] h-10 shadow-md cursor-pointer transition-all"
         >
-          {loading ? "Authenticating..." : "Sign In &rarr;"}
+          {loading ? "Authenticating..." : "Sign In →"}
         </Button>
       </AuthForm>
 
       <div className="relative my-5">
         <div className="absolute inset-0 flex items-center" aria-hidden="true">
-          <div className="w-full border-t border-border"></div>
+          <div className="w-full border-t border-[#262B37]"></div>
         </div>
         <div className="relative flex justify-center text-[10px] uppercase font-mono tracking-wider">
-          <span className="bg-card px-2 text-muted-foreground">
+          <span className="bg-[#13161F] px-3 text-zinc-400 font-semibold">
             Or continue with
           </span>
         </div>
@@ -250,7 +250,7 @@ function LoginContent() {
           variant="outline"
           type="button"
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center space-x-2 border-border h-9 rounded-[3px] text-xs font-mono text-foreground hover:bg-muted"
+          className="w-full flex items-center justify-center space-x-2 border-[#262B37] bg-[#161922] text-white hover:bg-[#1E2230] hover:border-[#3864F8]/50 h-10 rounded-[3px] text-xs font-mono font-medium transition-all"
         >
           <svg className="h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -263,9 +263,9 @@ function LoginContent() {
       </div>
 
       <AuthFooter>
-        <p className="text-xs font-mono text-muted-foreground">
+        <p className="text-xs font-mono text-zinc-400">
           Don&apos;t have an account?{" "}
-          <Link href="/auth/register" className="text-cobalt hover:underline font-semibold">
+          <Link href="/auth/register" className="text-[#3864F8] hover:text-[#5B82F9] hover:underline font-bold">
             Sign Up
           </Link>
         </p>

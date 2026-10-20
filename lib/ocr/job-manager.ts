@@ -234,7 +234,10 @@ export class OCRJobManager {
 
       const result = await OCREngineService.processDocument(
         filePayload,
-        currentJob.settings,
+        {
+          ...currentJob.settings,
+          targetSubject: currentJob.subject || currentJob.settings.targetSubject,
+        },
         (progress, step) => {
           currentJob.progress = progress;
           currentJob.currentStep = step as OCRJob["currentStep"];

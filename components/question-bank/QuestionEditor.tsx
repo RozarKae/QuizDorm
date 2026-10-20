@@ -195,7 +195,13 @@ export function QuestionEditor({ initialQuestion, onSave }: QuestionEditorProps)
       explanation,
       hints,
       tags,
-      options,
+      options:
+        type === "true_false"
+          ? [
+              { id: "tf-1", text: "True", isCorrect: trueFalseCorrect },
+              { id: "tf-2", text: "False", isCorrect: !trueFalseCorrect },
+            ]
+          : options,
       matchingPairs: matchPairs,
       sequenceItems,
       fillBlanks,
@@ -419,6 +425,155 @@ export function QuestionEditor({ initialQuestion, onSave }: QuestionEditorProps)
                 <Button type="button" variant="ghost" size="icon" onClick={() => handleRemoveOption(opt.id)} className="h-8 w-8 text-red-500"><Trash2 className="w-4 h-4" /></Button>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* True / False Choice Selector */}
+        {type === "true_false" && (
+          <div className="space-y-3 pt-2">
+            <label className="text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400 block">
+              Designate Correct Answer Key
+            </label>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => setTrueFalseCorrect(true)}
+                className={`p-3.5 rounded-2xl border text-xs font-mono font-bold transition-all ${
+                  trueFalseCorrect
+                    ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500"
+                    : "border-gray-200 dark:border-gray-800 text-gray-400 hover:border-gray-400"
+                }`}
+              >
+                TRUE {trueFalseCorrect && "✓"}
+              </button>
+              <button
+                type="button"
+                onClick={() => setTrueFalseCorrect(false)}
+                className={`p-3.5 rounded-2xl border text-xs font-mono font-bold transition-all ${
+                  !trueFalseCorrect
+                    ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500"
+                    : "border-gray-200 dark:border-gray-800 text-gray-400 hover:border-gray-400"
+                }`}
+              >
+                FALSE {!trueFalseCorrect && "✓"}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Fill in the Blank Editor */}
+        {type === "fill_in_the_blank" && (
+          <div className="space-y-3 pt-2">
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">
+                Accepted Blank Answers (Keywords)
+              </label>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  if (newBlank.trim()) {
+                    setFillBlanks([...fillBlanks, newBlank.trim()]);
+                    setNewBlank("");
+                  }
+                }}
+                className="text-xs h-8"
+              >
+                <Plus className="w-3.5 h-3.5 mr-1" /> Add Accepted Word
+              </Button>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Input
+                value={newBlank}
+                onChange={(e) => setNewBlank(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && newBlank.trim()) {
+                    e.preventDefault();
+                    setFillBlanks([...fillBlanks, newBlank.trim()]);
+                    setNewBlank("");
+                  }
+                }}
+                placeholder="Enter accepted answer and press Add..."
+                className="text-xs h-9"
+              />
+            </div>
+            <div className="space-y-2">
+              {fillBlanks.map((blank, bIdx) => (
+                <div key={bIdx} className="flex items-center justify-between p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50/50 dark:bg-gray-900/50 text-xs font-mono">
+                  <span>{blank}</span>
+                  <button
+                    type="button"
+                    onClick={() => setFillBlanks(fillBlanks.filter((_, i) => i !== bIdx))}
+                    className="text-red-500 hover:text-red-700"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Match the Following Editor */}
+        {type === "match_following" && (
+          <div className="space-y-3 pt-2">
+            <div className="flex items-center justify-between">
+              <label className="text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400">
+                Matching Pairs (Left Item ➔ Right Counterpart)
+              </label>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  const newPair: MatchPair = {
+                    id: `p-${Date.now()}`,
+                    leftItem: `Item ${matchPairs.length + 1}`,
+                    rightItem: `Match ${matchPairs.length + 1}`,
+                  };
+                  setMatchPairs([...matchPairs, newPair]);
+                }}
+                className="text-xs h-8"
+              >
+                <Plus className="w-3.5 h-3.5 mr-1" /> Add Match Pair
+              </Button>
+            </div>
+            <div className="space-y-2">
+              {matchPairs.map((pair, pIdx) => (
+                <div key={pair.id || pIdx} className="flex items-center space-x-2 p-2.5 rounded-2xl border border-gray-200 dark:border-gray-800">
+                  <span className="w-5 text-[10px] font-bold text-gray-400 font-mono">#{pIdx + 1}</span>
+                  <Input
+                    value={pair.leftItem}
+                    onChange={(e) =>
+                      setMatchPairs(
+                        matchPairs.map((p, i) => (i === pIdx ? { ...p, leftItem: e.target.value } : p))
+                      )
+                    }
+                    placeholder="Left premise..."
+                    className="flex-1 text-xs h-9"
+                  />
+                  <span className="text-indigo-600 font-bold text-xs">➔</span>
+                  <Input
+                    value={pair.rightItem}
+                    onChange={(e) =>
+                      setMatchPairs(
+                        matchPairs.map((p, i) => (i === pIdx ? { ...p, rightItem: e.target.value } : p))
+                      )
+                    }
+                    placeholder="Right counterpart..."
+                    className="flex-1 text-xs h-9"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setMatchPairs(matchPairs.filter((_, i) => i !== pIdx))}
+                    className="text-red-500 hover:text-red-700 p-1"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 

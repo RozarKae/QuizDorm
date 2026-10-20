@@ -225,8 +225,14 @@ export default function QuestionBankPage() {
           <Button variant="outline" size="sm" onClick={() => setCategoryOpen(true)} className="text-xs font-mono border-border rounded-[3px] text-foreground hover:bg-muted h-8">
             <BookOpen className="w-3.5 h-3.5 mr-1.5 text-cobalt" /> Taxonomy
           </Button>
-          <Button variant="outline" size="sm" onClick={() => setImportOpen(true)} className="text-xs font-mono border-border rounded-[3px] text-foreground hover:bg-muted h-8">
-            <Upload className="w-3.5 h-3.5 mr-1.5" /> Import
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setImportOpen(true)}
+            className="text-xs font-mono border-border rounded-[3px] text-foreground hover:bg-muted h-8"
+            title="Import questions from CSV, Excel, or JSON into Question Bank"
+          >
+            <Upload className="w-3.5 h-3.5 mr-1.5" /> Import to Question Bank
           </Button>
           <Button variant="outline" size="sm" onClick={() => setExportOpen(true)} className="text-xs font-mono border-border rounded-[3px] text-foreground hover:bg-muted h-8">
             <Download className="w-3.5 h-3.5 mr-1.5" /> Export

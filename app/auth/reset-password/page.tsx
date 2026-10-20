@@ -63,21 +63,21 @@ export default function ResetPasswordPage() {
     return (
       <AuthCard>
         <div className="text-center py-6 space-y-6">
-          <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400">
-            <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="mx-auto flex items-center justify-center h-14 w-14 rounded-full bg-emerald-950/60 border border-emerald-700/60 text-emerald-400">
+            <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
           <div className="space-y-2">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Password Updated</h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <h2 className="text-xl font-bold text-white">Password Updated</h2>
+            <p className="text-xs text-zinc-400">
               Your password has been successfully reset. Redirecting to login page...
             </p>
           </div>
           <AuthFooter>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-zinc-400">
               Go to{" "}
-              <Link href="/auth/login" className="text-indigo-600 dark:text-indigo-400 hover:underline font-medium">
+              <Link href="/auth/login" className="text-[#3864F8] hover:underline font-semibold">
                 Log In
               </Link>
             </p>
@@ -95,7 +95,7 @@ export default function ResetPasswordPage() {
       />
 
       {errorMsg && (
-        <div className="p-3 mb-4 rounded-xl text-xs font-semibold bg-red-100 dark:bg-red-950/30 text-red-600 dark:text-red-400">
+        <div className="p-3 mb-4 rounded-[4px] text-xs font-semibold bg-red-950/50 border border-red-800 text-red-300">
           {errorMsg}
         </div>
       )}
@@ -103,7 +103,7 @@ export default function ResetPasswordPage() {
       <AuthForm onSubmit={handleFormSubmit}>
         <div className="space-y-4">
           <div className="space-y-1.5">
-            <label htmlFor="password" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label htmlFor="password" className="text-xs font-semibold tracking-wide uppercase text-zinc-300">
               New Password
             </label>
             <PasswordInput
@@ -113,13 +113,13 @@ export default function ResetPasswordPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full"
+              className="w-full h-11 bg-[#161922] border-[#2A303F] text-white placeholder:text-zinc-500 rounded-[4px]"
             />
             <PasswordStrengthIndicator password={password} />
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="confirmPassword" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            <label htmlFor="confirmPassword" className="text-xs font-semibold tracking-wide uppercase text-zinc-300">
               Confirm New Password
             </label>
             <PasswordInput
@@ -129,7 +129,7 @@ export default function ResetPasswordPage() {
               required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full"
+              className="w-full h-11 bg-[#161922] border-[#2A303F] text-white placeholder:text-zinc-500 rounded-[4px]"
             />
           </div>
         </div>
@@ -137,9 +137,9 @@ export default function ResetPasswordPage() {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white mt-5 font-semibold rounded-xl py-6"
+          className="w-full h-11 bg-[#3864F8] hover:bg-[#2c53d6] text-white mt-5 font-semibold text-sm rounded-[4px] shadow-sm flex items-center justify-center space-x-2"
         >
-          {loading ? "Updating password..." : "Reset Password"}
+          <span>{loading ? "Updating password..." : "Reset Password →"}</span>
         </Button>
       </AuthForm>
 

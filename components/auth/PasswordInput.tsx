@@ -20,7 +20,7 @@ export default function PasswordInput({ className, ...props }: PasswordInputProp
         type="button"
         variant="ghost"
         size="sm"
-        className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+        className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent text-zinc-400 hover:text-white"
         onClick={() => setShowPassword(!showPassword)}
         aria-label={showPassword ? "Hide password" : "Show password"}
       >

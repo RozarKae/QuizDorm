@@ -2,9 +2,9 @@
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
+    <div className="min-h-screen flex bg-[#090A0D] text-white">
       {/* Form Section */}
-      <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 xl:px-24 bg-white dark:bg-gray-950 z-10">
+      <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 xl:px-24 bg-[#0E1015] border-r border-[#1E232F] z-10">
         <div className="mx-auto w-full max-w-md">
           {children}
         </div>

@@ -96,15 +96,15 @@ export default function PasswordStrengthIndicator({ password = "", className = "
       {/* Strength Bar */}
       <div className="space-y-1.5">
         <div className="flex items-center justify-between text-xs font-semibold">
-          <span className="text-gray-500 dark:text-gray-400">Password Strength:</span>
+          <span className="text-zinc-400">Password Strength:</span>
           <span className={getLabelColor(result.score)}>{result.label}</span>
         </div>
-        <div className="grid grid-cols-4 gap-1.5 h-1.5 w-full bg-gray-100 dark:bg-gray-900 rounded-full overflow-hidden">
+        <div className="grid grid-cols-4 gap-1.5 h-1.5 w-full bg-[#1E232F] rounded-full overflow-hidden">
           {[1, 2, 3, 4].map((step) => (
             <div
               key={step}
               className={`h-full transition-all duration-300 ${
-                step <= result.score ? getBarColor(result.score) : "bg-gray-200 dark:bg-gray-800"
+                step <= result.score ? getBarColor(result.score) : "bg-[#262B37]"
               }`}
             />
           ))}
@@ -118,14 +118,14 @@ export default function PasswordStrengthIndicator({ password = "", className = "
             key={idx}
             className={`flex items-center space-x-1.5 font-medium ${
               item.valid
-                ? "text-emerald-600 dark:text-emerald-400"
-                : "text-gray-400 dark:text-gray-500"
+                ? "text-emerald-400"
+                : "text-zinc-400"
             }`}
           >
             {item.valid ? (
-              <Check className="w-3 h-3 text-emerald-500 shrink-0" />
+              <Check className="w-3 h-3 text-emerald-400 shrink-0" />
             ) : (
-              <X className="w-3 h-3 text-gray-300 dark:text-gray-700 shrink-0" />
+              <X className="w-3 h-3 text-zinc-600 shrink-0" />
             )}
             <span>{item.label}</span>
           </div>

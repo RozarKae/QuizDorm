@@ -26,6 +26,8 @@ export const QuestionTypeEnum = z.enum([
   "mcq_single",
   "mcq_multiple",
   "true_false",
+  "fill_in_the_blank",
+  "match_following",
 ]);
 export type QuestionType = z.infer<typeof QuestionTypeEnum>;
 
@@ -43,6 +45,17 @@ export const GeneratedOptionSchema = z.object({
   plausibilityReason: z.string().nullable().optional(),
 });
 export type GeneratedOption = z.infer<typeof GeneratedOptionSchema>;
+
+/**
+ * Schema for matching pair in match_following questions
+ */
+export const GeneratedMatchPairSchema = z.object({
+  id: z.string().min(1, "Pair ID is required"),
+  leftItem: z.string().min(1, "Left item must not be empty"),
+  rightItem: z.string().min(1, "Right item must not be empty"),
+  explanation: z.string().optional(),
+});
+export type GeneratedMatchPair = z.infer<typeof GeneratedMatchPairSchema>;
 
 /**
  * Runtime Zod schema for structured question generation output
@@ -65,10 +78,9 @@ export const GeneratedQuestionSchema = z
       .min(10, "Explicit pedagogical learning objective is required"),
     bloomsLevel: BloomsLevelEnum.default("Understand"),
     difficulty: DifficultyLevelEnum.default("Medium"),
-    options: z
-      .array(GeneratedOptionSchema)
-      .min(2, "Question must have at least 2 options")
-      .max(6, "Question cannot have more than 6 options"),
+    options: z.array(GeneratedOptionSchema).default([]),
+    matchingPairs: z.array(GeneratedMatchPairSchema).optional(),
+    fillBlanks: z.array(z.string().min(1)).optional(),
     generalExplanation: z
       .string()
       .min(15, "Comprehensive master explanation is required (min 15 characters)"),
@@ -78,18 +90,37 @@ export const GeneratedQuestionSchema = z
   .refine(
     (data) => {
       if (data.type === "mcq_single" || data.type === "true_false") {
+        if (!data.options || data.options.length < 2) return false;
         const correctCount = data.options.filter((o) => o.isCorrect).length;
         return correctCount === 1;
       }
       if (data.type === "mcq_multiple") {
+        if (!data.options || data.options.length < 2) return false;
         const correctCount = data.options.filter((o) => o.isCorrect).length;
         return correctCount >= 1;
+      }
+      if (data.type === "fill_in_the_blank") {
+        const hasBlanks = Array.isArray(data.fillBlanks) && data.fillBlanks.length > 0;
+        const hasCorrectOpt = Array.isArray(data.options) && data.options.some((o) => o.isCorrect);
+        return hasBlanks || hasCorrectOpt;
+      }
+      if (data.type === "match_following") {
+        if (!Array.isArray(data.matchingPairs) || data.matchingPairs.length < 2) {
+          return false;
+        }
+        // Validate unambiguous matching: no duplicate leftItems or rightItems
+        const leftSet = new Set(data.matchingPairs.map((p) => p.leftItem.trim().toLowerCase()));
+        const rightSet = new Set(data.matchingPairs.map((p) => p.rightItem.trim().toLowerCase()));
+        return (
+          leftSet.size === data.matchingPairs.length &&
+          rightSet.size === data.matchingPairs.length
+        );
       }
       return true;
     },
     {
       message:
-        "Single-choice questions (mcq_single, true_false) must have exactly one correct option. Multiple-choice questions must have at least one correct option.",
+        "Question must satisfy structural constraints for its type (mcq/true_false: options with 1 correct; fill_in_the_blank: >=1 accepted answer; match_following: >=2 unambiguous pairs).",
       path: ["options"],
     }
   );
@@ -114,3 +145,37 @@ export const QuestionGenerationInputSchema = z.object({
 export type QuestionGenerationInput = z.infer<
   typeof QuestionGenerationInputSchema
 >;
+
+/**
+ * Schema for batch questions generated from a document (PDF)
+ */
+export const BatchGeneratedQuestionsSchema = z.object({
+  documentTitle: z.string().optional(),
+  summary: z.string().optional(),
+  detectedSubject: z.string().optional(),
+  detectedTopic: z.string().optional(),
+  questions: z
+    .array(GeneratedQuestionSchema)
+    .min(1, "At least one question must be generated from the document"),
+});
+export type BatchGeneratedQuestions = z.infer<
+  typeof BatchGeneratedQuestionsSchema
+>;
+
+/**
+ * Input configuration for PDF document question generation
+ */
+export const PdfQuestionGenerationInputSchema = z.object({
+  subject: z.string().optional().default("General Academic"),
+  topic: z.string().optional(),
+  difficulty: DifficultyLevelEnum.optional().default("Medium"),
+  questionCount: z.number().int().min(1).max(25).optional().default(5),
+  questionTypes: z
+    .array(QuestionTypeEnum)
+    .optional()
+    .default(["mcq_single", "true_false", "fill_in_the_blank", "match_following"]),
+});
+export type PdfQuestionGenerationInput = z.infer<
+  typeof PdfQuestionGenerationInputSchema
+>;
+

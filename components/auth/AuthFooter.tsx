@@ -6,11 +6,11 @@ interface AuthFooterProps {
 
 export default function AuthFooter({ children }: AuthFooterProps) {
   return (
-    <div className="mt-6 flex flex-col items-center space-y-4 text-center text-xs text-gray-500 dark:text-gray-400">
+    <div className="mt-6 flex flex-col items-center space-y-4 text-center text-xs text-zinc-400">
       {children}
       <Link
         href="/"
-        className="flex items-center space-x-1 hover:text-primary transition-colors font-medium"
+        className="flex items-center space-x-1 text-zinc-400 hover:text-white transition-colors font-medium"
       >
         <svg
           className="h-4 w-4"

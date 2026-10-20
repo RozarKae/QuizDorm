@@ -33,9 +33,9 @@ export default function VerifyEmailPage() {
     <AuthCard>
       <div className="text-center py-6 space-y-6">
         {/* Success Illustration */}
-        <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-primary/10 text-primary">
+        <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-[#3864F8]/15 border border-[#3864F8]/30 text-[#3864F8]">
           <svg
-            className="h-10 w-10 animate-bounce"
+            className="h-8 w-8 animate-bounce"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -51,8 +51,8 @@ export default function VerifyEmailPage() {
         </div>
 
         <div className="space-y-2">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Verify Your Email</h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400 max-w-sm mx-auto">
+          <h2 className="text-xl font-bold text-white">Verify Your Email</h2>
+          <p className="text-xs text-zinc-400 max-w-sm mx-auto">
             Please verify your email address to access your QuizDorm dashboard. Enter your email below if you need to resend the code.
           </p>
         </div>
@@ -63,29 +63,29 @@ export default function VerifyEmailPage() {
             placeholder="you@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full text-center"
+            className="w-full h-11 text-center bg-[#161922] border-[#2A303F] text-white placeholder:text-zinc-500 rounded-[4px]"
           />
           <div className="flex flex-col space-y-2 pt-2">
             <Button
               onClick={handleResend}
               disabled={resending}
               variant="outline"
-              className="w-full border-gray-300 dark:border-gray-700 py-6 rounded-xl"
+              className="w-full h-11 border-[#2A303F] bg-[#161922] text-zinc-200 hover:text-white hover:bg-[#1E232F] rounded-[4px]"
             >
               {resending ? "Resending..." : "Resend Verification Email"}
             </Button>
             <Link href="/auth/login" className="w-full">
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white py-6 rounded-xl">
-                Return to Login
+              <Button className="w-full h-11 bg-[#3864F8] hover:bg-[#2c53d6] text-white rounded-[4px] font-semibold text-sm">
+                Return to Login →
               </Button>
             </Link>
           </div>
         </div>
 
         <AuthFooter>
-          <p className="text-xs text-gray-500 dark:text-gray-400">
+          <p className="text-xs text-zinc-400">
             Need help? Contact our{" "}
-            <Link href="/support" className="text-primary hover:underline font-medium">
+            <Link href="/support" className="text-[#3864F8] hover:underline font-semibold">
               Support Center
             </Link>
           </p>

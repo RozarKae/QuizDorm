@@ -11,15 +11,15 @@ interface RoleCardProps {
 export default function RoleCard({ title, description, icon, href }: RoleCardProps) {
   return (
     <Link href={href} className="group block h-full">
-      <Card className="h-full border border-gray-200 dark:border-gray-800 bg-white/60 dark:bg-gray-900/60 backdrop-blur-md hover:border-primary dark:hover:border-primary transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md">
+      <Card className="h-full border border-[#262B37] bg-[#161922] hover:border-[#3864F8] transition-all duration-200 rounded-[4px] shadow-sm hover:shadow-md">
         <CardContent className="p-6 flex flex-col items-center text-center h-full">
-          <div className="mb-4 p-3 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300">
+          <div className="mb-4 p-3 rounded-full bg-[#3864F8]/10 text-[#3864F8] group-hover:bg-[#3864F8] group-hover:text-white transition-all duration-200">
             {icon}
           </div>
-          <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-primary transition-colors">
+          <h3 className="text-base font-bold text-white mb-2 group-hover:text-[#3864F8] transition-colors">
             {title}
           </h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 flex-grow">
+          <p className="text-xs text-zinc-400 flex-grow leading-relaxed">
             {description}
           </p>
         </CardContent>
