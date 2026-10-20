@@ -31,6 +31,7 @@ import {
   TopicSummary,
 } from "@/lib/data/quizzes";
 import { getAllTopics, getAllSubjects, getAllGradeLevels } from "@/lib/data/question-bank";
+import { AIDocumentQuizModal } from "@/components/ai/AIDocumentQuizModal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
@@ -69,6 +70,7 @@ export default function QuizzesListPage() {
   const [instantGrade, setInstantGrade] = useState("All");
   const [instantDifficulty, setInstantDifficulty] = useState("All");
   const [instantCount, setInstantCount] = useState(10);
+  const [aiDocModalOpen, setAiDocModalOpen] = useState(false);
 
   // Load quizzes from persistent repository
   const loadData = () => {
@@ -177,6 +179,14 @@ export default function QuizzesListPage() {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
+            <Button
+              size="sm"
+              onClick={() => setAiDocModalOpen(true)}
+              className="bg-[#65F59A] hover:bg-[#38D9B0] text-[#070B0A] font-mono font-bold text-xs tracking-wider rounded-[3px] shadow-[0_0_15px_rgba(101,245,154,0.3)] transition-all"
+            >
+              <Sparkles className="w-3.5 h-3.5 mr-1.5 stroke-[2.5]" />
+              AI QUIZ MAKER
+            </Button>
             <Link href="/create-quiz">
               <Button variant="outline" size="sm" className="border-border text-xs font-mono tracking-wider rounded-[3px]">
                 <FileText className="w-3.5 h-3.5 mr-1.5 text-[#2855F5]" />
@@ -551,6 +561,18 @@ export default function QuizzesListPage() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* AI Document Quiz Maker Modal */}
+      <AIDocumentQuizModal
+        open={aiDocModalOpen}
+        onOpenChange={(isOpen) => {
+          setAiDocModalOpen(isOpen);
+          if (!isOpen) loadData();
+        }}
+        defaultSubject={subjectFilter !== "All" ? subjectFilter : "Science"}
+        defaultTopic={topicFilter !== "All" ? topicFilter : ""}
+        defaultDifficulty={difficultyFilter !== "All" ? (difficultyFilter as any) : "Medium"}
+      />
     </div>
   );
 }

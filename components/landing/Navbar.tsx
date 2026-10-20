@@ -6,52 +6,38 @@ import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "Create Quiz", href: "/create-quiz" },
-    { name: "Quizzes", href: "/dashboard/quizzes" },
-    { name: "Marketplace", href: "/dashboard/marketplace" },
-    { name: "Certifications", href: "/dashboard/certifications" },
-    { name: "EduCloud OS", href: "/dashboard/cloud-ops" },
+    { name: "Overview", href: "/" },
+    { name: "Assessment Engine", href: "/#features" },
+    { name: "Live Arena", href: "/live/arena" },
+    { name: "Question Bank", href: "/dashboard/questions" },
+    { name: "Role Workspaces", href: "/#audience" },
   ];
 
   return (
-    <header className="border-b border-border bg-card/90 backdrop-blur-md py-3 px-6 sticky top-0 z-50 transition-colors duration-200">
+    <header className="border-b border-[rgba(160,190,170,0.12)] bg-[#070B0A]/85 backdrop-blur-md py-3.5 px-6 sticky top-0 z-50 transition-colors duration-200">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
           <Logo />
         </Link>
-        <nav className="hidden md:flex items-center space-x-6 text-xs font-mono uppercase tracking-wider text-muted-foreground font-medium">
+        <nav className="hidden md:flex items-center space-x-7 text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-medium">
           {navItems.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className={`hover:text-foreground transition-colors ${
-                item.name === "Create Quiz"
-                  ? "text-cobalt font-semibold"
-                  : ""
-              }`}
+              className="hover:text-[#65F59A] transition-colors"
             >
               {item.name}
             </Link>
           ))}
         </nav>
-        <div className="flex items-center space-x-2">
-          <Link href="/create-quiz">
-            <Button
-              size="sm"
-              variant="outline"
-              className="text-xs font-mono border-border hover:bg-muted rounded-[3px] px-3 h-8"
-            >
-              + Create Quiz
-            </Button>
-          </Link>
+        <div className="flex items-center space-x-3">
           <Link href="/auth/login">
-            <Button variant="ghost" size="sm" className="text-xs font-mono text-muted-foreground hover:text-foreground rounded-[3px] px-3 h-8">
+            <Button variant="ghost" size="sm" className="text-xs font-mono text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17] rounded-xl px-3.5 h-8">
               Sign In
             </Button>
           </Link>
           <Link href="/auth/register">
-            <Button size="sm" className="bg-cobalt hover:bg-cobalt/90 text-white text-xs font-mono font-medium rounded-[3px] px-3.5 h-8 shadow-xs">
+            <Button size="sm" className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-xl px-4 h-8 shadow-sm shadow-[#65F59A]/20">
               Get Started
             </Button>
           </Link>

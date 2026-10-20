@@ -30,55 +30,61 @@ export function ExportReportDialog({ open, onOpenChange, reportTitle = "Class Ac
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle className="flex items-center text-gray-900 dark:text-white">
-            <Download className="w-5 h-5 text-indigo-600 mr-2" /> Generate & Export Report
+          <DialogTitle className="flex items-center text-[#F2F7F3] font-display">
+            <Download className="w-5 h-5 text-[#65F59A] mr-2" /> Generate & Export Report
           </DialogTitle>
-          <DialogDescription>
-            Export <span className="font-bold text-gray-800 dark:text-gray-200">{reportTitle}</span> into your desired format.
+          <DialogDescription className="text-[#A0AEA5] text-xs">
+            Export <span className="font-bold text-[#F2F7F3]">{reportTitle}</span> into your desired format.
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4 py-2">
           <div>
-            <label className="block text-xs font-semibold uppercase text-gray-600 mb-1">Select Format</label>
+            <label className="block text-[11px] font-mono uppercase tracking-wider text-[#A0AEA5] mb-2">Select Format</label>
             <div className="grid grid-cols-3 gap-3">
               <button
                 type="button"
                 onClick={() => setFormat("PDF")}
-                className={`p-3 rounded-2xl border text-center transition-all flex flex-col items-center justify-center space-y-1 ${
-                  format === "PDF" ? "border-indigo-600 bg-indigo-50/50 dark:bg-indigo-950/40 text-indigo-600 font-bold" : "border-gray-200"
+                className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center space-y-1.5 ${
+                  format === "PDF"
+                    ? "border-[#65F59A] bg-[#17251E] text-[#65F59A] font-bold shadow-md shadow-[#65F59A]/10"
+                    : "border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
                 }`}
               >
                 <FileText className="w-5 h-5" />
-                <span className="text-xs">PDF</span>
+                <span className="text-xs font-mono">PDF</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setFormat("Excel")}
-                className={`p-3 rounded-2xl border text-center transition-all flex flex-col items-center justify-center space-y-1 ${
-                  format === "Excel" ? "border-emerald-600 bg-emerald-50/50 dark:bg-emerald-950/40 text-emerald-600 font-bold" : "border-gray-200"
+                className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center space-y-1.5 ${
+                  format === "Excel"
+                    ? "border-[#38D9B0] bg-[#111B17] text-[#38D9B0] font-bold shadow-md shadow-[#38D9B0]/10"
+                    : "border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
                 }`}
               >
                 <FileSpreadsheet className="w-5 h-5" />
-                <span className="text-xs">Excel</span>
+                <span className="text-xs font-mono">Excel</span>
               </button>
 
               <button
                 type="button"
                 onClick={() => setFormat("CSV")}
-                className={`p-3 rounded-2xl border text-center transition-all flex flex-col items-center justify-center space-y-1 ${
-                  format === "CSV" ? "border-purple-600 bg-purple-50/50 dark:bg-purple-950/40 text-purple-600 font-bold" : "border-gray-200"
+                className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center space-y-1.5 ${
+                  format === "CSV"
+                    ? "border-[#65F59A] bg-[#17251E] text-[#65F59A] font-bold shadow-md shadow-[#65F59A]/10"
+                    : "border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
                 }`}
               >
                 <FileCode className="w-5 h-5" />
-                <span className="text-xs">CSV</span>
+                <span className="text-xs font-mono">CSV</span>
               </button>
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase text-gray-600 mb-1">Date Range</label>
+            <label className="block text-[11px] font-mono uppercase tracking-wider text-[#A0AEA5] mb-2">Date Range</label>
             <Select
               value={dateRange}
               onChange={(e) => setDateRange(e.target.value)}
@@ -87,15 +93,15 @@ export function ExportReportDialog({ open, onOpenChange, reportTitle = "Class Ac
                 { value: "Q2 2026", label: "Second Quarter 2026" },
                 { value: "Full Term", label: "Full Academic Term 2025-2026" },
               ]}
-              className="text-xs h-10"
+              className="text-xs h-10 bg-[#111B17] border-[rgba(160,190,170,0.15)] text-[#F2F7F3] rounded-xl font-mono"
             />
           </div>
         </div>
 
         <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>Cancel</Button>
-          <Button onClick={handleDownload} disabled={loading} className="bg-indigo-600 text-white font-bold">
-            {loading ? "Exporting..." : "Download File"}
+          <Button variant="outline" onClick={() => onOpenChange(false)} className="border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3]">Cancel</Button>
+          <Button onClick={handleDownload} disabled={loading} className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-bold shadow-md shadow-[#65F59A]/15">
+            {loading ? "Exporting..." : "Download Dossier"}
           </Button>
         </DialogFooter>
       </DialogContent>

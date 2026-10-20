@@ -4,73 +4,79 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-ink: #111318;
-  --color-ink-dark: #090A0D;
-  --color-ink-subtle: #1F232D;
-  
-  --color-warm-ivory: #F7F5EF;
-  --color-warm-ivory-muted: #EFECE3;
-  --color-soft-neutral: #E7E5DF;
-  --color-soft-neutral-dark: #262B37;
-  
-  --color-cobalt: #2855F5;
-  --color-cobalt-hover: #1E44D6;
-  
-  --color-acid-lime: #DFFF43;
-  --color-acid-lime-hover: #CEEF2A;
-  
-  --color-signal-coral: #E85D3F;
-  --color-signal-coral-hover: #D04B2E;
+  /* Future OS Core Color Tokens */
+  --color-charcoal: #070B0A;
+  --color-graphite: #0C1210;
+  --color-elevated: #111B17;
+  --color-interactive: #17251E;
 
+  --color-emerald-accent: #65F59A;
+  --color-emerald-hover: #52E086;
+  --color-mint-accent: #38D9B0;
+  --color-mint-hover: #2EC49E;
+
+  /* Semantic UI Tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Backward Compatibility Aliases */
+  --color-cobalt: #65F59A;
+  --color-cobalt-hover: #52E086;
+  --color-acid: #65F59A;
+  --color-acid-lime: #65F59A;
+  --color-coral: #F87171;
+  --color-signal-coral: #F87171;
+
+  /* Typography */
   --font-display: var(--font-space-grotesk), "Space Grotesk", sans-serif;
   --font-sans: var(--font-inter), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 @layer base {
-  :root {
-    --background: #0E1015;
-    --foreground: #F7F5EF;
-    --card: #161922;
-    --card-foreground: #F7F5EF;
-    --border: #262B37;
-    --border-strong: #3E4658;
-    --input: #1A1D27;
-    --ring: #3864F8;
-    --radius: 0.25rem;
-    
-    --primary: #3864F8;
-    --primary-foreground: #FFFFFF;
-    --secondary: #1F232D;
-    --secondary-foreground: #F7F5EF;
-    --accent: #DFFF43;
-    --accent-foreground: #111318;
-    --destructive: #E85D3F;
-    --destructive-foreground: #FFFFFF;
-    --muted: #1B1E28;
-    --muted-foreground: #A1A8B8;
-  }
-
+  :root,
   .dark {
-    --background: #0E1015;
-    --foreground: #F7F5EF;
-    --card: #161922;
-    --card-foreground: #F7F5EF;
-    --border: #262B37;
-    --border-strong: #3E4658;
-    --input: #262B37;
-    --ring: #3864F8;
-    --radius: 0.25rem;
+    /* Immersive Future OS Foundation */
+    --background: #070B0A;
+    --foreground: #F2F7F3;
+    --card: #0C1210;
+    --card-foreground: #F2F7F3;
+    --popover: #111B17;
+    --popover-foreground: #F2F7F3;
+    --border: rgba(160, 190, 170, 0.14);
+    --border-strong: rgba(160, 190, 170, 0.28);
+    --input: #17251E;
+    --ring: #65F59A;
+    --radius: 0.375rem;
 
-    --primary: #3864F8;
-    --primary-foreground: #FFFFFF;
-    --secondary: #1F232D;
-    --secondary-foreground: #F7F5EF;
-    --accent: #DFFF43;
-    --accent-foreground: #111318;
-    --destructive: #E85D3F;
+    --primary: #65F59A;
+    --primary-foreground: #070B0A;
+    --secondary: #111B17;
+    --secondary-foreground: #F2F7F3;
+    --accent: #38D9B0;
+    --accent-foreground: #070B0A;
+    --destructive: #F87171;
     --destructive-foreground: #FFFFFF;
-    --muted: #1B1E28;
-    --muted-foreground: #8F97A8;
+    --muted: #111B17;
+    --muted-foreground: #A0AEA5;
+    --text-muted: #69786F;
   }
 
   * {
@@ -90,17 +96,110 @@
   }
 }
 
-/* Editorial Intelligence Utility Classes */
+/* Immersive Future OS Utility Classes */
 .font-display {
   font-family: var(--font-display);
 }
 
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Futuristic Card Surface */
+.os-card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.os-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.6);
+}
+
+.os-card-elevated {
+  background-color: #111B17;
+  color: var(--card-foreground);
+  border: 1px solid rgba(160, 190, 170, 0.16);
+  border-radius: var(--radius);
+}
+
+/* Subtle Emerald Glow */
+.os-glow-emerald {
+  box-shadow: 0 0 24px -4px rgba(101, 245, 154, 0.18);
+}
+
+.os-glow-mint {
+  box-shadow: 0 0 24px -4px rgba(56, 217, 176, 0.18);
+}
+
+/* Technical Badges */
+.os-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  border: 1px solid currentColor;
+}
+
+.os-badge-emerald {
+  background-color: rgba(101, 245, 154, 0.10);
+  color: #65F59A;
+  border-color: rgba(101, 245, 154, 0.28);
+}
+
+.os-badge-mint {
+  background-color: rgba(56, 217, 176, 0.10);
+  color: #38D9B0;
+  border-color: rgba(56, 217, 176, 0.28);
+}
+
+.os-badge-muted {
+  background-color: rgba(160, 190, 170, 0.06);
+  color: #A0AEA5;
+  border-color: rgba(160, 190, 170, 0.16);
+}
+
+/* Fine Technical Dividing Rule */
+.os-rule {
+  border-top: 1px solid var(--border);
+}
+
+/* Custom Scrollbar for Future OS */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070B0A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #17251E;
+  border-radius: 3px;
+  border: 1px solid rgba(160, 190, 170, 0.12);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #23372C;
+}
+
+/* Backward compatibility classes mapped to Future OS styles */
 .editorial-card {
   background-color: var(--card);
   color: var(--card-foreground);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .editorial-card:hover {
@@ -111,32 +210,32 @@
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  font-family: var(--font-mono, monospace);
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding: 0.25rem 0.5rem;
-  border-radius: 2px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
   border: 1px solid currentColor;
 }
 
 .editorial-tag-lime {
-  background-color: #DFFF43;
-  color: #111318;
-  border-color: #DFFF43;
+  background-color: rgba(101, 245, 154, 0.12);
+  color: #65F59A;
+  border-color: rgba(101, 245, 154, 0.30);
 }
 
 .editorial-tag-cobalt {
-  background-color: #2855F5;
-  color: #FFFFFF;
-  border-color: #2855F5;
+  background-color: #65F59A;
+  color: #070B0A;
+  border-color: #65F59A;
 }
 
 .editorial-tag-coral {
-  background-color: #E85D3F;
-  color: #FFFFFF;
-  border-color: #E85D3F;
+  background-color: rgba(248, 113, 113, 0.12);
+  color: #F87171;
+  border-color: rgba(248, 113, 113, 0.30);
 }
 
 .editorial-rule {

@@ -36,13 +36,29 @@ export async function POST(request: Request) {
     }
 
     const fileName = (file as any).name || "uploaded_document.pdf";
+    const lowerName = fileName.toLowerCase();
 
-    // 1. Validate file extension
-    if (!fileName.toLowerCase().endsWith(".pdf")) {
+    // 1. Validate file extension and determine MIME type
+    let mimeType = "application/pdf";
+    if (lowerName.endsWith(".pdf")) {
+      mimeType = "application/pdf";
+    } else if (lowerName.endsWith(".txt")) {
+      mimeType = "text/plain";
+    } else if (lowerName.endsWith(".md") || lowerName.endsWith(".markdown")) {
+      mimeType = "text/markdown";
+    } else if (lowerName.endsWith(".png")) {
+      mimeType = "image/png";
+    } else if (lowerName.endsWith(".jpg") || lowerName.endsWith(".jpeg")) {
+      mimeType = "image/jpeg";
+    } else if (lowerName.endsWith(".webp")) {
+      mimeType = "image/webp";
+    } else if (lowerName.endsWith(".docx")) {
+      mimeType = "application/octet-stream";
+    } else {
       return NextResponse.json(
         {
           success: false,
-          error: `Unsupported file format '${fileName}'. Only PDF documents (.pdf) are supported.`,
+          error: `Unsupported file format '${fileName}'. Supported document formats: PDF, TXT, MD, PNG, JPG, WEBP.`,
           errorCode: "INVALID_FILE_TYPE",
         },
         { status: 400 }
@@ -54,7 +70,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
-          error: "The uploaded PDF document is empty (0 bytes).",
+          error: "The uploaded document is empty (0 bytes).",
           errorCode: "EMPTY_FILE",
         },
         { status: 400 }
@@ -65,27 +81,30 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: false,
-          error: `The uploaded PDF exceeds the 50MB limit (${(file.size / (1024 * 1024)).toFixed(1)}MB).`,
+          error: `The uploaded document exceeds the 50MB limit (${(file.size / (1024 * 1024)).toFixed(1)}MB).`,
           errorCode: "FILE_TOO_LARGE",
         },
         { status: 413 }
       );
     }
 
-    // 3. Extract buffer and verify magic bytes (%PDF-)
+    // 3. Extract buffer
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    const pdfHeader = buffer.subarray(0, 5).toString("utf-8");
-    if (!pdfHeader.startsWith("%PDF-")) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: "The uploaded file does not contain a valid PDF signature header (%PDF-).",
-          errorCode: "MALFORMED_PDF",
-        },
-        { status: 400 }
-      );
+    // Verify PDF signature header for PDF files
+    if (mimeType === "application/pdf") {
+      const pdfHeader = buffer.subarray(0, 5).toString("utf-8");
+      if (!pdfHeader.startsWith("%PDF-")) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: "The uploaded file does not contain a valid PDF signature header (%PDF-).",
+            errorCode: "MALFORMED_PDF",
+          },
+          { status: 400 }
+        );
+      }
     }
 
     // Parse optional generation parameters
@@ -95,16 +114,31 @@ export async function POST(request: Request) {
     const rawCount = formData.get("questionCount");
     const questionCount = rawCount ? Math.min(25, Math.max(1, parseInt(String(rawCount), 10))) : 5;
 
+    // Parse custom question types if provided
+    let questionTypes: any[] = ["mcq_single", "true_false", "fill_in_the_blank", "match_following"];
+    const rawTypes = formData.get("questionTypes");
+    if (rawTypes && typeof rawTypes === "string") {
+      try {
+        if (rawTypes.startsWith("[")) {
+          questionTypes = JSON.parse(rawTypes);
+        } else {
+          questionTypes = rawTypes.split(",").map((t) => t.trim()).filter(Boolean);
+        }
+      } catch {
+        // keep default
+      }
+    }
+
     // 4. Invoke QuestionIntelligenceService for multimodal document processing
     const result = await QuestionIntelligenceService.generateBatchFromDocumentBuffer(
       buffer,
-      "application/pdf",
+      mimeType,
       {
         subject: subject || "General Academic",
         topic: topic || undefined,
         difficulty,
         questionCount,
-        questionTypes: ["mcq_single", "true_false", "fill_in_the_blank", "match_following"],
+        questionTypes,
       }
     );
 

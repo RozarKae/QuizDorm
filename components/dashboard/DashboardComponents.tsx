@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { ArrowUpRight, Sparkles, Activity } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-// 1. PageHeader — Editorial Masthead Style
+// 1. PageHeader — Future OS Masthead Style
 interface PageHeaderProps {
   title: string;
   description?: string;
@@ -15,18 +14,18 @@ interface PageHeaderProps {
 
 export function PageHeader({ title, description, eyebrow, children }: PageHeaderProps) {
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between pb-5 border-b border-border">
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between pb-4 border-b border-[rgba(160,190,170,0.14)]">
       <div className="space-y-1">
         {eyebrow && (
-          <p className="font-mono text-[10px] uppercase tracking-widest font-bold text-[#2855F5]">
+          <p className="font-mono text-[10px] uppercase tracking-widest font-semibold text-[#65F59A]">
             {eyebrow}
           </p>
         )}
-        <h1 className="font-display text-2xl sm:text-3xl font-black tracking-tight text-foreground uppercase">
+        <h1 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-[#F2F7F3] uppercase">
           {title}
         </h1>
         {description && (
-          <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-2xl leading-relaxed">
             {description}
           </p>
         )}
@@ -54,8 +53,8 @@ export function DashboardGrid({ children }: { children: React.ReactNode }) {
 export function SectionTitle({ title }: { title: string }) {
   return (
     <div className="flex items-center gap-2 pb-1">
-      <div className="w-1.5 h-3.5 bg-[#2855F5]" />
-      <h2 className="font-display text-sm font-bold uppercase tracking-wider text-foreground">
+      <div className="w-1.5 h-3 bg-[#65F59A] rounded-[1px] shadow-[0_0_6px_#65F59A]" />
+      <h2 className="font-display text-xs font-bold uppercase tracking-wider text-[#F2F7F3]">
         {title}
       </h2>
     </div>
@@ -73,23 +72,23 @@ interface StatsCardProps {
 
 export function StatsCard({ title, value, change, isPositive = true, icon }: StatsCardProps) {
   return (
-    <div className="p-4 rounded-[3px] bg-card border border-border hover:border-foreground/30 transition-colors flex flex-col justify-between">
-      <div className="flex items-center justify-between pb-2 border-b border-border/40">
-        <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+    <div className="p-4 rounded-[4px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] hover:border-[rgba(160,190,170,0.28)] transition-all flex flex-col justify-between">
+      <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
           {title}
         </p>
-        {icon && <div className="text-muted-foreground/70">{icon}</div>}
+        {icon && <div className="text-[#A0AEA5]">{icon}</div>}
       </div>
       <div className="mt-3 flex items-baseline justify-between">
-        <p className="font-display text-2xl sm:text-3xl font-black text-foreground tabular-nums tracking-tight">
+        <p className="font-display text-2xl sm:text-3xl font-extrabold text-[#F2F7F3] tabular-nums tracking-tight">
           {value}
         </p>
         {change && (
           <span
-            className={`inline-flex items-center px-1.5 py-0.5 rounded-[2px] font-mono text-[10px] font-bold ${
+            className={`inline-flex items-center px-1.5 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold ${
               isPositive
-                ? "bg-[#DFFF43] text-[#111318]"
-                : "bg-[#E85D3F]/15 text-[#E85D3F]"
+                ? "bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.25)]"
+                : "bg-[rgba(248,113,113,0.12)] text-[#F87171] border border-[rgba(248,113,113,0.25)]"
             }`}
           >
             {change}
@@ -110,19 +109,19 @@ interface DashboardCardProps {
 
 export function DashboardCard({ title, description, children, className }: DashboardCardProps) {
   return (
-    <div className={`p-5 rounded-[3px] bg-card border border-border ${className || ""}`}>
-      <div className="pb-3 mb-4 border-b border-border/60 flex flex-col gap-0.5">
-        <h3 className="font-display text-sm sm:text-base font-bold text-foreground uppercase tracking-tight">
+    <div className={`p-5 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] ${className || ""}`}>
+      <div className="pb-3 mb-4 border-b border-[rgba(160,190,170,0.12)] flex flex-col gap-0.5">
+        <h3 className="font-display text-sm sm:text-base font-bold text-[#F2F7F3] uppercase tracking-tight">
           {title}
         </h3>
-        {description && <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>}
+        {description && <p className="text-xs text-[#A0AEA5] leading-relaxed">{description}</p>}
       </div>
       <div>{children}</div>
     </div>
   );
 }
 
-// 7. QuickActionCard — Editorial Action Tile
+// 7. QuickActionCard — Action Tile
 interface QuickActionCardProps {
   title: string;
   description: string;
@@ -141,21 +140,21 @@ export function QuickActionCard({
   return (
     <Link
       href={href}
-      className="group block p-4 rounded-[3px] bg-card border border-border hover:border-[#2855F5] transition-colors relative"
+      className="group block p-4 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] hover:border-[#65F59A]/50 transition-all hover:bg-[#17251E] relative"
     >
       <div className="flex items-start justify-between gap-3">
-        <div className="flex items-center gap-2.5 text-[#2855F5]">
+        <div className="flex items-center gap-2.5 text-[#65F59A]">
           {icon || <Sparkles className="h-4 w-4" />}
-          <h4 className="font-display text-sm font-bold text-foreground group-hover:text-[#2855F5] transition-colors">
+          <h4 className="font-display text-sm font-bold text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors">
             {title}
           </h4>
         </div>
-        <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-[#2855F5] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+        <ArrowUpRight className="h-4 w-4 text-[#69786F] group-hover:text-[#65F59A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
       </div>
-      <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
+      <p className="mt-2 text-xs text-[#A0AEA5] leading-relaxed">
         {description}
       </p>
-      <div className="mt-3 flex items-center gap-1 font-mono text-[10px] uppercase font-bold text-[#2855F5] tracking-wider">
+      <div className="mt-3 flex items-center gap-1 font-mono text-[10px] uppercase font-bold text-[#65F59A] tracking-wider">
         <span>{actionLabel}</span>
       </div>
     </Link>
@@ -182,27 +181,27 @@ export function ActivityCard({
   const list = items || activities || [];
 
   return (
-    <div className="p-4 rounded-[3px] bg-card border border-border">
-      <div className="flex items-center gap-2 pb-3 mb-3 border-b border-border/60">
-        <Activity className="h-4 w-4 text-[#2855F5]" />
-        <h4 className="font-display text-xs uppercase font-bold tracking-wider text-foreground">
+    <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)]">
+      <div className="flex items-center gap-2 pb-3 mb-3 border-b border-[rgba(160,190,170,0.12)]">
+        <Activity className="h-4 w-4 text-[#65F59A]" />
+        <h4 className="font-display text-xs uppercase font-bold tracking-wider text-[#F2F7F3]">
           {title}
         </h4>
       </div>
-      <div className="divide-y divide-border/50">
+      <div className="divide-y divide-[rgba(160,190,170,0.08)]">
         {list.map((act) => (
           <div key={act.id} className="py-2.5 first:pt-0 last:pb-0 flex items-start justify-between gap-2">
             <div>
-              <p className="text-xs font-semibold text-foreground">{act.title}</p>
-              <p className="text-[11px] text-muted-foreground mt-0.5">{act.description}</p>
+              <p className="text-xs font-semibold text-[#F2F7F3]">{act.title}</p>
+              <p className="text-[11px] text-[#A0AEA5] mt-0.5">{act.description}</p>
             </div>
-            <span className="font-mono text-[10px] text-muted-foreground whitespace-nowrap">
+            <span className="font-mono text-[10px] text-[#69786F] whitespace-nowrap">
               {act.time}
             </span>
           </div>
         ))}
         {list.length === 0 && (
-          <p className="py-4 text-center text-xs font-mono text-muted-foreground">No recent events logged</p>
+          <p className="py-4 text-center text-xs font-mono text-[#69786F]">No recent events logged</p>
         )}
       </div>
     </div>
@@ -226,21 +225,21 @@ export function EmptyDashboard({
   icon,
 }: EmptyDashboardProps) {
   return (
-    <div className="p-8 sm:p-12 rounded-[3px] bg-card border border-border border-dashed text-center flex flex-col items-center justify-center space-y-3">
-      <div className="w-10 h-10 rounded-[2px] bg-muted/60 border border-border flex items-center justify-center text-muted-foreground">
-        {icon || <Activity className="w-5 h-5 text-[#2855F5]" />}
+    <div className="p-8 sm:p-12 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.16)] border-dashed text-center flex flex-col items-center justify-center space-y-3">
+      <div className="w-10 h-10 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] flex items-center justify-center text-[#A0AEA5]">
+        {icon || <Activity className="w-5 h-5 text-[#65F59A]" />}
       </div>
       <div className="space-y-1 max-w-md">
-        <h3 className="font-display text-sm sm:text-base font-bold text-foreground uppercase tracking-tight">
+        <h3 className="font-display text-sm sm:text-base font-bold text-[#F2F7F3] uppercase tracking-tight">
           {title}
         </h3>
-        {description && <p className="text-xs text-muted-foreground leading-relaxed">{description}</p>}
+        {description && <p className="text-xs text-[#A0AEA5] leading-relaxed">{description}</p>}
       </div>
       {actionLabel && (
         <Button
           size="sm"
           onClick={onAction}
-          className="mt-2 bg-[#2855F5] hover:bg-[#1f44c7] text-white font-mono text-xs tracking-wider rounded-[3px]"
+          className="mt-2 font-mono text-xs tracking-wider rounded-[4px]"
         >
           {actionLabel}
         </Button>
@@ -248,4 +247,3 @@ export function EmptyDashboard({
     </div>
   );
 }
-

@@ -40,23 +40,23 @@ function StandaloneArenaContent() {
 
   if (isLoading && !session) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center space-y-3 font-mono text-xs bg-background text-foreground">
-        <RefreshCw className="w-6 h-6 animate-spin text-[#2855F5]" />
-        <p className="text-muted-foreground">Connecting to Live Arena ({codeParam})...</p>
+      <div className="min-h-screen flex flex-col items-center justify-center space-y-3 font-mono text-xs bg-[#070B0A] text-[#F2F7F3]">
+        <RefreshCw className="w-6 h-6 animate-spin text-[#65F59A]" />
+        <p className="text-[#A0AEA5]">Connecting to Live Arena ({codeParam})...</p>
       </div>
     );
   }
 
   if (connectionError && !session) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4 bg-background">
-        <div className="max-w-md w-full p-6 rounded-[4px] border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/30 text-center space-y-4">
-          <AlertCircle className="w-10 h-10 text-red-600 mx-auto" />
-          <h2 className="text-base font-bold text-red-900 dark:text-red-200">Arena Connection Failed</h2>
-          <p className="text-xs text-red-700 dark:text-red-300">{connectionError}</p>
+      <div className="min-h-screen flex items-center justify-center p-4 bg-[#070B0A]">
+        <div className="max-w-md w-full p-6 rounded-[6px] border border-[rgba(248,113,113,0.3)] bg-[rgba(248,113,113,0.08)] text-center space-y-4">
+          <AlertCircle className="w-10 h-10 text-[#F87171] mx-auto" />
+          <h2 className="text-base font-bold text-[#F2F7F3]">Arena Connection Failed</h2>
+          <p className="text-xs text-[#A0AEA5]">{connectionError}</p>
           <div className="pt-2 flex justify-center gap-3">
             <Link href="/student/live/join">
-              <Button size="sm" className="bg-[#2855F5] text-white text-xs font-mono">
+              <Button size="sm" className="font-mono text-xs">
                 Enter Different PIN
               </Button>
             </Link>
@@ -82,17 +82,17 @@ function StandaloneArenaContent() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground py-6 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-6">
+    <div className="min-h-screen bg-[#070B0A] text-[#F2F7F3] py-6 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-6">
       {/* Top Header */}
-      <div className="flex items-center justify-between border-b border-border pb-4">
+      <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.14)] pb-4">
         <Link
           href="/student/live/join"
-          className="inline-flex items-center text-xs font-mono text-muted-foreground hover:text-foreground"
+          className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#65F59A] transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> EXIT ARENA
         </Link>
-        <span className="font-mono text-xs font-bold text-[#2855F5]">
-          PIN: {session?.code || codeParam}
+        <span className="font-mono text-xs font-bold text-[#65F59A] bg-[rgba(101,245,154,0.12)] border border-[rgba(101,245,154,0.3)] px-2.5 py-1 rounded-[3px] shadow-[0_0_10px_rgba(101,245,154,0.15)]">
+          ARENA PIN: {session?.code || codeParam}
         </span>
       </div>
 

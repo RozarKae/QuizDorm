@@ -28,50 +28,50 @@ export function SubmissionModal({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle className="flex items-center text-gray-900 dark:text-white">
-            <CheckCircle2 className="w-5 h-5 text-indigo-600 mr-2" /> Confirm Quiz Submission
+          <DialogTitle className="flex items-center text-[#F2F7F3] font-display text-base">
+            <CheckCircle2 className="w-5 h-5 text-[#65F59A] mr-2" /> Confirm Assessment Submission
           </DialogTitle>
-          <DialogDescription>
-            Are you sure you want to finish and submit your quiz answers?
+          <DialogDescription className="text-xs text-[#A0AEA5]">
+            Confirm your responses before concluding this timed assessment session.
           </DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4 py-3">
           {/* Answer Breakdown */}
-          <div className="grid grid-cols-3 gap-3 text-center">
-            <div className="p-3 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-100 dark:border-emerald-900/50 rounded-2xl">
-              <p className="text-xl font-extrabold text-emerald-600">{answeredCount}</p>
-              <p className="text-[10px] text-emerald-800 dark:text-emerald-300 font-medium">Answered</p>
+          <div className="grid grid-cols-3 gap-2.5 text-center font-mono">
+            <div className="p-3 bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] rounded-[4px]">
+              <p className="text-xl font-extrabold text-[#65F59A]">{answeredCount}</p>
+              <p className="text-[10px] text-[#A0AEA5] font-semibold uppercase tracking-wider">Answered</p>
             </div>
-            <div className="p-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl">
-              <p className="text-xl font-extrabold text-slate-600 dark:text-slate-300">{unansweredCount}</p>
-              <p className="text-[10px] text-slate-500 font-medium">Unanswered</p>
+            <div className="p-3 bg-[#17251E] border border-[rgba(160,190,170,0.14)] rounded-[4px]">
+              <p className="text-xl font-extrabold text-[#A0AEA5]">{unansweredCount}</p>
+              <p className="text-[10px] text-[#69786F] font-semibold uppercase tracking-wider">Unanswered</p>
             </div>
-            <div className="p-3 bg-amber-50 dark:bg-amber-950/40 border border-amber-100 dark:border-amber-900/50 rounded-2xl">
-              <p className="text-xl font-extrabold text-amber-600">{markedCount}</p>
-              <p className="text-[10px] text-amber-800 dark:text-amber-300 font-medium">Marked Review</p>
+            <div className="p-3 bg-[rgba(248,113,113,0.1)] border border-[rgba(248,113,113,0.25)] rounded-[4px]">
+              <p className="text-xl font-extrabold text-[#F87171]">{markedCount}</p>
+              <p className="text-[10px] text-[#F87171] font-semibold uppercase tracking-wider">Review</p>
             </div>
           </div>
 
           {/* Unanswered Warning */}
           {unansweredCount > 0 && (
-            <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900 text-amber-800 dark:text-amber-200 text-xs flex items-center space-x-2">
-              <AlertTriangle className="w-4 h-4 shrink-0 text-amber-600" />
-              <span>You have {unansweredCount} unanswered questions remaining.</span>
+            <div className="p-3 rounded-[4px] bg-[rgba(251,191,36,0.1)] border border-[rgba(251,191,36,0.25)] text-[#FBBF24] text-xs font-mono flex items-center space-x-2">
+              <AlertTriangle className="w-4 h-4 shrink-0 text-[#FBBF24]" />
+              <span>Notice: {unansweredCount} questions remain unrecorded.</span>
             </div>
           )}
 
-          <div className="flex items-center justify-between text-xs text-gray-500 pt-1">
-            <span>Time Remaining:</span>
-            <span className="font-mono font-bold text-indigo-600">{timeRemaining}</span>
+          <div className="flex items-center justify-between text-xs font-mono text-[#A0AEA5] pt-1">
+            <span>Remaining Time:</span>
+            <span className="font-bold text-[#65F59A]">{timeRemaining}</span>
           </div>
         </div>
 
         <DialogFooter className="mt-2">
-          <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Continue Quiz
+          <Button variant="outline" size="sm" onClick={() => onOpenChange(false)}>
+            Resume Session
           </Button>
-          <Button onClick={onConfirmSubmit} className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold">
+          <Button size="sm" onClick={onConfirmSubmit} className="font-mono font-semibold">
             Final Submit Now
           </Button>
         </DialogFooter>

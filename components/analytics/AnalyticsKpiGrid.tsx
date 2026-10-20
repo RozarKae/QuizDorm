@@ -12,32 +12,32 @@ export function AnalyticsKpiGrid({ metrics }: AnalyticsKpiGridProps) {
       {metrics.map((m, idx) => (
         <div
           key={idx}
-          className="bg-card p-5 rounded-[3px] border border-border space-y-2"
+          className="bg-[#0C1210] p-5 rounded-2xl border border-[rgba(160,190,170,0.14)] space-y-2 relative overflow-hidden shadow-lg group hover:border-[#65F59A]/30 transition-all duration-300"
         >
           <div className="flex items-center justify-between">
-            <p className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground truncate">{m.title}</p>
+            <p className="text-[10px] font-mono uppercase tracking-widest text-[#A0AEA5] truncate">{m.title}</p>
             <div
-              className={`inline-flex items-center text-[10px] font-mono font-bold px-1.5 py-0.5 rounded-[2px] ${
+              className={`inline-flex items-center text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ${
                 m.trend === "up"
-                  ? "bg-[#DFFF43]/20 text-foreground border border-[#DFFF43]/40"
+                  ? "bg-[#17251E] text-[#65F59A] border border-[#65F59A]/30"
                   : m.trend === "down"
-                  ? "bg-[#E85D3F]/15 text-[#E85D3F] border border-[#E85D3F]/30"
-                  : "bg-muted text-muted-foreground border border-border"
+                  ? "bg-[#251414] text-[#FF6B6B] border border-[#FF6B6B]/30"
+                  : "bg-[#111B17] text-[#A0AEA5] border border-[rgba(160,190,170,0.15)]"
               }`}
             >
               {m.trend === "up" ? (
-                <TrendingUp className="w-3 h-3 mr-0.5 text-[#2855F5]" />
+                <TrendingUp className="w-3 h-3 mr-1 text-[#65F59A]" />
               ) : m.trend === "down" ? (
-                <TrendingDown className="w-3 h-3 mr-0.5 text-[#E85D3F]" />
+                <TrendingDown className="w-3 h-3 mr-1 text-[#FF6B6B]" />
               ) : (
-                <Minus className="w-3 h-3 mr-0.5" />
+                <Minus className="w-3 h-3 mr-1 text-[#A0AEA5]" />
               )}
               <span>{m.change}</span>
             </div>
           </div>
 
-          <p className="text-2xl sm:text-3xl font-extrabold text-foreground font-mono tracking-tight">{m.value}</p>
-          <p className="text-[10px] font-mono text-muted-foreground">{m.timeframe}</p>
+          <p className="text-2xl sm:text-3xl font-bold text-[#F2F7F3] font-mono tracking-tight">{m.value}</p>
+          <p className="text-[10px] font-mono text-[#69786F]">{m.timeframe}</p>
         </div>
       ))}
     </div>

@@ -54,16 +54,16 @@ export default function AnalyticsHubPage() {
   ];
 
   const barData = [
-    { label: "Grade 12-A Calculus", value: 88, color: "#4F46E5" },
-    { label: "Grade 11-B AP Physics", value: 76, color: "#2563EB" },
-    { label: "Grade 10 Chemistry", value: 82, color: "#10B981" },
-    { label: "Algebra Foundations", value: 70, color: "#F59E0B" },
+    { label: "Grade 12-A Calculus", value: 88, color: "#65F59A" },
+    { label: "Grade 11-B AP Physics", value: 76, color: "#38D9B0" },
+    { label: "Grade 10 Chemistry", value: 82, color: "#A0AEA5" },
+    { label: "Algebra Foundations", value: 70, color: "#69786F" },
   ];
 
   const donutSlices = [
-    { label: "Passed (A/B)", value: 74, color: "#10B981" },
-    { label: "Average (C)", value: 18, color: "#F59E0B" },
-    { label: "Failed (<60%)", value: 8, color: "#EF4444" },
+    { label: "Passed (A/B)", value: 74, color: "#65F59A" },
+    { label: "Average (C)", value: 18, color: "#38D9B0" },
+    { label: "Failed (<60%)", value: 8, color: "#FF6B6B" },
   ];
 
   const weakTopics = [
@@ -90,19 +90,20 @@ export default function AnalyticsHubPage() {
   ];
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto">
+    <div className="space-y-8 max-w-7xl mx-auto text-[#F2F7F3]">
       {/* Header & Perspective Switcher */}
-      <div className="border border-border bg-card p-6 rounded-[3px] space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-4">
+      <div className="bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8 rounded-2xl space-y-6 shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 right-1/4 w-80 h-28 bg-[#65F59A]/5 blur-3xl pointer-events-none rounded-full" />
+        <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(160,190,170,0.12)] pb-5">
           <div className="space-y-1">
-            <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-muted-foreground">
-              <span className="w-1.5 h-1.5 bg-[#2855F5] rounded-full" />
-              <span>EDITORIAL ANALYTICS // TELEMETRY HUB</span>
+            <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5]">
+              <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse" />
+              <span>FUTURE OS // TELEMETRY & ANALYTICS INTELLIGENCE</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-foreground flex items-center">
-              <BarChart3 className="w-6 h-6 text-[#2855F5] mr-2" /> Performance Intelligence
+            <h1 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-[#F2F7F3] flex items-center">
+              <BarChart3 className="w-6 h-6 text-[#65F59A] mr-2.5" /> Performance Intelligence
             </h1>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-[#A0AEA5]">
               Real-time cohort telemetry, question error distributions, and verifiable instructional reports.
             </p>
           </div>
@@ -117,14 +118,14 @@ export default function AnalyticsHubPage() {
                 { value: "Organization", label: "Organization Admin Perspective" },
                 { value: "SuperAdmin", label: "Platform Super Admin View" },
               ]}
-              className="text-xs font-mono font-medium w-52 rounded-[3px] border-border"
+              className="text-xs font-mono font-medium w-56 rounded-xl border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#F2F7F3]"
             />
 
             <Button
               onClick={() => setExportOpen(true)}
-              className="bg-[#2855F5] hover:bg-[#1f44c7] text-white font-mono text-xs tracking-wider rounded-[3px]"
+              className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-bold font-mono text-xs tracking-wider rounded-xl shadow-md shadow-[#65F59A]/15"
             >
-              <Download className="w-3.5 h-3.5 mr-1.5" /> EXPORT DOSSIER
+              <Download className="w-3.5 h-3.5 mr-1.5" /> EXPORT REPORT
             </Button>
           </div>
         </div>

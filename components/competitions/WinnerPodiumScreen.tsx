@@ -52,71 +52,76 @@ export function WinnerPodiumScreen({ participants, competitionTitle }: WinnerPod
   return (
     <div className="max-w-4xl mx-auto space-y-8 py-6 text-center">
       {/* Confetti & Winner Banner */}
-      <div className="bg-[#111318] p-8 sm:p-12 rounded-[4px] border border-border text-white shadow-2xl space-y-5 relative overflow-hidden">
-        {/* Subtle grid watermark */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+      <div className="bg-[#0C1210] p-8 sm:p-12 rounded-[6px] border border-[rgba(160,190,170,0.14)] text-[#F2F7F3] shadow-2xl space-y-5 relative overflow-hidden">
+        {/* Cinematic emerald ambient light */}
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-50"
+          style={{
+            background: "radial-gradient(circle at 50% 20%, rgba(101, 245, 154, 0.12), transparent 70%)",
+          }}
+        />
 
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-[2px] bg-[#E85D3F]/20 text-[#E85D3F] border border-[#E85D3F]/40 text-xs font-mono font-bold uppercase tracking-widest relative z-10">
+        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-[3px] bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] text-xs font-mono font-bold uppercase tracking-widest relative z-10">
           <Sparkles className="w-3.5 h-3.5 fill-current" />
-          <span>TOURNAMENT CONCLUDED // WINNER CROWNED</span>
+          <span>TOURNAMENT CONCLUDED // ARENA CHAMPION</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-black font-display tracking-tight text-white relative z-10">
+        <h1 className="text-3xl sm:text-4xl font-extrabold font-display tracking-tight text-[#F2F7F3] relative z-10">
           {competitionTitle}
         </h1>
 
-        <div className="pt-4 max-w-sm mx-auto bg-white/5 backdrop-blur-md p-6 rounded-[3px] border border-white/20 space-y-2 relative z-10">
-          <Trophy className="w-14 h-14 text-[#DFFF43] mx-auto animate-bounce" />
-          <p className="text-[10px] uppercase font-mono font-bold text-white/70 tracking-widest">CHAMPION 🥇</p>
-          <h2 className="text-2xl font-black font-display text-white">{winner?.name || "No Competitors"}</h2>
-          <p className="text-xl font-mono font-extrabold text-[#DFFF43]">{winner?.score || 0} Points</p>
+        <div className="pt-4 max-w-sm mx-auto bg-[#111B17] p-6 rounded-[6px] border border-[#65F59A]/40 shadow-[0_0_32px_rgba(101,245,154,0.18)] space-y-2 relative z-10">
+          <Trophy className="w-14 h-14 text-[#65F59A] mx-auto animate-bounce shadow-xs" />
+          <p className="text-[10px] uppercase font-mono font-bold text-[#A0AEA5] tracking-widest">CHAMPION 🥇</p>
+          <h2 className="text-2xl font-black font-display text-[#F2F7F3]">{winner?.name || "No Competitors"}</h2>
+          <p className="text-xl font-mono font-black text-[#65F59A]">{winner?.score || 0} Points</p>
         </div>
       </div>
 
       {/* Top 3 Podium Cards */}
       <div className="grid grid-cols-3 gap-3 sm:gap-4 max-w-xl mx-auto items-end">
         {sorted[1] ? (
-          <div className="bg-card p-4 rounded-[4px] border border-border shadow-xs space-y-2">
+          <div className="bg-[#0C1210] p-4 rounded-[6px] border border-[rgba(160,190,170,0.16)] shadow-xs space-y-2">
             <span className="text-2xl">🥈</span>
-            <p className="text-xs font-bold text-foreground truncate">{sorted[1].name}</p>
-            <p className="text-xs font-mono font-extrabold text-[#2855F5]">{sorted[1].score} pts</p>
+            <p className="text-xs font-bold text-[#F2F7F3] truncate">{sorted[1].name}</p>
+            <p className="text-xs font-mono font-bold text-[#38D9B0]">{sorted[1].score} pts</p>
           </div>
         ) : <div />}
 
         {sorted[0] ? (
-          <div className="bg-card p-5 rounded-[4px] border-2 border-[#DFFF43] shadow-md space-y-2 scale-105 bg-[#111318] text-white">
+          <div className="bg-[#111B17] p-5 rounded-[6px] border border-[#65F59A]/60 shadow-[0_0_24px_rgba(101,245,154,0.18)] space-y-2 scale-105 text-[#F2F7F3]">
             <span className="text-3xl">🥇</span>
-            <p className="text-sm font-extrabold text-white truncate">{sorted[0].name}</p>
-            <p className="text-sm font-mono font-extrabold text-[#DFFF43]">{sorted[0].score} pts</p>
+            <p className="text-sm font-extrabold text-[#F2F7F3] truncate">{sorted[0].name}</p>
+            <p className="text-sm font-mono font-black text-[#65F59A]">{sorted[0].score} pts</p>
           </div>
         ) : <div />}
 
         {sorted[2] ? (
-          <div className="bg-card p-4 rounded-[4px] border border-border shadow-xs space-y-2">
+          <div className="bg-[#0C1210] p-4 rounded-[6px] border border-[rgba(160,190,170,0.16)] shadow-xs space-y-2">
             <span className="text-2xl">🥉</span>
-            <p className="text-xs font-bold text-foreground truncate">{sorted[2].name}</p>
-            <p className="text-xs font-mono font-extrabold text-[#2855F5]">{sorted[2].score} pts</p>
+            <p className="text-xs font-bold text-[#F2F7F3] truncate">{sorted[2].name}</p>
+            <p className="text-xs font-mono font-bold text-[#A0AEA5]">{sorted[2].score} pts</p>
           </div>
         ) : <div />}
       </div>
 
       {/* Complete Final Standings */}
-      <div className="bg-card rounded-[4px] border border-border p-6 text-left max-w-2xl mx-auto space-y-3">
-        <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-muted-foreground pb-2 border-b border-border">
+      <div className="bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] p-6 text-left max-w-2xl mx-auto space-y-3">
+        <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#A0AEA5] pb-2 border-b border-[rgba(160,190,170,0.12)]">
           Final Official Results Roster ({sorted.length} Competitors)
         </h3>
         <div className="space-y-2 max-h-60 overflow-y-auto pr-1">
           {sorted.map((p, idx) => (
             <div
               key={p.id}
-              className="p-2.5 rounded-[3px] bg-background border border-border flex items-center justify-between text-xs font-mono"
+              className="p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)] flex items-center justify-between text-xs font-mono"
             >
               <div className="flex items-center space-x-3">
-                <span className="font-bold w-6 text-muted-foreground">#{idx + 1}</span>
-                <span className="font-semibold text-foreground">{p.name}</span>
-                {idx === 0 && <span className="text-[10px] text-amber-500 font-bold">🥇 1st Place</span>}
+                <span className="font-bold w-6 text-[#69786F]">#{idx + 1}</span>
+                <span className="font-semibold text-[#F2F7F3]">{p.name}</span>
+                {idx === 0 && <span className="text-[10px] text-[#65F59A] font-bold">🥇 1st Place</span>}
               </div>
-              <span className="font-extrabold text-[#2855F5]">{p.score} pts</span>
+              <span className="font-extrabold text-[#65F59A]">{p.score} pts</span>
             </div>
           ))}
         </div>
@@ -126,13 +131,13 @@ export function WinnerPodiumScreen({ participants, competitionTitle }: WinnerPod
       <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
         <Button
           onClick={handleShare}
-          className="bg-[#2855F5] hover:bg-[#1f44c7] text-white font-mono text-xs font-bold rounded-[3px] px-6"
+          className="font-mono text-xs font-bold rounded-[4px] px-6"
         >
           {copied ? <Check className="w-3.5 h-3.5 mr-1.5" /> : <Share2 className="w-3.5 h-3.5 mr-1.5" />}
           {copied ? "Link Copied!" : "Share Leaderboard"}
         </Button>
         <Link href="/dashboard/competitions">
-          <Button variant="outline" className="rounded-[3px] font-mono text-xs px-6">
+          <Button variant="outline" className="rounded-[4px] font-mono text-xs px-6 border-[rgba(160,190,170,0.18)]">
             <Home className="w-3.5 h-3.5 mr-1.5" /> Return to Competitions
           </Button>
         </Link>

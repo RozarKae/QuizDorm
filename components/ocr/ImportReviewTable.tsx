@@ -23,7 +23,12 @@ import {
   Table as TableIcon,
   Copy,
   Eye,
+  Play,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { saveQuiz } from "@/lib/data/quizzes";
+import { QuizItem } from "@/lib/types/quiz";
+import { QuestionItem } from "@/lib/types/question";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
@@ -40,9 +45,72 @@ export function ImportReviewTable({
   onSaveToQuestionBank,
   onOpenPreview,
 }: ImportReviewTableProps) {
+  const router = useRouter();
   const [selectedQuestionId, setSelectedQuestionId] = useState<string>(questions[0]?.id || "");
   const [editingQuestion, setEditingQuestion] = useState<ExtractedQuestion | null>(questions[0] || null);
   const [aiLoading, setAiLoading] = useState(false);
+
+  const handlePublishAndTakeQuiz = () => {
+    if (questions.length === 0) return;
+    const quizId = `doc-quiz-${Date.now()}`;
+    const firstQ = questions[0];
+    const totalMarks = questions.reduce((acc, q) => acc + (q.marks || 1), 0);
+
+    const convertedQuestions: QuestionItem[] = questions.map((q, idx) => ({
+      id: q.id || `q-rev-${Date.now()}-${idx + 1}`,
+      title: q.title,
+      description: q.description,
+      type: (q.type as QuestionType) || "mcq_single",
+      subject: q.subject || "General Academic",
+      category: q.category || q.subject || "General Academic",
+      topic: q.topic || "Curriculum Unit",
+      subtopic: q.subtopic,
+      difficulty: (q.difficulty as DifficultyLevel) || "Medium",
+      marks: q.marks || 4,
+      timeLimitSeconds: q.timeLimitSeconds || 60,
+      options: (q.options || []).map((opt) => ({
+        id: opt.id,
+        text: opt.text,
+        isCorrect: opt.isCorrect,
+      })),
+      matchingPairs: q.matchingPairs?.map((mp) => ({
+        id: mp.id,
+        leftItem: mp.leftItem,
+        rightItem: mp.rightItem,
+      })),
+      fillBlanks: q.fillBlanks,
+      explanation: q.explanation,
+      hints: q.hints,
+      tags: [q.subject?.toLowerCase() || "academic", "doc-reviewed"],
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    }));
+
+    const newQuiz: QuizItem = {
+      id: quizId,
+      title: `Assessment: ${firstQ?.topic || firstQ?.subject || "Document Quiz"}`,
+      description: "Digitized curriculum assessment generated from verified document import.",
+      category: firstQ?.category || firstQ?.subject || "Science",
+      subject: firstQ?.subject || "Science",
+      topic: firstQ?.topic || "Curriculum Review",
+      gradeLevel: "All Levels",
+      grade: "All Levels",
+      difficulty: (firstQ?.difficulty as DifficultyLevel) || "Medium",
+      durationMinutes: Math.max(10, Math.ceil(questions.length * 2.5)),
+      totalMarks: totalMarks,
+      passMarks: Math.round(totalMarks * 0.6),
+      status: "Published",
+      randomizeQuestions: true,
+      shuffleOptions: true,
+      questions: convertedQuestions,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    saveQuiz(newQuiz);
+    toast.success("Live assessment published! Launching test session...");
+    router.push(`/dashboard/quizzes/${quizId}/take/live`);
+  };
 
   const activeQuestion = questions.find((q) => q.id === selectedQuestionId) || questions[0];
 
@@ -580,13 +648,23 @@ export function ImportReviewTable({
               <span className="text-xs text-gray-500 font-mono">
                 {questions.length} questions ready for Question Bank
               </span>
-              <Button
-                type="button"
-                onClick={() => onSaveToQuestionBank(questions)}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm flex items-center gap-1.5 w-full sm:w-auto"
-              >
-                <CheckCircle2 className="w-4 h-4" /> Import to Question Bank ({questions.length})
-              </Button>
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => onSaveToQuestionBank(questions)}
+                  className="bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] hover:bg-[#17251E] font-medium text-xs rounded-lg shadow-xs flex items-center gap-1.5"
+                >
+                  <CheckCircle2 className="w-4 h-4 text-[#38D9B0]" /> Save to Bank ({questions.length})
+                </Button>
+                <Button
+                  type="button"
+                  onClick={handlePublishAndTakeQuiz}
+                  className="bg-[#65F59A] hover:bg-[#38D9B0] text-[#070B0A] font-bold text-xs rounded-lg shadow-[0_0_15px_rgba(101,245,154,0.3)] flex items-center gap-1.5 font-mono transition-all"
+                >
+                  <Play className="w-3.5 h-3.5 fill-current" /> Publish & Take Quiz Now
+                </Button>
+              </div>
             </div>
           </div>
         </div>

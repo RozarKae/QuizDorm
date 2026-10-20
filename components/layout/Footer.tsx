@@ -1,13 +1,18 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-border px-6 py-3 text-xs font-mono text-muted-foreground flex flex-col sm:flex-row items-center justify-between bg-card/60">
+    <footer className="border-t border-[rgba(160,190,170,0.12)] px-6 py-2.5 text-xs font-mono text-[#69786F] flex flex-col sm:flex-row items-center justify-between bg-[#070B0A]/80 backdrop-blur-xs">
       <div className="flex items-center space-x-2">
-        <span className="font-bold text-foreground font-display tracking-tight">QUIZDORM</span>
-        <span className="text-border">/</span>
-        <span className="text-[11px]">Assessment & Knowledge Engine</span>
+        <span className="font-bold text-[#F2F7F3] font-display tracking-tight text-[11px]">QUIZDORM</span>
+        <span className="text-[rgba(160,190,170,0.2)]">/</span>
+        <span className="text-[10px] text-[#A0AEA5]">Assessment OS</span>
       </div>
-      <div className="mt-1 sm:mt-0 text-[11px]">
-        &copy; {new Date().getFullYear()} QuizDorm Platform. Verified Production.
+      <div className="flex items-center space-x-3 mt-1 sm:mt-0 text-[10px]">
+        <span className="flex items-center gap-1.5 text-[#A0AEA5]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+          <span>Core: Active</span>
+        </span>
+        <span className="text-[rgba(160,190,170,0.2)]">|</span>
+        <span>&copy; {new Date().getFullYear()} QuizDorm OS</span>
       </div>
     </footer>
   );

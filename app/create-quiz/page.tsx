@@ -10,7 +10,7 @@ import { QuizQuestionPickerModal } from "@/components/quiz-builder/QuizQuestionP
 import { QuizPreviewModal } from "@/components/quiz-builder/QuizPreviewModal";
 import { saveQuiz, generateInstantQuiz } from "@/lib/data/quizzes";
 import { importQuestions } from "@/lib/data/question-bank";
-import { OCREngineService } from "@/lib/ocr/engine";
+import { AIDocumentQuizModal } from "@/components/ai/AIDocumentQuizModal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
@@ -99,83 +99,6 @@ export default function CreateOwnQuizPage() {
   const [pickerOpen, setPickerOpen] = useState(false);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [pdfModalOpen, setPdfModalOpen] = useState(false);
-  const [isProcessingPdf, setIsProcessingPdf] = useState(false);
-  const [pdfProgress, setPdfProgress] = useState(0);
-  const [pdfStatusText, setPdfStatusText] = useState("");
-  const fileInputRef = React.useRef<HTMLInputElement>(null);
-
-  const handleProcessPdfFile = async (file: File | { name: string; type: string; content?: string }) => {
-    setIsProcessingPdf(true);
-    setPdfProgress(15);
-    setPdfStatusText("Scanning document structure & text...");
-
-    try {
-      const result = await OCREngineService.processDocument(
-        file,
-        {
-          language: "auto",
-          mode: "printed",
-          provider: "mock",
-          autoNumbering: true,
-          autoTopicDetection: true,
-          autoDifficultyDetection: true,
-          virusScanPassed: true,
-          targetSubject: category,
-          targetTopic: category,
-          targetDifficulty: difficulty,
-          targetQuestionCount: 5,
-        },
-        (progress, step) => {
-          setPdfProgress(progress);
-          setPdfStatusText(step);
-        }
-      );
-
-      const rawQuestions = result.detectedQuestions || (result as any).questions || [];
-      const extractedItems: QuestionItem[] = rawQuestions.map((eq, i) => ({
-        id: eq.id || `pdf-q-${Date.now()}-${i}`,
-        title: eq.title,
-        type: eq.type || "mcq_single",
-        subject: eq.subject || category,
-        category: eq.category || category,
-        topic: eq.topic || category,
-        difficulty: eq.difficulty || difficulty,
-        marks: eq.marks || 4,
-        timeLimitSeconds: eq.timeLimitSeconds || 60,
-        tags: [category.toLowerCase(), "pdf-extracted"],
-        options: (eq.options || []).map((opt, oIdx) => ({
-          id: opt.id || `opt-${oIdx + 1}`,
-          text: opt.text,
-          isCorrect: opt.isCorrect,
-        })),
-        matchingPairs: eq.matchingPairs?.map((mp: any) => ({
-          id: mp.id,
-          leftItem: mp.leftItem,
-          rightItem: mp.rightItem,
-        })),
-        fillBlanks: eq.fillBlanks,
-        explanation: eq.explanation,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-      }));
-
-      if (extractedItems.length > 0) {
-        setQuestions((prev) => [...prev, ...extractedItems]);
-        const cleanedName = file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ");
-        setTitle(`Quiz: ${cleanedName}`);
-        toast.success(`Extracted ${extractedItems.length} questions from ${file.name}!`);
-        setPdfModalOpen(false);
-      } else {
-        toast.info("No questions detected in document.");
-      }
-    } catch (err: any) {
-      toast.error(err.message || "Failed to process PDF document");
-    } finally {
-      setIsProcessingPdf(false);
-      setPdfProgress(0);
-      setPdfStatusText("");
-    }
-  };
 
   const totalMarks = questions.reduce((acc, q) => acc + (q.marks || 1), 0);
 
@@ -438,21 +361,22 @@ export default function CreateOwnQuizPage() {
           </div>
         </div>
 
-        {/* Quick PDF Import Card Banner */}
-        <div className="bg-card border border-border rounded-[3px] p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
+        {/* AI Document Quiz Maker Banner */}
+        <div className="bg-[#0C1210] border border-[rgba(101,245,154,0.25)] rounded-[6px] p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
           <div className="flex items-center space-x-3.5">
-            <div className="w-10 h-10 rounded-[2px] bg-muted border border-border text-foreground flex items-center justify-center shrink-0">
-              <FileText className="w-5 h-5 text-cobalt" />
+            <div className="w-11 h-11 rounded-[6px] bg-[rgba(101,245,154,0.12)] border border-[rgba(101,245,154,0.3)] text-[#65F59A] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(101,245,154,0.2)]">
+              <Sparkles className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-sm font-bold font-display text-foreground flex items-center gap-2">
-                Upload PDF / Exam Paper to Generate Live Quiz
-                <span className="text-[9px] uppercase font-mono font-bold px-1.5 py-0.5 rounded-[2px] bg-acid text-ink">
-                  OCR Engine
+              <h3 className="text-sm font-bold font-display text-[#F2F7F3] flex items-center gap-2">
+                AI Document Quiz Maker
+                <span className="text-[9px] uppercase font-mono font-bold px-1.5 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+                  Gemini 3.5 Multimodal
                 </span>
               </h3>
-              <p className="text-xs font-mono text-muted-foreground mt-0.5">
-                Upload your exam paper, question bank sheet, or study notes. The AI extracts questions, options, and answers automatically.
+              <p className="text-xs font-mono text-[#A0AEA5] mt-0.5">
+                Upload syllabus PDFs, lecture notes, textbook chapters, or scans. Google Gemini extracts curriculum concepts and synthesizes deep, pedagogically validated questions.
               </p>
             </div>
           </div>
@@ -460,13 +384,13 @@ export default function CreateOwnQuizPage() {
             <Button
               onClick={() => setPdfModalOpen(true)}
               size="sm"
-              className="bg-cobalt hover:bg-cobalt/90 text-white font-mono text-xs rounded-[3px] px-3.5 h-8 shadow-xs flex items-center gap-1.5"
+              className="bg-[#65F59A] hover:bg-[#38D9B0] text-[#070B0A] font-mono font-bold text-xs rounded-[4px] px-4 h-9 shadow-[0_0_15px_rgba(101,245,154,0.3)] flex items-center gap-1.5 transition-all"
             >
-              <Upload className="w-3.5 h-3.5" /> Upload Document
+              <Upload className="w-3.5 h-3.5 stroke-[2.5]" /> Upload Document
             </Button>
             <Link href="/dashboard/ocr">
-              <Button variant="outline" size="sm" className="text-xs font-mono border-border rounded-[3px] h-8 hover:bg-muted">
-                Batch OCR &rarr;
+              <Button variant="outline" size="sm" className="text-xs font-mono border-[rgba(160,190,170,0.2)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17] rounded-[4px] h-9">
+                OCR Queue &rarr;
               </Button>
             </Link>
           </div>
@@ -855,126 +779,18 @@ export default function CreateOwnQuizPage() {
         quiz={previewQuizObject}
       />
 
-      {/* PDF Upload Modal */}
-      <Dialog open={pdfModalOpen} onOpenChange={setPdfModalOpen}>
-        <DialogContent className="max-w-2xl bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-800">
-          <DialogHeader>
-            <DialogTitle className="flex items-center text-lg font-bold text-slate-900 dark:text-white">
-              <FileText className="w-5 h-5 text-rose-600 mr-2" /> Upload Document / PDF to Generate Quiz
-            </DialogTitle>
-            <DialogDescription>
-              Upload your question paper, notes, or test syllabus. The AI OCR engine extracts questions, options, and answers directly into your quiz.
-            </DialogDescription>
-          </DialogHeader>
-
-          {isProcessingPdf ? (
-            <div className="py-12 px-6 flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="relative">
-                <Loader2 className="w-12 h-12 text-rose-600 animate-spin" />
-                <FileText className="w-5 h-5 text-rose-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-              </div>
-              <div className="space-y-1">
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                  Scanning Document ({pdfProgress}%)
-                </h4>
-                <p className="text-xs text-slate-500">{pdfStatusText}</p>
-              </div>
-              <div className="w-full max-w-xs bg-slate-100 dark:bg-gray-800 rounded-full h-2 overflow-hidden">
-                <div
-                  className="bg-gradient-to-r from-rose-500 to-indigo-600 h-full transition-all duration-300 rounded-full"
-                  style={{ width: `${pdfProgress}%` }}
-                />
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-5 py-2">
-              <input
-                type="file"
-                ref={fileInputRef}
-                onChange={(e) => {
-                  if (e.target.files && e.target.files[0]) {
-                    handleProcessPdfFile(e.target.files[0]);
-                  }
-                }}
-                accept=".pdf,.docx,.txt,.png,.jpg,.jpeg"
-                className="hidden"
-              />
-
-              {/* Drag and Drop Zone */}
-              <div
-                onClick={() => fileInputRef.current?.click()}
-                className="border-2 border-dashed border-slate-300 dark:border-gray-700 hover:border-rose-500 rounded-2xl p-8 text-center cursor-pointer transition-colors bg-slate-50 dark:bg-gray-950/50 hover:bg-rose-50/20"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-950/60 text-rose-600 mx-auto flex items-center justify-center mb-3">
-                  <Upload className="w-6 h-6" />
-                </div>
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-1">
-                  Click to Browse or Drag & Drop PDF
-                </h4>
-                <p className="text-xs text-slate-500">
-                  Supports PDF, Word (.docx), Plain Text (.txt), and scanned test sheets up to 50MB
-                </p>
-              </div>
-
-              {/* Instant Test Sample Documents */}
-              <div className="space-y-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                  Or Test with Sample Examination Papers (1-Click)
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleProcessPdfFile({
-                        name: "Physics_Thermodynamics_Final_Exam.pdf",
-                        type: "application/pdf",
-                      })
-                    }
-                    className="p-2.5 rounded-xl border border-slate-200 dark:border-gray-800 text-left hover:border-rose-400 bg-white dark:bg-gray-950 transition-all text-xs"
-                  >
-                    <div className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
-                      <FileCheck className="w-3.5 h-3.5 text-rose-600" /> Physics Exam.pdf
-                    </div>
-                    <div className="text-[10px] text-slate-500 mt-0.5">Thermodynamics & Optics</div>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleProcessPdfFile({
-                        name: "Mathematics_Calculus_Practice_Sheet.pdf",
-                        type: "application/pdf",
-                      })
-                    }
-                    className="p-2.5 rounded-xl border border-slate-200 dark:border-gray-800 text-left hover:border-indigo-400 bg-white dark:bg-gray-950 transition-all text-xs"
-                  >
-                    <div className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
-                      <FileCheck className="w-3.5 h-3.5 text-indigo-600" /> Calculus Sheet.pdf
-                    </div>
-                    <div className="text-[10px] text-slate-500 mt-0.5">Quadratic & Integrals</div>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleProcessPdfFile({
-                        name: "Cell_Biology_Midterm_Paper.pdf",
-                        type: "application/pdf",
-                      })
-                    }
-                    className="p-2.5 rounded-xl border border-slate-200 dark:border-gray-800 text-left hover:border-emerald-400 bg-white dark:bg-gray-950 transition-all text-xs"
-                  >
-                    <div className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
-                      <FileCheck className="w-3.5 h-3.5 text-emerald-600" /> Biology Paper.pdf
-                    </div>
-                    <div className="text-[10px] text-slate-500 mt-0.5">Cell Structure & DNA</div>
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+      {/* AI Document Quiz Maker Modal */}
+      <AIDocumentQuizModal
+        open={pdfModalOpen}
+        onOpenChange={setPdfModalOpen}
+        onQuestionsAdded={(newQuestions) => {
+          setQuestions((prev) => [...prev, ...newQuestions]);
+          toast.success(`Added ${newQuestions.length} AI-generated questions to assessment!`);
+        }}
+        defaultSubject={subject || category}
+        defaultTopic={category}
+        defaultDifficulty={difficulty}
+      />
     </div>
   );
 }

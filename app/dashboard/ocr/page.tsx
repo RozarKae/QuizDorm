@@ -15,6 +15,7 @@ import { OCRHistory } from "@/components/ocr/OCRHistory";
 import { OCRPreview } from "@/components/ocr/OCRPreview";
 import { BulkImportDialog } from "@/components/ocr/BulkImportDialog";
 import { QuestionDetectionPanel } from "@/components/ocr/QuestionDetectionPanel";
+import { AIDocumentQuizModal } from "@/components/ai/AIDocumentQuizModal";
 
 import {
   ScanText,
@@ -45,6 +46,7 @@ export default function DocumentIntelligenceWorkspace() {
   const [previewJob, setPreviewJob] = useState<OCRJob | null>(null);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [bulkDialogOpen, setBulkDialogOpen] = useState(false);
+  const [aiQuizModalOpen, setAiQuizModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const [settings, setSettings] = useState<OCRJobSettings>({
@@ -235,96 +237,111 @@ export default function DocumentIntelligenceWorkspace() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50/50 dark:bg-gray-900/50 p-4 sm:p-8 space-y-6">
+    <div className="p-4 sm:p-6 space-y-6 max-w-7xl mx-auto">
       {/* Workspace Header */}
-      <div className="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-        <div className="absolute right-0 top-0 translate-x-12 -translate-y-12 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="bg-[#0C1210] text-[#F2F7F3] rounded-[6px] p-6 sm:p-8 border border-[rgba(160,190,170,0.14)] shadow-sm relative overflow-hidden">
+        <div
+          className="absolute inset-0 pointer-events-none opacity-40"
+          style={{
+            background: "radial-gradient(circle at 15% 15%, rgba(101, 245, 154, 0.08), transparent 60%)",
+          }}
+        />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
-              <span className="p-2 rounded-2xl bg-white/10 backdrop-blur-md text-indigo-300">
-                <ScanText className="w-6 h-6" />
+              <span className="p-1.5 rounded-[4px] bg-[#17251E] border border-[rgba(101,245,154,0.25)] text-[#65F59A]">
+                <ScanText className="w-5 h-5" />
               </span>
-              <span className="text-xs font-bold uppercase tracking-widest text-indigo-300 bg-white/10 px-3 py-1 rounded-full border border-white/10">
-                Phase 2.1 Workspace
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#65F59A] bg-[rgba(101,245,154,0.12)] px-2.5 py-0.5 rounded-[3px] border border-[rgba(101,245,154,0.28)]">
+                AI DOCUMENT INTELLIGENCE
               </span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-              Document Intelligence & OCR Workspace
+            <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-[#F2F7F3]">
+              Document Intelligence & Question Studio
             </h1>
-            <p className="text-xs sm:text-sm text-indigo-100/80 max-w-2xl">
-              Convert printed books, scanned exams, handwritten notes, PDFs, and Word documents into fully editable, AI-enhanced questions inside the Question Bank.
+            <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-2xl leading-relaxed">
+              Convert printed textbooks, scanned exam sheets, notes, and academic PDFs into verified, editable questions in the central repository.
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2.5">
+            <Button
+              onClick={() => setAiQuizModalOpen(true)}
+              size="sm"
+              className="bg-[#65F59A] hover:bg-[#38D9B0] text-[#070B0A] font-bold font-mono text-xs rounded-[4px] shadow-[0_0_15px_rgba(101,245,154,0.3)] transition-all"
+            >
+              <Sparkles className="w-3.5 h-3.5 mr-1.5 stroke-[2.5]" /> AI Quiz Maker
+            </Button>
+
             <Button
               onClick={() => setBulkDialogOpen(true)}
-              className="bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 rounded-2xl backdrop-blur-md"
+              variant="outline"
+              className="text-xs font-mono rounded-[4px]"
             >
-              <Layers className="w-4 h-4 mr-1.5" /> Bulk Document Digitizer
+              <Layers className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> Bulk Document Digitizer
             </Button>
 
             <Button
               onClick={() => setActiveTab("upload")}
-              className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-xs rounded-2xl shadow-lg shadow-indigo-600/30"
+              size="sm"
+              className="font-mono text-xs rounded-[4px]"
             >
-              <Plus className="w-4 h-4 mr-1.5" /> New OCR Upload
+              <Plus className="w-3.5 h-3.5 mr-1.5" /> New Upload
             </Button>
           </div>
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-6 border-t border-white/10 text-xs">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-5 border-t border-[rgba(160,190,170,0.12)] text-xs font-mono">
           <div className="space-y-1">
-            <span className="text-indigo-200/70 font-medium">Total Questions Digitized</span>
-            <div className="text-xl font-bold text-white">{totalQuestionsDigitized} Items</div>
+            <span className="text-[#69786F] uppercase tracking-wider text-[10px]">Total Digitized</span>
+            <div className="text-xl font-bold text-[#F2F7F3]">{totalQuestionsDigitized} Items</div>
           </div>
           <div className="space-y-1">
-            <span className="text-indigo-200/70 font-medium">AI Review Queue</span>
-            <div className="text-xl font-bold text-emerald-400">{reviewReadyJobs.length} Jobs Ready</div>
+            <span className="text-[#69786F] uppercase tracking-wider text-[10px]">Review Queue</span>
+            <div className="text-xl font-bold text-[#65F59A]">{reviewReadyJobs.length} Jobs Ready</div>
           </div>
           <div className="space-y-1">
-            <span className="text-indigo-200/70 font-medium">Active Processing Queue</span>
-            <div className="text-xl font-bold text-amber-300">{processingJobs.length} Jobs Active</div>
+            <span className="text-[#69786F] uppercase tracking-wider text-[10px]">Processing Active</span>
+            <div className="text-xl font-bold text-[#38D9B0]">{processingJobs.length} Jobs Active</div>
           </div>
           <div className="space-y-1">
-            <span className="text-indigo-200/70 font-medium">Average OCR Confidence</span>
-            <div className="text-xl font-bold text-indigo-300">{avgConfidence}% Accuracy</div>
+            <span className="text-[#69786F] uppercase tracking-wider text-[10px]">Avg Accuracy</span>
+            <div className="text-xl font-bold text-[#65F59A]">{avgConfidence}% Confidence</div>
           </div>
         </div>
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex items-center space-x-2 border-b border-gray-200 dark:border-gray-800 pb-1 overflow-x-auto">
+      <div className="flex items-center space-x-1.5 border-b border-[rgba(160,190,170,0.14)] pb-1 overflow-x-auto">
         {[
-          { id: "upload", label: "Upload Center", icon: <Upload className="w-4 h-4" /> },
+          { id: "upload", label: "Upload Center", icon: <Upload className="w-3.5 h-3.5" /> },
           {
             id: "queue",
-            label: "Processing & Review Queue",
-            icon: <Zap className="w-4 h-4" />,
+            label: "Processing Queue",
+            icon: <Zap className="w-3.5 h-3.5" />,
             badge: reviewReadyJobs.length > 0 ? `${reviewReadyJobs.length} Ready` : undefined,
           },
-          { id: "review", label: "AI Educator Review", icon: <CheckCircle2 className="w-4 h-4" /> },
-          { id: "history", label: "Import Audit History", icon: <Clock className="w-4 h-4" /> },
-          { id: "settings", label: "OCR & Intelligence Settings", icon: <Settings className="w-4 h-4" /> },
+          { id: "review", label: "Educator Review", icon: <CheckCircle2 className="w-3.5 h-3.5" /> },
+          { id: "history", label: "Import History", icon: <Clock className="w-3.5 h-3.5" /> },
+          { id: "settings", label: "Intelligence Settings", icon: <Settings className="w-3.5 h-3.5" /> },
         ].map((tab) => {
           const isActive = activeTab === tab.id;
           return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`px-4 py-2.5 rounded-2xl text-xs font-bold flex items-center space-x-2 transition-all whitespace-nowrap ${
+              className={`px-3 py-2 rounded-[4px] text-xs font-mono font-medium flex items-center space-x-2 transition-all whitespace-nowrap ${
                 isActive
-                  ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/20"
-                  : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900"
+                  ? "bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] shadow-xs font-semibold"
+                  : "text-[#A0AEA5] hover:bg-[#111B17] hover:text-[#F2F7F3]"
               }`}
             >
               {tab.icon}
               <span>{tab.label}</span>
               {tab.badge && (
-                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isActive ? "bg-white/20 text-white" : "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"}`}>
+                <span className={`text-[9px] font-bold px-1.5 py-0.2 rounded-[2px] ${isActive ? "bg-[rgba(101,245,154,0.25)] text-[#65F59A]" : "bg-[#111B17] text-[#65F59A] border border-[rgba(101,245,154,0.2)]"}`}>
                   {tab.badge}
                 </span>
               )}
@@ -424,6 +441,12 @@ export default function DocumentIntelligenceWorkspace() {
         open={bulkDialogOpen}
         onOpenChange={setBulkDialogOpen}
         onStartBulkImport={handleStartBulkImport}
+      />
+
+      {/* AI Document Quiz Maker Modal */}
+      <AIDocumentQuizModal
+        open={aiQuizModalOpen}
+        onOpenChange={setAiQuizModalOpen}
       />
     </div>
   );

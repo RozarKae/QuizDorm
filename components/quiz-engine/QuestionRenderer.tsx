@@ -26,27 +26,31 @@ export function QuestionRenderer({
   }, [question.matchingPairs]);
 
   return (
-    <div className="bg-card p-6 sm:p-8 rounded-[3px] border border-border shadow-xs space-y-6">
+    <div className="bg-[#0C1210] p-6 sm:p-8 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-sm space-y-6">
       {/* Header Info */}
-      <div className="flex items-center justify-between pb-3 border-b border-border">
+      <div className="flex items-center justify-between pb-3 border-b border-[rgba(160,190,170,0.12)]">
         <div className="flex items-center space-x-2">
           <QuestionTypeBadge type={question.type} />
-          <span className="font-mono text-[11px] text-muted-foreground">{question.category || question.subject}</span>
+          <span className="font-mono text-[11px] text-[#A0AEA5]">{question.category || question.subject}</span>
         </div>
-        <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-[2px] bg-muted border border-border text-foreground">
+        <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-[2px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] text-[#65F59A]">
           {question.marks} {question.marks === 1 ? "Mark" : "Marks"}
         </span>
       </div>
 
       {/* Statement & Image */}
       <div className="space-y-4">
-        <h3 className="font-display text-lg sm:text-xl font-bold text-foreground leading-snug">
+        <h3 className="font-display text-lg sm:text-xl font-bold text-[#F2F7F3] leading-snug">
           {question.title}
         </h3>
 
         {question.image && (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={question.image} alt="Question Diagram" className="rounded-[2px] max-h-56 object-contain border border-border mx-auto bg-background p-2" />
+          <img
+            src={question.image}
+            alt="Question Diagram"
+            className="rounded-[4px] max-h-56 object-contain border border-[rgba(160,190,170,0.16)] mx-auto bg-[#070B0A] p-2"
+          />
         )}
       </div>
 
@@ -78,38 +82,40 @@ export function QuestionRenderer({
                     onAnswerChange(opt.id);
                   }
                 }}
-                className={`p-3.5 rounded-[2px] border text-xs font-mono transition-colors flex items-center justify-between ${
+                className={`p-3.5 rounded-[4px] border text-xs font-mono transition-all flex items-center justify-between ${
                   showExplanation
                     ? isCorrectOption
-                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 font-semibold ring-1 ring-emerald-500/50"
+                      ? "border-[#65F59A] bg-[rgba(101,245,154,0.1)] text-[#65F59A] font-semibold ring-1 ring-[#65F59A]/50"
                       : isSelected
-                        ? "border-coral bg-coral/10 text-coral ring-1 ring-coral/50"
-                        : "border-border bg-background/40 text-muted-foreground opacity-60"
+                        ? "border-[#F87171] bg-[rgba(248,113,113,0.1)] text-[#F87171] ring-1 ring-[#F87171]/50"
+                        : "border-[rgba(160,190,170,0.1)] bg-[#070B0A]/40 text-[#69786F] opacity-60"
                     : isSelected
-                      ? "border-cobalt bg-cobalt/5 text-foreground font-semibold ring-1 ring-cobalt shadow-xs cursor-pointer"
-                      : "border-border bg-background/60 text-muted-foreground hover:border-cobalt/40 hover:text-foreground cursor-pointer"
+                      ? "border-[#65F59A] bg-[#17251E] text-[#F2F7F3] font-semibold ring-1 ring-[#65F59A] shadow-[0_0_12px_rgba(101,245,154,0.12)] cursor-pointer"
+                      : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 text-[#A0AEA5] hover:border-[#65F59A]/40 hover:text-[#F2F7F3] hover:bg-[#111B17] cursor-pointer"
                 }`}
               >
                 <div className="flex items-center space-x-3">
-                  <span className={`w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 border ${
-                    showExplanation && isCorrectOption
-                      ? "bg-emerald-500 text-white border-emerald-500"
-                      : isSelected
-                        ? "bg-cobalt text-white border-cobalt"
-                        : "bg-muted text-foreground border-border"
-                  }`}>
+                  <span
+                    className={`w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 border ${
+                      showExplanation && isCorrectOption
+                        ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
+                        : isSelected
+                          ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
+                          : "bg-[#17251E] text-[#A0AEA5] border-[rgba(160,190,170,0.2)]"
+                    }`}
+                  >
                     {String.fromCharCode(65 + idx)}
                   </span>
                   <span>{opt.text}</span>
                 </div>
                 {showExplanation ? (
                   isCorrectOption ? (
-                    <span className="text-[10px] font-bold text-emerald-400 font-mono uppercase">Correct Key</span>
+                    <span className="text-[10px] font-bold text-[#65F59A] font-mono uppercase">Correct Key</span>
                   ) : isSelected ? (
-                    <span className="text-[10px] font-bold text-coral font-mono uppercase">Your Choice</span>
+                    <span className="text-[10px] font-bold text-[#F87171] font-mono uppercase">Your Choice</span>
                   ) : null
                 ) : (
-                  isSelected && <CheckCircle2 className="w-4 h-4 text-cobalt shrink-0" />
+                  isSelected && <CheckCircle2 className="w-4 h-4 text-[#65F59A] shrink-0" />
                 )}
               </div>
             );
@@ -132,16 +138,16 @@ export function QuestionRenderer({
                 type="button"
                 disabled={showExplanation}
                 onClick={() => onAnswerChange(val)}
-                className={`p-4 rounded-[2px] border font-mono text-xs font-bold transition-colors uppercase ${
+                className={`p-4 rounded-[4px] border font-mono text-xs font-bold transition-all uppercase ${
                   showExplanation
                     ? isCorrectChoice
-                      ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500"
+                      ? "border-[#65F59A] bg-[rgba(101,245,154,0.12)] text-[#65F59A] ring-1 ring-[#65F59A]"
                       : isSelected
-                        ? "border-coral bg-coral/10 text-coral ring-1 ring-coral"
-                        : "border-border bg-background text-muted-foreground opacity-60"
+                        ? "border-[#F87171] bg-[rgba(248,113,113,0.12)] text-[#F87171] ring-1 ring-[#F87171]"
+                        : "border-[rgba(160,190,170,0.1)] bg-[#070B0A] text-[#69786F] opacity-60"
                     : isSelected
-                      ? "border-cobalt bg-cobalt/10 text-cobalt ring-1 ring-cobalt cursor-pointer"
-                      : "border-border bg-background text-muted-foreground hover:border-cobalt/40 hover:text-foreground cursor-pointer"
+                      ? "border-[#65F59A] bg-[#17251E] text-[#65F59A] ring-1 ring-[#65F59A] shadow-[0_0_12px_rgba(101,245,154,0.12)] cursor-pointer"
+                      : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 text-[#A0AEA5] hover:border-[#65F59A]/40 hover:text-[#F2F7F3] hover:bg-[#111B17] cursor-pointer"
                 }`}
               >
                 {val}
@@ -155,20 +161,20 @@ export function QuestionRenderer({
       {/* 4: Fill in the Blank */}
       {question.type === "fill_in_the_blank" && (
         <div className="space-y-3 pt-2">
-          <label className="block text-xs font-mono uppercase tracking-wider text-muted-foreground">Type your answer below:</label>
+          <label className="block text-xs font-mono uppercase tracking-wider text-[#A0AEA5]">Type your answer below:</label>
           <Input
             value={userAnswer || ""}
             disabled={showExplanation}
             onChange={(e) => onAnswerChange(e.target.value)}
             placeholder="Enter answer keyword..."
-            className="text-sm font-semibold font-mono h-11 rounded-[2px] bg-background border-border"
+            className="text-sm font-semibold font-mono h-11 rounded-[4px] bg-[#17251E] border-[rgba(160,190,170,0.18)]"
           />
 
           {showExplanation && (
-            <div className="p-3 rounded-[2px] border border-border bg-muted/40 font-mono text-xs space-y-1.5">
+            <div className="p-3 rounded-[4px] border border-[rgba(160,190,170,0.14)] bg-[#111B17] font-mono text-xs space-y-1.5">
               <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">Accepted Answer(s):</span>
-                <span className="font-bold text-emerald-400">
+                <span className="text-[#A0AEA5]">Accepted Answer(s):</span>
+                <span className="font-bold text-[#65F59A]">
                   {[
                     ...(question.fillBlanks || []),
                     ...question.options.filter((o) => o.isCorrect).map((o) => o.text),
@@ -176,8 +182,8 @@ export function QuestionRenderer({
                 </span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">Your Input:</span>
-                <span className="font-semibold text-foreground">
+                <span className="text-[#A0AEA5]">Your Input:</span>
+                <span className="font-semibold text-[#F2F7F3]">
                   {userAnswer ? String(userAnswer) : "None (Unanswered)"}
                 </span>
               </div>
@@ -190,55 +196,56 @@ export function QuestionRenderer({
       {question.type === "match_following" && (
         <div className="space-y-3 pt-2">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground">
+            <p className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5]">
               {showExplanation ? "Matching Pair Review:" : "Match each item on the left with its corresponding term:"}
             </p>
           </div>
 
           <div className="space-y-2">
             {(question.matchingPairs || []).map((p, idx) => {
-              const studentChoice = typeof userAnswer === "object" && userAnswer !== null && !Array.isArray(userAnswer)
-                ? (userAnswer as Record<string, string>)[p.id] ?? (userAnswer as Record<string, string>)[p.leftItem]
-                : undefined;
+              const studentChoice =
+                typeof userAnswer === "object" && userAnswer !== null && !Array.isArray(userAnswer)
+                  ? (userAnswer as Record<string, string>)[p.id] ?? (userAnswer as Record<string, string>)[p.leftItem]
+                  : undefined;
               const isMatchCorrect = studentChoice && studentChoice.trim().toLowerCase() === p.rightItem.trim().toLowerCase();
 
               return (
                 <div
                   key={p.id || `pair-${idx}`}
-                  className={`p-3.5 rounded-[2px] border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono transition-colors ${
+                  className={`p-3.5 rounded-[4px] border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono transition-colors ${
                     showExplanation
                       ? isMatchCorrect
-                        ? "border-emerald-500/50 bg-emerald-500/5 text-foreground"
-                        : "border-coral/50 bg-coral/5 text-foreground"
-                      : "border-border bg-background/60 text-foreground"
+                        ? "border-[#65F59A]/50 bg-[rgba(101,245,154,0.06)] text-[#F2F7F3]"
+                        : "border-[#F87171]/50 bg-[rgba(248,113,113,0.06)] text-[#F2F7F3]"
+                      : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 text-[#F2F7F3]"
                   }`}
                 >
                   <div className="flex items-center space-x-3 flex-1">
-                    <span className="w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-muted border border-border text-foreground">
+                    <span className="w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-[#17251E] border border-[rgba(160,190,170,0.18)] text-[#65F59A]">
                       {idx + 1}
                     </span>
-                    <span className="font-semibold text-foreground">{p.leftItem}</span>
+                    <span className="font-semibold text-[#F2F7F3]">{p.leftItem}</span>
                   </div>
 
                   {showExplanation ? (
                     <div className="flex items-center space-x-3 text-xs">
                       <div className="flex flex-col sm:items-end">
-                        <span className="text-[11px] text-muted-foreground">
+                        <span className="text-[11px] text-[#A0AEA5]">
                           Your Answer:{" "}
-                          <span className={isMatchCorrect ? "text-emerald-400 font-bold" : "text-coral font-bold"}>
+                          <span className={isMatchCorrect ? "text-[#65F59A] font-bold" : "text-[#F87171] font-bold"}>
                             {studentChoice || "Not Answered"}
                           </span>
                         </span>
                         {!isMatchCorrect && (
-                          <span className="text-[11px] text-emerald-400 font-bold">
+                          <span className="text-[11px] text-[#65F59A] font-bold">
                             Correct: {p.rightItem}
                           </span>
                         )}
                       </div>
                       {isMatchCorrect ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#65F59A] shrink-0" />
                       ) : (
-                        <XCircle className="w-4 h-4 text-coral shrink-0" />
+                        <XCircle className="w-4 h-4 text-[#F87171] shrink-0" />
                       )}
                     </div>
                   ) : (
@@ -246,13 +253,14 @@ export function QuestionRenderer({
                       <select
                         value={studentChoice || ""}
                         onChange={(e) => {
-                          const currentAnswers = typeof userAnswer === "object" && userAnswer !== null && !Array.isArray(userAnswer)
-                            ? { ...userAnswer }
-                            : {};
+                          const currentAnswers =
+                            typeof userAnswer === "object" && userAnswer !== null && !Array.isArray(userAnswer)
+                              ? { ...userAnswer }
+                              : {};
                           currentAnswers[p.id] = e.target.value;
                           onAnswerChange(currentAnswers);
                         }}
-                        className="w-full text-xs font-mono p-2 rounded-[2px] border border-border bg-background text-foreground focus:outline-hidden focus:ring-1 focus:ring-cobalt"
+                        className="w-full text-xs font-mono p-2 rounded-[3px] border border-[rgba(160,190,170,0.18)] bg-[#17251E] text-[#F2F7F3] focus:outline-hidden focus:ring-1 focus:ring-[#65F59A]"
                       >
                         <option value="">-- Select Match --</option>
                         {availableRightItems.map((rightTerm, rIdx) => (
@@ -272,11 +280,11 @@ export function QuestionRenderer({
 
       {/* Explanation Box */}
       {showExplanation && question.explanation && (
-        <div className="p-4 rounded-[2px] bg-muted/30 border border-border space-y-1 text-xs font-mono">
-          <p className="font-bold text-foreground flex items-center">
-            <HelpCircle className="w-4 h-4 mr-1.5 text-cobalt" /> Explanation & Solution Note:
+        <div className="p-4 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] space-y-1 text-xs font-mono">
+          <p className="font-bold text-[#F2F7F3] flex items-center">
+            <HelpCircle className="w-4 h-4 mr-1.5 text-[#38D9B0]" /> Explanation & Solution Note:
           </p>
-          <p className="text-muted-foreground leading-relaxed">{question.explanation}</p>
+          <p className="text-[#A0AEA5] leading-relaxed">{question.explanation}</p>
         </div>
       )}
     </div>

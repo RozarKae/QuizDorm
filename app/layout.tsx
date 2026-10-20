@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} dark h-full antialiased selection:bg-[#2855F5] selection:text-white`}
+      className={`${spaceGrotesk.variable} ${inter.variable} dark h-full antialiased selection:bg-[#65F59A] selection:text-[#070B0A]`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans overflow-x-hidden relative transition-colors duration-150">
         <AnimatedBackground />

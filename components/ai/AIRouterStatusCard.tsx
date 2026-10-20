@@ -12,49 +12,49 @@ interface AIRouterStatusCardProps {
 
 export function AIRouterStatusCard({ settings }: AIRouterStatusCardProps) {
   return (
-    <Card className="bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-3xl p-6 shadow-sm">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 dark:border-gray-800 pb-4">
+    <Card className="bg-[#0C1210] border border-[rgba(160,190,170,0.14)] rounded-2xl p-6 shadow-xl">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[rgba(160,190,170,0.12)] pb-4">
         <div className="flex items-center space-x-3">
-          <div className="p-3 rounded-2xl bg-indigo-600 text-white shadow-md shadow-indigo-600/30">
-            <Cpu className="w-6 h-6" />
+          <div className="p-2.5 rounded-xl bg-[#17251E] border border-[#65F59A]/20 text-[#65F59A]">
+            <Cpu className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
-              Central AI Router Active <ShieldCheck className="w-4 h-4 text-emerald-500 ml-1.5" />
+            <h3 className="text-sm font-mono uppercase tracking-wider text-[#F2F7F3] flex items-center">
+              Central AI Router Active <ShieldCheck className="w-4 h-4 text-[#65F59A] ml-1.5" />
             </h3>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-[#A0AEA5]">
               Provider-independent intelligence gateway with automated retry, fallback routing & normalized execution.
             </p>
           </div>
         </div>
 
         <div className="flex items-center space-x-2">
-          <span className="text-xs font-semibold text-gray-500">Primary Provider:</span>
+          <span className="text-xs font-mono text-[#A0AEA5]">Primary Provider:</span>
           <ProviderBadge providerId={settings.defaultProvider} />
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 text-xs">
-        <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
-          <span className="text-gray-500 font-medium">Default Model</span>
-          <div className="font-mono font-bold text-gray-900 dark:text-white truncate">{settings.defaultModel}</div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 text-xs">
+        <div className="p-3.5 rounded-xl bg-[#111B17] border border-[rgba(160,190,170,0.08)] space-y-1">
+          <span className="text-[11px] font-mono text-[#69786F] uppercase">Default Model</span>
+          <div className="font-mono text-xs font-semibold text-[#F2F7F3] truncate">{settings.defaultModel}</div>
         </div>
 
-        <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
-          <span className="text-gray-500 font-medium">Fallback Route</span>
+        <div className="p-3.5 rounded-xl bg-[#111B17] border border-[rgba(160,190,170,0.08)] space-y-1">
+          <span className="text-[11px] font-mono text-[#69786F] uppercase">Fallback Route</span>
           <div>
             <ProviderBadge providerId={settings.fallbackProvider} size="sm" />
           </div>
         </div>
 
-        <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
-          <span className="text-gray-500 font-medium">Retry Policy</span>
-          <div className="font-bold text-gray-900 dark:text-white">{settings.retryAttempts} Attempts (Exponential)</div>
+        <div className="p-3.5 rounded-xl bg-[#111B17] border border-[rgba(160,190,170,0.08)] space-y-1">
+          <span className="text-[11px] font-mono text-[#69786F] uppercase">Retry Policy</span>
+          <div className="font-mono text-xs font-semibold text-[#F2F7F3]">{settings.retryAttempts} Attempts (Exponential)</div>
         </div>
 
-        <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
-          <span className="text-gray-500 font-medium">Response Cache</span>
-          <div className="font-bold text-emerald-600 dark:text-emerald-400">
+        <div className="p-3.5 rounded-xl bg-[#111B17] border border-[rgba(160,190,170,0.08)] space-y-1">
+          <span className="text-[11px] font-mono text-[#69786F] uppercase">Response Cache</span>
+          <div className="font-mono text-xs font-semibold text-[#65F59A]">
             {settings.enableCache ? "Active (TTL 1h)" : "Disabled"}
           </div>
         </div>

@@ -3,9 +3,8 @@
 import React, { useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Clock, HelpCircle, Award, ShieldCheck, Play, AlertCircle, Layers, GraduationCap } from "lucide-react";
+import { ArrowLeft, Clock, HelpCircle, Award, ShieldCheck, Play, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { getQuizById, ALL_DEFAULT_QUIZZES } from "@/lib/data/quizzes";
 
 export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: string }> | { id: string } }) {
@@ -29,75 +28,78 @@ export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: s
   return (
     <div className="max-w-3xl mx-auto space-y-6">
       <div>
-        <Link href="/dashboard/quizzes" className="inline-flex items-center text-xs font-mono uppercase tracking-wider text-muted-foreground hover:text-foreground mb-4">
+        <Link
+          href="/dashboard/quizzes"
+          className="inline-flex items-center text-xs font-mono uppercase tracking-wider text-[#A0AEA5] hover:text-[#65F59A] mb-4 transition-colors"
+        >
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back to Quizzes
         </Link>
         <div className="flex flex-wrap items-center gap-2 mb-2 font-mono">
           {quiz.topic && (
-            <span className="bg-acid text-ink font-bold text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[2px] border border-acid">
+            <span className="bg-[rgba(101,245,154,0.12)] text-[#65F59A] font-bold text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] border border-[rgba(101,245,154,0.3)]">
               {quiz.topic}
             </span>
           )}
-          <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-muted border border-border text-foreground font-medium">
+          <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] text-[#F2F7F3] font-medium">
             {quiz.subject || quiz.category}
           </span>
           {(quiz.gradeLevel || quiz.grade) && (
-            <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-muted border border-border text-foreground font-medium">
+            <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] text-[#A0AEA5] font-medium">
               {quiz.gradeLevel || quiz.grade}
             </span>
           )}
           {quiz.difficulty === "Hard" ? (
-            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] font-bold bg-coral/10 text-coral border border-coral/30">
+            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[3px] font-bold bg-[rgba(248,113,113,0.12)] text-[#F87171] border border-[rgba(248,113,113,0.3)]">
               Hard
             </span>
           ) : quiz.difficulty === "Medium" ? (
-            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] font-bold bg-muted text-foreground border border-border">
+            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[3px] font-bold bg-[#111B17] text-[#38D9B0] border border-[rgba(56,217,176,0.3)]">
               Medium
             </span>
           ) : (
-            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[2px] font-bold bg-acid/20 text-foreground border border-acid/50">
+            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[3px] font-bold bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.3)]">
               Easy
             </span>
           )}
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-foreground tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-[#F2F7F3] tracking-tight">
           {quiz.title}
         </h1>
-        <p className="text-xs font-mono text-muted-foreground mt-2">
+        <p className="text-xs font-mono text-[#A0AEA5] mt-2">
           {quiz.description || "Official assessment testing knowledge retention, accuracy, and quick critical thinking."}
         </p>
       </div>
 
       {/* Overview Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div className="p-4 bg-card rounded-[3px] border border-border text-center shadow-xs">
-          <HelpCircle className="w-4 h-4 text-cobalt mx-auto mb-1" />
-          <p className="text-xl font-extrabold font-display text-foreground tabular-nums">{questionsCount}</p>
-          <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Questions</p>
+        <div className="p-4 bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] text-center shadow-xs">
+          <HelpCircle className="w-4 h-4 text-[#38D9B0] mx-auto mb-1" />
+          <p className="text-xl font-extrabold font-display text-[#F2F7F3] tabular-nums">{questionsCount}</p>
+          <p className="text-[10px] font-mono uppercase tracking-wider text-[#69786F]">Questions</p>
         </div>
-        <div className="p-4 bg-card rounded-[3px] border border-border text-center shadow-xs">
-          <Clock className="w-4 h-4 text-cobalt mx-auto mb-1" />
-          <p className="text-xl font-extrabold font-display text-foreground tabular-nums">{quiz.durationMinutes}m</p>
-          <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Duration</p>
+        <div className="p-4 bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] text-center shadow-xs">
+          <Clock className="w-4 h-4 text-[#65F59A] mx-auto mb-1" />
+          <p className="text-xl font-extrabold font-display text-[#F2F7F3] tabular-nums">{quiz.durationMinutes}m</p>
+          <p className="text-[10px] font-mono uppercase tracking-wider text-[#69786F]">Duration</p>
         </div>
-        <div className="p-4 bg-card rounded-[3px] border border-border text-center shadow-xs">
-          <Award className="w-4 h-4 text-cobalt mx-auto mb-1" />
-          <p className="text-xl font-extrabold font-display text-foreground tabular-nums">{totalMarks}</p>
-          <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Marks</p>
+        <div className="p-4 bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] text-center shadow-xs">
+          <Award className="w-4 h-4 text-[#65F59A] mx-auto mb-1" />
+          <p className="text-xl font-extrabold font-display text-[#F2F7F3] tabular-nums">{totalMarks}</p>
+          <p className="text-[10px] font-mono uppercase tracking-wider text-[#69786F]">Marks</p>
         </div>
-        <div className="p-4 bg-card rounded-[3px] border border-border text-center shadow-xs">
-          <ShieldCheck className="w-4 h-4 text-cobalt mx-auto mb-1" />
-          <p className="text-xl font-extrabold font-display text-foreground tabular-nums">{passMarksPercent}%</p>
-          <p className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground">Passing Score</p>
+        <div className="p-4 bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] text-center shadow-xs">
+          <ShieldCheck className="w-4 h-4 text-[#38D9B0] mx-auto mb-1" />
+          <p className="text-xl font-extrabold font-display text-[#F2F7F3] tabular-nums">{passMarksPercent}%</p>
+          <p className="text-[10px] font-mono uppercase tracking-wider text-[#69786F]">Passing Score</p>
         </div>
       </div>
 
       {/* Rules & Instructions */}
-      <div className="bg-card p-6 rounded-[3px] border border-border shadow-xs space-y-4">
-        <h3 className="text-sm font-bold font-display text-foreground flex items-center">
-          <AlertCircle className="w-4 h-4 text-coral mr-2" /> Assessment Protocols & Instructions
+      <div className="bg-[#0C1210] p-6 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-xs space-y-4">
+        <h3 className="text-sm font-bold font-display text-[#F2F7F3] flex items-center">
+          <AlertCircle className="w-4 h-4 text-[#65F59A] mr-2" /> Assessment Protocols & Instructions
         </h3>
-        <ul className="space-y-2 text-xs font-mono text-muted-foreground leading-relaxed list-disc list-inside">
+        <ul className="space-y-2 text-xs font-mono text-[#A0AEA5] leading-relaxed list-disc list-inside">
           <li>Questions are freshly randomized for each attempt to test true recall.</li>
           <li>Answer options are randomized while preserving the original correct answer mapping.</li>
           <li>The countdown timer starts as soon as you click <strong>Start Assessment Now</strong>.</li>
@@ -110,11 +112,11 @@ export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: s
       {/* Action CTA */}
       <div className="flex justify-end space-x-3 pt-2">
         <Link href="/dashboard/quizzes">
-          <Button variant="outline" className="px-5 rounded-[3px] font-mono text-xs border-border h-9">
+          <Button variant="outline" className="px-5 rounded-[4px] font-mono text-xs border-[rgba(160,190,170,0.18)] h-9">
             Cancel
           </Button>
         </Link>
-        <Button onClick={handleStart} className="bg-cobalt hover:bg-cobalt/90 text-white font-mono text-xs font-semibold rounded-[3px] px-6 h-9 shadow-xs">
+        <Button onClick={handleStart} className="font-mono text-xs font-semibold rounded-[4px] px-6 h-9">
           <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> Start Assessment Now
         </Button>
       </div>

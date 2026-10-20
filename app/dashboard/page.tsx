@@ -17,6 +17,8 @@ import {
   Activity,
   Cpu,
   GraduationCap,
+  Sparkles,
+  Zap,
 } from "lucide-react";
 
 export default function DashboardHomePage() {
@@ -34,9 +36,9 @@ export default function DashboardHomePage() {
       category: "Real-Time Arenas & Analytics",
       items: [
         { title: "Live Competition Arena", desc: "Synchronized multiplayer tournaments with room PINs", href: "/dashboard/competitions", badge: "LIVE" },
-        { title: "Editorial Analytics", desc: "Topic weakness heatmaps & cohort performance", href: "/dashboard/analytics", badge: "REPORTS" },
+        { title: "Performance Analytics", desc: "Topic weakness heatmaps & cohort performance", href: "/dashboard/analytics", badge: "REPORTS" },
         { title: "Digital Classroom Suite", desc: "Live instruction & collaborative workspaces", href: "/dashboard/classroom", badge: "CLASSROOM" },
-        { title: "AI Teaching Assistant", desc: "Automated grading & instructional recommendations", href: "/dashboard/ai-assistant", badge: "AI" },
+        { title: "AI Study Coach", desc: "Automated grading & instructional recommendations", href: "/dashboard/tutor/planner", badge: "AI COACH" },
       ],
     },
     {
@@ -44,7 +46,7 @@ export default function DashboardHomePage() {
       items: [
         { title: "Academic Administration ERP", desc: "Multi-campus student records & compliance", href: "/dashboard/administration", badge: "ERP" },
         { title: "LMS Platform", desc: "Syllabus mapping & asynchronous coursework", href: "/dashboard/lms", badge: "LMS" },
-        { title: "Global Certifications", desc: "Cryptographically verifiable diplomas & transcripts", href: "/dashboard/certifications", badge: "VERIFIED" },
+        { title: "Global Certifications", desc: "Cryptographically verifiable diplomas & transcripts", href: "/dashboard/credentials", badge: "VERIFIED" },
         { title: "Global EduCloud OS", desc: "Cluster telemetry, multi-region sync & backups", href: "/dashboard/cloud-ops", badge: "INFRA" },
       ],
     },
@@ -52,32 +54,32 @@ export default function DashboardHomePage() {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
-      {/* Editorial Masthead Dispatch */}
-      <div className="border border-border bg-card p-6 sm:p-8 rounded-[3px] space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-6">
+      {/* Future OS Masthead Dispatch */}
+      <div className="border border-[rgba(160,190,170,0.14)] bg-[#0C1210] p-6 sm:p-8 rounded-[6px] space-y-6 shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(160,190,170,0.12)] pb-6">
           <div className="space-y-1.5">
-            <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-muted-foreground">
-              <span className="w-1.5 h-1.5 bg-[#2855F5] rounded-full animate-pulse" />
-              <span>SYSTEM DISPATCH // DESK TERMINAL</span>
-              <span>—</span>
-              <span className="text-[#2855F5] font-bold">OPERATIONAL</span>
+            <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5]">
+              <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
+              <span>ASSESSMENT OS // MISSION CONTROL</span>
+              <span className="text-[#69786F]">—</span>
+              <span className="text-[#65F59A] font-bold">OPERATIONAL</span>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight font-display text-foreground">
+            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight font-display text-[#F2F7F3]">
               Assessment Operations Hub
             </h1>
-            <p className="text-xs sm:text-sm text-muted-foreground max-w-2xl">
+            <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-2xl leading-relaxed">
               Centralized command center for curriculum authoring, real-time tournament execution, institutional grading, and verifiable assessment delivery.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5 shrink-0">
             <Link href="/dashboard/questions">
-              <Button variant="outline" size="sm" className="font-mono text-xs tracking-wider rounded-[3px]">
-                <FileQuestion className="w-3.5 h-3.5 mr-1.5 text-[#2855F5]" /> QUESTION BANK
+              <Button variant="outline" size="sm" className="font-mono text-xs tracking-wider rounded-[4px]">
+                <FileQuestion className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> QUESTION BANK
               </Button>
             </Link>
             <Link href="/create-quiz">
-              <Button size="sm" className="bg-[#2855F5] hover:bg-[#1f44c7] text-white font-mono text-xs tracking-wider rounded-[3px]">
+              <Button size="sm" className="font-mono text-xs tracking-wider rounded-[4px]">
                 <Plus className="w-3.5 h-3.5 mr-1.5" /> COMPOSE QUIZ
               </Button>
             </Link>
@@ -85,41 +87,41 @@ export default function DashboardHomePage() {
         </div>
 
         {/* Precision Telemetry Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
-          <div className="border border-border bg-background/60 p-4 rounded-[2px] space-y-1">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-1">
+          <div className="border border-[rgba(160,190,170,0.12)] bg-[#111B17] p-4 rounded-[4px] space-y-1">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">QUESTION BANK</span>
-              <ShieldCheck className="w-3.5 h-3.5 text-[#2855F5]" />
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#69786F]">QUESTION BANK</span>
+              <ShieldCheck className="w-3.5 h-3.5 text-[#65F59A]" />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-foreground tracking-tight">535</div>
-            <p className="text-[10px] font-mono text-muted-foreground">100% verified & categorized</p>
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[#F2F7F3] tracking-tight">535</div>
+            <p className="text-[10px] font-mono text-[#A0AEA5]">100% verified & categorized</p>
           </div>
 
-          <div className="border border-border bg-background/60 p-4 rounded-[2px] space-y-1">
+          <div className="border border-[rgba(160,190,170,0.12)] bg-[#111B17] p-4 rounded-[4px] space-y-1">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">CURRICULAR DOMAINS</span>
-              <BookOpen className="w-3.5 h-3.5 text-[#2855F5]" />
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#69786F]">CURRICULAR DOMAINS</span>
+              <BookOpen className="w-3.5 h-3.5 text-[#38D9B0]" />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-foreground tracking-tight">18</div>
-            <p className="text-[10px] font-mono text-muted-foreground">Full domain coverage</p>
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[#F2F7F3] tracking-tight">18</div>
+            <p className="text-[10px] font-mono text-[#A0AEA5]">Full domain coverage</p>
           </div>
 
-          <div className="border border-border bg-background/60 p-4 rounded-[2px] space-y-1">
+          <div className="border border-[rgba(160,190,170,0.12)] bg-[#111B17] p-4 rounded-[4px] space-y-1">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">ACTIVE TOURNAMENTS</span>
-              <Trophy className="w-3.5 h-3.5 text-[#E85D3F]" />
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#69786F]">ACTIVE ARENAS</span>
+              <Trophy className="w-3.5 h-3.5 text-[#65F59A]" />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-foreground tracking-tight">3</div>
-            <p className="text-[10px] font-mono text-muted-foreground">Real-time sync enabled</p>
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[#F2F7F3] tracking-tight">3</div>
+            <p className="text-[10px] font-mono text-[#A0AEA5]">Real-time sync enabled</p>
           </div>
 
-          <div className="border border-border bg-background/60 p-4 rounded-[2px] space-y-1">
+          <div className="border border-[rgba(160,190,170,0.12)] bg-[#111B17] p-4 rounded-[4px] space-y-1">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">DELIVERY LATENCY</span>
-              <Activity className="w-3.5 h-3.5 text-[#2855F5]" />
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#69786F]">DELIVERY LATENCY</span>
+              <Activity className="w-3.5 h-3.5 text-[#38D9B0]" />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-foreground tracking-tight">&lt;250ms</div>
-            <p className="text-[10px] font-mono text-muted-foreground">Deterministic auto-save</p>
+            <div className="text-2xl sm:text-3xl font-extrabold font-mono text-[#F2F7F3] tracking-tight">&lt;250ms</div>
+            <p className="text-[10px] font-mono text-[#A0AEA5]">Deterministic auto-save</p>
           </div>
         </div>
       </div>
@@ -128,54 +130,54 @@ export default function DashboardHomePage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <Link
           href="/dashboard/quizzes"
-          className="group block border border-border bg-card p-5 rounded-[3px] hover:border-[#2855F5] transition-all"
+          className="group block border border-[rgba(160,190,170,0.14)] bg-[#0C1210] p-5 rounded-[6px] hover:border-[#65F59A]/50 transition-all hover:bg-[#111B17]"
         >
           <div className="flex items-start justify-between">
-            <div className="w-8 h-8 rounded-[2px] bg-[#2855F5]/10 border border-[#2855F5]/20 flex items-center justify-center text-[#2855F5] mb-3">
+            <div className="w-8 h-8 rounded-[4px] bg-[rgba(101,245,154,0.12)] border border-[rgba(101,245,154,0.25)] flex items-center justify-center text-[#65F59A] mb-3">
               <Play className="w-4 h-4 fill-current" />
             </div>
-            <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-[#2855F5] transition-colors" />
+            <ArrowUpRight className="w-4 h-4 text-[#69786F] group-hover:text-[#65F59A] transition-colors" />
           </div>
-          <h3 className="text-sm font-bold font-display text-foreground group-hover:text-[#2855F5] transition-colors">
+          <h3 className="text-sm font-bold font-display text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors">
             Launch Practice Assessment
           </h3>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-xs text-[#A0AEA5] mt-1 leading-relaxed">
             Take timed adaptive mock tests with randomized question order and immediate step-by-step scoring.
           </p>
         </Link>
 
         <Link
           href="/dashboard/competitions"
-          className="group block border border-border bg-card p-5 rounded-[3px] hover:border-[#2855F5] transition-all"
+          className="group block border border-[rgba(160,190,170,0.14)] bg-[#0C1210] p-5 rounded-[6px] hover:border-[#65F59A]/50 transition-all hover:bg-[#111B17]"
         >
           <div className="flex items-start justify-between">
-            <div className="w-8 h-8 rounded-[2px] bg-[#E85D3F]/10 border border-[#E85D3F]/20 flex items-center justify-center text-[#E85D3F] mb-3">
+            <div className="w-8 h-8 rounded-[4px] bg-[rgba(56,217,176,0.12)] border border-[rgba(56,217,176,0.25)] flex items-center justify-center text-[#38D9B0] mb-3">
               <Trophy className="w-4 h-4" />
             </div>
-            <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-[#2855F5] transition-colors" />
+            <ArrowUpRight className="w-4 h-4 text-[#69786F] group-hover:text-[#65F59A] transition-colors" />
           </div>
-          <h3 className="text-sm font-bold font-display text-foreground group-hover:text-[#2855F5] transition-colors">
+          <h3 className="text-sm font-bold font-display text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors">
             Live Competition Arena
           </h3>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-xs text-[#A0AEA5] mt-1 leading-relaxed">
             Join multiplayer tournaments via Room PIN code or host scheduled school-wide academic decathlons.
           </p>
         </Link>
 
         <Link
           href="/dashboard/analytics"
-          className="group block border border-border bg-card p-5 rounded-[3px] hover:border-[#2855F5] transition-all"
+          className="group block border border-[rgba(160,190,170,0.14)] bg-[#0C1210] p-5 rounded-[6px] hover:border-[#65F59A]/50 transition-all hover:bg-[#111B17]"
         >
           <div className="flex items-start justify-between">
-            <div className="w-8 h-8 rounded-[2px] bg-[#2855F5]/10 border border-[#2855F5]/20 flex items-center justify-center text-[#2855F5] mb-3">
+            <div className="w-8 h-8 rounded-[4px] bg-[rgba(101,245,154,0.12)] border border-[rgba(101,245,154,0.25)] flex items-center justify-center text-[#65F59A] mb-3">
               <BarChart3 className="w-4 h-4" />
             </div>
-            <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-[#2855F5] transition-colors" />
+            <ArrowUpRight className="w-4 h-4 text-[#69786F] group-hover:text-[#65F59A] transition-colors" />
           </div>
-          <h3 className="text-sm font-bold font-display text-foreground group-hover:text-[#2855F5] transition-colors">
+          <h3 className="text-sm font-bold font-display text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors">
             Performance Analytics
           </h3>
-          <p className="text-xs text-muted-foreground mt-1">
+          <p className="text-xs text-[#A0AEA5] mt-1 leading-relaxed">
             Inspect cohort grade distribution, topic error heatmaps, and export verifiable instructional reports.
           </p>
         </Link>
@@ -183,22 +185,22 @@ export default function DashboardHomePage() {
 
       {/* Platform Suites & Modules Sections */}
       <div className="space-y-6 pt-2">
-        <div className="flex items-center justify-between border-b border-border pb-3">
+        <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.14)] pb-3">
           <div className="flex items-center space-x-2">
-            <Layers className="w-4 h-4 text-[#2855F5]" />
-            <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-foreground">
+            <Layers className="w-4 h-4 text-[#65F59A]" />
+            <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-[#F2F7F3]">
               Institutional Platform Suites
             </h2>
           </div>
-          <span className="text-[10px] font-mono text-muted-foreground">12 MODULES INTEGRATED</span>
+          <span className="text-[10px] font-mono text-[#69786F]">12 MODULES INTEGRATED</span>
         </div>
 
         <div className="space-y-6">
           {suites.map((suite, sIdx) => (
             <div key={sIdx} className="space-y-3">
               <div className="flex items-center space-x-2">
-                <span className="text-[10px] font-mono text-[#2855F5] font-bold">0{sIdx + 1} //</span>
-                <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground font-semibold">
+                <span className="text-[10px] font-mono text-[#65F59A] font-bold">0{sIdx + 1} //</span>
+                <span className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
                   {suite.category}
                 </span>
               </div>
@@ -208,19 +210,19 @@ export default function DashboardHomePage() {
                   <Link
                     key={iIdx}
                     href={item.href}
-                    className="group border border-border bg-card p-4 rounded-[3px] hover:border-[#2855F5] transition-all flex flex-col justify-between"
+                    className="group border border-[rgba(160,190,170,0.14)] bg-[#0C1210] p-4 rounded-[4px] hover:border-[#65F59A]/40 transition-all flex flex-col justify-between hover:bg-[#111B17]"
                   >
                     <div className="space-y-1.5">
                       <div className="flex items-center justify-between">
-                        <Badge variant="outline" className="text-[9px] font-mono uppercase tracking-widest rounded-[2px] px-1.5 py-0 border-border">
+                        <Badge variant="outline" className="text-[9px] font-mono uppercase tracking-widest rounded-[2px] px-1.5 py-0 border-[rgba(160,190,170,0.16)] text-[#A0AEA5]">
                           {item.badge}
                         </Badge>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-muted-foreground group-hover:text-[#2855F5] transition-colors" />
+                        <ArrowUpRight className="w-3.5 h-3.5 text-[#69786F] group-hover:text-[#65F59A] transition-colors" />
                       </div>
-                      <h3 className="text-xs font-bold font-display text-foreground group-hover:text-[#2855F5] transition-colors pt-1">
+                      <h3 className="text-xs font-bold font-display text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors pt-1">
                         {item.title}
                       </h3>
-                      <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed">
+                      <p className="text-[11px] text-[#A0AEA5] line-clamp-2 leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
