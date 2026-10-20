@@ -53,7 +53,8 @@ test("QuestionIntelligenceService: gracefully engages DocumentFallbackSynthesize
   // Mock failing provider
   const failingProvider: IQuestionIntelligenceProvider = {
     id: "failing-gemini-mock",
-    generateQuestion: async () => {
+    name: "Failing Gemini Mock",
+    generateQuestionRaw: async () => {
       throw new Error("Simulated GEMINI_API_KEY unconfigured or network outage");
     },
     generateQuestionsFromDocumentBuffer: async () => {

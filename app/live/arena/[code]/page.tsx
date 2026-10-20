@@ -82,16 +82,20 @@ function StandaloneArenaContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070B0A] text-[#F2F7F3] py-6 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-6">
+    <div className="min-h-screen bg-[#070B0A] text-[#F2F7F3] py-6 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-6 relative aurora-grid">
+      {/* Ambient Arena Spotlight */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(101,245,154,0.1)_0%,transparent_70%)] blur-[90px] pointer-events-none" />
+
       {/* Top Header */}
-      <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.14)] pb-4">
+      <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.14)] pb-4 relative z-10">
         <Link
           href="/student/live/join"
           className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#65F59A] transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> EXIT ARENA
         </Link>
-        <span className="font-mono text-xs font-bold text-[#65F59A] bg-[rgba(101,245,154,0.12)] border border-[rgba(101,245,154,0.3)] px-2.5 py-1 rounded-[3px] shadow-[0_0_10px_rgba(101,245,154,0.15)]">
+        <span className="font-mono text-xs font-bold text-[#65F59A] bg-[rgba(101,245,154,0.12)] border border-[rgba(101,245,154,0.3)] px-3 py-1 rounded-[4px] shadow-[0_0_15px_rgba(101,245,154,0.25)] flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
           ARENA PIN: {session?.code || codeParam}
         </span>
       </div>

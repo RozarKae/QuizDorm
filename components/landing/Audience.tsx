@@ -1,38 +1,37 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { School, Users, GraduationCap, Trophy, ArrowRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import SectionDivider from "@/components/ui/section-divider";
 
 export default function Audience() {
   const cards = [
     {
       title: "Schools & Institutions",
-      description: "Administer directories, manage class rosters, monitor campus-wide assessment integrity, and view aggregate reports.",
+      description: "Administer directories, manage class rosters, monitor campus-wide assessment integrity, and view aggregate accreditation reports.",
       icon: <School className="h-5 w-5 text-[#65F59A]" />,
       href: "/auth/register?role=school",
       action: "Register Institution",
     },
     {
       title: "Teachers & Educators",
-      description: "Build rigorous assessments with AI Studio assistance, auto-grade student submissions, and analyze difficulty curves.",
+      description: "Synthesize rigorous assessments with Gemini AI, auto-grade student submissions with item analysis, and diagnose learning gaps.",
       icon: <Users className="h-5 w-5 text-[#38D9B0]" />,
       href: "/auth/register?role=teacher",
       action: "Create Teacher Account",
     },
     {
       title: "Students & Learners",
-      description: "Participate in live arena matches, take adaptive practice quizzes, track learning telemetry, and earn achievements.",
+      description: "Participate in real-time arena tournaments, take adaptive practice quizzes, track learning telemetry, and earn verified mastery badges.",
       icon: <GraduationCap className="h-5 w-5 text-[#65F59A]" />,
       href: "/auth/register?role=student",
       action: "Join as Student",
     },
     {
-      title: "Creators & Event Hosts",
-      description: "Broadcast synchronized tournaments with PIN lobbies, custom timing parameters, live leaderboards, and instant podiums.",
+      title: "Tournament & Arena Hosts",
+      description: "Broadcast synchronized decathlons with live PIN lobbies, custom timers, real-time leaderboards, and instant champion podiums.",
       icon: <Trophy className="h-5 w-5 text-[#38D9B0]" />,
       href: "/live/arena",
       action: "Enter Competition Arena",
@@ -40,17 +39,18 @@ export default function Audience() {
   ];
 
   return (
-    <section id="audience" className="py-20 relative z-10 border-b border-[rgba(160,190,170,0.12)] bg-[#070B0A]">
+    <section id="audience" className="py-24 relative z-10 border-b border-[rgba(160,190,170,0.12)] bg-[#070B0A] aurora-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-[rgba(160,190,170,0.12)] mb-12 gap-6">
-          <div className="space-y-2 max-w-2xl">
+          <div className="space-y-3 max-w-2xl">
             <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] bg-[#17251E] px-2.5 py-0.5 rounded-full border border-[#65F59A]/20 font-semibold">
               ROLE ARCHITECTURE // WORKSPACES
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-[#F2F7F3] tracking-tight">
-              Tailored Workspaces for Every Stakeholder
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2F7F3] tracking-tight">
+              Curiosity Has <br />
+              <span className="text-[#65F59A]">No Finish Line.</span>
             </h2>
           </div>
           <p className="text-sm font-normal text-[#A0AEA5] max-w-md leading-relaxed">
@@ -58,53 +58,42 @@ export default function Audience() {
           </p>
         </div>
 
-        {/* Audience Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {cards.map((card, index) => (
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {cards.map((card, idx) => (
             <motion.div
               key={card.title}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="flex h-full"
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              className="p-6 rounded-2xl bg-[#0C1210] border border-[rgba(160,190,170,0.14)] hover:border-[#65F59A]/40 transition-all duration-300 shadow-xl flex flex-col justify-between hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(0,0,0,0.7),0_0_20px_rgba(101,245,154,0.1)] group"
             >
-              <Card className="flex flex-col justify-between h-full w-full rounded-2xl border border-[rgba(160,190,170,0.14)] bg-[#0C1210] p-6 hover:border-[#65F59A]/30 transition-all duration-300 shadow-xl">
-                <CardContent className="p-0 flex flex-col h-full justify-between space-y-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between pb-4 border-b border-[rgba(160,190,170,0.12)]">
-                      <div className="p-2.5 bg-[#17251E] rounded-xl text-[#65F59A] border border-[#65F59A]/20">
-                        {card.icon}
-                      </div>
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-[#69786F] font-semibold">
-                        PROFILE 0{index + 1}
-                      </span>
-                    </div>
+              <div>
+                <div className="p-2.5 bg-[#17251E] rounded-xl text-[#65F59A] border border-[#65F59A]/20 w-fit mb-4 group-hover:border-[#65F59A]/40 transition-colors">
+                  {card.icon}
+                </div>
+                <h3 className="font-display text-base font-bold text-[#F2F7F3] mb-2 group-hover:text-[#65F59A] transition-colors">
+                  {card.title}
+                </h3>
+                <p className="text-xs text-[#A0AEA5] leading-relaxed font-normal mb-6">
+                  {card.description}
+                </p>
+              </div>
 
-                    <h3 className="font-display text-base font-bold text-[#F2F7F3]">
-                      {card.title}
-                    </h3>
-                    <p className="text-xs text-[#A0AEA5] leading-relaxed font-normal">
-                      {card.description}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 border-t border-[rgba(160,190,170,0.1)]">
-                    <Link href={card.href} className="w-full block">
-                      <Button variant="outline" className="w-full justify-between group rounded-xl border-[rgba(160,190,170,0.15)] bg-[#111B17] text-xs font-mono h-9 hover:bg-[#17251E] text-[#F2F7F3] hover:text-[#65F59A] transition-colors">
-                        <span>{card.action}</span>
-                        <ArrowRight className="h-3.5 w-3.5 text-[#69786F] group-hover:text-[#65F59A] group-hover:translate-x-1 transition-all" />
-                      </Button>
-                    </Link>
-                  </div>
-                </CardContent>
-              </Card>
+              <Link
+                href={card.href}
+                className="pt-4 border-t border-[rgba(160,190,170,0.1)] flex items-center justify-between text-xs font-mono text-[#65F59A] group-hover:text-[#38D9B0] transition-colors font-medium"
+              >
+                <span>{card.action}</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </motion.div>
           ))}
         </div>
       </div>
 
-      <SectionDivider variant="editorial" label="PLATFORM CTA" />
+      <SectionDivider variant="editorial" label="JOIN THE ARENA" />
     </section>
   );
 }

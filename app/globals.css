@@ -241,3 +241,156 @@
 .editorial-rule {
   border-top: 1px solid var(--border);
 }
+
+/* ==========================================================================
+   Project Aurora // Cinematic Future OS Motion & Atmosphere Tokens
+   ========================================================================== */
+
+:root {
+  --ease-aurora: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Atmospheric Grid Substrate */
+.aurora-grid {
+  background-image: 
+    linear-gradient(to right, rgba(160, 190, 170, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(160, 190, 170, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.aurora-grid-dense {
+  background-image: 
+    linear-gradient(to right, rgba(160, 190, 170, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(160, 190, 170, 0.06) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Cinematic Radial Glows */
+.aurora-radial-glow {
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(101, 245, 154, 0.12) 0%,
+    rgba(56, 217, 176, 0.04) 45%,
+    transparent 70%
+  );
+}
+
+.aurora-spotlight {
+  background: radial-gradient(
+    800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(101, 245, 154, 0.07),
+    transparent 40%
+  );
+}
+
+/* Surface Layering & Elevation */
+.aurora-card {
+  background: #0C1210;
+  border: 1px solid rgba(160, 190, 170, 0.14);
+  border-radius: 8px;
+  transition: transform 0.25s var(--ease-aurora), border-color 0.25s var(--ease-aurora), box-shadow 0.25s var(--ease-aurora);
+}
+
+.aurora-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(101, 245, 154, 0.35);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(101, 245, 154, 0.15);
+}
+
+.aurora-glass {
+  background: rgba(12, 18, 16, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(160, 190, 170, 0.16);
+}
+
+.aurora-interactive {
+  transition: all 0.2s var(--ease-aurora);
+}
+
+.aurora-interactive:hover {
+  background-color: #17251E;
+  border-color: rgba(101, 245, 154, 0.4);
+  color: #F2F7F3;
+}
+
+/* Glow Intensities */
+.aurora-glow-sm {
+  box-shadow: 0 0 15px -3px rgba(101, 245, 154, 0.25);
+}
+
+.aurora-glow-md {
+  box-shadow: 0 0 30px -5px rgba(101, 245, 154, 0.35);
+}
+
+.aurora-glow-lg {
+  box-shadow: 0 0 60px -10px rgba(101, 245, 154, 0.3);
+}
+
+/* Subtle Ambient Animations */
+@keyframes aurora-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes aurora-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes aurora-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes aurora-pulse-subtle {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.animate-aurora-spin {
+  animation: aurora-spin-slow 60s linear infinite;
+}
+
+.animate-aurora-spin-reverse {
+  animation: aurora-spin-reverse 45s linear infinite;
+}
+
+.animate-aurora-float {
+  animation: aurora-float 6s ease-in-out infinite;
+}
+
+.animate-aurora-pulse {
+  animation: aurora-pulse-subtle 4s ease-in-out infinite;
+}
+
+/* Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

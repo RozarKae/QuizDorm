@@ -1,125 +1,196 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BookOpen, Sparkles, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Sparkles,
+  CheckCircle2,
+  Trophy,
+  Zap,
+  Layers,
+  Activity,
+} from "lucide-react";
+import { FadeIn, StaggerContainer, StaggerItem, OrbitalRings } from "@/components/ui/motion";
 
 export default function Hero() {
   return (
-    <section className="relative pt-16 pb-20 md:pt-24 md:pb-28 border-b border-[rgba(160,190,170,0.12)] bg-[#070B0A] overflow-hidden">
-      {/* Ambient background glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#65F59A]/5 blur-[120px] rounded-full pointer-events-none" />
+    <section className="relative pt-16 pb-20 md:pt-24 md:pb-32 border-b border-[rgba(160,190,170,0.12)] bg-[#070B0A] overflow-hidden aurora-grid">
+      {/* Cinematic Radial Spotlight */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(101,245,154,0.12)_0%,rgba(56,217,176,0.03)_50%,transparent_75%)] blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           
-          {/* Left Column: Future OS Masthead & Copy */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center space-x-2 border border-[#65F59A]/20 bg-[#17251E] px-3 py-1 rounded-full shadow-sm">
-              <span className="h-2 w-2 rounded-full bg-[#65F59A] animate-pulse" />
-              <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] font-semibold">
-                FUTURE OS // ASSESSMENT PLATFORM
-              </span>
-            </div>
-
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#F2F7F3] tracking-tight leading-[1.08]">
-              Unlock Human Potential <br />
-              <span className="text-[#65F59A]">Through Assessment.</span>
-            </h1>
-
-            <p className="text-[#A0AEA5] text-base sm:text-lg max-w-xl leading-relaxed font-normal">
-              Deliver intelligent assessments, run real-time competitions, and uncover actionable learning insights with QuizDorm.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <Link href="/dashboard">
-                <Button className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold rounded-xl px-5 py-2.5 h-10 shadow-lg shadow-[#65F59A]/20 flex items-center gap-2">
-                  <Sparkles className="w-3.5 h-3.5 fill-current" />
-                  Explore QuizDorm
-                </Button>
-              </Link>
-              <Link href="/dashboard/quizzes/builder">
-                <Button variant="outline" className="border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#F2F7F3] hover:bg-[#17251E] hover:text-[#65F59A] text-xs font-mono font-medium rounded-xl px-4 py-2.5 h-10 flex items-center gap-2">
-                  <BookOpen className="w-3.5 h-3.5 text-[#38D9B0]" />
-                  Start Creating
-                </Button>
-              </Link>
-              <Link href="/live/arena">
-                <Button variant="ghost" className="text-[#A0AEA5] hover:text-[#65F59A] hover:bg-[#111B17] text-xs font-mono rounded-xl h-10 flex items-center gap-1.5 px-3">
-                  Live Arena <ArrowRight className="w-3.5 h-3.5 text-[#65F59A]" />
-                </Button>
-              </Link>
-            </div>
-
-            {/* Platform Specifications Strip */}
-            <div className="pt-6 border-t border-[rgba(160,190,170,0.12)] grid grid-cols-3 gap-4 font-mono text-xs">
-              <div>
-                <p className="text-[10px] uppercase tracking-wider text-[#69786F]">Question Formats</p>
-                <p className="text-[#F2F7F3] font-bold text-base mt-0.5">7 Native Types</p>
-              </div>
-              <div>
-                <p className="text-[10px] uppercase tracking-wider text-[#69786F]">Competition Engine</p>
-                <p className="text-[#F2F7F3] font-bold text-base mt-0.5">Real-time SSE</p>
-              </div>
-              <div>
-                <p className="text-[10px] uppercase tracking-wider text-[#69786F]">Intelligence Layer</p>
-                <p className="text-[#F2F7F3] font-bold text-base mt-0.5 flex items-center gap-1">
-                  AI Orchestrated <CheckCircle2 className="w-3.5 h-3.5 text-[#65F59A]" />
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Future OS Product Preview Interface */}
-          <div className="lg:col-span-5">
-            <div className="relative border border-[rgba(160,190,170,0.15)] bg-[#0C1210] rounded-2xl shadow-2xl p-6 space-y-4">
-              <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
-                <div className="flex items-center space-x-2">
-                  <span className="font-mono text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-full bg-[#17251E] text-[#65F59A] border border-[#65F59A]/30 font-bold">
-                    ACTIVE ASSESSMENT
-                  </span>
-                  <span className="font-mono text-[10px] text-[#69786F]">
-                    ITEM-ID #QD-409
-                  </span>
-                </div>
-                <span className="font-mono text-[10px] text-[#38D9B0] bg-[#111B17] px-2 py-0.5 rounded-full border border-[rgba(160,190,170,0.1)]">
-                  09:42 REMAINING
+          {/* Left Column: Masthead & Cinematic Story */}
+          <div className="lg:col-span-7 space-y-7">
+            <FadeIn direction="up" delay={0.05}>
+              <div className="inline-flex items-center space-x-2.5 border border-[#65F59A]/25 bg-[#111B17]/90 px-3.5 py-1.5 rounded-full shadow-[0_0_15px_rgba(101,245,154,0.15)]">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#65F59A] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#65F59A]" />
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] font-semibold">
+                  PROJECT AURORA // IMMERSIVE FUTURE OS
                 </span>
               </div>
+            </FadeIn>
 
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#69786F]">
-                    Question 04 of 15
-                  </span>
-                  <span className="text-[10px] font-mono text-[#65F59A]">Difficulty: Hard (+10 Pts)</span>
-                </div>
-                <p className="font-display text-sm sm:text-base font-semibold text-[#F2F7F3] leading-snug">
-                  Which algorithmic technique applies optimal substructure and overlapping subproblems to solve complex recurrence relations?
-                </p>
-              </div>
+            <FadeIn direction="up" delay={0.15}>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#F2F7F3] tracking-tight leading-[1.06]">
+                Where Curiosity <br />
+                <span className="bg-gradient-to-r from-[#65F59A] via-[#38D9B0] to-[#65F59A] bg-clip-text text-transparent">
+                  Becomes Capability.
+                </span>
+              </h1>
+            </FadeIn>
 
-              <div className="space-y-2 pt-1">
-                <div className="flex items-center justify-between p-2.5 rounded-xl border border-[rgba(160,190,170,0.12)] bg-[#111B17] text-xs font-mono text-[#A0AEA5] hover:border-[#65F59A]/30 transition-colors">
-                  <span><span className="font-bold text-[#F2F7F3] mr-2">A.</span> Greedy Approximation</span>
-                </div>
-                <div className="flex items-center justify-between p-2.5 rounded-xl border border-[#65F59A]/50 bg-[#17251E] text-xs font-mono text-[#F2F7F3] font-semibold shadow-sm shadow-[#65F59A]/10">
-                  <span><span className="font-bold text-[#65F59A] mr-2">B.</span> Dynamic Programming</span>
-                  <span className="text-[9px] uppercase font-mono tracking-wider px-2 py-0.5 bg-[#65F59A] text-[#070B0A] font-bold rounded-full">Selected</span>
-                </div>
-                <div className="flex items-center justify-between p-2.5 rounded-xl border border-[rgba(160,190,170,0.12)] bg-[#111B17] text-xs font-mono text-[#A0AEA5] hover:border-[#65F59A]/30 transition-colors">
-                  <span><span className="font-bold text-[#F2F7F3] mr-2">C.</span> Divide and Conquer</span>
-                </div>
-                <div className="flex items-center justify-between p-2.5 rounded-xl border border-[rgba(160,190,170,0.12)] bg-[#111B17] text-xs font-mono text-[#A0AEA5] hover:border-[#65F59A]/30 transition-colors">
-                  <span><span className="font-bold text-[#F2F7F3] mr-2">D.</span> Monte Carlo Search</span>
-                </div>
-              </div>
+            <FadeIn direction="up" delay={0.25}>
+              <p className="text-[#A0AEA5] text-base sm:text-lg max-w-xl leading-relaxed font-normal">
+                Deliver deep AI-synthesized assessments, run adrenaline-fueled live arenas, and turn everyday practice into verifiable mastery.
+              </p>
+            </FadeIn>
 
-              <div className="pt-3 border-t border-[rgba(160,190,170,0.12)] flex items-center justify-between text-[10px] font-mono text-[#69786F]">
-                <span>Topic: Computer Science // Algorithms</span>
-                <span className="text-[#65F59A] font-bold">Auto-Save: Synchronized</span>
+            {/* Primary Action Buttons */}
+            <FadeIn direction="up" delay={0.35}>
+              <div className="flex flex-wrap items-center gap-3.5 pt-1">
+                <Link href="/dashboard">
+                  <Button className="bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono text-xs font-bold rounded-[6px] px-6 h-11 shadow-[0_0_25px_rgba(101,245,154,0.35)] transition-all flex items-center gap-2 group">
+                    <Sparkles className="w-4 h-4 fill-current group-hover:rotate-12 transition-transform" />
+                    Enter the Platform
+                  </Button>
+                </Link>
+
+                <Link href="/live/arena">
+                  <Button
+                    variant="outline"
+                    className="border-[#65F59A]/30 bg-[#111B17] text-[#65F59A] hover:bg-[rgba(101,245,154,0.12)] hover:border-[#65F59A]/60 text-xs font-mono font-medium rounded-[6px] px-5 h-11 flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(101,245,154,0.1)]"
+                  >
+                    <Trophy className="w-3.5 h-3.5" />
+                    Step Into the Arena
+                    <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
+                  </Button>
+                </Link>
+
+                <Link href="/dashboard/quizzes/builder">
+                  <Button
+                    variant="ghost"
+                    className="text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#17251E] text-xs font-mono rounded-[6px] h-11 flex items-center gap-1.5 px-4"
+                  >
+                    <BookOpen className="w-3.5 h-3.5 text-[#38D9B0]" />
+                    Create Assessment
+                  </Button>
+                </Link>
               </div>
+            </FadeIn>
+
+            {/* Platform Specifications Strip */}
+            <FadeIn direction="up" delay={0.45}>
+              <div className="pt-7 border-t border-[rgba(160,190,170,0.12)] grid grid-cols-3 gap-6 font-mono text-xs">
+                <div className="space-y-1">
+                  <p className="text-[10px] uppercase tracking-wider text-[#69786F]">Assessment Matrix</p>
+                  <p className="text-[#F2F7F3] font-bold text-base flex items-center gap-1.5">
+                    <Layers className="w-4 h-4 text-[#65F59A]" /> 9 Question Types
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-[10px] uppercase tracking-wider text-[#69786F]">Competition Engine</p>
+                  <p className="text-[#F2F7F3] font-bold text-base flex items-center gap-1.5">
+                    <Zap className="w-4 h-4 text-[#38D9B0]" /> Real-time SSE
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-[10px] uppercase tracking-wider text-[#69786F]">Intelligence Layer</p>
+                  <p className="text-[#F2F7F3] font-bold text-base flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#65F59A]" /> Gemini 3.5 Active
+                  </p>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+
+          {/* Right Column: Floating Assessment Terminal & Orbital Sphere */}
+          <div className="lg:col-span-5 relative flex items-center justify-center">
+            {/* Ambient Orbital Rings in Background */}
+            <div className="absolute -top-12 -right-8 z-0 opacity-70">
+              <OrbitalRings />
             </div>
+
+            {/* Floating Terminal Card */}
+            <FadeIn direction="up" delay={0.2} className="relative z-10 w-full animate-aurora-float">
+              <div className="border border-[rgba(160,190,170,0.22)] bg-[#0C1210]/95 backdrop-blur-xl rounded-2xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_35px_-5px_rgba(101,245,154,0.18)] p-6 space-y-4">
+                
+                {/* Header Strip */}
+                <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.14)] pb-3.5">
+                  <div className="flex items-center space-x-2.5">
+                    <span className="font-mono text-[9px] uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-[rgba(101,245,154,0.14)] text-[#65F59A] border border-[#65F59A]/30 font-bold">
+                      ACTIVE ARENA // ITEM #QD-409
+                    </span>
+                  </div>
+                  <span className="font-mono text-[10px] text-[#38D9B0] bg-[#111B17] px-2.5 py-1 rounded-full border border-[rgba(160,190,170,0.18)] flex items-center gap-1.5 shadow-[0_0_10px_rgba(56,217,176,0.15)]">
+                    <Activity className="w-3 h-3 text-[#38D9B0] animate-pulse" />
+                    09:42 REMAINING
+                  </span>
+                </div>
+
+                {/* Question Stem */}
+                <div className="space-y-2 pt-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#69786F]">
+                      Question 04 of 15 • Computer Science
+                    </span>
+                    <span className="text-[10px] font-mono text-[#65F59A] font-semibold">
+                      Difficulty: Hard (+10 Pts)
+                    </span>
+                  </div>
+                  <p className="font-display text-sm sm:text-base font-semibold text-[#F2F7F3] leading-snug">
+                    Which algorithmic technique applies optimal substructure and overlapping subproblems to solve complex recurrence relations?
+                  </p>
+                </div>
+
+                {/* Interactive Answer Choices */}
+                <div className="space-y-2.5 pt-1">
+                  <div className="flex items-center justify-between p-3 rounded-xl border border-[rgba(160,190,170,0.14)] bg-[#111B17] text-xs font-mono text-[#A0AEA5] hover:border-[#65F59A]/40 hover:text-[#F2F7F3] transition-colors cursor-pointer">
+                    <span>
+                      <span className="font-bold text-[#69786F] mr-2.5">A.</span> Greedy Approximation
+                    </span>
+                  </div>
+
+                  {/* Selected / Correct State */}
+                  <div className="flex items-center justify-between p-3 rounded-xl border border-[#65F59A]/60 bg-[#17251E] text-xs font-mono text-[#F2F7F3] font-semibold shadow-[0_0_20px_rgba(101,245,154,0.15)]">
+                    <span className="flex items-center">
+                      <span className="font-bold text-[#65F59A] mr-2.5">B.</span> Dynamic Programming
+                    </span>
+                    <span className="text-[9px] uppercase font-mono tracking-wider px-2 py-0.5 bg-[#65F59A] text-[#070B0A] font-bold rounded-full shadow-[0_0_8px_#65F59A]">
+                      Selected
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3 rounded-xl border border-[rgba(160,190,170,0.14)] bg-[#111B17] text-xs font-mono text-[#A0AEA5] hover:border-[#65F59A]/40 hover:text-[#F2F7F3] transition-colors cursor-pointer">
+                    <span>
+                      <span className="font-bold text-[#69786F] mr-2.5">C.</span> Divide and Conquer
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3 rounded-xl border border-[rgba(160,190,170,0.14)] bg-[#111B17] text-xs font-mono text-[#A0AEA5] hover:border-[#65F59A]/40 hover:text-[#F2F7F3] transition-colors cursor-pointer">
+                    <span>
+                      <span className="font-bold text-[#69786F] mr-2.5">D.</span> Monte Carlo Search
+                    </span>
+                  </div>
+                </div>
+
+                {/* Footer Status */}
+                <div className="pt-3 border-t border-[rgba(160,190,170,0.12)] flex items-center justify-between text-[10px] font-mono text-[#69786F]">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A]" />
+                    Topic: Advanced Algorithms // Unit 04
+                  </span>
+                  <span className="text-[#65F59A] font-bold">Auto-Save: Synchronized</span>
+                </div>
+              </div>
+            </FadeIn>
           </div>
 
         </div>
