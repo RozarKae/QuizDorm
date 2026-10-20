@@ -21,17 +21,19 @@ export function BulkActionToolbar({
   if (selectedCount === 0) return null;
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-gray-900 text-white px-6 py-3 rounded-2xl shadow-2xl border border-gray-800 flex items-center space-x-6 animate-in slide-in-from-bottom-5">
-      <div className="flex items-center space-x-2 text-sm font-semibold">
-        <span className="bg-indigo-600 text-white px-2.5 py-0.5 rounded-full text-xs">{selectedCount}</span>
-        <span>Questions Selected</span>
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#0C1210]/95 backdrop-blur-xl text-[#F2F7F3] px-6 py-3 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_25px_rgba(101,245,154,0.15)] border border-[rgba(160,190,170,0.22)] flex items-center space-x-6 animate-in slide-in-from-bottom-5">
+      <div className="flex items-center space-x-2 text-xs font-mono font-semibold">
+        <span className="bg-[rgba(101,245,154,0.18)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] px-2.5 py-0.5 rounded-full text-xs">
+          {selectedCount}
+        </span>
+        <span className="text-[#F2F7F3]">Items Selected</span>
       </div>
 
-      <div className="h-4 w-px bg-gray-700" />
+      <div className="h-4 w-px bg-[rgba(160,190,170,0.16)]" />
 
       <div className="flex items-center space-x-3">
         <Select
-          className="h-8 text-xs bg-gray-800 text-white border-gray-700 rounded-lg w-36"
+          className="h-8 text-xs bg-[#111B17] text-[#F2F7F3] border-[rgba(160,190,170,0.18)] rounded-[4px] w-36 font-mono"
           onChange={(e) => e.target.value && onBulkCategoryChange(e.target.value)}
           options={[
             { value: "", label: "Update Category" },
@@ -43,7 +45,7 @@ export function BulkActionToolbar({
         />
 
         <Select
-          className="h-8 text-xs bg-gray-800 text-white border-gray-700 rounded-lg w-36"
+          className="h-8 text-xs bg-[#111B17] text-[#F2F7F3] border-[rgba(160,190,170,0.18)] rounded-[4px] w-36 font-mono"
           onChange={(e) => e.target.value && onBulkDifficultyChange(e.target.value)}
           options={[
             { value: "", label: "Update Difficulty" },
@@ -57,13 +59,13 @@ export function BulkActionToolbar({
           onClick={onBulkDelete}
           variant="ghost"
           size="sm"
-          className="h-8 text-red-400 hover:text-red-300 hover:bg-red-950/50 text-xs font-semibold"
+          className="h-8 text-[#F87171] hover:text-[#FCA5A5] hover:bg-[#F87171]/10 text-xs font-mono font-semibold rounded-[4px]"
         >
           <Trash2 className="w-3.5 h-3.5 mr-1.5" /> Bulk Delete
         </Button>
       </div>
 
-      <Button onClick={onClearSelection} variant="ghost" size="icon" className="h-7 w-7 text-gray-400 hover:text-white">
+      <Button onClick={onClearSelection} variant="ghost" size="icon" className="h-7 w-7 text-[#A0AEA5] hover:text-[#F2F7F3] rounded-[3px]">
         <X className="w-4 h-4" />
       </Button>
     </div>

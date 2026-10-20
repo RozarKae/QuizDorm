@@ -203,42 +203,42 @@ export default function QuestionBankPage() {
       {/* Header & Main Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border">
         <div>
-          <h1 className="text-2xl font-bold font-display text-foreground flex items-center">
-            <Database className="w-5 h-5 text-cobalt mr-2" /> Question Bank
+          <h1 className="text-2xl font-bold font-display text-[#F2F7F3] flex items-center">
+            <Database className="w-5 h-5 text-[#65F59A] mr-2" /> Question Bank
             {isLoaded && (
-              <span className="ml-3 font-mono text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-[2px] bg-acid text-ink border border-acid">
+              <span className="ml-3 font-mono text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] shadow-[0_0_8px_rgba(101,245,154,0.2)]">
                 {questions.length} Items // Verified
               </span>
             )}
           </h1>
-          <p className="text-xs font-mono text-muted-foreground mt-1">
+          <p className="text-xs font-mono text-[#A0AEA5] mt-1">
             Systematic question taxonomy and specimen repository across 18 academic domains
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
           <Link href="/dashboard/ocr">
-            <Button size="sm" variant="outline" className="text-xs font-mono border-border rounded-[3px] text-foreground hover:bg-muted h-8">
-              <ScanText className="w-3.5 h-3.5 mr-1.5 text-cobalt" /> AI OCR Digitizer
+            <Button size="sm" variant="outline" className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] hover:bg-[#17251E] h-8 transition-colors">
+              <ScanText className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> AI OCR Digitizer
             </Button>
           </Link>
-          <Button variant="outline" size="sm" onClick={() => setCategoryOpen(true)} className="text-xs font-mono border-border rounded-[3px] text-foreground hover:bg-muted h-8">
-            <BookOpen className="w-3.5 h-3.5 mr-1.5 text-cobalt" /> Taxonomy
+          <Button variant="outline" size="sm" onClick={() => setCategoryOpen(true)} className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] hover:bg-[#17251E] h-8 transition-colors">
+            <BookOpen className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" /> Taxonomy
           </Button>
           <Button
             variant="outline"
             size="sm"
             onClick={() => setImportOpen(true)}
-            className="text-xs font-mono border-border rounded-[3px] text-foreground hover:bg-muted h-8"
+            className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] hover:bg-[#17251E] h-8 transition-colors"
             title="Import questions from CSV, Excel, or JSON into Question Bank"
           >
-            <Upload className="w-3.5 h-3.5 mr-1.5" /> Import to Question Bank
+            <Upload className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> Import
           </Button>
-          <Button variant="outline" size="sm" onClick={() => setExportOpen(true)} className="text-xs font-mono border-border rounded-[3px] text-foreground hover:bg-muted h-8">
-            <Download className="w-3.5 h-3.5 mr-1.5" /> Export
+          <Button variant="outline" size="sm" onClick={() => setExportOpen(true)} className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] hover:bg-[#17251E] h-8 transition-colors">
+            <Download className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" /> Export
           </Button>
           <Link href="/dashboard/questions/new">
-            <Button size="sm" className="bg-cobalt hover:bg-cobalt/90 text-white font-mono text-xs font-semibold rounded-[3px] h-8 shadow-xs">
+            <Button size="sm" className="bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono text-xs font-bold rounded-[4px] h-8 shadow-[0_0_12px_rgba(101,245,154,0.25)] transition-all">
               <Plus className="w-3.5 h-3.5 mr-1.5" /> Add Question
             </Button>
           </Link>
