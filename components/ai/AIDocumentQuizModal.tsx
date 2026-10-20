@@ -18,6 +18,7 @@ import {
   RotateCcw,
   FileCheck,
   AlertCircle,
+  AlertTriangle,
   X,
   Download,
   Layers,
@@ -168,6 +169,9 @@ export function AIDocumentQuizModal({
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Error message tracking to prevent silent resets
+  const [generationError, setGenerationError] = useState<string | null>(null);
+
   // Generated Questions state (Editable in review)
   const [generatedQuestions, setGeneratedQuestions] = useState<QuestionItem[]>([]);
   const [generationMetadata, setGenerationMetadata] = useState<{
@@ -176,6 +180,7 @@ export function AIDocumentQuizModal({
     tokens?: number;
     docTitle?: string;
     summary?: string;
+    warning?: string;
   }>({});
 
   // Reset when dialog closes
@@ -257,6 +262,7 @@ export function AIDocumentQuizModal({
       return;
     }
 
+    setGenerationError(null);
     setPhase("generating");
     setTelemetryProgress(12);
     setTelemetryStepText("Scanning document structure & token geometry...");
@@ -369,18 +375,25 @@ export function AIDocumentQuizModal({
 
       setGeneratedQuestions(formatted);
       setGenerationMetadata({
-        modelUsed: data.metadata?.modelUsed || "gemini-3.5-flash-lite",
+        modelUsed: data.metadata?.modelUsed || (data.warning ? "document-text-synthesizer-fallback" : "gemini-3.5-flash-lite"),
         latencyMs: data.metadata?.latencyMs || Date.now() - startTime,
         tokens: data.metadata?.tokenUsage?.totalTokens || 1840,
         docTitle: data.documentTitle || selectedFile.name,
         summary: data.summary,
+        warning: data.warning,
       });
 
       setPhase("review");
-      toast.success(`Synthesized ${formatted.length} pedagogical questions with Gemini AI!`);
+      if (data.warning) {
+        toast.warning(data.warning, { duration: 6000 });
+      } else {
+        toast.success(`Synthesized ${formatted.length} pedagogical questions with Gemini AI!`);
+      }
     } catch (err: any) {
       if (timerRef.current) clearInterval(timerRef.current);
-      toast.error(err.message || "Failed to generate questions from document");
+      const msg = err.message || "Failed to generate questions from document";
+      setGenerationError(msg);
+      toast.error(msg);
       setPhase("config");
     }
   };
@@ -576,6 +589,33 @@ export function AIDocumentQuizModal({
         {/* Phase 1: Configuration & Upload */}
         {phase === "config" && (
           <div className="p-6 space-y-6">
+            {/* Error Notification if generation failed */}
+            {generationError && (
+              <div className="p-4 rounded-[6px] bg-[rgba(239,68,68,0.12)] border border-[rgba(239,68,68,0.35)] text-[#FCA5A5] flex items-start justify-between gap-3 text-xs">
+                <div className="flex items-start gap-2.5">
+                  <AlertCircle className="w-4 h-4 text-[#F87171] shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-semibold text-[#F87171]">
+                      Document Generation Notice
+                    </div>
+                    <div className="mt-1 text-[#E2E8F0] font-mono text-[11px]">
+                      {generationError}
+                    </div>
+                    <div className="mt-2 text-[11px] text-[#94A3B8]">
+                      Your selected document is still loaded below. You can try clicking &quot;Synthesize Questions&quot; again, or test using one of the instant sample presets.
+                    </div>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setGenerationError(null)}
+                  className="text-[#94A3B8] hover:text-[#F2F7F3] p-1 transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+            )}
+
             {/* Dropzone */}
             <div>
               <label className="block text-xs font-mono uppercase tracking-wider text-[#A0AEA5] mb-2">
@@ -985,6 +1025,21 @@ export function AIDocumentQuizModal({
                 </div>
               </div>
             </div>
+
+            {/* Zero Downtime Fallback Warning Banner */}
+            {generationMetadata.warning && (
+              <div className="p-3.5 rounded-[6px] bg-[rgba(245,158,11,0.12)] border border-[rgba(245,158,11,0.3)] text-[#FDE68A] flex items-start gap-3 text-xs">
+                <AlertTriangle className="w-4 h-4 text-[#FBBF24] shrink-0 mt-0.5" />
+                <div className="space-y-0.5">
+                  <div className="font-semibold text-[#FBBF24]">
+                    Intelligent Document Fallback Active
+                  </div>
+                  <div className="text-[#FEF3C7] text-[11px] leading-relaxed">
+                    {generationMetadata.warning}
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Questions List with Inline Editing */}
             <div className="space-y-4 max-h-[48vh] overflow-y-auto pr-1">

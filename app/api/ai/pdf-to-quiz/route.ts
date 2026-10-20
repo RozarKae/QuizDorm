@@ -3,6 +3,7 @@ import { QuestionIntelligenceService } from "@/lib/ai/services/questionIntellige
 import { ExtractedQuestion } from "@/lib/types/ocr";
 
 export const runtime = "nodejs";
+export const maxDuration = 60;
 
 // Maximum upload size: 50MB
 const MAX_FILE_SIZE_BYTES = 50 * 1024 * 1024;
@@ -144,6 +145,7 @@ export async function POST(request: Request) {
       buffer,
       mimeType,
       {
+        fileName,
         subject: subject || "General Academic",
         topic: topic || undefined,
         difficulty,
@@ -241,6 +243,7 @@ export async function POST(request: Request) {
       detectedTopic: result.detectedTopic || topic || "Curriculum Unit",
       count: formattedQuestions.length,
       questions: formattedQuestions,
+      warning: result.warning,
       metadata: {
         modelUsed: result.modelUsed,
         latencyMs: result.latencyMs,

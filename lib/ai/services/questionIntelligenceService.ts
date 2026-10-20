@@ -17,6 +17,8 @@ import {
   QuestionIntelligenceValidator,
   QuestionValidationResult,
 } from "../../quality/questionIntelligenceValidator";
+import { DocumentTextExtractor } from "../server/pdfTextExtractor";
+import { DocumentFallbackSynthesizer } from "../server/documentFallbackSynthesizer";
 
 export interface QuestionIntelligenceResult {
   success: boolean;
@@ -52,6 +54,7 @@ export interface DocumentQuestionsResult {
     completionTokens?: number;
     totalTokens?: number;
   };
+  warning?: string;
   error?: string;
   errorCode?: string;
 }
@@ -284,6 +287,53 @@ export class QuestionIntelligenceService {
         }
       );
     } catch (err: any) {
+      console.warn(
+        `[QuestionIntelligenceService] Primary provider failed: ${err.message}. Engaging DocumentFallbackSynthesizer...`
+      );
+      try {
+        const extracted = DocumentTextExtractor.extractText(
+          buffer,
+          mimeType,
+          parsedInput.data.fileName
+        );
+        const synthesized = DocumentFallbackSynthesizer.synthesizeFromExtractedText(
+          extracted.text,
+          {
+            fileName: parsedInput.data.fileName,
+            subject: parsedInput.data.subject,
+            topic: parsedInput.data.topic,
+            questionCount: parsedInput.data.questionCount,
+            questionTypes: parsedInput.data.questionTypes,
+            difficulty: parsedInput.data.difficulty,
+          }
+        );
+
+        if (synthesized.questions && synthesized.questions.length > 0) {
+          const isConfigError =
+            err instanceof AIConfigurationError ||
+            (err.message && (err.message.includes("CONFIGURATION_ERROR") || err.message.includes("GEMINI_API_KEY")));
+
+          return {
+            success: true,
+            documentTitle: synthesized.documentTitle,
+            summary: synthesized.summary,
+            detectedSubject: synthesized.detectedSubject,
+            detectedTopic: synthesized.detectedTopic,
+            questions: synthesized.questions,
+            modelUsed: "document-text-synthesizer-fallback",
+            latencyMs: 50,
+            warning: isConfigError
+              ? `AI API key is unconfigured in the server environment. Generated ${synthesized.questions.length} questions directly from document text.`
+              : `AI provider encountered an error (${err.message}). Generated ${synthesized.questions.length} questions directly from document text fallback.`,
+          };
+        }
+      } catch (fallbackErr: any) {
+        console.error(
+          "[QuestionIntelligenceService] DocumentFallbackSynthesizer failed:",
+          fallbackErr
+        );
+      }
+
       const errorCode =
         err instanceof AIConfigurationError
           ? "CONFIGURATION_ERROR"
@@ -303,6 +353,42 @@ export class QuestionIntelligenceService {
     try {
       parsedJson = JSON.parse(rawResult.rawJsonString);
     } catch (jsonErr: any) {
+      // Fallback synthesis on malformed JSON
+      try {
+        const extracted = DocumentTextExtractor.extractText(
+          buffer,
+          mimeType,
+          parsedInput.data.fileName
+        );
+        const synthesized = DocumentFallbackSynthesizer.synthesizeFromExtractedText(
+          extracted.text,
+          {
+            fileName: parsedInput.data.fileName,
+            subject: parsedInput.data.subject,
+            topic: parsedInput.data.topic,
+            questionCount: parsedInput.data.questionCount,
+            questionTypes: parsedInput.data.questionTypes,
+            difficulty: parsedInput.data.difficulty,
+          }
+        );
+
+        if (synthesized.questions && synthesized.questions.length > 0) {
+          return {
+            success: true,
+            documentTitle: synthesized.documentTitle,
+            summary: synthesized.summary,
+            detectedSubject: synthesized.detectedSubject,
+            detectedTopic: synthesized.detectedTopic,
+            questions: synthesized.questions,
+            modelUsed: "document-text-synthesizer-fallback",
+            latencyMs: rawResult.latencyMs,
+            warning: `AI provider produced malformed output. Recovered by generating ${synthesized.questions.length} questions directly from document text.`,
+          };
+        }
+      } catch {
+        // Continue to error return
+      }
+
       return {
         success: false,
         questions: [],
@@ -332,6 +418,42 @@ export class QuestionIntelligenceService {
     }
 
     if (rawQuestionsList.length === 0) {
+      // Fallback synthesis if no questions returned
+      try {
+        const extracted = DocumentTextExtractor.extractText(
+          buffer,
+          mimeType,
+          parsedInput.data.fileName
+        );
+        const synthesized = DocumentFallbackSynthesizer.synthesizeFromExtractedText(
+          extracted.text,
+          {
+            fileName: parsedInput.data.fileName,
+            subject: parsedInput.data.subject,
+            topic: parsedInput.data.topic,
+            questionCount: parsedInput.data.questionCount,
+            questionTypes: parsedInput.data.questionTypes,
+            difficulty: parsedInput.data.difficulty,
+          }
+        );
+
+        if (synthesized.questions && synthesized.questions.length > 0) {
+          return {
+            success: true,
+            documentTitle: synthesized.documentTitle,
+            summary: synthesized.summary,
+            detectedSubject: synthesized.detectedSubject,
+            detectedTopic: synthesized.detectedTopic,
+            questions: synthesized.questions,
+            modelUsed: "document-text-synthesizer-fallback",
+            latencyMs: rawResult.latencyMs,
+            warning: `Generated ${synthesized.questions.length} questions directly from document text analysis.`,
+          };
+        }
+      } catch {
+        // Continue
+      }
+
       return {
         success: false,
         questions: [],
@@ -354,6 +476,41 @@ export class QuestionIntelligenceService {
     }
 
     if (validatedQuestions.length === 0) {
+      try {
+        const extracted = DocumentTextExtractor.extractText(
+          buffer,
+          mimeType,
+          parsedInput.data.fileName
+        );
+        const synthesized = DocumentFallbackSynthesizer.synthesizeFromExtractedText(
+          extracted.text,
+          {
+            fileName: parsedInput.data.fileName,
+            subject: parsedInput.data.subject,
+            topic: parsedInput.data.topic,
+            questionCount: parsedInput.data.questionCount,
+            questionTypes: parsedInput.data.questionTypes,
+            difficulty: parsedInput.data.difficulty,
+          }
+        );
+
+        if (synthesized.questions && synthesized.questions.length > 0) {
+          return {
+            success: true,
+            documentTitle: synthesized.documentTitle,
+            summary: synthesized.summary,
+            detectedSubject: synthesized.detectedSubject,
+            detectedTopic: synthesized.detectedTopic,
+            questions: synthesized.questions,
+            modelUsed: "document-text-synthesizer-fallback",
+            latencyMs: rawResult.latencyMs,
+            warning: `AI provider questions failed schema validation. Generated ${synthesized.questions.length} valid questions directly from document text.`,
+          };
+        }
+      } catch {
+        // Continue
+      }
+
       return {
         success: false,
         questions: [],

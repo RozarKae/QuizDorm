@@ -212,6 +212,7 @@ export type BatchGeneratedQuestions = z.infer<
  * Input configuration for PDF document question generation
  */
 export const PdfQuestionGenerationInputSchema = z.object({
+  fileName: z.string().optional(),
   subject: z.string().optional().default("General Academic"),
   topic: z.string().optional(),
   difficulty: DifficultyLevelEnum.optional().default("Medium"),
