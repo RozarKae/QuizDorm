@@ -18,8 +18,20 @@ import { FadeIn, StaggerContainer, StaggerItem, OrbitalRings } from "@/component
 export default function Hero() {
   return (
     <section className="relative pt-16 pb-20 md:pt-24 md:pb-32 border-b border-[rgba(160,190,170,0.12)] bg-[#070B0A] overflow-hidden aurora-grid">
-      {/* Cinematic Radial Spotlight */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[radial-gradient(ellipse_at_center,rgba(101,245,154,0.12)_0%,rgba(56,217,176,0.03)_50%,transparent_75%)] blur-[100px] pointer-events-none" />
+      {/* Multi-Spectral Neon Spotlight (Yellow, Blue, Green, Red, Orange) */}
+      <div 
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[520px] blur-[110px] pointer-events-none opacity-85"
+        style={{
+          background: `radial-gradient(ellipse at center, 
+            rgba(255, 230, 0, 0.09) 0%,
+            rgba(255, 119, 0, 0.07) 20%,
+            rgba(255, 0, 85, 0.06) 40%,
+            rgba(0, 240, 255, 0.07) 60%,
+            rgba(57, 255, 20, 0.07) 80%,
+            transparent 100%
+          )`
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">

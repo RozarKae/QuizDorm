@@ -147,32 +147,47 @@ export function OrbitalRings({ className = "" }: { className?: string }) {
       className={`relative flex items-center justify-center pointer-events-none select-none ${className}`}
       aria-hidden="true"
     >
-      {/* Outer ambient glow */}
-      <div className="absolute w-[450px] h-[450px] rounded-full bg-[radial-gradient(circle,rgba(101,245,154,0.12)_0%,transparent_70%)] blur-[40px]" />
+      {/* Multi-spectral neon ambient glow (Yellow, Orange, Red, Blue, Green) */}
+      <div 
+        className="absolute w-[460px] h-[460px] rounded-full blur-[50px] opacity-75"
+        style={{
+          background: `conic-gradient(
+            from 0deg,
+            rgba(255, 230, 0, 0.16) 0deg,   /* Neon Yellow */
+            rgba(255, 119, 0, 0.14) 72deg,  /* Neon Orange */
+            rgba(255, 0, 85, 0.16) 144deg,  /* Neon Red */
+            rgba(0, 240, 255, 0.16) 216deg, /* Neon Blue */
+            rgba(57, 255, 20, 0.16) 288deg, /* Neon Green */
+            rgba(255, 230, 0, 0.16) 360deg
+          )`
+        }}
+      />
 
-      {/* Outer ring */}
+      {/* Outer ring with Neon Yellow & Neon Red satellites */}
       <div
-        className={`absolute w-[360px] h-[360px] rounded-full border border-[rgba(101,245,154,0.14)] ${
+        className={`absolute w-[360px] h-[360px] rounded-full border border-[rgba(255,230,0,0.25)] ${
           shouldReduceMotion ? "" : "animate-aurora-spin"
         }`}
         style={{ borderStyle: "dashed", borderWidth: "1px" }}
       >
-        <span className="absolute -top-1 left-1/2 w-2 h-2 rounded-full bg-[#65F59A] shadow-[0_0_10px_#65F59A]" />
+        <span className="absolute -top-1.5 left-1/2 w-2.5 h-2.5 rounded-full bg-[#FFE600] shadow-[0_0_12px_#FFE600]" />
+        <span className="absolute -bottom-1.5 left-1/4 w-2 h-2 rounded-full bg-[#FF0055] shadow-[0_0_10px_#FF0055]" />
       </div>
 
-      {/* Middle ring */}
+      {/* Middle ring with Neon Blue & Neon Orange satellites */}
       <div
-        className={`absolute w-[260px] h-[260px] rounded-full border border-[rgba(56,217,176,0.18)] ${
+        className={`absolute w-[260px] h-[260px] rounded-full border border-[rgba(0,240,255,0.3)] ${
           shouldReduceMotion ? "" : "animate-aurora-spin-reverse"
         }`}
       >
-        <span className="absolute -bottom-1 right-1/4 w-1.5 h-1.5 rounded-full bg-[#38D9B0] shadow-[0_0_8px_#38D9B0]" />
+        <span className="absolute -top-1 right-1/4 w-2 h-2 rounded-full bg-[#00F0FF] shadow-[0_0_10px_#00F0FF]" />
+        <span className="absolute -bottom-1 left-1/3 w-2 h-2 rounded-full bg-[#FF7700] shadow-[0_0_10px_#FF7700]" />
       </div>
 
-      {/* Inner luminous node */}
-      <div className="relative w-28 h-28 rounded-full bg-gradient-to-br from-[#17251E] to-[#070B0A] border border-[rgba(101,245,154,0.35)] shadow-[0_0_35px_rgba(101,245,154,0.25)] flex items-center justify-center">
-        <div className="w-12 h-12 rounded-full bg-[#65F59A]/15 border border-[#65F59A]/40 flex items-center justify-center">
-          <div className="w-3 h-3 rounded-full bg-[#65F59A] shadow-[0_0_15px_#65F59A] animate-pulse" />
+      {/* Inner luminous node with Neon Green radiant core */}
+      <div className="relative w-28 h-28 rounded-full bg-gradient-to-br from-[#17251E] via-[#0C1210] to-[#070B0A] border border-[rgba(57,255,20,0.4)] shadow-[0_0_35px_rgba(57,255,20,0.35)] flex items-center justify-center">
+        <div className="w-12 h-12 rounded-full bg-[#39FF14]/15 border border-[#39FF14]/50 flex items-center justify-center">
+          <div className="w-3.5 h-3.5 rounded-full bg-[#39FF14] shadow-[0_0_18px_#39FF14] animate-pulse" />
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function Navbar() {
     { name: "Assessment Engine", href: "/#features" },
     { name: "Live Arena", href: "/live/arena" },
     { name: "Question Bank", href: "/dashboard/questions" },
-    { name: "Role Workspaces", href: "/#audience" },
+    { name: "Founder's Desk", href: "/about" },
   ];
 
   return (

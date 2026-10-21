@@ -328,6 +328,36 @@
   box-shadow: 0 0 60px -10px rgba(101, 245, 154, 0.3);
 }
 
+/* Multi-Color Neon Glow Suite (Yellow, Blue, Green, Red, Orange) */
+.glow-neon-yellow {
+  box-shadow: 0 0 20px -2px rgba(255, 230, 0, 0.55), 0 0 8px rgba(255, 230, 0, 0.35);
+}
+
+.glow-neon-blue {
+  box-shadow: 0 0 20px -2px rgba(0, 240, 255, 0.55), 0 0 8px rgba(0, 240, 255, 0.35);
+}
+
+.glow-neon-green {
+  box-shadow: 0 0 20px -2px rgba(57, 255, 20, 0.55), 0 0 8px rgba(57, 255, 20, 0.35);
+}
+
+.glow-neon-red {
+  box-shadow: 0 0 20px -2px rgba(255, 0, 85, 0.55), 0 0 8px rgba(255, 0, 85, 0.35);
+}
+
+.glow-neon-orange {
+  box-shadow: 0 0 20px -2px rgba(255, 119, 0, 0.55), 0 0 8px rgba(255, 119, 0, 0.35);
+}
+
+.glow-neon-spectrum {
+  box-shadow: 
+    0 0 15px -2px rgba(255, 230, 0, 0.35),
+    0 0 25px -4px rgba(0, 240, 255, 0.3),
+    0 0 35px -6px rgba(57, 255, 20, 0.25),
+    0 0 45px -8px rgba(255, 0, 85, 0.25),
+    0 0 55px -10px rgba(255, 119, 0, 0.25);
+}
+
 /* Subtle Ambient Animations */
 @keyframes aurora-spin-slow {
   from {
@@ -404,15 +434,24 @@
 .aurora-side-scanner {
   position: absolute;
   right: -0.5px;
-  width: 2px;
-  height: 22%;
+  width: 2.5px;
+  height: 25%;
   background: linear-gradient(
     to bottom,
-    transparent,
-    #65F59A 50%,
-    transparent
+    transparent 0%,
+    #FFE600 20%,  /* Neon Yellow */
+    #FF7700 40%,  /* Neon Orange */
+    #FF0055 60%,  /* Neon Red */
+    #00F0FF 80%,  /* Neon Blue */
+    #39FF14 95%,  /* Neon Green */
+    transparent 100%
   );
-  box-shadow: 0 0 10px #65F59A, 0 0 4px #38D9B0;
+  box-shadow: 
+    0 0 10px #FFE600,
+    0 0 14px #FF7700,
+    0 0 16px #FF0055,
+    0 0 18px #00F0FF,
+    0 0 20px #39FF14;
   animation: aurora-scanner 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
   pointer-events: none;
   z-index: 25;
