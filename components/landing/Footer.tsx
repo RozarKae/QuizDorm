@@ -28,11 +28,11 @@ export default function Footer() {
         <div className="space-y-4">
           <Logo />
           <p className="text-xs text-[#A0AEA5] leading-relaxed font-normal">
-            QuizDorm is an intelligent Assessment Operating System designed for institutional testing, live competitive tournaments, and real-time performance telemetry.
+            QuizDorm is your dorm study squad & live battle arena: drop your notes, cook up instant quizzes with AI, and crush your exams together.
           </p>
           <div className="inline-flex items-center space-x-2 font-mono text-[10px] text-[#65F59A] bg-[#17251E] px-2.5 py-1 rounded-full border border-[#65F59A]/20">
             <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
-            <span>Verifiable Assessment Infrastructure</span>
+            <span>Live Dorm Study Platform</span>
           </div>
         </div>
 

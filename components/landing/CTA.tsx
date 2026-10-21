@@ -36,7 +36,7 @@ export default function CTA() {
               </span>
             </h2>
             <p className="text-sm text-[#A0AEA5] leading-relaxed font-normal max-w-xl">
-              Step into the live competitive arena, author syllabus-grounded assessments with Gemini AI, and uncover actionable learning telemetry.
+              Step into the live battle arena, cook up instant quizzes from your notes, and level up with your dorm squad.
             </p>
           </div>
 

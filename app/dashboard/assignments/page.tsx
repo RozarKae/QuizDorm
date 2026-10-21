@@ -63,7 +63,7 @@ export default function AssignmentsPage() {
         <div>
           <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5] mb-1">
             <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
-            <span>CLASSROOM TELEMETRY // ASSIGNMENT HUB</span>
+            <span>STUDY SQUAD // ASSIGNMENT TRACKER</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-[#F2F7F3] flex items-center">
             <BookOpen className="w-6 h-6 text-[#65F59A] mr-2" /> Quiz & Homework Assignments

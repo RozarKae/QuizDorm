@@ -98,13 +98,13 @@ export default function AnalyticsHubPage() {
           <div className="space-y-1">
             <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5]">
               <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse" />
-              <span>FUTURE OS // TELEMETRY & ANALYTICS INTELLIGENCE</span>
+              <span>BRAIN STATS // SQUAD PERFORMANCE</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-[#F2F7F3] flex items-center">
-              <BarChart3 className="w-6 h-6 text-[#65F59A] mr-2.5" /> Performance Intelligence
+              <BarChart3 className="w-6 h-6 text-[#65F59A] mr-2.5" /> Brain Stats & Analytics
             </h1>
             <p className="text-xs text-[#A0AEA5]">
-              Real-time cohort telemetry, question error distributions, and verifiable instructional reports.
+              Real-time study squad stats, weak spot breakdowns, and exam readiness scores across your dorm.
             </p>
           </div>
 

@@ -125,7 +125,7 @@ export default function AboutPage() {
                 <Globe className="w-7 h-7 text-[#65F59A]" />
                 <h3 className="font-display font-bold text-base text-[#F2F7F3]">Global Competitiveness</h3>
                 <p className="text-xs text-[#A0AEA5] leading-relaxed font-sans">
-                  Prepares students for national Olympiads, NEET, JEE, and international university assessments with instant microsecond telemetry scoring.
+                  Prepares students for school exams, boards, NEET, JEE, and Olympiads with instant live scoring and brain stats.
                 </p>
               </div>
             </div>
@@ -137,12 +137,12 @@ export default function AboutPage() {
               Join the Next-Generation Educational Movement
             </h3>
             <p className="text-xs text-[#A0AEA5] font-mono max-w-lg mx-auto">
-              Explore live competitions, author AI-assisted questions, or register your institution today.
+              Jump into live battle arenas, cook up questions with AI, or set up your school dorm today.
             </p>
             <div className="pt-2 flex justify-center gap-3">
               <Link href="/dashboard">
                 <Button className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono font-bold text-xs rounded-[4px] px-6 h-10 shadow-[0_0_15px_rgba(101,245,154,0.2)]">
-                  Launch Platform OS <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                  Launch Workspace <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
                 </Button>
               </Link>
             </div>

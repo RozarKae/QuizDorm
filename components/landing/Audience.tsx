@@ -16,25 +16,25 @@ export default function Audience() {
       action: "Register Institution",
     },
     {
-      title: "Teachers & Educators",
-      description: "Synthesize rigorous assessments with Gemini AI, auto-grade student submissions with item analysis, and diagnose learning gaps.",
+      title: "Teachers & Mentors",
+      description: "Cook up custom quizzes with AI, grade whole classes in seconds, and see exactly which questions students found tricky.",
       icon: <Users className="h-5 w-5 text-[#38D9B0]" />,
       href: "/auth/register?role=teacher",
-      action: "Create Teacher Account",
+      action: "Teacher Workspace",
     },
     {
-      title: "Students & Learners",
-      description: "Participate in real-time arena tournaments, take adaptive practice quizzes, track learning telemetry, and earn verified mastery badges.",
+      title: "Students & Study Squads",
+      description: "Battle your dorm fam live, grind daily streaks, check your speed stats, and flex on the campus leaderboard.",
       icon: <GraduationCap className="h-5 w-5 text-[#65F59A]" />,
       href: "/auth/register?role=student",
-      action: "Join as Student",
+      action: "Student Workspace",
     },
     {
       title: "Tournament & Arena Hosts",
-      description: "Broadcast synchronized decathlons with live PIN lobbies, custom timers, real-time leaderboards, and instant champion podiums.",
+      description: "Host live speed battles with room PINs, custom countdowns, live score jumps, and an electric winner's podium.",
       icon: <Trophy className="h-5 w-5 text-[#38D9B0]" />,
       href: "/live/arena",
-      action: "Enter Competition Arena",
+      action: "Enter Live Arena",
     },
   ];
 

@@ -47,13 +47,13 @@ export default function LeaderboardPage() {
         <div>
           <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5] mb-1">
             <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
-            <span>GLOBAL STANDINGS // ACADEMIC TELEMETRY</span>
+            <span>GLOBAL RANKINGS // ARENA LEADERBOARD</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-[#F2F7F3] flex items-center">
-            <Trophy className="w-6 h-6 text-[#65F59A] mr-2" /> Global Academic Leaderboard
+            <Trophy className="w-6 h-6 text-[#65F59A] mr-2" /> Global Arena Leaderboard
           </h1>
           <p className="text-xs font-mono text-[#A0AEA5] mt-1">
-            Verified rankings across institutional assessments, live decathlons, and competitive tournaments.
+            Verified rankings across dorm battles, live arenas, and weekly campus tournaments.
           </p>
         </div>
 

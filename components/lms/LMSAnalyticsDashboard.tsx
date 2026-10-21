@@ -36,7 +36,7 @@ export function LMSAnalyticsDashboard() {
       <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <BarChart3 className="w-6 h-6 text-indigo-600" /> Learning Analytics & Engagement Telemetry
+            <BarChart3 className="w-6 h-6 text-indigo-600" /> Learning Analytics & Study Activity
           </h2>
           <p className="text-xs text-slate-500 mt-1">
             Track course completion velocity, daily active learners, lesson popularity metrics, and cohort engagement heatmaps.

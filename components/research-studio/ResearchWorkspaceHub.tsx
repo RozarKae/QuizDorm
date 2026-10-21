@@ -87,8 +87,8 @@ export function ResearchWorkspaceHub() {
           </p>
         </div>
 
-        <Button onClick={() => toast.info("Opening AI Literature Review Synthesizer...")} className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl shadow-lg">
-          <Sparkles className="w-4 h-4 mr-1.5 text-amber-400" /> AI Literature Review Assistant
+        <Button onClick={() => toast.info("Opening AI Study Review Assistant...")} className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl shadow-lg">
+          <Sparkles className="w-4 h-4 mr-1.5 text-amber-400" /> AI Study Review Assistant
         </Button>
       </div>
 
@@ -102,7 +102,7 @@ export function ResearchWorkspaceHub() {
           required
         />
         <Button type="submit" className="bg-purple-600 text-white font-bold text-xs rounded-xl shrink-0">
-          <Plus className="w-4 h-4 mr-1" /> Initialize Project
+          <Plus className="w-4 h-4 mr-1" /> Create Project
         </Button>
       </form>
 

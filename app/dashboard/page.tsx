@@ -34,30 +34,30 @@ export default function DashboardHomePage() {
 
   const suites = [
     {
-      category: "Assessment & Curricula",
+      category: "Quizzes & Question Banks",
       items: [
         { title: "Question Bank", desc: "535 validated items across 18 domains", href: "/dashboard/questions", badge: "535 ITEMS" },
-        { title: "Assessment Builder", desc: "Interactive composer with LaTeX & AI drafting", href: "/dashboard/quizzes/builder", badge: "BUILDER" },
-        { title: "Quiz Delivery Engine", desc: "Deterministic timer & auto-scoring runtime", href: "/dashboard/quizzes", badge: "PLAYER" },
-        { title: "Examination Platform", desc: "Proctored high-stakes testing terminal", href: "/dashboard/examination", badge: "SECURE" },
+        { title: "Quiz Builder", desc: "Interactive composer with LaTeX & AI drafting", href: "/dashboard/quizzes/builder", badge: "BUILDER" },
+        { title: "Quiz Delivery Engine", desc: "Live timed quizzes with instant scores", href: "/dashboard/quizzes", badge: "PLAYER" },
+        { title: "Examination Platform", desc: "Exam mode with focus lock & countdown", href: "/dashboard/examination", badge: "SECURE" },
       ],
     },
     {
-      category: "Real-Time Arenas & Analytics",
+      category: "Live Battles & Brain Stats",
       items: [
-        { title: "Live Competition Arena", desc: "Synchronized multiplayer tournaments with room PINs", href: "/dashboard/competitions", badge: "LIVE" },
-        { title: "Performance Analytics", desc: "Topic weakness heatmaps & cohort performance", href: "/dashboard/analytics", badge: "REPORTS" },
+        { title: "Live Battle Arena", desc: "Synchronized multiplayer tournaments with room PINs", href: "/dashboard/competitions", badge: "LIVE" },
+        { title: "Performance Analytics", desc: "Track topic accuracy, speed & weak spots", href: "/dashboard/analytics", badge: "STATS" },
         { title: "Digital Classroom Suite", desc: "Live instruction & collaborative workspaces", href: "/dashboard/classroom", badge: "CLASSROOM" },
         { title: "AI Study Coach", desc: "Automated grading & instructional recommendations", href: "/dashboard/tutor/planner", badge: "AI COACH" },
       ],
     },
     {
-      category: "Institutional Infrastructure",
+      category: "Campus & Dorm HQ",
       items: [
-        { title: "Academic Administration ERP", desc: "Multi-campus student records & compliance", href: "/dashboard/administration", badge: "ERP" },
+        { title: "Academic Administration ERP", desc: "Multi-campus student records & compliance", href: "/dashboard/administration", badge: "CAMPUS" },
         { title: "LMS Platform", desc: "Syllabus mapping & asynchronous coursework", href: "/dashboard/lms", badge: "LMS" },
         { title: "Global Certifications", desc: "Cryptographically verifiable diplomas & transcripts", href: "/dashboard/credentials", badge: "VERIFIED" },
-        { title: "Global EduCloud OS", desc: "Cluster telemetry, multi-region sync & backups", href: "/dashboard/cloud-ops", badge: "INFRA" },
+        { title: "Global EduCloud OS", desc: "Cloud sync, device backups & offline mode", href: "/dashboard/cloud-ops", badge: "CLOUD" },
       ],
     },
   ];
@@ -190,10 +190,10 @@ export default function DashboardHomePage() {
             <ArrowUpRight className="w-4 h-4 text-[#69786F] group-hover:text-[#65F59A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
           </div>
           <h3 className="text-sm font-bold font-display text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors">
-            Inspect Performance Telemetry
+            Inspect Brain Stats & Weak Spots
           </h3>
           <p className="text-xs text-[#A0AEA5] mt-1.5 leading-relaxed">
-            Inspect cohort grade distribution, topic error heatmaps, and export verifiable instructional dossiers.
+            See student score trends, topic weak spots, and export grade breakdowns for your study squad.
           </p>
         </Link>
       </div>

@@ -8,40 +8,40 @@ import SectionDivider from "@/components/ui/section-divider";
 export default function Features() {
   const list = [
     {
-      title: "Intelligent AI Question Studio",
-      description: "Generate and refine curriculum-grounded items with multimodal source analysis, distractor homogeneity, and Bloom's cognitive taxonomy.",
+      title: "Smart AI Quiz Studio",
+      description: "Turn messy study notes and syllabus PDFs into exam-ready questions with instant explanations and difficulty tuning.",
       icon: <Sparkles className="h-5 w-5 text-[#65F59A]" />,
-      tag: "Gemini 3.5 Multimodal",
+      tag: "QuizDorm AI",
     },
     {
-      title: "High-Concurrency Live Arena",
-      description: "Host synchronized competitive tournaments powered by low-latency Server-Sent Events (SSE), room PIN lobbies, and live podium reveals.",
+      title: "Live Battle Arena",
+      description: "Host live speed showdowns with your study squad. Enter room PINs, answer synchronized questions, and watch the live podium shifts.",
       icon: <Swords className="h-5 w-5 text-[#38D9B0]" />,
-      tag: "Real-Time SSE",
+      tag: "Live Arena Clash",
     },
     {
-      title: "Precise Multi-Role Workspaces",
-      description: "Dedicated operational consoles with cryptographically scoped permissions for Super Admins, School Leaders, Teachers, and Students.",
+      title: "Campus & Dorm Hubs",
+      description: "Dedicated spaces built for students, teachers, study squads, and school teams to organize quizzes and track progress.",
       icon: <School className="h-5 w-5 text-[#65F59A]" />,
-      tag: "Institutional ERP",
+      tag: "Campus HQ",
     },
     {
-      title: "Performance Telemetry & Heatmaps",
-      description: "Sub-second cohort telemetry, concept weakness heatmaps, item discrimination curves, and downloadable verifiable dossiers.",
+      title: "Brain Stats & Weak Spots",
+      description: "See your speed per question, streak counts, and topic accuracy heatmaps so you know exactly what to study before exam day.",
       icon: <Activity className="h-5 w-5 text-[#38D9B0]" />,
-      tag: "Deep Analytics",
+      tag: "Brain Stats",
     },
     {
-      title: "9-Format Question Engine",
-      description: "Full native evaluation for Single Choice, Multi-Select, True/False, Fill in Blanks, Matching, Drag & Drop, Error Spotting, Sequences, and Assertion & Reason.",
+      title: "9 Interactive Formats",
+      description: "Beyond boring MCQs: play matching pairs, drag & drop, fill-in-blanks, error spotting, sequences, and logic assertion challenges.",
       icon: <Layers className="h-5 w-5 text-[#65F59A]" />,
-      tag: "9 Item Types",
+      tag: "9 Question Modes",
     },
     {
-      title: "Automated Evaluation & Instant Remediation",
-      description: "Sub-second deterministic scoring, custom penalty parameters for timed exams, and actionable pedagogical feedback for every question.",
+      title: "Instant Scoring & Clear Explanations",
+      description: "Get scored in milliseconds with bite-sized explanations for tricky distractors so you understand why the right answer is right.",
       icon: <CheckCircle2 className="h-5 w-5 text-[#38D9B0]" />,
-      tag: "Automated Grading",
+      tag: "Instant Grading",
     },
   ];
 

@@ -58,8 +58,8 @@ export default function AdminPage() {
 
   const infrastructureNodes = [
     {
-      name: "AI Synthesis Routing Engine",
-      provider: "Google Gemini 1.5 Pro / Flash & OpenAI",
+      name: "QuizDorm AI Generation Engine",
+      provider: "QuizDorm Multi-Model AI Router",
       status: "100% Operational",
       latency: "420ms",
       load: "18%",
@@ -114,7 +114,7 @@ export default function AdminPage() {
       actionLabel: "Cloud Ops",
     },
     {
-      title: "Financial & Billing Telemetry",
+      title: "Financial & Billing Suite",
       description: "Track monthly recurring revenue, credit usage consumption, and enterprise invoices.",
       href: "/admin/billing",
       icon: <CreditCard className="h-4 w-4" />,
@@ -181,7 +181,7 @@ export default function AdminPage() {
               Global Platform Command
             </h1>
             <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-2xl leading-relaxed">
-              Monitor multi-tenant cloud infrastructure, AI synthesis engine loads, enterprise licensing quotas, and security telemetry nodes in real time.
+              Monitor multi-tenant cloud infrastructure, AI quiz engine activity, school licensing, and security health in real time.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3 shrink-0">
@@ -203,7 +203,7 @@ export default function AdminPage() {
         </div>
       </div>
 
-      {/* 2. Precision Telemetry HUD */}
+      {/* 2. Platform Stats HUD */}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
           <div
@@ -354,7 +354,7 @@ export default function AdminPage() {
               </h4>
             </div>
             <p className="text-xs text-[#A0AEA5] leading-relaxed">
-              Google Gemini 1.5 Pro and Flash active as primary synthetics with automatic fallback engaged if provider latency exceeds 2.5s.
+              QuizDorm AI models active as primary engines with automatic fallback engaged if provider latency exceeds 2.5s.
             </p>
             <Link
               href="/admin/ai"

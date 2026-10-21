@@ -182,7 +182,7 @@ export default function SchoolPage() {
         </div>
       </div>
 
-      {/* 2. Precision Telemetry HUD */}
+      {/* 2. Campus Stats HUD */}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
           <div

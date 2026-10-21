@@ -234,7 +234,7 @@ export default function CreateCompetitionPage() {
         setAiGeneratedList(generated);
         toast.success(`Generated ${generated.length} high-quality questions with AI!`);
       } else {
-        // Fallback: Synthesize from matching topic bank
+        // Fallback: Generate from matching topic bank
         const fallbackPool = ALL_DEFAULT_QUESTIONS.filter(
           (q) =>
             q.subject === aiSubject ||
@@ -250,7 +250,7 @@ export default function CreateCompetitionPage() {
             id: `ai-fallback-${Date.now()}-${idx + 1}`,
           }));
         setAiGeneratedList(fallbackPicked);
-        toast.info(`Synthesized ${fallbackPicked.length} questions for "${aiTopic}".`);
+        toast.info(`Cooked up ${fallbackPicked.length} questions for "${aiTopic}".`);
       }
     } catch (err: any) {
       toast.error("Failed to generate AI questions. Check network connection.");
@@ -409,7 +409,7 @@ export default function CreateCompetitionPage() {
           <Trophy className="w-7 h-7 text-[#65F59A] mr-2.5" /> Host New Live Competition
         </h1>
         <p className="text-xs font-mono text-[#A0AEA5] mt-1">
-          Configure real-time tournament rules, select topic-segregated questions, or synthesize questions via AI / PDF.
+          Set your battle rules, pick from 535+ topic questions, or cook up questions instantly with AI or PDF.
         </p>
       </div>
 
@@ -803,7 +803,7 @@ export default function CreateCompetitionPage() {
                   <Sparkles className="w-4 h-4 fill-current" /> AI Arena Question Generator
                 </h3>
                 <p className="text-[11px] font-mono text-[#A0AEA5] mt-1">
-                  Synthesize verified, curriculum-grounded questions with distractor analysis on any topic instantly.
+                  Cook up high-yield questions on any topic in seconds with QuizDorm AI.
                 </p>
               </div>
 
@@ -883,12 +883,12 @@ export default function CreateCompetitionPage() {
                   {isGeneratingAi ? (
                     <>
                       <RefreshCw className="w-3.5 h-3.5 mr-1.5 animate-spin" />
-                      <span>Synthesizing Questions...</span>
+                      <span>Cooking Up Questions...</span>
                     </>
                   ) : (
                     <>
                       <Sparkles className="w-3.5 h-3.5 mr-1.5 fill-current" />
-                      <span>Generate with AI</span>
+                      <span>Cook Up with AI</span>
                     </>
                   )}
                 </Button>
@@ -899,7 +899,7 @@ export default function CreateCompetitionPage() {
                 <div className="pt-4 border-t border-[rgba(160,190,170,0.12)] space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-mono font-bold text-[#65F59A]">
-                      ✓ {aiGeneratedList.length} Questions Synthesized &amp; Validated
+                      ✓ {aiGeneratedList.length} Questions Ready to Roll
                     </span>
                     <Button
                       type="button"

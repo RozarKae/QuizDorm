@@ -56,13 +56,13 @@ export default function SettingsPage() {
       <div className="border-b border-[rgba(160,190,170,0.14)] pb-5">
         <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5] mb-1">
           <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
-          <span>ENVIRONMENT // PREFERENCES & TELEMETRY</span>
+          <span>DORM SETTINGS // PREFERENCES</span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-[#F2F7F3] flex items-center">
           <Settings className="w-6 h-6 text-[#65F59A] mr-2" /> Application Settings
         </h1>
         <p className="text-xs font-mono text-[#A0AEA5] mt-1">
-          Configure appearance, telemetry notification frequency, security credentials, and locale.
+          Customize your theme, notification alerts, study squad preferences, and locale.
         </p>
       </div>
 
@@ -114,7 +114,7 @@ export default function SettingsPage() {
         <TabsContent value="notifications">
           <div className="bg-[#0C1210] p-6 sm:p-8 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-xs space-y-6">
             <h3 className="text-sm font-bold font-display uppercase tracking-wider text-[#F2F7F3] border-b border-[rgba(160,190,170,0.12)] pb-2.5">
-              Notification Telemetry
+              Activity & Battle Alerts
             </h3>
 
             <div className="flex items-center justify-between py-3 border-b border-[rgba(160,190,170,0.12)]">

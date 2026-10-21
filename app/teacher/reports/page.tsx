@@ -74,7 +74,7 @@ export default function TeacherReportsPage() {
 
   const handleExport = (title: string) => {
     toast.success(`Export generated: ${title}.csv`, {
-      description: "Gradebook telemetry and student performance downloaded.",
+      description: "Gradebook and student scores downloaded.",
     });
   };
 
@@ -85,7 +85,7 @@ export default function TeacherReportsPage() {
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="font-mono text-[10px] uppercase font-bold text-[#65F59A] tracking-widest">
-              ACADEMIC TELEMETRY // GRADEBOOK AUDIT
+              CLASS STATS // GRADEBOOK HUB
             </span>
           </div>
           <h1 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight text-[#F2F7F3]">

@@ -9,24 +9,24 @@ export default function HowItWorks() {
   const steps = [
     {
       step: "01",
-      title: "Provision Workspaces & Scopes",
-      description: "Administrators configure multi-campus institution directories, synchronize rosters, and assign cryptographically scoped roles.",
+      title: "Pick Your Campus & Role",
+      description: "Sign in with your school, set up your profile, and connect with your classmates, teachers, or dorm study squad.",
       icon: <School className="h-5 w-5 text-[#65F59A]" />,
-      detail: "Role-Based Access Control",
+      detail: "Quick Campus Setup",
     },
     {
       step: "02",
-      title: "Synthesize or Compose Assessments",
-      description: "Extract syllabus concepts with Gemini 3.5 AI, pull from 535+ verified question items, or author custom interactive questions.",
+      title: "Cook Up or Pick Your Quizzes",
+      description: "Drop your syllabus notes into QuizDorm AI, choose from 535+ topic-bank questions, or write custom quiz questions.",
       icon: <Sparkles className="h-5 w-5 text-[#38D9B0]" />,
-      detail: "Multimodal AI & 9 Formats",
+      detail: "Smart AI & 9 Formats",
     },
     {
       step: "03",
-      title: "Execute Arenas & Uncover Mastery",
-      description: "Launch real-time tournaments with room PINs, synchronize live leaderboards, and inspect granular topic-level error heatmaps.",
+      title: "Jump Into the Live Arena",
+      description: "Share room PINs with your friends, race the clock in synchronized rounds, and climb to the top of the podium.",
       icon: <Trophy className="h-5 w-5 text-[#65F59A]" />,
-      detail: "Low-Latency SSE Engine",
+      detail: "Real-Time Battle Mode",
     },
   ];
 

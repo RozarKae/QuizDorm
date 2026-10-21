@@ -10,7 +10,7 @@ import { toast } from "sonner";
 
 const mockAgents: AutonomousAIAgent[] = [
   { agentId: "agent-1", name: "Lesson Planning Agent", role: "Curriculum Specialist", description: "Automates daily & weekly lesson plans mapped to Bloom's Taxonomy", status: "Idle", lastTaskExecuted: "Generated Quantum Optics Plan", logs: ["Agent initialized", "Prompt template loaded"] },
-  { agentId: "agent-2", name: "Question Generation Agent", role: "Assessment Architect", description: "Synthesizes MCQs, numericals, and rubrics with difficulty tuning", status: "Idle", lastTaskExecuted: "Built 10 Pauli Matrix MCQs", logs: ["Agent initialized"] },
+  { agentId: "agent-2", name: "Question Generation Agent", role: "Assessment Architect", description: "Cooks up MCQs, quick questions, and rubrics with difficulty tuning", status: "Idle", lastTaskExecuted: "Built 10 Pauli Matrix MCQs", logs: ["Agent initialized"] },
   { agentId: "agent-3", name: "Assignment Agent", role: "Coursework Coordinator", description: "Formats lab assignments, rubrics, and submission dropboxes", status: "Idle", lastTaskExecuted: "Created Circuit Analysis Lab 2", logs: ["Agent initialized"] },
   { agentId: "agent-4", name: "Homework Agent", role: "Practice Engineer", description: "Generates weekly homework exercises & step-by-step solution keys", status: "Idle", lastTaskExecuted: "Generated Chapter 4 Homework", logs: ["Agent initialized"] },
   { agentId: "agent-5", name: "Classroom Management Agent", role: "In-Class Copilot", description: "Monitors real-time engagement and generates live discussion prompts", status: "Running", lastTaskExecuted: "Monitoring PHY-9042 Live Stream", logs: ["Monitoring engagement", "Engagement at 92%"] },

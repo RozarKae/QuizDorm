@@ -16,7 +16,7 @@ export function LiveAnalyticsCard({
     <div className="bg-[#0C1210] p-6 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-xs space-y-4">
       <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F2F7F3] flex items-center justify-between">
         <span className="flex items-center">
-          <Activity className="w-4 h-4 text-[#65F59A] mr-2" /> Live Telemetry Stream
+          <Activity className="w-4 h-4 text-[#65F59A] mr-2" /> Live Arena Stats
         </span>
         <span className="w-2 h-2 rounded-full bg-[#65F59A] animate-pulse" />
       </h3>

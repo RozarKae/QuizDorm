@@ -66,7 +66,7 @@ export default function ExaminationAuthorityPlatformPage() {
                 </span>
               </h1>
               <p className="text-xs font-mono text-[#A0AEA5] mt-0.5">
-                Proctored testing terminal, AES-256 encrypted paper vault, biometric admit credentials & multi-region cluster telemetry.
+                Secure exam testing hall, protected question papers, timed student credentials & live exam monitor.
               </p>
             </div>
           </div>

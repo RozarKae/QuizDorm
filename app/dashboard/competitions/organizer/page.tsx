@@ -46,7 +46,7 @@ export default function OrganizerConsolePage() {
                 Organizer Command &amp; Anti-Cheat Monitor
               </h1>
               <p className="text-xs font-mono text-[#A0AEA5] max-w-2xl leading-relaxed">
-                Manage championship elimination brackets, broadcast live sync announcements, and monitor real-time anti-cheat telemetry streams.
+                Manage tournament brackets, broadcast live announcements to players, and monitor live match integrity.
               </p>
             </div>
 

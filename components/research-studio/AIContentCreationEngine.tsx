@@ -37,11 +37,11 @@ export function AIContentCreationEngine() {
       <div className="bg-gradient-to-r from-purple-950 via-slate-900 to-indigo-950 text-white p-6 sm:p-8 rounded-3xl border border-purple-500/30 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold mb-3 border border-purple-500/30">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" /> AI Educational Content Synthesizer
+            <Sparkles className="w-3.5 h-3.5 text-amber-400" /> AI Study Material Builder
           </div>
-          <h1 className="text-3xl font-extrabold tracking-tight">AI Content Creation & Enhancement Engine</h1>
+          <h1 className="text-3xl font-extrabold tracking-tight">AI Study Sheets & Content Studio</h1>
           <p className="text-slate-300 text-xs sm:text-sm mt-1.5 max-w-xl">
-            Accelerate content creation with AI article generation, lesson builders, AI proofreaders, multi-language translation, and content enhancers.
+            Generate study sheets, summarize chapters, proofread essays, and translate notes for your study squad.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export function AIContentCreationEngine() {
           <Input
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
-            placeholder="Topic prompt for AI content synthesizer..."
+            placeholder="What topic do you want to create study notes for?..."
             className="rounded-xl"
             required
           />

@@ -9,10 +9,10 @@ import SectionDivider from "@/components/ui/section-divider";
 
 export default function AnalyticsSection() {
   const topics = [
-    { name: "Algorithmic Complexity & Recurrences", mastery: 94, status: "Mastered", color: "bg-[#65F59A]" },
-    { name: "Distributed Consensus (Raft/Paxos)", mastery: 86, status: "Proficient", color: "bg-[#38D9B0]" },
-    { name: "Memory Hierarchy & Cache Locality", mastery: 82, status: "Proficient", color: "bg-[#38D9B0]" },
-    { name: "Lock-Free Concurrency & Atomics", mastery: 58, status: "Remediation", color: "bg-[#F87171]" },
+    { name: "AP Bio: Cellular Respiration & ATP", mastery: 94, status: "Mastered", color: "bg-[#65F59A]" },
+    { name: "Calculus: Limits & Derivatives", mastery: 86, status: "Proficient", color: "bg-[#38D9B0]" },
+    { name: "World History: Industrial Revolutions", mastery: 82, status: "Proficient", color: "bg-[#38D9B0]" },
+    { name: "Physics: Kinematics & Projectile Motion", mastery: 58, status: "Needs Review", color: "bg-[#F87171]" },
   ];
 
   return (
@@ -23,19 +23,19 @@ export default function AnalyticsSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-[rgba(160,190,170,0.12)] mb-12 gap-6">
           <div className="space-y-3 max-w-2xl">
             <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] bg-[#17251E] px-3 py-1 rounded-full border border-[#65F59A]/30 font-semibold shadow-[0_0_12px_rgba(101,245,154,0.15)]">
-              DIAGNOSTIC TELEMETRY // COHORT INSIGHTS
+              BRAIN STATS // SQUAD INSIGHTS
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2F7F3] tracking-tight">
               See More Than <br />
-              <span className="text-[#38D9B0]">The Score.</span>
+              <span className="text-[#38D9B0]">Just The Score.</span>
             </h2>
           </div>
           <p className="text-sm font-normal text-[#A0AEA5] max-w-md leading-relaxed">
-            Turn raw test percentages into deep pedagogical telemetry. Inspect concept weakness heatmaps, item discrimination curves, and cognitive mastery levels.
+            Turn quiz results into deep study insights. Spot topic weak points, see who needs help, and watch your squad level up before exam day.
           </p>
         </div>
 
-        {/* Telemetry Dashboard Preview Grid */}
+        {/* Brain Stats Dashboard Preview Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
           {/* Card 1: Topic Weakness Heatmap (7 cols) */}
@@ -44,11 +44,11 @@ export default function AnalyticsSection() {
               <div className="flex items-center space-x-2.5">
                 <Brain className="w-4 h-4 text-[#65F59A]" />
                 <h3 className="font-display text-base font-bold text-[#F2F7F3]">
-                  Curricular Topic Mastery & Error Heatmap
+                  Topic Mastery & Weak Spot Breakdown
                 </h3>
               </div>
               <span className="font-mono text-[10px] text-[#A0AEA5] uppercase bg-[#111B17] px-2.5 py-0.5 rounded-full border border-[rgba(160,190,170,0.14)]">
-                Cohort N=128
+                Study Squad (128 Students)
               </span>
             </div>
 
@@ -76,7 +76,7 @@ export default function AnalyticsSection() {
 
             <div className="pt-4 border-t border-[rgba(160,190,170,0.12)] flex items-center justify-between text-xs font-mono text-[#A0AEA5]">
               <span className="flex items-center gap-1.5 text-[#F87171]">
-                <AlertTriangle className="w-3.5 h-3.5" /> 1 Concept Flagged for Remediation
+                <AlertTriangle className="w-3.5 h-3.5" /> 1 Weak Spot Flagged for Squad Review
               </span>
               <span className="text-[#65F59A] font-semibold">AI Study Guide Generated</span>
             </div>
@@ -89,9 +89,9 @@ export default function AnalyticsSection() {
             <div className="bg-[#0C1210] border border-[rgba(160,190,170,0.18)] rounded-2xl p-6 shadow-xl space-y-4">
               <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
                 <span className="text-xs font-mono uppercase tracking-widest text-[#69786F] font-semibold">
-                  Cognitive Taxonomy
+                  Question Breakdown
                 </span>
-                <span className="text-[10px] font-mono text-[#65F59A] font-bold">Bloom&apos;s Level</span>
+                <span className="text-[10px] font-mono text-[#65F59A] font-bold">Skill Level</span>
               </div>
 
               <div className="grid grid-cols-3 gap-2 text-center font-mono">
@@ -110,7 +110,7 @@ export default function AnalyticsSection() {
               </div>
 
               <p className="text-[11px] font-mono text-[#A0AEA5] leading-relaxed">
-                45% of assessment weight evaluates higher-order synthesis and critical evaluation rather than passive rote memory.
+                45% of quiz questions test deep problem-solving and critical thinking rather than mindless memorization.
               </p>
             </div>
 
@@ -118,15 +118,15 @@ export default function AnalyticsSection() {
             <div className="bg-gradient-to-br from-[#111B17] to-[#0C1210] border border-[rgba(160,190,170,0.18)] rounded-2xl p-6 shadow-xl space-y-3">
               <div className="flex items-center space-x-2 text-xs font-mono text-[#65F59A]">
                 <Activity className="w-3.5 h-3.5" />
-                <span className="font-bold uppercase tracking-wider">Verifiable Telemetry Dossiers</span>
+                <span className="font-bold uppercase tracking-wider">Instant Brain Stats & Score Cards</span>
               </div>
               <p className="text-xs text-[#A0AEA5] leading-relaxed font-normal">
-                Export institutional reports with cryptographically signed item statistics, time-per-question telemetry, and accreditation logs.
+                Export full study reports with speed stats, squad weak spots, and topic rankings ready for teachers or dorm study groups.
               </p>
               <div className="pt-2">
                 <Link href="/dashboard/analytics">
                   <Button variant="outline" className="w-full border-[rgba(160,190,170,0.2)] bg-[#070B0A] hover:bg-[#17251E] text-xs font-mono text-[#F2F7F3] hover:text-[#65F59A] rounded-[6px] h-9 flex items-center justify-center gap-1.5 transition-colors">
-                    <span>Explore Analytics Console</span>
+                    <span>Explore Brain Stats Console</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Button>
                 </Link>

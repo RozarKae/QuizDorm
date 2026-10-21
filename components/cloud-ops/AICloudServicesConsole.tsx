@@ -9,7 +9,7 @@ import {
 import { toast } from "sonner";
 
 const mockAIModels: AIModelInstance[] = [
-  { modelId: "mod-1", modelName: "Gemini-Education-Pro-1.5", gpuAllocatedType: "NVIDIA H100 SXM5", gpuClusterNodes: 8, inferenceLatencyMs: 18, ragVectorCount: 8400000, status: "Serving" },
+  { modelId: "mod-1", modelName: "QuizDorm-AI-Tutor-Large", gpuAllocatedType: "NVIDIA H100 SXM5", gpuClusterNodes: 8, inferenceLatencyMs: 18, ragVectorCount: 8400000, status: "Serving" },
   { modelId: "mod-2", modelName: "Llama-3-Edu-70B (Fine-Tuned)", gpuAllocatedType: "NVIDIA A100 80GB", gpuClusterNodes: 4, inferenceLatencyMs: 32, ragVectorCount: 4200000, status: "Serving" },
 ];
 

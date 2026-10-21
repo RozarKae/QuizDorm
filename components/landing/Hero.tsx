@@ -68,7 +68,7 @@ export default function Hero() {
 
             <FadeIn direction="up" delay={0.25}>
               <p className="text-[#A0AEA5] text-base sm:text-lg max-w-xl leading-relaxed font-normal">
-                Deliver deep AI-synthesized assessments, run adrenaline-fueled live arenas, and turn everyday practice into verifiable mastery.
+                Drop your notes, cook up instant quizzes, battle your friends live, and lock in top exam grades with your study squad.
               </p>
             </FadeIn>
 
@@ -78,7 +78,7 @@ export default function Hero() {
                 <Link href="/dashboard">
                   <Button className="bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono text-xs font-bold rounded-[6px] px-6 h-11 shadow-[0_0_25px_rgba(101,245,154,0.35)] transition-all flex items-center gap-2 group">
                     <Sparkles className="w-4 h-4 fill-current group-hover:rotate-12 transition-transform" />
-                    Enter the Platform
+                    Enter the Dorm
                   </Button>
                 </Link>
 
@@ -88,7 +88,7 @@ export default function Hero() {
                     className="border-[#65F59A]/30 bg-[#111B17] text-[#65F59A] hover:bg-[rgba(101,245,154,0.12)] hover:border-[#65F59A]/60 text-xs font-mono font-medium rounded-[6px] px-5 h-11 flex items-center gap-2 transition-all shadow-[0_0_15px_rgba(101,245,154,0.1)]"
                   >
                     <Trophy className="w-3.5 h-3.5" />
-                    Step Into the Arena
+                    Live Battle Arena
                     <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
                   </Button>
                 </Link>
@@ -99,7 +99,7 @@ export default function Hero() {
                     className="text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#17251E] text-xs font-mono rounded-[6px] h-11 flex items-center gap-1.5 px-4"
                   >
                     <BookOpen className="w-3.5 h-3.5 text-[#38D9B0]" />
-                    Create Assessment
+                    Make a Quiz
                   </Button>
                 </Link>
               </div>
@@ -109,21 +109,21 @@ export default function Hero() {
             <FadeIn direction="up" delay={0.45}>
               <div className="pt-7 border-t border-[rgba(160,190,170,0.12)] grid grid-cols-3 gap-6 font-mono text-xs">
                 <div className="space-y-1">
-                  <p className="text-[10px] uppercase tracking-wider text-[#69786F]">Assessment Matrix</p>
+                  <p className="text-[10px] uppercase tracking-wider text-[#69786F]">Question Styles</p>
                   <p className="text-[#F2F7F3] font-bold text-base flex items-center gap-1.5">
-                    <Layers className="w-4 h-4 text-[#65F59A]" /> 9 Question Types
+                    <Layers className="w-4 h-4 text-[#65F59A]" /> 9 Interactive Types
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-[10px] uppercase tracking-wider text-[#69786F]">Competition Engine</p>
+                  <p className="text-[10px] uppercase tracking-wider text-[#69786F]">Live Showdown</p>
                   <p className="text-[#F2F7F3] font-bold text-base flex items-center gap-1.5">
-                    <Zap className="w-4 h-4 text-[#38D9B0]" /> Real-time SSE
+                    <Zap className="w-4 h-4 text-[#38D9B0]" /> Real-time Battle
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-[10px] uppercase tracking-wider text-[#69786F]">Intelligence Layer</p>
+                  <p className="text-[10px] uppercase tracking-wider text-[#69786F]">Quizbot Engine</p>
                   <p className="text-[#F2F7F3] font-bold text-base flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#65F59A]" /> Gemini 3.5 Active
+                    <CheckCircle2 className="w-4 h-4 text-[#65F59A]" /> Smart AI Active
                   </p>
                 </div>
               </div>

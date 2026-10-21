@@ -42,10 +42,10 @@ export function ClassroomAnalyticsDashboard() {
       <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold mb-2">
-            <Activity className="w-3.5 h-3.5" /> Real-time Performance Telemetry
+            <Activity className="w-3.5 h-3.5" /> Real-time Student & Study Stats
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-            <BarChart3 className="w-6 h-6 text-emerald-600" /> Classroom Intelligence & Analytics
+            <BarChart3 className="w-6 h-6 text-emerald-600" /> Classroom Brain Stats & Analytics
           </h2>
           <p className="text-xs text-slate-500 mt-1">
             Track student engagement heatmaps, attendance trends, assignment completion velocity, and teacher performance metrics.

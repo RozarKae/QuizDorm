@@ -19,7 +19,7 @@ export function BloomsIndicator({ level: initialLevel, onOverride }: BloomsIndic
     Apply: { label: "3. Apply (Execute)", color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300", desc: "Use information in new situations" },
     Analyze: { label: "4. Analyze (Dissect)", color: "bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300", desc: "Draw connections among ideas" },
     Evaluate: { label: "5. Evaluate (Judge)", color: "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300", desc: "Justify a stand or decision" },
-    Create: { label: "6. Create (Synthesize)", color: "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300", desc: "Produce new or original work" },
+    Create: { label: "6. Create (Design & Build)", color: "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300", desc: "Produce new or original work" },
   };
 
   const handleSelect = (l: BloomsTaxonomyLevel) => {

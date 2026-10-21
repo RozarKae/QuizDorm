@@ -265,7 +265,7 @@ export function AIDocumentQuizModal({
     setGenerationError(null);
     setPhase("generating");
     setTelemetryProgress(12);
-    setTelemetryStepText("Scanning document structure & token geometry...");
+    setTelemetryStepText("Reading and scanning your document...");
     setElapsedSeconds(0);
 
     const startTime = Date.now();
@@ -277,13 +277,13 @@ export function AIDocumentQuizModal({
       // Step 2 Progress
       setTimeout(() => {
         setTelemetryProgress(35);
-        setTelemetryStepText("Vectorizing semantic concepts & chunking curriculum units...");
+        setTelemetryStepText("Reading your notes and finding key concepts...");
       }, 700);
 
       // Step 3 Progress
       setTimeout(() => {
         setTelemetryProgress(60);
-        setTelemetryStepText("Synthesizing deep pedagogical questions via Google Gemini...");
+        setTelemetryStepText("Cooking up exam-ready questions with QuizDorm AI...");
       }, 1500);
 
       const effectiveCount = isCustomCount
@@ -310,12 +310,12 @@ export function AIDocumentQuizModal({
       }
 
       setTelemetryProgress(85);
-      setTelemetryStepText("Validating distractor homogeneity & Bloom's taxonomy...");
+      setTelemetryStepText("Double-checking answers and filtering sneaky traps...");
 
       await new Promise((r) => setTimeout(r, 400));
 
       setTelemetryProgress(100);
-      setTelemetryStepText("Assessment matrix synthesized successfully!");
+      setTelemetryStepText("Quiz cooked up and ready to roll!");
 
       if (timerRef.current) clearInterval(timerRef.current);
 
@@ -375,7 +375,7 @@ export function AIDocumentQuizModal({
 
       setGeneratedQuestions(formatted);
       setGenerationMetadata({
-        modelUsed: data.metadata?.modelUsed || (data.warning ? "document-text-synthesizer-fallback" : "gemini-3.5-flash-lite"),
+        modelUsed: data.metadata?.modelUsed || (data.warning ? "document-quiz-fallback" : "quizdorm-ai-engine"),
         latencyMs: data.metadata?.latencyMs || Date.now() - startTime,
         tokens: data.metadata?.tokenUsage?.totalTokens || 1840,
         docTitle: data.documentTitle || selectedFile.name,
@@ -387,7 +387,7 @@ export function AIDocumentQuizModal({
       if (data.warning) {
         toast.warning(data.warning, { duration: 6000 });
       } else {
-        toast.success(`Synthesized ${formatted.length} pedagogical questions with Gemini AI!`);
+        toast.success(`Cooked up ${formatted.length} fire questions with QuizDorm AI!`);
       }
     } catch (err: any) {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -460,7 +460,7 @@ export function AIDocumentQuizModal({
       title: quizTitle,
       description:
         generationMetadata.summary ||
-        `Comprehensive curriculum assessment synthesized from ${selectedFile?.name || "document"} via Gemini AI.`,
+        `Exam-ready study quiz cooked up from ${selectedFile?.name || "document"} by QuizDorm AI.`,
       category: subject || "Science",
       subject: subject || "Science",
       topic: topic || "General",
@@ -542,11 +542,11 @@ export function AIDocumentQuizModal({
                   </DialogTitle>
                   <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
-                    Gemini 3.5 Multimodal
+                    QuizDorm AI
                   </span>
                 </div>
                 <DialogDescription className="text-xs text-[#A0AEA5] mt-1">
-                  Upload syllabus PDFs, lecture notes, textbook chapters, or scans. Google Gemini extracts curriculum concepts and synthesizes deep, pedagogically validated questions.
+                  Upload syllabus PDFs, lecture notes, textbook chapters, or scans. QuizDorm AI extracts the core concepts and cooks up high-yield questions with clear explanations.
                 </DialogDescription>
               </div>
             </div>
@@ -560,7 +560,7 @@ export function AIDocumentQuizModal({
                     : "text-[#69786F]"
                 }`}
               >
-                1. Ingestion
+                1. Drop Notes
               </span>
               <span className="text-[#69786F]">→</span>
               <span
@@ -570,7 +570,7 @@ export function AIDocumentQuizModal({
                     : "text-[#69786F]"
                 }`}
               >
-                2. Synthesis
+                2. Cook Questions
               </span>
               <span className="text-[#69786F]">→</span>
               <span
@@ -602,7 +602,7 @@ export function AIDocumentQuizModal({
                       {generationError}
                     </div>
                     <div className="mt-2 text-[11px] text-[#94A3B8]">
-                      Your selected document is still loaded below. You can try clicking &quot;Synthesize Questions&quot; again, or test using one of the instant sample presets.
+                      Your selected document is still loaded below. You can try clicking &quot;Generate My Quiz&quot; again, or test using one of the instant sample presets.
                     </div>
                   </div>
                 </div>
@@ -909,12 +909,12 @@ export function AIDocumentQuizModal({
                 <Cpu className="w-8 h-8 animate-pulse" />
               </div>
               <h3 className="text-lg font-bold text-[#F2F7F3]">
-                AI Ingestion & Question Synthesis in Progress
+                Reading Notes & Cooking Up Questions...
               </h3>
               <p className="text-xs text-[#A0AEA5] max-w-md mx-auto">
-                Analyzing curriculum concepts from{" "}
+                Analyzing core study concepts from{" "}
                 <span className="font-mono text-[#65F59A]">{selectedFile?.name}</span> using
-                multimodal Gemini AI.
+                QuizDorm AI.
               </p>
             </div>
 
@@ -936,18 +936,18 @@ export function AIDocumentQuizModal({
 
               <div className="flex items-center justify-between text-[11px] font-mono text-[#69786F] pt-2">
                 <span>Elapsed: {elapsedSeconds}s</span>
-                <span>Engine: Gemini 3.5 Flash Multimodal</span>
-                <span>Quota: Active Verified</span>
+                <span>Engine: QuizDorm AI Engine</span>
+                <span>Status: Ready</span>
               </div>
             </div>
 
             {/* Pipeline Stage Indicators */}
             <div className="max-w-xl mx-auto grid grid-cols-1 gap-2 pt-2">
               {[
-                { title: "Document Structure & Token Chunking", threshold: 25 },
-                { title: "Semantic Concept Mapping & Pedagogical Alignment", threshold: 50 },
-                { title: "Gemini 3.5 Question Stem & Distractor Synthesis", threshold: 75 },
-                { title: "Automated Bloom's Scoring & Pedagogical Quality Check", threshold: 95 },
+                { title: "Document Structure & Concept Scanning", threshold: 25 },
+                { title: "Key Definitions, Formulas & Historical Dates", threshold: 50 },
+                { title: "Question Generation & Distractor Traps", threshold: 75 },
+                { title: "Answer Checking & Educational Quality Filter", threshold: 95 },
               ].map((stage, idx) => {
                 const isDone = telemetryProgress >= stage.threshold;
                 const isCurrent =
@@ -994,7 +994,7 @@ export function AIDocumentQuizModal({
             <div className="bg-[#111B17] border border-[rgba(101,245,154,0.25)] rounded-[6px] p-4 flex flex-wrap items-center justify-between gap-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-[#65F59A]">
-                  <CheckCircle2 className="w-4 h-4" /> Synthesis Complete
+                  <CheckCircle2 className="w-4 h-4" /> Questions Cooked & Ready!
                 </div>
                 <h4 className="text-base font-bold text-[#F2F7F3]">
                   {generationMetadata.docTitle || "Curriculum Assessment"}
@@ -1194,7 +1194,7 @@ export function AIDocumentQuizModal({
                   {/* Explanation (Editable) */}
                   <div>
                     <label className="block text-[10px] font-mono uppercase tracking-wider text-[#69786F] mb-1">
-                      Explanation & Pedagogical Rationale
+                      Explanation & Answer Breakdown
                     </label>
                     <input
                       type="text"
@@ -1227,14 +1227,14 @@ export function AIDocumentQuizModal({
                 className="bg-[#65F59A] text-[#070B0A] hover:bg-[#38D9B0] font-bold px-5 font-mono shadow-[0_0_15px_rgba(101,245,154,0.3)] transition-all"
               >
                 <Sparkles className="w-4 h-4 mr-2" />
-                Synthesize Questions with Gemini AI
+                Generate My Quiz
               </Button>
             </>
           )}
 
           {phase === "generating" && (
             <div className="w-full flex items-center justify-between text-xs text-[#A0AEA5] font-mono">
-              <span>Synthesizing assessment matrix via Google Gemini...</span>
+              <span>Cooking up your quiz questions with QuizDorm AI...</span>
               <span className="text-[#65F59A] animate-pulse">Running</span>
             </div>
           )}

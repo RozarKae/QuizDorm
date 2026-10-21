@@ -282,7 +282,7 @@ export default function Sidebar({
             </nav>
           </div>
 
-          {/* Audio Controls & System Telemetry */}
+          {/* Audio Controls & System Status */}
           <div className="p-2 border-t border-[rgba(160,190,170,0.12)] space-y-1.5">
             {!collapsed && (
               <div className="flex items-center justify-between px-2 py-1 text-[9px] font-mono text-[#69786F] bg-[#070B0A]/60 rounded border border-[rgba(160,190,170,0.08)]">
@@ -291,7 +291,7 @@ export default function Sidebar({
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#65F59A] opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#65F59A]"></span>
                   </span>
-                  <span>SSE MESH</span>
+                  <span>LIVE SYNC</span>
                 </span>
                 <span className="text-[#65F59A]">18ms</span>
               </div>

@@ -372,11 +372,11 @@ export default function CreateOwnQuizPage() {
                 AI Document Quiz Maker
                 <span className="text-[9px] uppercase font-mono font-bold px-1.5 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] flex items-center gap-1">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
-                  Gemini 3.5 Multimodal
+                  QuizDorm AI
                 </span>
               </h3>
               <p className="text-xs font-mono text-[#A0AEA5] mt-0.5">
-                Upload syllabus PDFs, lecture notes, textbook chapters, or scans. Google Gemini extracts curriculum concepts and synthesizes deep, pedagogically validated questions.
+                Drop your syllabus PDFs, lecture notes, or textbook snaps. QuizDorm AI extracts the core concepts and cooks up high-yield questions instantly.
               </p>
             </div>
           </div>
@@ -386,7 +386,7 @@ export default function CreateOwnQuizPage() {
               size="sm"
               className="bg-[#65F59A] hover:bg-[#38D9B0] text-[#070B0A] font-mono font-bold text-xs rounded-[4px] px-4 h-9 shadow-[0_0_15px_rgba(101,245,154,0.3)] flex items-center gap-1.5 transition-all"
             >
-              <Upload className="w-3.5 h-3.5 stroke-[2.5]" /> Upload Document
+              <Upload className="w-3.5 h-3.5 stroke-[2.5]" /> Drop Notes / PDF
             </Button>
             <Link href="/dashboard/ocr">
               <Button variant="outline" size="sm" className="text-xs font-mono border-[rgba(160,190,170,0.2)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17] rounded-[4px] h-9">

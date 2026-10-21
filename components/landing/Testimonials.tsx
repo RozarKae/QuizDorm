@@ -9,7 +9,7 @@ import SectionDivider from "@/components/ui/section-divider";
 const testimonials = [
   {
     quote:
-      "QuizDorm has fundamentally transformed our Samacheer Kalvi and NEET/JEE preparatory training. Our students from Saidapet to across Chennai compete in live timed decathlons, and the instant microsecond telemetry identifies conceptual gaps immediately.",
+      "QuizDorm has fundamentally transformed our Samacheer Kalvi and NEET/JEE preparatory training. Our students from Saidapet to across Chennai battle in live timed arena rounds, and the instant brain stats pinpoint weak spots right away.",
     author: "Dr. K. Saravanan",
     community: "Hindu Community",
     role: "Headmaster & P.G. Assistant",
@@ -53,7 +53,7 @@ const testimonials = [
   },
   {
     quote:
-      "The integrity filters and distractor analysis ensure zero ambiguity in our inter-school Olympiad trials. Students from Sowcarpet and George Town to Madurai experience rigorous, transparent competitive benchmarking.",
+      "The question verification and quality checks ensure top-tier questions for our inter-school trials. Students from Sowcarpet and George Town to Madurai experience exciting, fair live battles that boost their exam confidence.",
     author: "Prof. Parasmal Jain",
     community: "Jain Community",
     role: "Senior Controller of Examinations",

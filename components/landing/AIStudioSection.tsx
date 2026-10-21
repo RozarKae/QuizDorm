@@ -18,17 +18,17 @@ export default function AIStudioSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-[rgba(160,190,170,0.12)] mb-12 gap-6">
           <div className="space-y-3 max-w-2xl">
             <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] bg-[#17251E] px-3 py-1 rounded-full border border-[#65F59A]/30 font-semibold shadow-[0_0_12px_rgba(101,245,154,0.15)]">
-              GEMINI 3.5 MULTIMODAL // COGNITIVE STUDIO
+              QUIZDORM AI // SMART QUIZ MAKER
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2F7F3] tracking-tight">
-              From First Thought <br />
+              From Messy Notes <br />
               <span className="bg-gradient-to-r from-[#65F59A] to-[#38D9B0] bg-clip-text text-transparent">
-                to Brilliant Question.
+                to Exam-Ready Quizzes.
               </span>
             </h2>
           </div>
           <p className="text-sm font-normal text-[#A0AEA5] max-w-md leading-relaxed">
-            Upload textbooks, syllabus PDFs, research notes, or diagrams. Gemini extracts factual curriculum concepts and synthesizes deep, pedagogically validated assessments.
+            Drop in your syllabus PDFs, handwritten notes, lecture slides, or textbook snaps. QuizDorm AI extracts the core concepts and cooks up exam-ready questions with zero fluff.
           </p>
         </div>
 
@@ -41,16 +41,16 @@ export default function AIStudioSection() {
               <div className="w-10 h-10 rounded-xl bg-[#17251E] text-[#65F59A] border border-[#65F59A]/20 flex items-center justify-center font-mono font-bold text-xs group-hover:scale-105 transition-transform">
                 01
               </div>
-              <span className="font-mono text-[10px] uppercase text-[#69786F]">Multimodal Ingestion</span>
+              <span className="font-mono text-[10px] uppercase text-[#69786F]">Drop Notes</span>
             </div>
             <h3 className="font-display text-base font-bold text-[#F2F7F3]">
-              Curriculum Document Ingestion
+              Drop PDFs, Notes or Snaps
             </h3>
             <p className="text-xs text-[#A0AEA5] leading-relaxed">
-              Drop PDFs, Word files, Markdown notes, or scanned test sheets up to 50MB. Native Node.js decompression parses structure without loss.
+              Drop PDFs, Word files, Markdown notes, or photos of your test papers. Fast built-in parsing reads your study material cleanly.
             </p>
             <div className="pt-2 flex items-center gap-2 font-mono text-[11px] text-[#38D9B0]">
-              <FileCheck className="w-3.5 h-3.5" /> PDF, DOCX, TXT, MD, Images
+              <FileCheck className="w-3.5 h-3.5" /> PDF, DOCX, TXT, MD, Photos
             </div>
           </div>
 
@@ -60,16 +60,16 @@ export default function AIStudioSection() {
               <div className="w-10 h-10 rounded-xl bg-[#17251E] text-[#38D9B0] border border-[#38D9B0]/20 flex items-center justify-center font-mono font-bold text-xs group-hover:scale-105 transition-transform">
                 02
               </div>
-              <span className="font-mono text-[10px] uppercase text-[#69786F]">Concept Grounding</span>
+              <span className="font-mono text-[10px] uppercase text-[#69786F]">Exam Focus</span>
             </div>
             <h3 className="font-display text-base font-bold text-[#F2F7F3]">
-              Semantic Concept Grounding
+              Pulls Real Exam Concepts
             </h3>
             <p className="text-xs text-[#A0AEA5] leading-relaxed">
-              Gemini 3.5 identifies core premises, mathematical theorems, historical dates, and definitions directly from the document—preventing hallucinations.
+              QuizDorm AI extracts key formulas, historical dates, theorems, and definitions straight from your material so every question is high-yield.
             </p>
             <div className="pt-2 flex items-center gap-2 font-mono text-[11px] text-[#65F59A]">
-              <Cpu className="w-3.5 h-3.5" /> Strict Source Document Grounding
+              <Cpu className="w-3.5 h-3.5" /> 100% Grounded in Your Material
             </div>
           </div>
 
@@ -79,16 +79,16 @@ export default function AIStudioSection() {
               <div className="w-10 h-10 rounded-xl bg-[#17251E] text-[#65F59A] border border-[#65F59A]/40 flex items-center justify-center font-mono font-bold text-xs group-hover:scale-105 transition-transform shadow-[0_0_10px_rgba(101,245,154,0.2)]">
                 03
               </div>
-              <span className="font-mono text-[10px] uppercase text-[#65F59A] font-bold">9 Native Architectures</span>
+              <span className="font-mono text-[10px] uppercase text-[#65F59A] font-bold">Interactive Formats</span>
             </div>
             <h3 className="font-display text-base font-bold text-[#F2F7F3]">
-              9-Architecture Synthesis
+              Cooks Up 9 Question Styles
             </h3>
             <p className="text-xs text-[#A0AEA5] leading-relaxed">
-              Synthesizes Single Choice, Matching, Drag & Drop, Fill-in-Blanks, Error Spotting, and Reasoning items with verified distractor homogeneity.
+              Makes MCQs, match-the-following, drag-and-drop, fill-in-blanks, and error-spotting questions with tricky options so you never get caught off guard.
             </p>
             <div className="pt-2 flex items-center gap-2 font-mono text-[11px] text-[#65F59A] font-semibold">
-              <CheckCircle2 className="w-3.5 h-3.5" /> Deterministic Quality Gate Approved
+              <CheckCircle2 className="w-3.5 h-3.5" /> High-Accuracy Quality Filtered
             </div>
           </div>
 

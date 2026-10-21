@@ -293,7 +293,7 @@ export default function LiveArenaIndexPage() {
             &copy; {new Date().getFullYear()} QuizDorm Platform. Founded by <strong className="text-[#F2F7F3]">RK Akbar</strong> (Tamil Nadu &amp; Kerala).
           </p>
           <p className="text-[11px] text-[#65F59A]">
-            Server-Sent Events (SSE) Microsecond Telemetry Engine
+            Real-Time High-Speed Arena Engine
           </p>
         </div>
       </footer>

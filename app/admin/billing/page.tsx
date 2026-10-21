@@ -61,7 +61,7 @@ export default function AdminBillingPage() {
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
-                Revenue Telemetry // Financial Governance
+                Revenue & Billing // Finance Hub
               </span>
               <span className="font-mono text-[11px] text-[#69786F]">PCI-DSS Tier 1</span>
             </div>

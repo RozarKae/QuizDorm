@@ -109,7 +109,7 @@ export default function AdminReportsPage() {
 
         <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)]">
           <p className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
-            AI Token Ingestion
+            AI Tokens Processed
           </p>
           <div className="mt-2 flex items-baseline justify-between">
             <p className="font-display text-3xl font-extrabold text-[#38D9B0] tabular-nums">14.2M</p>
