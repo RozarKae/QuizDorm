@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { User, Session } from "@supabase/supabase-js";
-import { createClient } from "@/lib/supabase/client";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
 import { UserProfile, UserRole } from "@/lib/types/user";
 
 interface AuthContextType {
@@ -16,13 +16,13 @@ interface AuthContextType {
 }
 
 const defaultProfile: UserProfile = {
-  id: "usr-mock-101",
-  name: "Rozar Khan",
-  email: "kratoskhanrk@gmail.com",
+  id: "usr-rk-akbar-01",
+  name: "RK Akbar",
+  email: "rkakbar@quizdorm.edu",
   role: "student",
   avatar: "",
   createdAt: "Jul 16, 2026",
-  updatedAt: "Jul 23, 2026",
+  updatedAt: "Oct 21, 2026",
 };
 
 const AuthContext = createContext<AuthContextType>({
@@ -46,8 +46,6 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     let subscription: { unsubscribe: () => void } | undefined;
 
     try {
-      const supabase = createClient();
-
       async function getInitialSession() {
         try {
           if (typeof window !== "undefined") {
@@ -68,22 +66,29 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
             }
           }
 
-          const {
-            data: { session: activeSession },
-          } = await supabase.auth.getSession();
-          setSession(activeSession);
-          setUser(activeSession?.user ?? null);
-          if (activeSession?.user) {
-            const userRole = (activeSession.user.user_metadata?.role as UserRole) || "student";
-            setRole(userRole);
-            setProfile({
-              id: activeSession.user.id,
-              name: activeSession.user.user_metadata?.name || activeSession.user.email?.split("@")[0] || "User",
-              email: activeSession.user.email || "",
-              role: userRole,
-              createdAt: activeSession.user.created_at || "Jul 2026",
-              updatedAt: new Date().toISOString(),
-            });
+          if (isSupabaseConfigured()) {
+            const supabase = createClient();
+            const {
+              data: { session: activeSession },
+            } = await supabase.auth.getSession();
+            setSession(activeSession);
+            setUser(activeSession?.user ?? null);
+            if (activeSession?.user) {
+              const userRole = (activeSession.user.user_metadata?.role as UserRole) || "student";
+              setRole(userRole);
+              setProfile({
+                id: activeSession.user.id,
+                name: activeSession.user.user_metadata?.name || activeSession.user.email?.split("@")[0] || "User",
+                email: activeSession.user.email || "",
+                role: userRole,
+                createdAt: activeSession.user.created_at || "Jul 2026",
+                updatedAt: new Date().toISOString(),
+              });
+            }
+          } else {
+            // Self-contained demo mode: no active remote session
+            setUser(null);
+            setSession(null);
           }
         } catch {
           // Fallback to default state
@@ -94,25 +99,28 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
       getInitialSession();
 
-      const { data } = supabase.auth.onAuthStateChange((_event, currentSession) => {
-        setSession(currentSession);
-        setUser(currentSession?.user ?? null);
-        if (currentSession?.user) {
-          const userRole = (currentSession.user.user_metadata?.role as UserRole) || "student";
-          setRole(userRole);
-          setProfile({
-            id: currentSession.user.id,
-            name: currentSession.user.user_metadata?.name || currentSession.user.email?.split("@")[0] || "User",
-            email: currentSession.user.email || "",
-            role: userRole,
-            createdAt: currentSession.user.created_at || "Jul 2026",
-            updatedAt: new Date().toISOString(),
-          });
-        }
-        setIsLoading(false);
-      });
+      if (isSupabaseConfigured()) {
+        const supabase = createClient();
+        const { data } = supabase.auth.onAuthStateChange((_event, currentSession) => {
+          setSession(currentSession);
+          setUser(currentSession?.user ?? null);
+          if (currentSession?.user) {
+            const userRole = (currentSession.user.user_metadata?.role as UserRole) || "student";
+            setRole(userRole);
+            setProfile({
+              id: currentSession.user.id,
+              name: currentSession.user.user_metadata?.name || currentSession.user.email?.split("@")[0] || "User",
+              email: currentSession.user.email || "",
+              role: userRole,
+              createdAt: currentSession.user.created_at || "Jul 2026",
+              updatedAt: new Date().toISOString(),
+            });
+          }
+          setIsLoading(false);
+        });
 
-      subscription = data.subscription;
+        subscription = data.subscription;
+      }
     } catch {
       setIsLoading(false);
     }
@@ -126,10 +134,20 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     try {
       if (typeof window !== "undefined") {
         localStorage.removeItem("quizdorm_demo_user");
+        localStorage.removeItem("quizdorm_active_role");
         document.cookie = "quizdorm_demo_session=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+        const cookies = document.cookie.split(";");
+        for (const c of cookies) {
+          const cookieName = c.split("=")[0].trim();
+          if (cookieName.startsWith("sb-") || cookieName.includes("quizdorm")) {
+            document.cookie = `${cookieName}=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
+          }
+        }
       }
-      const supabase = createClient();
-      await supabase.auth.signOut();
+      if (isSupabaseConfigured()) {
+        const supabase = createClient();
+        await supabase.auth.signOut();
+      }
     } catch {
       // Ignore
     }

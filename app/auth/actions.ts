@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@/lib/supabase/server";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { cookies } from "next/headers";
 import { z } from "zod";
 
@@ -80,6 +80,25 @@ export async function signInWithEmail(formData: FormData) {
     }
   }
 
+  if (!isSupabaseConfigured()) {
+    if (testAccount) {
+      return {
+        success: true,
+        redirectUrl: testAccount.redirectUrl,
+        user: {
+          id: testAccount.id,
+          name: testAccount.name,
+          email: testAccount.email,
+          role: testAccount.role,
+        },
+      };
+    }
+    return {
+      error:
+        "Supabase project credentials are not configured yet. Sign in with a demo test account (e.g. student@quizdorm.com / Student@123) or configure your NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.",
+    };
+  }
+
   try {
     const supabase = await createClient();
     const { error, data } = await supabase.auth.signInWithPassword({
@@ -88,7 +107,6 @@ export async function signInWithEmail(formData: FormData) {
     });
 
     if (error) {
-      // If Supabase is not configured, give helpful fallback for test accounts
       if (testAccount) {
         return { success: true, redirectUrl: testAccount.redirectUrl };
       }
@@ -121,6 +139,34 @@ export async function signUpWithEmail(formData: FormData) {
 
   const username = email.split("@")[0] + Math.floor(Math.random() * 1000);
   
+  if (!isSupabaseConfigured()) {
+    try {
+      const cookieStore = await cookies();
+      cookieStore.set(
+        "quizdorm_demo_session",
+        JSON.stringify({
+          id: `usr-${Date.now()}`,
+          email,
+          user_metadata: {
+            name,
+            role,
+            username,
+          },
+        }),
+        {
+          path: "/",
+          httpOnly: false,
+          sameSite: "lax",
+          maxAge: 60 * 60 * 24 * 7,
+        }
+      );
+      const redirectUrl = role === "admin" ? "/admin" : `/${role}`;
+      return { success: true, redirectUrl };
+    } catch {
+      return { success: true, redirectUrl: "/dashboard" };
+    }
+  }
+
   try {
     const supabase = await createClient();
     const { error } = await supabase.auth.signUp({
@@ -155,8 +201,10 @@ export async function signOutUser() {
       maxAge: 0,
       expires: new Date(0),
     });
-    const supabase = await createClient();
-    await supabase.auth.signOut();
+    if (isSupabaseConfigured()) {
+      const supabase = await createClient();
+      await supabase.auth.signOut();
+    }
   } catch {
     // Ignore offline errors
   }

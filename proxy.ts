@@ -75,6 +75,17 @@ export async function proxy(request: NextRequest) {
       maxAge: 0,
       expires: new Date(0),
     });
+    // Obliterate any Supabase auth cookies on logout
+    request.cookies.getAll().forEach((c) => {
+      if (c.name.startsWith("sb-") || c.name.includes("quizdorm")) {
+        supabaseResponse.cookies.delete(c.name);
+        supabaseResponse.cookies.set(c.name, "", {
+          path: "/",
+          maxAge: 0,
+          expires: new Date(0),
+        });
+      }
+    });
     user = null;
   }
 
