@@ -126,7 +126,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     try {
       if (typeof window !== "undefined") {
         localStorage.removeItem("quizdorm_demo_user");
-        document.cookie = "quizdorm_demo_session=; path=/; max-age=0;";
+        document.cookie = "quizdorm_demo_session=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
       }
       const supabase = createClient();
       await supabase.auth.signOut();

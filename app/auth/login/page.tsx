@@ -20,11 +20,20 @@ function LoginContent() {
   const router = useRouter();
   const redirectedFrom = searchParams.get("redirectedFrom");
   const roleParam = searchParams.get("role");
+  const isLogout = searchParams.get("logout") === "true";
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+
+  useEffect(() => {
+    if (isLogout && typeof window !== "undefined") {
+      localStorage.removeItem("quizdorm_demo_user");
+      document.cookie =
+        "quizdorm_demo_session=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+    }
+  }, [isLogout]);
 
   useEffect(() => {
     if (roleParam === "student") {
@@ -106,6 +115,13 @@ function LoginContent() {
         title={roleName ? `Login as ${roleName}` : "Login to QuizDorm"}
         subtitle="Welcome back! Please enter your credentials to access your account."
       />
+
+      {isLogout && (
+        <div className="p-3 mb-4 rounded-[3px] text-xs font-mono font-medium bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.25)] flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A]" />
+          <span>You have been signed out successfully.</span>
+        </div>
+      )}
 
       {redirectedFrom && (
         <div className="p-3 mb-4 rounded-[2px] text-xs font-mono font-medium bg-coral/10 text-coral border border-coral/30">

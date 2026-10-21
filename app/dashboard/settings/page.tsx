@@ -1,16 +1,37 @@
 "use client";
 
 import React, { useState } from "react";
-import { Settings, Moon, Sun, Bell, Shield, Sliders } from "lucide-react";
+import { Settings, Moon, Sun, Bell, Shield, Sliders, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Select } from "@/components/ui/select";
 import ThemeToggle from "@/components/layout/ThemeToggle";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { signOutUser } from "@/app/auth/actions";
 import { toast } from "sonner";
 
 export default function SettingsPage() {
   const [emailNotifications, setEmailNotifications] = useState(true);
   const [competitionAlerts, setCompetitionAlerts] = useState(true);
+  const [isSigningOut, setIsSigningOut] = useState(false);
+  const { logout } = useAuth();
+
+  const handleSignOut = async () => {
+    setIsSigningOut(true);
+    try {
+      await logout();
+      await signOutUser();
+    } catch (err) {
+      console.error("Sign out error:", err);
+    } finally {
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("quizdorm_demo_user");
+        document.cookie =
+          "quizdorm_demo_session=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+        window.location.href = "/auth/login?logout=true";
+      }
+    }
+  };
 
   const handleSaveSettings = () => {
     toast.success("Preferences updated successfully!");
@@ -126,6 +147,23 @@ export default function SettingsPage() {
                 className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] text-[#A0AEA5] hover:text-[#F2F7F3]"
               >
                 Enable 2FA
+              </Button>
+            </div>
+
+            <div className="flex items-center justify-between py-3 border-t border-[rgba(160,190,170,0.12)]">
+              <div>
+                <p className="font-semibold text-[#F2F7F3] text-xs font-mono">Sign Out of Account</p>
+                <p className="text-[11px] font-mono text-[#A0AEA5]">Terminate active authentication cookies and return to login portal</p>
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleSignOut}
+                disabled={isSigningOut}
+                className="text-xs font-mono rounded-[4px] border-[rgba(248,113,113,0.3)] bg-[rgba(248,113,113,0.1)] text-[#F87171] hover:bg-[rgba(248,113,113,0.2)]"
+              >
+                <LogOut className="w-3.5 h-3.5 mr-1.5" />
+                {isSigningOut ? "Signing Out..." : "Sign Out"}
               </Button>
             </div>
           </div>

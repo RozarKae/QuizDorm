@@ -150,12 +150,17 @@ export async function signOutUser() {
   try {
     const cookieStore = await cookies();
     cookieStore.delete("quizdorm_demo_session");
+    cookieStore.set("quizdorm_demo_session", "", {
+      path: "/",
+      maxAge: 0,
+      expires: new Date(0),
+    });
     const supabase = await createClient();
     await supabase.auth.signOut();
   } catch {
     // Ignore offline errors
   }
-  return { success: true, redirectUrl: "/auth/login" };
+  return { success: true, redirectUrl: "/auth/login?logout=true" };
 }
 
 export async function resetPasswordRequest(formData: FormData) {

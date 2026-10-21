@@ -5,6 +5,8 @@ import Link from "next/link";
 import { User, Settings, HelpCircle, LogOut } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { signOutUser } from "@/app/auth/actions";
 
 interface ProfileMenuProps {
   role: string;
@@ -12,7 +14,9 @@ interface ProfileMenuProps {
 
 export default function ProfileMenu({ role }: ProfileMenuProps) {
   const [open, setOpen] = useState(false);
+  const [isSigningOut, setIsSigningOut] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const { logout } = useAuth();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -23,6 +27,26 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const handleSignOut = async () => {
+    setIsSigningOut(true);
+    setOpen(false);
+    try {
+      // 1. Client-side Auth context & Supabase state cleanup
+      await logout();
+      // 2. Server-side session cookie eradication
+      await signOutUser();
+    } catch (err) {
+      console.error("Sign out error:", err);
+    } finally {
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("quizdorm_demo_user");
+        document.cookie =
+          "quizdorm_demo_session=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+        window.location.href = "/auth/login?logout=true";
+      }
+    }
+  };
 
   return (
     <div className="relative" ref={menuRef}>
@@ -93,14 +117,15 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
 
             <div className="border-t border-[rgba(160,190,170,0.12)] my-0.5" />
 
-            <Link
-              href="/auth/login"
-              onClick={() => setOpen(false)}
-              className="flex items-center space-x-2.5 px-3.5 py-1.5 text-xs text-[#F87171] hover:bg-[rgba(248,113,113,0.12)] transition-colors font-medium"
+            <button
+              type="button"
+              onClick={handleSignOut}
+              disabled={isSigningOut}
+              className="w-full flex items-center space-x-2.5 px-3.5 py-1.5 text-xs text-[#F87171] hover:bg-[rgba(248,113,113,0.12)] transition-colors font-medium text-left cursor-pointer disabled:opacity-50"
             >
               <LogOut className="h-3.5 w-3.5" />
-              <span>Sign Out</span>
-            </Link>
+              <span>{isSigningOut ? "Signing Out..." : "Sign Out"}</span>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

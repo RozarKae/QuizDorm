@@ -66,6 +66,18 @@ export async function proxy(request: NextRequest) {
   // Public Auth paths
   const isAuthRoute = pathname.startsWith("/auth");
 
+  // Check if user is explicitly logging out or requesting logout
+  const isExplicitLogout = request.nextUrl.searchParams.get("logout") === "true";
+  if (isExplicitLogout) {
+    supabaseResponse.cookies.delete("quizdorm_demo_session");
+    supabaseResponse.cookies.set("quizdorm_demo_session", "", {
+      path: "/",
+      maxAge: 0,
+      expires: new Date(0),
+    });
+    user = null;
+  }
+
   if (user) {
     const role = user.user_metadata?.role || "student";
 

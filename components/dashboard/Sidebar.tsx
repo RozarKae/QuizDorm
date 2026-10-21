@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import {
@@ -48,10 +48,13 @@ import {
   Users,
   Globe,
   Share2,
+  LogOut,
 } from "lucide-react";
 import Logo from "@/components/layout/Logo";
 import { dashboardNavConfig, NavItem } from "@/config/dashboard-nav";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { signOutUser } from "@/app/auth/actions";
 
 interface SidebarProps {
   role: string;
@@ -70,6 +73,25 @@ export default function Sidebar({
 }: SidebarProps) {
   const pathname = usePathname();
   const config = dashboardNavConfig[role] || dashboardNavConfig.student;
+  const { logout } = useAuth();
+  const [isSigningOut, setIsSigningOut] = useState(false);
+
+  const handleSignOut = async () => {
+    setIsSigningOut(true);
+    try {
+      await logout();
+      await signOutUser();
+    } catch (err) {
+      console.error("Sign out error:", err);
+    } finally {
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("quizdorm_demo_user");
+        document.cookie =
+          "quizdorm_demo_session=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+        window.location.href = "/auth/login?logout=true";
+      }
+    }
+  };
 
   const iconMap: Record<string, React.ReactNode> = {
     dashboard: <LayoutDashboard className="h-4 w-4" />,
@@ -239,6 +261,25 @@ export default function Sidebar({
                 </div>
               ))}
             </nav>
+          </div>
+
+          {/* Sign Out Button */}
+          <div className="p-2 border-t border-[rgba(160,190,170,0.12)]">
+            <button
+              onClick={handleSignOut}
+              disabled={isSigningOut}
+              className={`w-full flex items-center ${
+                collapsed ? "justify-center" : "justify-start px-2.5"
+              } py-1.5 text-xs font-mono text-[#F87171] hover:bg-[rgba(248,113,113,0.1)] rounded-[4px] transition-colors disabled:opacity-50 cursor-pointer`}
+              title="Sign Out"
+            >
+              <LogOut className="h-3.5 w-3.5 shrink-0" />
+              {!collapsed && (
+                <span className="ml-2 uppercase tracking-wider text-[10px] font-semibold">
+                  {isSigningOut ? "Signing Out..." : "Sign Out"}
+                </span>
+              )}
+            </button>
           </div>
 
           {/* Collapse Toggle Button (Desktop Only) */}
