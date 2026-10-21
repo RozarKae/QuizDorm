@@ -12,6 +12,8 @@ import { SubmissionModal } from "@/components/quiz-engine/SubmissionModal";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Bookmark, RotateCcw, Send } from "lucide-react";
 import { toast } from "sonner";
+import { useSound } from "@/components/audio/useSound";
+import { AudioToggle } from "@/components/audio/AudioToggle";
 
 export default function DistractionFreeQuizEnginePage({
   params,
@@ -50,10 +52,20 @@ export default function DistractionFreeQuizEnginePage({
     currentQuestion,
   } = useQuizAttempt(targetQuiz, attemptId);
 
+  const { playTap, playTick, playCorrect } = useSound();
+
+  // Heartbeat urgency tick on last 5 seconds of countdown
+  React.useEffect(() => {
+    if (timeRemainingSeconds <= 5 && timeRemainingSeconds > 0) {
+      playTick();
+    }
+  }, [timeRemainingSeconds, playTick]);
+
   const answeredCount = Object.keys(answers).length;
   const unansweredCount = questions.length - answeredCount;
 
   const handleConfirmSubmit = () => {
+    playCorrect();
     const attempt = submitQuiz("manual");
     toast.success("Quiz submitted successfully!");
     router.push(`/dashboard/quizzes/${quizId}/result/${attempt.id}`);
@@ -76,8 +88,14 @@ export default function DistractionFreeQuizEnginePage({
     );
   }
 
+  const isUrgent = timeRemainingSeconds <= 10 && timeRemainingSeconds > 0;
+
   return (
-    <div className="fixed inset-0 z-50 bg-[#070B0A] text-[#F2F7F3] flex flex-col justify-between overflow-hidden">
+    <div
+      className={`fixed inset-0 z-50 bg-[#070B0A] text-[#F2F7F3] flex flex-col justify-between overflow-hidden transition-all duration-300 ${
+        isUrgent ? "animate-edge-urgency" : ""
+      }`}
+    >
       {/* Header Bar */}
       <header className="bg-[#0C1210] border-b border-[rgba(160,190,170,0.14)] px-6 py-3 flex items-center justify-between shadow-xs relative z-20">
         <div>
@@ -91,8 +109,12 @@ export default function DistractionFreeQuizEnginePage({
 
         <div className="flex items-center space-x-3">
           <QuizTimer timeRemainingSeconds={timeRemainingSeconds} />
+          <AudioToggle />
           <Button
-            onClick={() => setSubmitModalOpen(true)}
+            onClick={() => {
+              playTap();
+              setSubmitModalOpen(true);
+            }}
             className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-[3px] h-8 shadow-[0_0_12px_rgba(101,245,154,0.18)]"
           >
             <Send className="w-3.5 h-3.5 mr-1.5" /> Submit Assessment
@@ -126,7 +148,10 @@ export default function DistractionFreeQuizEnginePage({
             currentIndex={currentIdx}
             answers={answers}
             markedForReview={markedForReview}
-            onSelectQuestion={setCurrentIdx}
+            onSelectQuestion={(idx) => {
+              playTap();
+              setCurrentIdx(idx);
+            }}
           />
         </div>
       </main>
@@ -137,7 +162,10 @@ export default function DistractionFreeQuizEnginePage({
           <Button
             variant="outline"
             size="sm"
-            onClick={() => toggleMarkForReview(currentQuestion.id)}
+            onClick={() => {
+              playTap();
+              toggleMarkForReview(currentQuestion.id);
+            }}
             className={`text-xs font-mono rounded-[3px] h-8 ${
               markedForReview.includes(currentQuestion.id)
                 ? "bg-[rgba(248,113,113,0.15)] text-[#F87171] border-[#F87171] font-bold"
@@ -152,7 +180,10 @@ export default function DistractionFreeQuizEnginePage({
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => clearAnswer(currentQuestion.id)}
+              onClick={() => {
+                playTap();
+                clearAnswer(currentQuestion.id);
+              }}
               className="text-xs font-mono text-[#A0AEA5] hover:text-[#F87171] h-8 rounded-[2px]"
             >
               <RotateCcw className="w-3.5 h-3.5 mr-1" /> Reset Answer
@@ -165,7 +196,10 @@ export default function DistractionFreeQuizEnginePage({
             variant="outline"
             size="sm"
             disabled={currentIdx === 0}
-            onClick={() => setCurrentIdx(currentIdx - 1)}
+            onClick={() => {
+              playTap();
+              setCurrentIdx(currentIdx - 1);
+            }}
             className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[3px] h-8 text-[#A0AEA5] hover:text-[#F2F7F3] disabled:opacity-30"
           >
             <ChevronLeft className="w-4 h-4 mr-1" /> Previous
@@ -174,7 +208,10 @@ export default function DistractionFreeQuizEnginePage({
           {currentIdx < questions.length - 1 ? (
             <Button
               size="sm"
-              onClick={() => setCurrentIdx(currentIdx + 1)}
+              onClick={() => {
+                playTap();
+                setCurrentIdx(currentIdx + 1);
+              }}
               className="bg-[#17251E] hover:bg-[#20342a] text-[#F2F7F3] border border-[rgba(160,190,170,0.2)] text-xs font-mono font-semibold rounded-[3px] h-8"
             >
               Next <ChevronRight className="w-4 h-4 ml-1" />
@@ -182,7 +219,10 @@ export default function DistractionFreeQuizEnginePage({
           ) : (
             <Button
               size="sm"
-              onClick={() => setSubmitModalOpen(true)}
+              onClick={() => {
+                playTap();
+                setSubmitModalOpen(true);
+              }}
               className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-[3px] h-8 shadow-[0_0_12px_rgba(101,245,154,0.18)]"
             >
               Finish &amp; Submit

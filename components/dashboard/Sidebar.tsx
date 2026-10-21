@@ -3,6 +3,7 @@
 import React, { useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   LayoutDashboard,
   HelpCircle,
@@ -55,6 +56,8 @@ import { dashboardNavConfig, NavItem } from "@/config/dashboard-nav";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { signOutUser } from "@/app/auth/actions";
+import { useSound } from "@/components/audio/useSound";
+import { AudioToggle } from "@/components/audio/AudioToggle";
 
 interface SidebarProps {
   role: string;
@@ -74,9 +77,11 @@ export default function Sidebar({
   const pathname = usePathname();
   const config = dashboardNavConfig[role] || dashboardNavConfig.student;
   const { logout } = useAuth();
+  const { playTap, playHover } = useSound();
   const [isSigningOut, setIsSigningOut] = useState(false);
 
   const handleSignOut = async () => {
+    playTap();
     setIsSigningOut(true);
     try {
       await logout();
@@ -173,7 +178,10 @@ export default function Sidebar({
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         } ${collapsed ? "w-16" : "w-60"}`}
       >
-        <div className="flex h-full flex-col justify-between bg-[#0C1210] border-r border-[rgba(160,190,170,0.14)] transition-colors duration-200">
+        <div className="relative flex h-full flex-col justify-between bg-[#0C1210] border-r border-[rgba(160,190,170,0.14)] transition-colors duration-200 overflow-hidden">
+          {/* Cybernetic Vertical Scanning Beam */}
+          <div className="aurora-side-scanner" />
+
           <div>
             {/* Header */}
             <div className="flex h-14 items-center justify-between px-3.5 border-b border-[rgba(160,190,170,0.12)]">
@@ -220,14 +228,25 @@ export default function Sidebar({
                       <Link
                         key={item.href}
                         href={item.href}
-                        onClick={onClose}
+                        onMouseEnter={playHover}
+                        onClick={() => {
+                          playTap();
+                          onClose();
+                        }}
                         className={`group relative flex items-center justify-between rounded-[4px] px-2.5 py-1.5 text-xs transition-all ${
                           isActive
-                            ? "bg-[#17251E] text-[#F2F7F3] font-medium before:absolute before:left-0 before:top-1.5 before:bottom-1.5 before:w-[2px] before:bg-[#65F59A] before:rounded-r shadow-xs"
+                            ? "text-[#F2F7F3] font-medium before:absolute before:left-0 before:top-1.5 before:bottom-1.5 before:w-[2px] before:bg-[#65F59A] before:rounded-r shadow-xs"
                             : "text-[#A0AEA5] hover:bg-[#111B17] hover:text-[#F2F7F3] font-normal"
                         }`}
                         title={collapsed ? item.name : undefined}
                       >
+                        {isActive && (
+                          <motion.div
+                            layoutId="sidebarActiveGlider"
+                            className="absolute inset-0 rounded-[4px] bg-[#17251E] border border-[rgba(101,245,154,0.3)] shadow-[0_0_12px_rgba(101,245,154,0.12)] -z-10"
+                            transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                          />
+                        )}
                         <div className="flex items-center space-x-2.5 min-w-0">
                           <div
                             className={`shrink-0 transition-colors ${
@@ -261,6 +280,25 @@ export default function Sidebar({
                 </div>
               ))}
             </nav>
+          </div>
+
+          {/* Audio Controls & System Telemetry */}
+          <div className="p-2 border-t border-[rgba(160,190,170,0.12)] space-y-1.5">
+            {!collapsed && (
+              <div className="flex items-center justify-between px-2 py-1 text-[9px] font-mono text-[#69786F] bg-[#070B0A]/60 rounded border border-[rgba(160,190,170,0.08)]">
+                <span className="flex items-center gap-1.5">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#65F59A] opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#65F59A]"></span>
+                  </span>
+                  <span>SSE MESH</span>
+                </span>
+                <span className="text-[#65F59A]">18ms</span>
+              </div>
+            )}
+            <div className="flex items-center justify-between">
+              <AudioToggle showLabel={!collapsed} className="w-full justify-start" />
+            </div>
           </div>
 
           {/* Sign Out Button */}

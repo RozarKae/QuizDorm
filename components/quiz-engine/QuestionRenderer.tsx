@@ -5,6 +5,7 @@ import { QuestionItem } from "@/lib/types/question";
 import { QuestionTypeBadge } from "@/components/question-bank/QuestionTypeBadge";
 import { Input } from "@/components/ui/input";
 import { CheckCircle2, XCircle, HelpCircle, ArrowUp, ArrowDown, AlertTriangle, Layers, GripVertical } from "lucide-react";
+import { useSound } from "@/components/audio/useSound";
 
 interface QuestionRendererProps {
   question: QuestionItem;
@@ -19,6 +20,7 @@ export function QuestionRenderer({
   onAnswerChange,
   showExplanation = false,
 }: QuestionRendererProps) {
+  const { playTap, playHover } = useSound();
   const availableRightItems = useMemo(() => {
     const pairs = question.matchingPairs || [];
     const items = Array.from(new Set(pairs.map((p) => p.rightItem)));
@@ -70,8 +72,10 @@ export function QuestionRenderer({
             return (
               <div
                 key={opt.id}
+                onMouseEnter={playHover}
                 onClick={() => {
                   if (showExplanation) return;
+                  playTap();
                   if (question.type === "mcq_multiple") {
                     const currentArr = Array.isArray(userAnswer) ? userAnswer : [];
                     const nextArr = currentArr.includes(opt.id)
@@ -137,7 +141,11 @@ export function QuestionRenderer({
                 key={val}
                 type="button"
                 disabled={showExplanation}
-                onClick={() => onAnswerChange(val)}
+                onMouseEnter={playHover}
+                onClick={() => {
+                  playTap();
+                  onAnswerChange(val);
+                }}
                 className={`p-4 rounded-[4px] border font-mono text-xs font-bold transition-all uppercase ${
                   showExplanation
                     ? isCorrectChoice

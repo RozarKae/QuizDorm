@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { LiveParticipant } from "@/lib/types/competition";
 import { Trophy, Award, Sparkles, Share2, Home, Check, Copy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { useSound } from "@/components/audio/useSound";
 
 interface WinnerPodiumScreenProps {
   participants: LiveParticipant[];
@@ -15,11 +16,18 @@ interface WinnerPodiumScreenProps {
 
 export function WinnerPodiumScreen({ participants, competitionTitle }: WinnerPodiumScreenProps) {
   const [copied, setCopied] = useState(false);
+  const { playFanfare, playTap } = useSound();
 
   const sorted = [...participants].sort((a, b) => b.score - a.score);
   const winner = sorted[0];
 
+  // Play triumph fanfare on podium victory screen mount
+  useEffect(() => {
+    playFanfare();
+  }, [playFanfare]);
+
   const handleShare = async () => {
+    playTap();
     const text = `🏆 QuizDorm Arena Results for "${competitionTitle}": Champion ${winner?.name || "Player 1"} scored ${winner?.score || 0} pts!`;
     const url =
       typeof window !== "undefined"

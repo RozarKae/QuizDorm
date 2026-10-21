@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { LiveParticipant } from "@/lib/types/competition";
 import { Trophy, Flame, ArrowUp, ArrowDown, Minus, ArrowRight, CheckCircle2, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useSound } from "@/components/audio/useSound";
 
 interface AnimatedLeaderboardProps {
   participants: LiveParticipant[];
@@ -22,8 +23,25 @@ export function AnimatedLeaderboard({
   questionExplanation,
   correctOptionText,
 }: AnimatedLeaderboardProps) {
+  const { playRankSwap, playTap } = useSound();
+  const prevOrderRef = useRef<string[]>([]);
+
   // Sort participants by score descending
   const sorted = [...participants].sort((a, b) => b.score - a.score);
+
+  // Play kinetic rank swap audio when leaderboard positions shift
+  useEffect(() => {
+    const currentOrder = sorted.map((p) => p.id);
+    if (prevOrderRef.current.length > 0) {
+      const hasOrderChanged = currentOrder.some(
+        (id, idx) => id !== prevOrderRef.current[idx]
+      );
+      if (hasOrderChanged) {
+        playRankSwap();
+      }
+    }
+    prevOrderRef.current = currentOrder;
+  }, [sorted, playRankSwap]);
 
   return (
     <div className="space-y-6">
@@ -50,7 +68,10 @@ export function AnimatedLeaderboard({
         {isHost ? (
           onNextQuestion && (
             <Button
-              onClick={onNextQuestion}
+              onClick={() => {
+                playTap();
+                onNextQuestion();
+              }}
               className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold rounded-[4px] px-6 py-2 shadow-[0_0_15px_rgba(101,245,154,0.22)] relative z-10 transition-all hover:shadow-[0_0_24px_rgba(101,245,154,0.35)]"
             >
               <span>Next Question</span>

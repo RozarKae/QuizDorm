@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Search, Bell, Menu, Terminal } from "lucide-react";
 import Logo from "@/components/layout/Logo";
 import ProfileMenu from "./ProfileMenu";
+import { AudioToggle } from "@/components/audio/AudioToggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -107,6 +108,9 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
         >
           <Search className="h-4 w-4" />
         </Button>
+
+        {/* Audio Effects Toggle */}
+        <AudioToggle />
 
         {/* Notifications Button with Luminous Pip */}
         <Button
