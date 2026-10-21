@@ -72,6 +72,20 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
               });
               if (typeof window !== "undefined") {
                 localStorage.removeItem("quizdorm_demo_user");
+
+                // Auto-route to workspace when arriving from email confirmation link
+                const hasConfirmationTokens =
+                  window.location.hash.includes("access_token") ||
+                  window.location.hash.includes("type=signup") ||
+                  window.location.hash.includes("type=email") ||
+                  window.location.search.includes("code=") ||
+                  window.location.search.includes("token_hash=");
+
+                if (hasConfirmationTokens && (window.location.pathname === "/" || window.location.pathname === "/auth/callback")) {
+                  const target = userRole === "admin" ? "/admin" : `/${userRole}`;
+                  window.location.replace(target);
+                  return;
+                }
               }
               setIsLoading(false);
               return;
@@ -132,6 +146,19 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
             });
             if (typeof window !== "undefined") {
               localStorage.removeItem("quizdorm_demo_user");
+
+              // Auto-forward to workspace when user signs in via confirmation link
+              const hasConfirmationTokens =
+                window.location.hash.includes("access_token") ||
+                window.location.hash.includes("type=signup") ||
+                window.location.hash.includes("type=email") ||
+                window.location.search.includes("code=") ||
+                window.location.search.includes("token_hash=");
+
+              if (hasConfirmationTokens && (window.location.pathname === "/" || window.location.pathname === "/auth/callback")) {
+                const target = userRole === "admin" ? "/admin" : `/${userRole}`;
+                window.location.replace(target);
+              }
             }
           }
           setIsLoading(false);

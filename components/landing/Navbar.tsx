@@ -4,11 +4,13 @@ import { useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/layout/Logo";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight, LayoutDashboard } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "@/components/auth/AuthProvider";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, role } = useAuth();
 
   const navItems = [
     { name: "Overview", href: "/" },
@@ -40,36 +42,61 @@ export default function Navbar() {
 
         {/* Desktop Actions */}
         <div className="hidden sm:flex items-center space-x-3">
-          <Link href="/auth/login">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-xs font-mono text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17] rounded-[4px] px-3.5 h-8"
-            >
-              Sign In
-            </Button>
-          </Link>
-          <Link href="/auth/register">
-            <Button
-              size="sm"
-              className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-[4px] px-4 h-8 shadow-[0_0_12px_rgba(101,245,154,0.18)]"
-            >
-              Get Started
-            </Button>
-          </Link>
+          {user ? (
+            <Link href={role === "admin" ? "/admin" : `/${role}`}>
+              <Button
+                size="sm"
+                className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-[4px] px-4 h-8 shadow-[0_0_12px_rgba(101,245,154,0.18)] flex items-center space-x-1.5"
+              >
+                <LayoutDashboard className="w-3.5 h-3.5" />
+                <span>Open Workspace</span>
+              </Button>
+            </Link>
+          ) : (
+            <>
+              <Link href="/auth/login">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-xs font-mono text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17] rounded-[4px] px-3.5 h-8"
+                >
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/auth/register">
+                <Button
+                  size="sm"
+                  className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-[4px] px-4 h-8 shadow-[0_0_12px_rgba(101,245,154,0.18)]"
+                >
+                  Get Started
+                </Button>
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile Hamburger Toggle */}
         <div className="md:hidden flex items-center space-x-2">
-          <Link href="/auth/login" className="sm:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-xs font-mono text-[#A0AEA5] hover:text-[#F2F7F3] px-2.5 h-8"
-            >
-              Sign In
-            </Button>
-          </Link>
+          {user ? (
+            <Link href={role === "admin" ? "/admin" : `/${role}`} className="sm:hidden">
+              <Button
+                size="sm"
+                className="bg-[#65F59A] text-[#070B0A] text-xs font-mono font-bold px-2.5 h-8 rounded-[4px]"
+              >
+                Workspace
+              </Button>
+            </Link>
+          ) : (
+            <Link href="/auth/login" className="sm:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-xs font-mono text-[#A0AEA5] hover:text-[#F2F7F3] px-2.5 h-8"
+              >
+                Sign In
+              </Button>
+            </Link>
+          )}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -106,9 +133,9 @@ export default function Navbar() {
             </nav>
 
             <div className="pt-2 flex flex-col space-y-2">
-              <Link href="/auth/register" onClick={() => setMobileMenuOpen(false)} className="w-full">
+              <Link href={user ? (role === "admin" ? "/admin" : `/${role}`) : "/auth/register"} onClick={() => setMobileMenuOpen(false)} className="w-full">
                 <Button className="w-full bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold rounded-[4px] h-10 shadow-[0_0_15px_rgba(101,245,154,0.18)]">
-                  Launch Platform
+                  {user ? "Open Workspace" : "Launch Platform"}
                 </Button>
               </Link>
             </div>
