@@ -40,7 +40,7 @@ export function JoinCompetitionModal({ open, onOpenChange, onJoinSuccess }: Join
         toast.success(`Found live arena: ${data.session.title || cleanCode}!`);
         onOpenChange(false);
         if (onJoinSuccess) onJoinSuccess(cleanCode);
-        router.push(`/student/live/join?code=${encodeURIComponent(cleanCode)}`);
+        router.push(`/live/arena/${encodeURIComponent(cleanCode)}`);
       } else {
         setErrorMessage(data.error || "No active arena found with this PIN code.");
         toast.error("Room PIN not found");
