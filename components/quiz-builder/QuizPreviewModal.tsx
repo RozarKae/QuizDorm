@@ -1,9 +1,10 @@
+"use client";
+
 import React, { useState } from "react";
 import { QuizItem } from "@/lib/types/quiz";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Clock, ChevronLeft, ChevronRight, CheckCircle2, Monitor, Smartphone, RotateCcw } from "lucide-react";
+import { Clock, ChevronLeft, ChevronRight, CheckCircle2, Monitor, Smartphone } from "lucide-react";
 
 interface QuizPreviewModalProps {
   open: boolean;
@@ -25,57 +26,65 @@ export function QuizPreviewModal({ open, onOpenChange, quiz }: QuizPreviewModalP
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-[#0C1210] border border-[rgba(160,190,170,0.14)] text-[#F2F7F3]">
         <DialogHeader>
           <div className="flex items-center justify-between">
-            <DialogTitle className="flex items-center text-gray-900 dark:text-white text-lg">
-              <Clock className="w-5 h-5 text-indigo-600 mr-2" /> Live Student Exam Simulator
+            <DialogTitle className="flex items-center text-[#F2F7F3] font-display font-bold text-base">
+              <Clock className="w-5 h-5 text-[#65F59A] mr-2" /> Live Student Exam Simulator
             </DialogTitle>
-            <div className="flex items-center space-x-1 bg-gray-100 dark:bg-gray-900 p-1 rounded-xl">
+            <div className="flex items-center space-x-1 bg-[#111B17] border border-[rgba(160,190,170,0.16)] p-1 rounded-[4px]">
               <button
                 type="button"
                 onClick={() => setDevice("desktop")}
-                className={`p-1.5 rounded-lg text-xs font-semibold flex items-center ${device === "desktop" ? "bg-white dark:bg-gray-800 shadow-sm text-indigo-600" : "text-gray-400"}`}
+                className={`px-2.5 py-1 rounded-[3px] text-xs font-mono font-semibold flex items-center transition-colors ${
+                  device === "desktop"
+                    ? "bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] shadow-xs"
+                    : "text-[#A0AEA5] hover:text-[#F2F7F3]"
+                }`}
               >
                 <Monitor className="w-3.5 h-3.5 mr-1" /> Desktop
               </button>
               <button
                 type="button"
                 onClick={() => setDevice("mobile")}
-                className={`p-1.5 rounded-lg text-xs font-semibold flex items-center ${device === "mobile" ? "bg-white dark:bg-gray-800 shadow-sm text-indigo-600" : "text-gray-400"}`}
+                className={`px-2.5 py-1 rounded-[3px] text-xs font-mono font-semibold flex items-center transition-colors ${
+                  device === "mobile"
+                    ? "bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] shadow-xs"
+                    : "text-[#A0AEA5] hover:text-[#F2F7F3]"
+                }`}
               >
                 <Smartphone className="w-3.5 h-3.5 mr-1" /> Mobile
               </button>
             </div>
           </div>
-          <DialogDescription>
-            Simulating exact student exam UI for: <span className="font-bold text-gray-800 dark:text-gray-200">{quiz?.title || "Untitled Quiz"}</span>
+          <DialogDescription className="text-xs text-[#A0AEA5]">
+            Simulating exact student exam runtime for: <span className="font-bold text-[#F2F7F3]">{quiz?.title || "Untitled Assessment"}</span>
           </DialogDescription>
         </DialogHeader>
 
         {/* Device Container */}
         <div className={`mx-auto transition-all ${device === "mobile" ? "max-w-sm" : "w-full"}`}>
-          <div className="bg-white dark:bg-gray-950 p-6 rounded-3xl border-2 border-indigo-200 dark:border-indigo-900 shadow-xl space-y-6">
+          <div className="bg-[#070B0A] p-6 rounded-[8px] border border-[rgba(160,190,170,0.14)] shadow-xl space-y-6">
             {/* Exam Topbar */}
-            <div className="flex items-center justify-between pb-4 border-b border-gray-100 dark:border-gray-900">
+            <div className="flex items-center justify-between pb-3 border-b border-[rgba(160,190,170,0.12)]">
               <div>
-                <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider">
+                <span className="text-xs font-mono font-bold text-[#65F59A] uppercase tracking-wider">
                   Question {currentIdx + 1} of {questions.length || 1}
                 </span>
-                <p className="text-[11px] text-gray-400">Total Marks: {quiz?.totalMarks || 10}</p>
+                <p className="text-[11px] font-mono text-[#A0AEA5]">Total Marks: {quiz?.totalMarks || 10}</p>
               </div>
 
               {/* Timer Pill */}
-              <div className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-900 text-amber-700 dark:text-amber-300 text-xs font-mono font-bold">
+              <div className="flex items-center space-x-2 px-3 py-1 rounded-[4px] bg-[#111B17] border border-[rgba(101,245,154,0.3)] text-[#65F59A] text-xs font-mono font-bold shadow-[0_0_8px_rgba(101,245,154,0.1)]">
                 <Clock className="w-3.5 h-3.5" />
                 <span>{quiz?.durationMinutes || 30}:00</span>
               </div>
             </div>
 
             {/* Progress Bar */}
-            <div className="h-1.5 w-full bg-gray-100 dark:bg-gray-900 rounded-full overflow-hidden">
+            <div className="h-1 w-full bg-[#111B17] rounded-full overflow-hidden">
               <div
-                className="h-full bg-indigo-600 transition-all duration-300"
+                className="h-full bg-gradient-to-r from-[#38D9B0] to-[#65F59A] transition-all duration-300 shadow-[0_0_8px_rgba(101,245,154,0.3)]"
                 style={{ width: `${((currentIdx + 1) / (questions.length || 1)) * 100}%` }}
               />
             </div>
@@ -83,7 +92,7 @@ export function QuizPreviewModal({ open, onOpenChange, quiz }: QuizPreviewModalP
             {/* Question Content */}
             {currentQuestion ? (
               <div className="space-y-4">
-                <h3 className="text-base font-bold text-gray-900 dark:text-white leading-relaxed">
+                <h3 className="text-base font-bold font-display text-[#F2F7F3] leading-relaxed">
                   {currentQuestion.title}
                 </h3>
 
@@ -95,36 +104,42 @@ export function QuizPreviewModal({ open, onOpenChange, quiz }: QuizPreviewModalP
                       <div
                         key={opt.id}
                         onClick={() => handleSelectOption(opt.id)}
-                        className={`p-3.5 rounded-2xl border text-xs font-medium cursor-pointer transition-all flex items-center justify-between ${
+                        className={`p-3.5 rounded-[4px] border text-xs font-mono cursor-pointer transition-all flex items-center justify-between ${
                           isSelected
-                            ? "border-indigo-600 bg-indigo-50/50 dark:bg-indigo-950/40 text-indigo-900 dark:text-indigo-100 font-bold ring-1 ring-indigo-500"
-                            : "border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50"
+                            ? "border-[#65F59A] bg-[#17251E] text-[#F2F7F3] font-bold ring-1 ring-[#65F59A] shadow-[0_0_12px_rgba(101,245,154,0.12)]"
+                            : "border-[rgba(160,190,170,0.14)] bg-[#111B17] text-[#A0AEA5] hover:border-[#65F59A]/30 hover:text-[#F2F7F3]"
                         }`}
                       >
                         <div className="flex items-center space-x-3">
-                          <span className="w-5 h-5 rounded-full bg-gray-100 dark:bg-gray-800 text-[10px] font-bold flex items-center justify-center shrink-0">
+                          <span
+                            className={`w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 border ${
+                              isSelected
+                                ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
+                                : "bg-[#17251E] text-[#A0AEA5] border-[rgba(160,190,170,0.2)]"
+                            }`}
+                          >
                             {String.fromCharCode(65 + idx)}
                           </span>
                           <span>{opt.text}</span>
                         </div>
-                        {isSelected && <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />}
+                        {isSelected && <CheckCircle2 className="w-4 h-4 text-[#65F59A] shrink-0" />}
                       </div>
                     );
                   })}
                 </div>
               </div>
             ) : (
-              <p className="text-xs text-gray-400 italic text-center py-6">No questions added to this quiz yet.</p>
+              <p className="text-xs font-mono text-[#A0AEA5] italic text-center py-6">No questions added to this quiz yet.</p>
             )}
 
             {/* Question Navigation Navigator */}
-            <div className="pt-4 border-t border-gray-100 dark:border-gray-900 flex items-center justify-between">
+            <div className="pt-4 border-t border-[rgba(160,190,170,0.12)] flex items-center justify-between">
               <Button
                 variant="outline"
                 size="sm"
                 disabled={currentIdx === 0}
                 onClick={() => setCurrentIdx(currentIdx - 1)}
-                className="text-xs"
+                className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] h-8 text-[#A0AEA5] hover:text-[#F2F7F3] disabled:opacity-30"
               >
                 <ChevronLeft className="w-4 h-4 mr-1" /> Previous
               </Button>
@@ -134,12 +149,12 @@ export function QuizPreviewModal({ open, onOpenChange, quiz }: QuizPreviewModalP
                   <button
                     key={i}
                     onClick={() => setCurrentIdx(i)}
-                    className={`w-6 h-6 rounded-lg text-[10px] font-bold transition-all ${
+                    className={`w-6 h-6 rounded-[3px] text-[10px] font-mono font-bold transition-all border ${
                       currentIdx === i
-                        ? "bg-indigo-600 text-white"
+                        ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
                         : answers[i]
-                        ? "bg-emerald-100 text-emerald-700"
-                        : "bg-gray-100 text-gray-600"
+                        ? "bg-[rgba(101,245,154,0.15)] text-[#65F59A] border-[rgba(101,245,154,0.3)]"
+                        : "bg-[#111B17] text-[#A0AEA5] border-[rgba(160,190,170,0.14)]"
                     }`}
                   >
                     {i + 1}
@@ -151,7 +166,7 @@ export function QuizPreviewModal({ open, onOpenChange, quiz }: QuizPreviewModalP
                 size="sm"
                 disabled={currentIdx === questions.length - 1 || questions.length === 0}
                 onClick={() => setCurrentIdx(currentIdx + 1)}
-                className="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold"
+                className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold rounded-[4px] h-8 shadow-[0_0_10px_rgba(101,245,154,0.15)] disabled:opacity-30"
               >
                 Next <ChevronRight className="w-4 h-4 ml-1" />
               </Button>

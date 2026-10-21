@@ -19,16 +19,16 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
     <nav
       role="navigation"
       aria-label="Pagination Navigation"
-      className={cn("flex items-center justify-center space-x-1 sm:space-x-2 py-4", className)}
+      className={cn("flex items-center justify-center space-x-1.5 py-4 font-mono text-xs", className)}
     >
       <Button
         variant="outline"
         size="sm"
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
-        className="h-9 px-3 rounded-lg border-gray-200 dark:border-gray-800"
+        className="h-8 px-3 rounded-[4px] border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/30 disabled:opacity-30"
       >
-        <ChevronLeft className="w-4 h-4 mr-1" />
+        <ChevronLeft className="w-3.5 h-3.5 mr-1" />
         <span className="hidden sm:inline">Previous</span>
       </Button>
 
@@ -41,14 +41,13 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
           return (
             <Button
               key={page}
-              variant={currentPage === page ? "default" : "outline"}
               size="sm"
               onClick={() => onPageChange(page)}
               className={cn(
-                "h-9 w-9 p-0 rounded-lg text-sm font-medium",
+                "h-8 w-8 p-0 rounded-[4px] text-xs font-mono font-bold transition-all",
                 currentPage === page
-                  ? "bg-indigo-600 hover:bg-indigo-700 text-white"
-                  : "border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300"
+                  ? "bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] shadow-[0_0_10px_rgba(101,245,154,0.2)]"
+                  : "border border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/30"
               )}
             >
               {page}
@@ -61,8 +60,8 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
           (page === totalPages - 1 && currentPage < totalPages - 2)
         ) {
           return (
-            <span key={page} className="px-1 text-gray-400">
-              <MoreHorizontal className="w-4 h-4" />
+            <span key={page} className="px-1 text-[#69786F]">
+              <MoreHorizontal className="w-3.5 h-3.5" />
             </span>
           );
         }
@@ -75,10 +74,10 @@ export function Pagination({ currentPage, totalPages, onPageChange, className }:
         size="sm"
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
-        className="h-9 px-3 rounded-lg border-gray-200 dark:border-gray-800"
+        className="h-8 px-3 rounded-[4px] border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/30 disabled:opacity-30"
       >
         <span className="hidden sm:inline">Next</span>
-        <ChevronRight className="w-4 h-4 ml-1" />
+        <ChevronRight className="w-3.5 h-3.5 ml-1" />
       </Button>
     </nav>
   );
