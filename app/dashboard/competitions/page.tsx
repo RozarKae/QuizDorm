@@ -167,7 +167,7 @@ export default function CompetitionsPage() {
             Compete against 840+ students nationwide in real-time. Deterministic scoring with live leaderboards synchronized across all nodes.
           </p>
           <div className="pt-2">
-            <Link href="/dashboard/competitions/comp-1/live">
+            <Link href="/dashboard/competitions/comp-1/live?code=QD-8492&role=host">
               <Button className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs tracking-wider font-bold rounded-[4px] px-6 py-2.5 shadow-[0_0_15px_rgba(101,245,154,0.2)] transition-all hover:shadow-[0_0_24px_rgba(101,245,154,0.35)]">
                 <Play className="w-3.5 h-3.5 mr-2 fill-current" /> ENTER LIVE ARENA
               </Button>
@@ -273,7 +273,7 @@ export default function CompetitionsPage() {
               </div>
 
               <div className="pt-4 border-t border-[rgba(160,190,170,0.12)] flex items-center justify-between">
-                <Link href={`/dashboard/competitions/${comp.id}/live`}>
+                <Link href={`/dashboard/competitions/${comp.id}/live?code=${comp.code}&role=host`}>
                   <Button size="sm" className="bg-[#17251E] hover:bg-[#65F59A] text-[#65F59A] hover:text-[#070B0A] border border-[rgba(101,245,154,0.3)] font-mono text-xs tracking-wider rounded-[4px] font-bold transition-all">
                     <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> LAUNCH ROOM
                   </Button>
@@ -292,7 +292,7 @@ export default function CompetitionsPage() {
       <JoinCompetitionModal
         open={joinModalOpen}
         onOpenChange={setJoinModalOpen}
-        onJoinSuccess={(code) => (window.location.href = `/dashboard/competitions/comp-1/live`)}
+        onJoinSuccess={(code) => (window.location.href = `/live/arena/${code}`)}
       />
     </div>
   );

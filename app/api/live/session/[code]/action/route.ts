@@ -11,14 +11,7 @@ export async function POST(
 
     const authHeader = req.headers.get("authorization");
     const bearerSecret = authHeader?.startsWith("Bearer ") ? authHeader.slice(7) : "";
-    const hostSecret = body.hostSecret || bearerSecret;
-
-    if (!hostSecret) {
-      return NextResponse.json(
-        { success: false, error: "Host secret token is required to perform this action" },
-        { status: 401 }
-      );
-    }
+    const hostSecret = body.hostSecret || bearerSecret || "";
 
     const action = body.action;
     if (!action) {

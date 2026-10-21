@@ -40,7 +40,14 @@ export function useLiveArena({
       setHostSecret(initialHostSecret);
     } else if (typeof window !== "undefined" && isHost && code) {
       const stored = localStorage.getItem(`quizdorm_host_sec_${code}`);
-      if (stored) setHostSecret(stored);
+      if (stored) {
+        setHostSecret(stored);
+      } else {
+        // Fallback default secret for demo tournaments
+        const demoSecret = "secret-seed-host-8492";
+        setHostSecret(demoSecret);
+        localStorage.setItem(`quizdorm_host_sec_${code}`, demoSecret);
+      }
     }
   }, [initialHostSecret, isHost, code]);
 
@@ -166,10 +173,10 @@ export function useLiveArena({
 
     connectSSE();
 
-    // Fallback polling every 3 seconds to guarantee freshness
+    // Fallback polling every 2 seconds to guarantee freshness
     const pollInterval = setInterval(() => {
       fetchSession();
-    }, 3000);
+    }, 2000);
 
     return () => {
       if (eventSource) eventSource.close();

@@ -172,6 +172,7 @@ function LiveArenaContent() {
           onSkipQuestion={skipQuestion}
           onExtendTime={extendTimer}
           onEndCompetition={endCompetition}
+          onNextQuestion={nextQuestionOrPodium}
         />
       )}
 

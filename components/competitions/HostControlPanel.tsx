@@ -3,7 +3,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Pause, Play, FastForward, Clock, ShieldAlert } from "lucide-react";
+import { Pause, Play, FastForward, Clock, ShieldAlert, Trophy } from "lucide-react";
 
 interface HostControlPanelProps {
   isPaused: boolean;
@@ -13,6 +13,7 @@ interface HostControlPanelProps {
   onSkipQuestion: () => void;
   onExtendTime: (secs: number) => void;
   onEndCompetition: () => void;
+  onNextQuestion?: () => void;
 }
 
 export function HostControlPanel({
@@ -23,6 +24,7 @@ export function HostControlPanel({
   onSkipQuestion,
   onExtendTime,
   onEndCompetition,
+  onNextQuestion,
 }: HostControlPanelProps) {
   return (
     <div className="bg-[#0C1210] text-[#F2F7F3] p-4 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -42,6 +44,16 @@ export function HostControlPanel({
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
+        {onNextQuestion && (
+          <Button
+            onClick={onNextQuestion}
+            size="sm"
+            className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-[3px] shadow-[0_0_12px_rgba(101,245,154,0.25)]"
+          >
+            <Trophy className="w-3.5 h-3.5 mr-1" /> Reveal Leaderboard
+          </Button>
+        )}
+
         {isPaused ? (
           <Button
             onClick={onResume}

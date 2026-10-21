@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { useLiveArena } from "@/lib/hooks/useLiveArena";
@@ -8,14 +8,32 @@ import { CompetitionLobby } from "@/components/competitions/CompetitionLobby";
 import { LiveQuestionSession } from "@/components/competitions/LiveQuestionSession";
 import { AnimatedLeaderboard } from "@/components/competitions/AnimatedLeaderboard";
 import { WinnerPodiumScreen } from "@/components/competitions/WinnerPodiumScreen";
-import { ArrowLeft, RefreshCw, AlertCircle } from "lucide-react";
+import { ArrowLeft, RefreshCw, AlertCircle, User, Zap, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { AudioToggle } from "@/components/audio/AudioToggle";
+import { useSound } from "@/components/audio/useSound";
+import { toast } from "sonner";
 
 function StandaloneArenaContent() {
   const params = useParams();
   const searchParams = useSearchParams();
+  const { playTap } = useSound();
 
   const codeParam = (params?.code as string) || searchParams.get("code") || "QD-8492";
+
+  const [nickname, setNickname] = useState<string>("");
+  const [nameInput, setNameInput] = useState<string>("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("quizdorm_participant_name");
+      if (stored) {
+        setNickname(stored);
+        setNameInput(stored);
+      }
+    }
+  }, []);
 
   const {
     session,
@@ -31,12 +49,29 @@ function StandaloneArenaContent() {
     isLoading,
     connectionError,
     currentParticipant,
+    joinSession,
     submitAnswer,
   } = useLiveArena({
     code: codeParam,
     isHost: false,
-    autoJoin: true,
+    participantName: nickname || undefined,
+    autoJoin: Boolean(nickname),
   });
+
+  const handleManualJoin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    playTap();
+    const cleanName = (nameInput || "Contender").trim();
+    if (!cleanName) {
+      toast.error("Please enter a callsign");
+      return;
+    }
+    setNickname(cleanName);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("quizdorm_participant_name", cleanName);
+    }
+    await joinSession(cleanName);
+  };
 
   if (isLoading && !session) {
     return (
@@ -94,53 +129,97 @@ function StandaloneArenaContent() {
         >
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> EXIT ARENA
         </Link>
-        <span className="font-mono text-xs font-bold text-[#65F59A] bg-[rgba(101,245,154,0.12)] border border-[rgba(101,245,154,0.3)] px-3 py-1 rounded-[4px] shadow-[0_0_15px_rgba(101,245,154,0.25)] flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
-          ARENA PIN: {session?.code || codeParam}
-        </span>
+        <div className="flex items-center space-x-3">
+          <AudioToggle />
+          <span className="font-mono text-xs font-bold text-[#65F59A] bg-[rgba(101,245,154,0.12)] border border-[rgba(101,245,154,0.3)] px-3 py-1 rounded-[4px] shadow-[0_0_15px_rgba(101,245,154,0.25)] flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+            ARENA PIN: {session?.code || codeParam}
+          </span>
+        </div>
       </div>
 
-      {/* STAGE 1: LOBBY */}
-      {stage === "lobby" && (
-        <CompetitionLobby
-          competition={competitionItem}
-          participants={participants}
-          announcements={announcements}
-          isHost={false}
-          currentParticipantName={currentParticipant?.name}
-        />
-      )}
+      {/* Contestant Callsign Prompt if not enrolled yet */}
+      {!currentParticipant ? (
+        <div className="max-w-md mx-auto my-12 bg-[#0C1210] p-6 sm:p-8 rounded-[6px] border border-[rgba(101,245,154,0.3)] shadow-[0_0_24px_rgba(101,245,154,0.12)] text-center space-y-5 relative z-10">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-[3px] bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] text-xs font-mono font-bold uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>JOIN ARENA // CONTENDER CALLSIGN</span>
+          </div>
+          <h2 className="text-xl font-bold font-display text-[#F2F7F3]">
+            {session?.title || "Live Quiz Championship"}
+          </h2>
+          <p className="text-xs text-[#A0AEA5] font-mono">
+            Enter your display nickname to enroll in live synchronized leaderboard scoring.
+          </p>
 
-      {/* STAGE 2: QUESTION */}
-      {stage === "question" && currentQuestion && (
-        <LiveQuestionSession
-          question={currentQuestion}
-          questionNumber={currentQIndex + 1}
-          totalQuestions={totalQuestions || 5}
-          timeRemaining={questionTimeRemaining}
-          userAnswerSubmitted={userAnswerSubmitted}
-          selectedOptionId={selectedOptionId}
-          isHost={false}
-          onOptionSubmit={submitAnswer}
-        />
-      )}
+          <form onSubmit={handleManualJoin} className="space-y-4">
+            <div className="relative">
+              <User className="absolute left-3 top-3 h-4 w-4 text-[#69786F]" />
+              <Input
+                value={nameInput}
+                onChange={(e) => setNameInput(e.target.value)}
+                placeholder="e.g. Maverick"
+                className="pl-9 h-10 text-sm font-mono bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
+                maxLength={25}
+                autoFocus
+              />
+            </div>
+            <Button
+              type="submit"
+              className="w-full bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono font-bold text-xs rounded-[4px] h-10 shadow-[0_0_12px_rgba(101,245,154,0.2)]"
+            >
+              <Zap className="w-3.5 h-3.5 mr-1.5 fill-current" /> Enter Battle Arena
+            </Button>
+          </form>
+        </div>
+      ) : (
+        <>
+          {/* STAGE 1: LOBBY */}
+          {stage === "lobby" && (
+            <CompetitionLobby
+              competition={competitionItem}
+              participants={participants}
+              announcements={announcements}
+              isHost={false}
+              currentParticipantName={currentParticipant?.name || nickname}
+            />
+          )}
 
-      {/* STAGE 3: LEADERBOARD */}
-      {stage === "leaderboard" && (
-        <AnimatedLeaderboard
-          participants={participants}
-          isHost={false}
-          questionExplanation={currentQuestion?.explanation}
-          correctOptionText={currentQuestion?.options?.find((o) => o.isCorrect)?.text}
-        />
-      )}
+          {/* STAGE 2: QUESTION */}
+          {stage === "question" && currentQuestion && (
+            <LiveQuestionSession
+              question={currentQuestion}
+              questionNumber={currentQIndex + 1}
+              totalQuestions={totalQuestions || 5}
+              timeRemaining={questionTimeRemaining}
+              userAnswerSubmitted={userAnswerSubmitted}
+              selectedOptionId={selectedOptionId}
+              isHost={false}
+              onOptionSubmit={(optId) => {
+                playTap();
+                submitAnswer(optId);
+              }}
+            />
+          )}
 
-      {/* STAGE 4: WINNER PODIUM */}
-      {stage === "winner_podium" && (
-        <WinnerPodiumScreen
-          participants={participants}
-          competitionTitle={competitionItem.title}
-        />
+          {/* STAGE 3: LEADERBOARD */}
+          {stage === "leaderboard" && (
+            <AnimatedLeaderboard
+              participants={participants}
+              isHost={false}
+              questionExplanation={currentQuestion?.explanation}
+              correctOptionText={currentQuestion?.options?.find((o) => o.isCorrect)?.text}
+            />
+          )}
+
+          {/* STAGE 4: WINNER PODIUM */}
+          {stage === "winner_podium" && (
+            <WinnerPodiumScreen
+              participants={participants}
+              competitionTitle={competitionItem.title}
+            />
+          )}
+        </>
       )}
     </div>
   );

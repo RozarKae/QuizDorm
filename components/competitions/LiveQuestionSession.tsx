@@ -97,12 +97,12 @@ export function LiveQuestionSession({
               <button
                 key={opt.id}
                 type="button"
-                disabled={userAnswerSubmitted || isHost}
+                disabled={userAnswerSubmitted || isHost || timeRemaining <= 0}
                 onClick={() => onOptionSubmit(opt.id)}
                 className={`p-4 rounded-[4px] border font-bold text-sm transition-all text-left flex items-center justify-between ${
                   isSelected
                     ? "border-[#65F59A] bg-[#17251E] text-[#F2F7F3] ring-1 ring-[#65F59A] shadow-[0_0_16px_rgba(101,245,154,0.18)]"
-                    : userAnswerSubmitted || isHost
+                    : userAnswerSubmitted || isHost || timeRemaining <= 0
                     ? "opacity-50 bg-[#111B17]/40 border-[rgba(160,190,170,0.1)] cursor-not-allowed text-[#69786F]"
                     : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 hover:border-[#65F59A]/40 hover:bg-[#111B17] text-[#F2F7F3] cursor-pointer"
                 }`}

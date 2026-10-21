@@ -113,9 +113,8 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
           localStorage.setItem("quizdorm_participant_name", participantName);
         }
         toast.success(`Entered arena for ${data.session?.title || cleanCode}!`);
-        // Navigate to the live arena room
-        const destId = data.session?.competitionId || data.session?.id || "comp-1";
-        router.push(`/dashboard/competitions/${destId}/live?code=${cleanCode}&role=participant`);
+        // Navigate directly to public live arena
+        router.push(`/live/arena/${cleanCode}`);
       } else {
         toast.error(data.error || "Failed to join session");
         setErrorStatus(data.error);
