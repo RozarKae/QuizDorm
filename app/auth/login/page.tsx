@@ -13,7 +13,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { signInWithEmail, signInWithGoogle } from "../actions";
 import { TEST_ACCOUNTS } from "../constants";
 import { toast } from "sonner";
-import { Sparkles, GraduationCap, School, UserCheck } from "lucide-react";
+import { Sparkles, GraduationCap, School, UserCheck, Lock } from "lucide-react";
 
 function LoginContent() {
   const searchParams = useSearchParams();
@@ -116,8 +116,22 @@ function LoginContent() {
       )}
 
       {redirectedFrom && (
-        <div className="p-3 mb-4 rounded-[2px] text-xs font-mono font-medium bg-coral/10 text-coral border border-coral/30">
-          Authentication required: {redirectedFrom}.
+        <div className="relative mb-5 p-3.5 rounded-[6px] border bg-[#0C1210] animate-constant-glow transition-all">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5">
+              <span className="relative flex h-2.5 w-2.5 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#65F59A] opacity-80" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#65F59A] shadow-[0_0_8px_#65F59A]" />
+              </span>
+              <div className="flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider text-[#F2F7F3]">
+                <Lock className="w-3.5 h-3.5 text-[#65F59A]" />
+                <span>Login Required</span>
+              </div>
+            </div>
+            <span className="text-[10px] font-mono font-semibold text-[#65F59A] bg-[rgba(101,245,154,0.12)] px-2.5 py-0.5 rounded-[3px] border border-[#65F59A]/30 shrink-0">
+              Sign in to continue
+            </span>
+          </div>
         </div>
       )}
 
