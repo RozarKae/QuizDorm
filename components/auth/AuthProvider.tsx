@@ -27,7 +27,7 @@ const defaultProfile: UserProfile = {
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
-  profile: defaultProfile,
+  profile: null,
   session: null,
   role: "student",
   isLoading: true,
@@ -38,7 +38,7 @@ const AuthContext = createContext<AuthContextType>({
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
-  const [profile, setProfile] = useState<UserProfile>(defaultProfile);
+  const [profile, setProfile] = useState<UserProfile | null>(null);
   const [role, setRole] = useState<UserRole>("student");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -48,9 +48,41 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     try {
       async function getInitialSession() {
         try {
+          if (isSupabaseConfigured()) {
+            const supabase = createClient();
+            const {
+              data: { session: activeSession },
+            } = await supabase.auth.getSession();
+
+            if (activeSession?.user) {
+              // Real Supabase session takes absolute precedence
+              setSession(activeSession);
+              setUser(activeSession.user);
+              const metadata = activeSession.user.user_metadata || {};
+              const userRole = (metadata.role as UserRole) || "student";
+              const userName = metadata.name || activeSession.user.email?.split("@")[0] || "User";
+              setRole(userRole);
+              setProfile({
+                id: activeSession.user.id,
+                name: userName,
+                email: activeSession.user.email || "",
+                role: userRole,
+                createdAt: activeSession.user.created_at || "Oct 2026",
+                updatedAt: new Date().toISOString(),
+              });
+              if (typeof window !== "undefined") {
+                localStorage.removeItem("quizdorm_demo_user");
+              }
+              setIsLoading(false);
+              return;
+            }
+          }
+
+          // Fallback to demo test account only if active demo session cookie is present
           if (typeof window !== "undefined") {
+            const hasDemoCookie = document.cookie.includes("quizdorm_demo_session=");
             const demoRaw = localStorage.getItem("quizdorm_demo_user");
-            if (demoRaw) {
+            if (hasDemoCookie && demoRaw) {
               const demoUser = JSON.parse(demoRaw);
               setRole(demoUser.role);
               setProfile({
@@ -63,33 +95,14 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
               });
               setIsLoading(false);
               return;
+            } else {
+              localStorage.removeItem("quizdorm_demo_user");
             }
           }
 
-          if (isSupabaseConfigured()) {
-            const supabase = createClient();
-            const {
-              data: { session: activeSession },
-            } = await supabase.auth.getSession();
-            setSession(activeSession);
-            setUser(activeSession?.user ?? null);
-            if (activeSession?.user) {
-              const userRole = (activeSession.user.user_metadata?.role as UserRole) || "student";
-              setRole(userRole);
-              setProfile({
-                id: activeSession.user.id,
-                name: activeSession.user.user_metadata?.name || activeSession.user.email?.split("@")[0] || "User",
-                email: activeSession.user.email || "",
-                role: userRole,
-                createdAt: activeSession.user.created_at || "Jul 2026",
-                updatedAt: new Date().toISOString(),
-              });
-            }
-          } else {
-            // Self-contained demo mode: no active remote session
-            setUser(null);
-            setSession(null);
-          }
+          // Unauthenticated state
+          setUser(null);
+          setSession(null);
         } catch {
           // Fallback to default state
         } finally {
@@ -105,16 +118,21 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
           setSession(currentSession);
           setUser(currentSession?.user ?? null);
           if (currentSession?.user) {
-            const userRole = (currentSession.user.user_metadata?.role as UserRole) || "student";
+            const metadata = currentSession.user.user_metadata || {};
+            const userRole = (metadata.role as UserRole) || "student";
+            const userName = metadata.name || currentSession.user.email?.split("@")[0] || "User";
             setRole(userRole);
             setProfile({
               id: currentSession.user.id,
-              name: currentSession.user.user_metadata?.name || currentSession.user.email?.split("@")[0] || "User",
+              name: userName,
               email: currentSession.user.email || "",
               role: userRole,
-              createdAt: currentSession.user.created_at || "Jul 2026",
+              createdAt: currentSession.user.created_at || "Oct 2026",
               updatedAt: new Date().toISOString(),
             });
+            if (typeof window !== "undefined") {
+              localStorage.removeItem("quizdorm_demo_user");
+            }
           }
           setIsLoading(false);
         });
@@ -152,12 +170,13 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
       // Ignore
     }
     setUser(null);
+    setProfile(null);
     setSession(null);
     setRole("student");
   };
 
   const updateProfileState = (updated: Partial<UserProfile>) => {
-    setProfile((prev) => ({ ...prev, ...updated }));
+    setProfile((prev) => (prev ? { ...prev, ...updated } : null));
   };
 
   return (

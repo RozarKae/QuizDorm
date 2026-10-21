@@ -52,8 +52,16 @@ export default function RegisterPage() {
       toast.error(res.error);
       setLoading(false);
     } else {
-      toast.success("Account created successfully!");
-      router.push(res.redirectUrl || "/dashboard");
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("quizdorm_demo_user");
+      }
+      if ((res as any).requiresEmailVerification) {
+        toast.info("Account created! Please check your email to verify your address.");
+        router.push((res as any).redirectUrl || "/auth/login");
+      } else {
+        toast.success("Account created successfully!");
+        window.location.href = res.redirectUrl || "/dashboard";
+      }
     }
   };
 

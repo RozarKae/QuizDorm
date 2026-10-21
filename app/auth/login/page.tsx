@@ -35,19 +35,6 @@ function LoginContent() {
     }
   }, [isLogout]);
 
-  useEffect(() => {
-    if (roleParam === "student") {
-      setEmail("student@quizdorm.com");
-      setPassword("Password123!");
-    } else if (roleParam === "teacher") {
-      setEmail("teacher@quizdorm.com");
-      setPassword("Password123!");
-    } else if (roleParam === "school") {
-      setEmail("school@quizdorm.com");
-      setPassword("Password123!");
-    }
-  }, [roleParam]);
-
   const getRoleDisplayName = () => {
     switch (roleParam) {
       case "student":
@@ -71,7 +58,7 @@ function LoginContent() {
     if (acc) {
       setEmail(acc.email);
       setPassword(acc.password);
-      toast.info(`Filled ${acc.role.toUpperCase()} credentials: ${acc.email}`);
+      toast.info(`Filled ${acc.role.toUpperCase()} demo credentials: ${acc.email}`);
     }
   };
 
@@ -92,8 +79,13 @@ function LoginContent() {
       setLoading(false);
     } else {
       toast.success("Logged in successfully!");
-      if (typeof window !== "undefined" && (res as any).user) {
-        localStorage.setItem("quizdorm_demo_user", JSON.stringify((res as any).user));
+      if (typeof window !== "undefined") {
+        if ((res as any).isDemoAccount && (res as any).user) {
+          localStorage.setItem("quizdorm_demo_user", JSON.stringify((res as any).user));
+        } else {
+          // Real Supabase session: remove any stale demo accounts
+          localStorage.removeItem("quizdorm_demo_user");
+        }
       }
       const target = redirectedFrom || res.redirectUrl || "/dashboard";
       window.location.href = target;

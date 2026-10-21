@@ -14,12 +14,17 @@ import { toast } from "sonner";
 
 export default function ProfilePage() {
   const { profile, updateProfileState } = useAuth();
-  const [name, setName] = useState(profile?.name || "Rozar Khan");
-  const [email, setEmail] = useState(profile?.email || "kratoskhanrk@gmail.com");
+  const [name, setName] = useState(profile?.name || "");
+  const [email, setEmail] = useState(profile?.email || "");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [passLoading, setPassLoading] = useState(false);
+
+  React.useEffect(() => {
+    if (profile?.name) setName(profile.name);
+    if (profile?.email) setEmail(profile.email);
+  }, [profile]);
 
   const handleSaveProfile = (e: React.FormEvent) => {
     e.preventDefault();

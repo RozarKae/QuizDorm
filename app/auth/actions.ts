@@ -67,6 +67,7 @@ export async function signInWithEmail(formData: FormData) {
 
       return {
         success: true,
+        isDemoAccount: true,
         redirectUrl: testAccount.redirectUrl,
         user: {
           id: testAccount.id,
@@ -81,21 +82,9 @@ export async function signInWithEmail(formData: FormData) {
   }
 
   if (!isSupabaseConfigured()) {
-    if (testAccount) {
-      return {
-        success: true,
-        redirectUrl: testAccount.redirectUrl,
-        user: {
-          id: testAccount.id,
-          name: testAccount.name,
-          email: testAccount.email,
-          role: testAccount.role,
-        },
-      };
-    }
     return {
       error:
-        "Supabase project credentials are not configured yet. Sign in with a demo test account (e.g. student@quizdorm.com / Student@123) or configure your NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.",
+        "Supabase project credentials are not configured yet. Sign in with a demo test account (e.g. student@quizdorm.com / Password123!) or configure your NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.",
     };
   }
 
@@ -107,27 +96,42 @@ export async function signInWithEmail(formData: FormData) {
     });
 
     if (error) {
-      if (testAccount) {
-        return { success: true, redirectUrl: testAccount.redirectUrl };
-      }
       return { error: error.message };
     }
 
-    const role = data.user?.user_metadata?.role || "student";
-    const redirectUrl = "/dashboard";
+    // Crucial: Clear out any previous demo session cookie on real login
+    const cookieStore = await cookies();
+    cookieStore.delete("quizdorm_demo_session");
+    cookieStore.set("quizdorm_demo_session", "", {
+      path: "/",
+      maxAge: 0,
+      expires: new Date(0),
+    });
 
-    return { success: true, redirectUrl };
+    const userMetadata = data.user?.user_metadata || {};
+    const role = (userMetadata.role as string) || "student";
+    const userName = userMetadata.name || data.user?.email?.split("@")[0] || "User";
+    const redirectUrl = `/${role}`;
+
+    return {
+      success: true,
+      isDemoAccount: false,
+      redirectUrl,
+      user: {
+        id: data.user.id,
+        name: userName,
+        email: data.user.email || email,
+        role,
+      },
+    };
   } catch (err: any) {
-    if (testAccount) {
-      return { success: true, redirectUrl: testAccount.redirectUrl };
-    }
     return { error: err.message || "Failed to authenticate with server" };
   }
 }
 
 export async function signUpWithEmail(formData: FormData) {
   const name = formData.get("name") as string;
-  const email = formData.get("email") as string;
+  const email = (formData.get("email") as string)?.trim().toLowerCase();
   const password = formData.get("password") as string;
   const confirmPassword = formData.get("confirmPassword") as string;
   const role = (formData.get("role") as string) || "student";
@@ -161,7 +165,12 @@ export async function signUpWithEmail(formData: FormData) {
         }
       );
       const redirectUrl = role === "admin" ? "/admin" : `/${role}`;
-      return { success: true, redirectUrl };
+      return {
+        success: true,
+        isDemoAccount: true,
+        redirectUrl,
+        user: { id: `usr-${Date.now()}`, name, email, role },
+      };
     } catch {
       return { success: true, redirectUrl: "/dashboard" };
     }
@@ -169,7 +178,8 @@ export async function signUpWithEmail(formData: FormData) {
 
   try {
     const supabase = await createClient();
-    const { error } = await supabase.auth.signUp({
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://quizclassroom.vercel.app";
+    const { error, data } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -178,7 +188,7 @@ export async function signUpWithEmail(formData: FormData) {
           role,
           username,
         },
-        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001"}/auth/callback`,
+        emailRedirectTo: `${siteUrl}/auth/callback`,
       },
     });
 
@@ -186,7 +196,54 @@ export async function signUpWithEmail(formData: FormData) {
       return { error: error.message };
     }
 
-    return { success: true, redirectUrl: "/dashboard" };
+    // Clean up any stale demo cookie
+    const cookieStore = await cookies();
+    cookieStore.delete("quizdorm_demo_session");
+    cookieStore.set("quizdorm_demo_session", "", {
+      path: "/",
+      maxAge: 0,
+      expires: new Date(0),
+    });
+
+    // Check if session was granted directly (email confirmation off)
+    if (data?.session && data.user) {
+      const redirectUrl = role === "admin" ? "/admin" : `/${role}`;
+      return {
+        success: true,
+        isDemoAccount: false,
+        redirectUrl,
+        user: {
+          id: data.user.id,
+          name,
+          email,
+          role,
+        },
+      };
+    }
+
+    // Attempt auto login in case confirmation is not required
+    const loginAttempt = await supabase.auth.signInWithPassword({ email, password });
+    if (loginAttempt.data?.session && loginAttempt.data.user) {
+      const redirectUrl = role === "admin" ? "/admin" : `/${role}`;
+      return {
+        success: true,
+        isDemoAccount: false,
+        redirectUrl,
+        user: {
+          id: loginAttempt.data.user.id,
+          name,
+          email,
+          role,
+        },
+      };
+    }
+
+    // Requires email verification
+    return {
+      success: true,
+      requiresEmailVerification: true,
+      redirectUrl: `/auth/verify-email?email=${encodeURIComponent(email)}`,
+    };
   } catch (err: any) {
     return { error: err.message || "Failed to create account on server" };
   }

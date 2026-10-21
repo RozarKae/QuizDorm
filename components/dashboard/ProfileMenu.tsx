@@ -16,7 +16,7 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
   const [open, setOpen] = useState(false);
   const [isSigningOut, setIsSigningOut] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const { logout } = useAuth();
+  const { user, profile, logout } = useAuth();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -48,6 +48,15 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
     }
   };
 
+  const displayName = profile?.name || user?.user_metadata?.name || `${role} Account`;
+  const displayEmail = profile?.email || user?.email || `${role}@quizdorm.com`;
+  const initials = displayName
+    .split(" ")
+    .map((n: string) => n[0])
+    .join("")
+    .substring(0, 2)
+    .toUpperCase() || role.substring(0, 2).toUpperCase();
+
   return (
     <div className="relative" ref={menuRef}>
       <button
@@ -56,9 +65,9 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
         aria-label="User profile menu"
       >
         <Avatar className="h-7 w-7 rounded-[4px] border border-[rgba(160,190,170,0.22)] bg-[#17251E]">
-          <AvatarImage src="" alt="Avatar" />
+          <AvatarImage src={profile?.avatar || ""} alt="Avatar" />
           <AvatarFallback className="bg-[#17251E] text-[#65F59A] font-mono font-bold text-[10px] uppercase rounded-[4px]">
-            {role.substring(0, 2)}
+            {initials}
           </AvatarFallback>
         </Avatar>
       </button>
@@ -74,15 +83,15 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
           >
             <div className="px-3.5 py-2.5 border-b border-[rgba(160,190,170,0.12)] bg-[#0C1210]/60">
               <div className="flex items-center justify-between">
-                <p className="text-xs font-semibold text-[#F2F7F3] capitalize font-display">
-                  {role} Account
+                <p className="text-xs font-semibold text-[#F2F7F3] truncate max-w-[140px] font-display">
+                  {displayName}
                 </p>
                 <span className="text-[9px] uppercase font-mono tracking-wider px-1.5 py-0.2 rounded-[2px] bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.25)] font-semibold">
-                  Active
+                  {role}
                 </span>
               </div>
-              <p className="text-[11px] font-mono text-[#69786F] truncate mt-0.5">
-                {role}@quizdorm.com
+              <p className="text-[11px] font-mono text-[#69786F] truncate mt-0.5" title={displayEmail}>
+                {displayEmail}
               </p>
             </div>
 
