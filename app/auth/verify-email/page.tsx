@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import AuthCard from "@/components/auth/AuthCard";
 import AuthFooter from "@/components/auth/AuthFooter";
 import { Button } from "@/components/ui/button";
@@ -8,10 +9,51 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { resendVerificationEmail } from "../actions";
 import { toast } from "sonner";
+import { CheckCircle2, Mail, ArrowRight, Sparkles, ShieldCheck, UserCheck } from "lucide-react";
+import { useAuth } from "@/components/auth/AuthProvider";
 
-export default function VerifyEmailPage() {
-  const [email, setEmail] = useState("");
+function VerifyEmailContent() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const { user, profile, role } = useAuth();
+
+  const isVerifiedParam = searchParams.get("verified") === "true";
+  const emailParam = searchParams.get("email") || "";
+  const roleParam = searchParams.get("role") || role || "student";
+
+  const [email, setEmail] = useState(emailParam);
   const [resending, setResending] = useState(false);
+  const [countdown, setCountdown] = useState(4);
+  const [isVerified, setIsVerified] = useState(isVerifiedParam);
+
+  // Check if URL hash contains confirmation access token or if user is logged in
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash;
+      if (hash.includes("access_token") || hash.includes("type=signup") || hash.includes("type=email") || isVerifiedParam) {
+        setIsVerified(true);
+      }
+    }
+  }, [isVerifiedParam]);
+
+  // If user is verified and logged in, count down and auto-route to workspace
+  useEffect(() => {
+    if (!isVerified) return;
+
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          const target = roleParam === "admin" ? "/admin" : `/${roleParam}`;
+          window.location.href = target;
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [isVerified, roleParam]);
 
   const handleResend = async () => {
     if (!email) {
@@ -29,68 +71,150 @@ export default function VerifyEmailPage() {
     }
   };
 
+  const targetWorkspace = roleParam === "admin" ? "/admin" : `/${roleParam}`;
+
+  const displayName = profile?.name || user?.user_metadata?.name || "QuizDorm Scholar";
+  const displayEmail = profile?.email || user?.email || emailParam;
+
   return (
     <AuthCard>
-      <div className="text-center py-6 space-y-6">
-        {/* Success Illustration */}
-        <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-[#3864F8]/15 border border-[#3864F8]/30 text-[#3864F8]">
-          <svg
-            className="h-8 w-8 animate-bounce"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M3 19v-8.93a2 2 0 01.89-1.664l8-5.333a2 2 0 012.22 0l8 5.333A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-2.25-1.5a2 2 0 00-2.22 0l-2.25 1.5"
-            />
-          </svg>
-        </div>
+      {isVerified ? (
+        /* Confirmed / Verified Success Screen */
+        <div className="text-center py-6 space-y-6">
+          <div className="inline-flex items-center space-x-2 border border-[#65F59A]/30 bg-[#111B17] px-3.5 py-1 rounded-full text-[10px] font-mono shadow-[0_0_15px_rgba(101,245,154,0.15)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+            <span className="text-[#65F59A] font-bold uppercase tracking-wider">
+              CREDENTIAL VERIFIED // ACADEMIC OS
+            </span>
+          </div>
 
-        <div className="space-y-2">
-          <h2 className="text-xl font-bold text-white">Verify Your Email</h2>
-          <p className="text-xs text-zinc-400 max-w-sm mx-auto">
-            Please verify your email address to access your QuizDorm dashboard. Enter your email below if you need to resend the code.
-          </p>
-        </div>
+          {/* Animated Celebration Icon */}
+          <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-[#111B17] border-2 border-[#65F59A] text-[#65F59A] shadow-[0_0_30px_rgba(101,245,154,0.3)] animate-in zoom-in-75 duration-300">
+            <CheckCircle2 className="h-10 w-10 text-[#65F59A]" />
+          </div>
 
-        <div className="space-y-3 pt-2">
-          <Input
-            type="email"
-            placeholder="you@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full h-11 text-center bg-[#161922] border-[#2A303F] text-white placeholder:text-zinc-500 rounded-[4px]"
-          />
-          <div className="flex flex-col space-y-2 pt-2">
-            <Button
-              onClick={handleResend}
-              disabled={resending}
-              variant="outline"
-              className="w-full h-11 border-[#2A303F] bg-[#161922] text-zinc-200 hover:text-white hover:bg-[#1E232F] rounded-[4px]"
-            >
-              {resending ? "Resending..." : "Resend Verification Email"}
-            </Button>
-            <Link href="/auth/login" className="w-full">
-              <Button className="w-full h-11 bg-[#3864F8] hover:bg-[#2c53d6] text-white rounded-[4px] font-semibold text-sm">
-                Return to Login →
+          <div className="space-y-2">
+            <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-[#F2F7F3] tracking-tight">
+              Email Verified Successfully!
+            </h1>
+            <p className="text-xs sm:text-sm font-sans text-[#A0AEA5] max-w-sm mx-auto leading-relaxed">
+              Your institutional credentials have been verified with Supabase Auth. Your QuizDorm assessment cockpit is ready.
+            </p>
+          </div>
+
+          {/* Account Snapshot Card */}
+          <div className="bg-[#111B17] p-4 rounded-[6px] border border-[rgba(160,190,170,0.18)] text-left space-y-2.5 max-w-sm mx-auto">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-[#69786F]">
+                Authenticated User
+              </span>
+              <span className="text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-[2px] bg-[#65F59A]/15 text-[#65F59A] border border-[#65F59A]/30 font-bold">
+                Active &bull; Verified
+              </span>
+            </div>
+
+            <div>
+              <p className="text-sm font-bold text-[#F2F7F3] font-display">{displayName}</p>
+              {displayEmail && (
+                <p className="text-xs font-mono text-[#65F59A] truncate">{displayEmail}</p>
+              )}
+            </div>
+
+            <div className="pt-2 border-t border-[rgba(160,190,170,0.12)] flex items-center justify-between text-[11px] font-mono text-[#A0AEA5]">
+              <span>Assigned Role:</span>
+              <span className="font-bold text-[#F2F7F3] uppercase tracking-wider">{roleParam}</span>
+            </div>
+          </div>
+
+          {/* Countdown & Action */}
+          <div className="space-y-3 pt-2 max-w-sm mx-auto">
+            <Link href={targetWorkspace} className="w-full block">
+              <Button className="w-full h-11 bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] rounded-[4px] font-mono font-bold text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(101,245,154,0.25)] flex items-center justify-center space-x-2">
+                <span>Proceed to Workspace</span>
+                <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
+
+            <p className="text-[11px] font-mono text-[#69786F]">
+              Auto-routing to workspace in <span className="text-[#65F59A] font-bold">{countdown}</span> seconds...
+            </p>
           </div>
         </div>
+      ) : (
+        /* Pending Verification Screen */
+        <div className="text-center py-6 space-y-6">
+          <div className="inline-flex items-center space-x-2 border border-[rgba(160,190,170,0.2)] bg-[#111B17] px-3.5 py-1 rounded-full text-[10px] font-mono text-[#A0AEA5]">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            <span className="text-amber-400 font-bold uppercase tracking-wider">
+              AWAITING ACTIVATION // STEP 2 OF 2
+            </span>
+          </div>
 
-        <AuthFooter>
-          <p className="text-xs text-zinc-400">
-            Need help? Contact our{" "}
-            <Link href="/support" className="text-[#3864F8] hover:underline font-semibold">
-              Support Center
-            </Link>
-          </p>
-        </AuthFooter>
-      </div>
+          {/* Mail Envelope Icon */}
+          <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-[#111B17] border border-[rgba(160,190,170,0.25)] text-[#65F59A] shadow-lg">
+            <Mail className="h-9 w-9 text-[#65F59A]" />
+          </div>
+
+          <div className="space-y-2">
+            <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-[#F2F7F3]">
+              Check Your Inbox
+            </h1>
+            <p className="text-xs sm:text-sm font-sans text-[#A0AEA5] max-w-sm mx-auto leading-relaxed">
+              We dispatched an activation link to your email. Click <strong className="text-[#F2F7F3]">Confirm your email</strong> in that message to verify your identity.
+            </p>
+          </div>
+
+          <div className="space-y-3 pt-2 max-w-sm mx-auto">
+            <Input
+              type="email"
+              placeholder="you@school.edu"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full h-11 text-center bg-[#17251E] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] placeholder:text-[#69786F] rounded-[4px] font-mono text-xs focus-visible:border-[#65F59A]"
+            />
+            <div className="flex flex-col space-y-2 pt-1">
+              <Button
+                onClick={handleResend}
+                disabled={resending}
+                variant="outline"
+                className="w-full h-11 border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#17251E] rounded-[4px] font-mono text-xs"
+              >
+                {resending ? "Dispatching..." : "Resend Verification Link"}
+              </Button>
+              <Link href="/auth/login" className="w-full">
+                <Button className="w-full h-11 bg-[#17251E] hover:bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(160,190,170,0.14)] rounded-[4px] font-mono text-xs">
+                  Return to Login &rarr;
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          <AuthFooter>
+            <p className="text-xs font-mono text-[#69786F]">
+              Need help? Reach the{" "}
+              <Link href="/contact" className="text-[#65F59A] hover:underline font-semibold">
+                QuizDorm Helpdesk
+              </Link>
+            </p>
+          </AuthFooter>
+        </div>
+      )}
     </AuthCard>
+  );
+}
+
+export default function VerifyEmailPage() {
+  return (
+    <Suspense
+      fallback={
+        <AuthCard>
+          <div className="text-center py-12 font-mono text-xs text-[#A0AEA5]">
+            Loading verification status...
+          </div>
+        </AuthCard>
+      }
+    >
+      <VerifyEmailContent />
+    </Suspense>
   );
 }

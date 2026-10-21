@@ -82,7 +82,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
                   window.location.search.includes("token_hash=");
 
                 if (hasConfirmationTokens && (window.location.pathname === "/" || window.location.pathname === "/auth/callback")) {
-                  const target = userRole === "admin" ? "/admin" : `/${userRole}`;
+                  const target = `/auth/verify-email?verified=true&role=${userRole}&email=${encodeURIComponent(activeSession.user.email || "")}`;
                   window.location.replace(target);
                   return;
                 }
@@ -156,7 +156,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
                 window.location.search.includes("token_hash=");
 
               if (hasConfirmationTokens && (window.location.pathname === "/" || window.location.pathname === "/auth/callback")) {
-                const target = userRole === "admin" ? "/admin" : `/${userRole}`;
+                const target = `/auth/verify-email?verified=true&role=${userRole}&email=${encodeURIComponent(currentSession.user.email || "")}`;
                 window.location.replace(target);
               }
             }

@@ -45,8 +45,8 @@ export async function GET(request: Request) {
 
         if (!error && data?.user) {
           const role = data.user.user_metadata?.role || "student";
-          const destination = next || (role === "admin" ? "/admin" : `/${role}`);
-          return NextResponse.redirect(new URL(destination, origin));
+          const email = encodeURIComponent(data.user.email || "");
+          return NextResponse.redirect(new URL(`/auth/verify-email?verified=true&role=${role}&email=${email}`, origin));
         }
       }
 
@@ -55,8 +55,8 @@ export async function GET(request: Request) {
         const { error, data } = await supabase.auth.exchangeCodeForSession(code);
         if (!error && data?.user) {
           const role = data.user.user_metadata?.role || "student";
-          const destination = next || (role === "admin" ? "/admin" : `/${role}`);
-          return NextResponse.redirect(new URL(destination, origin));
+          const email = encodeURIComponent(data.user.email || "");
+          return NextResponse.redirect(new URL(`/auth/verify-email?verified=true&role=${role}&email=${email}`, origin));
         }
       }
     } catch {
