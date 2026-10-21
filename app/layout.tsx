@@ -34,6 +34,14 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "QuizDorm | AI-Powered Educational Platform",
   description: "Next-generation gamified quiz learning and competition platform.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/icon-192.png", sizes: "192x192" }],
+  },
 };
 
 export default function RootLayout({

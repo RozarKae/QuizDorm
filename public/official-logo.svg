@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="none">
+  <defs>
+    <!-- Outer Neon Ambient Glow Filter -->
+    <filter id="qd-outer-glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="3.5" result="blur1" />
+      <feGaussianBlur stdDeviation="7" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur2" />
+        <feMergeNode in="blur1" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Inner Specular & Bevel Filter -->
+    <filter id="qd-inner-glow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="blur" />
+      <feOffset dx="-0.5" dy="-0.5" />
+      <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowDiff" />
+      <feFlood flood-color="#65F59A" flood-opacity="0.8" />
+      <feComposite in2="shadowDiff" operator="in" />
+      <feComposite in2="SourceGraphic" operator="over" />
+    </filter>
+
+    <!-- Linear Gradient for Q Box Left Facet (Lit Plane) -->
+    <linearGradient id="q-facet-grad" x1="18" y1="26" x2="50" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#65F59A" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#2EC49E" stop-opacity="0.85" />
+    </linearGradient>
+
+    <!-- Linear Gradient for D Box Right Facet (Isometric Shaded Plane) -->
+    <linearGradient id="d-facet-grad" x1="50" y1="20" x2="82" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1F8A68" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0E4835" stop-opacity="0.98" />
+    </linearGradient>
+
+    <!-- Diamond Brain Gradient -->
+    <linearGradient id="brain-grad" x1="26" y1="58" x2="74" y2="86" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#17251E" />
+      <stop offset="50%" stop-color="#0C1210" />
+      <stop offset="100%" stop-color="#111B17" />
+    </linearGradient>
+
+    <!-- Squircle Radial Glow Gradient -->
+    <radialGradient id="squircle-radial" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#14241C" />
+      <stop offset="65%" stop-color="#0A120E" />
+      <stop offset="100%" stop-color="#060A08" />
+    </radialGradient>
+  </defs>
+
+  <!-- 1. Squircle Container Base with Outer Neon Glow -->
+  <rect x="7" y="7" width="86" height="86" rx="22" fill="url(#squircle-radial)" stroke="#65F59A" stroke-width="1.5" stroke-opacity="0.45" filter="url(#qd-outer-glow)" />
+  <rect x="10" y="10" width="80" height="80" rx="19" fill="none" stroke="#38D9B0" stroke-width="0.75" stroke-opacity="0.2" />
+
+  <!-- 2. Box Left Facet: Letter "Q" -->
+  <path d="M 18,26 L 50,18 L 50,46 L 18,54 Z M 27,33 L 41,29 L 41,39 L 27,43 Z"
+        fill="url(#q-facet-grad)"
+        fill-rule="evenodd"
+        stroke="#65F59A"
+        stroke-width="0.75"
+        stroke-opacity="0.6"
+        filter="url(#qd-inner-glow)" />
+
+  <!-- 3. Box Right Facet: Letter "D" -->
+  <path d="M 50,18 L 82,26 L 82,54 L 50,46 Z M 59,29 L 73,33 L 73,43 L 59,39 Z"
+        fill="url(#d-facet-grad)"
+        fill-rule="evenodd"
+        stroke="#38D9B0"
+        stroke-width="0.75"
+        stroke-opacity="0.6" />
+
+  <!-- 4. Center Specular Dividing Ridge -->
+  <line x1="50" y1="18" x2="50" y2="46" stroke="#F2F7F3" stroke-width="1.2" stroke-opacity="0.8" />
+
+  <!-- 5. Dynamic Tail of "Q" - Shooting Out and Striking the Diamond Brain -->
+  <path d="M 38,40 L 44,46 L 50,58" 
+        stroke="#65F59A" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        filter="url(#qd-outer-glow)" />
+  
+  <!-- Spark Impact Node at Apex of Diamond -->
+  <circle cx="50" cy="58" r="2.2" fill="#F2F7F3" stroke="#65F59A" stroke-width="1" />
+
+  <!-- 6. Diamond Brain Container Below -->
+  <path d="M 50,58 L 74,72 L 50,86 L 26,72 Z"
+        fill="url(#brain-grad)"
+        stroke="#65F59A"
+        stroke-width="1.4"
+        filter="url(#qd-outer-glow)" />
+
+  <!-- Central Cerebral Sulcus (Vertical Brain Division) -->
+  <line x1="50" y1="60" x2="50" y2="84" stroke="#65F59A" stroke-width="1" stroke-dasharray="1.5 1" stroke-opacity="0.9" />
+
+  <!-- Left Cerebral Hemisphere Folds (Neural Gyri) -->
+  <path d="M 50,64 Q 38,68 32,72" fill="none" stroke="#38D9B0" stroke-width="1.1" stroke-linecap="round" />
+  <path d="M 50,72 Q 36,74 34,78" fill="none" stroke="#65F59A" stroke-width="1.1" stroke-linecap="round" />
+  <path d="M 50,78 Q 42,80 46,84" fill="none" stroke="#38D9B0" stroke-width="1" stroke-linecap="round" />
+
+  <!-- Right Cerebral Hemisphere Folds (Neural Gyri) -->
+  <path d="M 50,64 Q 62,68 68,72" fill="none" stroke="#38D9B0" stroke-width="1.1" stroke-linecap="round" />
+  <path d="M 50,72 Q 64,74 66,78" fill="none" stroke="#65F59A" stroke-width="1.1" stroke-linecap="round" />
+  <path d="M 50,78 Q 58,80 54,84" fill="none" stroke="#38D9B0" stroke-width="1" stroke-linecap="round" />
+
+  <!-- Synaptic Glowing Nodes -->
+  <circle cx="38" cy="68" r="1" fill="#65F59A" />
+  <circle cx="36" cy="74" r="1" fill="#38D9B0" />
+  <circle cx="62" cy="68" r="1" fill="#65F59A" />
+  <circle cx="64" cy="74" r="1" fill="#38D9B0" />
+  <circle cx="50" cy="72" r="1.2" fill="#F2F7F3" />
+</svg>

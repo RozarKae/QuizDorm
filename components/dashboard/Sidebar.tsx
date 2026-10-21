@@ -189,9 +189,7 @@ export default function Sidebar({
                 {!collapsed ? (
                   <Logo />
                 ) : (
-                  <div className="w-8 h-8 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.2)] text-[#65F59A] font-mono text-xs font-bold tracking-tight flex items-center justify-center">
-                    QD
-                  </div>
+                  <Logo showWordmark={false} iconSize="w-8 h-8" />
                 )}
               </Link>
               <Button
