@@ -12,62 +12,93 @@ import { LMSCommunityHub } from "@/components/lms/LMSCommunityHub";
 import { LMSAnalyticsDashboard } from "@/components/lms/LMSAnalyticsDashboard";
 import { EnterpriseLMSConsole } from "@/components/lms/EnterpriseLMSConsole";
 
-import { 
-  BookOpen, Video, Folder, Target, FileCode, GraduationCap, 
-  Users, BarChart3, Building2, Sparkles
+import {
+  BookOpen,
+  Video,
+  Folder,
+  Target,
+  FileCode,
+  GraduationCap,
+  Users,
+  BarChart3,
+  Building2,
+  Sparkles,
 } from "lucide-react";
 
-export type LMSModuleTab = 
-  | "courses" 
-  | "lessons" 
-  | "content-library" 
-  | "learning-paths" 
-  | "assessments" 
-  | "student-dashboard" 
-  | "instructor-workspace" 
-  | "community" 
-  | "analytics" 
+export type LMSModuleTab =
+  | "courses"
+  | "lessons"
+  | "content-library"
+  | "learning-paths"
+  | "assessments"
+  | "student-dashboard"
+  | "instructor-workspace"
+  | "community"
+  | "analytics"
   | "enterprise";
 
 export default function LearningManagementSuitePage() {
   const [activeTab, setActiveTab] = useState<LMSModuleTab>("courses");
 
   const tabs: { id: LMSModuleTab; label: string; icon: React.ElementType; badge?: string }[] = [
-    { id: "courses", label: "Course Management", icon: BookOpen },
-    { id: "lessons", label: "Lesson Player Studio", icon: Video },
+    { id: "courses", label: "Courses", icon: BookOpen },
+    { id: "lessons", label: "Lesson Studio", icon: Video },
     { id: "content-library", label: "Content Vault", icon: Folder },
     { id: "learning-paths", label: "Adaptive Paths", icon: Target, badge: "AI" },
-    { id: "assessments", label: "Practice & Labs", icon: FileCode },
-    { id: "student-dashboard", label: "Student Learning Hub", icon: GraduationCap },
-    { id: "instructor-workspace", label: "Instructor Workspace", icon: Users },
-    { id: "community", label: "Community & Groups", icon: Users },
-    { id: "analytics", label: "Learning Analytics", icon: BarChart3 },
+    { id: "assessments", label: "Labs & Practice", icon: FileCode },
+    { id: "student-dashboard", label: "Student Hub", icon: GraduationCap },
+    { id: "instructor-workspace", label: "Instructor HQ", icon: Users },
+    { id: "community", label: "Community", icon: Users },
+    { id: "analytics", label: "Analytics", icon: BarChart3 },
     { id: "enterprise", label: "Enterprise LMS", icon: Building2 },
   ];
 
   return (
     <div className="space-y-6 pb-12">
-      {/* Top Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-purple-500/20">
-              <BookOpen className="w-6 h-6 text-white" />
+      {/* 1. Cinematic Hero Masthead */}
+      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] pointer-events-none" />
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+                Curriculum Matrix // LMS Engine
+              </span>
+              <span className="font-mono text-[11px] text-[#69786F]">v4.3 Suite</span>
             </div>
-            <div>
-              <h1 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">
-                Learning Management Suite (LMS) <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 ml-2">PHASE 4.3</span>
-              </h1>
-              <p className="text-xs text-slate-500">
-                Complete digital learning ecosystem with multi-level courses, rich lessons, adaptive skill paths, coding sandboxes, student dashboards, instructor tools, and enterprise LMS administration.
-              </p>
+            <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#F2F7F3]">
+              Learning Management Suite (LMS)
+            </h1>
+            <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-2xl leading-relaxed">
+              Complete digital learning ecosystem with multi-level courses, rich lessons, adaptive skill paths, interactive laboratories, student learning dashboards, and enterprise LMS interoperability.
+            </p>
+          </div>
+
+          {/* Quick HUD Metrics */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-2.5 shrink-0 font-mono">
+            <div className="p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)]">
+              <div className="text-[10px] uppercase text-[#69786F]">Active Courses</div>
+              <div className="text-sm font-bold text-[#65F59A]">42 Published</div>
+            </div>
+            <div className="p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)]">
+              <div className="text-[10px] uppercase text-[#69786F]">Enrolled</div>
+              <div className="text-sm font-bold text-[#F2F7F3]">3,240 Scholars</div>
+            </div>
+            <div className="p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)]">
+              <div className="text-[10px] uppercase text-[#69786F]">Curriculum</div>
+              <div className="text-sm font-bold text-[#38D9B0]">148 Hours</div>
+            </div>
+            <div className="p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)]">
+              <div className="text-[10px] uppercase text-[#69786F]">Completion</div>
+              <div className="text-sm font-bold text-[#65F59A]">92.4% Avg</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Module Navigation Tabs */}
-      <div className="bg-white dark:bg-slate-900 p-2 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+      {/* 2. Future OS Module Navigation Tabs */}
+      <div className="bg-[#0C1210] p-1.5 rounded-[6px] border border-[rgba(160,190,170,0.14)] flex items-center gap-1 overflow-x-auto scrollbar-none">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -75,16 +106,22 @@ export default function LearningManagementSuitePage() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-3.5 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 whitespace-nowrap transition-all ${
+              className={`px-3 py-2 rounded-[4px] text-xs font-mono uppercase tracking-wider flex items-center gap-2 whitespace-nowrap transition-all ${
                 isActive
-                  ? "bg-purple-600 text-white shadow-md font-bold"
-                  : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  ? "bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] shadow-[0_0_12px_rgba(101,245,154,0.15)] font-bold"
+                  : "text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17]"
               }`}
             >
-              <Icon className="w-4 h-4" />
+              <Icon className="w-3.5 h-3.5" />
               <span>{tab.label}</span>
               {tab.badge && (
-                <span className="text-[9px] font-extrabold px-1.5 py-0.2 rounded-full bg-indigo-500 text-white">
+                <span
+                  className={`text-[9px] font-bold px-1 py-0.2 rounded-[2px] ${
+                    isActive
+                      ? "bg-[#65F59A] text-[#070B0A]"
+                      : "bg-[#111B17] text-[#65F59A] border border-[rgba(101,245,154,0.25)]"
+                  }`}
+                >
                   {tab.badge}
                 </span>
               )}
@@ -93,7 +130,7 @@ export default function LearningManagementSuitePage() {
         })}
       </div>
 
-      {/* Module Workspace Content */}
+      {/* 3. Module Workspace Content */}
       <div className="pt-2">
         {activeTab === "courses" && <CourseManagementHub />}
         {activeTab === "lessons" && <LessonStudioPlayer />}

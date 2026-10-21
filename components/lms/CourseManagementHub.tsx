@@ -4,9 +4,20 @@ import React, { useState } from "react";
 import { LMSCourse, CourseLevel } from "@/lib/types/lms";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  BookOpen, Plus, Search, Filter, Star, Users, Clock, 
-  Layers, Copy, Archive, CheckCircle2, Sparkles, Folder
+import {
+  BookOpen,
+  Plus,
+  Search,
+  Filter,
+  Star,
+  Users,
+  Clock,
+  Layers,
+  Copy,
+  Archive,
+  CheckCircle2,
+  Sparkles,
+  Folder,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -58,46 +69,44 @@ const mockCourses: LMSCourse[] = [
     subtitle: "Executive Communication, Financial Models, and Decision Analysis",
     category: "Business & Leadership",
     subject: "Management",
-    level: "Beginner",
-    instructorName: "Marcus Sterling",
-    instructorTitle: "Managing Director",
-    enrolledStudents: 2100,
-    rating: 4.7,
+    level: "Masterclass",
+    instructorName: "Sarah Jenkins, MBA",
+    instructorTitle: "Executive Strategist",
+    enrolledStudents: 640,
+    rating: 4.9,
     totalChapters: 5,
-    totalLessons: 20,
+    totalLessons: 22,
     durationHours: 18,
     prerequisites: [],
     thumbnailUrl: "#",
     status: "Published",
-    createdAt: "Feb 01, 2026",
+    createdAt: "Jan 20, 2026",
   },
 ];
 
 export function CourseManagementHub() {
   const [courses, setCourses] = useState<LMSCourse[]>(mockCourses);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // New Course Form State
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newSubtitle, setNewSubtitle] = useState("");
   const [newCategory, setNewCategory] = useState("Computer Science");
-  const [newSubject, setNewSubject] = useState("Software Engineering");
-  const [newLevel, setNewLevel] = useState<CourseLevel>("Beginner");
-  const [newInstructor, setNewInstructor] = useState("You (Instructor)");
+  const [newLevel, setNewLevel] = useState<CourseLevel>("Intermediate");
 
   const handleDuplicateCourse = (course: LMSCourse) => {
     const dup: LMSCourse = {
       ...course,
       id: `course-${Date.now()}`,
       code: `${course.code}-COPY`,
-      title: `${course.title} (Copy)`,
+      title: `${course.title} (Draft Copy)`,
+      status: "Draft",
       enrolledStudents: 0,
       createdAt: "Just now",
     };
     setCourses([dup, ...courses]);
-    toast.success(`Duplicated course: "${dup.title}"`);
+    toast.success(`Duplicated course "${course.title}" as new draft.`);
   };
 
   const handleCreateCourse = (e: React.FormEvent) => {
@@ -105,18 +114,18 @@ export function CourseManagementHub() {
     if (!newTitle.trim()) return;
     const newCourse: LMSCourse = {
       id: `course-${Date.now()}`,
-      code: `CRS-${Math.floor(1000 + Math.random() * 9000)}`,
+      code: `NEW-${Math.floor(100 + Math.random() * 900)}`,
       title: newTitle,
-      subtitle: newSubtitle || "Comprehensive online course curriculum",
+      subtitle: newSubtitle || "Comprehensive curriculum module",
       category: newCategory,
-      subject: newSubject,
+      subject: newCategory,
       level: newLevel,
-      instructorName: newInstructor,
-      instructorTitle: "Senior Educator",
+      instructorName: "Faculty Instructor",
+      instructorTitle: "Academic Contributor",
       enrolledStudents: 0,
       rating: 5.0,
-      totalChapters: 4,
-      totalLessons: 16,
+      totalChapters: 1,
+      totalLessons: 4,
       durationHours: 12,
       prerequisites: [],
       thumbnailUrl: "#",
@@ -131,7 +140,9 @@ export function CourseManagementHub() {
   };
 
   const filteredCourses = courses.filter((c) => {
-    const matchesSearch = c.title.toLowerCase().includes(searchTerm.toLowerCase()) || c.code.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch =
+      c.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      c.code.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCat = selectedCategory === "All" || c.category === selectedCategory;
     return matchesSearch && matchesCat;
   });
@@ -139,48 +150,53 @@ export function CourseManagementHub() {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 sm:p-8 rounded-3xl border border-indigo-500/30 shadow-xl relative overflow-hidden">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold mb-3 border border-indigo-500/30">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" /> Enterprise LMS Course Builder
+      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(circle,rgba(101,245,154,0.06)_0%,transparent_70%)] pointer-events-none" />
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] text-[#65F59A] text-[10px] font-mono font-bold uppercase tracking-wider border border-[rgba(101,245,154,0.2)]">
+              <Sparkles className="w-3.5 h-3.5" />
+              Enterprise LMS Course Builder
             </div>
-            <h1 className="text-3xl font-extrabold tracking-tight">Course Management Studio</h1>
-            <p className="text-slate-300 text-sm mt-1.5 max-w-xl">
+            <h2 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-[#F2F7F3]">
+              Course Management Studio
+            </h2>
+            <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-xl leading-relaxed">
               Design, build, duplicate, and organize multi-level curriculum programs, structured subject hierarchies, and prerequisite paths.
             </p>
           </div>
 
           <Button
             onClick={() => setIsCreateModalOpen(true)}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl shadow-lg shadow-indigo-500/30"
+            className="h-10 px-5 rounded-[4px] bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_16px_rgba(101,245,154,0.2)] shrink-0"
           >
-            <Plus className="w-4 h-4 mr-1.5" /> Create New Course
+            <Plus className="w-4 h-4 mr-1.5" />
+            Create New Course
           </Button>
         </div>
       </div>
 
       {/* Filter & Controls Bar */}
-      <div className="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="bg-[#0C1210] p-4 rounded-[6px] border border-[rgba(160,190,170,0.14)] flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="relative w-full md:w-80">
-          <Search className="absolute left-3.5 top-3 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-3.5 top-3 h-4 w-4 text-[#69786F]" />
           <Input
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search by course title or code..."
-            className="pl-10 h-10 text-xs rounded-xl bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700"
+            className="pl-10 h-10 text-xs rounded-[4px] bg-[#111B17] border-[rgba(160,190,170,0.14)] text-[#F2F7F3] placeholder:text-[#69786F] font-mono"
           />
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
+        <div className="flex flex-wrap items-center gap-1.5 w-full md:w-auto">
           {["All", "Computer Science", "STEM", "Business & Leadership"].map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors ${
+              className={`px-3 py-1.5 rounded-[3px] text-xs font-mono uppercase tracking-wider transition-all ${
                 selectedCategory === cat
-                  ? "bg-indigo-600 text-white shadow-sm"
-                  : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200"
+                  ? "bg-[#65F59A] text-[#070B0A] font-bold"
+                  : "bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(160,190,170,0.12)]"
               }`}
             >
               {cat}
@@ -190,58 +206,61 @@ export function CourseManagementHub() {
       </div>
 
       {/* Courses Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filteredCourses.map((course) => (
           <div
             key={course.id}
-            className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl transition-all overflow-hidden flex flex-col justify-between p-6 space-y-4"
+            className="bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] hover:border-[rgba(160,190,170,0.28)] transition-all flex flex-col justify-between p-5 space-y-4"
           >
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400 px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950">
+                <span className="font-mono text-xs font-bold text-[#65F59A] px-2 py-0.5 rounded-[2px] bg-[rgba(101,245,154,0.08)] border border-[rgba(101,245,154,0.2)]">
                   {course.code}
                 </span>
-                <span className="px-2 py-0.5 rounded bg-purple-500/10 text-purple-600 dark:text-purple-400 text-[10px] font-bold">
+                <span className="px-2 py-0.5 rounded-[2px] bg-[rgba(56,217,176,0.1)] text-[#38D9B0] text-[10px] font-mono font-bold uppercase border border-[rgba(56,217,176,0.2)]">
                   {course.level}
                 </span>
               </div>
 
-              <h3 className="font-bold text-slate-900 dark:text-white text-base leading-snug">{course.title}</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">{course.subtitle}</p>
+              <h3 className="font-display font-bold text-[#F2F7F3] text-base leading-snug">{course.title}</h3>
+              <p className="text-xs text-[#A0AEA5] line-clamp-2 leading-relaxed">{course.subtitle}</p>
             </div>
 
-            <div className="grid grid-cols-3 gap-2 p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl text-center text-xs">
+            <div className="grid grid-cols-3 gap-2 p-3 bg-[#111B17] rounded-[4px] border border-[rgba(160,190,170,0.1)] text-center text-xs font-mono">
               <div>
-                <p className="text-slate-400 text-[10px] uppercase font-semibold">Enrolled</p>
-                <p className="font-extrabold text-slate-800 dark:text-slate-200 mt-0.5">{course.enrolledStudents}</p>
+                <p className="text-[#69786F] text-[10px] uppercase font-semibold">Enrolled</p>
+                <p className="font-extrabold text-[#F2F7F3] mt-0.5">{course.enrolledStudents}</p>
               </div>
               <div>
-                <p className="text-slate-400 text-[10px] uppercase font-semibold">Lessons</p>
-                <p className="font-extrabold text-slate-800 dark:text-slate-200 mt-0.5">{course.totalLessons}</p>
+                <p className="text-[#69786F] text-[10px] uppercase font-semibold">Lessons</p>
+                <p className="font-extrabold text-[#F2F7F3] mt-0.5">{course.totalLessons}</p>
               </div>
               <div>
-                <p className="text-slate-400 text-[10px] uppercase font-semibold">Rating</p>
-                <p className="font-extrabold text-amber-500 flex items-center justify-center gap-0.5 mt-0.5">
-                  <Star className="w-3.5 h-3.5 fill-amber-500" /> {course.rating}
+                <p className="text-[#69786F] text-[10px] uppercase font-semibold">Rating</p>
+                <p className="font-extrabold text-[#FBBF24] flex items-center justify-center gap-0.5 mt-0.5">
+                  <Star className="w-3 h-3 fill-[#FBBF24]" /> {course.rating}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-800">
+            <div className="flex items-center justify-between text-xs text-[#69786F] pt-2 border-t border-[rgba(160,190,170,0.1)] font-mono text-[11px]">
               <span>By {course.instructorName}</span>
-              <span className="font-semibold">{course.durationHours} Hours Content</span>
+              <span className="text-[#A0AEA5]">{course.durationHours} Hours</span>
             </div>
 
-            <div className="flex items-center justify-between gap-2 pt-2">
+            <div className="flex items-center justify-between gap-2 pt-1">
               <Button
                 onClick={() => handleDuplicateCourse(course)}
                 variant="ghost"
                 size="sm"
-                className="text-xs rounded-xl text-slate-500"
+                className="h-8 text-xs rounded-[4px] text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17] font-mono"
               >
                 <Copy className="w-3.5 h-3.5 mr-1" /> Duplicate
               </Button>
-              <Button size="sm" className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl">
+              <Button
+                size="sm"
+                className="h-8 bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider rounded-[4px]"
+              >
                 <BookOpen className="w-3.5 h-3.5 mr-1" /> Open Syllabus
               </Button>
             </div>
@@ -251,43 +270,54 @@ export function CourseManagementHub() {
 
       {/* Modal: Create Course */}
       {isCreateModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
-              <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-indigo-600" /> Create LMS Course
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-[#0C1210] rounded-[8px] p-6 max-w-md w-full shadow-2xl border border-[rgba(160,190,170,0.2)] space-y-4">
+            <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
+              <h3 className="font-display font-bold uppercase tracking-tight text-[#F2F7F3] flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-[#65F59A]" /> Create LMS Course
               </h3>
-              <button onClick={() => setIsCreateModalOpen(false)} className="text-slate-400">✕</button>
+              <button
+                onClick={() => setIsCreateModalOpen(false)}
+                className="text-[#69786F] hover:text-[#F2F7F3] font-mono"
+              >
+                ✕
+              </button>
             </div>
             <form onSubmit={handleCreateCourse} className="space-y-3 text-xs">
               <div>
-                <label className="block font-semibold mb-1">Course Title *</label>
+                <label className="block font-mono text-[11px] uppercase tracking-wider text-[#A0AEA5] mb-1">
+                  Course Title *
+                </label>
                 <Input
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
                   placeholder="e.g. Advanced Quantum Algorithms & Qiskit"
-                  className="rounded-xl"
+                  className="rounded-[4px] bg-[#111B17] border-[rgba(160,190,170,0.14)] text-[#F2F7F3] text-xs font-mono"
                   required
                 />
               </div>
 
               <div>
-                <label className="block font-semibold mb-1">Subtitle / Overview</label>
+                <label className="block font-mono text-[11px] uppercase tracking-wider text-[#A0AEA5] mb-1">
+                  Subtitle / Overview
+                </label>
                 <Input
                   value={newSubtitle}
                   onChange={(e) => setNewSubtitle(e.target.value)}
                   placeholder="e.g. Hands-on quantum circuit design"
-                  className="rounded-xl"
+                  className="rounded-[4px] bg-[#111B17] border-[rgba(160,190,170,0.14)] text-[#F2F7F3] text-xs font-mono"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-semibold mb-1">Category</label>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-[#A0AEA5] mb-1">
+                    Category
+                  </label>
                   <select
                     value={newCategory}
                     onChange={(e) => setNewCategory(e.target.value)}
-                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs"
+                    className="w-full bg-[#111B17] border border-[rgba(160,190,170,0.14)] text-[#F2F7F3] rounded-[4px] px-3 py-2 text-xs font-mono"
                   >
                     <option value="Computer Science">Computer Science</option>
                     <option value="STEM">STEM</option>
@@ -296,11 +326,13 @@ export function CourseManagementHub() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold mb-1">Difficulty Level</label>
+                  <label className="block font-mono text-[11px] uppercase tracking-wider text-[#A0AEA5] mb-1">
+                    Difficulty Level
+                  </label>
                   <select
                     value={newLevel}
                     onChange={(e) => setNewLevel(e.target.value as CourseLevel)}
-                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs"
+                    className="w-full bg-[#111B17] border border-[rgba(160,190,170,0.14)] text-[#F2F7F3] rounded-[4px] px-3 py-2 text-xs font-mono"
                   >
                     <option value="Beginner">Beginner</option>
                     <option value="Intermediate">Intermediate</option>
@@ -310,11 +342,19 @@ export function CourseManagementHub() {
                 </div>
               </div>
 
-              <div className="flex justify-end gap-2 pt-2">
-                <Button type="button" variant="ghost" onClick={() => setIsCreateModalOpen(false)} className="rounded-xl text-xs">
+              <div className="flex justify-end gap-2 pt-3 border-t border-[rgba(160,190,170,0.1)]">
+                <Button
+                  type="button"
+                  variant="ghost"
+                  onClick={() => setIsCreateModalOpen(false)}
+                  className="rounded-[4px] text-xs font-mono text-[#A0AEA5] hover:text-[#F2F7F3]"
+                >
                   Cancel
                 </Button>
-                <Button type="submit" className="bg-indigo-600 text-white rounded-xl text-xs font-semibold">
+                <Button
+                  type="submit"
+                  className="bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider rounded-[4px]"
+                >
                   Publish Course
                 </Button>
               </div>
