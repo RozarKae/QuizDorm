@@ -14,38 +14,55 @@ export function TenantManagerCard({ onOpenWhiteLabel }: TenantManagerCardProps) 
   const [tenants, setTenants] = useState<Tenant[]>(TenantManager.getTenants());
 
   return (
-    <div className="bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-3xl p-6 shadow-sm space-y-4">
-      <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-3">
+    <div className="bg-[#0C1210] border border-[rgba(160,190,170,0.14)] rounded-[6px] p-5 shadow-sm space-y-4">
+      <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
         <div>
-          <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
-            <Building className="w-5 h-5 text-indigo-600 mr-2" /> Enterprise Multi-Tenant Directory
+          <h3 className="font-display text-sm font-bold uppercase tracking-wider text-[#F2F7F3] flex items-center">
+            <Building className="w-4 h-4 text-[#65F59A] mr-2" />
+            Enterprise Multi-Tenant Directory
           </h3>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-[#A0AEA5] mt-0.5">
             Isolated tenant databases, dedicated domain routing, and regional cloud residency.
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
         {tenants.map((t) => (
-          <div key={t.id} className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 space-y-3">
+          <div
+            key={t.id}
+            className="p-4 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)] hover:border-[rgba(160,190,170,0.22)] transition-all space-y-3"
+          >
             <div className="flex items-center justify-between font-bold">
-              <span className="text-gray-900 dark:text-white text-sm">{t.name}</span>
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 uppercase">
+              <span className="text-[#F2F7F3] text-sm font-sans">{t.name}</span>
+              <span className="px-2 py-0.5 rounded-[2px] text-[10px] font-mono font-bold bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.2)] uppercase">
                 {t.status}
               </span>
             </div>
 
-            <div className="space-y-1 font-mono text-[11px] text-gray-500">
-              <div>Domain: <span className="font-bold text-indigo-600 dark:text-indigo-400">{t.domain}</span></div>
-              <div>Isolation: <span className="font-bold text-gray-900 dark:text-white uppercase">{t.isolationMode}</span></div>
-              <div>Region: <span className="font-bold text-gray-900 dark:text-white uppercase">{t.region}</span></div>
-              <div>Users: <span className="font-bold text-gray-900 dark:text-white">{t.userCount.toLocaleString()} Users</span></div>
+            <div className="space-y-1 font-mono text-[11px] text-[#A0AEA5]">
+              <div>
+                Domain: <span className="font-bold text-[#65F59A]">{t.domain}</span>
+              </div>
+              <div>
+                Isolation: <span className="font-bold text-[#F2F7F3] uppercase">{t.isolationMode}</span>
+              </div>
+              <div>
+                Region: <span className="font-bold text-[#F2F7F3] uppercase">{t.region}</span>
+              </div>
+              <div>
+                Active Seats: <span className="font-bold text-[#F2F7F3]">{t.userCount.toLocaleString()} Users</span>
+              </div>
             </div>
 
             {onOpenWhiteLabel && (
-              <Button onClick={() => onOpenWhiteLabel(t)} variant="outline" className="w-full text-xs h-8 rounded-xl font-bold">
-                <Sliders className="w-3.5 h-3.5 mr-1 text-indigo-500" /> White-Label Settings
+              <Button
+                onClick={() => onOpenWhiteLabel(t)}
+                variant="outline"
+                className="w-full text-xs h-8 rounded-[4px] font-mono uppercase tracking-wider border-[rgba(160,190,170,0.2)] bg-[#0C1210] text-[#F2F7F3] hover:border-[#65F59A]/50 hover:text-[#65F59A]"
+              >
+                <Sliders className="w-3.5 h-3.5 mr-1 text-[#65F59A]" />
+                White-Label Settings
               </Button>
             )}
           </div>

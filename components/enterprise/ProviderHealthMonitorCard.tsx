@@ -3,41 +3,45 @@
 import React from "react";
 import { ProviderHealthMonitor } from "@/lib/enterprise/healthMonitor";
 import { Activity, CheckCircle2, Zap } from "lucide-react";
-import { Card } from "@/components/ui/card";
 
 export function ProviderHealthMonitorCard() {
   const healthList = ProviderHealthMonitor.getHealth();
 
   return (
-    <Card className="p-6 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-3xl shadow-sm space-y-4">
-      <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-3">
-        <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
-          <Activity className="w-5 h-5 text-emerald-500 mr-2" /> Live Provider & Infrastructure Health Monitor
+    <div className="p-5 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] space-y-4">
+      <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
+        <h3 className="font-display text-sm font-bold uppercase tracking-wider text-[#F2F7F3] flex items-center">
+          <Activity className="w-4 h-4 text-[#65F59A] mr-2" />
+          Live Provider & Infrastructure Health Monitor
         </h3>
-        <span className="text-xs font-mono font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950 px-2.5 py-0.5 rounded-full">
-          All Services Operational
+        <span className="text-[10px] font-mono font-bold text-[#65F59A] bg-[rgba(101,245,154,0.1)] px-2.5 py-0.5 rounded-[2px] uppercase border border-[rgba(101,245,154,0.2)]">
+          All Systems Nominal
         </span>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 text-xs font-mono">
         {healthList.map((h) => (
-          <div key={h.id} className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 space-y-2">
+          <div
+            key={h.id}
+            className="p-3.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)] hover:border-[rgba(160,190,170,0.22)] transition-all space-y-2"
+          >
             <div className="flex items-center justify-between font-sans">
-              <span className="font-bold text-gray-900 dark:text-white text-[11px] truncate">{h.providerName}</span>
+              <span className="font-bold text-[#F2F7F3] text-[11px] truncate">{h.providerName}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
             </div>
 
             <div className="flex justify-between items-center text-[10px]">
-              <span className="text-gray-400">Latency:</span>
-              <span className="font-bold text-emerald-600">{h.latencyMs}ms</span>
+              <span className="text-[#69786F]">Latency:</span>
+              <span className="font-bold text-[#65F59A]">{h.latencyMs}ms</span>
             </div>
 
             <div className="flex justify-between items-center text-[10px]">
-              <span className="text-gray-400">Uptime:</span>
-              <span className="font-bold text-indigo-600">{h.uptimePercent}%</span>
+              <span className="text-[#69786F]">Uptime:</span>
+              <span className="font-bold text-[#38D9B0]">{h.uptimePercent}%</span>
             </div>
           </div>
         ))}
       </div>
-    </Card>
+    </div>
   );
 }

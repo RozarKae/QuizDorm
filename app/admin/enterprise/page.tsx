@@ -8,38 +8,47 @@ import { AuditLogTable } from "@/components/enterprise/AuditLogTable";
 import { ProviderHealthMonitorCard } from "@/components/enterprise/ProviderHealthMonitorCard";
 import { WhiteLabelDesignerModal } from "@/components/enterprise/WhiteLabelDesignerModal";
 
-import { ShieldCheck, Building, Activity, FileText, Lock, Sparkles } from "lucide-react";
+import { ShieldCheck, Building, Activity, FileText, Lock, Sparkles, Server } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function EnterpriseControlCenterPage() {
   const [selectedTenant, setSelectedTenant] = useState<Tenant | null>(null);
 
   return (
-    <div className="min-h-screen bg-gray-50/50 dark:bg-gray-900/50 p-4 sm:p-8 space-y-6">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-slate-950 via-indigo-950 to-purple-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-        <div className="space-y-2">
-          <div className="flex items-center space-x-2">
-            <span className="p-2 rounded-2xl bg-white/10 backdrop-blur-md text-emerald-300">
-              <ShieldCheck className="w-6 h-6" />
-            </span>
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-300 bg-white/10 px-3 py-1 rounded-full border border-white/10">
-              QuizDorm Version 2.0 Enterprise OS
+    <div className="space-y-6 pb-12">
+      {/* 1. Futuristic Cinematic Masthead */}
+      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] pointer-events-none" />
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+                Enterprise Security Core // SOC Matrix
+              </span>
+              <span className="font-mono text-[11px] text-[#69786F]">v2.0 Enterprise OS</span>
+            </div>
+            <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#F2F7F3]">
+              Enterprise Assessment OS Control Center
+            </h1>
+            <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-2xl leading-relaxed">
+              Multi-tenant data isolation, white-label configurations, SAML 2.0 / Okta SSO, SOC security operations, live infrastructure health monitoring, and compliance logging.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0">
+            <span className="px-3 py-1.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] font-mono text-xs text-[#65F59A] flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-[#65F59A]" />
+              SOC-2 Type II Certified
             </span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-            Enterprise Assessment Operating System Control Center
-          </h1>
-          <p className="text-xs sm:text-sm text-indigo-100/80 max-w-2xl">
-            Multi-tenant data isolation, white-label configuration, SAML 2.0/Okta SSO, SOC security operations, live infrastructure health monitoring, and compliance logging.
-          </p>
         </div>
       </div>
 
-      {/* Live Provider Health Monitor Grid */}
+      {/* 2. Live Provider Health Monitor Grid */}
       <ProviderHealthMonitorCard />
 
-      {/* Tenant Directory & Security SOC Grid */}
+      {/* 3. Tenant Directory & Security SOC Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <div className="lg:col-span-6">
           <TenantManagerCard onOpenWhiteLabel={(t) => setSelectedTenant(t)} />
@@ -49,10 +58,10 @@ export default function EnterpriseControlCenterPage() {
         </div>
       </div>
 
-      {/* Audit Log Table & FERPA/GDPR Compliance */}
+      {/* 4. Audit Log Table & FERPA/GDPR Compliance */}
       <AuditLogTable />
 
-      {/* White Label Customizer Modal */}
+      {/* 5. White Label Customizer Modal */}
       <WhiteLabelDesignerModal
         tenant={selectedTenant}
         open={!!selectedTenant}
