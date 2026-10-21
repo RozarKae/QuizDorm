@@ -1,14 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import { AssignmentItem } from "@/lib/types/academic";
 import { AssignmentCard } from "@/components/student/AssignmentCard";
 import { QuizAssignModal } from "@/components/teacher/QuizAssignModal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { BookOpen, Plus, Search, CheckCircle2, Clock } from "lucide-react";
+import { BookOpen, Plus, Search } from "lucide-react";
 
 const mockAssignments: AssignmentItem[] = [
   {
@@ -59,35 +58,44 @@ export default function AssignmentsPage() {
   });
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <div className="space-y-6 max-w-7xl mx-auto text-[#F2F7F3]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(160,190,170,0.14)] pb-5">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
-            <BookOpen className="w-6 h-6 text-indigo-600 mr-2" /> Quiz & Homework Assignments
+          <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5] mb-1">
+            <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
+            <span>CLASSROOM TELEMETRY // ASSIGNMENT HUB</span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-[#F2F7F3] flex items-center">
+            <BookOpen className="w-6 h-6 text-[#65F59A] mr-2" /> Quiz & Homework Assignments
           </h1>
-          <p className="text-sm text-gray-500">Track assigned assessments, deadlines, and submission progress</p>
+          <p className="text-xs font-mono text-[#A0AEA5]">
+            Track assigned assessments, deadlines, and submission progress.
+          </p>
         </div>
 
-        <Button onClick={() => setModalOpen(true)} className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl">
+        <Button
+          onClick={() => setModalOpen(true)}
+          className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono font-bold text-xs rounded-[4px] px-5 h-9 shadow-[0_0_12px_rgba(101,245,154,0.18)]"
+        >
           <Plus className="w-4 h-4 mr-1.5" /> Assign Quiz to Class
         </Button>
       </div>
 
-      <div className="bg-white dark:bg-gray-950 p-4 rounded-2xl border border-gray-100 dark:border-gray-850 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="bg-[#0C1210] p-4 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="relative w-full sm:w-80">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#69786F]" />
           <Input
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search assignments..."
-            className="pl-9 h-10 bg-gray-50 dark:bg-gray-900 text-xs"
+            className="pl-9 h-9 bg-[#111B17] text-xs font-mono border-[rgba(160,190,170,0.18)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
           />
         </div>
 
         <Select
           value={typeFilter}
           onChange={(e) => setTypeFilter(e.target.value)}
-          className="h-10 text-xs font-medium w-full sm:w-44"
+          className="h-9 text-xs font-mono bg-[#111B17] border-[rgba(160,190,170,0.18)] text-[#F2F7F3] rounded-[4px] w-full sm:w-44"
           options={[
             { value: "All", label: "All Types" },
             { value: "quiz", label: "Quizzes Only" },

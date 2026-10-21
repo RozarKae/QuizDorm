@@ -1,5 +1,5 @@
 import React from "react";
-import { Bell, Megaphone, CheckCircle2, Clock, Info } from "lucide-react";
+import { Bell, Info } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface NotificationCenterProps {
@@ -13,12 +13,16 @@ export function NotificationCenter({
     { id: "n3", title: "Quiz Graded", message: "Your Chemistry quiz result: 92% (A).", time: "Yesterday", read: true },
   ],
 }: NotificationCenterProps) {
+  const unreadCount = notifications.filter((n) => !n.read).length;
+
   return (
-    <div className="bg-white dark:bg-gray-950 p-6 rounded-3xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-4">
-      <h3 className="text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300 flex items-center justify-between">
-        <span className="flex items-center"><Bell className="w-4 h-4 text-indigo-600 mr-2" /> Notification Center</span>
-        <Badge className="bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 text-[10px]">
-          {notifications.filter((n) => !n.read).length} New
+    <div className="bg-[#0C1210] p-6 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-xs space-y-4">
+      <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F2F7F3] flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-2.5">
+        <span className="flex items-center">
+          <Bell className="w-4 h-4 text-[#65F59A] mr-2" /> Notification Center
+        </span>
+        <Badge className="bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] text-[10px] font-mono font-bold">
+          {unreadCount} New
         </Badge>
       </h3>
 
@@ -26,20 +30,20 @@ export function NotificationCenter({
         {notifications.map((n) => (
           <div
             key={n.id}
-            className={`p-3.5 rounded-2xl border text-xs space-y-1 transition-all ${
+            className={`p-3 rounded-[4px] border text-xs font-mono space-y-1 transition-all ${
               !n.read
-                ? "border-indigo-200 bg-indigo-50/40 dark:bg-indigo-950/40 font-semibold"
-                : "border-gray-100 dark:border-gray-900 bg-gray-50/30 dark:bg-gray-900/30 text-gray-600"
+                ? "border-[rgba(101,245,154,0.3)] bg-[#17251E] text-[#F2F7F3]"
+                : "border-[rgba(160,190,170,0.1)] bg-[#111B17]/60 text-[#A0AEA5]"
             }`}
           >
             <div className="flex items-center justify-between">
-              <span className="font-bold text-gray-900 dark:text-white flex items-center">
-                <Info className="w-3.5 h-3.5 text-indigo-600 mr-1.5 shrink-0" />
+              <span className="font-bold text-[#F2F7F3] flex items-center text-xs">
+                <Info className="w-3.5 h-3.5 text-[#38D9B0] mr-1.5 shrink-0" />
                 {n.title}
               </span>
-              <span className="text-[10px] text-gray-400 font-normal">{n.time}</span>
+              <span className="text-[10px] text-[#69786F] font-normal">{n.time}</span>
             </div>
-            <p className="text-[11px] text-gray-500 leading-relaxed">{n.message}</p>
+            <p className="text-[11px] text-[#A0AEA5] leading-relaxed">{n.message}</p>
           </div>
         ))}
       </div>
