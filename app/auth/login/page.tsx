@@ -11,9 +11,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { signInWithEmail, signInWithGoogle } from "../actions";
-import { TEST_ACCOUNTS } from "../constants";
 import { toast } from "sonner";
-import { Sparkles, GraduationCap, School, UserCheck, Lock } from "lucide-react";
+import { Lock } from "lucide-react";
 
 function LoginContent() {
   const searchParams = useSearchParams();
@@ -51,16 +50,6 @@ function LoginContent() {
   };
 
   const roleName = getRoleDisplayName();
-
-  const handleQuickFill = (roleKey: "student" | "teacher" | "school") => {
-    setErrorMsg("");
-    const acc = TEST_ACCOUNTS[`${roleKey}@quizdorm.com`];
-    if (acc) {
-      setEmail(acc.email);
-      setPassword(acc.password);
-      toast.info(`Filled ${acc.role.toUpperCase()} demo credentials: ${acc.email}`);
-    }
-  };
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -140,60 +129,6 @@ function LoginContent() {
           {errorMsg}
         </div>
       )}
-
-      {/* Quick Test Accounts Interactive Panel */}
-      <div className="p-3.5 mb-5 rounded-[4px] border border-[#262B37] bg-[#161922] space-y-2">
-        <div className="flex items-center justify-between text-xs">
-          <span className="font-mono text-[11px] font-bold text-white flex items-center">
-            <Sparkles className="w-3.5 h-3.5 mr-1.5 text-[#3864F8]" />
-            Quick Presets // Verified Roles
-          </span>
-          <span className="font-mono text-[10px] text-[#3864F8] font-bold uppercase tracking-wider">Auto-Fill</span>
-        </div>
-        <div className="grid grid-cols-3 gap-2">
-          <button
-            type="button"
-            onClick={() => handleQuickFill("student")}
-            className={`p-2 rounded-[3px] border text-left transition-all ${email === "student@quizdorm.com"
-                ? "border-[#3864F8] bg-[#1C2233] ring-1 ring-[#3864F8]"
-                : "border-[#262B37] bg-[#10131B] hover:border-[#3864F8]/50"
-              }`}
-          >
-            <div className="text-[10px] font-mono font-bold text-[#3864F8] uppercase flex items-center">
-              <GraduationCap className="w-3 h-3 mr-1" /> Student
-            </div>
-            <div className="text-[10px] font-mono text-zinc-400 truncate mt-0.5">student@...</div>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => handleQuickFill("teacher")}
-            className={`p-2 rounded-[3px] border text-left transition-all ${email === "teacher@quizdorm.com"
-                ? "border-[#3864F8] bg-[#1C2233] ring-1 ring-[#3864F8]"
-                : "border-[#262B37] bg-[#10131B] hover:border-[#3864F8]/50"
-              }`}
-          >
-            <div className="text-[10px] font-mono font-bold text-[#3864F8] uppercase flex items-center">
-              <UserCheck className="w-3 h-3 mr-1" /> Teacher
-            </div>
-            <div className="text-[10px] font-mono text-zinc-400 truncate mt-0.5">teacher@...</div>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => handleQuickFill("school")}
-            className={`p-2 rounded-[3px] border text-left transition-all ${email === "school@quizdorm.com"
-                ? "border-[#3864F8] bg-[#1C2233] ring-1 ring-[#3864F8]"
-                : "border-[#262B37] bg-[#10131B] hover:border-[#3864F8]/50"
-              }`}
-          >
-            <div className="text-[10px] font-mono font-bold text-[#3864F8] uppercase flex items-center">
-              <School className="w-3 h-3 mr-1" /> School
-            </div>
-            <div className="text-[10px] font-mono text-zinc-400 truncate mt-0.5">school@...</div>
-          </button>
-        </div>
-      </div>
 
       <AuthForm onSubmit={handleFormSubmit}>
         <div className="space-y-4">
