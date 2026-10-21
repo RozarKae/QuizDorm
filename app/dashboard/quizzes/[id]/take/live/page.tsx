@@ -67,21 +67,24 @@ export default function DistractionFreeQuizEnginePage({
 
   if (!currentQuestion) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-gray-50 dark:bg-gray-950">
-        <p className="text-sm text-gray-500">Loading quiz attempt session...</p>
+      <div className="fixed inset-0 flex items-center justify-center bg-[#070B0A] text-[#F2F7F3] font-mono">
+        <div className="flex items-center space-x-3">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#65F59A] animate-pulse" />
+          <p className="text-xs text-[#A0AEA5]">Initializing secure assessment session...</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-background text-foreground flex flex-col justify-between overflow-hidden">
+    <div className="fixed inset-0 z-50 bg-[#070B0A] text-[#F2F7F3] flex flex-col justify-between overflow-hidden">
       {/* Header Bar */}
-      <header className="bg-card border-b border-border px-6 py-3 flex items-center justify-between shadow-xs">
+      <header className="bg-[#0C1210] border-b border-[rgba(160,190,170,0.14)] px-6 py-3 flex items-center justify-between shadow-xs relative z-20">
         <div>
-          <h2 className="text-sm font-bold font-display text-foreground truncate max-w-xs sm:max-w-md">
+          <h2 className="text-sm font-bold font-display text-[#F2F7F3] truncate max-w-xs sm:max-w-md">
             {targetQuiz.title}
           </h2>
-          <p className="text-[11px] font-mono text-muted-foreground mt-0.5">
+          <p className="text-[11px] font-mono text-[#A0AEA5] mt-0.5">
             {targetQuiz.topic ? `Topic: ${targetQuiz.topic} / ` : ""}Verified Assessment Session
           </p>
         </div>
@@ -90,7 +93,7 @@ export default function DistractionFreeQuizEnginePage({
           <QuizTimer timeRemainingSeconds={timeRemainingSeconds} />
           <Button
             onClick={() => setSubmitModalOpen(true)}
-            className="bg-cobalt hover:bg-cobalt/90 text-white text-xs font-mono font-semibold rounded-[3px] h-8 shadow-xs"
+            className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-[3px] h-8 shadow-[0_0_12px_rgba(101,245,154,0.18)]"
           >
             <Send className="w-3.5 h-3.5 mr-1.5" /> Submit Assessment
           </Button>
@@ -98,9 +101,9 @@ export default function DistractionFreeQuizEnginePage({
       </header>
 
       {/* Progress Bar */}
-      <div className="h-1 w-full bg-border">
+      <div className="h-1 w-full bg-[#111B17]">
         <div
-          className="h-full bg-cobalt transition-all duration-300"
+          className="h-full bg-gradient-to-r from-[#38D9B0] to-[#65F59A] transition-all duration-300 shadow-[0_0_8px_rgba(101,245,154,0.3)]"
           style={{ width: `${((currentIdx + 1) / questions.length) * 100}%` }}
         />
       </div>
@@ -129,7 +132,7 @@ export default function DistractionFreeQuizEnginePage({
       </main>
 
       {/* Navigation Footer */}
-      <footer className="bg-card border-t border-border px-6 py-3 flex items-center justify-between">
+      <footer className="bg-[#0C1210] border-t border-[rgba(160,190,170,0.14)] px-6 py-3 flex items-center justify-between relative z-20">
         <div className="flex items-center space-x-2">
           <Button
             variant="outline"
@@ -137,8 +140,8 @@ export default function DistractionFreeQuizEnginePage({
             onClick={() => toggleMarkForReview(currentQuestion.id)}
             className={`text-xs font-mono rounded-[3px] h-8 ${
               markedForReview.includes(currentQuestion.id)
-                ? "bg-coral/10 text-coral border-coral font-bold"
-                : "border-border text-muted-foreground hover:text-foreground"
+                ? "bg-[rgba(248,113,113,0.15)] text-[#F87171] border-[#F87171] font-bold"
+                : "border-[rgba(160,190,170,0.18)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/30"
             }`}
           >
             <Bookmark className="w-3.5 h-3.5 mr-1" />
@@ -150,7 +153,7 @@ export default function DistractionFreeQuizEnginePage({
               variant="ghost"
               size="sm"
               onClick={() => clearAnswer(currentQuestion.id)}
-              className="text-xs font-mono text-muted-foreground hover:text-coral h-8 rounded-[2px]"
+              className="text-xs font-mono text-[#A0AEA5] hover:text-[#F87171] h-8 rounded-[2px]"
             >
               <RotateCcw className="w-3.5 h-3.5 mr-1" /> Reset Answer
             </Button>
@@ -163,7 +166,7 @@ export default function DistractionFreeQuizEnginePage({
             size="sm"
             disabled={currentIdx === 0}
             onClick={() => setCurrentIdx(currentIdx - 1)}
-            className="text-xs font-mono border-border rounded-[3px] h-8"
+            className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[3px] h-8 text-[#A0AEA5] hover:text-[#F2F7F3] disabled:opacity-30"
           >
             <ChevronLeft className="w-4 h-4 mr-1" /> Previous
           </Button>
@@ -172,7 +175,7 @@ export default function DistractionFreeQuizEnginePage({
             <Button
               size="sm"
               onClick={() => setCurrentIdx(currentIdx + 1)}
-              className="bg-foreground text-background hover:bg-foreground/90 text-xs font-mono font-semibold rounded-[3px] h-8"
+              className="bg-[#17251E] hover:bg-[#20342a] text-[#F2F7F3] border border-[rgba(160,190,170,0.2)] text-xs font-mono font-semibold rounded-[3px] h-8"
             >
               Next <ChevronRight className="w-4 h-4 ml-1" />
             </Button>
@@ -180,7 +183,7 @@ export default function DistractionFreeQuizEnginePage({
             <Button
               size="sm"
               onClick={() => setSubmitModalOpen(true)}
-              className="bg-cobalt hover:bg-cobalt/90 text-white text-xs font-mono font-semibold rounded-[3px] h-8 shadow-xs"
+              className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-[3px] h-8 shadow-[0_0_12px_rgba(101,245,154,0.18)]"
             >
               Finish &amp; Submit
             </Button>

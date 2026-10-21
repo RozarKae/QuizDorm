@@ -13,14 +13,14 @@ export function PerformanceChart({ percentage, isPassed, score, totalMarks }: Pe
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-card rounded-[3px] border border-border relative text-center">
+    <div className="flex flex-col items-center justify-center p-6 bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] relative text-center shadow-xs">
       <div className="relative w-40 h-40 flex items-center justify-center">
         <svg className="w-full h-full transform -rotate-90">
           <circle
             cx="80"
             cy="80"
             r={radius}
-            className="stroke-muted"
+            className="stroke-[#111B17]"
             strokeWidth="10"
             fill="transparent"
           />
@@ -28,27 +28,34 @@ export function PerformanceChart({ percentage, isPassed, score, totalMarks }: Pe
             cx="80"
             cy="80"
             r={radius}
-            className={`transition-all duration-1000 ${isPassed ? "stroke-[#2855F5]" : "stroke-[#E85D3F]"}`}
+            className={`transition-all duration-1000 ${
+              isPassed ? "stroke-[#65F59A]" : "stroke-[#F87171]"
+            }`}
             strokeWidth="10"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
             strokeLinecap="round"
             fill="transparent"
+            style={{
+              filter: isPassed
+                ? "drop-shadow(0 0 6px rgba(101, 245, 154, 0.4))"
+                : "drop-shadow(0 0 6px rgba(248, 113, 113, 0.4))",
+            }}
           />
         </svg>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-3xl font-extrabold font-mono text-foreground">{percentage}%</span>
-          <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-wider">{score} / {totalMarks} PTS</span>
+          <span className="text-3xl font-extrabold font-mono text-[#F2F7F3]">{percentage}%</span>
+          <span className="text-[10px] font-mono text-[#A0AEA5] uppercase tracking-wider">{score} / {totalMarks} PTS</span>
         </div>
       </div>
 
       <div className="mt-4">
         <span
-          className={`inline-block px-3 py-1 rounded-[2px] text-[10px] font-mono font-bold uppercase tracking-widest border ${
+          className={`inline-block px-3 py-1 rounded-[3px] text-[10px] font-mono font-bold uppercase tracking-widest border ${
             isPassed
-              ? "bg-[#DFFF43]/20 text-foreground border-[#DFFF43]/40"
-              : "bg-[#E85D3F]/15 text-[#E85D3F] border-[#E85D3F]/30"
+              ? "bg-[rgba(101,245,154,0.12)] text-[#65F59A] border-[rgba(101,245,154,0.3)] shadow-[0_0_10px_rgba(101,245,154,0.15)]"
+              : "bg-[rgba(248,113,113,0.12)] text-[#F87171] border-[rgba(248,113,113,0.3)]"
           }`}
         >
           {isPassed ? "ASSESSMENT PASSED" : "NEEDS REVISION"}

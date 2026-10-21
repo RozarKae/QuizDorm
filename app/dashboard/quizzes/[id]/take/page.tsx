@@ -112,11 +112,14 @@ export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: s
       {/* Action CTA */}
       <div className="flex justify-end space-x-3 pt-2">
         <Link href="/dashboard/quizzes">
-          <Button variant="outline" className="px-5 rounded-[4px] font-mono text-xs border-[rgba(160,190,170,0.18)] h-9">
+          <Button variant="outline" className="px-5 rounded-[4px] font-mono text-xs border-[rgba(160,190,170,0.18)] h-9 hover:border-[#65F59A]/30">
             Cancel
           </Button>
         </Link>
-        <Button onClick={handleStart} className="font-mono text-xs font-semibold rounded-[4px] px-6 h-9">
+        <Button
+          onClick={handleStart}
+          className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold rounded-[4px] px-6 h-9 shadow-[0_0_15px_rgba(101,245,154,0.18)] transition-all hover:shadow-[0_0_22px_rgba(101,245,154,0.3)]"
+        >
           <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> Start Assessment Now
         </Button>
       </div>

@@ -60,12 +60,12 @@ export function JoinCompetitionModal({ open, onOpenChange, onJoinSuccess }: Join
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md bg-card border-border">
+      <DialogContent className="max-w-md bg-[#0C1210] border border-[rgba(160,190,170,0.14)] text-[#F2F7F3]">
         <DialogHeader>
-          <DialogTitle className="flex items-center text-foreground font-display font-extrabold">
-            <Trophy className="w-5 h-5 text-[#2855F5] mr-2" /> Join Live Competition Arena
+          <DialogTitle className="flex items-center text-[#F2F7F3] font-display font-extrabold text-base">
+            <Trophy className="w-5 h-5 text-[#65F59A] mr-2" /> Join Live Competition Arena
           </DialogTitle>
-          <DialogDescription className="text-xs text-muted-foreground">
+          <DialogDescription className="text-xs text-[#A0AEA5]">
             Enter the 6-character competition PIN code provided by your event host to enter the live arena.
           </DialogDescription>
         </DialogHeader>
@@ -73,7 +73,7 @@ export function JoinCompetitionModal({ open, onOpenChange, onJoinSuccess }: Join
         <form onSubmit={handleJoin} className="space-y-4 py-2">
           <div className="space-y-2">
             <div className="relative">
-              <Key className="absolute left-3 top-3.5 h-4 w-4 text-muted-foreground" />
+              <Key className="absolute left-3 top-3.5 h-4 w-4 text-[#69786F]" />
               <Input
                 value={code}
                 onChange={(e) => {
@@ -81,14 +81,14 @@ export function JoinCompetitionModal({ open, onOpenChange, onJoinSuccess }: Join
                   setErrorMessage(null);
                 }}
                 placeholder="e.g. QD-8492"
-                className="pl-10 h-12 text-base font-mono font-bold tracking-widest text-center uppercase bg-background border-border rounded-[3px]"
+                className="pl-10 h-12 text-base font-mono font-extrabold tracking-widest text-center uppercase bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
                 maxLength={10}
               />
             </div>
 
             {errorMessage && (
-              <div className="p-2.5 rounded-[3px] bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 text-red-800 dark:text-red-200 text-xs flex items-center space-x-1.5">
-                <AlertCircle className="w-3.5 h-3.5 text-red-600 shrink-0" />
+              <div className="p-2.5 rounded-[4px] bg-[rgba(248,113,113,0.1)] border border-[rgba(248,113,113,0.3)] text-[#F87171] text-xs font-mono flex items-center space-x-1.5">
+                <AlertCircle className="w-3.5 h-3.5 text-[#F87171] shrink-0" />
                 <span>{errorMessage}</span>
               </div>
             )}
@@ -96,11 +96,11 @@ export function JoinCompetitionModal({ open, onOpenChange, onJoinSuccess }: Join
 
           <div
             onClick={handleScanClick}
-            className="p-4 rounded-[4px] bg-background border border-border text-center space-y-1.5 cursor-pointer hover:border-[#2855F5] transition-colors"
+            className="p-4 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.16)] text-center space-y-1.5 cursor-pointer hover:border-[#65F59A]/40 transition-colors"
           >
-            <QrCode className="w-7 h-7 text-[#2855F5] mx-auto" />
-            <p className="text-xs font-semibold text-foreground">Or scan host QR Code from your phone</p>
-            <p className="text-[10px] text-muted-foreground font-mono">
+            <QrCode className="w-6 h-6 text-[#38D9B0] mx-auto" />
+            <p className="text-xs font-semibold text-[#F2F7F3]">Or scan host QR Code from your phone</p>
+            <p className="text-[10px] text-[#A0AEA5] font-mono">
               Open https://quizclassroom.vercel.app/join from any mobile device
             </p>
           </div>
@@ -110,14 +110,14 @@ export function JoinCompetitionModal({ open, onOpenChange, onJoinSuccess }: Join
               type="button"
               variant="outline"
               onClick={() => onOpenChange(false)}
-              className="text-xs font-mono rounded-[3px]"
+              className="text-xs font-mono rounded-[4px] border-[rgba(160,190,170,0.18)] text-[#A0AEA5] hover:text-[#F2F7F3]"
             >
               Cancel
             </Button>
             <Button
               type="submit"
               disabled={loading || !code}
-              className="bg-[#2855F5] hover:bg-[#1f44c7] text-white font-mono text-xs font-bold rounded-[3px]"
+              className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold rounded-[4px] shadow-[0_0_12px_rgba(101,245,154,0.18)]"
             >
               {loading ? (
                 <>

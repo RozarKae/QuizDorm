@@ -25,17 +25,17 @@ export function HostControlPanel({
   onEndCompetition,
 }: HostControlPanelProps) {
   return (
-    <div className="bg-[#111318] text-white p-4 rounded-[4px] border border-border shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div className="bg-[#0C1210] text-[#F2F7F3] p-4 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
       <div className="flex items-center space-x-3">
-        <span className="w-2.5 h-2.5 rounded-full bg-[#E85D3F] animate-pulse" />
-        <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#DFFF43]">
-          HOST CONTROL CONSOLE
+        <span className={`w-2.5 h-2.5 rounded-full ${isPaused ? "bg-[#F87171]" : "bg-[#65F59A]"} animate-pulse`} />
+        <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#65F59A]">
+          HOST CONTROL DESK
         </span>
-        <Badge className="bg-white/10 text-white font-mono text-xs border border-white/20">
+        <Badge className="bg-[#111B17] text-[#A0AEA5] font-mono text-xs border border-[rgba(160,190,170,0.18)]">
           Clock: {timeRemaining}s
         </Badge>
         {isPaused && (
-          <Badge className="bg-[#E85D3F] text-white font-mono text-[10px] uppercase font-bold animate-pulse">
+          <Badge className="bg-[rgba(248,113,113,0.2)] text-[#F87171] border border-[#F87171] font-mono text-[10px] uppercase font-bold animate-pulse">
             PAUSED
           </Badge>
         )}
@@ -46,7 +46,7 @@ export function HostControlPanel({
           <Button
             onClick={onResume}
             size="sm"
-            className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-mono font-bold rounded-[3px]"
+            className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-[3px] shadow-[0_0_10px_rgba(101,245,154,0.2)]"
           >
             <Play className="w-3.5 h-3.5 mr-1 fill-current" /> Resume Competition
           </Button>
@@ -55,7 +55,7 @@ export function HostControlPanel({
             onClick={onPause}
             size="sm"
             variant="outline"
-            className="text-xs font-mono text-amber-300 border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 rounded-[3px]"
+            className="text-xs font-mono text-[#FBBF24] border-[rgba(251,191,36,0.4)] bg-[rgba(251,191,36,0.1)] hover:bg-[rgba(251,191,36,0.2)] rounded-[3px]"
           >
             <Pause className="w-3.5 h-3.5 mr-1" /> Pause Timer
           </Button>
@@ -65,7 +65,7 @@ export function HostControlPanel({
           onClick={onSkipQuestion}
           size="sm"
           variant="outline"
-          className="text-xs font-mono text-gray-200 border-white/20 bg-white/5 hover:bg-white/10 rounded-[3px]"
+          className="text-xs font-mono text-[#A0AEA5] border-[rgba(160,190,170,0.18)] bg-[#111B17] hover:bg-[#17251E] hover:text-[#F2F7F3] rounded-[3px]"
         >
           <FastForward className="w-3.5 h-3.5 mr-1" /> Skip Question
         </Button>
@@ -74,7 +74,7 @@ export function HostControlPanel({
           onClick={() => onExtendTime(15)}
           size="sm"
           variant="outline"
-          className="text-xs font-mono text-[#2855F5] border-[#2855F5]/40 bg-[#2855F5]/10 hover:bg-[#2855F5]/20 rounded-[3px]"
+          className="text-xs font-mono text-[#65F59A] border-[rgba(101,245,154,0.3)] bg-[rgba(101,245,154,0.1)] hover:bg-[rgba(101,245,154,0.2)] rounded-[3px]"
         >
           <Clock className="w-3.5 h-3.5 mr-1" /> +15 Secs
         </Button>
@@ -82,7 +82,7 @@ export function HostControlPanel({
         <Button
           onClick={onEndCompetition}
           size="sm"
-          className="bg-red-600 hover:bg-red-700 text-white text-xs font-mono font-bold rounded-[3px]"
+          className="bg-[rgba(248,113,113,0.2)] hover:bg-[rgba(248,113,113,0.3)] text-[#F87171] border border-[rgba(248,113,113,0.4)] text-xs font-mono font-bold rounded-[3px]"
         >
           <ShieldAlert className="w-3.5 h-3.5 mr-1" /> End Tournament
         </Button>
