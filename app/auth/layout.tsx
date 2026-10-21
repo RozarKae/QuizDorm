@@ -4,10 +4,17 @@ import Image from "next/image";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex bg-[#070B0A] text-[#F2F7F3]">
+    <div className="min-h-screen flex bg-[#070B0A] text-[#F2F7F3] selection:bg-[#65F59A] selection:text-[#070B0A]">
       {/* Form Section */}
-      <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 xl:px-24 bg-[#070B0A] border-r border-[rgba(160,190,170,0.12)] z-10">
-        <div className="mx-auto w-full max-w-md">
+      <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 xl:px-24 bg-[#070B0A] border-r border-[rgba(160,190,170,0.12)] z-10 relative overflow-hidden">
+        {/* Cybernetic ambient green glow in form background */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[28rem] h-[28rem] bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] rounded-full filter blur-3xl pointer-events-none" />
+        <div className="absolute bottom-12 left-8 w-72 h-72 bg-[radial-gradient(circle,rgba(56,217,176,0.05)_0%,transparent_70%)] rounded-full filter blur-3xl pointer-events-none" />
+        
+        {/* Subtle grid pattern overlay */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(160,190,170,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(160,190,170,0.03)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+
+        <div className="mx-auto w-full max-w-md relative z-10">
           {children}
         </div>
       </div>

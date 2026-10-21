@@ -56,30 +56,30 @@ export default function PasswordStrengthIndicator({ password = "", className = "
   const getBarColor = (score: number) => {
     switch (score) {
       case 1:
-        return "bg-red-500";
+        return "bg-rose-500";
       case 2:
-        return "bg-amber-500";
+        return "bg-amber-400";
       case 3:
-        return "bg-blue-500";
+        return "bg-[#38D9B0]";
       case 4:
-        return "bg-emerald-500";
+        return "bg-[#65F59A]";
       default:
-        return "bg-gray-200 dark:bg-gray-800";
+        return "bg-[#17251E]";
     }
   };
 
   const getLabelColor = (score: number) => {
     switch (score) {
       case 1:
-        return "text-red-600 dark:text-red-400";
+        return "text-rose-400";
       case 2:
-        return "text-amber-600 dark:text-amber-400";
+        return "text-amber-400";
       case 3:
-        return "text-blue-600 dark:text-blue-400";
+        return "text-[#38D9B0]";
       case 4:
-        return "text-emerald-600 dark:text-emerald-400";
+        return "text-[#65F59A]";
       default:
-        return "text-gray-400";
+        return "text-[#A0AEA5]";
     }
   };
 
@@ -96,15 +96,15 @@ export default function PasswordStrengthIndicator({ password = "", className = "
       {/* Strength Bar */}
       <div className="space-y-1.5">
         <div className="flex items-center justify-between text-xs font-semibold">
-          <span className="text-zinc-400">Password Strength:</span>
-          <span className={getLabelColor(result.score)}>{result.label}</span>
+          <span className="text-[#A0AEA5] font-mono text-[11px]">Password Strength:</span>
+          <span className={`font-mono text-[11px] font-bold ${getLabelColor(result.score)}`}>{result.label}</span>
         </div>
-        <div className="grid grid-cols-4 gap-1.5 h-1.5 w-full bg-[#1E232F] rounded-full overflow-hidden">
+        <div className="grid grid-cols-4 gap-1.5 h-1.5 w-full bg-[#111B17] rounded-full overflow-hidden border border-[rgba(160,190,170,0.12)]">
           {[1, 2, 3, 4].map((step) => (
             <div
               key={step}
               className={`h-full transition-all duration-300 ${
-                step <= result.score ? getBarColor(result.score) : "bg-[#262B37]"
+                step <= result.score ? getBarColor(result.score) : "bg-[#17251E]"
               }`}
             />
           ))}

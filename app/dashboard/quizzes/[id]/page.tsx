@@ -63,7 +63,7 @@ export default function QuizDetailsPage({
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               {quiz.topic && (
-                <Badge variant="outline" className="border-[#2855F5]/40 bg-[#2855F5]/10 text-[#2855F5] font-mono text-[9px] uppercase tracking-widest rounded-[2px]">
+                <Badge variant="outline" className="border-[#65F59A]/40 bg-[#65F59A]/10 text-[#65F59A] font-mono text-[9px] uppercase tracking-widest rounded-[2px]">
                   <Layers className="w-3 h-3 mr-1" />
                   {quiz.topic}
                 </Badge>
@@ -84,12 +84,12 @@ export default function QuizDetailsPage({
                     ? "border-[#E85D3F]/40 bg-[#E85D3F]/10 text-[#E85D3F]"
                     : quiz.difficulty === "Medium"
                     ? "border-[#DFFF43]/40 bg-[#DFFF43]/10 text-foreground"
-                    : "border-[#2855F5]/40 bg-[#2855F5]/10 text-[#2855F5]"
+                    : "border-[#65F59A]/40 bg-[#65F59A]/10 text-[#65F59A]"
                 }`}
               >
                 {quiz.difficulty}
               </Badge>
-              <span className="text-[10px] font-mono text-[#2855F5] font-bold">● PUBLISHED</span>
+              <span className="text-[10px] font-mono text-[#65F59A] font-bold">● PUBLISHED</span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-foreground">
@@ -105,7 +105,7 @@ export default function QuizDetailsPage({
               <Share2 className="w-3.5 h-3.5 mr-1.5" /> SHARE
             </Button>
             <Link href={`/dashboard/quizzes/${quiz.id}/take`}>
-              <Button size="sm" className="bg-[#2855F5] hover:bg-[#1f44c7] text-white font-mono text-xs tracking-wider rounded-[3px]">
+              <Button size="sm" className="bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono text-xs font-bold tracking-wider rounded-[3px] shadow-[0_0_15px_rgba(101,245,154,0.3)]">
                 <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> START QUIZ
               </Button>
             </Link>
@@ -117,7 +117,7 @@ export default function QuizDetailsPage({
           <div className="border border-border bg-background/60 p-4 rounded-[2px] space-y-1">
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">TOTAL QUESTIONS</span>
-              <HelpCircle className="w-3.5 h-3.5 text-[#2855F5]" />
+              <HelpCircle className="w-3.5 h-3.5 text-[#65F59A]" />
             </div>
             <p className="text-2xl font-mono font-extrabold text-foreground">{questionsCount}</p>
             <p className="text-[10px] font-mono text-muted-foreground">Standardized items</p>
@@ -126,7 +126,7 @@ export default function QuizDetailsPage({
           <div className="border border-border bg-background/60 p-4 rounded-[2px] space-y-1">
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">TIME LIMIT</span>
-              <Clock className="w-3.5 h-3.5 text-[#2855F5]" />
+              <Clock className="w-3.5 h-3.5 text-[#65F59A]" />
             </div>
             <p className="text-2xl font-mono font-extrabold text-foreground">{quiz.durationMinutes}m</p>
             <p className="text-[10px] font-mono text-muted-foreground">Countdown timer</p>
@@ -144,7 +144,7 @@ export default function QuizDetailsPage({
           <div className="border border-border bg-background/60 p-4 rounded-[2px] space-y-1">
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">SHUFFLE RUNTIME</span>
-              <Sparkles className="w-3.5 h-3.5 text-[#2855F5]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#65F59A]" />
             </div>
             <p className="text-2xl font-mono font-extrabold text-foreground">
               {quiz.randomizeQuestions ? "Active" : "Standard"}
@@ -158,7 +158,7 @@ export default function QuizDetailsPage({
       <div className="bg-card p-6 rounded-[3px] border border-border space-y-4">
         <div className="flex items-center justify-between border-b border-border pb-3">
           <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-foreground flex items-center">
-            <HelpCircle className="w-3.5 h-3.5 mr-1.5 text-[#2855F5]" />
+            <HelpCircle className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" />
             Included Questions ({questionsCount})
           </h2>
           <span className="text-[10px] font-mono text-muted-foreground">
@@ -171,7 +171,7 @@ export default function QuizDetailsPage({
             <div key={q.id || idx} className="pt-2.5 first:pt-0 flex items-start justify-between gap-4">
               <div className="space-y-1">
                 <div className="flex items-center space-x-2 text-[10px] font-mono text-muted-foreground">
-                  <span className="font-bold text-[#2855F5]">ITEM 0{idx + 1}</span>
+                  <span className="font-bold text-[#65F59A]">ITEM 0{idx + 1}</span>
                   <span>•</span>
                   <span>{q.topic || q.subject}</span>
                   <span>•</span>

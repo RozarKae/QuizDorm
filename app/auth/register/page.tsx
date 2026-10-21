@@ -90,21 +90,21 @@ export default function RegisterPage() {
       <AuthForm onSubmit={handleFormSubmit}>
         <div className="space-y-4">
           <div className="space-y-1.5">
-            <label htmlFor="name" className="text-xs font-mono uppercase tracking-wider text-zinc-300 font-semibold">
+            <label htmlFor="name" className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
               Full Legal Name
             </label>
-            <Input id="name" name="name" type="text" placeholder="Jane Doe" required className="w-full font-mono text-xs h-10 rounded-[3px]" />
+            <Input id="name" name="name" type="text" placeholder="Alex Chen" required className="w-full font-mono text-xs h-10 rounded-[3px]" />
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="email" className="text-xs font-mono uppercase tracking-wider text-zinc-300 font-semibold">
+            <label htmlFor="email" className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
               Institutional Email
             </label>
-            <Input id="email" name="email" type="email" placeholder="jane@school.edu" required className="w-full font-mono text-xs h-10 rounded-[3px]" />
+            <Input id="email" name="email" type="email" placeholder="alex@school.edu" required className="w-full font-mono text-xs h-10 rounded-[3px]" />
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="role" className="text-xs font-mono uppercase tracking-wider text-zinc-300 font-semibold">
+            <label htmlFor="role" className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
               Select Role
             </label>
             <select
@@ -112,16 +112,16 @@ export default function RegisterPage() {
               name="role"
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="flex h-10 w-full rounded-[3px] border border-[#2A303F] bg-[#161922] px-3 py-2 text-xs font-mono text-white focus-visible:ring-1 focus-visible:ring-[#3864F8] outline-none cursor-pointer"
+              className="flex h-10 w-full rounded-[3px] border border-[rgba(160,190,170,0.18)] bg-[#111B17] px-3 py-2 text-xs font-mono text-[#F2F7F3] focus-visible:ring-1 focus-visible:ring-[#65F59A] focus-visible:border-[#65F59A] outline-none cursor-pointer"
             >
-              <option value="student" className="bg-[#161922] text-white">Student Account</option>
-              <option value="teacher" className="bg-[#161922] text-white">Teacher / Instructor</option>
-              <option value="school" className="bg-[#161922] text-white">School / Campus Admin</option>
+              <option value="student" className="bg-[#111B17] text-[#F2F7F3]">Student Account</option>
+              <option value="teacher" className="bg-[#111B17] text-[#F2F7F3]">Teacher / Instructor</option>
+              <option value="school" className="bg-[#111B17] text-[#F2F7F3]">School / Campus Admin</option>
             </select>
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="password" className="text-xs font-mono uppercase tracking-wider text-zinc-300 font-semibold">
+            <label htmlFor="password" className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
               Password
             </label>
             <PasswordInput
@@ -137,7 +137,7 @@ export default function RegisterPage() {
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="confirmPassword" className="text-xs font-mono uppercase tracking-wider text-zinc-300 font-semibold">
+            <label htmlFor="confirmPassword" className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
               Confirm Password
             </label>
             <PasswordInput
@@ -158,10 +158,10 @@ export default function RegisterPage() {
                 name="terms"
                 type="checkbox"
                 required
-                className="h-3.5 w-3.5 text-[#3864F8] focus:ring-[#3864F8] border-[#2A303F] bg-[#161922] rounded-[2px]"
+                className="h-3.5 w-3.5 accent-[#65F59A] text-[#65F59A] focus:ring-[#65F59A] border-[rgba(160,190,170,0.25)] bg-[#111B17] rounded-[2px]"
               />
             </div>
-            <div className="ml-2 text-xs font-mono text-zinc-300 font-medium">
+            <div className="ml-2 text-xs font-mono text-[#A0AEA5] font-medium">
               <label htmlFor="terms" className="cursor-pointer">
                 I accept the Terms of Service and Privacy Policy.
               </label>
@@ -172,7 +172,7 @@ export default function RegisterPage() {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full bg-[#2855F5] hover:bg-[#1E44D6] text-white mt-5 font-mono text-xs font-bold rounded-[3px] h-10 shadow-md cursor-pointer transition-all"
+          className="w-full bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] mt-5 font-mono text-xs font-bold rounded-[3px] h-10 shadow-[0_0_20px_rgba(101,245,154,0.3)] hover:shadow-[0_0_25px_rgba(101,245,154,0.45)] cursor-pointer transition-all uppercase tracking-wider"
         >
           {loading ? "Creating Account..." : "Create Account →"}
         </Button>
@@ -180,10 +180,10 @@ export default function RegisterPage() {
 
       <div className="relative my-5">
         <div className="absolute inset-0 flex items-center" aria-hidden="true">
-          <div className="w-full border-t border-[#262B37]"></div>
+          <div className="w-full border-t border-[rgba(160,190,170,0.14)]"></div>
         </div>
         <div className="relative flex justify-center text-[10px] uppercase font-mono tracking-wider">
-          <span className="bg-[#13161F] px-3 text-zinc-400 font-semibold">
+          <span className="bg-[#0C1210] px-3 text-[#A0AEA5] font-semibold border border-[rgba(160,190,170,0.12)] rounded-[3px]">
             Or sign up with
           </span>
         </div>
@@ -194,7 +194,7 @@ export default function RegisterPage() {
           variant="outline"
           type="button"
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center space-x-2 border-[#262B37] bg-[#161922] text-white hover:bg-[#1E2230] hover:border-[#3864F8]/50 h-10 rounded-[3px] text-xs font-mono font-medium transition-all"
+          className="w-full flex items-center justify-center space-x-2 border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#F2F7F3] hover:bg-[#17251E] hover:border-[#65F59A]/40 h-10 rounded-[3px] text-xs font-mono font-medium transition-all"
         >
           <svg className="h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -207,9 +207,9 @@ export default function RegisterPage() {
       </div>
 
       <AuthFooter>
-        <p className="text-xs font-mono text-zinc-400">
+        <p className="text-xs font-mono text-[#A0AEA5]">
           Already have an account?{" "}
-          <Link href="/auth/login" className="text-[#3864F8] hover:text-[#5B82F9] hover:underline font-bold">
+          <Link href="/auth/login" className="text-[#65F59A] hover:text-[#52E086] hover:underline font-bold">
             Log In
           </Link>
         </p>

@@ -69,15 +69,15 @@ export default function ResetPasswordPage() {
             </svg>
           </div>
           <div className="space-y-2">
-            <h2 className="text-xl font-bold text-white">Password Updated</h2>
-            <p className="text-xs text-zinc-400">
+            <h2 className="text-xl font-bold text-[#F2F7F3] font-display">Password Updated</h2>
+            <p className="text-xs text-[#A0AEA5] font-mono">
               Your password has been successfully reset. Redirecting to login page...
             </p>
           </div>
           <AuthFooter>
-            <p className="text-xs text-zinc-400">
+            <p className="text-xs font-mono text-[#A0AEA5]">
               Go to{" "}
-              <Link href="/auth/login" className="text-[#3864F8] hover:underline font-semibold">
+              <Link href="/auth/login" className="text-[#65F59A] hover:text-[#52E086] hover:underline font-bold">
                 Log In
               </Link>
             </p>
@@ -95,7 +95,7 @@ export default function ResetPasswordPage() {
       />
 
       {errorMsg && (
-        <div className="p-3 mb-4 rounded-[4px] text-xs font-semibold bg-red-950/50 border border-red-800 text-red-300">
+        <div className="p-3 mb-4 rounded-[4px] text-xs font-mono font-medium bg-red-950/50 border border-red-800 text-red-300">
           {errorMsg}
         </div>
       )}
@@ -103,7 +103,7 @@ export default function ResetPasswordPage() {
       <AuthForm onSubmit={handleFormSubmit}>
         <div className="space-y-4">
           <div className="space-y-1.5">
-            <label htmlFor="password" className="text-xs font-semibold tracking-wide uppercase text-zinc-300">
+            <label htmlFor="password" className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
               New Password
             </label>
             <PasswordInput
@@ -113,13 +113,13 @@ export default function ResetPasswordPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full h-11 bg-[#161922] border-[#2A303F] text-white placeholder:text-zinc-500 rounded-[4px]"
+              className="w-full h-10 bg-[#111B17] border-[rgba(160,190,170,0.18)] text-[#F2F7F3] placeholder:text-[#69786F] focus:border-[#65F59A] rounded-[3px] font-mono text-xs"
             />
             <PasswordStrengthIndicator password={password} />
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="confirmPassword" className="text-xs font-semibold tracking-wide uppercase text-zinc-300">
+            <label htmlFor="confirmPassword" className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
               Confirm New Password
             </label>
             <PasswordInput
@@ -129,7 +129,7 @@ export default function ResetPasswordPage() {
               required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full h-11 bg-[#161922] border-[#2A303F] text-white placeholder:text-zinc-500 rounded-[4px]"
+              className="w-full h-10 bg-[#111B17] border-[rgba(160,190,170,0.18)] text-[#F2F7F3] placeholder:text-[#69786F] focus:border-[#65F59A] rounded-[3px] font-mono text-xs"
             />
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function ResetPasswordPage() {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full h-11 bg-[#3864F8] hover:bg-[#2c53d6] text-white mt-5 font-semibold text-sm rounded-[4px] shadow-sm flex items-center justify-center space-x-2"
+          className="w-full h-10 bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] mt-5 font-mono font-bold text-xs uppercase tracking-wider rounded-[3px] shadow-[0_0_20px_rgba(101,245,154,0.3)] hover:shadow-[0_0_25px_rgba(101,245,154,0.45)] transition-all flex items-center justify-center space-x-2"
         >
           <span>{loading ? "Updating password..." : "Reset Password →"}</span>
         </Button>

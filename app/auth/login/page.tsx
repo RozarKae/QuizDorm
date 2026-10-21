@@ -133,7 +133,7 @@ function LoginContent() {
       <AuthForm onSubmit={handleFormSubmit}>
         <div className="space-y-4">
           <div className="space-y-1.5">
-            <label htmlFor="email" className="text-xs font-mono uppercase tracking-wider text-zinc-300 font-semibold">
+            <label htmlFor="email" className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
               Email Address
             </label>
             <Input
@@ -150,10 +150,10 @@ function LoginContent() {
 
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <label htmlFor="password" className="text-xs font-mono uppercase tracking-wider text-zinc-300 font-semibold">
+              <label htmlFor="password" className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
                 Password
               </label>
-              <Link href="/auth/forgot-password" className="text-xs text-[#3864F8] hover:text-[#5B82F9] hover:underline font-mono">
+              <Link href="/auth/forgot-password" className="text-xs text-[#65F59A] hover:text-[#52E086] hover:underline font-mono">
                 Forgot Password?
               </Link>
             </div>
@@ -174,9 +174,9 @@ function LoginContent() {
               name="remember-me"
               type="checkbox"
               defaultChecked
-              className="h-3.5 w-3.5 text-[#3864F8] focus:ring-[#3864F8] border-[#2A303F] bg-[#161922] rounded-[2px]"
+              className="h-3.5 w-3.5 accent-[#65F59A] text-[#65F59A] focus:ring-[#65F59A] border-[rgba(160,190,170,0.25)] bg-[#111B17] rounded-[2px]"
             />
-            <label htmlFor="remember-me" className="ml-2 block text-xs font-mono text-zinc-300 font-medium cursor-pointer">
+            <label htmlFor="remember-me" className="ml-2 block text-xs font-mono text-[#A0AEA5] font-medium cursor-pointer">
               Remember Active Session
             </label>
           </div>
@@ -185,7 +185,7 @@ function LoginContent() {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full bg-[#2855F5] hover:bg-[#1E44D6] text-white mt-5 font-mono text-xs font-bold rounded-[3px] h-10 shadow-md cursor-pointer transition-all"
+          className="w-full bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] mt-5 font-mono text-xs font-bold rounded-[3px] h-10 shadow-[0_0_20px_rgba(101,245,154,0.3)] hover:shadow-[0_0_25px_rgba(101,245,154,0.45)] cursor-pointer transition-all uppercase tracking-wider"
         >
           {loading ? "Authenticating..." : "Sign In →"}
         </Button>
@@ -193,10 +193,10 @@ function LoginContent() {
 
       <div className="relative my-5">
         <div className="absolute inset-0 flex items-center" aria-hidden="true">
-          <div className="w-full border-t border-[#262B37]"></div>
+          <div className="w-full border-t border-[rgba(160,190,170,0.14)]"></div>
         </div>
         <div className="relative flex justify-center text-[10px] uppercase font-mono tracking-wider">
-          <span className="bg-[#13161F] px-3 text-zinc-400 font-semibold">
+          <span className="bg-[#0C1210] px-3 text-[#A0AEA5] font-semibold border border-[rgba(160,190,170,0.12)] rounded-[3px]">
             Or continue with
           </span>
         </div>
@@ -207,7 +207,7 @@ function LoginContent() {
           variant="outline"
           type="button"
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center space-x-2 border-[#262B37] bg-[#161922] text-white hover:bg-[#1E2230] hover:border-[#3864F8]/50 h-10 rounded-[3px] text-xs font-mono font-medium transition-all"
+          className="w-full flex items-center justify-center space-x-2 border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#F2F7F3] hover:bg-[#17251E] hover:border-[#65F59A]/40 h-10 rounded-[3px] text-xs font-mono font-medium transition-all"
         >
           <svg className="h-4 w-4" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -220,9 +220,9 @@ function LoginContent() {
       </div>
 
       <AuthFooter>
-        <p className="text-xs font-mono text-zinc-400">
+        <p className="text-xs font-mono text-[#A0AEA5]">
           Don&apos;t have an account?{" "}
-          <Link href="/auth/register" className="text-[#3864F8] hover:text-[#5B82F9] hover:underline font-bold">
+          <Link href="/auth/register" className="text-[#65F59A] hover:text-[#52E086] hover:underline font-bold">
             Sign Up
           </Link>
         </p>
