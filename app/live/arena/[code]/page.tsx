@@ -22,18 +22,11 @@ function StandaloneArenaContent() {
 
   const codeParam = (params?.code as string) || searchParams.get("code") || "QD-8492";
 
-  const [nickname, setNickname] = useState<string>("");
-  const [nameInput, setNameInput] = useState<string>("");
+  const [nickname, setNickname] = useState<string>(() => searchParams.get("name") || "");
+  const [nameInput, setNameInput] = useState<string>(() => searchParams.get("name") || "");
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("quizdorm_participant_name");
-      if (stored) {
-        setNickname(stored);
-        setNameInput(stored);
-      }
-    }
-  }, []);
+  // Leave name empty by default so every participant fills their own name
+  // Auto-join is only engaged if name was passed directly in URL query param
 
   const {
     session,
@@ -158,7 +151,7 @@ function StandaloneArenaContent() {
               <Input
                 value={nameInput}
                 onChange={(e) => setNameInput(e.target.value)}
-                placeholder="e.g. Maverick"
+                placeholder="Enter your full name or callsign..."
                 className="pl-9 h-10 text-sm font-mono bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
                 maxLength={25}
                 autoFocus

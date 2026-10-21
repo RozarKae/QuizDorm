@@ -28,13 +28,7 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
   const [joining, setJoining] = useState<boolean>(false);
   const [errorStatus, setErrorStatus] = useState<string | null>(null);
 
-  // Auto-fill participant name if logged in
-  useEffect(() => {
-    if (profile?.name && !name) {
-      setName(profile.name);
-    }
-  }, [profile, name]);
-
+  // Keep name empty by default so each participant fills their own name
   // If code in URL changes, normalize and set
   useEffect(() => {
     if (codeFromUrl) {
@@ -205,16 +199,14 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
             <Input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Karthik Rajendran"
+              placeholder="Enter your name or callsign..."
               className="pl-10 h-11 text-sm font-semibold bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
               maxLength={30}
               required
             />
           </div>
           <p className="text-[10px] font-mono text-[#69786F]">
-            {profile?.name
-              ? "Auto-filled from your authenticated student account"
-              : "This name will appear on the live competition leaderboard"}
+            This name will identify you on the live competition leaderboard
           </p>
         </div>
 
