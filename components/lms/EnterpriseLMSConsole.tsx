@@ -10,8 +10,8 @@ import {
 import { toast } from "sonner";
 
 const mockInstitutions: EnterpriseInstitution[] = [
-  { id: "inst-1", name: "Metropolitan Institute of Technology", code: "METRO-TECH", departmentsCount: 12, facultyCount: 140, studentQuota: 25000, activeStudents: 18450, creditSystemActive: true, whiteLabelDomain: "lms.metrotech.edu" },
-  { id: "inst-2", name: "Oakridge Global Academy", code: "OAK-GLOBAL", departmentsCount: 6, facultyCount: 45, studentQuota: 8000, activeStudents: 6200, creditSystemActive: true, whiteLabelDomain: "learn.oakridge.org" },
+  { id: "inst-1", name: "Government Model Higher Secondary Consortium (Chennai)", code: "TN-GOVT-HSS", departmentsCount: 12, facultyCount: 140, studentQuota: 25000, activeStudents: 18450, creditSystemActive: true, whiteLabelDomain: "lms.saidapetmodel.edu.in" },
+  { id: "inst-2", name: "The Choice School & Collegiate Network (Kochi)", code: "CHOICE-KOCHI", departmentsCount: 6, facultyCount: 45, studentQuota: 8000, activeStudents: 6200, creditSystemActive: true, whiteLabelDomain: "learn.choice.ac.in" },
 ];
 
 export function EnterpriseLMSConsole() {

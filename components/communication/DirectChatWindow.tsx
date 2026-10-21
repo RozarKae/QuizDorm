@@ -18,7 +18,7 @@ export function DirectChatWindow() {
       senderName: "Dr. Eleanor Vance",
       senderRole: "Teacher",
       recipientId: "std-101",
-      recipientName: "Alex Rivera",
+      recipientName: "Karthik Rajendran",
       messageText: inputText,
     });
     setMessages([...messages, newMsg]);
@@ -31,11 +31,11 @@ export function DirectChatWindow() {
       <div className="p-4 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 rounded-full bg-indigo-600 text-white font-bold flex items-center justify-center">
-            AR
+            KR
           </div>
           <div>
-            <span className="font-bold text-sm text-gray-900 dark:text-white block">Alex Rivera</span>
-            <span className="text-[10px] text-gray-400 font-mono">Grade 12 Science Student</span>
+            <span className="font-bold text-sm text-gray-900 dark:text-white block">Karthik Rajendran</span>
+            <span className="text-[10px] text-gray-400 font-mono">Class 12 Higher Secondary Student</span>
           </div>
         </div>
 
@@ -75,7 +75,7 @@ export function DirectChatWindow() {
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSend()}
-          placeholder="Type your message to Alex Rivera..."
+          placeholder="Type your message to Karthik Rajendran..."
           className="text-xs flex-1 rounded-xl"
         />
         <Button onClick={handleSend} className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl">

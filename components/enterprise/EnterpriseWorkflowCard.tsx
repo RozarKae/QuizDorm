@@ -12,7 +12,7 @@ export function EnterpriseWorkflowCard() {
     <Card className="p-6 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-3xl shadow-sm space-y-4">
       <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-3">
         <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
-          <GitMerge className="w-5 h-5 text-indigo-600 mr-2" /> Enterprise Visual Approval Workflows
+          <GitMerge className="w-5 h-5 text-indigo-600 mr-2" /> Multi-Tier Administrative Governance & Approvals
         </h3>
         <span className="text-xs font-mono font-bold text-indigo-600">Multi-Role Sign-off</span>
       </div>

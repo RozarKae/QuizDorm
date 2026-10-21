@@ -31,10 +31,10 @@ export function BulkIssuanceModal({ open, onOpenChange, onComplete }: BulkIssuan
         organizationName: orgName,
         templateId: "tpl-gold-1",
         recipients: [
-          { id: "std-101", name: "Alex Rivera", scorePercent: 94, rank: 1 },
-          { id: "std-102", name: "David Kim", scorePercent: 88, rank: 2 },
-          { id: "std-103", name: "Sofia Patel", scorePercent: 85, rank: 3 },
-          { id: "std-104", name: "Elena Rostova", scorePercent: 92, rank: 4 },
+          { id: "std-101", name: "Karthik Rajendran", scorePercent: 94, rank: 1 },
+          { id: "std-102", name: "Fathima Nasreen", scorePercent: 88, rank: 2 },
+          { id: "std-103", name: "Anandhi K. Bapu", scorePercent: 85, rank: 3 },
+          { id: "std-104", name: "Kevin Fernandez", scorePercent: 92, rank: 4 },
         ],
       });
 
@@ -78,7 +78,7 @@ export function BulkIssuanceModal({ open, onOpenChange, onComplete }: BulkIssuan
           <div className="p-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 space-y-1">
             <span className="font-bold text-gray-700 dark:text-gray-300 block">Classroom Recipient List (4 Students)</span>
             <div className="text-[11px] font-mono text-gray-500">
-              • Alex Rivera (94%) • David Kim (88%) • Sofia Patel (85%) • Elena Rostova (92%)
+              • Karthik Rajendran (94%) • Fathima Nasreen (88%) • Anandhi K. Bapu (85%) • Kevin Fernandez (92%)
             </div>
           </div>
         </div>

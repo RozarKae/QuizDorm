@@ -139,7 +139,7 @@ export default function AdminPage() {
   const activities = [
     {
       id: "1",
-      title: "New campus onboarded: Oakridge Academy",
+      title: "New campus onboarded: Government Model HSS Saidapet",
       description: "32 faculty licenses and 850 student seats provisioned under Enterprise tier.",
       time: "12 mins ago",
     },

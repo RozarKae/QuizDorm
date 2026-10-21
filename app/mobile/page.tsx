@@ -35,14 +35,14 @@ export default function StandaloneMobilePwaPage() {
             {/* Streak & Status */}
             <div className="p-4 rounded-2xl bg-gradient-to-r from-purple-900 via-slate-900 to-indigo-900 border border-purple-500/30 space-y-1">
               <span className="text-[10px] text-purple-200 font-extrabold uppercase">Learner Profile</span>
-              <h2 className="text-xl font-extrabold text-white">Alex Rivera</h2>
+              <h2 className="text-xl font-extrabold text-white">Karthik Rajendran</h2>
               <p className="text-xs text-purple-200">7-Day Active Study Streak 🔥 • 92% Mastery</p>
             </div>
 
             {/* Offline Quiz Package */}
             <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="font-bold text-sm text-indigo-300">Grade 12 Calculus Master Set</span>
+                <span className="font-bold text-sm text-indigo-300">Class 12 Calculus &amp; Advanced Math</span>
                 <span className="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full">
                   READY OFFLINE
                 </span>

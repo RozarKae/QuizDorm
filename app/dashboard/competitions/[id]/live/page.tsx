@@ -110,7 +110,7 @@ function LiveArenaContent() {
     quizTitle: session?.quizTitle || "Advanced Science & Physics Olympiad",
     code: session?.code || codeParam,
     hostId: "usr-1",
-    hostName: session?.hostName || "Oakridge Quiz Federation",
+    hostName: session?.hostName || "TN & Kerala Science Olympiad Council",
     status: (session?.status === "WAITING" ? "Lobby" : session?.status === "ACTIVE" ? "Live" : "Ended") as any,
     startDate: "Today",
     startTime: "Live Now",

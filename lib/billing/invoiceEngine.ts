@@ -11,10 +11,10 @@ export class InvoiceEngine {
 
     return {
       invoiceNumber: txn.invoiceNumber,
-      recipientName: "Alex Rivera",
-      recipientOrg: "QuizDorm Academy",
-      GSTIN: "27AAACQ1234F1Z9",
-      billingAddress: "742 Evergreen Terrace, Innovation Park, Suite 400",
+      recipientName: "Karthik Rajendran",
+      recipientOrg: "Government Model Higher Secondary School",
+      GSTIN: "33AAACQ1234F1Z9",
+      billingAddress: "Saidapet High Road, Chennai, Tamil Nadu - 600015",
       items: [
         {
           description: `QuizDorm Pro SaaS Subscription (${txn.subscriptionId})`,

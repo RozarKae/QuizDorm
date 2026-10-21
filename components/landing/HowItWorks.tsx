@@ -57,7 +57,7 @@ export default function HowItWorks() {
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-[rgba(160,190,170,0.12)] mb-12 gap-6">
           <div className="space-y-3 max-w-2xl">
             <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] bg-[#17251E] px-2.5 py-0.5 rounded-full border border-[#65F59A]/20 font-semibold">
-              WORKFLOW // SEQUENCE
+              PLATFORM JOURNEY // 3-STEP ENGINE
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2F7F3] tracking-tight">
               From First Thought <br />

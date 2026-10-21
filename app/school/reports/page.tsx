@@ -22,7 +22,7 @@ export default function SchoolReportsPage() {
     {
       id: "dept-1",
       department: "Science & Technology",
-      lead: "Dr. Elena Rostova",
+      lead: "Dr. K. Saravanan",
       facultyCount: 12,
       studentsCount: 320,
       completionRate: 96.2,

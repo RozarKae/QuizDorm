@@ -23,7 +23,7 @@ export default function RiskInterventionsPage() {
             Early Risk Detection & Automated AI Remedial Interventions
           </h1>
           <p className="text-xs sm:text-sm text-rose-100/80 max-w-2xl">
-            Automatically detect falling performance, missed practice sets, and attendance gaps with 1-click teacher and parent remediation workflows.
+            Automatically detect falling performance, missed practice sets, and attendance gaps with 1-click teacher and parent remediation pathways.
           </p>
         </div>
       </div>

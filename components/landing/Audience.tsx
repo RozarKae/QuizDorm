@@ -54,7 +54,7 @@ export default function Audience() {
             </h2>
           </div>
           <p className="text-sm font-normal text-[#A0AEA5] max-w-md leading-relaxed">
-            Scoped permissions, specialized tooling, and focused workflows tailored for students, instructors, event hosts, and academic directors.
+            Scoped permissions, specialized tooling, and dedicated portals tailored for students, instructors, event hosts, and academic directors.
           </p>
         </div>
 

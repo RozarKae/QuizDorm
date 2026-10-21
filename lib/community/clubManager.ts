@@ -14,21 +14,21 @@ export const DEFAULT_QUIZ_CLUBS: QuizClub[] = [
   },
   {
     id: "club-102",
-    name: "Oakridge Science & AI Innovation Club",
-    description: "Official school club dedicated to STEM research, machine learning quizzes, and hackathons.",
+    name: "Chennai & Madurai Student AI & Science Club",
+    description: "Regional student club dedicated to STEM research, machine learning quizzes, and Olympiad prep.",
     category: "school_club",
     membersCount: 380,
     verifiedBadge: true,
-    leaderName: "Alex Rivera",
+    leaderName: "Karthik Rajendran",
   },
   {
     id: "club-103",
-    name: "AP Calculus & Higher Math Guild",
-    description: "Collaborative study group for differential equations, integration techniques, and calculus proofs.",
+    name: "Kerala Mathematical & Algorithmic Guild",
+    description: "Collaborative study group across Kochi and Trivandrum for calculus, algorithms, and logic challenges.",
     category: "subject_club",
     membersCount: 890,
     verifiedBadge: false,
-    leaderName: "Elena Rostova",
+    leaderName: "Kevin Fernandez",
   },
 ];
 

@@ -119,7 +119,7 @@ export default function SchoolPage() {
     {
       id: "1",
       title: "Faculty credential added",
-      description: "Dr. Elena Rostova assigned to Department of Science & Technology.",
+      description: "Dr. K. Saravanan assigned to Department of Science & Technology.",
       time: "45 mins ago",
     },
     {

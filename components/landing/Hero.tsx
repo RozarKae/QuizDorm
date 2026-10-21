@@ -27,14 +27,21 @@ export default function Hero() {
           {/* Left Column: Masthead & Cinematic Story */}
           <div className="lg:col-span-7 space-y-7">
             <FadeIn direction="up" delay={0.05}>
-              <div className="inline-flex items-center space-x-2.5 border border-[#65F59A]/25 bg-[#111B17]/90 px-3.5 py-1.5 rounded-full shadow-[0_0_15px_rgba(101,245,154,0.15)]">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#65F59A] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#65F59A]" />
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] font-semibold">
-                  PROJECT AURORA // IMMERSIVE FUTURE OS
-                </span>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <div className="inline-flex items-center space-x-2.5 border border-[#65F59A]/25 bg-[#111B17]/90 px-3.5 py-1.5 rounded-full shadow-[0_0_15px_rgba(101,245,154,0.15)]">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#65F59A] opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#65F59A]" />
+                  </span>
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] font-semibold">
+                    PROJECT AURORA // IMMERSIVE FUTURE OS
+                  </span>
+                </div>
+                <div className="inline-flex items-center space-x-2 border border-[rgba(160,190,170,0.2)] bg-[#0C1210]/90 px-3 py-1.5 rounded-full text-[10px] font-mono text-[#A0AEA5]">
+                  <span className="text-[#65F59A] font-bold">FOUNDED BY RK AKBAR</span>
+                  <span className="text-[rgba(160,190,170,0.3)]">•</span>
+                  <span>TAMIL NADU &amp; KERALA</span>
+                </div>
               </div>
             </FadeIn>
 

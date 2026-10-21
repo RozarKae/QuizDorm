@@ -205,7 +205,7 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
             <Input
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Alex Rivera"
+              placeholder="e.g. Karthik Rajendran"
               className="pl-10 h-11 text-sm font-semibold bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
               maxLength={30}
               required

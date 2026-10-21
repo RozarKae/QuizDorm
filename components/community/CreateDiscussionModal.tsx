@@ -27,7 +27,7 @@ export function CreateDiscussionModal({ open, onOpenChange }: CreateDiscussionMo
     }
 
     DiscussionForumEngine.addPost({
-      authorName: "Alex Rivera",
+      authorName: "Karthik Rajendran",
       authorRole: "Student • QuizDorm Member",
       title,
       content,

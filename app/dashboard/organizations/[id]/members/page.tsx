@@ -12,10 +12,12 @@ import { ArrowLeft, Users, UserPlus, Search, Mail, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 const mockMembers: OrgMemberItem[] = [
-  { id: "m1", orgId: "org-1", name: "Dr. Robert Vance", email: "robert@oakridge.edu", role: "Administrator", department: "Science", status: "Active", joinedDate: "Jan 2026" },
-  { id: "m2", orgId: "org-1", name: "Sarah Jenkins", email: "sarah@oakridge.edu", role: "Teacher", department: "Mathematics", status: "Active", joinedDate: "Feb 2026" },
-  { id: "m3", orgId: "org-1", name: "Alex Rivera", email: "alex@oakridge.edu", role: "Student", department: "Mathematics", status: "Active", joinedDate: "Mar 2026" },
-  { id: "m4", orgId: "org-1", name: "Elena Rostova", email: "elena@oakridge.edu", role: "Student", department: "Science", status: "Pending", joinedDate: "Jul 2026" },
+  { id: "m1", orgId: "org-1", name: "Dr. K. Saravanan", email: "saravanan@saidapetmodel.edu.in", role: "Administrator", department: "Science & Assessments", status: "Active", joinedDate: "Jan 2026" },
+  { id: "m2", orgId: "org-1", name: "Mary Thomas", email: "mary@choice.ac.in", role: "Teacher", department: "Mathematics", status: "Active", joinedDate: "Feb 2026" },
+  { id: "m3", orgId: "org-1", name: "Karthik Rajendran", email: "karthik@saidapetmodel.edu.in", role: "Student", department: "Mathematics", status: "Active", joinedDate: "Mar 2026" },
+  { id: "m4", orgId: "org-1", name: "Fathima Nasreen", email: "fathima@alameen.edu.in", role: "Student", department: "Science", status: "Pending", joinedDate: "Jul 2026" },
+  { id: "m5", orgId: "org-1", name: "T. S. Soundararajan", email: "soundararajan@sourashtra.edu.in", role: "Teacher", department: "Statistics", status: "Active", joinedDate: "Apr 2026" },
+  { id: "m6", orgId: "org-1", name: "Gautham Chand Jain", email: "gautham@mahaveer.ac.in", role: "Student", department: "Computer Science", status: "Active", joinedDate: "May 2026" },
 ];
 
 export default function OrganizationMembersPage({ params }: { params: { id: string } }) {
@@ -126,7 +128,7 @@ export default function OrganizationMembersPage({ params }: { params: { id: stri
         </div>
       </div>
 
-      <InviteMemberModal open={inviteModalOpen} onOpenChange={setInviteModalOpen} orgName="Oakridge International Academy" />
+      <InviteMemberModal open={inviteModalOpen} onOpenChange={setInviteModalOpen} orgName="Government Model Higher Secondary School" />
     </div>
   );
 }

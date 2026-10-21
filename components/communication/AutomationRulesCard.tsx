@@ -12,7 +12,7 @@ export function AutomationRulesCard() {
     <Card className="p-6 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-3xl shadow-sm space-y-4">
       <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-3">
         <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
-          <Zap className="w-5 h-5 text-amber-500 mr-2" /> Event-Driven Workflow Automation Rules
+          <Zap className="w-5 h-5 text-amber-500 mr-2" /> Event-Driven Academic Notification Rules
         </h3>
         <span className="text-xs font-mono font-bold text-amber-600 bg-amber-50 dark:bg-amber-950 px-2.5 py-0.5 rounded-full">
           {rules.length} Rules Active

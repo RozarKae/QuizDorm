@@ -49,7 +49,7 @@ export function EdgeClassroomModal({ open, onOpenChange }: EdgeClassroomModalPro
               <span className="font-bold text-xs text-gray-900 dark:text-white flex items-center">
                 <Users className="w-4 h-4 text-indigo-500 mr-1.5" /> 1 Student Connected
               </span>
-              <p className="text-xs text-gray-500">• Alex Rivera (Connected to LAN)</p>
+              <p className="text-xs text-gray-500">• Karthik Rajendran (Connected to LAN)</p>
             </div>
 
             <Button onClick={() => onOpenChange(false)} className="w-full bg-indigo-600 text-white font-bold text-xs rounded-xl py-5">

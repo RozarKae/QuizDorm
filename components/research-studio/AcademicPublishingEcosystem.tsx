@@ -38,7 +38,7 @@ export function AcademicPublishingEcosystem() {
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight">Academic Publishing Ecosystem & OER Portal</h1>
           <p className="text-slate-300 text-xs sm:text-sm mt-1.5 max-w-xl">
-            Educational journals, peer-review management workflows, Open Educational Resources (OER), and CrossRef DOI digital object identifier minting.
+            Educational journals, peer-review evaluation protocols, Open Educational Resources (OER), and CrossRef DOI digital object identifier minting.
           </p>
         </div>
 

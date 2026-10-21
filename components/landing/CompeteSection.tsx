@@ -9,10 +9,11 @@ import SectionDivider from "@/components/ui/section-divider";
 
 export default function CompeteSection() {
   const [activeLeaderboard, setActiveLeaderboard] = useState([
-    { rank: 1, name: "Maya Chen", score: 2840, streak: 5, badge: "🥇", delta: "+450" },
-    { rank: 2, name: "Alex Rivera", score: 2690, streak: 4, badge: "🥈", delta: "+390" },
-    { rank: 3, name: "Liam Vance", score: 2410, streak: 3, badge: "🥉", delta: "+310" },
-    { rank: 4, name: "Sofia Patel", score: 2150, streak: 2, badge: "4th", delta: "+280" },
+    { rank: 1, name: "Karthik Rajendran", score: 2840, streak: 5, badge: "🥇", delta: "+450", school: "Govt Model HSS Saidapet, Chennai" },
+    { rank: 2, name: "Fathima Nasreen", score: 2690, streak: 4, badge: "🥈", delta: "+390", school: "Al-Ameen Universal, Kochi" },
+    { rank: 3, name: "Kevin Fernandez", score: 2410, streak: 3, badge: "🥉", delta: "+310", school: "The Choice School, Tripunithura" },
+    { rank: 4, name: "Anandhi K. Bapu", score: 2150, streak: 2, badge: "4th", delta: "+280", school: "Sourashtra HSS, Madurai" },
+    { rank: 5, name: "Gautham Chand Jain", score: 1980, streak: 2, badge: "5th", delta: "+220", school: "Mahaveer Int. Academy, Chennai" },
   ]);
 
   const [selectedOption, setSelectedOption] = useState<string>("B");

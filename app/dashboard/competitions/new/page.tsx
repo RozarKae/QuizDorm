@@ -79,7 +79,7 @@ export default function CreateCompetitionPage() {
           description: description.trim(),
           quizId,
           code: cleanCode,
-          hostName: "Oakridge Quiz Federation",
+          hostName: "TN & Kerala Science Olympiad Council",
           settings: {
             durationMinutes,
             maxParticipants,

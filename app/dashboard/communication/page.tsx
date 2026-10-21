@@ -31,10 +31,10 @@ export default function CommunicationHubPage() {
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-              Unified Communication & Workflow Automation Hub
+              Unified Communication & Academic Notification Hub
             </h1>
             <p className="text-xs sm:text-sm text-indigo-100/80 max-w-2xl">
-              Deliver multi-channel notifications (In-App, Email, SMS, WhatsApp, Web Push), manage organization announcements, and build automated workflow triggers.
+              Deliver multi-channel notifications (In-App, Email, SMS, WhatsApp, Web Push), manage organization announcements, and orchestrate event-driven academic triggers.
             </p>
           </div>
 
@@ -68,7 +68,7 @@ export default function CommunicationHubPage() {
           </div>
         </div>
 
-        {/* Right Column: Workflow Automation Rules */}
+        {/* Right Column: Academic Notification Rules */}
         <div className="lg:col-span-5 space-y-4">
           <AutomationRulesCard />
         </div>

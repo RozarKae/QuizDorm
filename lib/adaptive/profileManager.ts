@@ -4,7 +4,7 @@ const STORAGE_KEY_PROFILE = "quizdorm_student_profile";
 
 export const DEFAULT_STUDENT_PROFILE: StudentKnowledgeProfile = {
   studentId: "std-101",
-  studentName: "Alex Rivera",
+  studentName: "Karthik Rajendran",
   overallMasteryPercent: 82,
   overallAccuracyPercent: 86,
   overallAvgSpeedSeconds: 42,

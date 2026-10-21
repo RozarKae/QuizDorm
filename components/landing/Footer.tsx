@@ -15,8 +15,8 @@ export default function Footer() {
   ];
 
   const company = [
-    { name: "About Us", href: "#" },
-    { name: "Blog", href: "#" },
+    { name: "About & Founder's Desk", href: "/about" },
+    { name: "Blog & Research", href: "#" },
     { name: "Privacy Policy", href: "/privacy" },
   ];
 
@@ -87,10 +87,10 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-6 border-t border-[rgba(160,190,170,0.12)] flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-[#69786F]">
         <p>
-          &copy; {new Date().getFullYear()} QuizDorm Platform. Intelligent Assessment Operating System.
+          &copy; {new Date().getFullYear()} QuizDorm Platform. Founded by <strong className="text-[#F2F7F3]">RK Akbar</strong> (Tamil Nadu &amp; Kerala).
         </p>
-        <p className="mt-2 sm:mt-0 text-[11px] text-[#69786F]">
-          Inter &bull; Space Grotesk &bull; Monospace
+        <p className="mt-2 sm:mt-0 text-[11px] text-[#65F59A]">
+          Engineered for Institutional &amp; Competitive Excellence
         </p>
       </div>
     </footer>

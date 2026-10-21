@@ -6,9 +6,9 @@ const STORAGE_KEY_ACTIVE_CHILD = "quizdorm_active_child_id";
 export const DEFAULT_LINKED_CHILDREN: ChildProfile[] = [
   {
     id: "std-101",
-    name: "Alex Rivera",
-    grade: "Grade 12 Advanced Science",
-    schoolName: "St. Jude International School",
+    name: "Karthik Rajendran",
+    grade: "Class 12 Higher Secondary (Maths-Biology)",
+    schoolName: "Government Model HSS Saidapet, Chennai",
     overallPerformancePercent: 92,
     attendancePercent: 98,
     currentStreak: 7,
@@ -17,22 +17,22 @@ export const DEFAULT_LINKED_CHILDREN: ChildProfile[] = [
   },
   {
     id: "std-102",
-    name: "Sofia Rivera",
-    grade: "Grade 9 General Science",
-    schoolName: "St. Jude Middle School",
+    name: "Meenakshi Rajendran",
+    grade: "Class 10 Secondary School",
+    schoolName: "Government Girls HSS, Chennai",
     overallPerformancePercent: 86,
     attendancePercent: 95,
     currentStreak: 4,
     weakSubject: "Cellular Respiration",
-    strongSubject: "World History",
+    strongSubject: "Regional & World History",
   },
 ];
 
 export const DEFAULT_PARENT: ParentGuardian = {
   id: "prn-101",
-  name: "Carlos Rivera",
-  email: "carlos.rivera@gmail.com",
-  phone: "+1 (555) 234-5678",
+  name: "K. Rajendran",
+  email: "rajendran.k@gmail.com",
+  phone: "+91 94440 12345",
   relationship: "father",
   linkedChildren: DEFAULT_LINKED_CHILDREN,
   verificationStatus: "verified",

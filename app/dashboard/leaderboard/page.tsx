@@ -20,13 +20,13 @@ interface LeaderboardUser {
 }
 
 const mockLeaderboard: LeaderboardUser[] = [
-  { rank: 1, name: "Elena Rostova", avatar: "ER", school: "Apex Olympiad Institute", score: 2890, quizzesTaken: 34, movement: "up", movementCount: 2 },
-  { rank: 2, name: "Alex Chen", avatar: "AC", school: "Oakridge High School", score: 2750, quizzesTaken: 30, movement: "same" },
-  { rank: 3, name: "David Kim", avatar: "DK", school: "Metropolitan Quiz Academy", score: 2610, quizzesTaken: 28, movement: "down", movementCount: 1 },
-  { rank: 4, name: "Sophia Martinez", avatar: "SM", school: "St. Jude Science Academy", score: 2480, quizzesTaken: 26, movement: "up", movementCount: 3 },
-  { rank: 5, name: "Liam O'Connor", avatar: "LO", school: "Cambridge High", score: 2390, quizzesTaken: 25, movement: "same" },
-  { rank: 6, name: "Priya Sharma", avatar: "PS", school: "Delhi Public School", score: 2310, quizzesTaken: 24, movement: "up", movementCount: 1 },
-  { rank: 7, name: "Marcus Vance", avatar: "MV", school: "Westlake High School", score: 2240, quizzesTaken: 22, movement: "down", movementCount: 2 },
+  { rank: 1, name: "Karthik Rajendran", avatar: "KR", school: "Govt Model HSS Saidapet, Chennai", score: 2890, quizzesTaken: 34, movement: "up", movementCount: 2 },
+  { rank: 2, name: "Fathima Nasreen", avatar: "FN", school: "Al-Ameen Universal, Kochi", score: 2750, quizzesTaken: 30, movement: "same" },
+  { rank: 3, name: "Kevin Fernandez", avatar: "KF", school: "The Choice School, Tripunithura", score: 2610, quizzesTaken: 28, movement: "down", movementCount: 1 },
+  { rank: 4, name: "Anandhi K. Bapu", avatar: "AB", school: "Sourashtra HSS, Madurai", score: 2480, quizzesTaken: 26, movement: "up", movementCount: 3 },
+  { rank: 5, name: "Gautham Chand Jain", avatar: "GJ", school: "Mahaveer Int. Academy, Chennai", score: 2390, quizzesTaken: 25, movement: "same" },
+  { rank: 6, name: "Harikrishnan Nair", avatar: "HN", school: "Govt Model Boys HSS, Thrissur", score: 2310, quizzesTaken: 24, movement: "up", movementCount: 1 },
+  { rank: 7, name: "Asif Mohammed", avatar: "AM", school: "Kerala State IT Academy, Trivandrum", score: 2240, quizzesTaken: 22, movement: "down", movementCount: 2 },
 ];
 
 export default function LeaderboardPage() {

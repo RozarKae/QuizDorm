@@ -16,7 +16,7 @@ export function WebhookManagerCard() {
     try {
       const logs = await WebhookEngine.triggerWebhook("quiz.submitted", {
         quizId: "qz-101",
-        studentName: "Alex Rivera",
+        studentName: "Karthik Rajendran",
         scorePercent: 94,
       });
       toast.success(`Simulated payload delivered to ${logs.length} webhook endpoints (200 OK)!`);

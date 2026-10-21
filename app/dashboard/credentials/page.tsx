@@ -34,17 +34,17 @@ export default function DigitalCredentialsPage() {
 
   const handleIssueSingle = () => {
     const cert = CertificateEngine.issueCertificate({
-      recipientName: "Alex Rivera",
+      recipientName: "Karthik Rajendran",
       recipientId: "std-101",
       title: "Excellence Certification in Biological Science",
       category: "skill_mastery",
       subject: "Biology",
-      organizationName: "QuizDorm Academy",
+      organizationName: "Tamil Nadu & Kerala Educational Consortium",
       scorePercent: 95,
       rank: 1,
     });
     loadData();
-    toast.success(`Issued certificate [${cert.verificationId}] to Alex Rivera!`);
+    toast.success(`Issued certificate [${cert.verificationId}] to Karthik Rajendran!`);
   };
 
   return (

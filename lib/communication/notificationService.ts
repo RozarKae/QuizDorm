@@ -7,7 +7,7 @@ export const DEFAULT_NOTIFICATIONS: InAppNotification[] = [
     id: "notif-101",
     userId: "usr-teacher-1",
     title: "Digital Certificate Issued",
-    message: "Mastery Certification in Algebra & Calculus was successfully generated for Alex Rivera.",
+    message: "Mastery Certification in Algebra & Calculus was successfully generated for Karthik Rajendran.",
     category: "certificate",
     read: false,
     timestamp: "2026-07-24T10:15:00Z",

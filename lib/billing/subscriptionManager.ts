@@ -134,9 +134,9 @@ export const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
 export const DEFAULT_USER_SUBSCRIPTION: UserSubscription = {
   id: "sub-101",
   userId: "usr-teacher-1",
-  userName: "Alex Rivera",
-  userEmail: "alex.rivera@quizdorm.com",
-  organizationName: "QuizDorm Academy",
+  userName: "Karthik Rajendran",
+  userEmail: "karthik.rajendran@saidapetmodel.edu.in",
+  organizationName: "Government Model Higher Secondary School",
   planId: "professional",
   billingCycle: "annual",
   status: "active",

@@ -19,7 +19,7 @@ export const TEST_ACCOUNTS: Record<string, TestAccount> = {
   "school@quizdorm.com": {
     id: "usr-school-01",
     email: "school@quizdorm.com",
-    name: "Oakridge Academy Admin",
+    name: "Govt Model & Matriculation Admin",
     role: "school",
     password: "Password123!",
     redirectUrl: "/school",
@@ -27,7 +27,7 @@ export const TEST_ACCOUNTS: Record<string, TestAccount> = {
   "student@quizdorm.com": {
     id: "usr-student-01",
     email: "student@quizdorm.com",
-    name: "Alex Rivera",
+    name: "Karthik Rajendran",
     role: "student",
     password: "Password123!",
     redirectUrl: "/student",

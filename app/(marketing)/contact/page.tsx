@@ -74,7 +74,7 @@ export default function ContactPage() {
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Institution / School Name
                     </label>
-                    <Input placeholder="Oakridge High School" />
+                    <Input placeholder="e.g. Government Model HSS / The Choice School" />
                   </div>
 
                   <div>

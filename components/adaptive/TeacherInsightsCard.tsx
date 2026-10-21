@@ -13,16 +13,16 @@ export function TeacherInsightsCard() {
     averageMasteryPercent: 81,
     strugglingTopics: ["Circulatory Anatomy", "Cellular Respiration"],
     studentsNeedingHelp: [
-      { id: "s-1", name: "David Kim", mastery: 58, weakArea: "Circulatory Anatomy" },
-      { id: "s-2", name: "Sofia Patel", mastery: 64, weakArea: "Cellular Respiration" },
+      { id: "s-1", name: "Irfan Marakkar", mastery: 58, weakArea: "Circulatory Anatomy" },
+      { id: "s-2", name: "Teresa Mathew", mastery: 64, weakArea: "Cellular Respiration" },
     ],
     fastLearners: [
-      { id: "s-3", name: "Alex Rivera", mastery: 92 },
-      { id: "s-4", name: "Elena Rostova", mastery: 90 },
+      { id: "s-3", name: "Karthik Rajendran", mastery: 92 },
+      { id: "s-4", name: "Anandhi K. Bapu", mastery: 90 },
     ],
     recommendedInterventions: [
-      "Assign 5-question targeted adaptive review on Circulatory Anatomy to David & Sofia.",
-      "Assign Expert Challenge Quiz to Alex Rivera and Elena Rostova to unlock Master certification.",
+      "Assign 5-question targeted adaptive review on Circulatory Anatomy to Irfan & Teresa.",
+      "Assign Expert Challenge Quiz to Karthik Rajendran and Anandhi K. Bapu to unlock Master certification.",
     ],
   };
 

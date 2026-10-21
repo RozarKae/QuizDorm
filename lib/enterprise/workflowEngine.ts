@@ -18,8 +18,8 @@ export const DEFAULT_WORKFLOWS: EnterpriseWorkflow[] = [
     title: "Enterprise Organization Billing Upgrade Approval",
     triggerEvent: "billing_upgrade",
     approvalSteps: [
-      { role: "Organization Admin", approverName: "Elena Rostova", approved: true, timestamp: "2026-07-24T10:00:00Z" },
-      { role: "Finance Director", approverName: "David Kim", approved: false },
+      { role: "Organization Admin", approverName: "Dr. K. Saravanan", approved: true, timestamp: "2026-07-24T10:00:00Z" },
+      { role: "Finance Director", approverName: "T. S. Soundararajan", approved: false },
     ],
     status: "pending",
     createdAt: "2026-07-24T10:00:00Z",

@@ -10,9 +10,9 @@ export const DEFAULT_EDGE_SESSIONS: EdgeClassroomSession[] = [
     status: "active",
     createdAt: "2026-07-24T10:00:00Z",
     leaderboard: [
-      { rank: 1, studentName: "Alex Rivera", score: 980, timeSeconds: 142 },
-      { rank: 2, studentName: "Marcus Sterling", score: 940, timeSeconds: 155 },
-      { rank: 3, studentName: "Elena Rostova", score: 910, timeSeconds: 168 },
+      { rank: 1, studentName: "Karthik Rajendran", score: 980, timeSeconds: 142 },
+      { rank: 2, studentName: "Kevin Fernandez", score: 940, timeSeconds: 155 },
+      { rank: 3, studentName: "Anandhi K. Bapu", score: 910, timeSeconds: 168 },
     ],
   },
 ];

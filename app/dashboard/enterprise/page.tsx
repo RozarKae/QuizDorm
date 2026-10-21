@@ -26,15 +26,15 @@ export default function TenantControlsPage() {
             </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-            Tenant Controls, SSO & Approval Workflows
+            Tenant Controls, SSO & Institutional Approval Protocols
           </h1>
           <p className="text-xs sm:text-sm text-indigo-100/80 max-w-2xl">
-            Configure SAML 2.0 / Okta SSO, manage tenant-level feature flags, and monitor multi-role approval workflow chains.
+            Configure SAML 2.0 / Okta SSO, manage tenant-level feature flags, and monitor multi-role governance approval chains.
           </p>
         </div>
       </div>
 
-      {/* Grid: SSO & Workflows */}
+      {/* Grid: SSO & Institutional Protocols */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* SSO Settings */}
         <div className="lg:col-span-6">
@@ -65,7 +65,7 @@ export default function TenantControlsPage() {
           </Card>
         </div>
 
-        {/* Workflows */}
+        {/* Institutional Governance Protocols */}
         <div className="lg:col-span-6">
           <EnterpriseWorkflowCard />
         </div>

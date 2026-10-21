@@ -35,7 +35,7 @@ const mockApplications: AdmissionApplication[] = [
     applicantName: "Amara Johnson",
     targetProgram: "B.Sc Quantum Physics",
     academicYear: "2026-2027",
-    previousSchool: "Oakridge Global Academy",
+    previousSchool: "The Choice School, Tripunithura",
     gpaPrevious: 3.75,
     entranceExamScore: 88.0,
     meritRank: 42,

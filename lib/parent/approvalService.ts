@@ -6,22 +6,22 @@ export const DEFAULT_APPROVALS: ParentApprovalRequest[] = [
   {
     id: "appr-101",
     studentId: "std-101",
-    title: "National Physics & Science Competition Participation",
+    title: "Tamil Nadu & Kerala Science Olympiad Consent",
     type: "competition_consent",
-    description: "Parental consent required for Alex Rivera to participate in the National QuizDorm Physics League.",
+    description: "Parental consent required for Karthik Rajendran to participate in the Inter-District QuizDorm Physics League.",
     dueDate: "2026-07-28",
     status: "pending",
-    requestedBy: "Dr. Eleanor Vance",
+    requestedBy: "Dr. K. Saravanan (Headmaster)",
   },
   {
     id: "appr-102",
     studentId: "std-101",
-    title: "Science Museum Field Trip Permission Form",
+    title: "Regional Science Center & Planetarium Field Trip Permission",
     type: "field_trip",
-    description: "Digital permission slip for the Grade 12 Advanced Biology Science Center excursion.",
+    description: "Digital permission slip for the Class 12 Advanced Biology Science Center excursion.",
     dueDate: "2026-07-30",
     status: "approved",
-    requestedBy: "St. Jude Administration",
+    requestedBy: "Government Model HSS Administration",
   },
 ];
 

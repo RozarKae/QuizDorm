@@ -165,7 +165,7 @@ export function AssignmentHomeworkCenter() {
       <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-bold mb-2">
-            <Sparkles className="w-3.5 h-3.5" /> AI-Assisted Evaluation Workflows
+            <Sparkles className="w-3.5 h-3.5" /> AI-Assisted Evaluation Pipelines
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
             <FileText className="w-6 h-6 text-purple-600" /> Assignment & Homework Management

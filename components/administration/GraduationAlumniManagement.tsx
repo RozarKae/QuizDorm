@@ -31,7 +31,7 @@ export function GraduationAlumniManagement() {
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight">Graduation & Alumni Network Platform</h1>
           <p className="text-slate-300 text-xs sm:text-sm mt-1.5 max-w-xl">
-            Clearance workflows, corporate placement tracking, alumni career profiles, mentorship networking, and lifetime academic records.
+            Graduation clearance protocols, corporate placement tracking, alumni career profiles, mentorship networking, and lifetime academic records.
           </p>
         </div>
 
