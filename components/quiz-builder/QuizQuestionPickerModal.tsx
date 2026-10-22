@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { Search, Plus, Check } from "lucide-react";
 import { getStoredQuestions, getAllTopics, getAllGradeLevels } from "@/lib/data/question-bank";
+import { doesQuestionMatchTopic } from "@/lib/data/taxonomy";
 import { toast } from "sonner";
 
 interface QuizQuestionPickerModalProps {
@@ -46,9 +47,7 @@ export function QuizQuestionPickerModal({ open, onOpenChange, onQuestionsSelecte
         q.topic?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         q.subject?.toLowerCase().includes(searchTerm.toLowerCase());
 
-      const matchesTopic =
-        selectedTopic === "All" ||
-        (q.topic && q.topic.toLowerCase() === selectedTopic.toLowerCase());
+      const matchesTopic = doesQuestionMatchTopic(q, selectedTopic);
 
       const matchesGrade =
         selectedGrade === "All" ||

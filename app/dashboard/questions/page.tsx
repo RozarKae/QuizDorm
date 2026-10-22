@@ -23,6 +23,7 @@ import {
   getAllGradeLevels,
   getAllSubjects,
 } from "@/lib/data/question-bank";
+import { doesQuestionMatchTopic } from "@/lib/data/taxonomy";
 import {
   Plus,
   Search,
@@ -117,9 +118,7 @@ export default function QuestionBankPage() {
         q.subject?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         q.tags?.some((t) => t.toLowerCase().includes(searchTerm.toLowerCase()));
 
-      const matchesTopic =
-        selectedTopic === "All" ||
-        (q.topic && q.topic.toLowerCase() === selectedTopic.toLowerCase());
+      const matchesTopic = doesQuestionMatchTopic(q, selectedTopic);
 
       const matchesGrade =
         selectedGrade === "All" ||

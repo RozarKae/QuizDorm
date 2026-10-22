@@ -65,6 +65,7 @@ export interface QuestionItem {
   subject: string;
   category: string;
   topic: string;
+  topics?: string[]; // Multiple topic classification (cross-indexing based on tags and concepts)
   subtopic?: string;
   difficulty: DifficultyLevel;
   gradeLevel?: string;

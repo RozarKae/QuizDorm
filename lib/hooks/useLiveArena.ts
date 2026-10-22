@@ -173,10 +173,10 @@ export function useLiveArena({
 
     connectSSE();
 
-    // Fallback polling every 2 seconds to guarantee freshness
+    // Fallback polling every 1 second to guarantee live response freshness
     const pollInterval = setInterval(() => {
       fetchSession();
-    }, 2000);
+    }, 1000);
 
     return () => {
       if (eventSource) eventSource.close();
@@ -278,6 +278,8 @@ export function useLiveArena({
 
   const startCompetition = () => sendHostAction("start");
   const nextQuestionOrPodium = () => sendHostAction("next");
+  const nextQuestionDirect = () => sendHostAction("next_question");
+  const revealLeaderboard = () => sendHostAction("reveal_leaderboard");
   const pauseCompetition = () => sendHostAction("pause");
   const resumeCompetition = () => sendHostAction("resume");
   const skipQuestion = () => sendHostAction("skip");
@@ -307,12 +309,18 @@ export function useLiveArena({
     isLoading,
     connectionError,
     submissionsCount: session?.submissionsCountForCurrentQ ?? 0,
+    connectedSystemsCount: session?.connectedSystemsCount ?? Math.max(session?.participants?.length || 0, 1),
+    submissionDistribution: session?.submissionDistribution || {},
+    submittedParticipantIds: session?.submittedParticipantIds || [],
+    recentActivityFeed: session?.recentActivityFeed || [],
 
     // Actions
     joinSession,
     submitAnswer,
     startCompetition,
     nextQuestionOrPodium,
+    nextQuestionDirect,
+    revealLeaderboard,
     pauseCompetition,
     resumeCompetition,
     skipQuestion,

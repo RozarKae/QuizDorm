@@ -8,6 +8,7 @@ import { CompetitionLobby } from "@/components/competitions/CompetitionLobby";
 import { LiveQuestionSession } from "@/components/competitions/LiveQuestionSession";
 import { AnimatedLeaderboard } from "@/components/competitions/AnimatedLeaderboard";
 import { WinnerPodiumScreen } from "@/components/competitions/WinnerPodiumScreen";
+import { HostControlPanel } from "@/components/competitions/HostControlPanel";
 import { ArrowLeft, RefreshCw, AlertCircle, User, Zap, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,11 +23,17 @@ function StandaloneArenaContent() {
 
   const codeParam = (params?.code as string) || searchParams.get("code") || "QD-8492";
 
+  const isHostParam = searchParams.get("role") === "host" || searchParams.get("host") === "true";
+  const [isHost, setIsHost] = useState<boolean>(() => {
+    if (isHostParam) return true;
+    if (typeof window !== "undefined" && codeParam) {
+      return Boolean(localStorage.getItem(`quizdorm_host_sec_${codeParam}`));
+    }
+    return false;
+  });
+
   const [nickname, setNickname] = useState<string>(() => searchParams.get("name") || "");
   const [nameInput, setNameInput] = useState<string>(() => searchParams.get("name") || "");
-
-  // Leave name empty by default so every participant fills their own name
-  // Auto-join is only engaged if name was passed directly in URL query param
 
   const {
     session,
@@ -35,18 +42,33 @@ function StandaloneArenaContent() {
     currentQuestion,
     totalQuestions,
     questionTimeRemaining,
+    isPaused,
     participants,
     announcements,
     userAnswerSubmitted,
     selectedOptionId,
+    submissionsCount,
+    connectedSystemsCount,
+    submissionDistribution,
     isLoading,
     connectionError,
     currentParticipant,
     joinSession,
     submitAnswer,
+    startCompetition,
+    nextQuestionOrPodium,
+    nextQuestionDirect,
+    revealLeaderboard,
+    pauseCompetition,
+    resumeCompetition,
+    skipQuestion,
+    extendTimer,
+    endCompetition,
+    postAnnouncement,
+    kickParticipant,
   } = useLiveArena({
     code: codeParam,
-    isHost: false,
+    isHost,
     participantName: nickname || undefined,
     autoJoin: Boolean(nickname),
   });
@@ -131,8 +153,27 @@ function StandaloneArenaContent() {
         </div>
       </div>
 
-      {/* Contestant Callsign Prompt if not enrolled yet */}
-      {!currentParticipant ? (
+      {/* Host Control Desk Bar */}
+      {isHost && stage !== "lobby" && stage !== "winner_podium" && (
+        <HostControlPanel
+          isPaused={isPaused}
+          timeRemaining={questionTimeRemaining}
+          onPause={pauseCompetition}
+          onResume={resumeCompetition}
+          onSkipQuestion={skipQuestion}
+          onExtendTime={extendTimer}
+          onEndCompetition={endCompetition}
+          onNextQuestion={nextQuestionOrPodium}
+          onNextQuestionDirect={nextQuestionDirect}
+          onRevealLeaderboard={revealLeaderboard}
+          connectedSystemsCount={connectedSystemsCount}
+          submissionsCount={submissionsCount}
+          totalParticipants={participants.length}
+        />
+      )}
+
+      {/* Contestant Callsign Prompt if not enrolled yet and NOT the host */}
+      {!currentParticipant && !isHost ? (
         <div className="max-w-md mx-auto my-12 bg-[#0C1210] p-6 sm:p-8 rounded-[6px] border border-[rgba(101,245,154,0.3)] shadow-[0_0_24px_rgba(101,245,154,0.12)] text-center space-y-5 relative z-10">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-[3px] bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] text-xs font-mono font-bold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
@@ -173,8 +214,11 @@ function StandaloneArenaContent() {
               competition={competitionItem}
               participants={participants}
               announcements={announcements}
-              isHost={false}
-              currentParticipantName={currentParticipant?.name || nickname}
+              isHost={isHost}
+              currentParticipantName={currentParticipant?.name || (isHost ? "Host" : nickname)}
+              onStartCompetition={startCompetition}
+              onPostAnnouncement={postAnnouncement}
+              onKickParticipant={kickParticipant}
             />
           )}
 
@@ -187,7 +231,11 @@ function StandaloneArenaContent() {
               timeRemaining={questionTimeRemaining}
               userAnswerSubmitted={userAnswerSubmitted}
               selectedOptionId={selectedOptionId}
-              isHost={false}
+              isHost={isHost}
+              submissionsCount={submissionsCount}
+              totalParticipants={participants.length}
+              connectedSystemsCount={connectedSystemsCount}
+              submissionDistribution={submissionDistribution}
               onOptionSubmit={(optId) => {
                 playTap();
                 submitAnswer(optId);
@@ -199,7 +247,8 @@ function StandaloneArenaContent() {
           {stage === "leaderboard" && (
             <AnimatedLeaderboard
               participants={participants}
-              isHost={false}
+              isHost={isHost}
+              onNextQuestion={nextQuestionOrPodium}
               questionExplanation={currentQuestion?.explanation}
               correctOptionText={currentQuestion?.options?.find((o) => o.isCorrect)?.text}
             />

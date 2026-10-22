@@ -1,8 +1,9 @@
 import { QuizItem } from "@/lib/types/quiz";
 import { QuestionItem, DifficultyLevel } from "@/lib/types/question";
 import { ALL_DEFAULT_QUESTIONS, getStoredQuestions } from "./question-bank";
+import { doesQuestionMatchTopic } from "./taxonomy";
 
-export const STORAGE_KEY_QUIZZES = "quizdorm_quizzes_v1";
+export const STORAGE_KEY_QUIZZES = "quizdorm_quizzes_v2";
 
 export interface TopicSummary {
   topic: string;
@@ -354,24 +355,26 @@ export function getTopicsSummary(): TopicSummary[] {
 
   const map = new Map<string, TopicSummary>();
 
-  // Aggregate questions by topic
+  // Aggregate questions by topic - supporting multi-topic cross-indexing!
   questions.forEach((q) => {
-    const topic = q.topic || "General";
-    if (!map.has(topic)) {
-      map.set(topic, {
-        topic,
-        subject: q.subject,
-        questionCount: 0,
-        quizCount: 0,
-        gradeLevels: [],
-        difficulties: [],
-      });
-    }
-    const item = map.get(topic)!;
-    item.questionCount++;
-    const g = q.gradeLevel || q.grade;
-    if (g && !item.gradeLevels.includes(g)) item.gradeLevels.push(g);
-    if (q.difficulty && !item.difficulties.includes(q.difficulty)) item.difficulties.push(q.difficulty);
+    const topics = q.topics && q.topics.length > 0 ? q.topics : [q.topic || "General"];
+    topics.forEach((topic) => {
+      if (!map.has(topic)) {
+        map.set(topic, {
+          topic,
+          subject: q.subject,
+          questionCount: 0,
+          quizCount: 0,
+          gradeLevels: [],
+          difficulties: [],
+        });
+      }
+      const item = map.get(topic)!;
+      item.questionCount++;
+      const g = q.gradeLevel || q.grade;
+      if (g && !item.gradeLevels.includes(g)) item.gradeLevels.push(g);
+      if (q.difficulty && !item.difficulties.includes(q.difficulty)) item.difficulties.push(q.difficulty);
+    });
   });
 
   // Aggregate quizzes count

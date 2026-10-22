@@ -33,6 +33,7 @@ import { QuestionItem, QuestionType, DifficultyLevel } from "@/lib/types/questio
 import { QuizItem } from "@/lib/types/quiz";
 import { saveQuiz } from "@/lib/data/quizzes";
 import { importQuestions } from "@/lib/data/question-bank";
+import { resolveTopicsForQuestion } from "@/lib/data/taxonomy";
 import {
   Dialog,
   DialogContent,
@@ -326,14 +327,28 @@ export function AIDocumentQuizModal({
       const rawQuestions: any[] = data.questions || [];
       const formatted: QuestionItem[] = rawQuestions.map((q: any, idx: number) => {
         const itemDifficulty: DifficultyLevel = q.difficulty || difficulty || "Medium";
+        const qSubject = q.subject || data.detectedSubject || subject || "General";
+        const qTopic = q.topic || data.detectedTopic || topic || "Curriculum Unit";
+        const qTags = Array.from(new Set([
+          ...(Array.isArray(q.tags) ? q.tags : []),
+          qSubject.toLowerCase().replace(/[ &]+/g, "-"),
+          qTopic.toLowerCase().replace(/[ &]+/g, "-"),
+          "ai-generated",
+        ])).filter(Boolean);
+
+        const qTopics = Array.isArray(q.topics) && q.topics.length > 0
+          ? q.topics
+          : resolveTopicsForQuestion({ topic: qTopic, subject: qSubject, tags: qTags });
+
         return {
           id: q.id || `gen-q-${Date.now()}-${idx + 1}`,
           title: q.title || `Question ${idx + 1}`,
           description: q.description || undefined,
           type: (q.type as QuestionType) || "mcq_single",
-          subject: q.subject || data.detectedSubject || subject || "General",
-          category: q.category || data.detectedSubject || subject || "General",
-          topic: q.topic || data.detectedTopic || topic || "Curriculum Unit",
+          subject: qSubject,
+          category: q.category || qSubject,
+          topic: qTopic,
+          topics: qTopics,
           subtopic: q.subtopic || undefined,
           difficulty: itemDifficulty,
           marks: q.marks || (itemDifficulty === "Hard" ? 5 : itemDifficulty === "Medium" ? 4 : 2),
@@ -363,11 +378,7 @@ export function AIDocumentQuizModal({
           })),
           explanation: q.explanation || "Curriculum-derived solution rationale.",
           hints: q.hints || [],
-          tags: [
-            (q.subject || data.detectedSubject || subject || "general").toLowerCase(),
-            "gemini-ai",
-            "pdf-generated",
-          ].filter(Boolean),
+          tags: qTags,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         };

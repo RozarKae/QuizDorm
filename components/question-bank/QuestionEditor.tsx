@@ -13,6 +13,7 @@ import { RichTextEquationEditor } from "@/components/media/editors/RichTextEquat
 import { HotspotEditor } from "@/components/media/interactive/HotspotEditor";
 import { DragDropBuilder } from "@/components/media/interactive/DragDropBuilder";
 import { QuestionPreviewModal } from "@/components/media/QuestionPreviewModal";
+import { resolveTopicsForQuestion } from "@/lib/data/taxonomy";
 import {
   Plus,
   Trash2,
@@ -184,6 +185,7 @@ export function QuestionEditor({ initialQuestion, onSave }: QuestionEditorProps)
       subject,
       category,
       topic,
+      topics: resolveTopicsForQuestion({ topic, subject, tags }),
       subtopic,
       difficulty,
       marks: Number(marks),

@@ -10,6 +10,7 @@ export interface LiveSessionSettings {
   negativeMarking: boolean;
   timeBonus: boolean;
   timePerQuestionSeconds: number;
+  autoAdvanceOnTimeout?: boolean;
 }
 
 export interface SubmittedAnswer {
@@ -91,6 +92,15 @@ export interface PublicSessionState {
   announcements: AnnouncementItem[];
   serverTime: number; // To calculate clock skew
   submissionsCountForCurrentQ: number;
+  connectedSystemsCount: number;
+  submissionDistribution: Record<string, number>;
+  submittedParticipantIds: string[];
+  recentActivityFeed?: {
+    participantName: string;
+    timeTakenSec: number;
+    optionId: string;
+    timestamp: number;
+  }[];
 }
 
 export interface CreateSessionOptions {

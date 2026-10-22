@@ -16,6 +16,8 @@ interface LiveQuestionSessionProps {
   isHost?: boolean;
   submissionsCount?: number;
   totalParticipants?: number;
+  connectedSystemsCount?: number;
+  submissionDistribution?: Record<string, number>;
   onOptionSubmit: (optionId: string) => void;
 }
 
@@ -29,6 +31,8 @@ export function LiveQuestionSession({
   isHost = false,
   submissionsCount = 0,
   totalParticipants = 0,
+  connectedSystemsCount = 1,
+  submissionDistribution = {},
   onOptionSubmit,
 }: LiveQuestionSessionProps) {
   const isUrgent = timeRemaining <= 5 && timeRemaining > 0;
@@ -55,7 +59,7 @@ export function LiveQuestionSession({
         <div className="flex items-center space-x-3">
           {isHost && (
             <Badge className="bg-[#111B17] text-[#A0AEA5] border border-[rgba(160,190,170,0.14)] font-mono text-xs hidden sm:inline-flex">
-              Submissions: {submissionsCount} / {totalParticipants}
+              Responses: {submissionsCount} / {Math.max(totalParticipants, connectedSystemsCount, 1)} ({connectedSystemsCount} Systems)
             </Badge>
           )}
 
@@ -79,11 +83,18 @@ export function LiveQuestionSession({
         </h2>
 
         {isHost && (
-          <div className="p-3 bg-[#111B17] border border-[rgba(160,190,170,0.14)] rounded-[4px] text-xs font-mono text-[#A0AEA5] flex items-center space-x-2">
-            <span className="w-2 h-2 rounded-full bg-[#65F59A] animate-pulse" />
-            <span>
-              HOST MONITOR // Live response tracker: <strong className="text-[#65F59A]">{submissionsCount}</strong> of{" "}
-              <strong className="text-[#F2F7F3]">{totalParticipants}</strong> contenders have locked answers.
+          <div className="p-3 bg-[#111B17] border border-[rgba(101,245,154,0.25)] rounded-[4px] text-xs font-mono text-[#A0AEA5] flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <span className="w-2 h-2 rounded-full bg-[#65F59A] animate-pulse" />
+              <span>
+                HOST MONITOR // Live response tracker: <strong className="text-[#65F59A]">{submissionsCount}</strong> of{" "}
+                <strong className="text-[#F2F7F3]">{Math.max(totalParticipants, connectedSystemsCount, 1)}</strong> systems responded
+              </span>
+            </div>
+            <span className="text-[10px] text-[#65F59A] font-bold">
+              {Math.max(totalParticipants, connectedSystemsCount, 1) > 0
+                ? `${Math.round((submissionsCount / Math.max(totalParticipants, connectedSystemsCount, 1)) * 100)}% Locked`
+                : "0%"}
             </span>
           </div>
         )}
@@ -92,6 +103,8 @@ export function LiveQuestionSession({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           {(question.options || []).map((opt, idx) => {
             const isSelected = selectedOptionId === opt.id;
+            const optVotes = submissionDistribution[opt.id] || 0;
+            const optPercent = submissionsCount > 0 ? Math.round((optVotes / submissionsCount) * 100) : 0;
 
             return (
               <button
@@ -99,31 +112,49 @@ export function LiveQuestionSession({
                 type="button"
                 disabled={userAnswerSubmitted || isHost || timeRemaining <= 0}
                 onClick={() => onOptionSubmit(opt.id)}
-                className={`p-4 rounded-[4px] border font-bold text-sm transition-all text-left flex items-center justify-between ${
+                className={`p-4 rounded-[4px] border font-bold text-sm transition-all text-left flex flex-col justify-between relative overflow-hidden ${
                   isSelected
                     ? "border-[#65F59A] bg-[#17251E] text-[#F2F7F3] ring-1 ring-[#65F59A] shadow-[0_0_16px_rgba(101,245,154,0.18)]"
                     : userAnswerSubmitted || isHost || timeRemaining <= 0
-                    ? "opacity-50 bg-[#111B17]/40 border-[rgba(160,190,170,0.1)] cursor-not-allowed text-[#69786F]"
+                    ? isHost
+                      ? "border-[rgba(160,190,170,0.16)] bg-[#111B17] text-[#F2F7F3]"
+                      : "opacity-50 bg-[#111B17]/40 border-[rgba(160,190,170,0.1)] cursor-not-allowed text-[#69786F]"
                     : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 hover:border-[#65F59A]/40 hover:bg-[#111B17] text-[#F2F7F3] cursor-pointer"
                 }`}
               >
-                <div className="flex items-center space-x-3">
-                  <span
-                    className={`w-6 h-6 rounded-[2px] font-mono font-bold text-xs flex items-center justify-center shrink-0 border ${
-                      isSelected
-                        ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
-                        : "bg-[#17251E] text-[#A0AEA5] border-[rgba(160,190,170,0.2)]"
-                    }`}
-                  >
-                    {String.fromCharCode(65 + idx)}
-                  </span>
-                  <span className="leading-snug">{opt.text}</span>
+                {/* Host Live Response Fill Bar */}
+                {isHost && submissionsCount > 0 && (
+                  <div
+                    className="absolute inset-y-0 left-0 bg-[rgba(101,245,154,0.15)] border-r border-[#65F59A]/40 transition-all duration-300 pointer-events-none"
+                    style={{ width: `${optPercent}%` }}
+                  />
+                )}
+
+                <div className="flex items-center justify-between w-full relative z-10">
+                  <div className="flex items-center space-x-3">
+                    <span
+                      className={`w-6 h-6 rounded-[2px] font-mono font-bold text-xs flex items-center justify-center shrink-0 border ${
+                        isSelected
+                          ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
+                          : "bg-[#17251E] text-[#A0AEA5] border-[rgba(160,190,170,0.2)]"
+                      }`}
+                    >
+                      {String.fromCharCode(65 + idx)}
+                    </span>
+                    <span className="leading-snug">{opt.text}</span>
+                  </div>
+                  {isHost ? (
+                    <span className="font-mono text-xs font-bold text-[#65F59A] shrink-0 ml-2">
+                      {optVotes} ({optPercent}%)
+                    </span>
+                  ) : (
+                    <Zap
+                      className={`w-4 h-4 text-[#65F59A] transition-opacity shrink-0 ${
+                        isSelected ? "opacity-100" : "opacity-0"
+                      }`}
+                    />
+                  )}
                 </div>
-                <Zap
-                  className={`w-4 h-4 text-[#65F59A] transition-opacity ${
-                    isSelected ? "opacity-100" : "opacity-0"
-                  }`}
-                />
               </button>
             );
           })}

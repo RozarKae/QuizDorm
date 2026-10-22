@@ -42,6 +42,9 @@ function LiveArenaContent() {
     userAnswerSubmitted,
     selectedOptionId,
     submissionsCount,
+    connectedSystemsCount,
+    submissionDistribution,
+    recentActivityFeed,
     isLoading,
     connectionError,
     currentParticipant,
@@ -49,6 +52,8 @@ function LiveArenaContent() {
     submitAnswer,
     startCompetition,
     nextQuestionOrPodium,
+    nextQuestionDirect,
+    revealLeaderboard,
     pauseCompetition,
     resumeCompetition,
     skipQuestion,
@@ -173,6 +178,11 @@ function LiveArenaContent() {
           onExtendTime={extendTimer}
           onEndCompetition={endCompetition}
           onNextQuestion={nextQuestionOrPodium}
+          onNextQuestionDirect={nextQuestionDirect}
+          onRevealLeaderboard={revealLeaderboard}
+          connectedSystemsCount={connectedSystemsCount}
+          submissionsCount={submissionsCount}
+          totalParticipants={participants.length}
         />
       )}
 
@@ -204,12 +214,14 @@ function LiveArenaContent() {
               isHost={userRole === "host"}
               submissionsCount={submissionsCount}
               totalParticipants={participants.length}
+              connectedSystemsCount={connectedSystemsCount}
+              submissionDistribution={submissionDistribution}
               onOptionSubmit={submitAnswer}
             />
           </div>
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 space-y-4">
             <LiveAnalyticsCard
-              participantCount={participants.length}
+              participantCount={connectedSystemsCount}
               accuracyPercentage={submissionsCount > 0 ? 85 : 0}
               averageResponseTimeSec={
                 currentQuestion?.timeLimitSeconds

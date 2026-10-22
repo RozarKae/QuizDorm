@@ -98,6 +98,7 @@ export const GeneratedQuestionSchema = z
     subject: z.string().min(2, "Subject is required"),
     category: z.string().min(2, "Category is required"),
     topic: z.string().min(2, "Topic is required"),
+    topics: z.array(z.string()).optional(),
     subtopic: z.string().nullable().optional(),
     gradeLevel: z.string().min(2, "Grade level is required"),
     learningObjective: z

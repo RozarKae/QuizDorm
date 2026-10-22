@@ -245,3 +245,82 @@ test("QR Code Generation: Canonical HTTPS join URL is valid and scannable", asyn
   assert.ok(qrDataUri.startsWith("data:image/png;base64,"));
   assert.ok(qrDataUri.length > 500);
 });
+
+test("Scenario G: 1-Click Direct Next Question Progression and Leaderboard Reveal", () => {
+  const { session, hostSecret } = LiveSessionManager.createSession({
+    title: "1-Click Host Progression Test",
+  });
+  const code = session.code;
+
+  // 1. Host starts competition
+  const startRes = LiveSessionManager.executeHostAction(code, hostSecret, "start");
+  assert.equal(startRes.success, true);
+  assert.equal(startRes.session?.stage, "question");
+  assert.equal(startRes.session?.currentQuestionIndex, 0);
+
+  // 2. Direct Next Question action advances immediately to question index 1 in 1 click
+  const directNextRes = LiveSessionManager.executeHostAction(code, hostSecret, "next_question");
+  assert.equal(directNextRes.success, true);
+  assert.equal(directNextRes.session?.stage, "question");
+  assert.equal(directNextRes.session?.currentQuestionIndex, 1);
+  assert.ok(directNextRes.session?.currentQuestion);
+
+  // 3. Reveal Leaderboard action pauses and shows leaderboard
+  const revealRes = LiveSessionManager.executeHostAction(code, hostSecret, "reveal_leaderboard");
+  assert.equal(revealRes.success, true);
+  assert.equal(revealRes.session?.stage, "leaderboard");
+});
+
+test("Scenario H: Real-time Live Responses Histogram & Connected Systems Telemetry", () => {
+  const { session, hostSecret } = LiveSessionManager.createSession({
+    title: "Telemetry Live Response Test",
+  });
+  const code = session.code;
+
+  // Enroll 3 participants
+  const p1 = LiveSessionManager.joinSession(code, { name: "Contender Alpha" });
+  const p2 = LiveSessionManager.joinSession(code, { name: "Contender Beta" });
+  const p3 = LiveSessionManager.joinSession(code, { name: "Contender Gamma" });
+
+  LiveSessionManager.executeHostAction(code, hostSecret, "start");
+  const q0 = session.questions[0];
+
+  // Contender Alpha and Beta vote for Option 0, Gamma votes for Option 1
+  LiveSessionManager.submitAnswer(code, p1.participantId, 0, q0.options[0].id);
+  LiveSessionManager.submitAnswer(code, p2.participantId, 0, q0.options[0].id);
+  LiveSessionManager.submitAnswer(code, p3.participantId, 0, q0.options[1].id);
+
+  const publicState = toPublicSessionState(LiveSessionManager.getSession(code)!);
+
+  // Assert submissions count and real-time histogram distribution
+  assert.equal(publicState.submissionsCountForCurrentQ, 3);
+  assert.equal(publicState.submissionDistribution[q0.options[0].id], 2);
+  assert.equal(publicState.submissionDistribution[q0.options[1].id], 1);
+  assert.equal(publicState.submittedParticipantIds.length, 3);
+  assert.ok(publicState.connectedSystemsCount >= 3);
+});
+
+test("Scenario I: Database 1,000 Questions Multi-Topic Tag Cross-Indexing", async () => {
+  const { ALL_DEFAULT_QUESTIONS } = await import("../lib/data/question-bank");
+  const { doesQuestionMatchTopic } = await import("../lib/data/taxonomy");
+
+  // Verify starter question bank has exactly 1,000+ items
+  assert.ok(ALL_DEFAULT_QUESTIONS.length >= 1000);
+
+  // Find a question with tags ["calculus", "derivatives"]
+  const calculusQ = ALL_DEFAULT_QUESTIONS.find((q) =>
+    q.tags?.some((t) => t.includes("calculus") || t.includes("derivative"))
+  );
+  assert.ok(calculusQ);
+
+  // Assert it matches both "Calculus & Analysis" and its primary topic
+  assert.equal(doesQuestionMatchTopic(calculusQ, "Calculus & Analysis"), true);
+  assert.equal(doesQuestionMatchTopic(calculusQ, calculusQ.topic), true);
+
+  // Find an AI / Machine Learning question
+  const aiQ = ALL_DEFAULT_QUESTIONS.find((q) =>
+    q.tags?.some((t) => t.includes("ai") || t.includes("machine-learning"))
+  );
+  assert.ok(aiQ);
+  assert.equal(doesQuestionMatchTopic(aiQ, "Artificial Intelligence & Machine Learning"), true);
+});

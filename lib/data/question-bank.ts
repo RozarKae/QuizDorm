@@ -1,7 +1,14 @@
 import { QuestionItem, DifficultyLevel, QuestionType } from "@/lib/types/question";
 import importedQuestionsJson from "./imported-questions.json";
+import {
+  doesQuestionMatchTopic,
+  resolveTopicsForQuestion,
+  getAllStandardTopics,
+  getAllStandardSubjects,
+  STANDARD_TAXONOMY,
+} from "./taxonomy";
 
-export const STORAGE_KEY_QUESTIONS = "quizdorm_question_bank_v3";
+export const STORAGE_KEY_QUESTIONS = "quizdorm_question_bank_v16";
 
 // Base questions that existed initially in mock files
 export const INITIAL_BASE_QUESTIONS: QuestionItem[] = [
@@ -147,9 +154,7 @@ export function getQuestionById(id: string): QuestionItem | undefined {
 
 export function getQuestionsByTopic(topic: string): QuestionItem[] {
   if (!topic || topic === "All") return getStoredQuestions();
-  return getStoredQuestions().filter(
-    (q) => q.topic.toLowerCase() === topic.toLowerCase()
-  );
+  return getStoredQuestions().filter((q) => doesQuestionMatchTopic(q, topic));
 }
 
 export function getQuestionsBySubject(subject: string): QuestionItem[] {
@@ -161,16 +166,18 @@ export function getQuestionsBySubject(subject: string): QuestionItem[] {
 
 export function getAllTopics(): string[] {
   const questions = getStoredQuestions();
-  const topicsSet = new Set<string>();
+  const topicsSet = new Set<string>(getAllStandardTopics());
   questions.forEach((q) => {
     if (q.topic) topicsSet.add(q.topic);
+    const resolved = resolveTopicsForQuestion(q);
+    resolved.forEach((t) => topicsSet.add(t));
   });
   return Array.from(topicsSet).sort();
 }
 
 export function getAllSubjects(): string[] {
   const questions = getStoredQuestions();
-  const subjectsSet = new Set<string>();
+  const subjectsSet = new Set<string>(getAllStandardSubjects());
   questions.forEach((q) => {
     if (q.subject) subjectsSet.add(q.subject);
   });
@@ -251,7 +258,7 @@ export function filterQuestions(options: QuestionFilterOptions = {}): QuestionIt
   const { search, topic, gradeLevel, subject, category, difficulty, type } = options;
 
   if (topic && topic !== "All") {
-    list = list.filter((q) => q.topic?.toLowerCase() === topic.toLowerCase());
+    list = list.filter((q) => doesQuestionMatchTopic(q, topic));
   }
 
   if (gradeLevel && gradeLevel !== "All") {
