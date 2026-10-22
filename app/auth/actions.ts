@@ -1,7 +1,7 @@
 "use server";
 
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { z } from "zod";
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
@@ -322,13 +322,41 @@ export async function updatePassword(formData: FormData) {
   }
 }
 
-export async function signInWithGoogle() {
+export async function signInWithGoogle(clientOrigin?: string) {
   try {
+    let targetOrigin = clientOrigin;
+    if (!targetOrigin) {
+      try {
+        const headerList = await headers();
+        const host = headerList.get("x-forwarded-host") || headerList.get("host");
+        const proto = headerList.get("x-forwarded-proto") || (host?.includes("localhost") ? "http" : "https");
+        if (host) {
+          targetOrigin = `${proto}://${host}`;
+        }
+      } catch {
+        // Fallback
+      }
+    }
+
+    if (!targetOrigin) {
+      targetOrigin = process.env.NEXT_PUBLIC_SITE_URL || "https://quizclassroom.vercel.app";
+    }
+
+    const callbackUrl = `${targetOrigin.replace(/\/+$/, "")}/auth/callback`;
+
+    if (!isSupabaseConfigured()) {
+      return {
+        error: "Supabase project credentials are not configured yet.",
+        isProviderDisabled: true,
+        details: "Supabase URL and API keys are missing. You can sign in using the Google Demo account.",
+      };
+    }
+
     const supabase = await createClient();
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3001"}/auth/callback`,
+        redirectTo: callbackUrl,
       },
     });
 
@@ -336,9 +364,80 @@ export async function signInWithGoogle() {
       return { error: error.message };
     }
 
+    if (!data?.url) {
+      return { error: "No authorization URL returned by authentication provider." };
+    }
+
+    // Pre-flight check: verify if the Google provider is enabled on Supabase
+    try {
+      const probe = await fetch(data.url, { method: "HEAD", redirect: "manual" });
+      if (probe.status === 400) {
+        const probeGet = await fetch(data.url, { method: "GET", redirect: "manual" });
+        const probeJson = await probeGet.json().catch(() => ({}));
+        if (
+          probeJson.msg?.includes("Unsupported provider") ||
+          probeJson.msg?.includes("not enabled") ||
+          probeJson.error_code === "validation_failed"
+        ) {
+          return {
+            error: "Google authentication is not yet enabled in your Supabase project.",
+            isProviderDisabled: true,
+            provider: "google",
+            details:
+              "To enable real Google sign-in: open your Supabase Dashboard -> Authentication -> Providers -> Google, toggle 'Enable Google', and paste your Google Cloud OAuth Client ID and Secret.",
+          };
+        }
+      }
+    } catch (probeErr) {
+      console.warn("Could not pre-flight Google OAuth URL:", probeErr);
+    }
+
     return { url: data.url };
-  } catch {
-    return { url: "/dashboard" };
+  } catch (err: any) {
+    return { error: err.message || "Failed to initiate Google authentication" };
+  }
+}
+
+export async function signInWithGoogleDemo(roleParam: string = "student") {
+  try {
+    const cookieStore = await cookies();
+    const demoUser = {
+      id: "usr-google-demo-8492",
+      name: "Alex Rivera (Google)",
+      email: "alex.rivera.google@quizdorm.com",
+      role: roleParam,
+      user_metadata: {
+        name: "Alex Rivera (Google)",
+        role: roleParam,
+        avatar_url: "https://lh3.googleusercontent.com/a/default-user=s96-c",
+        provider: "google",
+      },
+    };
+
+    cookieStore.set(
+      "quizdorm_demo_session",
+      JSON.stringify(demoUser),
+      {
+        path: "/",
+        httpOnly: false,
+        sameSite: "lax",
+        maxAge: 60 * 60 * 24 * 7,
+      }
+    );
+
+    return {
+      success: true,
+      isDemoAccount: true,
+      redirectUrl: roleParam === "admin" ? "/admin" : `/${roleParam}`,
+      user: {
+        id: demoUser.id,
+        name: demoUser.name,
+        email: demoUser.email,
+        role: demoUser.role,
+      },
+    };
+  } catch (err: any) {
+    return { error: err.message || "Failed to start Google demo session" };
   }
 }
 

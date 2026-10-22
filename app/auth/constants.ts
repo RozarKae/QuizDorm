@@ -32,4 +32,12 @@ export const TEST_ACCOUNTS: Record<string, TestAccount> = {
     password: "Password123!",
     redirectUrl: "/student",
   },
+  "google.user@quizdorm.com": {
+    id: "usr-google-demo-8492",
+    email: "google.user@quizdorm.com",
+    name: "Alex Rivera (Google)",
+    role: "student",
+    password: "Password123!",
+    redirectUrl: "/student",
+  },
 };

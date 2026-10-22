@@ -50,13 +50,13 @@ export async function GET(request: Request) {
         }
       }
 
-      // Handle PKCE code exchange flow
+      // Handle PKCE code exchange flow (OAuth / Google Auth)
       if (code) {
         const { error, data } = await supabase.auth.exchangeCodeForSession(code);
         if (!error && data?.user) {
           const role = data.user.user_metadata?.role || "student";
-          const email = encodeURIComponent(data.user.email || "");
-          return NextResponse.redirect(new URL(`/auth/verify-email?verified=true&role=${role}&email=${email}`, origin));
+          const targetPath = next ? next : (role === "admin" ? "/admin" : `/${role}`);
+          return NextResponse.redirect(new URL(targetPath, origin));
         }
       }
     } catch {
