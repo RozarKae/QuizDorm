@@ -18,7 +18,9 @@ export type DashboardNavConfig = {
 const adminNavItems: NavItem[] = [
   // Core Operations
   { name: "Overview", href: "/admin", icon: "dashboard", category: "Core Operations" },
-  { name: "Organizations", href: "/dashboard/organizations", icon: "organization", category: "Core Operations" },
+  { name: "Users & Identities", href: "/admin/users", icon: "users", badge: "Root", category: "Core Operations" },
+  { name: "Active Sessions", href: "/admin/sessions", icon: "sessions", badge: "Live", category: "Core Operations" },
+  { name: "Organizations & Campuses", href: "/admin/organizations", icon: "organization", badge: "Master", category: "Core Operations" },
   { name: "Enterprise OS", href: "/admin/enterprise", icon: "enterprise_admin", badge: "v2.0", category: "Core Operations" },
   { name: "Tenant Controls", href: "/dashboard/enterprise", icon: "tenant_controls", badge: "Multi-Tenant", category: "Core Operations" },
   { name: "Subscriptions & Billing", href: "/admin/billing", icon: "billing", badge: "Pro SaaS", category: "Core Operations" },

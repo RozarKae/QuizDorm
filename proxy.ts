@@ -11,8 +11,18 @@ export async function proxy(request: NextRequest) {
 
   let user = null;
 
-  // 1. Prioritize authenticated Supabase user first when Supabase is configured
-  if (supabaseUrl && supabaseAnonKey && !supabaseUrl.includes("your-supabase-project")) {
+  // 1. Check for active demo test session first
+  const demoCookie = request.cookies.get("quizdorm_demo_session")?.value;
+  if (demoCookie) {
+    try {
+      user = JSON.parse(demoCookie);
+    } catch {
+      // Ignore
+    }
+  }
+
+  // 2. Only if no active demo session exists, check for live Supabase user
+  if (!user && supabaseUrl && supabaseAnonKey && !supabaseUrl.includes("your-supabase-project")) {
     try {
       const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
         cookies: {
@@ -34,30 +44,9 @@ export async function proxy(request: NextRequest) {
       const { data } = await supabase.auth.getUser();
       if (data?.user) {
         user = data.user;
-        // Wipe any stale demo session cookie so it doesn't mask the real user
-        if (request.cookies.has("quizdorm_demo_session")) {
-          supabaseResponse.cookies.delete("quizdorm_demo_session");
-          supabaseResponse.cookies.set("quizdorm_demo_session", "", {
-            path: "/",
-            maxAge: 0,
-            expires: new Date(0),
-          });
-        }
       }
     } catch {
       // Fallback
-    }
-  }
-
-  // 2. Only if no live Supabase session exists, check for demo test accounts
-  if (!user) {
-    const demoCookie = request.cookies.get("quizdorm_demo_session")?.value;
-    if (demoCookie) {
-      try {
-        user = JSON.parse(demoCookie);
-      } catch {
-        // Ignore
-      }
     }
   }
 

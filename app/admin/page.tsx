@@ -93,11 +93,32 @@ export default function AdminPage() {
 
   const quickActions = [
     {
+      title: "Users & Identity Access (IAM)",
+      description: "Manage logins, UUIDs, elevate or downgrade roles, ban rogue users, and reset credentials.",
+      href: "/admin/users",
+      icon: <Users className="h-4 w-4 text-[#65F59A]" />,
+      actionLabel: "User Directory",
+    },
+    {
+      title: "Active Session & Token Control",
+      description: "Monitor live authenticated client devices, IP geolocation telemetry, and revoke compromised tokens.",
+      href: "/admin/sessions",
+      icon: <Server className="h-4 w-4 text-[#38D9B0]" />,
+      actionLabel: "Session Monitor",
+    },
+    {
       title: "AI Engine & Prompt Studio",
       description: "Manage API keys, routing fallback tiers, rate limits, and custom prompt templates.",
       href: "/admin/ai",
       icon: <Sparkles className="h-4 w-4 text-[#65F59A]" />,
       actionLabel: "AI Studio",
+    },
+    {
+      title: "Master Organization Governance",
+      description: "Approve pending campuses, configure custom subdomains, and assign enterprise tier quotas.",
+      href: "/admin/organizations",
+      icon: <Layers className="h-4 w-4 text-[#65F59A]" />,
+      actionLabel: "Master Orgs",
     },
     {
       title: "Enterprise Tenant Licensing",

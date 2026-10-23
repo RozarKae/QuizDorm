@@ -13,7 +13,8 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { signInWithEmail, signInWithGoogle } from "../actions";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
 import { toast } from "sonner";
-import { Lock } from "lucide-react";
+import { Lock, Shield, CheckCircle2 } from "lucide-react";
+import { TEST_ACCOUNTS } from "../constants";
 
 function LoginContent() {
   const searchParams = useSearchParams();
@@ -35,6 +36,16 @@ function LoginContent() {
         "quizdorm_demo_session=; path=/; max-age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT;";
     }
   }, [isLogout]);
+
+  useEffect(() => {
+    if (roleParam) {
+      const match = Object.values(TEST_ACCOUNTS).find((acc) => acc.role === roleParam);
+      if (match) {
+        setEmail(match.email);
+        setPassword(match.password);
+      }
+    }
+  }, [roleParam]);
 
   const getRoleDisplayName = () => {
     switch (roleParam) {
@@ -170,6 +181,45 @@ function LoginContent() {
           {errorMsg}
         </div>
       )}
+
+      {/* Quick Fill Test Accounts Pill Bar */}
+      <div className="mb-5 p-3.5 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] space-y-2.5">
+        <div className="flex items-center justify-between">
+          <span className="font-mono text-[10px] uppercase font-bold text-[#65F59A] tracking-wider flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+            Quick Test Accounts (1-Click Fill)
+          </span>
+          <span className="font-mono text-[9px] text-[#69786F]">Unique Passwords</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {Object.entries(TEST_ACCOUNTS).map(([key, acc]) => {
+            const isSelected = email.toLowerCase() === acc.email.toLowerCase();
+            return (
+              <button
+                key={acc.id}
+                type="button"
+                onClick={() => {
+                  setEmail(acc.email);
+                  setPassword(acc.password);
+                  setErrorMsg("");
+                }}
+                className={`p-2 rounded-[4px] font-mono text-[10px] text-left transition-all border cursor-pointer ${
+                  isSelected
+                    ? "bg-[rgba(101,245,154,0.12)] text-[#65F59A] border-[#65F59A]/40 shadow-[0_0_8px_rgba(101,245,154,0.12)]"
+                    : "bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border-[rgba(160,190,170,0.12)] hover:border-[rgba(160,190,170,0.22)]"
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-bold uppercase tracking-wider text-[#F2F7F3]">{acc.role}</span>
+                  {isSelected && <span className="text-[#65F59A] text-[9px]">● Active</span>}
+                </div>
+                <span className="block text-[9px] text-[#69786F] truncate mt-0.5">{acc.email}</span>
+                <span className="block text-[8.5px] text-[#65F59A]/80 font-mono truncate mt-0.5">Key: {acc.password}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       <AuthForm onSubmit={handleFormSubmit}>
         <div className="space-y-4">

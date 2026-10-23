@@ -1,35 +1,9 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
-
 import "./globals.css";
 
 import AuthProvider from "@/components/auth/AuthProvider";
 import AnimatedBackground from "@/components/ui/animated-background";
 import MouseGlow from "@/components/ui/mouse-glow";
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
 
 export const metadata: Metadata = {
   title: "QuizDorm | AI-Powered Educational Platform",
@@ -52,8 +26,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} dark h-full antialiased selection:bg-[#65F59A] selection:text-[#070B0A]`}
+      className="dark h-full antialiased selection:bg-[#65F59A] selection:text-[#070B0A]"
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-background text-foreground font-sans overflow-x-hidden relative transition-colors duration-150">
         <AnimatedBackground />
         <MouseGlow />

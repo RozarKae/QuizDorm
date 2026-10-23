@@ -45,8 +45,24 @@ export async function signInWithEmail(formData: FormData) {
   );
 
   if (testAccount) {
+    if (testAccount.password !== password) {
+      return {
+        error: `Invalid password for ${testAccount.email}. Please enter the correct password.`,
+      };
+    }
+
     try {
       const cookieStore = await cookies();
+
+      // Clear any existing Supabase session cookies so they don't conflict with demo session
+      const allCookies = cookieStore.getAll();
+      for (const c of allCookies) {
+        if (c.name.startsWith("sb-")) {
+          cookieStore.delete(c.name);
+          cookieStore.set(c.name, "", { path: "/", maxAge: 0, expires: new Date(0) });
+        }
+      }
+
       cookieStore.set(
         "quizdorm_demo_session",
         JSON.stringify({
