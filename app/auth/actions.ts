@@ -325,21 +325,29 @@ export async function updatePassword(formData: FormData) {
 export async function signInWithGoogle(clientOrigin?: string) {
   try {
     let targetOrigin = clientOrigin;
+    if (targetOrigin && targetOrigin.includes("rozarkaes-projects.vercel.app")) {
+      targetOrigin = "https://quizclassroom.vercel.app";
+    }
+
     if (!targetOrigin) {
       try {
         const headerList = await headers();
         const host = headerList.get("x-forwarded-host") || headerList.get("host");
         const proto = headerList.get("x-forwarded-proto") || (host?.includes("localhost") ? "http" : "https");
         if (host) {
-          targetOrigin = `${proto}://${host}`;
+          if (host.includes("rozarkaes-projects.vercel.app")) {
+            targetOrigin = "https://quizclassroom.vercel.app";
+          } else {
+            targetOrigin = `${proto}://${host}`;
+          }
         }
       } catch {
         // Fallback
       }
     }
 
-    if (!targetOrigin) {
-      targetOrigin = process.env.NEXT_PUBLIC_SITE_URL || "https://quizclassroom.vercel.app";
+    if (!targetOrigin || targetOrigin.includes("rozarkaes-projects.vercel.app")) {
+      targetOrigin = "https://quizclassroom.vercel.app";
     }
 
     const callbackUrl = `${targetOrigin.replace(/\/+$/, "")}/auth/callback`;

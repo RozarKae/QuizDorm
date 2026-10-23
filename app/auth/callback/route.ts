@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import type { EmailOtpType } from "@supabase/supabase-js";
 
 export async function GET(request: Request) {
-  const { searchParams, origin } = new URL(request.url);
+  const { searchParams } = new URL(request.url);
   const code = searchParams.get("code");
   const token_hash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
@@ -12,10 +12,17 @@ export async function GET(request: Request) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
+  // Resolve canonical origin: strictly avoid internal Vercel preview domains that trigger Vercel SSO login
+  const forwardedHost = request.headers.get("x-forwarded-host");
+  const isLocal = forwardedHost?.includes("localhost") || request.url.includes("localhost");
+  const canonicalOrigin = isLocal
+    ? `http://${forwardedHost || "localhost:3000"}`
+    : "https://quizclassroom.vercel.app";
+
   if (supabaseUrl && supabaseAnonKey && !supabaseUrl.includes("your-supabase-project")) {
     const cookieStore = await cookies();
     const targetPath = next || "/dashboard";
-    const redirectResponse = NextResponse.redirect(new URL(targetPath, origin));
+    const redirectResponse = NextResponse.redirect(new URL(targetPath, canonicalOrigin));
 
     try {
       const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
@@ -46,7 +53,7 @@ export async function GET(request: Request) {
         if (!error && data?.user) {
           const role = data.user.user_metadata?.role || "student";
           const email = encodeURIComponent(data.user.email || "");
-          const verifyUrl = new URL(`/auth/verify-email?verified=true&role=${role}&email=${email}`, origin);
+          const verifyUrl = new URL(`/auth/verify-email?verified=true&role=${role}&email=${email}`, canonicalOrigin);
           const verifyResponse = NextResponse.redirect(verifyUrl);
           redirectResponse.cookies.getAll().forEach((c) => verifyResponse.cookies.set(c));
           return verifyResponse;
@@ -59,7 +66,7 @@ export async function GET(request: Request) {
         if (!error && data?.user) {
           const role = data.user.user_metadata?.role || "student";
           const resolvedPath = next ? next : (role === "admin" ? "/admin" : `/${role}`);
-          const finalResponse = NextResponse.redirect(new URL(resolvedPath, origin));
+          const finalResponse = NextResponse.redirect(new URL(resolvedPath, canonicalOrigin));
           redirectResponse.cookies.getAll().forEach((c) => finalResponse.cookies.set(c));
           return finalResponse;
         }
@@ -119,7 +126,11 @@ export async function GET(request: Request) {
     (function() {
       var search = window.location.search;
       var hash = window.location.hash;
-      var target = '/dashboard';
+      var canonicalBase = 'https://quizclassroom.vercel.app';
+      if (window.location.hostname.includes('localhost')) {
+        canonicalBase = window.location.origin;
+      }
+      var target = canonicalBase + '/dashboard';
       if (search || hash) {
         window.location.replace(target + search + hash);
       } else {

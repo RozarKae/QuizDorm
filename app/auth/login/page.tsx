@@ -86,7 +86,10 @@ function LoginContent() {
   const handleGoogleLogin = async () => {
     setGoogleLoading(true);
     try {
-      const origin = typeof window !== "undefined" ? window.location.origin : "";
+      let origin = typeof window !== "undefined" ? window.location.origin : "";
+      if (origin.includes("rozarkaes-projects.vercel.app")) {
+        origin = "https://quizclassroom.vercel.app";
+      }
 
       if (isSupabaseConfigured()) {
         const supabase = createClient();

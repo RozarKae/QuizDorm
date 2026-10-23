@@ -52,6 +52,28 @@ test("Google Auth PKCE & Redirect Resilience Suite", async (t) => {
     assert.equal(shouldRedirect, false, "/auth/callback must execute its handler, not loop redirect");
   });
 
+  await t.test("Edge Middleware canonicalizes preview domains that trigger Vercel SSO to official public domain", () => {
+    const handleDomainCanonicalization = (host: string, pathname: string, search: string) => {
+      if (host.includes("rozarkaes-projects.vercel.app")) {
+        return {
+          redirected: true,
+          status: 308,
+          location: `https://quizclassroom.vercel.app${pathname}${search}`,
+        };
+      }
+      return { redirected: false, status: 200, location: `https://${host}${pathname}${search}` };
+    };
+
+    const res = handleDomainCanonicalization(
+      "quizclassroom-rozarkaes-projects.vercel.app",
+      "/dashboard",
+      "?welcome=true"
+    );
+    assert.equal(res.redirected, true);
+    assert.equal(res.status, 308);
+    assert.equal(res.location, "https://quizclassroom.vercel.app/dashboard?welcome=true");
+  });
+
   await t.test("Client Auth URL cleaner strips ?code= query param while retaining current path", () => {
     const mockUrl = new URL("https://quizclassroom.vercel.app/?code=dacd7117-c44e-4514-8618-496c9aa7ba7a");
     mockUrl.searchParams.delete("code");

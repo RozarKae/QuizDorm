@@ -61,13 +61,23 @@ export async function proxy(request: NextRequest) {
     }
   }
 
+  const host = request.headers.get("x-forwarded-host") || request.headers.get("host") || request.nextUrl.host;
+
+  // Canonicalize internal preview domain (which triggers Vercel SSO Protection) to official public domain
+  if (host && host.includes("rozarkaes-projects.vercel.app")) {
+    const canonicalUrl = new URL(request.nextUrl.pathname + request.nextUrl.search, "https://quizclassroom.vercel.app");
+    return NextResponse.redirect(canonicalUrl, 308);
+  }
+
   const pathname = request.nextUrl.pathname;
   const code = request.nextUrl.searchParams.get("code");
 
   // Intercept OAuth/PKCE return codes that hit root (/) or other non-callback paths
   // and immediately forward to /auth/callback with all parameters preserved
   if (code && pathname !== "/auth/callback") {
-    const callbackUrl = new URL("/auth/callback", request.url);
+    const isLocal = host?.includes("localhost");
+    const callbackBase = isLocal ? request.url : "https://quizclassroom.vercel.app";
+    const callbackUrl = new URL("/auth/callback", callbackBase);
     request.nextUrl.searchParams.forEach((val, key) => {
       callbackUrl.searchParams.set(key, val);
     });
