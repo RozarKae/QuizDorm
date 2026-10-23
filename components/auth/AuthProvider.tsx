@@ -50,6 +50,25 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
         try {
           if (isSupabaseConfigured()) {
             const supabase = createClient();
+
+            // Client-side resilience: check and exchange PKCE code if present in browser URL
+            if (typeof window !== "undefined") {
+              const url = new URL(window.location.href);
+              const code = url.searchParams.get("code");
+              if (code) {
+                try {
+                  const { data: exchangeData, error: exchangeError } =
+                    await supabase.auth.exchangeCodeForSession(code);
+                  if (!exchangeError && exchangeData?.session) {
+                    url.searchParams.delete("code");
+                    window.history.replaceState({}, document.title, url.pathname + (url.search ? url.search : ""));
+                  }
+                } catch {
+                  // Fall through to getSession
+                }
+              }
+            }
+
             const {
               data: { session: activeSession },
             } = await supabase.auth.getSession();
@@ -84,6 +103,13 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
                 if (hasConfirmationTokens && (window.location.pathname === "/" || window.location.pathname === "/auth/callback")) {
                   const target = `/auth/verify-email?verified=true&role=${userRole}&email=${encodeURIComponent(activeSession.user.email || "")}`;
+                  window.location.replace(target);
+                  return;
+                }
+
+                // If arriving authenticated on /auth/callback or an auth page, redirect to dashboard
+                if (window.location.pathname === "/auth/callback" || window.location.pathname.startsWith("/auth/login") || window.location.pathname.startsWith("/auth/register")) {
+                  const target = userRole === "admin" ? "/admin" : `/${userRole}`;
                   window.location.replace(target);
                   return;
                 }

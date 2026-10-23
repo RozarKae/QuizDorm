@@ -14,27 +14,27 @@ export async function GET(request: Request) {
 
   if (supabaseUrl && supabaseAnonKey && !supabaseUrl.includes("your-supabase-project")) {
     const cookieStore = await cookies();
+    const targetPath = next || "/dashboard";
+    const redirectResponse = NextResponse.redirect(new URL(targetPath, origin));
+
     try {
-      const supabase = createServerClient(
-        supabaseUrl,
-        supabaseAnonKey,
-        {
-          cookies: {
-            getAll() {
-              return cookieStore.getAll();
-            },
-            setAll(cookiesToSet) {
-              try {
-                cookiesToSet.forEach(({ name, value, options }) =>
-                  cookieStore.set(name, value, options)
-                );
-              } catch {
-                // Ignore setAll failures in server routes
-              }
-            },
+      const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+        cookies: {
+          getAll() {
+            return cookieStore.getAll();
           },
-        }
-      );
+          setAll(cookiesToSet) {
+            try {
+              cookiesToSet.forEach(({ name, value, options }) => {
+                cookieStore.set(name, value, options);
+                redirectResponse.cookies.set(name, value, options);
+              });
+            } catch {
+              // Ignore setAll failures in server routes
+            }
+          },
+        },
+      });
 
       // Handle OTP / Email token hash flow
       if (token_hash && type) {
@@ -46,7 +46,10 @@ export async function GET(request: Request) {
         if (!error && data?.user) {
           const role = data.user.user_metadata?.role || "student";
           const email = encodeURIComponent(data.user.email || "");
-          return NextResponse.redirect(new URL(`/auth/verify-email?verified=true&role=${role}&email=${email}`, origin));
+          const verifyUrl = new URL(`/auth/verify-email?verified=true&role=${role}&email=${email}`, origin);
+          const verifyResponse = NextResponse.redirect(verifyUrl);
+          redirectResponse.cookies.getAll().forEach((c) => verifyResponse.cookies.set(c));
+          return verifyResponse;
         }
       }
 
@@ -55,18 +58,19 @@ export async function GET(request: Request) {
         const { error, data } = await supabase.auth.exchangeCodeForSession(code);
         if (!error && data?.user) {
           const role = data.user.user_metadata?.role || "student";
-          const targetPath = next ? next : (role === "admin" ? "/admin" : `/${role}`);
-          return NextResponse.redirect(new URL(targetPath, origin));
+          const resolvedPath = next ? next : (role === "admin" ? "/admin" : `/${role}`);
+          const finalResponse = NextResponse.redirect(new URL(resolvedPath, origin));
+          redirectResponse.cookies.getAll().forEach((c) => finalResponse.cookies.set(c));
+          return finalResponse;
         }
       }
     } catch {
-      // Fallback
+      // Fallback to client-side bridge below
     }
   }
 
-  // If neither code nor token_hash was in query parameters, Supabase may have sent
-  // tokens in the URL hash (#access_token=...&type=signup).
-  // Return a client-side HTML bridge that resolves the hash and forwards to /dashboard
+  // If server-side exchange encountered an issue (e.g. PKCE verifier cookie stored client-side),
+  // return the client-side HTML bridge that resolves searchParams & hash and forwards to /dashboard
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,16 +112,16 @@ export async function GET(request: Request) {
 </head>
 <body>
   <div class="box">
-    <div class="title">Verifying Credentials // Redirecting</div>
+    <div class="title">Verifying Google Credentials // Redirecting</div>
     <div class="sub">Completing authentication and routing to your workspace...</div>
   </div>
   <script>
     (function() {
+      var search = window.location.search;
       var hash = window.location.hash;
       var target = '/dashboard';
-      if (hash) {
-        // Forward hash to dashboard where client Supabase parses and consumes it
-        window.location.replace(target + hash);
+      if (search || hash) {
+        window.location.replace(target + search + hash);
       } else {
         window.location.replace(target);
       }

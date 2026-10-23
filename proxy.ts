@@ -62,6 +62,17 @@ export async function proxy(request: NextRequest) {
   }
 
   const pathname = request.nextUrl.pathname;
+  const code = request.nextUrl.searchParams.get("code");
+
+  // Intercept OAuth/PKCE return codes that hit root (/) or other non-callback paths
+  // and immediately forward to /auth/callback with all parameters preserved
+  if (code && pathname !== "/auth/callback") {
+    const callbackUrl = new URL("/auth/callback", request.url);
+    request.nextUrl.searchParams.forEach((val, key) => {
+      callbackUrl.searchParams.set(key, val);
+    });
+    return NextResponse.redirect(callbackUrl, 307);
+  }
 
   // Immediate sanitize redirect: live arena contenders join through public /live/join, never inside /student/* hierarchy
   if (pathname === "/student/live/join" || pathname.startsWith("/student/live")) {

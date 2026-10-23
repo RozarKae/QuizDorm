@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { signUpWithEmail, signInWithGoogle } from "../actions";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
 import { toast } from "sonner";
 
 export default function RegisterPage() {
@@ -70,6 +71,34 @@ export default function RegisterPage() {
     setGoogleLoading(true);
     try {
       const origin = typeof window !== "undefined" ? window.location.origin : "";
+
+      if (isSupabaseConfigured()) {
+        const supabase = createClient();
+        const callbackUrl = `${origin}/auth/callback`;
+        const { data, error } = await supabase.auth.signInWithOAuth({
+          provider: "google",
+          options: {
+            redirectTo: callbackUrl,
+            queryParams: {
+              access_type: "offline",
+              prompt: "consent",
+            },
+          },
+        });
+
+        if (error) {
+          toast.error(error.message);
+          setGoogleLoading(false);
+          return;
+        }
+
+        if (data?.url) {
+          window.location.href = data.url;
+          return;
+        }
+      }
+
+      // Server action fallback
       const res = await signInWithGoogle(origin);
       if (res.error) {
         toast.error(res.error);
