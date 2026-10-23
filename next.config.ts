@@ -35,6 +35,8 @@ const nextConfig: NextConfig = {
       
       // Competitions & Tournament Shortcuts
       { source: "/join-arena", destination: "/live/join", permanent: false },
+      { source: "/student/live/join", destination: "/live/join", permanent: false },
+      { source: "/student/live", destination: "/live/join", permanent: false },
       { source: "/tournament", destination: "/dashboard/competitions/organizer", permanent: false },
       { source: "/organizer", destination: "/dashboard/competitions/organizer", permanent: false },
       { source: "/olympiads", destination: "/dashboard/competitions/global", permanent: false },

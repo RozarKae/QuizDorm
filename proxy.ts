@@ -63,11 +63,19 @@ export async function proxy(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname;
 
+  // Immediate sanitize redirect: live arena contenders join through public /live/join, never inside /student/* hierarchy
+  if (pathname === "/student/live/join" || pathname.startsWith("/student/live")) {
+    const liveJoinUrl = new URL("/live/join", request.url);
+    if (request.nextUrl.search) {
+      liveJoinUrl.search = request.nextUrl.search;
+    }
+    return NextResponse.redirect(liveJoinUrl, 307);
+  }
+
   // Public live arena routes (allow QR, direct link, and PIN join without forced login)
   const isPublicLiveRoute =
     pathname === "/join" ||
     pathname.startsWith("/join/") ||
-    pathname.startsWith("/student/live/join") ||
     pathname.startsWith("/live") ||
     pathname.startsWith("/api/live");
 

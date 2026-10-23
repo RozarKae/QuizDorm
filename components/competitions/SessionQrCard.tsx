@@ -22,7 +22,7 @@ export function getCanonicalJoinUrl(code: string): string {
   } else if (typeof window !== "undefined" && window.location.origin && !window.location.origin.includes("localhost")) {
     origin = window.location.origin;
   }
-  return `${origin}/student/live/join?code=${encodeURIComponent(norm)}`;
+  return `${origin}/live/join?code=${encodeURIComponent(norm)}`;
 }
 
 export function SessionQrCard({ code, competitionTitle, className = "" }: SessionQrCardProps) {

@@ -105,7 +105,7 @@ function StandaloneArenaContent() {
           <h2 className="text-base font-bold text-[#F2F7F3]">Arena Connection Failed</h2>
           <p className="text-xs text-[#A0AEA5]">{connectionError}</p>
           <div className="pt-2 flex justify-center gap-3">
-            <Link href="/student/live/join">
+            <Link href="/live/join">
               <Button size="sm" className="font-mono text-xs">
                 Enter Different PIN
               </Button>
@@ -139,7 +139,7 @@ function StandaloneArenaContent() {
       {/* Top Header */}
       <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.14)] pb-4 relative z-10">
         <Link
-          href="/student/live/join"
+          href="/live/join"
           className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#65F59A] transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> EXIT ARENA
@@ -259,6 +259,7 @@ function StandaloneArenaContent() {
             <WinnerPodiumScreen
               participants={participants}
               competitionTitle={competitionItem.title}
+              currentParticipant={currentParticipant}
             />
           )}
         </>

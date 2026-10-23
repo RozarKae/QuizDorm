@@ -97,7 +97,7 @@ function LiveArenaContent() {
               Return to Competitions
             </Button>
           </Link>
-          <Link href="/student/live/join">
+          <Link href="/live/join">
             <Button size="sm" className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold shadow-[0_0_12px_rgba(101,245,154,0.18)]">
               Enter Different PIN
             </Button>

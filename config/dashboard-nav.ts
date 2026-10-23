@@ -89,7 +89,7 @@ const teacherNavItems: NavItem[] = [
   // Competitions
   { name: "Live Competitions", href: "/dashboard/competitions", icon: "competitions", badge: "Live", category: "Live Arenas" },
   { name: "Tournament Organizer", href: "/dashboard/competitions/organizer", icon: "tournament_control", category: "Live Arenas" },
-  { name: "Join Live Arena", href: "/student/live/join", icon: "swords", badge: "PIN", category: "Live Arenas" },
+  { name: "Join Live Arena", href: "/live/join", icon: "swords", badge: "PIN", category: "Live Arenas" },
 
   // AI & Analytics
   { name: "Class Analytics", href: "/teacher/analytics", icon: "ai_performance", category: "Intelligence" },
@@ -107,7 +107,7 @@ const studentNavItems: NavItem[] = [
   { name: "Revision Center", href: "/dashboard/revision", icon: "revision", badge: "Spaced", category: "Learning Space" },
 
   // Arena & Competitions
-  { name: "Join Live Arena", href: "/student/live/join", icon: "swords", badge: "Live", category: "Competition Arena" },
+  { name: "Join Live Arena", href: "/live/join", icon: "swords", badge: "Live", category: "Competition Arena" },
   { name: "Tournaments", href: "/dashboard/competitions", icon: "competitions", category: "Competition Arena" },
   { name: "Global Leaderboard", href: "/dashboard/leaderboard", icon: "leaderboard", category: "Competition Arena" },
   { name: "Quiz Clubs", href: "/dashboard/community/clubs", icon: "quiz_clubs", category: "Competition Arena" },

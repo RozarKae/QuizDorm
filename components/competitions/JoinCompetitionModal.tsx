@@ -55,7 +55,7 @@ export function JoinCompetitionModal({ open, onOpenChange, onJoinSuccess }: Join
 
   const handleScanClick = () => {
     onOpenChange(false);
-    router.push("/student/live/join");
+    router.push("/live/join");
   };
 
   return (

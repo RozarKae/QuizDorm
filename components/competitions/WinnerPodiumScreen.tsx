@@ -4,22 +4,31 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { LiveParticipant } from "@/lib/types/competition";
-import { Trophy, Award, Sparkles, Share2, Home, Check, Copy } from "lucide-react";
+import { Trophy, Award, Sparkles, Share2, Home, Check, Copy, Swords, ArrowRight, ShieldCheck, UserPlus, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { useSound } from "@/components/audio/useSound";
+import { useAuth } from "@/components/auth/AuthProvider";
 
 interface WinnerPodiumScreenProps {
   participants: LiveParticipant[];
   competitionTitle: string;
+  currentParticipant?: LiveParticipant | null;
 }
 
-export function WinnerPodiumScreen({ participants, competitionTitle }: WinnerPodiumScreenProps) {
+export function WinnerPodiumScreen({
+  participants,
+  competitionTitle,
+  currentParticipant,
+}: WinnerPodiumScreenProps) {
   const [copied, setCopied] = useState(false);
   const { playFanfare, playTap } = useSound();
+  const { user } = useAuth();
+  const isAuthenticated = Boolean(user);
 
   const sorted = [...participants].sort((a, b) => b.score - a.score);
   const winner = sorted[0];
+  const activeContender = currentParticipant || (sorted.length > 0 ? sorted[0] : null);
 
   // Play triumph fanfare on podium victory screen mount
   useEffect(() => {
@@ -173,6 +182,50 @@ export function WinnerPodiumScreen({ participants, competitionTitle }: WinnerPod
         </div>
       </div>
 
+      {/* Official Candidate Record Shield / Guest Conversion Funnel */}
+      {!isAuthenticated && (
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.4 }}
+          className="bg-[#0C1210] border border-[rgba(101,245,154,0.3)] rounded-[6px] p-6 max-w-2xl mx-auto text-left relative overflow-hidden shadow-[0_0_30px_rgba(101,245,154,0.1)] space-y-4"
+        >
+          {/* Ambient subtle glow */}
+          <div
+            className="absolute -right-10 -bottom-10 w-48 h-48 pointer-events-none rounded-full blur-[60px]"
+            style={{ background: "radial-gradient(circle, rgba(101, 245, 154, 0.12) 0%, transparent 70%)" }}
+          />
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-5 relative z-10">
+            <div className="space-y-1.5">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.12)] border border-[rgba(101,245,154,0.3)] text-[10px] font-mono font-bold uppercase tracking-wider text-[#65F59A]">
+                <ShieldCheck className="w-3 h-3" /> OFFICIAL CANDIDATE RECORD
+              </div>
+              <h4 className="text-base font-bold text-[#F2F7F3] font-display">
+                Lock In Your Score & Unlock Student Dashboard
+              </h4>
+              <p className="text-xs text-[#A0AEA5] font-mono leading-relaxed">
+                You competed as an ephemeral guest contender. Create a verified candidate account to save your tournament history, unlock your personalized analytics dashboard, and earn official credentials.
+              </p>
+            </div>
+            <div className="flex flex-col sm:w-auto w-full gap-2 shrink-0">
+              <Link
+                href={`/auth/register?claimTournament=${encodeURIComponent(competitionTitle)}&score=${activeContender?.score || 0}&name=${encodeURIComponent(activeContender?.name || "")}`}
+              >
+                <Button className="w-full bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold rounded-[4px] px-4 shadow-[0_0_12px_rgba(101,245,154,0.2)]">
+                  <UserPlus className="w-3.5 h-3.5 mr-1.5" /> Claim Candidate Account
+                </Button>
+              </Link>
+              <Link href="/auth/login">
+                <Button variant="outline" className="w-full text-xs font-mono rounded-[4px] border-[rgba(160,190,170,0.2)] text-[#A0AEA5] hover:text-[#F2F7F3]">
+                  <LogIn className="w-3.5 h-3.5 mr-1.5" /> Sign In
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
       {/* Action CTA */}
       <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
         <Button
@@ -182,11 +235,26 @@ export function WinnerPodiumScreen({ participants, competitionTitle }: WinnerPod
           {copied ? <Check className="w-3.5 h-3.5 mr-1.5" /> : <Share2 className="w-3.5 h-3.5 mr-1.5" />}
           {copied ? "Link Copied!" : "Share Leaderboard"}
         </Button>
-        <Link href="/dashboard/competitions">
-          <Button variant="outline" className="rounded-[4px] font-mono text-xs px-6 border-[rgba(160,190,170,0.18)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/30">
-            <Home className="w-3.5 h-3.5 mr-1.5" /> Return to Competitions
-          </Button>
-        </Link>
+
+        {isAuthenticated ? (
+          <Link href="/dashboard/competitions">
+            <Button
+              variant="outline"
+              className="rounded-[4px] font-mono text-xs px-6 border-[rgba(160,190,170,0.18)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/30"
+            >
+              <Home className="w-3.5 h-3.5 mr-1.5" /> Return to Competitions
+            </Button>
+          </Link>
+        ) : (
+          <Link href="/live/join">
+            <Button
+              variant="outline"
+              className="rounded-[4px] font-mono text-xs px-6 border-[rgba(160,190,170,0.18)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/30"
+            >
+              <Swords className="w-3.5 h-3.5 mr-1.5" /> Enter Another Arena
+            </Button>
+          </Link>
+        )}
       </div>
     </div>
   );
