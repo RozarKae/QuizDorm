@@ -11,7 +11,7 @@ import PasswordStrengthIndicator, { evaluatePasswordStrength } from "@/component
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { signUpWithEmail, signInWithGoogle, signInWithGoogleDemo } from "../actions";
+import { signUpWithEmail, signInWithGoogle } from "../actions";
 import { toast } from "sonner";
 
 export default function RegisterPage() {
@@ -21,7 +21,6 @@ export default function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
-  const [showGoogleModal, setShowGoogleModal] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -73,37 +72,13 @@ export default function RegisterPage() {
       const origin = typeof window !== "undefined" ? window.location.origin : "";
       const res = await signInWithGoogle(origin);
       if (res.error) {
-        if ((res as any).isProviderDisabled) {
-          setShowGoogleModal(true);
-        } else {
-          toast.error(res.error);
-        }
+        toast.error(res.error);
         setGoogleLoading(false);
       } else if (res.url) {
         window.location.href = res.url;
       }
     } catch {
       toast.error("Failed to connect to Google authentication.");
-      setGoogleLoading(false);
-    }
-  };
-
-  const handleGoogleDemoLogin = async () => {
-    setGoogleLoading(true);
-    try {
-      const res = await signInWithGoogleDemo(role || "student");
-      if (res.error) {
-        toast.error(res.error);
-        setGoogleLoading(false);
-      } else {
-        toast.success("Account created via Google Demo Profile!");
-        if (typeof window !== "undefined" && res.user) {
-          localStorage.setItem("quizdorm_demo_user", JSON.stringify(res.user));
-        }
-        window.location.href = res.redirectUrl || "/dashboard";
-      }
-    } catch {
-      toast.error("Failed to authenticate demo account.");
       setGoogleLoading(false);
     }
   };
@@ -248,88 +223,7 @@ export default function RegisterPage() {
             </>
           )}
         </Button>
-
-        <button
-          type="button"
-          onClick={handleGoogleDemoLogin}
-          className="w-full text-center text-[11px] font-mono text-[#A0AEA5] hover:text-[#65F59A] transition-colors py-1 flex items-center justify-center gap-1.5 cursor-pointer"
-        >
-          <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
-          <span>Or sign up instantly with Google Demo Account</span>
-        </button>
       </div>
-
-      {showGoogleModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-[#0C1210] border border-[#65F59A]/30 rounded-lg p-6 max-w-md w-full shadow-[0_0_50px_rgba(101,245,154,0.15)] relative text-[#F2F7F3] space-y-4">
-            <div className="flex items-start justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded bg-[#111B17] border border-[rgba(160,190,170,0.2)] flex items-center justify-center shrink-0">
-                  <svg className="h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22-.03-.63z" fill="#FBBC05" />
-                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z" fill="#EA4335" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-mono text-sm font-bold text-[#F2F7F3] uppercase tracking-wider">
-                    Google OAuth Setup Notice
-                  </h3>
-                  <span className="text-[10px] font-mono text-[#65F59A] bg-[rgba(101,245,154,0.12)] px-2 py-0.5 rounded border border-[#65F59A]/30">
-                    Provider Not Enabled Yet
-                  </span>
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => setShowGoogleModal(false)}
-                className="text-[#A0AEA5] hover:text-[#F2F7F3] text-sm font-mono cursor-pointer"
-              >
-                ✕
-              </button>
-            </div>
-
-            <p className="text-xs font-mono text-[#A0AEA5] leading-relaxed">
-              Google authentication is not yet enabled in your Supabase project (<code className="text-[#65F59A] bg-[#111B17] px-1.5 py-0.5 rounded">ksqgiuzznjrykjdewxnr</code>).
-            </p>
-
-            <div className="bg-[#111B17] border border-[rgba(160,190,170,0.15)] rounded p-3 text-[11px] font-mono space-y-2 text-[#A0AEA5]">
-              <div className="font-semibold text-[#F2F7F3] flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A]" />
-                <span>To Enable Real Google Login:</span>
-              </div>
-              <ol className="list-decimal list-inside space-y-1 pl-1 text-[10px]">
-                <li>Open your Supabase Project Dashboard &rarr; <strong>Authentication</strong> &rarr; <strong>Providers</strong> &rarr; <strong>Google</strong>.</li>
-                <li>Toggle <strong>Enable Google</strong> and enter your Google Cloud Client ID and Secret.</li>
-                <li>Set Callback URL: <span className="text-[#65F59A] select-all">https://ksqgiuzznjrykjdewxnr.supabase.co/auth/v1/callback</span></li>
-              </ol>
-            </div>
-
-            <div className="space-y-2 pt-2">
-              <Button
-                type="button"
-                onClick={() => {
-                  setShowGoogleModal(false);
-                  handleGoogleDemoLogin();
-                }}
-                className="w-full bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono text-xs font-bold h-10 rounded-[3px] shadow-[0_0_20px_rgba(101,245,154,0.3)] transition-all uppercase tracking-wider cursor-pointer"
-              >
-                ⚡ Sign Up with Google Demo Account →
-              </Button>
-
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setShowGoogleModal(false)}
-                className="w-full border-[rgba(160,190,170,0.2)] bg-transparent text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17] font-mono text-xs h-9 rounded-[3px] cursor-pointer"
-              >
-                Return to Email Registration
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
 
       <AuthFooter>
         <p className="text-xs font-mono text-[#A0AEA5]">

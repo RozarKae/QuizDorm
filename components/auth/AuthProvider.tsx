@@ -60,13 +60,14 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
               setUser(activeSession.user);
               const metadata = activeSession.user.user_metadata || {};
               const userRole = (metadata.role as UserRole) || "student";
-              const userName = metadata.name || activeSession.user.email?.split("@")[0] || "User";
+              const userName = metadata.name || metadata.full_name || activeSession.user.email?.split("@")[0] || "User";
               setRole(userRole);
               setProfile({
                 id: activeSession.user.id,
                 name: userName,
                 email: activeSession.user.email || "",
                 role: userRole,
+                avatar: metadata.avatar_url || metadata.picture || "",
                 createdAt: activeSession.user.created_at || "Oct 2026",
                 updatedAt: new Date().toISOString(),
               });
@@ -134,13 +135,14 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
           if (currentSession?.user) {
             const metadata = currentSession.user.user_metadata || {};
             const userRole = (metadata.role as UserRole) || "student";
-            const userName = metadata.name || currentSession.user.email?.split("@")[0] || "User";
+            const userName = metadata.name || metadata.full_name || currentSession.user.email?.split("@")[0] || "User";
             setRole(userRole);
             setProfile({
               id: currentSession.user.id,
               name: userName,
               email: currentSession.user.email || "",
               role: userRole,
+              avatar: metadata.avatar_url || metadata.picture || "",
               createdAt: currentSession.user.created_at || "Oct 2026",
               updatedAt: new Date().toISOString(),
             });

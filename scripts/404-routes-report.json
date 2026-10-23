@@ -1,0 +1,14 @@
+[
+  {
+    "link": "/privacy",
+    "files": [
+      "components/landing/Footer.tsx"
+    ]
+  },
+  {
+    "link": "/terms",
+    "files": [
+      "components/landing/Footer.tsx"
+    ]
+  }
+]

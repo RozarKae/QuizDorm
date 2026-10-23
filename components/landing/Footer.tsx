@@ -9,14 +9,14 @@ export default function Footer() {
   ];
 
   const resources = [
-    { name: "Help Center", href: "#" },
-    { name: "Documentation", href: "#" },
+    { name: "Help Center", href: "/contact" },
+    { name: "Documentation", href: "/dashboard/developer" },
     { name: "Terms of Service", href: "/terms" },
   ];
 
   const company = [
     { name: "About & Founder's Desk", href: "/about" },
-    { name: "Blog & Research", href: "#" },
+    { name: "Research Studio", href: "/dashboard/research-studio" },
     { name: "Privacy Policy", href: "/privacy" },
   ];
 
