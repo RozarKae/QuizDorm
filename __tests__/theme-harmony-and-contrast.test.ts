@@ -78,29 +78,33 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     );
   });
 
-  it("Verifies public/favicon.svg includes prefers-color-scheme media query and embedded emblems", () => {
-    const svgContent = fs.readFileSync(faviconSvgPath, "utf-8");
+  it("Verifies pure PNG icon & emblem suite exists and decodes cleanly", () => {
+    const darkLogoPath = path.join(process.cwd(), "public/official-logo-dark.png");
+    const lightLogoPath = path.join(process.cwd(), "public/official-logo-light.png");
+    const appIconPath = path.join(process.cwd(), "app/icon.png");
+    const faviconPath = path.join(process.cwd(), "public/favicon-32x32.png");
+    const pwaIconPath = path.join(process.cwd(), "public/icon-192.png");
 
-    assert.ok(svgContent.includes("@media (prefers-color-scheme: light)"));
-    assert.ok(svgContent.includes('class="dark-emblem"'));
-    assert.ok(svgContent.includes('class="light-emblem"'));
-    assert.ok(svgContent.includes("data:image/jpeg;base64,"));
+    assert.ok(fs.existsSync(darkLogoPath), "public/official-logo-dark.png must exist");
+    assert.ok(fs.existsSync(lightLogoPath), "public/official-logo-light.png must exist");
+    assert.ok(fs.existsSync(appIconPath), "app/icon.png must exist");
+    assert.ok(fs.existsSync(faviconPath), "public/favicon-32x32.png must exist");
+    assert.ok(fs.existsSync(pwaIconPath), "public/icon-192.png must exist");
   });
 
-  it("Verifies icon.svg includes light & dark theme embedded artwork", () => {
-    const publicIconPath = path.join(process.cwd(), "public/icon.svg");
-    const appIconPath = path.join(process.cwd(), "app/icon.svg");
+  it("Verifies app/layout.tsx and public/manifest.json declare PNG icons", () => {
+    const layoutPath = path.join(process.cwd(), "app/layout.tsx");
+    const manifestPath = path.join(process.cwd(), "public/manifest.json");
 
-    assert.ok(fs.existsSync(publicIconPath), "public/icon.svg must exist");
-    assert.ok(fs.existsSync(appIconPath), "app/icon.svg must exist");
+    const layoutContent = fs.readFileSync(layoutPath, "utf-8");
+    const manifestContent = fs.readFileSync(manifestPath, "utf-8");
 
-    const iconContent = fs.readFileSync(publicIconPath, "utf-8");
-
-    // Media query
-    assert.ok(iconContent.includes("@media (prefers-color-scheme: light)"));
-    assert.ok(iconContent.includes('class="dark-emblem"'));
-    assert.ok(iconContent.includes('class="light-emblem"'));
-    assert.ok(iconContent.includes("data:image/jpeg;base64,"));
+    assert.ok(layoutContent.includes('url: "/favicon.ico"'));
+    assert.ok(layoutContent.includes('url: "/favicon-32x32.png"'));
+    assert.ok(layoutContent.includes('url: "/official-logo-dark.png"'));
+    assert.ok(manifestContent.includes('"/official-logo-dark.png"'));
+    assert.ok(manifestContent.includes('"/icon-512.png"'));
+    assert.ok(manifestContent.includes('"/icon-192.png"'));
   });
 
   it("Verifies Landing Page CTA & Analytics components use light & dark theme harmony", () => {
