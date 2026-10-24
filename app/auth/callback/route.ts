@@ -64,8 +64,16 @@ export async function GET(request: Request) {
       if (code) {
         const { error, data } = await supabase.auth.exchangeCodeForSession(code);
         if (!error && data?.user) {
-          const role = data.user.user_metadata?.role || "student";
-          const resolvedPath = next ? next : (role === "admin" ? "/admin" : `/${role}`);
+          const role = data.user.user_metadata?.role || "subscriber";
+          const defaultRolePath =
+            role === "admin"
+              ? "/admin"
+              : ["institution", "school"].includes(role)
+              ? "/school"
+              : ["handler", "teacher"].includes(role)
+              ? "/teacher"
+              : "/student";
+          const resolvedPath = next ? next : defaultRolePath;
           const finalResponse = NextResponse.redirect(new URL(resolvedPath, canonicalOrigin));
           redirectResponse.cookies.getAll().forEach((c) => finalResponse.cookies.set(c));
           return finalResponse;

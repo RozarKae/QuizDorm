@@ -18,17 +18,17 @@ export default function AIStudioSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-[rgba(160,190,170,0.12)] mb-12 gap-6">
           <div className="space-y-3 max-w-2xl">
             <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] bg-[#17251E] px-3 py-1 rounded-full border border-[#65F59A]/30 font-semibold shadow-[0_0_12px_rgba(101,245,154,0.15)]">
-              QUIZDORM AI // SMART QUIZ MAKER
+              OMNI-CURRICULUM INTELLIGENCE // AI SYNTHESIZER
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2F7F3] tracking-tight">
-              From Messy Notes <br />
+              From Complex Curriculum <br />
               <span className="bg-gradient-to-r from-[#65F59A] to-[#38D9B0] bg-clip-text text-transparent">
-                to Exam-Ready Quizzes.
+                to Exam-Ready Mastery.
               </span>
             </h2>
           </div>
           <p className="text-sm font-normal text-[#A0AEA5] max-w-md leading-relaxed">
-            Drop in your syllabus PDFs, handwritten notes, lecture slides, or textbook snaps. QuizDorm AI extracts the core concepts and cooks up exam-ready questions with zero fluff.
+            Drop in your syllabus PDFs, notes, lecture slides, or textbook captures. QuizDorm AI extracts core concepts and synthesizes rigorous, multi-format assessments with zero fluff.
           </p>
         </div>
 

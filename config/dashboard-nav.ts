@@ -14,7 +14,7 @@ export type DashboardNavConfig = {
   };
 };
 
-// Role-aware curated navigation structures
+// Role-aware curated navigation structures using the QuizDorm Creative Professional Lexicon
 const adminNavItems: NavItem[] = [
   // Core Operations
   { name: "Overview", href: "/admin", icon: "dashboard", category: "Core Operations" },
@@ -26,21 +26,21 @@ const adminNavItems: NavItem[] = [
   { name: "Subscriptions & Billing", href: "/admin/billing", icon: "billing", badge: "Pro SaaS", category: "Core Operations" },
 
   // Assessment & Competitions
-  { name: "Question Bank", href: "/dashboard/questions", icon: "bank", category: "Assessment Engine" },
-  { name: "Quizzes", href: "/dashboard/quizzes", icon: "quizzes", category: "Assessment Engine" },
-  { name: "Question Builder", href: "/dashboard/quizzes/builder", icon: "builder", category: "Assessment Engine" },
-  { name: "Live Competitions", href: "/dashboard/competitions", icon: "competitions", badge: "Live", category: "Assessment Engine" },
-  { name: "Tournament Control", href: "/dashboard/competitions/organizer", icon: "tournament_control", badge: "Organizer", category: "Assessment Engine" },
+  { name: "Curriculum Knowledge Matrix", href: "/dashboard/questions", icon: "bank", category: "Assessment Engine" },
+  { name: "The Dorm Vault (All Quizzes)", href: "/dashboard/quizzes", icon: "quizzes", category: "Assessment Engine" },
+  { name: "Assessment Architect", href: "/dashboard/quizzes/builder", icon: "builder", category: "Assessment Engine" },
+  { name: "Synchronized Arena Control", href: "/dashboard/competitions", icon: "competitions", badge: "Live", category: "Assessment Engine" },
+  { name: "Decathlon Director", href: "/dashboard/competitions/organizer", icon: "tournament_control", badge: "Organizer", category: "Assessment Engine" },
   { name: "Global Olympiads", href: "/dashboard/competitions/global", icon: "global_olympiads", category: "Assessment Engine" },
 
   // Intelligence & AI Foundation
   { name: "AI Admin Panel", href: "/admin/ai", icon: "ai_admin", badge: "AI Core", category: "AI & Intelligence" },
-  { name: "Document Intelligence", href: "/dashboard/ocr", icon: "ocr", badge: "OCR", category: "AI & Intelligence" },
+  { name: "Omni-Curriculum AI Synthesizer", href: "/dashboard/ocr", icon: "ocr", badge: "OCR", category: "AI & Intelligence" },
   { name: "Quality & Audit", href: "/dashboard/quality", icon: "quality", badge: "Audit", category: "AI & Intelligence" },
   { name: "Adaptive Engine", href: "/dashboard/adaptive", icon: "adaptive", category: "AI & Intelligence" },
 
   // Analytics & Systems
-  { name: "Platform Analytics", href: "/admin/analytics", icon: "ai_performance", category: "Analytics & Platform" },
+  { name: "Global IQ & System Telemetry", href: "/admin/analytics", icon: "ai_performance", category: "Analytics & Platform" },
   { name: "Audit Reports", href: "/admin/reports", icon: "credentials", category: "Analytics & Platform" },
   { name: "Developer APIs", href: "/dashboard/developer", icon: "developer", badge: "API", category: "Analytics & Platform" },
   { name: "Integrations Hub", href: "/dashboard/integrations", icon: "integrations", category: "Analytics & Platform" },
@@ -49,21 +49,21 @@ const adminNavItems: NavItem[] = [
 
 const schoolNavItems: NavItem[] = [
   // School Operations
-  { name: "School Overview", href: "/school", icon: "dashboard", category: "Institution" },
+  { name: "Academy Command Center", href: "/school", icon: "dashboard", category: "Institution" },
   { name: "Classrooms", href: "/dashboard/classes", icon: "school", category: "Institution" },
-  { name: "Academic Directory", href: "/dashboard/organizations", icon: "organization", category: "Institution" },
+  { name: "Faculty & Scholar Directory", href: "/dashboard/organizations", icon: "organization", category: "Institution" },
   { name: "Campus Server", href: "/dashboard/campus", icon: "campus_server", badge: "LAN", category: "Institution" },
   { name: "Academic Integrations", href: "/dashboard/academic", icon: "academic_integrations", badge: "LMS", category: "Institution" },
 
   // Assessments
-  { name: "Question Bank", href: "/dashboard/questions", icon: "bank", category: "Assessments" },
-  { name: "Quizzes", href: "/dashboard/quizzes", icon: "quizzes", category: "Assessments" },
-  { name: "Assignments", href: "/dashboard/assignments", icon: "assignments", category: "Assessments" },
+  { name: "Curriculum Knowledge Matrix", href: "/dashboard/questions", icon: "bank", category: "Assessments" },
+  { name: "The Dorm Vault (All Quizzes)", href: "/dashboard/quizzes", icon: "quizzes", category: "Assessments" },
+  { name: "Curriculum Quests", href: "/dashboard/assignments", icon: "assignments", category: "Assessments" },
   { name: "Gradebook Sync", href: "/dashboard/gradebook", icon: "gradebook_sync", category: "Assessments" },
-  { name: "Competitions", href: "/dashboard/competitions", icon: "competitions", badge: "Live", category: "Assessments" },
+  { name: "Battle Arenas", href: "/dashboard/competitions", icon: "competitions", badge: "Live", category: "Assessments" },
 
   // Performance & Community
-  { name: "School Analytics", href: "/school/analytics", icon: "ai_performance", category: "Insights & Family" },
+  { name: "Academy IQ Analytics", href: "/school/analytics", icon: "ai_performance", category: "Insights & Family" },
   { name: "Performance Reports", href: "/school/reports", icon: "credentials", category: "Insights & Family" },
   { name: "Intervention Center", href: "/dashboard/performance/interventions", icon: "risk_interventions", badge: "At-Risk", category: "Insights & Family" },
   { name: "Parent Portal", href: "/dashboard/parent", icon: "parent_portal", category: "Insights & Family" },
@@ -71,53 +71,53 @@ const schoolNavItems: NavItem[] = [
   // Administrative
   { name: "Academic Calendar", href: "/dashboard/calendar", icon: "calendar", category: "Administration" },
   { name: "Announcements", href: "/dashboard/announcements", icon: "announcements", category: "Administration" },
-  { name: "School Settings", href: "/school/settings", icon: "settings", category: "Administration" },
+  { name: "Academy Settings", href: "/school/settings", icon: "settings", category: "Administration" },
 ];
 
 const teacherNavItems: NavItem[] = [
   // Classroom Instruction
-  { name: "Teacher Workspace", href: "/teacher", icon: "dashboard", category: "Classroom" },
-  { name: "My Classrooms", href: "/dashboard/classes", icon: "school", category: "Classroom" },
-  { name: "Assignments", href: "/dashboard/assignments", icon: "assignments", category: "Classroom" },
+  { name: "Faculty Mentor Console", href: "/teacher", icon: "dashboard", category: "Classroom" },
+  { name: "Academic Classrooms", href: "/dashboard/classes", icon: "school", category: "Classroom" },
+  { name: "Curriculum Quests", href: "/dashboard/assignments", icon: "assignments", category: "Classroom" },
   { name: "Academic Calendar", href: "/dashboard/calendar", icon: "calendar", category: "Classroom" },
 
   // Authoring Studio
-  { name: "Question Bank", href: "/dashboard/questions", icon: "bank", category: "Authoring Studio" },
-  { name: "Quiz Builder", href: "/dashboard/quizzes/builder", icon: "builder", category: "Authoring Studio" },
-  { name: "Quizzes", href: "/dashboard/quizzes", icon: "quizzes", category: "Authoring Studio" },
-  { name: "Document Intelligence", href: "/dashboard/ocr", icon: "ocr", badge: "AI OCR", category: "Authoring Studio" },
+  { name: "Curriculum Knowledge Matrix", href: "/dashboard/questions", icon: "bank", category: "Authoring Studio" },
+  { name: "Assessment Architect", href: "/dashboard/quizzes/builder", icon: "builder", category: "Authoring Studio" },
+  { name: "The Dorm Vault", href: "/dashboard/quizzes", icon: "quizzes", category: "Authoring Studio" },
+  { name: "Omni-Curriculum AI Synthesizer", href: "/dashboard/ocr", icon: "ocr", badge: "AI OCR", category: "Authoring Studio" },
   { name: "Media Library", href: "/dashboard/media", icon: "media", category: "Authoring Studio" },
 
   // Competitions
-  { name: "Live Competitions", href: "/dashboard/competitions", icon: "competitions", badge: "Live", category: "Live Arenas" },
-  { name: "Tournament Organizer", href: "/dashboard/competitions/organizer", icon: "tournament_control", category: "Live Arenas" },
-  { name: "Join Live Arena", href: "/live/join", icon: "swords", badge: "PIN", category: "Live Arenas" },
+  { name: "Synchronized Arena Control", href: "/dashboard/competitions", icon: "competitions", badge: "Live", category: "Live Arenas" },
+  { name: "Decathlon Director", href: "/dashboard/competitions/organizer", icon: "tournament_control", category: "Live Arenas" },
+  { name: "Enter Battle Arena", href: "/live/join", icon: "swords", badge: "PIN", category: "Live Arenas" },
 
   // AI & Analytics
-  { name: "Class Analytics", href: "/teacher/analytics", icon: "ai_performance", category: "Intelligence" },
-  { name: "Student Reports", href: "/teacher/reports", icon: "credentials", category: "Intelligence" },
-  { name: "AI Tutor Workspace", href: "/dashboard/tutor", icon: "ai_tutor", badge: "Copilot", category: "Intelligence" },
+  { name: "Cohort IQ Analytics", href: "/teacher/analytics", icon: "ai_performance", category: "Intelligence" },
+  { name: "Scholar Diagnostics", href: "/teacher/reports", icon: "credentials", category: "Intelligence" },
+  { name: "AI Cognitive Coach", href: "/dashboard/tutor", icon: "ai_tutor", badge: "Copilot", category: "Intelligence" },
   { name: "Quality & Audit", href: "/dashboard/quality", icon: "quality", category: "Intelligence" },
-  { name: "Teacher Settings", href: "/teacher/settings", icon: "settings", category: "Settings" },
+  { name: "Mentor Settings", href: "/teacher/settings", icon: "settings", category: "Settings" },
 ];
 
 const studentNavItems: NavItem[] = [
   // Learning Hub
-  { name: "Personal Hub", href: "/student", icon: "dashboard", category: "Learning Space" },
-  { name: "Assigned Quizzes", href: "/dashboard/assignments", icon: "assignments", category: "Learning Space" },
-  { name: "Practice Quizzes", href: "/dashboard/quizzes", icon: "quizzes", category: "Learning Space" },
-  { name: "Revision Center", href: "/dashboard/revision", icon: "revision", badge: "Spaced", category: "Learning Space" },
+  { name: "Scholar's Hub", href: "/student", icon: "dashboard", category: "Learning Space" },
+  { name: "Curriculum Quests", href: "/dashboard/assignments", icon: "assignments", category: "Learning Space" },
+  { name: "The Dorm Vault (All Quizzes)", href: "/dashboard/quizzes", icon: "quizzes", category: "Learning Space" },
+  { name: "Spaced Recall Engine", href: "/dashboard/revision", icon: "revision", badge: "Spaced", category: "Learning Space" },
 
   // Arena & Competitions
-  { name: "Join Live Arena", href: "/live/join", icon: "swords", badge: "Live", category: "Competition Arena" },
-  { name: "Tournaments", href: "/dashboard/competitions", icon: "competitions", category: "Competition Arena" },
-  { name: "Global Leaderboard", href: "/dashboard/leaderboard", icon: "leaderboard", category: "Competition Arena" },
+  { name: "Join Battle Arena", href: "/live/join", icon: "swords", badge: "Live", category: "Competition Arena" },
+  { name: "Battle Arenas", href: "/dashboard/competitions", icon: "competitions", category: "Competition Arena" },
+  { name: "Podium of Intellect", href: "/dashboard/leaderboard", icon: "leaderboard", category: "Competition Arena" },
   { name: "Quiz Clubs", href: "/dashboard/community/clubs", icon: "quiz_clubs", category: "Competition Arena" },
 
   // AI Study & Achievements
-  { name: "AI Study Coach", href: "/dashboard/tutor/planner", icon: "ai_planner", badge: "Coach", category: "Progress & Growth" },
-  { name: "Performance Analytics", href: "/student/analytics", icon: "ai_performance", category: "Progress & Growth" },
-  { name: "Verified Badges", href: "/dashboard/credentials", icon: "credentials", category: "Progress & Growth" },
+  { name: "AI Cognitive Coach", href: "/dashboard/tutor/planner", icon: "ai_planner", badge: "Coach", category: "Progress & Growth" },
+  { name: "Cognitive IQ Telemetry", href: "/student/analytics", icon: "ai_performance", category: "Progress & Growth" },
+  { name: "Dorm Honours & Badges", href: "/dashboard/credentials", icon: "credentials", category: "Progress & Growth" },
 
   // Profile & Settings
   { name: "Announcements", href: "/dashboard/announcements", icon: "announcements", category: "Account" },
@@ -125,21 +125,56 @@ const studentNavItems: NavItem[] = [
   { name: "Settings", href: "/student/settings", icon: "settings", category: "Account" },
 ];
 
+const subscriberNavItems: NavItem[] = [
+  // Free / Self-Paced Access
+  { name: "Independent Scholar Hub", href: "/student", icon: "dashboard", category: "Subscriber Access" },
+  { name: "The Dorm Vault (All Quizzes)", href: "/dashboard/quizzes", icon: "quizzes", category: "Subscriber Access" },
+  { name: "Join Battle Arena", href: "/live/join", icon: "swords", badge: "PIN", category: "Subscriber Access" },
+  { name: "Podium of Intellect", href: "/dashboard/leaderboard", icon: "leaderboard", category: "Subscriber Access" },
+
+  // Locked Institutional Features
+  { name: "Curriculum Quests", href: "/dashboard/assignments", icon: "assignments", badge: "Locked", category: "Locked Features" },
+  { name: "Spaced Recall Engine", href: "/dashboard/revision", icon: "revision", badge: "Locked", category: "Locked Features" },
+  { name: "AI Cognitive Coach", href: "/dashboard/tutor/planner", icon: "ai_planner", badge: "Locked", category: "Locked Features" },
+  { name: "Academy Notices", href: "/dashboard/announcements", icon: "announcements", badge: "Locked", category: "Locked Features" },
+  { name: "Academic Calendar", href: "/dashboard/calendar", icon: "calendar", badge: "Locked", category: "Locked Features" },
+
+  // Profile & Settings
+  { name: "Profile", href: "/student/profile", icon: "profile", category: "Account" },
+  { name: "Settings", href: "/student/settings", icon: "settings", category: "Account" },
+];
+
 export const dashboardNavConfig: DashboardNavConfig = {
   admin: {
-    title: "Platform Admin",
+    title: "Super Admin Command OS",
     items: adminNavItems,
   },
-  school: {
-    title: "School Admin",
+  institution: {
+    title: "Academy Directorate",
     items: schoolNavItems,
   },
-  teacher: {
-    title: "Teacher",
+  school: {
+    title: "Academy Directorate",
+    items: schoolNavItems,
+  },
+  handler: {
+    title: "Faculty Mentor Console",
     items: teacherNavItems,
   },
-  student: {
-    title: "Student",
+  teacher: {
+    title: "Faculty Mentor Console",
+    items: teacherNavItems,
+  },
+  member: {
+    title: "Scholar's Hub",
     items: studentNavItems,
+  },
+  student: {
+    title: "Scholar's Hub",
+    items: studentNavItems,
+  },
+  subscriber: {
+    title: "Independent Scholar Hub",
+    items: subscriberNavItems,
   },
 };

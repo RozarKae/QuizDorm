@@ -240,7 +240,7 @@ export function AIDocumentQuizModal({
     setSelectedFile(file);
     setSubject(preset.subject);
     setTopic(preset.topic);
-    toast.success(`Loaded sample: ${preset.name}`);
+    toast.success(`Loaded curriculum template: ${preset.name}`);
   };
 
   // Question type toggle
@@ -316,7 +316,7 @@ export function AIDocumentQuizModal({
       await new Promise((r) => setTimeout(r, 400));
 
       setTelemetryProgress(100);
-      setTelemetryStepText("Quiz cooked up and ready to roll!");
+      setTelemetryStepText("Curriculum assessment synthesized and validated!");
 
       if (timerRef.current) clearInterval(timerRef.current);
 
@@ -398,7 +398,7 @@ export function AIDocumentQuizModal({
       if (data.warning) {
         toast.warning(data.warning, { duration: 6000 });
       } else {
-        toast.success(`Cooked up ${formatted.length} fire questions with QuizDorm AI!`);
+        toast.success(`Generated and validated ${formatted.length} curriculum questions.`);
       }
     } catch (err: any) {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -471,7 +471,7 @@ export function AIDocumentQuizModal({
       title: quizTitle,
       description:
         generationMetadata.summary ||
-        `Exam-ready study quiz cooked up from ${selectedFile?.name || "document"} by QuizDorm AI.`,
+        `Exam-ready curriculum assessment synthesized from ${selectedFile?.name || "document"} by QuizDorm Intelligence.`,
       category: subject || "Science",
       subject: subject || "Science",
       topic: topic || "General",
@@ -549,15 +549,15 @@ export function AIDocumentQuizModal({
               <div>
                 <div className="flex items-center gap-2">
                   <DialogTitle className="text-xl font-bold tracking-tight text-[#F2F7F3]">
-                    AI Document Quiz Maker
+                    Omni-Curriculum Intelligence Studio
                   </DialogTitle>
                   <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
-                    QuizDorm AI
+                    QuizDorm Intelligence
                   </span>
                 </div>
                 <DialogDescription className="text-xs text-[#A0AEA5] mt-1">
-                  Upload syllabus PDFs, lecture notes, textbook chapters, or scans. QuizDorm AI extracts the core concepts and cooks up high-yield questions with clear explanations.
+                  Upload syllabus PDFs, lecture notes, textbook chapters, or curriculum scans. QuizDorm Intelligence extracts core concepts and synthesizes high-rigor assessments with deep distractor rationales.
                 </DialogDescription>
               </div>
             </div>
@@ -571,7 +571,7 @@ export function AIDocumentQuizModal({
                     : "text-[#69786F]"
                 }`}
               >
-                1. Drop Notes
+                1. Upload Material
               </span>
               <span className="text-[#69786F]">→</span>
               <span
@@ -581,7 +581,7 @@ export function AIDocumentQuizModal({
                     : "text-[#69786F]"
                 }`}
               >
-                2. Cook Questions
+                2. Synthesize Intellect
               </span>
               <span className="text-[#69786F]">→</span>
               <span
@@ -591,7 +591,7 @@ export function AIDocumentQuizModal({
                     : "text-[#69786F]"
                 }`}
               >
-                3. Review & Play
+                3. Validate & Launch
               </span>
             </div>
           </div>
@@ -702,7 +702,7 @@ export function AIDocumentQuizModal({
               {/* Sample Preset Buttons for Instant 1-Click Test */}
               <div className="mt-3">
                 <div className="text-[11px] font-mono uppercase tracking-wider text-[#69786F] mb-1.5 flex items-center gap-1.5">
-                  <Zap className="w-3.5 h-3.5 text-[#65F59A]" /> No document handy? Load a curated syllabus sample:
+                  <Zap className="w-3.5 h-3.5 text-[#65F59A]" /> Or select a standard curriculum syllabus template:
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {SAMPLE_PRESETS.map((preset) => (
@@ -920,7 +920,7 @@ export function AIDocumentQuizModal({
                 <Cpu className="w-8 h-8 animate-pulse" />
               </div>
               <h3 className="text-lg font-bold text-[#F2F7F3]">
-                Reading Notes & Cooking Up Questions...
+                Analyzing Curriculum &amp; Synthesizing Questions...
               </h3>
               <p className="text-xs text-[#A0AEA5] max-w-md mx-auto">
                 Analyzing core study concepts from{" "}
@@ -1005,7 +1005,7 @@ export function AIDocumentQuizModal({
             <div className="bg-[#111B17] border border-[rgba(101,245,154,0.25)] rounded-[6px] p-4 flex flex-wrap items-center justify-between gap-4">
               <div className="space-y-1">
                 <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-[#65F59A]">
-                  <CheckCircle2 className="w-4 h-4" /> Questions Cooked & Ready!
+                  <CheckCircle2 className="w-4 h-4" /> Questions Generated & Validated
                 </div>
                 <h4 className="text-base font-bold text-[#F2F7F3]">
                   {generationMetadata.docTitle || "Curriculum Assessment"}
@@ -1043,7 +1043,7 @@ export function AIDocumentQuizModal({
                 <AlertTriangle className="w-4 h-4 text-[#FBBF24] shrink-0 mt-0.5" />
                 <div className="space-y-0.5">
                   <div className="font-semibold text-[#FBBF24]">
-                    Intelligent Document Fallback Active
+                    High-Precision Document Analysis Engine Active
                   </div>
                   <div className="text-[#FEF3C7] text-[11px] leading-relaxed">
                     {generationMetadata.warning}
@@ -1238,14 +1238,14 @@ export function AIDocumentQuizModal({
                 className="bg-[#65F59A] text-[#070B0A] hover:bg-[#38D9B0] font-bold px-5 font-mono shadow-[0_0_15px_rgba(101,245,154,0.3)] transition-all"
               >
                 <Sparkles className="w-4 h-4 mr-2" />
-                Generate My Quiz
+                Synthesize High-Rigor Assessment
               </Button>
             </>
           )}
 
           {phase === "generating" && (
             <div className="w-full flex items-center justify-between text-xs text-[#A0AEA5] font-mono">
-              <span>Cooking up your quiz questions with QuizDorm AI...</span>
+              <span>Synthesizing high-rigor assessment questions with QuizDorm Intelligence...</span>
               <span className="text-[#65F59A] animate-pulse">Running</span>
             </div>
           )}

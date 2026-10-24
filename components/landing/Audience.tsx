@@ -9,29 +9,29 @@ import SectionDivider from "@/components/ui/section-divider";
 export default function Audience() {
   const cards = [
     {
-      title: "Schools & Institutions",
-      description: "Administer directories, manage class rosters, monitor campus-wide assessment integrity, and view aggregate accreditation reports.",
+      title: "Academies & Institutions",
+      description: "Administer campus directories, govern assessment integrity, configure institution question adding, and track aggregate cognitive metrics.",
       icon: <School className="h-5 w-5 text-[#65F59A]" />,
       href: "/auth/register?role=school",
-      action: "Register Institution",
+      action: "Register Academy",
     },
     {
-      title: "Teachers & Mentors",
-      description: "Cook up custom quizzes with AI, grade whole classes in seconds, and see exactly which questions students found tricky.",
+      title: "Faculty Mentors & Educators",
+      description: "Synthesize high-rigor assessments with AI, automate multi-format grading in milliseconds, and pinpoint conceptual bottlenecks.",
       icon: <Users className="h-5 w-5 text-[#38D9B0]" />,
       href: "/auth/register?role=teacher",
-      action: "Teacher Workspace",
+      action: "Mentor Workspace",
     },
     {
-      title: "Students & Study Squads",
-      description: "Battle your dorm fam live, grind daily streaks, check your speed stats, and flex on the campus leaderboard.",
+      title: "Dorm Scholars & Contenders",
+      description: "Compete in live arenas with fellow scholars, accelerate your cognitive quotient, track your IQ trajectory, and claim podium honours.",
       icon: <GraduationCap className="h-5 w-5 text-[#65F59A]" />,
       href: "/auth/register?role=student",
-      action: "Student Workspace",
+      action: "Scholar Portal",
     },
     {
-      title: "Tournament & Arena Hosts",
-      description: "Host live speed battles with room PINs, custom countdowns, live score jumps, and an electric winner's podium.",
+      title: "Decathlon & Arena Hosts",
+      description: "Organize high-stakes live showdowns with collision-resistant PINs, microsecond scoring jumps, synchronized delivery, and live victory podiums.",
       icon: <Trophy className="h-5 w-5 text-[#38D9B0]" />,
       href: "/live/arena",
       action: "Enter Live Arena",
@@ -46,15 +46,15 @@ export default function Audience() {
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-[rgba(160,190,170,0.12)] mb-12 gap-6">
           <div className="space-y-3 max-w-2xl">
             <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] bg-[#17251E] px-2.5 py-0.5 rounded-full border border-[#65F59A]/20 font-semibold">
-              ROLE ARCHITECTURE // WORKSPACES
+              ROLE ARCHITECTURE // THE COGNITIVE DORMITORY
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2F7F3] tracking-tight">
-              Curiosity Has <br />
-              <span className="text-[#65F59A]">No Finish Line.</span>
+              Intellect Without <br />
+              <span className="text-[#65F59A]">Boundaries.</span>
             </h2>
           </div>
           <p className="text-sm font-normal text-[#A0AEA5] max-w-md leading-relaxed">
-            Scoped permissions, specialized tooling, and dedicated portals tailored for students, instructors, event hosts, and academic directors.
+            Specialized portals tailored for scholars, faculty mentors, tournament proctors, and academy leadership.
           </p>
         </div>
 

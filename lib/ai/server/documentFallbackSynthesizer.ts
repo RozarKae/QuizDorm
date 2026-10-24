@@ -30,7 +30,7 @@ export class DocumentFallbackSynthesizer {
     questions: DocumentQuestionItemResult[];
   } {
     const cleanText = (text || "").trim();
-    const count = Math.min(50, Math.max(1, options.questionCount || 5));
+    const count = Math.min(50, Math.max(1, options.questionCount || 10));
     const types = options.questionTypes && options.questionTypes.length > 0
       ? options.questionTypes
       : ["mcq_single", "true_false", "fill_in_the_blank", "match_following", "error_spotting"];

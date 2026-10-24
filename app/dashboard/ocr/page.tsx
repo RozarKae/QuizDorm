@@ -35,8 +35,15 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
+import Link from "next/link";
+import { ArrowLeft, ShieldAlert } from "lucide-react";
 
 export default function DocumentIntelligenceWorkspace() {
+  const { role } = useAuth();
+  const addPermission = GovernanceSettingsManager.canAddQuestions(role);
+
   const [activeTab, setActiveTab] = useState<
     "upload" | "queue" | "review" | "history" | "settings"
   >("upload");
@@ -75,20 +82,32 @@ export default function DocumentIntelligenceWorkspace() {
 
   const handleUploadStart = async (
     file: File | { name: string; type: string; content?: string },
-    subject: string
+    options: any
   ) => {
     setLoading(true);
     try {
+      const isLegacyString = typeof options === "string";
+      const subject = isLegacyString ? options : options.subject;
       const targetSubject = subject === "auto" ? undefined : subject;
+      const targetTopic = !isLegacyString && options.topic ? options.topic : undefined;
+      const targetQuestionCount = !isLegacyString && options.questionCount ? options.questionCount : 10;
+      const targetDifficulty = !isLegacyString && options.difficulty ? options.difficulty : "Medium";
+      const questionTypes = !isLegacyString && options.questionTypes ? options.questionTypes : undefined;
+
       const jobSettings: OCRJobSettings = {
         ...settings,
         targetSubject,
+        targetTopic,
+        targetDifficulty,
+        targetQuestionCount,
+        questionTypes,
       };
       const newJob = await OCRJobManager.createJob(file, jobSettings, targetSubject || "Auto-Detected");
       const updatedJobs = OCRJobManager.getJobs();
       setJobs(updatedJobs);
       setSelectedJob(newJob);
       setActiveTab("queue");
+      toast.info(`Extracting ${targetQuestionCount} questions with QuizDorm AI...`);
 
       // Run pipeline asynchronously with live progress updates
       OCRJobManager.runJobPipeline(newJob.id, file, (updated) => {
@@ -98,7 +117,9 @@ export default function DocumentIntelligenceWorkspace() {
         }
       })
         .then((completedJob) => {
-          toast.success(`OCR Digitization completed for ${completedJob.fileName}! Ready for Educator Review.`);
+          toast.success(
+            `Digitization completed for ${completedJob.fileName}! Generated ${completedJob.extractedQuestions.length} questions.`
+          );
           setSelectedJob(completedJob);
           setActiveTab("review");
         })
@@ -240,6 +261,32 @@ export default function DocumentIntelligenceWorkspace() {
   const avgConfidence = Math.round(
     jobs.reduce((acc, j) => acc + (j.extractedQuestions[0]?.confidence.overall || 90), 0) / (jobs.length || 1)
   );
+
+  if (!addPermission.allowed) {
+    return (
+      <div className="max-w-xl mx-auto py-16 px-4 text-center space-y-5">
+        <div className="w-14 h-14 rounded-full bg-[rgba(248,113,113,0.12)] border border-[rgba(248,113,113,0.3)] mx-auto flex items-center justify-center text-[#F87171]">
+          <ShieldAlert className="w-7 h-7" />
+        </div>
+        <div className="space-y-2">
+          <h2 className="text-xl font-bold font-display uppercase tracking-tight text-[#F2F7F3]">
+            OCR Question Ingestion Restricted
+          </h2>
+          <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-md mx-auto leading-relaxed">
+            {addPermission.reason ||
+              "Adding or digitizing questions into the Question Bank is reserved for Administrators and authorized Institutions."}
+          </p>
+        </div>
+        <div className="pt-2">
+          <Link href="/dashboard/questions">
+            <Button variant="outline" size="sm" className="border-[rgba(160,190,170,0.2)] text-xs font-mono">
+              <ArrowLeft className="w-3.5 h-3.5 mr-1.5" /> Back to Question Bank
+            </Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="p-4 sm:p-6 space-y-6 max-w-7xl mx-auto">

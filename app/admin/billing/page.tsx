@@ -362,7 +362,7 @@ export default function AdminBillingPage() {
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Search by school name, contact email, or sub ID..."
+                  placeholder="Search by institution name, contact email, or sub ID..."
                   className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#65F59A]/50 transition-colors"
                 />
               </div>

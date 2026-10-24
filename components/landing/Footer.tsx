@@ -3,9 +3,10 @@ import Logo from "@/components/layout/Logo";
 
 export default function Footer() {
   const quickLinks = [
-    { name: "Features", href: "#features" },
-    { name: "Audience", href: "#audience" },
-    { name: "How It Works", href: "#how-it-works" },
+    { name: "The Dorm", href: "#dorm" },
+    { name: "Cognitive Engine", href: "#features" },
+    { name: "Battle Arenas", href: "#battle-arenas" },
+    { name: "Knowledge Matrix", href: "#audience" },
   ];
 
   const resources = [
@@ -28,11 +29,11 @@ export default function Footer() {
         <div className="space-y-4">
           <Logo />
           <p className="text-xs text-[#A0AEA5] leading-relaxed font-normal">
-            QuizDorm is your dorm study squad & live battle arena: drop your notes, cook up instant quizzes with AI, and crush your exams together.
+            QuizDorm is the universal dormitory for every quiz format and cognitive discipline. Synthesize high-rigor assessments, sharpen intellectual stamina, accelerate IQ, and dominate live decathlon arenas.
           </p>
           <div className="inline-flex items-center space-x-2 font-mono text-[10px] text-[#65F59A] bg-[#17251E] px-2.5 py-1 rounded-full border border-[#65F59A]/20">
             <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
-            <span>Live Dorm Study Platform</span>
+            <span>Universal Quiz Dormitory &amp; IQ Acceleration</span>
           </div>
         </div>
 

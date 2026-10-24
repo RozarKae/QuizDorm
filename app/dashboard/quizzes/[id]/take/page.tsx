@@ -32,7 +32,7 @@ export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: s
           href="/dashboard/quizzes"
           className="inline-flex items-center text-xs font-mono uppercase tracking-wider text-[#A0AEA5] hover:text-[#65F59A] mb-4 transition-colors"
         >
-          <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back to Quizzes
+          <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back to The Dorm Vault
         </Link>
         <div className="flex flex-wrap items-center gap-2 mb-2 font-mono">
           {quiz.topic && (
@@ -66,7 +66,7 @@ export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: s
           {quiz.title}
         </h1>
         <p className="text-xs font-mono text-[#A0AEA5] mt-2">
-          {quiz.description || "Official assessment testing knowledge retention, accuracy, and quick critical thinking."}
+          {quiz.description || "Official cognitive sprint evaluating conceptual retention, accuracy, and accelerated reasoning under timer pressure."}
         </p>
       </div>
 
@@ -102,7 +102,7 @@ export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: s
         <ul className="space-y-2 text-xs font-mono text-[#A0AEA5] leading-relaxed list-disc list-inside">
           <li>Questions are freshly randomized for each attempt to test true recall.</li>
           <li>Answer options are randomized while preserving the original correct answer mapping.</li>
-          <li>The countdown timer starts as soon as you click <strong>Start Assessment Now</strong>.</li>
+          <li>The countdown timer starts as soon as you click <strong>Commence Cognitive Sprint</strong>.</li>
           <li>Your progress is safely stored in browser session storage.</li>
           <li>You can mark questions for review and jump across items using the question palette.</li>
           <li>The assessment will automatically submit when the countdown timer reaches zero.</li>
@@ -120,7 +120,7 @@ export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: s
           onClick={handleStart}
           className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold rounded-[4px] px-6 h-9 shadow-[0_0_15px_rgba(101,245,154,0.18)] transition-all hover:shadow-[0_0_22px_rgba(101,245,154,0.3)]"
         >
-          <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> Start Assessment Now
+          <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> Commence Cognitive Sprint
         </Button>
       </div>
     </div>

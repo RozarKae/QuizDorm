@@ -36,18 +36,18 @@ export default function CompeteSection() {
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center space-x-2">
               <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] bg-[#17251E] px-3 py-1 rounded-full border border-[#65F59A]/30 font-semibold shadow-[0_0_12px_rgba(101,245,154,0.15)]">
-                REAL-TIME TOURNAMENT ENGINE
+                SYNCHRONIZED COGNITIVE DECATHLON ENGINE
               </span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2F7F3] tracking-tight">
               Step Into <br />
               <span className="bg-gradient-to-r from-[#65F59A] via-[#38D9B0] to-[#65F59A] bg-clip-text text-transparent">
-                The Arena.
+                The Battle Arena.
               </span>
             </h2>
           </div>
           <p className="text-sm font-normal text-[#A0AEA5] max-w-md leading-relaxed">
-            Experience high-concurrency multiplayer decathlons powered by Server-Sent Events (SSE), synchronized countdowns, and real-time podium reveals.
+            Experience high-concurrency multiplayer decathlons powered by microsecond synchronized delivery, countdowns, and real-time intellect podium reveals.
           </p>
         </div>
 

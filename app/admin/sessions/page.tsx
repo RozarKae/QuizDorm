@@ -37,6 +37,7 @@ import {
   SessionRiskScore,
   DeviceCategory,
 } from "@/lib/admin/sessionManager";
+import { getRoleDisplayName } from "@/lib/types/user";
 
 export default function AdminSessionsPage() {
   const [sessions, setSessions] = useState<AdminSession[]>([]);
@@ -418,7 +419,7 @@ export default function AdminSessionsPage() {
                           <span className="truncate max-w-[160px]">{session.userEmail}</span>
                           <span>•</span>
                           <span className="text-[#65F59A] uppercase font-bold">
-                            {session.userRole}
+                            {getRoleDisplayName(session.userRole)}
                           </span>
                         </div>
                       </td>

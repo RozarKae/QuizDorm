@@ -19,7 +19,7 @@ const defaultProfile: UserProfile = {
   id: "usr-rk-akbar-01",
   name: "RK Akbar",
   email: "rkakbar@quizdorm.edu",
-  role: "student",
+  role: "subscriber",
   avatar: "",
   createdAt: "Jul 16, 2026",
   updatedAt: "Oct 21, 2026",
@@ -29,7 +29,7 @@ const AuthContext = createContext<AuthContextType>({
   user: null,
   profile: null,
   session: null,
-  role: "student",
+  role: "subscriber",
   isLoading: true,
   logout: async () => {},
   updateProfileState: () => {},
@@ -39,7 +39,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
-  const [role, setRole] = useState<UserRole>("student");
+  const [role, setRole] = useState<UserRole>("subscriber");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -78,7 +78,14 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
               setSession(activeSession);
               setUser(activeSession.user);
               const metadata = activeSession.user.user_metadata || {};
-              const userRole = (metadata.role as UserRole) || "student";
+              const rawRole = (metadata.role as string) || "subscriber";
+              let userRole: UserRole = "subscriber";
+              if (rawRole === "admin") userRole = "admin";
+              else if (rawRole === "institution" || rawRole === "school") userRole = "institution";
+              else if (rawRole === "handler" || rawRole === "teacher") userRole = "handler";
+              else if (rawRole === "member" || rawRole === "student") userRole = "member";
+              else userRole = "subscriber";
+
               const userName = metadata.name || metadata.full_name || activeSession.user.email?.split("@")[0] || "User";
               setRole(userRole);
               setProfile({
@@ -109,7 +116,11 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
                 // If arriving authenticated on /auth/callback or an auth page, redirect to dashboard
                 if (window.location.pathname === "/auth/callback" || window.location.pathname.startsWith("/auth/login") || window.location.pathname.startsWith("/auth/register")) {
-                  const target = userRole === "admin" ? "/admin" : `/${userRole}`;
+                  let target = "/student";
+                  if (userRole === "admin") target = "/admin";
+                  else if (userRole === "institution") target = "/school";
+                  else if (userRole === "handler") target = "/teacher";
+                  else target = "/student";
                   window.location.replace(target);
                   return;
                 }
@@ -121,7 +132,9 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
           // Fallback to demo test account only if active demo session cookie is present
           if (typeof window !== "undefined") {
-            const hasDemoCookie = document.cookie.includes("quizdorm_demo_session=");
+            const hasDemoCookie =
+              document.cookie.includes("quizdorm_client_logged_in=1") ||
+              document.cookie.includes("quizdorm_demo_session=");
             const demoRaw = localStorage.getItem("quizdorm_demo_user");
             if (hasDemoCookie && demoRaw) {
               const demoUser = JSON.parse(demoRaw);

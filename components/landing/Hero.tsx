@@ -46,7 +46,7 @@ export default function Hero() {
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-[#65F59A]" />
                   </span>
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] font-semibold">
-                    PROJECT AURORA // IMMERSIVE FUTURE OS
+                    THE COGNITIVE DORMITORY // UNIVERSAL QUIZ HABITAT
                   </span>
                 </div>
                 <div className="inline-flex items-center space-x-2 border border-[rgba(160,190,170,0.2)] bg-[#0C1210]/90 px-3 py-1.5 rounded-full text-[10px] font-mono text-[#A0AEA5]">
@@ -59,16 +59,16 @@ export default function Hero() {
 
             <FadeIn direction="up" delay={0.15}>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#F2F7F3] tracking-tight leading-[1.06]">
-                Where Curiosity <br />
+                Where Knowledge Resides. <br />
                 <span className="bg-gradient-to-r from-[#65F59A] via-[#38D9B0] to-[#65F59A] bg-clip-text text-transparent">
-                  Becomes Capability.
+                  Where IQ Accelerates.
                 </span>
               </h1>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.25}>
               <p className="text-[#A0AEA5] text-base sm:text-lg max-w-xl leading-relaxed font-normal">
-                Drop your notes, cook up instant quizzes, battle your friends live, and lock in top exam grades with your study squad.
+                The universal dormitory for every quiz format known to academia. From fast-twitch competitive decathlons to deep Olympiad diagnostics — sharpen cognitive speed, accelerate reasoning quotient, and claim podium honours.
               </p>
             </FadeIn>
 

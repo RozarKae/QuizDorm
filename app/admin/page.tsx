@@ -194,12 +194,12 @@ export default function AdminPage() {
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
-                System Core // Platform Governance
+                Root Authority // Master Platform Governance
               </span>
-              <span className="font-mono text-[11px] text-[#69786F]">Superadmin Root</span>
+              <span className="font-mono text-[11px] text-[#69786F]">Super Admin Command OS</span>
             </div>
             <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#F2F7F3]">
-              Global Platform Command
+              Super Admin Platform Command Center
             </h1>
             <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-2xl leading-relaxed">
               Monitor multi-tenant cloud infrastructure, AI quiz engine activity, school licensing, and security health in real time.

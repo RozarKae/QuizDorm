@@ -5,9 +5,30 @@ import AuthFooter from "@/components/auth/AuthFooter";
 export default function ChooseRolePage() {
   const roles = [
     {
-      title: "Student",
-      description: "Join classrooms, take quizzes, track your progress, and learn interactively.",
-      href: "/auth/login?role=student",
+      title: "Subscriber",
+      description: "Join as an independent learner: access practice quizzes, join arenas, and build personal mastery.",
+      href: "/auth/login?role=subscriber",
+      icon: (
+        <svg
+          className="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+          />
+        </svg>
+      ),
+    },
+    {
+      title: "Member",
+      description: "Join classrooms & dorms, take assigned quizzes, track learning analytics, and collaborate.",
+      href: "/auth/login?role=member",
       icon: (
         <svg
           className="h-6 w-6"
@@ -32,9 +53,9 @@ export default function ChooseRolePage() {
       ),
     },
     {
-      title: "Teacher",
-      description: "Create tests, manage assignments, auto-grade submissions, and view analytics.",
-      href: "/auth/login?role=teacher",
+      title: "Handler",
+      description: "Author questions, deploy live test battles, manage coursework, and grade submissions.",
+      href: "/auth/login?role=handler",
       icon: (
         <svg
           className="h-6 w-6"
@@ -53,9 +74,9 @@ export default function ChooseRolePage() {
       ),
     },
     {
-      title: "School Admin",
-      description: "Manage school directory, license plans, monitor institution-wide reports.",
-      href: "/auth/login?role=school",
+      title: "Institution",
+      description: "Manage campus directories, seat allocations, cloud residency, and institution governance.",
+      href: "/auth/login?role=institution",
       icon: (
         <svg
           className="h-6 w-6"
@@ -75,7 +96,7 @@ export default function ChooseRolePage() {
     },
     {
       title: "Platform Admin",
-      description: "Full configuration and management privileges for the QuizDorm platform.",
+      description: "Full configuration and management privileges for the QuizDorm global platform.",
       href: "/auth/login?role=admin",
       icon: (
         <svg
@@ -106,7 +127,7 @@ export default function ChooseRolePage() {
     <div className="flex flex-col space-y-6">
       <AuthHeader
         title="Choose Your Role"
-        subtitle="Select a role to access your personalized QuizDorm portal"
+        subtitle="Select your portal to access your personalized QuizDorm workspace"
       />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {roles.map((role) => (

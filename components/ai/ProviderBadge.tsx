@@ -48,9 +48,9 @@ export function ProviderBadge({ providerId, size = "md" }: ProviderBadgeProps) {
       icon: <HardDrive className="w-3 h-3 mr-1 text-[#A0AEA5]" />,
     },
     mock: {
-      label: "Simulated Engine",
-      className: "bg-[#111B17] text-[#A0AEA5] border-[rgba(160,190,170,0.15)]",
-      icon: <Sparkles className="w-3 h-3 mr-1 text-[#A0AEA5]" />,
+      label: "QuizDorm Edge Engine",
+      className: "bg-[#111B17] text-[#65F59A] border-[#65F59A]/20",
+      icon: <Sparkles className="w-3 h-3 mr-1 text-[#65F59A]" />,
     },
   };
 

@@ -9,24 +9,24 @@ export default function HowItWorks() {
   const steps = [
     {
       step: "01",
-      title: "Pick Your Campus & Role",
-      description: "Sign in with your school, set up your profile, and connect with your classmates, teachers, or dorm study squad.",
+      title: "Establish Your Academy & Scholar Identity",
+      description: "Authenticate into your dedicated workspace — Academy Directorate, Faculty Mentor Console, or Scholar's Hub — and synchronize with your intellectual peers.",
       icon: <School className="h-5 w-5 text-[#65F59A]" />,
-      detail: "Quick Campus Setup",
+      detail: "Seamless Identity Sync",
     },
     {
       step: "02",
-      title: "Cook Up or Pick Your Quizzes",
-      description: "Drop your syllabus notes into QuizDorm AI, choose from 535+ topic-bank questions, or write custom quiz questions.",
+      title: "Synthesize or Curate High-Rigor Quests",
+      description: "Ingest curriculum materials into the Omni-Curriculum AI Studio, explore verified questions in the Knowledge Matrix, or author challenges across 9 high-cognition formats.",
       icon: <Sparkles className="h-5 w-5 text-[#38D9B0]" />,
-      detail: "Smart AI & 9 Formats",
+      detail: "AI Synthesis & 9 Formats",
     },
     {
       step: "03",
-      title: "Jump Into the Live Arena",
-      description: "Share room PINs with your friends, race the clock in synchronized rounds, and climb to the top of the podium.",
+      title: "Enter the Synchronized Decathlon Arena",
+      description: "Broadcast battle PINs, race the clock in synchronized microsecond live rounds, and claim verified honours on the global Podium of Intellect.",
       icon: <Trophy className="h-5 w-5 text-[#65F59A]" />,
-      detail: "Real-Time Battle Mode",
+      detail: "Synchronized Arena Battle",
     },
   ];
 
@@ -57,15 +57,15 @@ export default function HowItWorks() {
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-[rgba(160,190,170,0.12)] mb-12 gap-6">
           <div className="space-y-3 max-w-2xl">
             <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] bg-[#17251E] px-2.5 py-0.5 rounded-full border border-[#65F59A]/20 font-semibold">
-              PLATFORM JOURNEY // 3-STEP ENGINE
+              INTELLECTUAL EVOLUTION // 3-PHASE LIFECYCLE
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2F7F3] tracking-tight">
-              From First Thought <br />
-              <span className="text-[#38D9B0]">to Brilliant Question.</span>
+              From Foundational Concept <br />
+              <span className="text-[#38D9B0]">to Accelerated Mastery.</span>
             </h2>
           </div>
           <p className="text-sm font-normal text-[#A0AEA5] max-w-md leading-relaxed">
-            Deploy QuizDorm across classrooms, departments, or high-stakes competitive leagues with zero operational friction.
+            Deploy QuizDorm across academies, competitive Olympiads, or independent study cohorts with zero operational friction.
           </p>
         </div>
 

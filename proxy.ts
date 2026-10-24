@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { verifySessionPayload } from "@/lib/security/cookieSigner";
 
 export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
@@ -11,11 +12,22 @@ export async function proxy(request: NextRequest) {
 
   let user = null;
 
-  // 1. Check for active demo test session first
+  // 1. Check for active demo test session first (strictly verified via HMAC-SHA256 signature)
   const demoCookie = request.cookies.get("quizdorm_demo_session")?.value;
   if (demoCookie) {
     try {
-      user = JSON.parse(demoCookie);
+      const verified = await verifySessionPayload<any>(demoCookie);
+      if (verified && verified.id && verified.user_metadata?.role) {
+        user = verified;
+      } else {
+        // Tampered, forged, or invalid signature - obliterate cookie
+        supabaseResponse.cookies.delete("quizdorm_demo_session");
+        supabaseResponse.cookies.set("quizdorm_demo_session", "", {
+          path: "/",
+          maxAge: 0,
+          expires: new Date(0),
+        });
+      }
     } catch {
       // Ignore
     }
@@ -107,6 +119,12 @@ export async function proxy(request: NextRequest) {
       maxAge: 0,
       expires: new Date(0),
     });
+    supabaseResponse.cookies.delete("quizdorm_client_logged_in");
+    supabaseResponse.cookies.set("quizdorm_client_logged_in", "", {
+      path: "/",
+      maxAge: 0,
+      expires: new Date(0),
+    });
     // Obliterate any Supabase auth cookies on logout
     request.cookies.getAll().forEach((c) => {
       if (c.name.startsWith("sb-") || c.name.includes("quizdorm")) {
@@ -122,28 +140,56 @@ export async function proxy(request: NextRequest) {
   }
 
   if (user) {
-    const role = user.user_metadata?.role || "student";
+    const rawRole = user.user_metadata?.role || "subscriber";
+    let role = rawRole;
+    if (role === "student") role = "member";
+    else if (role === "teacher") role = "handler";
+    else if (role === "school") role = "institution";
+
+    const getRoleDefaultPath = (r: string) => {
+      if (r === "admin") return "/admin";
+      if (["institution", "school"].includes(r)) return "/school";
+      if (["handler", "teacher"].includes(r)) return "/teacher";
+      return "/student";
+    };
 
     if (isAuthRoute && !pathname.startsWith("/auth/verify-email") && !pathname.startsWith("/auth/reset-password")) {
-      // Authenticated user accessing auth page -> redirect to dashboard
-      return NextResponse.redirect(new URL("/dashboard", request.url));
+      // Authenticated user accessing auth page -> redirect to role-specific workspace
+      return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
+    }
+
+    // Direct /dashboard navigation -> redirect authenticated users to their canonical role workspace
+    if (pathname === "/dashboard") {
+      return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
     }
 
     // Role-Based Access Control (RBAC) enforcement
     if (pathname.startsWith("/admin") && role !== "admin") {
-      return NextResponse.redirect(new URL("/dashboard", request.url));
+      return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
     }
 
-    if (pathname.startsWith("/school") && !["school", "admin"].includes(role)) {
-      return NextResponse.redirect(new URL("/dashboard", request.url));
+    if (pathname.startsWith("/school") && !["institution", "school", "admin"].includes(role)) {
+      return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
     }
 
-    if (pathname.startsWith("/teacher") && !["teacher", "school", "admin"].includes(role)) {
-      return NextResponse.redirect(new URL("/dashboard", request.url));
+    if (pathname.startsWith("/teacher") && !["handler", "teacher", "institution", "school", "admin"].includes(role)) {
+      return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
     }
 
-    if (pathname.startsWith("/student") && !["student", "teacher", "school", "admin"].includes(role)) {
-      return NextResponse.redirect(new URL("/dashboard", request.url));
+    // Ground Rule: Students, Members & Subscribers cannot host arena or access tournament organizer
+    if (
+      (pathname.startsWith("/dashboard/competitions/new") ||
+        pathname.startsWith("/dashboard/competitions/organizer")) &&
+      ["student", "member", "subscriber"].includes(role)
+    ) {
+      return NextResponse.redirect(new URL("/dashboard/competitions", request.url));
+    }
+
+    if (
+      pathname.startsWith("/student") &&
+      !["subscriber", "member", "student", "handler", "teacher", "institution", "school", "admin"].includes(role)
+    ) {
+      return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
     }
   } else {
     // Unauthenticated user trying to access protected route

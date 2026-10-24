@@ -8,40 +8,40 @@ import SectionDivider from "@/components/ui/section-divider";
 export default function Features() {
   const list = [
     {
-      title: "Smart AI Quiz Studio",
-      description: "Turn messy study notes and syllabus PDFs into exam-ready questions with instant explanations and difficulty tuning.",
+      title: "Omni-Curriculum Intelligence Studio",
+      description: "Transform raw notes, lecture slides, and syllabus PDFs into high-cognition assessments with step-by-step rationales and difficulty tuning.",
       icon: <Sparkles className="h-5 w-5 text-[#65F59A]" />,
-      tag: "QuizDorm AI",
+      tag: "Omni-AI Studio",
     },
     {
-      title: "Live Battle Arena",
-      description: "Host live speed showdowns with your study squad. Enter room PINs, answer synchronized questions, and watch the live podium shifts.",
+      title: "Synchronized Decathlon Arenas",
+      description: "Host high-stakes cognitive showdowns with synchronized question delivery, microsecond response tracking, and live podium shifts.",
       icon: <Swords className="h-5 w-5 text-[#38D9B0]" />,
-      tag: "Live Arena Clash",
+      tag: "Decathlon Arenas",
     },
     {
-      title: "Campus & Dorm Hubs",
-      description: "Dedicated spaces built for students, teachers, study squads, and school teams to organize quizzes and track progress.",
+      title: "The Dormitory Ecosystem",
+      description: "A unified cognitive habitat built for scholars, mentors, squads, and academies to organize, collaborate, and elevate intellect.",
       icon: <School className="h-5 w-5 text-[#65F59A]" />,
-      tag: "Campus HQ",
+      tag: "Dorm Habitat",
     },
     {
-      title: "Brain Stats & Weak Spots",
-      description: "See your speed per question, streak counts, and topic accuracy heatmaps so you know exactly what to study before exam day.",
+      title: "Cognitive IQ Telemetry",
+      description: "Track precision speed curves, cognitive stamina, and concept mastery trajectories to systematically elevate your intellectual quotient.",
       icon: <Activity className="h-5 w-5 text-[#38D9B0]" />,
-      tag: "Brain Stats",
+      tag: "IQ Telemetry",
     },
     {
-      title: "9 Interactive Formats",
-      description: "Beyond boring MCQs: play matching pairs, drag & drop, fill-in-blanks, error spotting, sequences, and logic assertion challenges.",
+      title: "9 High-Cognition Challenge Formats",
+      description: "Beyond standard MCQs: master matching pairs, categorical grouping, fill-in-blanks, error spotting, chronological sequences, and logic assertion challenges.",
       icon: <Layers className="h-5 w-5 text-[#65F59A]" />,
-      tag: "9 Question Modes",
+      tag: "9 Challenge Modes",
     },
     {
-      title: "Instant Scoring & Clear Explanations",
-      description: "Get scored in milliseconds with bite-sized explanations for tricky distractors so you understand why the right answer is right.",
+      title: "Microsecond Scoring & Deep Rationale",
+      description: "Precision telemetry scores responses in milliseconds with rich educational explanations for every tricky distractor.",
       icon: <CheckCircle2 className="h-5 w-5 text-[#38D9B0]" />,
-      tag: "Instant Grading",
+      tag: "Precision Scoring",
     },
   ];
 
@@ -73,16 +73,16 @@ export default function Features() {
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center space-x-2">
               <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] bg-[#17251E] px-2.5 py-0.5 rounded-full border border-[#65F59A]/25 font-semibold">
-                SYSTEM ARCHITECTURE // CAPABILITIES
+                THE COGNITIVE ENGINE // CAPABILITIES
               </span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#F2F7F3] tracking-tight">
-              Great Questions <br />
-              <span className="text-[#65F59A]">Change Everything.</span>
+              Elevating Intellect <br />
+              <span className="text-[#65F59A]">Across Every Discipline.</span>
             </h2>
           </div>
           <p className="text-sm font-normal text-[#A0AEA5] max-w-md leading-relaxed">
-            Architected for assessment rigor, real-time arena speed, and verifiable learning breakthroughs across classrooms and institutions.
+            Architected for assessment rigor, real-time arena speed, and verifiable cognitive breakthroughs across schools, universities, and competitive Olympiads.
           </p>
         </div>
 

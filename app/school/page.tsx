@@ -152,15 +152,15 @@ export default function SchoolPage() {
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(56,217,176,0.1)] border border-[rgba(56,217,176,0.25)] text-[#38D9B0] font-mono text-[10px] font-bold uppercase tracking-widest">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#38D9B0] animate-pulse" />
-                Campus Administration
+                Academy Directorate
               </span>
               <span className="font-mono text-[11px] text-[#69786F]">Enterprise Tier</span>
             </div>
             <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#F2F7F3]">
-              Institutional Operations Hub
+              Academy Command &amp; Operations Center
             </h1>
             <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-2xl leading-relaxed">
-              Supervise campus faculty rosters, cross-departmental curriculum progress, licensing quotas, and term gradebook performance across all academic cohorts.
+              Supervise campus faculty mentors, cross-departmental curriculum progress, licensing quotas, and institutional cognitive growth across all academic cohorts.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3 shrink-0">

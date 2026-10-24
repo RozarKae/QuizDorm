@@ -7,10 +7,44 @@ import { AntiCheatConsoleCard } from "@/components/competition/AntiCheatConsoleC
 import { Swords, ShieldAlert, Play, Pause, ArrowLeft, Sparkles, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSound } from "@/components/audio/useSound";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
 import { toast } from "sonner";
 
 export default function OrganizerConsolePage() {
+  const { role } = useAuth();
+  const canHost = GovernanceSettingsManager.canHostArena(role).allowed;
   const { playTap } = useSound();
+
+  if (!canHost) {
+    return (
+      <div className="max-w-xl mx-auto py-16 px-4 text-center space-y-5">
+        <div className="w-14 h-14 rounded-full bg-[rgba(248,113,113,0.12)] border border-[rgba(248,113,113,0.3)] mx-auto flex items-center justify-center text-[#F87171]">
+          <ShieldAlert className="w-7 h-7" />
+        </div>
+        <div className="space-y-2">
+          <h2 className="text-xl font-bold font-display uppercase tracking-tight text-[#F2F7F3]">
+            Organizer Console Restricted
+          </h2>
+          <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-md mx-auto leading-relaxed">
+            Students, Members, and Subscribers cannot access tournament organizer controls. Only Handlers, Institutions, and Superadmins are permitted to manage brackets and live event telemetry.
+          </p>
+        </div>
+        <div className="pt-2 flex items-center justify-center gap-3">
+          <Link href="/dashboard/competitions">
+            <Button variant="outline" size="sm" className="border-[rgba(160,190,170,0.2)] text-xs font-mono">
+              Back to Competitions
+            </Button>
+          </Link>
+          <Link href="/live/join">
+            <Button size="sm" className="bg-[#65F59A] text-[#070B0A] hover:bg-[#52E086] font-mono text-xs font-bold uppercase">
+              Join Arena via Room PIN
+            </Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   const handleEventControl = (action: string) => {
     playTap();

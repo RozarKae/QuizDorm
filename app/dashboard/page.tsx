@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/components/auth/AuthProvider";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -23,7 +25,23 @@ import {
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
 
 export default function DashboardHomePage() {
+  const router = useRouter();
+  const { role, isLoading } = useAuth();
   const [greeting, setGreeting] = useState("Welcome Back. Let's Make Progress.");
+
+  useEffect(() => {
+    if (!isLoading && role) {
+      if (role === "admin") {
+        router.replace("/admin");
+      } else if (role === "institution" || role === "school") {
+        router.replace("/school");
+      } else if (role === "handler" || role === "teacher") {
+        router.replace("/teacher");
+      } else if (role === "member" || role === "subscriber" || role === "student") {
+        router.replace("/student");
+      }
+    }
+  }, [role, isLoading, router]);
 
   useEffect(() => {
     const hour = new Date().getHours();

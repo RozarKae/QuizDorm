@@ -1,107 +1,61 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { CompetitionItem, CompetitionStatus } from "@/lib/types/competition";
-import { JoinCompetitionModal } from "@/components/competitions/JoinCompetitionModal";
+import { CompetitionItem } from "@/lib/types/competition";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { EmptyState } from "@/components/ui/empty-state";
+import { Badge } from "@/components/ui/badge";
+import { JoinCompetitionModal } from "@/components/competitions/JoinCompetitionModal";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
 import {
   Trophy,
   Users,
-  Flame,
-  Plus,
-  Key,
-  Calendar,
   Clock,
-  ArrowRight,
+  Key,
+  Plus,
   Play,
   Trash2,
   Search,
-  Sparkles,
+  Swords,
+  Radio,
+  ShieldAlert,
+  ArrowRight,
 } from "lucide-react";
 import { toast } from "sonner";
 
-const mockCompetitions: CompetitionItem[] = [
-  {
-    id: "comp-1",
-    title: "Tamil Nadu & Kerala Inter-District Science Olympiad 2026",
-    description: "Compete against premier school contenders across Chennai, Kochi, Madurai & Trivandrum in real-time.",
-    quizId: "q-101",
-    quizTitle: "Advanced Science & Physics Olympiad",
-    code: "QD-8492",
-    hostId: "usr-1",
-    hostName: "TN & Kerala Science Olympiad Council",
-    status: "Live",
-    startDate: "Jul 23, 2026",
-    startTime: "07:30 PM",
-    durationMinutes: 45,
-    maxParticipants: 1000,
-    currentParticipantsCount: 840,
-    isPublic: true,
-    negativeMarking: true,
-    timeBonus: true,
-    participants: [],
-    announcements: [],
-    createdAt: "Jul 2026",
-    updatedAt: "Jul 2026",
-  },
-  {
-    id: "comp-2",
-    title: "Kerala State Algorithmic & Coding Decathlon",
-    description: "High-speed competitive programming quiz tournament across South Zone schools and institutes.",
-    quizId: "q-102",
-    quizTitle: "Algorithms & Data Structures",
-    code: "QD-3104",
-    hostId: "usr-2",
-    hostName: "Kerala State IT & Algorithmic League (Kochi)",
-    status: "Upcoming",
-    startDate: "Jul 24, 2026",
-    startTime: "05:00 PM",
-    durationMinutes: 60,
-    maxParticipants: 500,
-    currentParticipantsCount: 310,
-    isPublic: true,
-    negativeMarking: false,
-    timeBonus: true,
-    participants: [],
-    announcements: [],
-    createdAt: "Jul 2026",
-    updatedAt: "Jul 2026",
-  },
-  {
-    id: "comp-3",
-    title: "Madurai & South Tamil Nadu Inter-School Heritage Bowl",
-    description: "State history, literature, and general awareness championship tournament.",
-    quizId: "q-103",
-    quizTitle: "20th Century World & Regional History",
-    code: "QD-1250",
-    hostId: "usr-3",
-    hostName: "Madurai Heritage & Higher Secondary Academic Council",
-    status: "Completed",
-    startDate: "Jul 22, 2026",
-    startTime: "04:00 PM",
-    durationMinutes: 30,
-    maxParticipants: 1500,
-    currentParticipantsCount: 1250,
-    isPublic: true,
-    negativeMarking: true,
-    timeBonus: true,
-    participants: [],
-    announcements: [],
-    createdAt: "Jul 2026",
-    updatedAt: "Jul 2026",
-  },
-];
+const STORAGE_KEY_HOSTED_COMPETITIONS = "quizdorm_hosted_competitions_v1";
 
 export default function CompetitionsPage() {
-  const [competitions, setCompetitions] = useState<CompetitionItem[]>(mockCompetitions);
-  const [activeTab, setActiveTab] = useState<"All" | "Live" | "Upcoming" | "Completed" | "Draft">("All");
+  const { role } = useAuth();
+  const canHost = GovernanceSettingsManager.canHostArena(role).allowed;
+
+  const [competitions, setCompetitions] = useState<CompetitionItem[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [activeTab, setActiveTab] = useState<"All" | "Live" | "Upcoming" | "Completed">("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [joinModalOpen, setJoinModalOpen] = useState(false);
+  const [inlinePin, setInlinePin] = useState("");
+
+  // Load ONLY real actively hosted competitions (Remove hardcoded test arenas)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY_HOSTED_COMPETITIONS);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          setCompetitions(Array.isArray(parsed) ? parsed : []);
+        } else {
+          setCompetitions([]);
+        }
+      } catch {
+        setCompetitions([]);
+      }
+    }
+    setIsLoaded(true);
+  }, []);
 
   const filtered = competitions.filter((comp) => {
     const matchesSearch =
@@ -112,8 +66,23 @@ export default function CompetitionsPage() {
   });
 
   const handleDelete = (id: string) => {
-    setCompetitions(competitions.filter((c) => c.id !== id));
-    toast.success("Competition deleted");
+    const next = competitions.filter((c) => c.id !== id);
+    setCompetitions(next);
+    if (typeof window !== "undefined") {
+      localStorage.setItem(STORAGE_KEY_HOSTED_COMPETITIONS, JSON.stringify(next));
+    }
+    toast.success("Competition removed from active directory");
+  };
+
+  const handleInlinePinSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const clean = inlinePin.trim().toUpperCase();
+    if (!clean) {
+      toast.error("Please enter a valid room PIN");
+      return;
+    }
+    const targetCode = clean.startsWith("QD-") ? clean : `QD-${clean.replace(/[^A-Z0-9]/gi, "")}`;
+    window.location.href = `/live/arena/${targetCode}`;
   };
 
   return (
@@ -123,13 +92,15 @@ export default function CompetitionsPage() {
         <div className="space-y-1">
           <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5]">
             <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
-            <span>SYNCHRONIZED MULTIPLAYER // TOURNAMENT ARENA</span>
+            <span>SYNCHRONIZED COGNITIVE DECATHLON // BATTLE ARENA</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-[#F2F7F3] flex items-center">
-            <Trophy className="w-6 h-6 text-[#65F59A] mr-2" /> Live Competition Arena
+            <Trophy className="w-6 h-6 text-[#65F59A] mr-2" /> Synchronized Battle Arenas
           </h1>
           <p className="text-xs font-mono text-[#A0AEA5]">
-            Host, organize, and participate in deterministic real-time quiz tournaments with synchronized leaderboards.
+            {canHost
+              ? "Launch and govern live multiplayer cognitive decathlons or join active arenas via room PIN."
+              : "Compete in live cognitive decathlons with microsecond podiums. Join active arenas with your Room PIN."}
           </p>
         </div>
 
@@ -142,150 +113,166 @@ export default function CompetitionsPage() {
           >
             <Key className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> ROOM PIN CODE
           </Button>
-          <Link href="/dashboard/competitions/new">
-            <Button size="sm" className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold tracking-wider rounded-[4px] h-9 shadow-[0_0_15px_rgba(101,245,154,0.18)]">
-              <Plus className="w-3.5 h-3.5 mr-1.5" /> HOST TOURNAMENT
-            </Button>
-          </Link>
-        </div>
-      </div>
 
-      {/* Featured Live Tournament Editorial Banner */}
-      <div className="border border-[rgba(160,190,170,0.18)] bg-[#0C1210] text-[#F2F7F3] p-6 sm:p-8 rounded-[8px] flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden shadow-2xl">
-        {/* Soft radial emerald ambient glow */}
-        <div className="absolute top-0 right-1/3 w-96 h-48 bg-[radial-gradient(ellipse_at_center,rgba(101,245,154,0.1)_0%,transparent_70%)] blur-[60px] pointer-events-none" />
-
-        <div className="space-y-3 max-w-xl relative z-10">
-          <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] text-[10px] font-mono font-bold uppercase tracking-widest">
-            <Flame className="w-3.5 h-3.5 fill-current" />
-            <span>FEATURED LIVE CHAMPIONSHIP</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-[#F2F7F3]">
-            National Science & Olympiad Championship 2026
-          </h2>
-          <p className="text-[#A0AEA5] text-xs sm:text-sm leading-relaxed">
-            Compete against 840+ students nationwide in real-time. Deterministic scoring with live leaderboards synchronized across all nodes.
-          </p>
-          <div className="pt-2">
-            <Link href="/dashboard/competitions/comp-1/live?code=QD-8492&role=host">
-              <Button className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs tracking-wider font-bold rounded-[4px] px-6 py-2.5 shadow-[0_0_15px_rgba(101,245,154,0.2)] transition-all hover:shadow-[0_0_24px_rgba(101,245,154,0.35)]">
-                <Play className="w-3.5 h-3.5 mr-2 fill-current" /> ENTER LIVE ARENA
+          {/* Ground Rule: Students & Subscribers CANNOT host arena */}
+          {canHost && (
+            <Link href="/dashboard/competitions/new">
+              <Button size="sm" className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold tracking-wider rounded-[4px] h-9 shadow-[0_0_15px_rgba(101,245,154,0.18)]">
+                <Plus className="w-3.5 h-3.5 mr-1.5" /> HOST TOURNAMENT
               </Button>
             </Link>
-          </div>
-        </div>
-
-        {/* PIN Code Specimen Box */}
-        <div className="border border-[rgba(101,245,154,0.3)] bg-[#111B17] p-6 rounded-[6px] text-center shrink-0 w-full sm:w-64 relative z-10 shadow-[0_0_20px_rgba(101,245,154,0.1)]">
-          <p className="text-[10px] font-mono uppercase tracking-widest text-[#A0AEA5] mb-1">ARENA ROOM PIN</p>
-          <p className="text-3xl font-mono font-extrabold tracking-widest text-[#65F59A]">QD-8492</p>
-          <div className="flex items-center justify-center space-x-1.5 text-[10px] font-mono text-[#38D9B0] mt-2">
-            <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
-            <span>840 COMPETITORS ACTIVE</span>
-          </div>
+          )}
         </div>
       </div>
 
-      {/* Filters & Search */}
-      <div className="bg-[#0C1210] p-3.5 rounded-[6px] border border-[rgba(160,190,170,0.14)] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
-        <div className="flex items-center space-x-1 bg-[#111B17] border border-[rgba(160,190,170,0.16)] p-1 rounded-[4px] w-full sm:w-auto overflow-x-auto">
-          {(["All", "Live", "Upcoming", "Completed", "Draft"] as const).map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-3 py-1 rounded-[3px] text-xs font-mono uppercase tracking-wider transition-all ${
-                activeTab === tab
-                  ? "bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] font-bold shadow-xs"
-                  : "text-[#A0AEA5] hover:text-[#F2F7F3]"
-              }`}
+      {/* When NO arenas are actively hosted -> Clean Zero State (No Test Arenas) */}
+      {isLoaded && competitions.length === 0 ? (
+        <div className="rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.18)] p-8 sm:p-12 text-center space-y-6 max-w-2xl mx-auto shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-1/4 w-80 h-40 bg-[radial-gradient(ellipse_at_center,rgba(101,245,154,0.06)_0%,transparent_70%)] blur-[50px] pointer-events-none" />
+
+          <div className="w-16 h-16 rounded-full bg-[#111B17] border border-[rgba(160,190,170,0.2)] mx-auto flex items-center justify-center text-[#65F59A] shadow-[0_0_20px_rgba(101,245,154,0.1)]">
+            <Radio className="w-8 h-8 animate-pulse text-[#38D9B0]" />
+          </div>
+
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[3px] bg-[#111B17] border border-[rgba(160,190,170,0.2)] text-[#A0AEA5] font-mono text-[10px] font-bold uppercase tracking-wider">
+              <span>Telemetry Standby</span>
+            </div>
+            <h2 className="text-xl sm:text-2xl font-bold font-display uppercase tracking-tight text-[#F2F7F3]">
+              No Live Arenas Currently Active
+            </h2>
+            <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-md mx-auto leading-relaxed">
+              Arenas only appear here when actively launched by an authorized Handler or Institution.
+              If your teacher or organizer gave you a room PIN, enter it below to join the battle directly.
+            </p>
+          </div>
+
+          {/* Quick PIN Entry Form */}
+          <form onSubmit={handleInlinePinSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-2 max-w-md mx-auto">
+            <div className="relative w-full">
+              <Key className="absolute left-3 top-3 h-4 w-4 text-[#69786F]" />
+              <input
+                type="text"
+                value={inlinePin}
+                onChange={(e) => setInlinePin(e.target.value)}
+                placeholder="Enter Room PIN (e.g. QD-8492)"
+                className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] placeholder-[#69786F] font-mono uppercase tracking-widest focus:outline-none focus:border-[#65F59A]"
+              />
+            </div>
+            <Button
+              type="submit"
+              className="w-full sm:w-auto bg-[#65F59A] text-[#070B0A] hover:bg-[#52E086] font-mono text-xs font-bold uppercase tracking-wider h-10 px-5 shadow-[0_0_15px_rgba(101,245,154,0.2)] shrink-0"
             >
-              {tab}
-            </button>
-          ))}
-        </div>
+              <Swords className="w-3.5 h-3.5 mr-1.5" />
+              Join Arena
+            </Button>
+          </form>
 
-        <div className="relative w-full sm:w-72">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#69786F]" />
-          <Input
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search tournament or PIN..."
-            className="pl-9 h-9 bg-[#111B17] text-xs font-mono rounded-[4px] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] focus:border-[#65F59A]"
-          />
-        </div>
-      </div>
-
-      {/* Tournament Cards Grid */}
-      {filtered.length === 0 ? (
-        <EmptyState
-          title="No Competitions Found"
-          description="Try selecting a different status filter or create a new competition tournament."
-          actionLabel="Host Competition"
-          onAction={() => (window.location.href = "/dashboard/competitions/new")}
-        />
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {filtered.map((comp) => (
-            <motion.div
-              key={comp.id}
-              whileHover={{ y: -3 }}
-              transition={{ duration: 0.2 }}
-              className="bg-[#0C1210] p-6 rounded-[6px] border border-[rgba(160,190,170,0.14)] hover:border-[#65F59A]/40 transition-colors flex flex-col justify-between group shadow-sm hover:shadow-[0_12px_24px_rgba(0,0,0,0.6),0_0_15px_rgba(101,245,154,0.08)]"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <Badge
-                    variant="outline"
-                    className={`text-[9px] font-mono uppercase tracking-widest rounded-[3px] px-2 py-0.5 ${
-                      comp.status === "Live"
-                        ? "border-[rgba(248,113,113,0.4)] bg-[rgba(248,113,113,0.12)] text-[#F87171] animate-pulse"
-                        : comp.status === "Upcoming"
-                        ? "border-[rgba(101,245,154,0.3)] bg-[rgba(101,245,154,0.12)] text-[#65F59A]"
-                        : "border-[rgba(160,190,170,0.16)] bg-[#111B17] text-[#A0AEA5]"
-                    }`}
-                  >
-                    ● {comp.status}
-                  </Badge>
-                  <span className="text-[10px] text-[#A0AEA5] font-mono font-bold">PIN: {comp.code}</span>
-                </div>
-
-                <h3 className="text-base font-bold font-display text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors line-clamp-2 mb-2">
-                  {comp.title}
-                </h3>
-                <p className="text-xs text-[#A0AEA5] line-clamp-2 mb-4 leading-relaxed font-sans">{comp.description}</p>
-
-                <div className="space-y-2 text-xs font-mono text-[#A0AEA5] mb-6 border-t border-[rgba(160,190,170,0.12)] pt-3">
-                  <div className="flex items-center justify-between">
-                    <span className="flex items-center text-[#69786F]">
-                      <Users className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> PARTICIPANTS
-                    </span>
-                    <span className="font-bold text-[#F2F7F3]">
-                      {comp.currentParticipantsCount} / {comp.maxParticipants}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="flex items-center text-[#69786F]">
-                      <Clock className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" /> DURATION
-                    </span>
-                    <span className="font-bold text-[#F2F7F3]">{comp.durationMinutes} MINS</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-[rgba(160,190,170,0.12)] flex items-center justify-between">
-                <Link href={`/dashboard/competitions/${comp.id}/live?code=${comp.code}&role=host`}>
-                  <Button size="sm" className="bg-[#17251E] hover:bg-[#65F59A] text-[#65F59A] hover:text-[#070B0A] border border-[rgba(101,245,154,0.3)] font-mono text-xs tracking-wider rounded-[4px] font-bold transition-all">
-                    <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> LAUNCH ROOM
-                  </Button>
-                </Link>
-
-                <Button variant="ghost" size="icon" onClick={() => handleDelete(comp.id)} className="h-8 w-8 text-[#A0AEA5] hover:text-[#F87171] hover:bg-[rgba(248,113,113,0.1)] rounded-[3px]">
-                  <Trash2 className="w-4 h-4" />
+          {canHost && (
+            <div className="pt-4 border-t border-[rgba(160,190,170,0.12)]">
+              <Link href="/dashboard/competitions/new">
+                <Button variant="outline" size="sm" className="border-[rgba(101,245,154,0.3)] bg-[#17251E] text-[#65F59A] hover:bg-[#65F59A] hover:text-[#070B0A] font-mono text-xs font-bold uppercase h-8 transition-all">
+                  <Plus className="w-3.5 h-3.5 mr-1.5" />
+                  Launch New Live Arena
                 </Button>
-              </div>
-            </motion.div>
-          ))}
+              </Link>
+            </div>
+          )}
         </div>
+      ) : (
+        <>
+          {/* Active Tournament Live List */}
+          <div className="bg-[#0C1210] p-3.5 rounded-[6px] border border-[rgba(160,190,170,0.14)] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
+            <div className="flex items-center space-x-1 bg-[#111B17] border border-[rgba(160,190,170,0.16)] p-1 rounded-[4px] w-full sm:w-auto overflow-x-auto">
+              {(["All", "Live", "Upcoming", "Completed"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-3 py-1 rounded-[3px] text-xs font-mono uppercase tracking-wider transition-all ${
+                    activeTab === tab
+                      ? "bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] font-bold shadow-xs"
+                      : "text-[#A0AEA5] hover:text-[#F2F7F3]"
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+
+            <div className="relative w-full sm:w-72">
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#69786F]" />
+              <Input
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search tournament or PIN..."
+                className="pl-9 h-9 bg-[#111B17] text-xs font-mono rounded-[4px] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] focus:border-[#65F59A]"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {filtered.map((comp) => (
+              <motion.div
+                key={comp.id}
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.2 }}
+                className="bg-[#0C1210] p-6 rounded-[6px] border border-[rgba(160,190,170,0.14)] hover:border-[#65F59A]/40 transition-colors flex flex-col justify-between group shadow-sm hover:shadow-[0_12px_24px_rgba(0,0,0,0.6),0_0_15px_rgba(101,245,154,0.08)]"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <Badge
+                      variant="outline"
+                      className={`text-[9px] font-mono uppercase tracking-widest rounded-[3px] px-2 py-0.5 ${
+                        comp.status === "Live"
+                          ? "border-[rgba(248,113,113,0.4)] bg-[rgba(248,113,113,0.12)] text-[#F87171] animate-pulse"
+                          : "border-[rgba(101,245,154,0.3)] bg-[rgba(101,245,154,0.12)] text-[#65F59A]"
+                      }`}
+                    >
+                      ● {comp.status}
+                    </Badge>
+                    <span className="text-[10px] text-[#A0AEA5] font-mono font-bold">PIN: {comp.code}</span>
+                  </div>
+
+                  <h3 className="text-base font-bold font-display text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors line-clamp-2 mb-2">
+                    {comp.title}
+                  </h3>
+                  <p className="text-xs text-[#A0AEA5] line-clamp-2 mb-4 leading-relaxed font-sans">{comp.description}</p>
+
+                  <div className="space-y-2 text-xs font-mono text-[#A0AEA5] mb-6 border-t border-[rgba(160,190,170,0.12)] pt-3">
+                    <div className="flex items-center justify-between">
+                      <span className="flex items-center text-[#69786F]">
+                        <Users className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> HOST
+                      </span>
+                      <span className="font-bold text-[#F2F7F3] truncate max-w-[150px]">
+                        {comp.hostName || "Authorized Host"}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="flex items-center text-[#69786F]">
+                        <Clock className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" /> DURATION
+                      </span>
+                      <span className="font-bold text-[#F2F7F3]">{comp.durationMinutes} MINS</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-[rgba(160,190,170,0.12)] flex items-center justify-between">
+                  <Link href={`/live/arena/${comp.code}`}>
+                    <Button size="sm" className="bg-[#17251E] hover:bg-[#65F59A] text-[#65F59A] hover:text-[#070B0A] border border-[rgba(101,245,154,0.3)] font-mono text-xs tracking-wider rounded-[4px] font-bold transition-all">
+                      <Swords className="w-3.5 h-3.5 mr-1.5" /> JOIN BATTLE
+                    </Button>
+                  </Link>
+
+                  {canHost && (
+                    <Button variant="ghost" size="icon" onClick={() => handleDelete(comp.id)} className="h-8 w-8 text-[#A0AEA5] hover:text-[#F87171] hover:bg-[rgba(248,113,113,0.1)] rounded-[3px]">
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </>
       )}
 
       {/* Join Modal */}

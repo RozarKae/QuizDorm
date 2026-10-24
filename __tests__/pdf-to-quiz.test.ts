@@ -13,6 +13,7 @@ import { QuestionIntelligenceValidator } from "../lib/quality/questionIntelligen
 
 // OCR Engine & File Validation
 import { OCREngineService } from "../lib/ocr/engine";
+import { DocumentFallbackSynthesizer } from "../lib/ai/server/documentFallbackSynthesizer";
 
 // Question Bank Persistence & Deduplication
 import { importQuestions, getAllQuestions } from "../lib/data/question-bank";
@@ -652,6 +653,19 @@ test("Custom Count & Doubled Limit: Allows custom question count up to 50", () =
 
   const oversized = PdfQuestionGenerationInputSchema.safeParse({ questionCount: 100 });
   assert.equal(oversized.success, false, "Should reject count > 50");
+});
+
+test("DocumentFallbackSynthesizer: Generates user-requested question count up to 50", () => {
+  const sampleText = "Photosynthesis occurs in chloroplasts. Mitosis produces diploid daughter cells. DNA replication is semiconservative. The p53 gene acts as a tumor suppressor. Enzymes lower activation energy.";
+  
+  const synth10 = DocumentFallbackSynthesizer.synthesizeFromExtractedText(sampleText, { questionCount: 10 });
+  assert.equal(synth10.questions.length, 10, "Should generate exactly 10 questions when 10 is requested");
+
+  const synth20 = DocumentFallbackSynthesizer.synthesizeFromExtractedText(sampleText, { questionCount: 20 });
+  assert.equal(synth20.questions.length, 20, "Should generate exactly 20 questions when 20 is requested");
+
+  const synthDefault = DocumentFallbackSynthesizer.synthesizeFromExtractedText(sampleText, {});
+  assert.equal(synthDefault.questions.length, 10, "Should default to standard 10 questions when unspecified");
 });
 
 test("Expanded Types 1: Validates Error Spotting question format and scoring", () => {

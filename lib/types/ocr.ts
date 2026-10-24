@@ -105,6 +105,7 @@ export interface OCRJobSettings {
   targetTopic?: string;
   targetDifficulty?: string;
   targetQuestionCount?: number;
+  questionTypes?: string[];
 }
 
 export interface OCRJob {

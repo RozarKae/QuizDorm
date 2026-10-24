@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 
 export default function Stats() {
   const stats = [
-    { value: "535", unit: "Items", label: "Verified Question Bank", status: "Active" },
-    { value: "18", unit: "Fields", label: "Academic Knowledge Domains", status: "Audited" },
-    { value: "100%", unit: "Traceable", label: "Source Page Verification", status: "Passed" },
-    { value: "< 250ms", unit: "Latency", label: "Quiz Evaluation Speed", status: "Sub-Second" },
+    { value: "535+", unit: "Items", label: "Curriculum Knowledge Matrix", status: "Active" },
+    { value: "18", unit: "Fields", label: "Academic Disciplines & Domains", status: "Audited" },
+    { value: "9", unit: "Formats", label: "High-Cognition Challenge Modes", status: "Dynamic" },
+    { value: "< 50ms", unit: "Latency", label: "Decathlon Microsecond Scoring", status: "Real-Time" },
   ];
 
   return (

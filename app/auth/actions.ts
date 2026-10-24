@@ -3,6 +3,7 @@
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { cookies, headers } from "next/headers";
 import { z } from "zod";
+import { signSessionPayload, verifySessionPayload } from "@/lib/security/cookieSigner";
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
 import { TEST_ACCOUNTS } from "./constants";
@@ -23,7 +24,17 @@ const signupSchema = z
         "Password must be at least 8 characters long and contain uppercase, lowercase, number, and special character"
       ),
     confirmPassword: z.string(),
-    role: z.enum(["student", "teacher"]),
+    role: z
+      .enum([
+        "subscriber",
+        "member",
+        "handler",
+        "institution",
+        "student",
+        "teacher",
+        "school",
+      ])
+      .default("subscriber"),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
@@ -63,23 +74,32 @@ export async function signInWithEmail(formData: FormData) {
         }
       }
 
-      cookieStore.set(
-        "quizdorm_demo_session",
-        JSON.stringify({
-          id: testAccount.id,
-          email: testAccount.email,
-          user_metadata: {
-            name: testAccount.name,
-            role: testAccount.role,
-          },
-        }),
-        {
-          path: "/",
-          httpOnly: false,
-          sameSite: "lax",
-          maxAge: 60 * 60 * 24 * 7,
-        }
-      );
+      const sessionPayload = {
+        id: testAccount.id,
+        email: testAccount.email,
+        user_metadata: {
+          name: testAccount.name,
+          role: testAccount.role,
+        },
+      };
+
+      const signedToken = await signSessionPayload(sessionPayload);
+
+      cookieStore.set("quizdorm_demo_session", signedToken, {
+        path: "/",
+        httpOnly: true,
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+
+      cookieStore.set("quizdorm_client_logged_in", "1", {
+        path: "/",
+        httpOnly: false,
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 60 * 60 * 24 * 7,
+      });
 
       return {
         success: true,
@@ -100,7 +120,7 @@ export async function signInWithEmail(formData: FormData) {
   if (!isSupabaseConfigured()) {
     return {
       error:
-        "Supabase project credentials are not configured yet. Sign in with a demo test account (e.g. student@quizdorm.com / Password123!) or configure your NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.",
+        "Unable to connect to authentication services. Please verify your credentials or contact system administration.",
     };
   }
 
@@ -123,11 +143,25 @@ export async function signInWithEmail(formData: FormData) {
       maxAge: 0,
       expires: new Date(0),
     });
+    cookieStore.delete("quizdorm_client_logged_in");
+    cookieStore.set("quizdorm_client_logged_in", "", {
+      path: "/",
+      maxAge: 0,
+      expires: new Date(0),
+    });
 
     const userMetadata = data.user?.user_metadata || {};
-    const role = (userMetadata.role as string) || "student";
+    let role = (userMetadata.role as string) || "subscriber";
+    if (role === "student") role = "member";
+    else if (role === "teacher") role = "handler";
+    else if (role === "school") role = "institution";
+
     const userName = userMetadata.name || data.user?.email?.split("@")[0] || "User";
-    const redirectUrl = `/${role}`;
+    let redirectUrl = "/student";
+    if (role === "admin") redirectUrl = "/admin";
+    else if (role === "institution" || role === "school") redirectUrl = "/school";
+    else if (role === "handler" || role === "teacher") redirectUrl = "/teacher";
+    else if (role === "member" || role === "student" || role === "subscriber") redirectUrl = "/student";
 
     return {
       success: true,
@@ -150,7 +184,11 @@ export async function signUpWithEmail(formData: FormData) {
   const email = (formData.get("email") as string)?.trim().toLowerCase();
   const password = formData.get("password") as string;
   const confirmPassword = formData.get("confirmPassword") as string;
-  const role = (formData.get("role") as string) || "student";
+  const rawRole = (formData.get("role") as string) || "subscriber";
+  let role = rawRole;
+  if (role === "student") role = "member";
+  else if (role === "teacher") role = "handler";
+  else if (role === "school") role = "institution";
 
   const result = signupSchema.safeParse({ name, email, password, confirmPassword, role });
   if (!result.success) {
@@ -162,25 +200,38 @@ export async function signUpWithEmail(formData: FormData) {
   if (!isSupabaseConfigured()) {
     try {
       const cookieStore = await cookies();
-      cookieStore.set(
-        "quizdorm_demo_session",
-        JSON.stringify({
-          id: `usr-${Date.now()}`,
-          email,
-          user_metadata: {
-            name,
-            role,
-            username,
-          },
-        }),
-        {
-          path: "/",
-          httpOnly: false,
-          sameSite: "lax",
-          maxAge: 60 * 60 * 24 * 7,
-        }
-      );
-      const redirectUrl = role === "admin" ? "/admin" : `/${role}`;
+      const sessionPayload = {
+        id: `usr-${Date.now()}`,
+        email,
+        user_metadata: {
+          name,
+          role,
+          username,
+        },
+      };
+
+      const signedToken = await signSessionPayload(sessionPayload);
+
+      cookieStore.set("quizdorm_demo_session", signedToken, {
+        path: "/",
+        httpOnly: true,
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+
+      cookieStore.set("quizdorm_client_logged_in", "1", {
+        path: "/",
+        httpOnly: false,
+        sameSite: "lax",
+        secure: process.env.NODE_ENV === "production",
+        maxAge: 60 * 60 * 24 * 7,
+      });
+      let redirectUrl = "/student";
+      if (role === "admin") redirectUrl = "/admin";
+      else if (role === "institution" || role === "school") redirectUrl = "/school";
+      else if (role === "handler" || role === "teacher") redirectUrl = "/teacher";
+      else if (role === "member" || role === "student" || role === "subscriber") redirectUrl = "/student";
       return {
         success: true,
         isDemoAccount: true,
@@ -220,10 +271,20 @@ export async function signUpWithEmail(formData: FormData) {
       maxAge: 0,
       expires: new Date(0),
     });
+    cookieStore.delete("quizdorm_client_logged_in");
+    cookieStore.set("quizdorm_client_logged_in", "", {
+      path: "/",
+      maxAge: 0,
+      expires: new Date(0),
+    });
 
     // Check if session was granted directly (email confirmation off)
     if (data?.session && data.user) {
-      const redirectUrl = role === "admin" ? "/admin" : `/${role}`;
+      let redirectUrl = "/student";
+      if (role === "admin") redirectUrl = "/admin";
+      else if (role === "institution" || role === "school") redirectUrl = "/school";
+      else if (role === "handler" || role === "teacher") redirectUrl = "/teacher";
+      else if (role === "member" || role === "student" || role === "subscriber") redirectUrl = "/student";
       return {
         success: true,
         isDemoAccount: false,
@@ -240,7 +301,11 @@ export async function signUpWithEmail(formData: FormData) {
     // Attempt auto login in case confirmation is not required
     const loginAttempt = await supabase.auth.signInWithPassword({ email, password });
     if (loginAttempt.data?.session && loginAttempt.data.user) {
-      const redirectUrl = role === "admin" ? "/admin" : `/${role}`;
+      let redirectUrl = "/student";
+      if (role === "admin") redirectUrl = "/admin";
+      else if (role === "institution" || role === "school") redirectUrl = "/school";
+      else if (role === "handler" || role === "teacher") redirectUrl = "/teacher";
+      else if (role === "member" || role === "student" || role === "subscriber") redirectUrl = "/student";
       return {
         success: true,
         isDemoAccount: false,
@@ -274,6 +339,12 @@ export async function signOutUser() {
       maxAge: 0,
       expires: new Date(0),
     });
+    cookieStore.delete("quizdorm_client_logged_in");
+    cookieStore.set("quizdorm_client_logged_in", "", {
+      path: "/",
+      maxAge: 0,
+      expires: new Date(0),
+    });
     if (isSupabaseConfigured()) {
       const supabase = await createClient();
       await supabase.auth.signOut();
@@ -282,6 +353,35 @@ export async function signOutUser() {
     // Ignore offline errors
   }
   return { success: true, redirectUrl: "/auth/login?logout=true" };
+}
+
+/**
+ * Server action to securely update active demo session role with HMAC signature
+ */
+export async function updateDemoRoleAction(newRole: string) {
+  try {
+    const cookieStore = await cookies();
+    const existingCookie = cookieStore.get("quizdorm_demo_session")?.value;
+    if (!existingCookie) return { error: "No active session found" };
+
+    const current = await verifySessionPayload<any>(existingCookie);
+    if (!current) return { error: "Invalid or tampered session" };
+
+    current.user_metadata = current.user_metadata || {};
+    current.user_metadata.role = newRole;
+
+    const signedToken = await signSessionPayload(current);
+    cookieStore.set("quizdorm_demo_session", signedToken, {
+      path: "/",
+      httpOnly: true,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 60 * 60 * 24 * 7,
+    });
+    return { success: true };
+  } catch (err: any) {
+    return { error: err.message || "Failed to update session role" };
+  }
 }
 
 export async function resetPasswordRequest(formData: FormData) {

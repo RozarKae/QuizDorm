@@ -222,7 +222,7 @@ export function QuestionEditor({ initialQuestion, onSave }: QuestionEditorProps)
 
   const currentConstructedQuestion: QuestionItem = {
     id: initialQuestion?.id || `q-preview`,
-    title: title || "Sample Question Statement",
+    title: title || "Untitled Question Statement",
     type,
     subject,
     category,

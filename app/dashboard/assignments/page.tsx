@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
 import { BookOpen, Plus, Search } from "lucide-react";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { LockedFeatureNotice } from "@/components/dashboard/LockedFeatureNotice";
 
 const mockAssignments: AssignmentItem[] = [
   {
@@ -46,10 +48,22 @@ const mockAssignments: AssignmentItem[] = [
 ];
 
 export default function AssignmentsPage() {
+  const { role } = useAuth();
   const [assignments] = useState<AssignmentItem[]>(mockAssignments);
   const [searchTerm, setSearchTerm] = useState("");
   const [typeFilter, setTypeFilter] = useState("All");
   const [modalOpen, setModalOpen] = useState(false);
+
+  if (role === "subscriber") {
+    return (
+      <LockedFeatureNotice
+        title="Classroom Assignments Locked"
+        description="Assigned coursework, teacher homework, and test submissions require active enrollment in a campus dorm. As a Subscriber, you can take unlimited practice quizzes."
+        backHref="/student"
+        unlockRequirement="Enrolled Member License"
+      />
+    );
+  }
 
   const filtered = assignments.filter((a) => {
     const matchesSearch = a.title.toLowerCase().includes(searchTerm.toLowerCase());

@@ -36,6 +36,13 @@ function VerifyEmailContent() {
     }
   }, [isVerifiedParam]);
 
+  const getWorkspaceUrl = (r: string) => {
+    if (r === "admin") return "/admin";
+    if (["institution", "school"].includes(r)) return "/school";
+    if (["handler", "teacher"].includes(r)) return "/teacher";
+    return "/student";
+  };
+
   // If user is verified and logged in, count down and auto-route to workspace
   useEffect(() => {
     if (!isVerified) return;
@@ -44,7 +51,7 @@ function VerifyEmailContent() {
       setCountdown((prev) => {
         if (prev <= 1) {
           clearInterval(timer);
-          const target = roleParam === "admin" ? "/admin" : `/${roleParam}`;
+          const target = getWorkspaceUrl(roleParam);
           window.location.href = target;
           return 0;
         }
@@ -71,7 +78,7 @@ function VerifyEmailContent() {
     }
   };
 
-  const targetWorkspace = roleParam === "admin" ? "/admin" : `/${roleParam}`;
+  const targetWorkspace = getWorkspaceUrl(roleParam);
 
   const displayName = profile?.name || user?.user_metadata?.name || "QuizDorm Scholar";
   const displayEmail = profile?.email || user?.email || emailParam;

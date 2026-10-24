@@ -784,16 +784,12 @@ export class LiveSessionManager {
       return { success: false, error: "SESSION_NOT_FOUND" };
     }
 
-    // Host authorization validation - resilient to avoid false lockouts
-    const isAuthorized =
-      !hostSecret ||
-      session.hostSecret === hostSecret ||
-      hostSecret === "master_bypass" ||
-      hostSecret === "secret-seed-host-8492" ||
-      hostSecret === "host_admin" ||
-      hostSecret.startsWith("sec_") ||
-      session.id.startsWith("comp-seed-") ||
-      session.hostSecret === "secret-seed-host-8492";
+    // Strict host authorization validation - token must strictly match the session's assigned host secret
+    const isAuthorized = Boolean(
+      hostSecret &&
+      typeof hostSecret === "string" &&
+      session.hostSecret === hostSecret
+    );
 
     if (!isAuthorized) {
       return { success: false, error: "UNAUTHORIZED_HOST: Invalid host control authorization." };

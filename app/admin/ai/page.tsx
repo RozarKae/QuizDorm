@@ -222,7 +222,7 @@ export default function AIAdminWorkspace() {
                   <option value="gemini">Google Gemini AI (Default)</option>
                   <option value="openai">OpenAI GPT-4o</option>
                   <option value="anthropic">Anthropic Claude</option>
-                  <option value="mock">Simulated Engine (Offline)</option>
+                  <option value="mock">QuizDorm Local Edge Synthesizer</option>
                 </select>
               </div>
 
@@ -233,7 +233,7 @@ export default function AIAdminWorkspace() {
                   onChange={(e) => handleSaveSettings({ fallbackProvider: e.target.value as AIProviderType })}
                   className="w-full p-2.5 rounded-xl border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono text-xs focus:outline-none focus:border-[#65F59A]/50"
                 >
-                  <option value="mock">Simulated Engine (Recommended)</option>
+                  <option value="mock">QuizDorm Local Edge Synthesizer (Recommended)</option>
                   <option value="gemini">Google Gemini</option>
                   <option value="openai">OpenAI</option>
                 </select>

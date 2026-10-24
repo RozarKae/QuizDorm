@@ -28,6 +28,60 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
     });
   };
 
+  const getWorkspaceTitle = (r: string) => {
+    switch (r) {
+      case "admin":
+        return "SUPER ADMIN COMMAND OS";
+      case "institution":
+      case "school":
+        return "ACADEMY DIRECTORATE";
+      case "handler":
+      case "teacher":
+        return "FACULTY MENTOR CONSOLE";
+      case "member":
+      case "student":
+        return "SCHOLAR'S HUB";
+      case "subscriber":
+        return "INDEPENDENT SCHOLAR HUB";
+      default:
+        return `${r.toUpperCase()} WORKSPACE`;
+    }
+  };
+
+  const getWorkspaceRoot = (r: string) => {
+    switch (r) {
+      case "admin":
+        return "/admin";
+      case "institution":
+      case "school":
+        return "/school";
+      case "handler":
+      case "teacher":
+        return "/teacher";
+      case "member":
+      case "student":
+      case "subscriber":
+      default:
+        return "/student";
+    }
+  };
+
+  const isRoleRootCrumb = (name: string, r: string) => {
+    const n = name.toLowerCase();
+    const roleNorm = r.toLowerCase();
+    if (n === roleNorm) return true;
+    if (roleNorm === "admin" && n === "admin") return true;
+    if ((roleNorm === "institution" || roleNorm === "school") && (n === "institution" || n === "school")) return true;
+    if ((roleNorm === "handler" || roleNorm === "teacher") && (n === "handler" || n === "teacher")) return true;
+    if (
+      (roleNorm === "member" || roleNorm === "student" || roleNorm === "subscriber") &&
+      (n === "student" || n === "member" || n === "subscriber")
+    ) {
+      return true;
+    }
+    return false;
+  };
+
   const breadcrumbs = getBreadcrumbs();
 
   return (
@@ -56,14 +110,14 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
           <div className="flex items-center space-x-1.5 text-[#65F59A]">
             <Terminal className="w-3.5 h-3.5" />
             <Link
-              href={`/${role}`}
+              href={getWorkspaceRoot(role)}
               className="hover:underline uppercase tracking-wider text-[11px] font-semibold"
             >
-              {role === "admin" ? "Platform Admin" : `${role} Workspace`}
+              {getWorkspaceTitle(role)}
             </Link>
           </div>
           {breadcrumbs.map((crumb) => {
-            if (crumb.name.toLowerCase() === role.toLowerCase()) return null;
+            if (isRoleRootCrumb(crumb.name, role)) return null;
             return (
               <div key={crumb.href} className="flex items-center space-x-2">
                 <span className="text-[rgba(160,190,170,0.25)]">/</span>

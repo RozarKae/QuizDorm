@@ -10,16 +10,16 @@ import {
 
 export class MockAIProvider implements IAIProvider {
   id: AIProviderType = "mock";
-  name = "QuizDorm Simulated Engine (Fallback)";
-  description = "Built-in offline provider ensuring zero-downtime execution and rapid developer testing.";
+  name = "QuizDorm Edge Synthesizer";
+  description = "High-availability local curriculum synthesis engine.";
 
   getAvailableModels(): AIModel[] {
     return [
       {
         id: "mock-v1-fast",
         providerId: "mock",
-        name: "QuizDorm Mock Engine Fast",
-        description: "Zero-latency simulated model for offline developer workflow testing.",
+        name: "QuizDorm Edge Synthesizer Fast",
+        description: "Zero-latency normalized curriculum assessment model.",
         contextWindow: 32768,
         maxOutputTokens: 4096,
         capabilities: ["text_generation", "structured_json", "streaming"],
@@ -100,7 +100,7 @@ export class MockAIProvider implements IAIProvider {
   async checkHealth(apiKey?: string): Promise<ProviderHealth> {
     return {
       providerId: "mock",
-      providerName: "QuizDorm Simulated Engine",
+      providerName: "QuizDorm Edge Synthesizer",
       status: "online",
       latencyMs: 15,
       successRate: 100,

@@ -12,11 +12,18 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, role } = useAuth();
 
+  const getWorkspaceUrl = (r?: string) => {
+    if (r === "admin") return "/admin";
+    if (r === "institution" || r === "school") return "/school";
+    if (r === "handler" || r === "teacher") return "/teacher";
+    return "/student";
+  };
+
   const navItems = [
-    { name: "Overview", href: "/" },
-    { name: "Assessment Engine", href: "/#features" },
-    { name: "Live Arena", href: "/live/arena" },
-    { name: "Question Bank", href: "/dashboard/questions" },
+    { name: "The Dorm", href: "/" },
+    { name: "Cognitive Engine", href: "/#features" },
+    { name: "Battle Arenas", href: "/live/arena" },
+    { name: "Knowledge Matrix", href: "/dashboard/questions" },
     { name: "Founder's Desk", href: "/about" },
   ];
 
@@ -43,7 +50,7 @@ export default function Navbar() {
         {/* Desktop Actions */}
         <div className="hidden sm:flex items-center space-x-3">
           {user ? (
-            <Link href={role === "admin" ? "/admin" : `/${role}`}>
+            <Link href={getWorkspaceUrl(role)}>
               <Button
                 size="sm"
                 className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-[4px] px-4 h-8 shadow-[0_0_12px_rgba(101,245,154,0.18)] flex items-center space-x-1.5"
@@ -78,7 +85,7 @@ export default function Navbar() {
         {/* Mobile Hamburger Toggle */}
         <div className="md:hidden flex items-center space-x-2">
           {user ? (
-            <Link href={role === "admin" ? "/admin" : `/${role}`} className="sm:hidden">
+            <Link href={getWorkspaceUrl(role)} className="sm:hidden">
               <Button
                 size="sm"
                 className="bg-[#65F59A] text-[#070B0A] text-xs font-mono font-bold px-2.5 h-8 rounded-[4px]"
@@ -133,7 +140,7 @@ export default function Navbar() {
             </nav>
 
             <div className="pt-2 flex flex-col space-y-2">
-              <Link href={user ? (role === "admin" ? "/admin" : `/${role}`) : "/auth/register"} onClick={() => setMobileMenuOpen(false)} className="w-full">
+              <Link href={user ? getWorkspaceUrl(role) : "/auth/register"} onClick={() => setMobileMenuOpen(false)} className="w-full">
                 <Button className="w-full bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold rounded-[4px] h-10 shadow-[0_0_15px_rgba(101,245,154,0.18)]">
                   {user ? "Open Workspace" : "Launch Platform"}
                 </Button>

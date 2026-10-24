@@ -28,7 +28,9 @@ import {
   Zap,
   Filter,
   Check,
+  ShieldAlert,
 } from "lucide-react";
+import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -47,7 +49,8 @@ import { toast } from "sonner";
 
 export default function CreateCompetitionPage() {
   const router = useRouter();
-  const { profile } = useAuth();
+  const { role, profile } = useAuth();
+  const canHost = GovernanceSettingsManager.canHostArena(role).allowed;
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Tournament Meta
@@ -118,6 +121,7 @@ export default function CreateCompetitionPage() {
 
   // Tab 3: File / PDF / Image Extractor State
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [fileExtractCount, setFileExtractCount] = useState<number>(10);
   const [isExtractingFile, setIsExtractingFile] = useState(false);
   const [extractedSummary, setExtractedSummary] = useState<string | null>(null);
 
@@ -250,7 +254,7 @@ export default function CreateCompetitionPage() {
             id: `ai-fallback-${Date.now()}-${idx + 1}`,
           }));
         setAiGeneratedList(fallbackPicked);
-        toast.info(`Cooked up ${fallbackPicked.length} questions for "${aiTopic}".`);
+        toast.info(`Generated ${fallbackPicked.length} questions for "${aiTopic}".`);
       }
     } catch (err: any) {
       toast.error("Failed to generate AI questions. Check network connection.");
@@ -287,6 +291,7 @@ export default function CreateCompetitionPage() {
       formData.append("file", selectedFile);
       formData.append("subject", aiSubject || "Science");
       formData.append("topic", aiTopic || "Assessment");
+      formData.append("questionCount", String(fileExtractCount));
 
       const res = await fetch("/api/ai/pdf-to-quiz", {
         method: "POST",
@@ -374,6 +379,38 @@ export default function CreateCompetitionPage() {
         const secret = data.hostSecret;
         if (typeof window !== "undefined") {
           localStorage.setItem(`quizdorm_host_sec_${cleanCode}`, secret);
+          try {
+            const existing = JSON.parse(localStorage.getItem("quizdorm_hosted_competitions_v1") || "[]");
+            const newComp = {
+              id: data.sessionId || data.session?.id || `comp-${Date.now()}`,
+              title: title.trim(),
+              description: description.trim(),
+              quizId: "custom",
+              quizTitle: title.trim(),
+              code: cleanCode,
+              hostId: profile?.id || "host",
+              hostName: hostName.trim() || profile?.name || "Authorized Host",
+              status: "Live",
+              startDate: new Date().toLocaleDateString(),
+              startTime: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+              durationMinutes,
+              maxParticipants,
+              currentParticipantsCount: 1,
+              isPublic: true,
+              negativeMarking,
+              timeBonus,
+              participants: [],
+              announcements: [],
+              createdAt: new Date().toISOString(),
+              updatedAt: new Date().toISOString(),
+            };
+            localStorage.setItem(
+              "quizdorm_hosted_competitions_v1",
+              JSON.stringify([newComp, ...existing.filter((c: any) => c.code !== cleanCode)])
+            );
+          } catch {
+            // Ignore
+          }
         }
         toast.success(
           `Live Arena "${title}" created with ${selectedQuestions.length} questions! PIN: ${cleanCode}`
@@ -390,6 +427,36 @@ export default function CreateCompetitionPage() {
       setIsSubmitting(false);
     }
   };
+
+  if (!canHost) {
+    return (
+      <div className="max-w-xl mx-auto py-16 px-4 text-center space-y-5">
+        <div className="w-14 h-14 rounded-full bg-[rgba(248,113,113,0.12)] border border-[rgba(248,113,113,0.3)] mx-auto flex items-center justify-center text-[#F87171]">
+          <ShieldAlert className="w-7 h-7" />
+        </div>
+        <div className="space-y-2">
+          <h2 className="text-xl font-bold font-display uppercase tracking-tight text-[#F2F7F3]">
+            Host Privileges Restricted
+          </h2>
+          <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-md mx-auto leading-relaxed">
+            Students, Members, and Subscribers cannot host live battle arenas. Only Handlers, Institutions, and Platform Admins have permission to launch competitions.
+          </p>
+        </div>
+        <div className="pt-2 flex items-center justify-center gap-3">
+          <Link href="/dashboard/competitions">
+            <Button variant="outline" size="sm" className="border-[rgba(160,190,170,0.2)] text-xs font-mono">
+              Back to Competitions
+            </Button>
+          </Link>
+          <Link href="/live/join">
+            <Button size="sm" className="bg-[#65F59A] text-[#070B0A] hover:bg-[#52E086] font-mono text-xs font-bold uppercase">
+              Join Arena via Room PIN
+            </Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto space-y-8 py-4 px-2 sm:px-4 text-[#F2F7F3]">
@@ -985,36 +1052,65 @@ export default function CreateCompetitionPage() {
                 </div>
               </div>
 
-              {/* Action Button */}
+              {/* Action Button & Question Count Control */}
               {selectedFile && (
-                <div className="flex justify-end gap-3 pt-1">
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setSelectedFile(null)}
-                    className="text-xs font-mono rounded-[4px] border-[rgba(160,190,170,0.2)] bg-[#0C1210] text-[#A0AEA5]"
-                  >
-                    Clear File
-                  </Button>
-                  <Button
-                    type="button"
-                    disabled={isExtractingFile}
-                    onClick={handleExtractFileToQuestions}
-                    className="bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono font-bold text-xs rounded-[4px] h-9 px-5 shadow-[0_0_15px_rgba(101,245,154,0.25)]"
-                  >
-                    {isExtractingFile ? (
-                      <>
-                        <RefreshCw className="w-3.5 h-3.5 mr-1.5 animate-spin" />
-                        <span>Parsing Document Questions...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Sparkles className="w-3.5 h-3.5 mr-1.5 fill-current" />
-                        <span>Extract &amp; Add Questions to Arena</span>
-                      </>
-                    )}
-                  </Button>
+                <div className="space-y-3 pt-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.15)] gap-2">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-xs font-mono font-bold text-[#A0AEA5] uppercase">
+                        Questions to Extract:
+                      </span>
+                      <span className="text-xs font-mono font-bold text-[#65F59A]">
+                        {fileExtractCount} Questions
+                      </span>
+                    </div>
+                    <div className="flex items-center space-x-1.5 font-mono text-xs">
+                      {[5, 10, 15, 20, 25, 30].map((num) => (
+                        <button
+                          key={num}
+                          type="button"
+                          onClick={() => setFileExtractCount(num)}
+                          className={`w-8 h-7 rounded-[3px] border font-bold text-xs transition-all ${
+                            fileExtractCount === num
+                              ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
+                              : "border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
+                          }`}
+                        >
+                          {num}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex justify-end gap-3">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setSelectedFile(null)}
+                      className="text-xs font-mono rounded-[4px] border-[rgba(160,190,170,0.2)] bg-[#0C1210] text-[#A0AEA5]"
+                    >
+                      Clear File
+                    </Button>
+                    <Button
+                      type="button"
+                      disabled={isExtractingFile}
+                      onClick={handleExtractFileToQuestions}
+                      className="bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono font-bold text-xs rounded-[4px] h-9 px-5 shadow-[0_0_15px_rgba(101,245,154,0.25)]"
+                    >
+                      {isExtractingFile ? (
+                        <>
+                          <RefreshCw className="w-3.5 h-3.5 mr-1.5 animate-spin" />
+                          <span>Parsing {fileExtractCount} Questions...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Sparkles className="w-3.5 h-3.5 mr-1.5 fill-current" />
+                          <span>Extract {fileExtractCount} Questions &amp; Add to Arena</span>
+                        </>
+                      )}
+                    </Button>
+                  </div>
                 </div>
               )}
 

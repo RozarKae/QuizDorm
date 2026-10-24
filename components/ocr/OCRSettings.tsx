@@ -5,7 +5,6 @@ import { OCRJobSettings, OCRProviderType, OCRRecognitionMode, OCRLanguage } from
 import { availableOCRProviders } from "@/lib/ocr/providers";
 import { Settings, Cpu, Languages, Sparkles, Check, FileCode2 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 interface OCRSettingsProps {
   settings: OCRJobSettings;
@@ -32,17 +31,17 @@ export function OCRSettings({ settings, onChange }: OCRSettingsProps) {
   };
 
   return (
-    <Card className="border border-gray-200 dark:border-gray-800 shadow-sm bg-white dark:bg-gray-950 rounded-2xl">
-      <CardHeader className="border-b border-gray-100 dark:border-gray-900 pb-4">
-        <CardTitle className="text-base font-bold flex items-center text-gray-900 dark:text-white">
-          <Settings className="w-5 h-5 text-indigo-600 mr-2" /> OCR & Intelligence Settings
+    <Card className="border border-[rgba(160,190,170,0.18)] shadow-lg bg-[#0C1210] rounded-[8px] font-mono">
+      <CardHeader className="border-b border-[rgba(160,190,170,0.12)] pb-4">
+        <CardTitle className="text-sm font-bold flex items-center text-[#F2F7F3] uppercase tracking-wider">
+          <Settings className="w-4 h-4 text-[#65F59A] mr-2" /> OCR &amp; Multimodal Intelligence Settings
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6 pt-6">
         {/* Provider Selection */}
         <div>
-          <label className="text-xs font-semibold text-gray-700 dark:text-gray-300 flex items-center mb-3">
-            <Cpu className="w-4 h-4 text-indigo-500 mr-1.5" /> Select OCR Engine Provider
+          <label className="text-xs font-bold uppercase tracking-wider text-[#A0AEA5] flex items-center mb-3">
+            <Cpu className="w-3.5 h-3.5 text-[#65F59A] mr-1.5" /> Select OCR Ingestion Engine
           </label>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {availableOCRProviders.map((p) => {
@@ -51,21 +50,27 @@ export function OCRSettings({ settings, onChange }: OCRSettingsProps) {
                 <div
                   key={p.id}
                   onClick={() => handleProviderChange(p.id)}
-                  className={`p-3.5 rounded-xl border text-left cursor-pointer transition-all ${
+                  className={`p-3.5 rounded-[5px] border text-left cursor-pointer transition-all ${
                     isSelected
-                      ? "border-indigo-600 bg-indigo-50/60 dark:bg-indigo-950/40 ring-2 ring-indigo-600/20"
-                      : "border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 bg-gray-50/30 dark:bg-gray-900/30"
+                      ? "border-[#65F59A] bg-[rgba(101,245,154,0.12)] shadow-[0_0_15px_rgba(101,245,154,0.15)]"
+                      : "border-[rgba(160,190,170,0.14)] hover:border-[rgba(160,190,170,0.25)] bg-[#111B17]"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-bold text-gray-900 dark:text-white">{p.name}</span>
+                    <span className="text-xs font-bold text-[#F2F7F3]">{p.name}</span>
                     {p.badge && (
-                      <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${isSelected ? "bg-indigo-600 text-white" : "bg-gray-200 dark:bg-gray-800 text-gray-600 dark:text-gray-400"}`}>
+                      <span
+                        className={`text-[9px] font-bold px-2 py-0.5 rounded-[2px] ${
+                          isSelected
+                            ? "bg-[#65F59A] text-[#070B0A]"
+                            : "bg-[#0C1210] text-[#A0AEA5] border border-[rgba(160,190,170,0.15)]"
+                        }`}
+                      >
                         {p.badge}
                       </span>
                     )}
                   </div>
-                  <p className="text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2">{p.description}</p>
+                  <p className="text-[11px] text-[#A0AEA5] line-clamp-2">{p.description}</p>
                 </div>
               );
             })}
@@ -74,15 +79,15 @@ export function OCRSettings({ settings, onChange }: OCRSettingsProps) {
 
         {/* Recognition Mode */}
         <div>
-          <label className="text-xs font-semibold text-gray-700 dark:text-gray-300 flex items-center mb-3">
-            <FileCode2 className="w-4 h-4 text-indigo-500 mr-1.5" /> Recognition Mode
+          <label className="text-xs font-bold uppercase tracking-wider text-[#A0AEA5] flex items-center mb-3">
+            <FileCode2 className="w-3.5 h-3.5 text-[#38D9B0] mr-1.5" /> Recognition Mode
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
             {[
               { id: "printed", label: "Printed Book / Exam", desc: "Standard published text" },
-              { id: "handwritten", label: "Handwritten Notes", desc: "Teacher worksheets & scans" },
-              { id: "mixed", label: "Mixed Document", desc: "Text, diagrams & scribbles" },
-              { id: "math_dense", label: "Math & Equations", desc: "LaTeX, matrices & formulas" },
+              { id: "handwritten", label: "Handwritten Notes", desc: "Worksheets & scans" },
+              { id: "mixed", label: "Mixed Document", desc: "Text & diagrams" },
+              { id: "math_dense", label: "Math & Equations", desc: "LaTeX & matrices" },
             ].map((m) => {
               const isSel = settings.mode === m.id;
               return (
@@ -90,30 +95,32 @@ export function OCRSettings({ settings, onChange }: OCRSettingsProps) {
                   key={m.id}
                   type="button"
                   onClick={() => handleModeChange(m.id as OCRRecognitionMode)}
-                  className={`p-3 rounded-xl border text-left transition-all ${
+                  className={`p-3 rounded-[5px] border text-left transition-all ${
                     isSel
-                      ? "border-indigo-600 bg-indigo-600 text-white shadow-sm"
-                      : "border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-50"
+                      ? "border-[#65F59A] bg-[#65F59A] text-[#070B0A] shadow-sm font-bold"
+                      : "border-[rgba(160,190,170,0.14)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
                   }`}
                 >
                   <div className="text-xs font-bold">{m.label}</div>
-                  <div className={`text-[10px] mt-0.5 ${isSel ? "text-indigo-100" : "text-gray-400"}`}>{m.desc}</div>
+                  <div className={`text-[10px] mt-0.5 ${isSel ? "text-[#070B0A]/80 font-medium" : "text-[#69786F]"}`}>
+                    {m.desc}
+                  </div>
                 </button>
               );
             })}
           </div>
         </div>
 
-        {/* Language Selection */}
+        {/* Language Selection & Automations */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="text-xs font-semibold text-gray-700 dark:text-gray-300 flex items-center mb-2">
-              <Languages className="w-4 h-4 text-indigo-500 mr-1.5" /> OCR Target Language
+            <label className="text-xs font-bold uppercase tracking-wider text-[#A0AEA5] flex items-center mb-2">
+              <Languages className="w-3.5 h-3.5 text-[#65F59A] mr-1.5" /> OCR Target Language
             </label>
             <select
               value={settings.language}
               onChange={(e) => handleLanguageChange(e.target.value as OCRLanguage)}
-              className="w-full text-xs p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-500"
+              className="w-full text-xs font-mono p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] focus:border-[#65F59A] focus:outline-none"
             >
               <option value="auto">Auto-detect Language</option>
               <option value="en">English (US / UK)</option>
@@ -126,8 +133,8 @@ export function OCRSettings({ settings, onChange }: OCRSettingsProps) {
           </div>
 
           <div>
-            <label className="text-xs font-semibold text-gray-700 dark:text-gray-300 flex items-center mb-2">
-              <Sparkles className="w-4 h-4 text-indigo-500 mr-1.5" /> AI Automation Options
+            <label className="text-xs font-bold uppercase tracking-wider text-[#A0AEA5] flex items-center mb-2">
+              <Sparkles className="w-3.5 h-3.5 text-[#38D9B0] mr-1.5" /> Pedagogical Automations
             </label>
             <div className="space-y-2">
               {[
@@ -135,12 +142,15 @@ export function OCRSettings({ settings, onChange }: OCRSettingsProps) {
                 { key: "autoTopicDetection", label: "Auto-assign Subject & Topic Taxonomy" },
                 { key: "autoDifficultyDetection", label: "Auto-estimate Difficulty (Easy/Med/Hard)" },
               ].map((opt) => (
-                <label key={opt.key} className="flex items-center space-x-2 text-xs text-gray-700 dark:text-gray-300 cursor-pointer">
+                <label
+                  key={opt.key}
+                  className="flex items-center space-x-2.5 text-xs text-[#A0AEA5] hover:text-[#F2F7F3] cursor-pointer"
+                >
                   <input
                     type="checkbox"
                     checked={Boolean(settings[opt.key as keyof OCRJobSettings])}
                     onChange={() => toggleOption(opt.key as keyof OCRJobSettings)}
-                    className="rounded text-indigo-600 focus:ring-indigo-500 h-4 w-4"
+                    className="rounded-[2px] border-[rgba(160,190,170,0.3)] bg-[#111B17] text-[#65F59A] focus:ring-0 h-4 w-4"
                   />
                   <span>{opt.label}</span>
                 </label>

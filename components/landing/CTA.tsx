@@ -23,20 +23,20 @@ export default function CTA() {
           <div className="space-y-4 max-w-2xl relative z-10">
             <div className="inline-flex items-center space-x-2">
               <span className="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-[#17251E] text-[#65F59A] border border-[#65F59A]/30 font-bold shadow-[0_0_10px_rgba(101,245,154,0.2)]">
-                ENTER THE ARENA
+                THE COGNITIVE DORMITORY
               </span>
               <span className="font-mono text-[11px] text-[#A0AEA5]">
-                // IMMERSIVE FUTURE OS
+                // UNIVERSAL QUIZ HABITAT
               </span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F2F7F3] leading-tight">
-              Your Next Breakthrough <br />
+              Your Next Cognitive Leap <br />
               <span className="bg-gradient-to-r from-[#65F59A] to-[#38D9B0] bg-clip-text text-transparent">
                 Starts Right Here.
               </span>
             </h2>
             <p className="text-sm text-[#A0AEA5] leading-relaxed font-normal max-w-xl">
-              Step into the live battle arena, cook up instant quizzes from your notes, and level up with your dorm squad.
+              Step into live decathlon arenas, synthesize adaptive assessments from your curriculum, and accelerate your intellectual quotient with fellow scholars.
             </p>
           </div>
 

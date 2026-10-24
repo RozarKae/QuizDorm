@@ -100,8 +100,8 @@ export default function TeacherPage() {
       actionLabel: "Manage Classes",
     },
     {
-      title: "AI Quiz Studio",
-      description: "Turn your notes, textbook snaps, or PDFs into fire quizzes in seconds.",
+      title: "Omni-Curriculum AI Studio",
+      description: "Synthesize high-rigor multi-format assessments from syllabus notes or PDFs in seconds.",
       href: "/dashboard/quizzes/create",
       icon: <Sparkles className="h-4 w-4 text-[#65F59A]" />,
       actionLabel: "Launch Studio",
@@ -146,7 +146,7 @@ export default function TeacherPage() {
     },
     {
       id: "2",
-      title: "New quiz cooked up: Organic Chemistry Basics",
+      title: "New quiz published: Organic Chemistry Basics",
       description: "Quiz generated from notes with 25 questions across 4 formats.",
       time: "2 hours ago",
       type: "draft",
@@ -177,22 +177,22 @@ export default function TeacherPage() {
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
-                Teacher & Mentor Studio
+                Faculty Mentor Console
               </span>
               <span className="font-mono text-[11px] text-[#69786F]">v2.6 OS</span>
             </div>
             <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#F2F7F3]">
-              Teacher & Class Dashboard
+              Faculty &amp; Cohort Command Console
             </h1>
             <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-2xl leading-relaxed">
-              Manage your classes, host live quiz battles, see student progress & weak spots, and cook up quizzes with QuizDorm AI.
+              Oversee academic classrooms, host synchronized battle arenas, track cohort cognitive trajectories, and synthesize assessments with QuizDorm Intelligence.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link href="/dashboard/quizzes/create">
               <Button className="h-10 px-5 rounded-[4px] bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_20px_rgba(101,245,154,0.25)]">
                 <Sparkles className="mr-2 h-3.5 w-3.5" />
-                Cook Up Quiz
+                Synthesize Assessment
               </Button>
             </Link>
             <Link href="/dashboard/competitions">

@@ -1,4 +1,4 @@
-import { UserRole } from "@/lib/types/user";
+import { UserRole, normalizeCanonicalRole } from "@/lib/types/user";
 
 export type SessionStatus = "active" | "idle" | "revoked" | "flagged";
 export type SessionRiskScore = "low" | "medium" | "high" | "critical";
@@ -26,7 +26,7 @@ export interface AdminSession {
   jwtExpiresAt: string;
 }
 
-const STORAGE_KEY_ADMIN_SESSIONS = "quizdorm_admin_sessions_db";
+const STORAGE_KEY_ADMIN_SESSIONS = "quizdorm_admin_sessions_db_v2";
 
 export const SEED_ADMIN_SESSIONS: AdminSession[] = [
   {
@@ -72,11 +72,11 @@ export const SEED_ADMIN_SESSIONS: AdminSession[] = [
     jwtExpiresAt: "In 6 days 21 hours",
   },
   {
-    id: "ses-school-01",
-    userId: "usr-school-01",
+    id: "ses-institution-01",
+    userId: "usr-institution-01",
     userName: "Govt Model & Matriculation Admin",
-    userEmail: "school@quizdorm.com",
-    userRole: "school",
+    userEmail: "institution@quizdorm.com",
+    userRole: "institution",
     organizationName: "Government Model Higher Secondary School",
     deviceCategory: "desktop",
     browser: "Microsoft Edge 126.0",
@@ -93,11 +93,11 @@ export const SEED_ADMIN_SESSIONS: AdminSession[] = [
     jwtExpiresAt: "In 6 days 23 hours",
   },
   {
-    id: "ses-teacher-01",
-    userId: "usr-teacher-01",
+    id: "ses-handler-01",
+    userId: "usr-handler-01",
     userName: "Prof. Sarah Jenkins",
-    userEmail: "teacher@quizdorm.com",
-    userRole: "teacher",
+    userEmail: "handler@quizdorm.com",
+    userRole: "handler",
     organizationName: "Government Model Higher Secondary School",
     deviceCategory: "desktop",
     browser: "Mozilla Firefox 130.0",
@@ -114,11 +114,11 @@ export const SEED_ADMIN_SESSIONS: AdminSession[] = [
     jwtExpiresAt: "In 6 days 22 hours",
   },
   {
-    id: "ses-teacher-02",
-    userId: "usr-teacher-02",
+    id: "ses-handler-02",
+    userId: "usr-handler-02",
     userName: "Dr. Rajesh Kumar",
     userEmail: "rajesh.kumar@saidapetmodel.edu.in",
-    userRole: "teacher",
+    userRole: "handler",
     organizationName: "Government Model Higher Secondary School",
     deviceCategory: "mobile",
     browser: "Chrome Mobile 128.0",
@@ -135,11 +135,11 @@ export const SEED_ADMIN_SESSIONS: AdminSession[] = [
     jwtExpiresAt: "In 6 days 19 hours",
   },
   {
-    id: "ses-student-01",
-    userId: "usr-student-01",
+    id: "ses-member-01",
+    userId: "usr-member-01",
     userName: "Karthik Rajendran",
-    userEmail: "student@quizdorm.com",
-    userRole: "student",
+    userEmail: "member@quizdorm.com",
+    userRole: "member",
     organizationName: "Government Model Higher Secondary School",
     deviceCategory: "desktop",
     browser: "Google Chrome 128.0",
@@ -156,11 +156,11 @@ export const SEED_ADMIN_SESSIONS: AdminSession[] = [
     jwtExpiresAt: "In 6 days 23 hours",
   },
   {
-    id: "ses-student-02",
-    userId: "usr-student-01",
+    id: "ses-member-02",
+    userId: "usr-member-01",
     userName: "Karthik Rajendran",
-    userEmail: "student@quizdorm.com",
-    userRole: "student",
+    userEmail: "member@quizdorm.com",
+    userRole: "member",
     organizationName: "Government Model Higher Secondary School",
     deviceCategory: "mobile",
     browser: "Mobile Safari 17.4",
@@ -177,11 +177,11 @@ export const SEED_ADMIN_SESSIONS: AdminSession[] = [
     jwtExpiresAt: "In 6 days 23 hours",
   },
   {
-    id: "ses-student-03",
-    userId: "usr-student-01",
+    id: "ses-member-03",
+    userId: "usr-member-01",
     userName: "Karthik Rajendran",
-    userEmail: "student@quizdorm.com",
-    userRole: "student",
+    userEmail: "member@quizdorm.com",
+    userRole: "member",
     organizationName: "Government Model Higher Secondary School",
     deviceCategory: "desktop",
     browser: "Safari 17.1",
@@ -198,11 +198,11 @@ export const SEED_ADMIN_SESSIONS: AdminSession[] = [
     jwtExpiresAt: "In 5 days 18 hours",
   },
   {
-    id: "ses-student-04",
-    userId: "usr-student-02",
+    id: "ses-member-04",
+    userId: "usr-member-02",
     userName: "Ananya Sharma",
     userEmail: "ananya.sharma@delhipublic.org",
-    userRole: "student",
+    userRole: "member",
     organizationName: "Delhi Public Global Academy",
     deviceCategory: "desktop",
     browser: "Google Chrome 127.0",
@@ -219,11 +219,32 @@ export const SEED_ADMIN_SESSIONS: AdminSession[] = [
     jwtExpiresAt: "In 6 days 20 hours",
   },
   {
+    id: "ses-subscriber-01",
+    userId: "usr-subscriber-01",
+    userName: "Devon Reed",
+    userEmail: "subscriber@quizdorm.com",
+    userRole: "subscriber",
+    organizationName: "Public Subscriber Network",
+    deviceCategory: "desktop",
+    browser: "Google Chrome 128.0",
+    os: "macOS Sonoma",
+    ipAddress: "142.250.190.46",
+    location: "Mountain View, CA, US",
+    status: "active",
+    riskScore: "low",
+    loginAt: "12 mins ago",
+    lastActiveAt: "Just now",
+    isCurrentSession: false,
+    userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+    clientFingerprint: "fp-sha256-sub998811",
+    jwtExpiresAt: "In 6 days 23 hours",
+  },
+  {
     id: "ses-flagged-09",
     userId: "usr-flagged-09",
     userName: "Automated Rogue Scraper",
     userEmail: "bot-spammer@crawler-network.net",
-    userRole: "student",
+    userRole: "subscriber",
     organizationName: "Unverified Public",
     deviceCategory: "bot",
     browser: "Headless Chrome 124 (Automated Script)",
@@ -250,7 +271,11 @@ export class AdminSessionManager {
         localStorage.setItem(STORAGE_KEY_ADMIN_SESSIONS, JSON.stringify(SEED_ADMIN_SESSIONS));
         return SEED_ADMIN_SESSIONS;
       }
-      return JSON.parse(saved);
+      const parsed: AdminSession[] = JSON.parse(saved);
+      return parsed.map((s) => ({
+        ...s,
+        userRole: normalizeCanonicalRole(s.userRole),
+      }));
     } catch {
       return SEED_ADMIN_SESSIONS;
     }

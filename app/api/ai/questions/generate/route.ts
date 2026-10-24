@@ -1,9 +1,32 @@
 import { NextResponse } from "next/server";
 import { QuestionIntelligenceService } from "@/lib/ai/services/questionIntelligenceService";
+import { checkRateLimit } from "@/lib/security/rateLimiter";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
+  // 1. Rate Limiting: 25 requests per minute per IP
+  const rateLimit = checkRateLimit(request, {
+    keyPrefix: "ai-question-generate",
+    maxRequests: 25,
+    windowMs: 60 * 1000,
+  });
+
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: `Rate limit exceeded. Please wait ${rateLimit.retryAfterSeconds} seconds before requesting AI question generation.`,
+        errorCode: "RATE_LIMIT_EXCEEDED",
+        retryAfter: rateLimit.retryAfterSeconds,
+      },
+      {
+        status: 429,
+        headers: rateLimit.headers,
+      }
+    );
+  }
+
   try {
     const body = await request.json().catch(() => null);
     if (!body || typeof body !== "object") {

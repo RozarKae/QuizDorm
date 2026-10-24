@@ -17,7 +17,7 @@ import { toast } from "sonner";
 
 export default function RegisterPage() {
   const router = useRouter();
-  const [role, setRole] = useState("student");
+  const [role, setRole] = useState("subscriber");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -155,9 +155,10 @@ export default function RegisterPage() {
               onChange={(e) => setRole(e.target.value)}
               className="flex h-10 w-full rounded-[3px] border border-[rgba(160,190,170,0.18)] bg-[#111B17] px-3 py-2 text-xs font-mono text-[#F2F7F3] focus-visible:ring-1 focus-visible:ring-[#65F59A] focus-visible:border-[#65F59A] outline-none cursor-pointer"
             >
-              <option value="student" className="bg-[#111B17] text-[#F2F7F3]">Student Account</option>
-              <option value="teacher" className="bg-[#111B17] text-[#F2F7F3]">Teacher / Instructor</option>
-              <option value="school" className="bg-[#111B17] text-[#F2F7F3]">School / Campus Admin</option>
+              <option value="subscriber" className="bg-[#111B17] text-[#F2F7F3]">Subscriber (Free & Pro Personal Learner)</option>
+              <option value="member" className="bg-[#111B17] text-[#F2F7F3]">Member (Campus & Dorm Student)</option>
+              <option value="handler" className="bg-[#111B17] text-[#F2F7F3]">Handler (Teacher / Course Faculty)</option>
+              <option value="institution" className="bg-[#111B17] text-[#F2F7F3]">Institution (School / University Admin)</option>
             </select>
           </div>
 

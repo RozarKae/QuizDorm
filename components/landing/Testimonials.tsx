@@ -9,7 +9,7 @@ import SectionDivider from "@/components/ui/section-divider";
 const testimonials = [
   {
     quote:
-      "QuizDorm has fundamentally transformed our Samacheer Kalvi and NEET/JEE preparatory training. Our students from Saidapet to across Chennai battle in live timed arena rounds, and the instant brain stats pinpoint weak spots right away.",
+      "QuizDorm has fundamentally transformed our Samacheer Kalvi and NEET/JEE preparatory training. Our scholars from Saidapet to across Chennai battle in synchronized decathlon rounds, and the instant cognitive telemetry pinpoints conceptual blindspots right away.",
     author: "Dr. K. Saravanan",
     community: "Hindu Community",
     role: "Headmaster & P.G. Assistant",
@@ -20,7 +20,7 @@ const testimonials = [
   },
   {
     quote:
-      "The real-time live arena has elevated our inter-campus competitions across Kochi and Central Kerala. Hosting high-velocity physics and algorithmic tournaments with live podium shifts provides an electric campus experience.",
+      "The real-time live arena has elevated our inter-campus competitions across Kochi and Central Kerala. Hosting high-velocity physics and algorithmic decathlons with live podium shifts provides an electric campus experience.",
     author: "Mary Thomas",
     community: "Christian Community",
     role: "Vice Principal & Senior Academic Dean",
@@ -31,7 +31,7 @@ const testimonials = [
   },
   {
     quote:
-      "Implementing QuizDorm enabled our Saurashtra community students in Madurai to master competitive mathematics and state-rank assessment modules. The automated question generation and bilingual clarity are unparalleled.",
+      "Implementing QuizDorm enabled our Saurashtra community scholars in Madurai to master competitive mathematics and state-rank assessment modules. The automated question synthesis and cognitive clarity are unparalleled.",
     author: "T. S. Soundararajan",
     community: "Saurashtrian Community (Pattunool)",
     role: "Academic Coordinator & Senior Mentor",
@@ -42,7 +42,7 @@ const testimonials = [
   },
   {
     quote:
-      "From Malappuram to Ernakulam, our students engage daily with timed question banks. The platform founder RK Akbar's vision of bringing world-class assessment tech to Kerala's schools has yielded record distinctions in public exams.",
+      "From Malappuram to Ernakulam, our scholars engage daily with timed decathlons and Knowledge Matrix quests. The platform founder RK Akbar's vision of bringing world-class assessment tech to Kerala's schools has yielded record distinctions in public exams.",
     author: "Dr. Shahul Hameed",
     community: "Muslim Community",
     role: "Director of Academics",

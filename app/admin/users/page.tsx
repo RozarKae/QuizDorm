@@ -28,6 +28,7 @@ import {
   Lock,
   ChevronRight,
   UserPlus,
+  Database,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -39,7 +40,8 @@ import {
   UserStatus,
   AuthProviderType,
 } from "@/lib/admin/userManager";
-import { UserRole } from "@/lib/types/user";
+import { UserRole, getRoleDisplayName } from "@/lib/types/user";
+import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
 
 export default function AdminUsersPage() {
   const [users, setUsers] = useState<AdminUser[]>([]);
@@ -59,14 +61,33 @@ export default function AdminUsersPage() {
   // New User Form State
   const [newName, setNewName] = useState("");
   const [newEmail, setNewEmail] = useState("");
-  const [newRole, setNewRole] = useState<UserRole>("student");
-  const [newOrg, setNewOrg] = useState("Government Model Higher Secondary School");
+  const [newRole, setNewRole] = useState<UserRole>("subscriber");
+  const [newOrg, setNewOrg] = useState("Public Subscriber Community");
   const [newDept, setNewDept] = useState("General Department");
+
+  // Platform Governance State
+  const [instQuestionAllowed, setInstQuestionAllowed] = useState(true);
 
   // Load initial data
   useEffect(() => {
     setUsers(AdminUserManager.getUsers());
+    setInstQuestionAllowed(GovernanceSettingsManager.getSettings().institutionQuestionBankAdding);
   }, []);
+
+  const handleToggleInstitutionQuestionAdding = () => {
+    const nextVal = !instQuestionAllowed;
+    GovernanceSettingsManager.setInstitutionQuestionAdding(nextVal);
+    setInstQuestionAllowed(nextVal);
+    if (nextVal) {
+      toast.success("Institution Question Adding ENABLED", {
+        description: "Institutions can now create and import Question Bank items.",
+      });
+    } else {
+      toast.warning("Institution Question Adding DISABLED", {
+        description: "Only Platform Superadmin can now create or import questions. Institutions are blocked.",
+      });
+    }
+  };
 
   const refreshList = () => {
     setUsers(AdminUserManager.getUsers());
@@ -82,7 +103,12 @@ export default function AdminUsersPage() {
       (u.organizationName && u.organizationName.toLowerCase().includes(query)) ||
       (u.department && u.department.toLowerCase().includes(query));
 
-    const matchesRole = roleFilter === "all" || u.role === roleFilter;
+    const matchesRole =
+      roleFilter === "all" ||
+      u.role === roleFilter ||
+      (roleFilter === "member" && u.role === "student") ||
+      (roleFilter === "handler" && u.role === "teacher") ||
+      (roleFilter === "institution" && u.role === "school");
     const matchesStatus = statusFilter === "all" || u.status === statusFilter;
     const matchesProvider =
       providerFilter === "all" || u.authProvider === providerFilter;
@@ -132,7 +158,7 @@ export default function AdminUsersPage() {
     const res = AdminUserManager.resetPassword(user.id);
     setResetCodeInfo({ user, code: res.tempCode });
     toast.info(`Recovery Key Generated for ${user.email}`, {
-      description: `Temporary bypass code: ${res.tempCode}`,
+      description: `Temporary recovery code: ${res.tempCode}`,
     });
   };
 
@@ -182,8 +208,19 @@ export default function AdminUsersPage() {
   // Metrics Counters
   const totalCount = users.length;
   const adminCount = users.filter((u) => u.role === "admin").length;
-  const educatorCount = users.filter((u) => u.role === "teacher" || u.role === "school").length;
-  const studentCount = users.filter((u) => u.role === "student").length;
+  const facultyCount = users.filter(
+    (u) =>
+      u.role === "handler" ||
+      u.role === "teacher" ||
+      u.role === "institution" ||
+      u.role === "school"
+  ).length;
+  const memberSubscriberCount = users.filter(
+    (u) =>
+      u.role === "member" ||
+      u.role === "student" ||
+      u.role === "subscriber"
+  ).length;
   const suspendedCount = users.filter((u) => u.status === "suspended").length;
   const activeSessionsTotal = users.reduce((acc, u) => acc + u.activeSessionsCount, 0);
 
@@ -209,7 +246,22 @@ export default function AdminUsersPage() {
             </p>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            <Button
+              type="button"
+              variant="outline"
+              onClick={handleToggleInstitutionQuestionAdding}
+              className={`h-10 px-4 rounded-[4px] font-mono text-xs font-bold tracking-wider uppercase border transition-all ${
+                instQuestionAllowed
+                  ? "bg-[#111B17] border-[rgba(56,217,176,0.3)] text-[#38D9B0] hover:bg-[rgba(56,217,176,0.1)]"
+                  : "bg-[rgba(248,113,113,0.12)] border-[rgba(248,113,113,0.4)] text-[#F87171] hover:bg-[rgba(248,113,113,0.2)]"
+              }`}
+              title="Admin Rule: Toggle whether Institutions can add/import Question Bank items"
+            >
+              <Database className="mr-2 h-3.5 w-3.5" />
+              Inst. Q-Bank: {instQuestionAllowed ? "Adding Active" : "Disabled by Admin"}
+            </Button>
+
             <Button
               onClick={() => setIsCreateOpen(true)}
               className="h-10 px-5 rounded-[4px] bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_20px_rgba(101,245,154,0.25)]"
@@ -256,15 +308,15 @@ export default function AdminUsersPage() {
         <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
           <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
-              Educators & Schools
+              Institutions & Handlers
             </span>
             <School className="h-4 w-4 text-[#38D9B0]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
             <p className="font-display text-2xl font-extrabold text-[#38D9B0] tabular-nums">
-              {educatorCount}
+              {facultyCount}
             </p>
-            <span className="font-mono text-[10px] text-[#A0AEA5]">Faculty Seats</span>
+            <span className="font-mono text-[10px] text-[#A0AEA5]">Faculty / Admins</span>
           </div>
         </div>
 
@@ -323,9 +375,10 @@ export default function AdminUsersPage() {
             >
               <option value="all">All Roles</option>
               <option value="admin">Superadmin</option>
-              <option value="school">School Admin</option>
-              <option value="teacher">Teacher</option>
-              <option value="student">Student</option>
+              <option value="institution">Institution</option>
+              <option value="handler">Handler</option>
+              <option value="member">Member</option>
+              <option value="subscriber">Subscriber</option>
             </select>
           </div>
 
@@ -477,17 +530,20 @@ export default function AdminUsersPage() {
                           className={`text-xs px-2 py-1 rounded-[3px] font-mono font-bold uppercase tracking-wider border cursor-pointer ${
                             user.role === "admin"
                               ? "bg-[rgba(101,245,154,0.12)] text-[#65F59A] border-[rgba(101,245,154,0.3)]"
-                              : user.role === "school"
+                              : user.role === "institution" || user.role === "school"
                               ? "bg-[rgba(56,217,176,0.12)] text-[#38D9B0] border-[rgba(56,217,176,0.3)]"
-                              : user.role === "teacher"
+                              : user.role === "handler" || user.role === "teacher"
                               ? "bg-[rgba(251,191,36,0.12)] text-[#FBBF24] border-[rgba(251,191,36,0.3)]"
-                              : "bg-[#111B17] text-[#A0AEA5] border-[rgba(160,190,170,0.15)]"
+                              : user.role === "member" || user.role === "student"
+                              ? "bg-[rgba(101,245,154,0.08)] text-[#65F59A] border-[rgba(101,245,154,0.2)]"
+                              : "bg-[rgba(96,165,250,0.12)] text-[#60A5FA] border-[rgba(96,165,250,0.3)]"
                           }`}
                         >
                           <option value="admin">Superadmin</option>
-                          <option value="school">School Admin</option>
-                          <option value="teacher">Teacher</option>
-                          <option value="student">Student</option>
+                          <option value="institution">Institution</option>
+                          <option value="handler">Handler</option>
+                          <option value="member">Member</option>
+                          <option value="subscriber">Subscriber</option>
                         </select>
                       </td>
 
@@ -668,6 +724,37 @@ export default function AdminUsersPage() {
               </div>
             </div>
 
+            {/* Admin Role Control Section */}
+            <div className="p-3.5 rounded-[4px] bg-[#111B17] border border-[rgba(101,245,154,0.25)] space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#65F59A] font-bold">
+                  Admin Authority: Change Assigned Role
+                </span>
+                <span className="text-[10px] font-mono text-[#A0AEA5]">
+                  Current: <strong className="text-[#F2F7F3] uppercase">{getRoleDisplayName(selectedUser.role)}</strong>
+                </span>
+              </div>
+              <div className="grid grid-cols-5 gap-1.5 pt-1">
+                {(["subscriber", "member", "handler", "institution", "admin"] as const).map((r) => {
+                  const isCur = selectedUser.role === r;
+                  return (
+                    <button
+                      key={r}
+                      type="button"
+                      onClick={() => handleRoleChange(selectedUser, r)}
+                      className={`px-2 py-1.5 rounded-[3px] font-mono text-[10px] uppercase font-bold transition-all border ${
+                        isCur
+                          ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A] shadow-[0_0_8px_rgba(101,245,154,0.3)]"
+                          : "bg-[#0C1210] text-[#A0AEA5] hover:text-[#F2F7F3] border-[rgba(160,190,170,0.18)] hover:border-[#65F59A]/40"
+                      }`}
+                    >
+                      {r === "subscriber" ? "Sub" : r === "member" ? "Member" : r === "handler" ? "Handler" : r === "institution" ? "Inst" : "Admin"}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             <div className="flex items-center justify-between pt-3 border-t border-[rgba(160,190,170,0.12)]">
               <Button
                 variant="outline"
@@ -753,9 +840,10 @@ export default function AdminUsersPage() {
                     onChange={(e) => setNewRole(e.target.value as UserRole)}
                     className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
                   >
-                    <option value="student">Student</option>
-                    <option value="teacher">Teacher</option>
-                    <option value="school">School Admin</option>
+                    <option value="subscriber">Subscriber</option>
+                    <option value="member">Member</option>
+                    <option value="handler">Handler</option>
+                    <option value="institution">Institution</option>
                     <option value="admin">Superadmin</option>
                   </select>
                 </div>
@@ -814,7 +902,7 @@ export default function AdminUsersPage() {
             </div>
 
             <p className="text-xs text-[#A0AEA5] leading-relaxed">
-              A temporary password bypass token has been generated for{" "}
+              A one-time emergency access passcode has been generated for{" "}
               <strong className="text-[#F2F7F3]">{resetCodeInfo.user.email}</strong>.
             </p>
 

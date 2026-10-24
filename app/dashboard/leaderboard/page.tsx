@@ -47,13 +47,13 @@ export default function LeaderboardPage() {
         <div>
           <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5] mb-1">
             <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
-            <span>GLOBAL RANKINGS // ARENA LEADERBOARD</span>
+            <span>GLOBAL COGNITIVE STANDINGS // PODIUM OF INTELLECT</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-[#F2F7F3] flex items-center">
-            <Trophy className="w-6 h-6 text-[#65F59A] mr-2" /> Global Arena Leaderboard
+            <Trophy className="w-6 h-6 text-[#65F59A] mr-2" /> Podium of Intellect
           </h1>
           <p className="text-xs font-mono text-[#A0AEA5] mt-1">
-            Verified rankings across dorm battles, live arenas, and weekly campus tournaments.
+            Verified cognitive rankings, speed percentiles, and Olympiad standings across the QuizDorm global network.
           </p>
         </div>
 
@@ -142,7 +142,7 @@ export default function LeaderboardPage() {
           <Input
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search student or school..."
+            placeholder="Search scholar, callsign, or academy..."
             className="pl-9 h-9 bg-[#111B17] text-xs font-mono rounded-[4px] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] focus:border-[#65F59A]"
           />
         </div>
@@ -152,10 +152,10 @@ export default function LeaderboardPage() {
             <thead className="bg-[#111B17] text-[10px] font-mono uppercase font-bold tracking-wider text-[#69786F] border-b border-[rgba(160,190,170,0.12)]">
               <tr>
                 <th className="py-3 px-4">Rank</th>
-                <th className="py-3 px-4">Student</th>
-                <th className="py-3 px-4">School / Institute</th>
-                <th className="py-3 px-4">Quizzes Taken</th>
-                <th className="py-3 px-4 text-right">Score</th>
+                <th className="py-3 px-4">Scholar / Contender</th>
+                <th className="py-3 px-4">Academy / Institution</th>
+                <th className="py-3 px-4">Cognitive Sprints</th>
+                <th className="py-3 px-4 text-right">IQ Telemetry Score</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[rgba(160,190,170,0.08)]">

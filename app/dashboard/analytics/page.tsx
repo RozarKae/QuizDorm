@@ -18,28 +18,28 @@ export default function AnalyticsHubPage() {
 
   const metricsMap = {
     SuperAdmin: [
-      { title: "Total Organizations", value: "48", change: "+12%", trend: "up" as const, timeframe: "vs last month" },
-      { title: "Active Users", value: "18,420", change: "+24%", trend: "up" as const, timeframe: "vs last month" },
-      { title: "Quizzes Conducted", value: "3,120", change: "+8%", trend: "up" as const, timeframe: "vs last month" },
-      { title: "System Health", value: "99.9%", change: "Stable", trend: "neutral" as const, timeframe: "Uptime" },
+      { title: "Total Institutions", value: "48", change: "+12%", trend: "up" as const, timeframe: "vs last month" },
+      { title: "Active Scholars & Faculty", value: "18,420", change: "+24%", trend: "up" as const, timeframe: "vs last month" },
+      { title: "Decathlons & Quests", value: "3,120", change: "+8%", trend: "up" as const, timeframe: "vs last month" },
+      { title: "Cognitive Core Health", value: "99.9%", change: "Optimal", trend: "neutral" as const, timeframe: "Uptime" },
     ],
     Organization: [
-      { title: "Active Teachers", value: "38", change: "Stable", trend: "neutral" as const, timeframe: "This term" },
-      { title: "Total Students", value: "940", change: "+4%", trend: "up" as const, timeframe: "vs last term" },
-      { title: "Quiz Completion Rate", value: "92%", change: "+3%", trend: "up" as const, timeframe: "vs last month" },
-      { title: "Avg School Score", value: "84%", change: "+2%", trend: "up" as const, timeframe: "vs last test" },
+      { title: "Faculty Mentors", value: "38", change: "Stable", trend: "neutral" as const, timeframe: "This term" },
+      { title: "Enrolled Scholars", value: "940", change: "+4%", trend: "up" as const, timeframe: "vs last term" },
+      { title: "Decathlon Completion", value: "92%", change: "+3%", trend: "up" as const, timeframe: "vs last month" },
+      { title: "Academy Mastery Quotient", value: "84%", change: "+2%", trend: "up" as const, timeframe: "vs last sprint" },
     ],
     Teacher: [
-      { title: "My Classroom Students", value: "128", change: "4 Classes", trend: "neutral" as const, timeframe: "Active term" },
-      { title: "Quiz Assignments", value: "14", change: "+2 new", trend: "up" as const, timeframe: "This month" },
-      { title: "Pending Grading", value: "8", change: "Action Needed", trend: "down" as const, timeframe: "Homework" },
-      { title: "Class Pass Rate", value: "88%", change: "+4%", trend: "up" as const, timeframe: "vs last quiz" },
+      { title: "Cohort Scholars", value: "128", change: "4 Cohorts", trend: "neutral" as const, timeframe: "Active term" },
+      { title: "Assessment Sprints", value: "14", change: "+2 new", trend: "up" as const, timeframe: "This month" },
+      { title: "Pending Evaluation", value: "8", change: "Action Needed", trend: "down" as const, timeframe: "Assignments" },
+      { title: "Cohort Pass Rate", value: "88%", change: "+4%", trend: "up" as const, timeframe: "vs last sprint" },
     ],
     Student: [
-      { title: "Quizzes Completed", value: "32", change: "+4", trend: "up" as const, timeframe: "This week" },
-      { title: "My Average Score", value: "88%", change: "+1.2%", trend: "up" as const, timeframe: "Grade 12 rank" },
-      { title: "Study Duration", value: "12.5 hrs", change: "Active", trend: "neutral" as const, timeframe: "This week" },
-      { title: "Class Rank", value: "#3", change: "+2 ranks", trend: "up" as const, timeframe: "Top 5%" },
+      { title: "Cognitive Sprints", value: "32", change: "+4", trend: "up" as const, timeframe: "This week" },
+      { title: "Mastery Quotient", value: "88%", change: "+1.2%", trend: "up" as const, timeframe: "Cohort rank" },
+      { title: "Cognitive Immersion", value: "12.5 hrs", change: "Active", trend: "neutral" as const, timeframe: "This week" },
+      { title: "Podium Standings", value: "#3", change: "+2 ranks", trend: "up" as const, timeframe: "Top 5%" },
     ],
   };
 
@@ -98,13 +98,13 @@ export default function AnalyticsHubPage() {
           <div className="space-y-1">
             <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5]">
               <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse" />
-              <span>BRAIN STATS // SQUAD PERFORMANCE</span>
+              <span>COGNITIVE TELEMETRY // COHORT & SCHOLAR ANALYTICS</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-display font-bold tracking-tight text-[#F2F7F3] flex items-center">
-              <BarChart3 className="w-6 h-6 text-[#65F59A] mr-2.5" /> Brain Stats & Analytics
+              <BarChart3 className="w-6 h-6 text-[#65F59A] mr-2.5" /> Cognitive IQ Telemetry & Analytics
             </h1>
             <p className="text-xs text-[#A0AEA5]">
-              Real-time study squad stats, weak spot breakdowns, and exam readiness scores across your dorm.
+              Real-time cognitive metrics, conceptual weakness diagnostics, and Olympiad readiness telemetry across your cohort.
             </p>
           </div>
 
@@ -113,12 +113,12 @@ export default function AnalyticsHubPage() {
               value={rolePerspective}
               onChange={(e) => setRolePerspective(e.target.value as any)}
               options={[
-                { value: "Teacher", label: "Teacher Perspective" },
-                { value: "Student", label: "Student Perspective" },
-                { value: "Organization", label: "Organization Admin Perspective" },
-                { value: "SuperAdmin", label: "Platform Super Admin View" },
+                { value: "Teacher", label: "Faculty Mentor Perspective" },
+                { value: "Student", label: "Scholar Perspective" },
+                { value: "Organization", label: "Academy Directorate View" },
+                { value: "SuperAdmin", label: "Super Admin Command OS View" },
               ]}
-              className="text-xs font-mono font-medium w-56 rounded-xl border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#F2F7F3]"
+              className="text-xs font-mono font-medium w-64 rounded-xl border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#F2F7F3]"
             />
 
             <Button

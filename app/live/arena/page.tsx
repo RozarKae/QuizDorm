@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import Link from "next/link";
 import { JoinArenaForm } from "@/components/competitions/JoinArenaForm";
 import { AudioToggle } from "@/components/audio/AudioToggle";
@@ -11,60 +11,58 @@ import {
   Users,
   Clock,
   ArrowRight,
-  Sparkles,
-  ShieldCheck,
-  Flame,
   Radio,
   PlusCircle,
   Home,
-  LayoutDashboard,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const ACTIVE_FEATURED_ARENAS = [
-  {
-    code: "QD-8492",
-    title: "Tamil Nadu & Kerala Inter-District Science Olympiad 2026",
-    host: "TN & Kerala Science Olympiad Council",
-    subject: "Physics, Chemistry & Advanced Biology",
-    status: "LIVE NOW",
-    statusVariant: "live",
-    currentRound: "Round 03 of 10",
-    participantsCount: 840,
-    timeRemaining: "07s per question",
-    prize: "Gold Trophy + Scholarship",
-    badge: "Olympiad Division A",
-  },
-  {
-    code: "QD-3104",
-    title: "Kerala State Algorithmic & Coding Decathlon",
-    host: "Kerala State IT & Algorithmic League (Kochi)",
-    subject: "Algorithms & Data Structures",
-    status: "LOBBY OPEN",
-    statusVariant: "lobby",
-    currentRound: "Synchronizing Contenders",
-    participantsCount: 310,
-    timeRemaining: "Launching shortly",
-    prize: "State IT Trophy + Cloud Access",
-    badge: "Computer Science Guild",
-  },
-  {
-    code: "QD-1250",
-    title: "Madurai & South Tamil Nadu Inter-School Heritage Bowl",
-    host: "Madurai Heritage & Higher Secondary Academic Council",
-    subject: "20th Century History & Regional Heritage",
-    status: "PODIUM ACTIVE",
-    statusVariant: "podium",
-    currentRound: "Final Podium Standings",
-    participantsCount: 1250,
-    timeRemaining: "Completed",
-    prize: "Championship Laurels + Merit Honors",
-    badge: "Heritage Bowl",
-  },
-];
+const STORAGE_KEY_HOSTED_COMPETITIONS = "quizdorm_hosted_competitions_v1";
+
+interface HostedArenaItem {
+  id: string;
+  code: string;
+  title: string;
+  hostName: string;
+  category: string;
+  subject?: string;
+  status: string;
+  participantsCount: number;
+  timeRemaining?: string;
+}
 
 export default function LiveArenaIndexPage() {
   const { playTap, playCorrect } = useSound();
+  const [activeArenas, setActiveArenas] = useState<HostedArenaItem[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY_HOSTED_COMPETITIONS);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed)) {
+            const mapped = parsed.map((p: any) => ({
+              id: p.id || p.code,
+              code: p.code,
+              title: p.title || "Live Curriculum Arena",
+              hostName: p.hostName || "Verified Organizer",
+              category: p.category || "Competitive Assessment",
+              subject: p.subject || "General Academic",
+              status: p.status || "WAITING",
+              participantsCount: p.participantsCount || 0,
+              timeRemaining: p.timeRemaining || "In Session",
+            }));
+            setActiveArenas(mapped);
+          }
+        }
+      } catch {
+        setActiveArenas([]);
+      }
+    }
+    setIsLoaded(true);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#070B0A] text-[#F2F7F3] aurora-grid relative overflow-x-hidden flex flex-col">
@@ -99,50 +97,47 @@ export default function LiveArenaIndexPage() {
               size="sm"
               className="border-[rgba(160,190,170,0.2)] bg-[#111B17] hover:bg-[#17251E] text-[#A0AEA5] hover:text-[#F2F7F3] text-xs font-mono rounded-[4px] h-8 flex items-center gap-1.5"
             >
-              <LayoutDashboard className="w-3.5 h-3.5 text-[#65F59A]" />
-              <span className="hidden sm:inline">Dashboard</span>
+              <span>Workspace</span>
+              <ArrowRight className="w-3 h-3" />
             </Button>
           </Link>
         </div>
       </header>
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12">
-        {/* Masthead Banner */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center space-x-2.5 border border-[#65F59A]/30 bg-[#111B17] px-3.5 py-1.5 rounded-full text-[10px] font-mono shadow-[0_0_15px_rgba(101,245,154,0.15)]">
-            <Radio className="w-3 h-3 text-[#65F59A] animate-pulse" />
-            <span className="text-[#65F59A] font-bold uppercase tracking-widest">
-              REAL-TIME SSE DECATLONS // TAMIL NADU &amp; KERALA
-            </span>
+      <main className="max-w-7xl mx-auto w-full px-4 sm:px-6 py-8 sm:py-12 space-y-10 flex-1">
+        {/* Banner Section */}
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0C1210] via-[#111B17] to-[#0C1210] border border-[rgba(160,190,170,0.18)] p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-[#65F59A]/5 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 max-w-3xl space-y-4">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#17251E] border border-[rgba(101,245,154,0.3)] text-[#65F59A] text-[11px] font-mono tracking-wider">
+              <Radio className="w-3.5 h-3.5 animate-pulse" />
+              <span>SYNCHRONIZED MULTI-PLAYER ARENA ENGINE</span>
+            </div>
+
+            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-[#F2F7F3] tracking-tight leading-tight uppercase">
+              Real-Time Competitive <span className="text-[#65F59A]">Live Arenas</span>
+            </h1>
+
+            <p className="text-xs sm:text-sm text-[#A0AEA5] leading-relaxed max-w-2xl font-sans">
+              Enter real-time head-to-head academic decathlons, live classroom quizzes, and Olympiad showdowns with microsecond scoring and live podiums.
+            </p>
           </div>
-
-          <h1 className="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-[#F2F7F3] leading-tight">
-            Step Into The Live <br />
-            <span className="bg-gradient-to-r from-[#FFE600] via-[#65F59A] to-[#00F0FF] bg-clip-text text-transparent">
-              Competition Arena.
-            </span>
-          </h1>
-
-          <p className="text-xs sm:text-sm font-mono text-[#A0AEA5] max-w-xl mx-auto leading-relaxed">
-            Enter a live tournament room code to compete with students across Tamil Nadu and Kerala in real-time, or explore ongoing state championship arenas below.
-          </p>
         </div>
 
         {/* Two-Column Deck: Join Form + Live Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
           {/* Left Column (5 cols): Instant Room PIN Entry Card */}
           <div className="lg:col-span-5 bg-[#0C1210] border border-[rgba(160,190,170,0.18)] rounded-2xl p-6 sm:p-8 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_30px_rgba(101,245,154,0.1)] space-y-6">
             <div className="space-y-1 border-b border-[rgba(160,190,170,0.12)] pb-4">
               <div className="flex items-center space-x-2 text-[#65F59A]">
                 <Zap className="w-4 h-4 fill-current" />
                 <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-[#F2F7F3]">
-                  Join Competition Arena
+                  Enter Battle Arena
                 </h2>
               </div>
               <p className="text-[11px] font-mono text-[#69786F]">
-                Enter room code (e.g. <strong className="text-[#65F59A]">QD-8492</strong>) and your callsign to sync.
+                Enter room PIN (e.g. <strong className="text-[#65F59A]">QD-XXXX</strong>) and your scholar callsign to enter.
               </p>
             </div>
 
@@ -153,7 +148,7 @@ export default function LiveArenaIndexPage() {
                 </div>
               }
             >
-              <JoinArenaForm initialCode="QD-8492" />
+              <JoinArenaForm />
             </Suspense>
 
             {/* Host Quick Link */}
@@ -176,89 +171,93 @@ export default function LiveArenaIndexPage() {
               <div className="flex items-center space-x-2">
                 <Trophy className="w-4 h-4 text-[#FFE600]" />
                 <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-[#F2F7F3]">
-                  Featured Active Tournaments
+                  Active Tournaments
                 </h2>
               </div>
               <span className="text-[10px] font-mono text-[#38D9B0] bg-[#111B17] px-2.5 py-0.5 rounded-full border border-[rgba(160,190,170,0.16)]">
-                3 Broadcasts Live
+                {activeArenas.length} {activeArenas.length === 1 ? "Broadcast Live" : "Broadcasts Live"}
               </span>
             </div>
 
-            <div className="space-y-4">
-              {ACTIVE_FEATURED_ARENAS.map((arena) => (
-                <div
-                  key={arena.code}
-                  className="bg-[#0C1210] border border-[rgba(160,190,170,0.16)] hover:border-[#65F59A]/40 rounded-xl p-5 transition-all shadow-md space-y-4 group"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[rgba(160,190,170,0.1)] pb-3">
-                    <div className="flex items-center space-x-2.5">
-                      <span className="font-mono text-xs font-black text-[#65F59A] bg-[#111B17] px-2.5 py-1 rounded-[4px] border border-[#65F59A]/30">
-                        {arena.code}
-                      </span>
-                      <span className="font-mono text-[10px] text-[#A0AEA5] uppercase tracking-wide">
-                        {arena.badge}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center space-x-2">
-                      <span
-                        className={`text-[9px] font-mono font-bold uppercase px-2.5 py-0.5 rounded-full border ${
-                          arena.statusVariant === "live"
-                            ? "bg-[#65F59A]/15 text-[#65F59A] border-[#65F59A]/40 animate-pulse"
-                            : arena.statusVariant === "lobby"
-                            ? "bg-[#00F0FF]/15 text-[#00F0FF] border-[#00F0FF]/40"
-                            : "bg-[#FFE600]/15 text-[#FFE600] border-[#FFE600]/40"
-                        }`}
-                      >
-                        {arena.status}
-                      </span>
-                      <span className="text-[10px] font-mono text-[#69786F]">
-                        {arena.currentRound}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="font-display text-base font-bold text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors leading-snug">
-                      {arena.title}
-                    </h3>
-                    <p className="text-[11px] font-mono text-[#A0AEA5] mt-1">
-                      Organized by <strong className="text-[#C0CEC5]">{arena.host}</strong> • {arena.subject}
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[10px] font-mono text-[#69786F] bg-[#111B17] p-2.5 rounded-[6px] border border-[rgba(160,190,170,0.08)]">
-                    <div className="flex items-center gap-1.5">
-                      <Users className="w-3 h-3 text-[#65F59A]" />
-                      <span>{arena.participantsCount} Enrolled</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-3 h-3 text-[#38D9B0]" />
-                      <span>{arena.timeRemaining}</span>
-                    </div>
-                    <div className="hidden sm:flex items-center gap-1.5 text-[#FFE600] truncate">
-                      <Trophy className="w-3 h-3 shrink-0" />
-                      <span className="truncate">{arena.prize}</span>
-                    </div>
-                  </div>
-
-                  <div className="pt-1 flex items-center justify-end">
-                    <Link
-                      href={`/live/arena/${arena.code}`}
-                      onClick={() => {
-                        playCorrect();
-                      }}
-                      className="w-full sm:w-auto"
-                    >
-                      <Button className="w-full sm:w-auto bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono font-bold text-xs rounded-[4px] h-9 px-5 shadow-[0_0_15px_rgba(101,245,154,0.25)] flex items-center justify-center gap-1.5">
-                        <span>Enter Arena ({arena.code})</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </Button>
-                    </Link>
-                  </div>
+            {isLoaded && activeArenas.length === 0 ? (
+              <div className="bg-[#0C1210] border border-[rgba(160,190,170,0.16)] rounded-xl p-8 text-center space-y-4">
+                <div className="w-12 h-12 rounded-full bg-[#111B17] border border-[rgba(160,190,170,0.2)] mx-auto flex items-center justify-center text-[#69786F]">
+                  <Radio className="w-6 h-6 text-[#A0AEA5]" />
                 </div>
-              ))}
-            </div>
+                <div className="space-y-1">
+                  <h3 className="text-base font-bold text-[#F2F7F3]">
+                    No Public Arenas Currently Broadcasting Live
+                  </h3>
+                  <p className="text-xs text-[#A0AEA5] max-w-md mx-auto">
+                    Live battle arenas appear here automatically when a faculty mentor, academy, or tournament proctor starts broadcasting.
+                  </p>
+                </div>
+                <div className="pt-2 text-xs font-mono text-[#69786F]">
+                  Have an arena PIN? Enter your room code on the left to step into the showdown.
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {activeArenas.map((arena) => (
+                  <div
+                    key={arena.code}
+                    className="bg-[#0C1210] border border-[rgba(160,190,170,0.16)] hover:border-[#65F59A]/40 rounded-xl p-5 transition-all shadow-md space-y-4 group"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[rgba(160,190,170,0.1)] pb-3">
+                      <div className="flex items-center space-x-2.5">
+                        <span className="font-mono text-xs font-black text-[#65F59A] bg-[#111B17] px-2.5 py-1 rounded-[4px] border border-[#65F59A]/30">
+                          {arena.code}
+                        </span>
+                        <span className="font-mono text-[10px] text-[#A0AEA5] uppercase tracking-wide">
+                          {arena.category}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center space-x-2">
+                        <span className="text-[9px] font-mono font-bold uppercase px-2.5 py-0.5 rounded-full border bg-[#65F59A]/15 text-[#65F59A] border-[#65F59A]/40 animate-pulse">
+                          {arena.status}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="font-display text-base font-bold text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors leading-snug">
+                        {arena.title}
+                      </h3>
+                      <p className="text-[11px] font-mono text-[#A0AEA5] mt-1">
+                        Organized by <strong className="text-[#C0CEC5]">{arena.hostName}</strong> • {arena.subject}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-[10px] font-mono text-[#69786F] bg-[#111B17] p-2.5 rounded-[6px] border border-[rgba(160,190,170,0.08)]">
+                      <div className="flex items-center gap-1.5">
+                        <Users className="w-3 h-3 text-[#65F59A]" />
+                        <span>{arena.participantsCount} Enrolled</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Clock className="w-3 h-3 text-[#38D9B0]" />
+                        <span>{arena.timeRemaining}</span>
+                      </div>
+                    </div>
+
+                    <div className="pt-1 flex items-center justify-end">
+                      <Link
+                        href={`/live/arena/${arena.code}`}
+                        onClick={() => {
+                          playCorrect();
+                        }}
+                        className="w-full sm:w-auto"
+                      >
+                        <Button className="w-full sm:w-auto bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono font-bold text-xs rounded-[4px] h-9 px-5 shadow-[0_0_15px_rgba(101,245,154,0.25)] flex items-center justify-center gap-1.5">
+                          <span>Enter Arena ({arena.code})</span>
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* Host Banner Card */}
             <div className="bg-gradient-to-r from-[#111B17] via-[#0C1210] to-[#17251E] p-5 rounded-xl border border-[rgba(160,190,170,0.18)] flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -282,7 +281,6 @@ export default function LiveArenaIndexPage() {
               </Link>
             </div>
           </div>
-
         </div>
       </main>
 
@@ -293,7 +291,7 @@ export default function LiveArenaIndexPage() {
             &copy; {new Date().getFullYear()} QuizDorm Platform. Founded by <strong className="text-[#F2F7F3]">RK Akbar</strong> (Tamil Nadu &amp; Kerala).
           </p>
           <p className="text-[11px] text-[#65F59A]">
-            Real-Time High-Speed Arena Engine
+            Autonomous Real-Time Competition Engine Active
           </p>
         </div>
       </footer>

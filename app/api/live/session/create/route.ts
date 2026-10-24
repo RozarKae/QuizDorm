@@ -6,17 +6,18 @@ export async function POST(req: NextRequest) {
   try {
     const body: CreateSessionOptions = await req.json();
 
-    // Idempotency check: if code is supplied and session exists, return existing
+    // Idempotency / conflict check: if code is supplied and session exists, never leak host secret
     if (body.code) {
       const existing = LiveSessionManager.getSession(body.code);
       if (existing) {
-        return NextResponse.json({
-          success: true,
-          code: existing.code,
-          sessionId: existing.id,
-          hostSecret: existing.hostSecret,
-          session: existing,
-        });
+        return NextResponse.json(
+          {
+            success: false,
+            error: `Arena session with code ${body.code} already exists. Session host credentials cannot be re-issued.`,
+            code: existing.code,
+          },
+          { status: 409 }
+        );
       }
     }
 

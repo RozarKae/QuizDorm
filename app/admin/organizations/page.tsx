@@ -451,7 +451,7 @@ export default function AdminOrganizationsPage() {
                 <th className="px-4 py-3">Primary Administrator</th>
                 <th className="px-4 py-3">Licensed Plan Tier</th>
                 <th className="px-4 py-3">Data Isolation & Cloud</th>
-                <th className="px-4 py-3">Seats (Students / Faculty)</th>
+                <th className="px-4 py-3">Seats (Members / Handlers)</th>
                 <th className="px-4 py-3">Governance Status</th>
                 <th className="px-4 py-3 text-right">Superadmin Control</th>
               </tr>
@@ -719,7 +719,7 @@ export default function AdminOrganizationsPage() {
 
               <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">
-                  Student Enrolled Seats
+                  Member Enrolled Seats
                 </span>
                 <span className="text-[#F2F7F3] font-bold">
                   {selectedOrg.studentSeatsUsed} / {selectedOrg.studentSeatsAllocated}
@@ -728,7 +728,7 @@ export default function AdminOrganizationsPage() {
 
               <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">
-                  Faculty Seats
+                  Handler & Faculty Seats
                 </span>
                 <span className="text-[#F2F7F3] font-bold">
                   {selectedOrg.facultySeatsUsed} / {selectedOrg.facultySeatsAllocated}

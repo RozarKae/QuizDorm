@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="flex items-center space-x-2">
         <span className="font-bold text-[#F2F7F3] font-display tracking-tight text-[11px]">QUIZDORM</span>
         <span className="text-[rgba(160,190,170,0.2)]">/</span>
-        <span className="text-[10px] text-[#A0AEA5]">Assessment OS</span>
+        <span className="text-[10px] text-[#A0AEA5]">Universal Quiz Dormitory & IQ Acceleration</span>
       </div>
       <div className="flex items-center space-x-3 mt-1 sm:mt-0 text-[10px]">
         <span className="flex items-center gap-1.5 text-[#A0AEA5]">

@@ -146,7 +146,7 @@ function CheckoutContent() {
             <label className="text-xs font-bold text-slate-300 block">Select Payment Gateway</label>
             <div className="grid grid-cols-3 gap-2">
               {[
-                { id: "mock", label: "Mock 1-Click" },
+                { id: "mock", label: "Instant Activation" },
                 { id: "razorpay", label: "Razorpay (UPI)" },
                 { id: "stripe", label: "Stripe (Cards)" },
               ].map((p) => (

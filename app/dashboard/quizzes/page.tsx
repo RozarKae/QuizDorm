@@ -163,18 +163,18 @@ export default function QuizzesListPage() {
           <div className="space-y-1">
             <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5]">
               <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
-              <span>CURRICULAR CATALOG // ASSESSMENT DIRECTORY</span>
+              <span>THE DORM VAULT // UNIVERSAL QUIZ REPOSITORY</span>
             </div>
             <div className="flex items-center space-x-2.5">
               <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-[#F2F7F3]">
-                Domain Assessments
+                The Dorm Vault
               </h1>
               <Badge variant="outline" className="border-[rgba(101,245,154,0.3)] bg-[rgba(101,245,154,0.1)] text-[#65F59A] font-mono text-[9px] uppercase tracking-widest rounded-[3px]">
                 {quizzes.length} ASSESSMENTS
               </Badge>
             </div>
             <p className="text-xs text-[#A0AEA5]">
-              Standardized assessments organized by subject domain, with verified scoring keys and timer parameters.
+              The universal dormitory repository of all quiz disciplines: adaptive diagnostics, cognitive sprints, and multi-format curriculum assessments.
             </p>
           </div>
 

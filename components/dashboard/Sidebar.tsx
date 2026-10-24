@@ -76,7 +76,11 @@ export default function Sidebar({
   setCollapsed,
 }: SidebarProps) {
   const pathname = usePathname();
-  const config = dashboardNavConfig[role] || dashboardNavConfig.student;
+  const config =
+    dashboardNavConfig[role] ||
+    dashboardNavConfig.member ||
+    dashboardNavConfig.subscriber ||
+    dashboardNavConfig.student;
   const { logout } = useAuth();
   const { playTap, playHover } = useSound();
   const [isSigningOut, setIsSigningOut] = useState(false);
@@ -165,6 +169,24 @@ export default function Sidebar({
     return groups;
   }, [navItems]);
 
+  const getRoleHomeUrl = (r: string) => {
+    switch (r) {
+      case "admin":
+        return "/admin";
+      case "institution":
+      case "school":
+        return "/school";
+      case "handler":
+      case "teacher":
+        return "/teacher";
+      case "member":
+      case "student":
+      case "subscriber":
+      default:
+        return "/student";
+    }
+  };
+
   return (
     <>
       {/* Mobile drawer overlay */}
@@ -188,7 +210,7 @@ export default function Sidebar({
           <div>
             {/* Header */}
             <div className="flex h-14 items-center justify-between px-3.5 border-b border-[rgba(160,190,170,0.12)]">
-              <Link href="/dashboard" className="flex items-center space-x-2">
+              <Link href={getRoleHomeUrl(role)} className="flex items-center space-x-2">
                 {!collapsed ? (
                   <Logo />
                 ) : (
@@ -267,12 +289,14 @@ export default function Sidebar({
                         {!collapsed && item.badge && (
                           <span
                             className={`text-[8.5px] uppercase font-mono tracking-wider px-1.5 py-0.2 rounded-[2px] ${
-                              isActive
+                              item.badge === "Locked"
+                                ? "bg-[rgba(248,113,113,0.15)] text-[#F87171] border border-[rgba(248,113,113,0.3)] font-bold flex items-center gap-0.5"
+                                : isActive
                                 ? "bg-[rgba(101,245,154,0.18)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] font-semibold"
                                 : "bg-[#111B17] text-[#69786F] border border-[rgba(160,190,170,0.12)] font-medium"
                             }`}
                           >
-                            {item.badge}
+                            {item.badge === "Locked" ? "🔒 Locked" : item.badge}
                           </span>
                         )}
                       </Link>

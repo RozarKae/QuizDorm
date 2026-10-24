@@ -56,7 +56,7 @@ export default function QuizDetailsPage({
           href="/dashboard/quizzes"
           className="inline-flex items-center text-xs font-mono text-muted-foreground hover:text-foreground transition-colors"
         >
-          <ArrowLeft className="w-3.5 h-3.5 mr-1" /> RETURN TO CATALOG
+          <ArrowLeft className="w-3.5 h-3.5 mr-1" /> RETURN TO THE DORM VAULT
         </Link>
 
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 border-b border-border pb-6">
@@ -106,7 +106,7 @@ export default function QuizDetailsPage({
             </Button>
             <Link href={`/dashboard/quizzes/${quiz.id}/take`}>
               <Button size="sm" className="bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono text-xs font-bold tracking-wider rounded-[3px] shadow-[0_0_15px_rgba(101,245,154,0.3)]">
-                <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> START QUIZ
+                <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> START COGNITIVE SPRINT
               </Button>
             </Link>
           </div>
@@ -134,7 +134,7 @@ export default function QuizDetailsPage({
 
           <div className="border border-border bg-background/60 p-4 rounded-[2px] space-y-1">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">TOTAL POINTS</span>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">MASTERY POINTS</span>
               <Award className="w-3.5 h-3.5 text-[#DFFF43]" />
             </div>
             <p className="text-2xl font-mono font-extrabold text-foreground">{totalMarks}p</p>
@@ -159,7 +159,7 @@ export default function QuizDetailsPage({
         <div className="flex items-center justify-between border-b border-border pb-3">
           <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-foreground flex items-center">
             <HelpCircle className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" />
-            Included Questions ({questionsCount})
+            Curated Challenge Items ({questionsCount})
           </h2>
           <span className="text-[10px] font-mono text-muted-foreground">
             SHUFFLED FRESH PER ATTEMPT

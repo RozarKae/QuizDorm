@@ -87,7 +87,7 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
                   {displayName}
                 </p>
                 <span className="text-[9px] uppercase font-mono tracking-wider px-1.5 py-0.2 rounded-[2px] bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.25)] font-semibold">
-                  {role}
+                  {role === "admin" ? "SUPERADMIN" : role}
                 </span>
               </div>
               <p className="text-[11px] font-mono text-[#69786F] truncate mt-0.5" title={displayEmail}>
@@ -97,7 +97,7 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
 
             <div className="py-1">
               <Link
-                href="/dashboard/profile"
+                href={["member", "student", "subscriber"].includes(role) ? "/student/profile" : "/dashboard/profile"}
                 onClick={() => setOpen(false)}
                 className="flex items-center space-x-2.5 px-3.5 py-1.5 text-xs text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#17251E] transition-colors font-medium"
               >
@@ -106,7 +106,15 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
               </Link>
 
               <Link
-                href="/dashboard/settings"
+                href={
+                  role === "admin"
+                    ? "/admin/settings"
+                    : ["institution", "school"].includes(role)
+                    ? "/school/settings"
+                    : ["handler", "teacher"].includes(role)
+                    ? "/teacher/settings"
+                    : "/student/settings"
+                }
                 onClick={() => setOpen(false)}
                 className="flex items-center space-x-2.5 px-3.5 py-1.5 text-xs text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#17251E] transition-colors font-medium"
               >

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { QuestionIntelligenceService } from "@/lib/ai/services/questionIntelligenceService";
 import { ExtractedQuestion } from "@/lib/types/ocr";
+import { checkRateLimit } from "@/lib/security/rateLimiter";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -9,6 +10,28 @@ export const maxDuration = 60;
 const MAX_FILE_SIZE_BYTES = 50 * 1024 * 1024;
 
 export async function POST(request: Request) {
+  // 1. Rate Limiting: 15 requests per minute per IP for document extraction
+  const rateLimit = checkRateLimit(request, {
+    keyPrefix: "ai-pdf-to-quiz",
+    maxRequests: 15,
+    windowMs: 60 * 1000,
+  });
+
+  if (!rateLimit.allowed) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: `Rate limit exceeded. Please wait ${rateLimit.retryAfterSeconds} seconds before uploading another document.`,
+        errorCode: "RATE_LIMIT_EXCEEDED",
+        retryAfter: rateLimit.retryAfterSeconds,
+      },
+      {
+        status: 429,
+        headers: rateLimit.headers,
+      }
+    );
+  }
+
   try {
     let formData: FormData;
     try {
@@ -113,7 +136,7 @@ export async function POST(request: Request) {
     const topic = (formData.get("topic") as string) || undefined;
     const difficulty = (formData.get("difficulty") as any) || "Medium";
     const rawCount = formData.get("questionCount");
-    const questionCount = rawCount ? Math.min(50, Math.max(1, parseInt(String(rawCount), 10))) : 5;
+    const questionCount = rawCount ? Math.min(50, Math.max(1, parseInt(String(rawCount), 10))) : 10;
 
     // Parse custom question types if provided (supports all 9 types)
     let questionTypes: any[] = [

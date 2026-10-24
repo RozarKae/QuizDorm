@@ -1,4 +1,5 @@
-import { UserRole } from "@/lib/types/user";
+import { UserRole, normalizeCanonicalRole } from "@/lib/types/user";
+import { updateDemoRoleAction } from "@/app/auth/actions";
 
 export type UserStatus = "active" | "suspended" | "pending";
 export type AuthProviderType = "email" | "google" | "sso" | "saml";
@@ -21,7 +22,7 @@ export interface AdminUser {
   lastKnownIp?: string;
 }
 
-const STORAGE_KEY_ADMIN_USERS = "quizdorm_admin_users_db";
+const STORAGE_KEY_ADMIN_USERS = "quizdorm_admin_users_db_v2";
 
 export const SEED_ADMIN_USERS: AdminUser[] = [
   {
@@ -41,10 +42,10 @@ export const SEED_ADMIN_USERS: AdminUser[] = [
     lastKnownIp: "127.0.0.1 (Local Node)",
   },
   {
-    id: "usr-school-01",
+    id: "usr-institution-01",
     name: "Govt Model & Matriculation Admin",
-    email: "school@quizdorm.com",
-    role: "school",
+    email: "institution@quizdorm.com",
+    role: "institution",
     status: "active",
     authProvider: "email",
     organizationName: "Government Model Higher Secondary School",
@@ -57,10 +58,10 @@ export const SEED_ADMIN_USERS: AdminUser[] = [
     lastKnownIp: "103.21.124.9 (Chennai, IN)",
   },
   {
-    id: "usr-teacher-01",
+    id: "usr-handler-01",
     name: "Prof. Sarah Jenkins",
-    email: "teacher@quizdorm.com",
-    role: "teacher",
+    email: "handler@quizdorm.com",
+    role: "handler",
     status: "active",
     authProvider: "email",
     organizationName: "Government Model Higher Secondary School",
@@ -73,10 +74,10 @@ export const SEED_ADMIN_USERS: AdminUser[] = [
     lastKnownIp: "103.21.124.12 (Chennai, IN)",
   },
   {
-    id: "usr-teacher-02",
+    id: "usr-handler-02",
     name: "Dr. Rajesh Kumar",
     email: "rajesh.kumar@saidapetmodel.edu.in",
-    role: "teacher",
+    role: "handler",
     status: "active",
     authProvider: "google",
     organizationName: "Government Model Higher Secondary School",
@@ -89,10 +90,10 @@ export const SEED_ADMIN_USERS: AdminUser[] = [
     lastKnownIp: "49.207.200.18 (Bangalore, IN)",
   },
   {
-    id: "usr-student-01",
+    id: "usr-member-01",
     name: "Karthik Rajendran",
-    email: "student@quizdorm.com",
-    role: "student",
+    email: "member@quizdorm.com",
+    role: "member",
     status: "active",
     authProvider: "email",
     organizationName: "Government Model Higher Secondary School",
@@ -105,10 +106,10 @@ export const SEED_ADMIN_USERS: AdminUser[] = [
     lastKnownIp: "157.49.12.88 (Coimbatore, IN)",
   },
   {
-    id: "usr-student-02",
+    id: "usr-member-02",
     name: "Ananya Sharma",
     email: "ananya.sharma@delhipublic.org",
-    role: "student",
+    role: "member",
     status: "active",
     authProvider: "google",
     organizationName: "Delhi Public Global Academy",
@@ -121,10 +122,26 @@ export const SEED_ADMIN_USERS: AdminUser[] = [
     lastKnownIp: "182.73.24.102 (New Delhi, IN)",
   },
   {
-    id: "usr-school-02",
+    id: "usr-subscriber-01",
+    name: "Devon Reed",
+    email: "subscriber@quizdorm.com",
+    role: "subscriber",
+    status: "active",
+    authProvider: "email",
+    organizationName: "Public Subscriber Network",
+    organizationId: "pub-001",
+    department: "Self-Paced Learning",
+    twoFactorEnabled: false,
+    activeSessionsCount: 1,
+    lastLoginAt: "12 mins ago",
+    createdAt: "2026-03-01T09:00:00Z",
+    lastKnownIp: "142.250.190.46 (California, US)",
+  },
+  {
+    id: "usr-institution-02",
     name: "Dr. Alan Vance",
     email: "alan.vance@stjude.org",
-    role: "school",
+    role: "institution",
     status: "active",
     authProvider: "sso",
     organizationName: "St. Jude International School District",
@@ -140,7 +157,7 @@ export const SEED_ADMIN_USERS: AdminUser[] = [
     id: "usr-flagged-09",
     name: "Automated Rogue Scraper",
     email: "bot-spammer@crawler-network.net",
-    role: "student",
+    role: "subscriber",
     status: "suspended",
     authProvider: "email",
     organizationName: "Unverified Public",
@@ -155,7 +172,7 @@ export const SEED_ADMIN_USERS: AdminUser[] = [
     id: "usr-pending-12",
     name: "Elena Rostova",
     email: "elena.rostova@cambridge-intl.ac.uk",
-    role: "teacher",
+    role: "handler",
     status: "pending",
     authProvider: "saml",
     organizationName: "Cambridge International Partner Campus",
@@ -177,7 +194,12 @@ export class AdminUserManager {
         localStorage.setItem(STORAGE_KEY_ADMIN_USERS, JSON.stringify(SEED_ADMIN_USERS));
         return SEED_ADMIN_USERS;
       }
-      return JSON.parse(saved);
+      const parsed: AdminUser[] = JSON.parse(saved);
+      // Seamlessly upgrade any stored users to canonical modern roles
+      return parsed.map((u) => ({
+        ...u,
+        role: normalizeCanonicalRole(u.role),
+      }));
     } catch {
       return SEED_ADMIN_USERS;
     }
@@ -197,10 +219,35 @@ export class AdminUserManager {
   }
 
   public static updateUserRole(id: string, newRole: UserRole): AdminUser[] {
+    const canonicalRole = normalizeCanonicalRole(newRole);
     const users = this.getUsers().map((u) =>
-      u.id === id ? { ...u, role: newRole } : u
+      u.id === id ? { ...u, role: canonicalRole } : u
     );
     this.saveUsers(users);
+
+    // Sync active session if currently loaded in client
+    if (typeof window !== "undefined") {
+      try {
+        const targetUser = users.find((u) => u.id === id);
+        if (targetUser) {
+          const currentDemo = localStorage.getItem("quizdorm_demo_user");
+          if (currentDemo) {
+            const parsed = JSON.parse(currentDemo);
+            if (parsed.id === id || parsed.email.toLowerCase() === targetUser.email.toLowerCase()) {
+              parsed.role = canonicalRole;
+              localStorage.setItem("quizdorm_demo_user", JSON.stringify(parsed));
+              // Securely re-sign server-side session cookie via server action
+              updateDemoRoleAction(canonicalRole).catch((e) =>
+                console.error("Failed to re-sign demo session:", e)
+              );
+            }
+          }
+        }
+      } catch (err) {
+        console.error("Failed to sync updated user role to active session:", err);
+      }
+    }
+
     return users;
   }
 
@@ -228,6 +275,7 @@ export class AdminUserManager {
   ): AdminUser {
     const newUser: AdminUser = {
       ...userData,
+      role: normalizeCanonicalRole(userData.role),
       id: `usr-${Date.now().toString(36)}-${Math.random().toString(36).substring(2, 6)}`,
       createdAt: new Date().toISOString(),
       lastLoginAt: "Never (Newly Provisioned)",
