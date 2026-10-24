@@ -89,7 +89,7 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
                   {displayName}
                 </p>
                 <span className="text-[9px] uppercase font-mono tracking-wider px-1.5 py-0.2 rounded-[2px] bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.25)] font-semibold">
-                  {role === "admin" ? "SUPERADMIN" : role}
+                  {role === "admin" || role === "superadmin" ? "SUPERADMIN" : role === "masteradmin" ? "MASTERADMIN" : role}
                 </span>
               </div>
               <p className="text-[11px] font-mono text-[#69786F] truncate mt-0.5" title={displayEmail}>
@@ -109,8 +109,10 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
 
               <Link
                 href={
-                  role === "admin"
+                  role === "admin" || role === "superadmin"
                     ? "/admin/settings"
+                    : role === "masteradmin"
+                    ? "/admin/master"
                     : ["institution", "school"].includes(role)
                     ? "/school/settings"
                     : ["handler", "teacher"].includes(role)

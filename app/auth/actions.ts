@@ -158,7 +158,8 @@ export async function signInWithEmail(formData: FormData) {
 
     const userName = userMetadata.name || data.user?.email?.split("@")[0] || "User";
     let redirectUrl = "/student";
-    if (role === "admin") redirectUrl = "/admin";
+    if (role === "superadmin" || role === "admin") redirectUrl = "/admin";
+    else if (role === "masteradmin") redirectUrl = "/admin/master";
     else if (role === "institution" || role === "school") redirectUrl = "/school";
     else if (role === "handler" || role === "teacher") redirectUrl = "/teacher";
     else if (role === "member" || role === "student" || role === "subscriber") redirectUrl = "/student";
@@ -228,7 +229,8 @@ export async function signUpWithEmail(formData: FormData) {
         maxAge: 60 * 60 * 24 * 7,
       });
       let redirectUrl = "/student";
-      if (role === "admin") redirectUrl = "/admin";
+      if (role === "superadmin" || role === "admin") redirectUrl = "/admin";
+      else if (role === "masteradmin") redirectUrl = "/admin/master";
       else if (role === "institution" || role === "school") redirectUrl = "/school";
       else if (role === "handler" || role === "teacher") redirectUrl = "/teacher";
       else if (role === "member" || role === "student" || role === "subscriber") redirectUrl = "/student";
@@ -281,7 +283,8 @@ export async function signUpWithEmail(formData: FormData) {
     // Check if session was granted directly (email confirmation off)
     if (data?.session && data.user) {
       let redirectUrl = "/student";
-      if (role === "admin") redirectUrl = "/admin";
+      if (role === "superadmin" || role === "admin") redirectUrl = "/admin";
+      else if (role === "masteradmin") redirectUrl = "/admin/master";
       else if (role === "institution" || role === "school") redirectUrl = "/school";
       else if (role === "handler" || role === "teacher") redirectUrl = "/teacher";
       else if (role === "member" || role === "student" || role === "subscriber") redirectUrl = "/student";
@@ -302,7 +305,8 @@ export async function signUpWithEmail(formData: FormData) {
     const loginAttempt = await supabase.auth.signInWithPassword({ email, password });
     if (loginAttempt.data?.session && loginAttempt.data.user) {
       let redirectUrl = "/student";
-      if (role === "admin") redirectUrl = "/admin";
+      if (role === "superadmin" || role === "admin") redirectUrl = "/admin";
+      else if (role === "masteradmin") redirectUrl = "/admin/master";
       else if (role === "institution" || role === "school") redirectUrl = "/school";
       else if (role === "handler" || role === "teacher") redirectUrl = "/teacher";
       else if (role === "member" || role === "student" || role === "subscriber") redirectUrl = "/student";

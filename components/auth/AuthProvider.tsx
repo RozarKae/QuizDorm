@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { User, Session } from "@supabase/supabase-js";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
-import { UserProfile, UserRole } from "@/lib/types/user";
+import { UserProfile, UserRole, normalizeCanonicalRole } from "@/lib/types/user";
 
 interface AuthContextType {
   user: User | null;
@@ -79,12 +79,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
               setUser(activeSession.user);
               const metadata = activeSession.user.user_metadata || {};
               const rawRole = (metadata.role as string) || "subscriber";
-              let userRole: UserRole = "subscriber";
-              if (rawRole === "admin") userRole = "admin";
-              else if (rawRole === "institution" || rawRole === "school") userRole = "institution";
-              else if (rawRole === "handler" || rawRole === "teacher") userRole = "handler";
-              else if (rawRole === "member" || rawRole === "student") userRole = "member";
-              else userRole = "subscriber";
+              const userRole: UserRole = normalizeCanonicalRole(rawRole);
 
               const userName = metadata.name || metadata.full_name || activeSession.user.email?.split("@")[0] || "User";
               setRole(userRole);
@@ -117,7 +112,8 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
                 // If arriving authenticated on /auth/callback or an auth page, redirect to dashboard
                 if (window.location.pathname === "/auth/callback" || window.location.pathname.startsWith("/auth/login") || window.location.pathname.startsWith("/auth/register")) {
                   let target = "/student";
-                  if (userRole === "admin") target = "/admin";
+                  if (userRole === "superadmin" || userRole === "admin") target = "/admin";
+                  else if (userRole === "masteradmin") target = "/admin/master";
                   else if (userRole === "institution") target = "/school";
                   else if (userRole === "handler") target = "/teacher";
                   else target = "/student";
@@ -173,7 +169,8 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
           setUser(currentSession?.user ?? null);
           if (currentSession?.user) {
             const metadata = currentSession.user.user_metadata || {};
-            const userRole = (metadata.role as UserRole) || "student";
+            const rawRole = (metadata.role as string) || "subscriber";
+            const userRole: UserRole = normalizeCanonicalRole(rawRole);
             const userName = metadata.name || metadata.full_name || currentSession.user.email?.split("@")[0] || "User";
             setRole(userRole);
             setProfile({

@@ -142,12 +142,14 @@ export async function proxy(request: NextRequest) {
   if (user) {
     const rawRole = user.user_metadata?.role || "subscriber";
     let role = rawRole;
-    if (role === "student") role = "member";
-    else if (role === "teacher") role = "handler";
+    if (role === "admin") role = "superadmin";
     else if (role === "school") role = "institution";
+    else if (role === "teacher") role = "handler";
+    else if (role === "student") role = "member";
 
     const getRoleDefaultPath = (r: string) => {
-      if (r === "admin") return "/admin";
+      if (r === "superadmin" || r === "admin") return "/admin";
+      if (r === "masteradmin") return "/admin/master";
       if (["institution", "school"].includes(r)) return "/school";
       if (["handler", "teacher"].includes(r)) return "/teacher";
       return "/student";
@@ -164,15 +166,23 @@ export async function proxy(request: NextRequest) {
     }
 
     // Role-Based Access Control (RBAC) enforcement
-    if (pathname.startsWith("/admin") && role !== "admin") {
+    if (pathname.startsWith("/admin/master")) {
+      // Master Admin workspace: accessible by masteradmin and superadmin
+      if (!["masteradmin", "superadmin", "admin"].includes(role)) {
+        return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
+      }
+    } else if (pathname.startsWith("/admin")) {
+      // Super Admin Root OS: accessible by superadmin and masteradmin
+      if (!["superadmin", "admin", "masteradmin"].includes(role)) {
+        return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
+      }
+    }
+
+    if (pathname.startsWith("/school") && !["institution", "school", "admin", "superadmin"].includes(role)) {
       return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
     }
 
-    if (pathname.startsWith("/school") && !["institution", "school", "admin"].includes(role)) {
-      return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
-    }
-
-    if (pathname.startsWith("/teacher") && !["handler", "teacher", "institution", "school", "admin"].includes(role)) {
+    if (pathname.startsWith("/teacher") && !["handler", "teacher", "institution", "school", "admin", "superadmin"].includes(role)) {
       return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
     }
 
@@ -187,7 +197,7 @@ export async function proxy(request: NextRequest) {
 
     if (
       pathname.startsWith("/student") &&
-      !["subscriber", "member", "student", "handler", "teacher", "institution", "school", "admin"].includes(role)
+      !["subscriber", "member", "student", "handler", "teacher", "institution", "school", "admin", "superadmin", "masteradmin"].includes(role)
     ) {
       return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
     }

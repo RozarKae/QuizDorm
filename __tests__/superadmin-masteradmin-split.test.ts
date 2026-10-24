@@ -81,4 +81,17 @@ describe("SuperAdmin and MasterAdmin Governance Split", () => {
       assert.strictEqual(masterAdminSeed?.role, "masteradmin");
     });
   });
+
+  describe("Edge Proxy & RBAC Permissions for SuperAdmin & MasterAdmin", () => {
+    it("should allow superadmin and masteradmin access to admin paths", () => {
+      const allowedRolesForAdmin = ["superadmin", "admin", "masteradmin"];
+      const allowedRolesForMaster = ["masteradmin", "superadmin", "admin"];
+
+      assert.ok(allowedRolesForAdmin.includes(normalizeCanonicalRole("superadmin")));
+      assert.ok(allowedRolesForAdmin.includes(normalizeCanonicalRole("admin")));
+      assert.ok(allowedRolesForMaster.includes(normalizeCanonicalRole("masteradmin")));
+      assert.ok(!allowedRolesForAdmin.includes("subscriber"));
+      assert.ok(!allowedRolesForAdmin.includes("member"));
+    });
+  });
 });

@@ -31,8 +31,10 @@ export default function DashboardHomePage() {
 
   useEffect(() => {
     if (!isLoading && role) {
-      if (role === "admin") {
+      if (role === "superadmin" || role === "admin") {
         router.replace("/admin");
+      } else if (role === "masteradmin") {
+        router.replace("/admin/master");
       } else if (role === "institution" || role === "school") {
         router.replace("/school");
       } else if (role === "handler" || role === "teacher") {

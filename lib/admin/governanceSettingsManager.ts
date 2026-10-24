@@ -67,7 +67,7 @@ export class GovernanceSettingsManager {
     if (!role) return { allowed: false, reason: "Authentication required" };
 
     // 1. Superadmin can always add questions
-    if (role === "admin") {
+    if (role === "admin" || role === "superadmin" || role === "masteradmin") {
       return { allowed: true };
     }
 
@@ -118,7 +118,15 @@ export class GovernanceSettingsManager {
   } {
     if (!role) return { allowed: false, reason: "Authentication required" };
 
-    if (role === "admin" || role === "institution" || role === "school" || role === "handler" || role === "teacher") {
+    if (
+      role === "superadmin" ||
+      role === "masteradmin" ||
+      role === "admin" ||
+      role === "institution" ||
+      role === "school" ||
+      role === "handler" ||
+      role === "teacher"
+    ) {
       return { allowed: true };
     }
 

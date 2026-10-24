@@ -66,8 +66,10 @@ export async function GET(request: Request) {
         if (!error && data?.user) {
           const role = data.user.user_metadata?.role || "subscriber";
           const defaultRolePath =
-            role === "admin"
+            role === "superadmin" || role === "admin"
               ? "/admin"
+              : role === "masteradmin"
+              ? "/admin/master"
               : ["institution", "school"].includes(role)
               ? "/school"
               : ["handler", "teacher"].includes(role)
