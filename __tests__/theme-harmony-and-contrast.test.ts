@@ -94,4 +94,42 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     assert.ok(iconContent.includes(".icon-q-face { fill: #047857;"));
     assert.ok(iconContent.includes(".icon-q-tail { fill: #1E293B;"));
   });
+
+  it("Verifies Landing Page CTA & Analytics components use light & dark theme harmony", () => {
+    const ctaPath = path.join(process.cwd(), "components/landing/CTA.tsx");
+    const analyticsPath = path.join(process.cwd(), "components/landing/AnalyticsSection.tsx");
+    const navbarPath = path.join(process.cwd(), "components/landing/Navbar.tsx");
+
+    const ctaContent = fs.readFileSync(ctaPath, "utf-8");
+    const analyticsContent = fs.readFileSync(analyticsPath, "utf-8");
+    const navbarContent = fs.readFileSync(navbarPath, "utf-8");
+
+    // CTA must have light-to-dark gradient stops and high contrast text
+    assert.ok(ctaContent.includes("from-white via-slate-50 to-emerald-50/50"));
+    assert.ok(ctaContent.includes("text-slate-900 dark:text-[#F2F7F3]"));
+    assert.ok(ctaContent.includes("bg-[#047857] hover:bg-[#065F46] text-white dark:bg-[#65F59A]"));
+
+    // Analytics must have theme-aware telemetry card and high-contrast text
+    assert.ok(analyticsContent.includes("bg-slate-50 border border-slate-200 dark:bg-gradient-to-br"));
+    assert.ok(analyticsContent.includes("text-emerald-800 dark:text-[#65F59A]"));
+
+    // Navbar must include ThemeToggle
+    assert.ok(navbarContent.includes("<ThemeToggle />"));
+  });
+
+  it("Verifies globals.css includes master gradient and accent contrast rules", () => {
+    const cssContent = fs.readFileSync(globalsCssPath, "utf-8");
+
+    // Accent contrast: Neon green -> dark green in light mode
+    assert.ok(cssContent.includes("html.light .text-\\[\\#65F59A\\]"));
+    assert.ok(cssContent.includes("color: #047857 !important;"));
+
+    // Mint -> deep teal
+    assert.ok(cssContent.includes("html.light .text-\\[\\#38D9B0\\]"));
+    assert.ok(cssContent.includes("color: #0D9488 !important;"));
+
+    // Gradient stops in light mode
+    assert.ok(cssContent.includes("html.light .from-\\[\\#0C1210\\]"));
+    assert.ok(cssContent.includes("--tw-gradient-from: #FFFFFF"));
+  });
 });

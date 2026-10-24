@@ -185,7 +185,7 @@ export function OrbitalRings({ className = "" }: { className?: string }) {
       </div>
 
       {/* Inner luminous node with Neon Green radiant core */}
-      <div className="relative w-28 h-28 rounded-full bg-gradient-to-br from-[#17251E] via-[#0C1210] to-[#070B0A] border border-[rgba(57,255,20,0.4)] shadow-[0_0_35px_rgba(57,255,20,0.35)] flex items-center justify-center">
+      <div className="relative w-28 h-28 rounded-full bg-gradient-to-br from-white via-emerald-50/50 to-slate-100 dark:from-[#17251E] dark:via-[#0C1210] dark:to-[#070B0A] border border-emerald-400/50 dark:border-[rgba(57,255,20,0.4)] shadow-md dark:shadow-[0_0_35px_rgba(57,255,20,0.35)] flex items-center justify-center">
         <div className="w-12 h-12 rounded-full bg-[#39FF14]/15 border border-[#39FF14]/50 flex items-center justify-center">
           <div className="w-3.5 h-3.5 rounded-full bg-[#39FF14] shadow-[0_0_18px_#39FF14] animate-pulse" />
         </div>

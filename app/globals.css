@@ -265,6 +265,75 @@
     color: #475569 !important;
   }
 
+  /* Light Theme Accent Color Contrast Inversion (Neon Green -> Dark Green, Mint -> Teal) */
+  html:not(.dark) .text-\[\#65F59A\],
+  html.light .text-\[\#65F59A\] {
+    color: #047857 !important;
+  }
+
+  html:not(.dark) .text-\[\#38D9B0\],
+  html.light .text-\[\#38D9B0\] {
+    color: #0D9488 !important;
+  }
+
+  html:not(.dark) .text-\[\#C0CEC5\],
+  html.light .text-\[\#C0CEC5\] {
+    color: #334155 !important;
+  }
+
+  html:not(.dark) .fill-\[\#65F59A\],
+  html.light .fill-\[\#65F59A\] {
+    fill: #047857 !important;
+  }
+
+  /* Light Theme Universal Gradient Inversions */
+  html:not(.dark) .from-\[\#0C1210\],
+  html.light .from-\[\#0C1210\],
+  html:not(.dark) .from-\[\#070B0A\],
+  html.light .from-\[\#070B0A\],
+  html:not(.dark) .from-\[\#111B17\],
+  html.light .from-\[\#111B17\] {
+    --tw-gradient-from: #FFFFFF var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgba(255, 255, 255, 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+  }
+
+  html:not(.dark) .via-\[\#111B17\],
+  html.light .via-\[\#111B17\],
+  html:not(.dark) .via-\[\#0C1210\],
+  html.light .via-\[\#0C1210\] {
+    --tw-gradient-stops: var(--tw-gradient-from), #F8FAFC var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+  }
+
+  html:not(.dark) .to-\[\#0C1210\],
+  html.light .to-\[\#0C1210\],
+  html:not(.dark) .to-\[\#070B0A\],
+  html.light .to-\[\#070B0A\],
+  html:not(.dark) .to-\[\#111B17\],
+  html.light .to-\[\#111B17\] {
+    --tw-gradient-to: #F1F5F9 var(--tw-gradient-to-position) !important;
+  }
+
+  html:not(.dark) .from-\[\#17251E\],
+  html.light .from-\[\#17251E\] {
+    --tw-gradient-from: #F0FDF4 var(--tw-gradient-from-position) !important;
+  }
+
+  /* Text Gradient Inversion for Emerald Headers */
+  html:not(.dark) .bg-gradient-to-r.from-\[\#65F59A\],
+  html.light .bg-gradient-to-r.from-\[\#65F59A\] {
+    --tw-gradient-from: #047857 var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: #0D9488 var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+  }
+
+  /* Badge and Pill Surfaces in Light Theme */
+  html:not(.dark) .bg-\[\#17251E\],
+  html.light .bg-\[\#17251E\] {
+    background-color: #ECFDF5 !important;
+    border-color: rgba(4, 120, 87, 0.25) !important;
+  }
+
   /* Light Theme Border Inversions */
   html:not(.dark) .border-\[rgba\(160\,190\,170\,0\.14\)\],
   html.light .border-\[rgba\(160\,190\,170\,0\.14\)\],
