@@ -69,4 +69,29 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     assert.ok(svgContent.includes("--fav-cap: #1E293B;"));
     assert.ok(svgContent.includes("--fav-q: #047857;"));
   });
+
+  it("Verifies icon.svg includes light & dark theme color settings", () => {
+    const publicIconPath = path.join(process.cwd(), "public/icon.svg");
+    const appIconPath = path.join(process.cwd(), "app/icon.svg");
+
+    assert.ok(fs.existsSync(publicIconPath), "public/icon.svg must exist");
+    assert.ok(fs.existsSync(appIconPath), "app/icon.svg must exist");
+
+    const iconContent = fs.readFileSync(publicIconPath, "utf-8");
+
+    // Media query
+    assert.ok(iconContent.includes("@media (prefers-color-scheme: light)"));
+
+    // Dark theme defaults (White cap, light green Q, dark bg)
+    assert.ok(iconContent.includes(".icon-bg { fill: #0C1210;"));
+    assert.ok(iconContent.includes(".icon-cap-top { fill: #FFFFFF;"));
+    assert.ok(iconContent.includes(".icon-q-face { fill: #65F59A;"));
+    assert.ok(iconContent.includes(".icon-q-tail { fill: #FFFFFF;"));
+
+    // Light theme settings (Dark grey cap #1E293B, dark green Q #047857, white bg #FFFFFF)
+    assert.ok(iconContent.includes(".icon-bg { fill: #FFFFFF; stroke: #047857;"));
+    assert.ok(iconContent.includes(".icon-cap-top { fill: #1E293B; stroke: #047857;"));
+    assert.ok(iconContent.includes(".icon-q-face { fill: #047857;"));
+    assert.ok(iconContent.includes(".icon-q-tail { fill: #1E293B;"));
+  });
 });
