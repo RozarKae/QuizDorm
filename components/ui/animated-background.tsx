@@ -14,13 +14,32 @@ import React from "react";
  */
 export default function AnimatedBackground() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden bg-background transition-colors duration-300 dark:opacity-100 opacity-60" aria-hidden="true">
-      {/* 1. Neon Crimson Center-Top Aurora Wave */}
+    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden bg-background transition-colors duration-300 dark:opacity-100 opacity-90" aria-hidden="true">
+      {/* 1. Signature Brand Crimson Floor/Ceiling Aurora (Dark & Light Red Touch) */}
       <div 
-        className="absolute top-[-10%] left-[20%] w-[60vw] h-[45vh] rounded-full opacity-25 animate-aurora-float"
+        className="absolute top-[-12%] left-[15%] w-[70vw] h-[50vh] rounded-full opacity-40 dark:opacity-50 animate-aurora-float"
         style={{
-          background: "radial-gradient(ellipse at center, rgba(255, 77, 109, 0.06) 0%, rgba(255, 117, 143, 0.02) 50%, transparent 75%)",
-          filter: "blur(70px)",
+          background: "radial-gradient(ellipse at center, rgba(255, 77, 109, 0.12) 0%, rgba(190, 18, 60, 0.05) 45%, transparent 75%)",
+          filter: "blur(80px)",
+        }}
+      />
+
+      {/* 2. Light Theme Central Blush Warmth */}
+      <div 
+        className="absolute top-[10%] left-[25%] w-[50vw] h-[45vh] rounded-full dark:opacity-0 opacity-40 pointer-events-none animate-aurora-pulse"
+        style={{
+          background: "radial-gradient(circle at center, rgba(255, 117, 143, 0.08) 0%, rgba(255, 228, 230, 0.04) 50%, transparent 70%)",
+          filter: "blur(90px)",
+        }}
+      />
+
+      {/* 3. Dark Theme Crimson Obsidian Floor Cast Underglow (Matches emblem-dark.jpg) */}
+      <div 
+        className="absolute bottom-[-15%] left-[20%] w-[60vw] h-[45vh] rounded-full dark:opacity-45 opacity-0 pointer-events-none animate-aurora-float"
+        style={{
+          background: "radial-gradient(ellipse at center, rgba(255, 40, 80, 0.14) 0%, rgba(159, 18, 57, 0.06) 50%, transparent 75%)",
+          filter: "blur(85px)",
+          animationDelay: "2s",
         }}
       />
 
@@ -93,11 +112,11 @@ export default function AnimatedBackground() {
         }}
       />
 
-      {/* Vignette Edge Falloff */}
+      {/* Vignette Edge Falloff with Obsidian Crimson Undertone */}
       <div 
         className="absolute inset-0" 
         style={{
-          background: "radial-gradient(circle at 50% 50%, transparent 40%, rgba(11, 7, 8, 0.75) 100%)",
+          background: "radial-gradient(circle at 50% 50%, transparent 45%, rgba(9, 4, 6, 0.8) 100%)",
         }}
       />
     </div>

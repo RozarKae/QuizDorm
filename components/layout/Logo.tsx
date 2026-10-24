@@ -4,12 +4,22 @@ import Image from "next/image";
 export function OfficialEmblem({ className = "w-7 h-7" }: { className?: string }) {
   return (
     <div className={`relative ${className} shrink-0 transition-transform duration-300 group-hover:scale-105`}>
+      {/* Light Theme 3D Metallic Ruby Emblem */}
       <Image
-        src="/official-logo.png"
+        src="/official-logo-light.png"
         alt="QuizDorm Official 3D Emblem"
         width={64}
         height={64}
-        className="w-full h-full object-contain dark:drop-shadow-[0_0_12px_rgba(255,77,109,0.45)] drop-shadow-[0_0_8px_rgba(190,18,60,0.25)]"
+        className="w-full h-full object-contain block dark:hidden drop-shadow-[0_4px_10px_rgba(190,18,60,0.22)]"
+        priority
+      />
+      {/* Dark Theme 3D Glowing Obsidian Crimson Emblem */}
+      <Image
+        src="/official-logo-dark.png"
+        alt="QuizDorm Official 3D Emblem"
+        width={64}
+        height={64}
+        className="w-full h-full object-contain hidden dark:block drop-shadow-[0_0_14px_rgba(255,77,109,0.50)]"
         priority
       />
     </div>

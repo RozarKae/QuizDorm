@@ -1,22 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
   <style>
     :root {
-      --fav-bg: #140C0E;
+      --fav-bg: #090406;
       --fav-stroke: #FF4D6D;
-      --fav-cap: #FFFFFF;
-      --fav-q: #FF4D6D;
-      --fav-tail: #FFFFFF;
+      --fav-cap: #FF4D6D;
+      --fav-q: #FF3366;
+      --fav-tail: #FF4D6D;
       --fav-d: #FF758F;
-      --fav-center: #0B0708;
-      --fav-center-line: #FFFFFF;
+      --fav-center: #090406;
+      --fav-center-line: #FF4D6D;
     }
     @media (prefers-color-scheme: light) {
       :root {
         --fav-bg: #FFFFFF;
         --fav-stroke: #BE123C;
-        --fav-cap: #1E293B;
+        --fav-cap: #BE123C;
         --fav-q: #BE123C;
-        --fav-tail: #1E293B;
+        --fav-tail: #BE123C;
         --fav-d: #9F1239;
         --fav-center: #FFF1F2;
         --fav-center-line: #BE123C;

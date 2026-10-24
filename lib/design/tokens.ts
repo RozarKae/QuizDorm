@@ -8,10 +8,10 @@
 export const FUTURE_OS_TOKENS = {
   colors: {
     // Foundation Surfaces
-    background: "#0B0708",          // Primary near-black charcoal with subtle crimson undertone
-    surfacePrimary: "#140C0E",      // Deep obsidian crimson primary surface / card
-    surfaceElevated: "#1D1013",     // Layered crimson elevated surface (dropdowns, dialogs, popovers)
-    surfaceInteractive: "#2A141A",  // Interactive surface (input fields, active states, hover layers)
+    background: "#090406",          // Deep obsidian with subtle burgundy/crimson undertone
+    surfacePrimary: "#12070A",      // Deep obsidian crimson primary surface / card
+    surfaceElevated: "#180B0F",     // Layered crimson elevated surface (dropdowns, dialogs, popovers)
+    surfaceInteractive: "#220F15",  // Interactive surface (input fields, active states, hover layers)
     surfaceSubtle: "rgba(255, 77, 109, 0.04)", // Ambient crimson surface wash
 
     // Brand & Semantic Accents

@@ -18,14 +18,14 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     assert.ok(cssContent.includes("--color-interactive: var(--interactive)"));
 
     // Light mode foundation variables
-    assert.ok(cssContent.includes("--charcoal: #FAF8F8;"));
+    assert.ok(cssContent.includes("--charcoal: #FFFAFA;"));
     assert.ok(cssContent.includes("--graphite: #FFFFFF;"));
-    assert.ok(cssContent.includes("--elevated: #FFF1F2;"));
+    assert.ok(cssContent.includes("--elevated: #FFF4F5;"));
 
     // Dark mode foundation variables
-    assert.ok(cssContent.includes("--charcoal: #0B0708;"));
-    assert.ok(cssContent.includes("--graphite: #140C0E;"));
-    assert.ok(cssContent.includes("--elevated: #1D1013;"));
+    assert.ok(cssContent.includes("--charcoal: #090406;"));
+    assert.ok(cssContent.includes("--graphite: #12070A;"));
+    assert.ok(cssContent.includes("--elevated: #180B0F;"));
 
     // Background inversions in light mode
     assert.ok(cssContent.includes("html.light .bg-\\[\\#140C0E\\]"));
@@ -38,8 +38,26 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     assert.ok(cssContent.includes("html.light .text-\\[\\#69786F\\]"));
   });
 
-  it("Verifies Logo wordmark adapts to light and dark themes", () => {
+  it("Verifies Logo wordmark and dual-mode emblem adapt to light and dark themes", () => {
     const logoContent = fs.readFileSync(logoComponentPath, "utf-8");
+
+    // Dual-mode adaptive emblem (Light & Dark PNGs with CSS classes)
+    assert.ok(
+      logoContent.includes('src="/official-logo-light.png"'),
+      "Logo must include official-logo-light.png for light mode"
+    );
+    assert.ok(
+      logoContent.includes('src="/official-logo-dark.png"'),
+      "Logo must include official-logo-dark.png for dark mode"
+    );
+    assert.ok(
+      logoContent.includes("block dark:hidden"),
+      "Light emblem must display in light mode and hide in dark mode"
+    );
+    assert.ok(
+      logoContent.includes("hidden dark:block"),
+      "Dark emblem must hide in light mode and display in dark mode"
+    );
 
     // QUIZ: Dark grey in light mode, white in dark mode
     assert.ok(
@@ -47,16 +65,16 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
       "QUIZ wordmark must be dark grey in light mode and white in dark mode"
     );
 
-    // DORM: Dark green in light mode, light green in dark mode
+    // DORM: Dark ruby in light mode, crimson in dark mode
     assert.ok(
       logoContent.includes("text-[#BE123C] dark:text-[#FF4D6D]"),
-      "DORM wordmark must be dark green in light mode and neon green in dark mode"
+      "DORM wordmark must be dark ruby in light mode and crimson in dark mode"
     );
 
     // Pulse dot
     assert.ok(
       logoContent.includes("bg-[#BE123C] dark:bg-[#FF4D6D]"),
-      "Pulse dot must be dark green in light mode and neon green in dark mode"
+      "Pulse dot must be dark ruby in light mode and crimson in dark mode"
     );
   });
 
@@ -66,7 +84,7 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     assert.ok(svgContent.includes("@media (prefers-color-scheme: light)"));
     assert.ok(svgContent.includes("--fav-bg: #FFFFFF;"));
     assert.ok(svgContent.includes("--fav-stroke: #BE123C;"));
-    assert.ok(svgContent.includes("--fav-cap: #1E293B;"));
+    assert.ok(svgContent.includes("--fav-cap: #BE123C;"));
     assert.ok(svgContent.includes("--fav-q: #BE123C;"));
   });
 
@@ -82,17 +100,17 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     // Media query
     assert.ok(iconContent.includes("@media (prefers-color-scheme: light)"));
 
-    // Dark theme defaults (White cap, light green Q, dark bg)
-    assert.ok(iconContent.includes(".icon-bg { fill: #140C0E;"));
-    assert.ok(iconContent.includes(".icon-cap-top { fill: #FFFFFF;"));
+    // Dark theme defaults (Crimson cap, glowing crimson Q, obsidian bg)
+    assert.ok(iconContent.includes(".icon-bg { fill: #090406;"));
+    assert.ok(iconContent.includes(".icon-cap-top { fill: #FF4D6D;"));
     assert.ok(iconContent.includes(".icon-q-face { fill: #FF4D6D;"));
     assert.ok(iconContent.includes(".icon-q-tail { fill: #FFFFFF;"));
 
-    // Light theme settings (Dark grey cap #1E293B, dark green Q #BE123C, white bg #FFFFFF)
+    // Light theme settings (Ruby cap #BE123C, dark ruby Q #BE123C, white bg #FFFFFF)
     assert.ok(iconContent.includes(".icon-bg { fill: #FFFFFF; stroke: #BE123C;"));
-    assert.ok(iconContent.includes(".icon-cap-top { fill: #1E293B; stroke: #BE123C;"));
+    assert.ok(iconContent.includes(".icon-cap-top { fill: #BE123C;"));
     assert.ok(iconContent.includes(".icon-q-face { fill: #BE123C;"));
-    assert.ok(iconContent.includes(".icon-q-tail { fill: #1E293B;"));
+    assert.ok(iconContent.includes(".icon-q-tail { fill: #BE123C;"));
   });
 
   it("Verifies Landing Page CTA & Analytics components use light & dark theme harmony", () => {

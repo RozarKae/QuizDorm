@@ -64,23 +64,23 @@
     --font-jetbrains-mono: "JetBrains Mono", monospace;
     --font-space-grotesk: "Space Grotesk", sans-serif;
 
-    /* Crisp High-Contrast Light Foundation */
-    --background: #FAF8F8;
+    /* Crisp High-Contrast Light Foundation with Subtle Rose Touch */
+    --background: #FFFAFA;
     --foreground: #18080C;
     --card: #FFFFFF;
     --card-foreground: #18080C;
     --popover: #FFFFFF;
     --popover-foreground: #18080C;
-    --border: rgba(30, 10, 18, 0.12);
-    --border-strong: rgba(30, 10, 18, 0.24);
+    --border: rgba(190, 18, 60, 0.12);
+    --border-strong: rgba(190, 18, 60, 0.24);
     --input: #FFF1F2;
     --ring: #BE123C;
     --radius: 0.375rem;
 
-    --charcoal: #FAF8F8;
+    --charcoal: #FFFAFA;
     --graphite: #FFFFFF;
-    --elevated: #FFF1F2;
-    --interactive: #FFE4E6;
+    --elevated: #FFF4F5;
+    --interactive: #FFEAEF;
 
     --crimson-accent: #BE123C;
     --crimson-hover: #9F1239;
@@ -106,23 +106,23 @@
   }
 
   .dark {
-    /* Immersive Future OS Foundation (Crimson Dark) */
-    --background: #0B0708;
+    /* Immersive Future OS Foundation (Deep Obsidian with Crimson Undertone) */
+    --background: #090406;
     --foreground: #FFF0F2;
-    --card: #140C0E;
+    --card: #12070A;
     --card-foreground: #FFF0F2;
-    --popover: #1D1013;
+    --popover: #180B0F;
     --popover-foreground: #FFF0F2;
-    --border: rgba(240, 160, 180, 0.14);
-    --border-strong: rgba(240, 160, 180, 0.28);
-    --input: #2A141A;
+    --border: rgba(255, 77, 109, 0.14);
+    --border-strong: rgba(255, 77, 109, 0.28);
+    --input: #220F15;
     --ring: #FF4D6D;
     --radius: 0.375rem;
 
-    --charcoal: #0B0708;
-    --graphite: #140C0E;
-    --elevated: #1D1013;
-    --interactive: #2A141A;
+    --charcoal: #090406;
+    --graphite: #12070A;
+    --elevated: #180B0F;
+    --interactive: #220F15;
 
     --crimson-accent: #FF4D6D;
     --crimson-hover: #FF3366;

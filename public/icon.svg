@@ -8,9 +8,9 @@
 
   <style>
     /* Default: Dark Theme (Radiant Crimson and Ruby Obsidian) */
-    .icon-bg { fill: #140C0E; stroke: #FF4D6D; stroke-opacity: 0.4; }
-    .icon-inner-border { stroke: #FF758F; stroke-opacity: 0.2; }
-    .icon-cap-top { fill: #FFFFFF; stroke: #FF4D6D; stroke-opacity: 0.9; }
+    .icon-bg { fill: #090406; stroke: #FF4D6D; stroke-opacity: 0.45; }
+    .icon-inner-border { stroke: #FF758F; stroke-opacity: 0.25; }
+    .icon-cap-top { fill: #FF4D6D; stroke: #FFFFFF; stroke-opacity: 0.95; }
     .icon-cap-bevel-left { fill: #FF758F; }
     .icon-cap-bevel-right { fill: #BE123C; }
     .icon-cap-accent { stroke: #FFFFFF; stroke-opacity: 0.95; }
@@ -24,18 +24,18 @@
     .icon-crevice { stroke: #0D0709; stroke-opacity: 0.9; }
     .icon-crevice-line { stroke: #F2F7F3; stroke-opacity: 0.9; }
 
-    /* Light Theme Inversion: White --> Dark Grey (#1E293B), Crimson --> Deep Ruby (#BE123C) */
+    /* Light Theme Inversion: Porcelain and Metallic Ruby */
     @media (prefers-color-scheme: light) {
-      .icon-bg { fill: #FFFFFF; stroke: #BE123C; stroke-opacity: 0.5; }
-      .icon-inner-border { stroke: #9F1239; stroke-opacity: 0.25; }
-      .icon-cap-top { fill: #1E293B; stroke: #BE123C; stroke-opacity: 0.9; }
+      .icon-bg { fill: #FFFFFF; stroke: #BE123C; stroke-opacity: 0.35; }
+      .icon-inner-border { stroke: #FDA4AF; stroke-opacity: 0.3; }
+      .icon-cap-top { fill: #BE123C; stroke: #FFFFFF; stroke-opacity: 0.9; }
       .icon-cap-bevel-left { fill: #9F1239; }
       .icon-cap-bevel-right { fill: #BE123C; }
-      .icon-cap-accent { stroke: #1E293B; stroke-opacity: 0.95; }
+      .icon-cap-accent { stroke: #FFFFFF; stroke-opacity: 0.95; }
       .icon-cap-accent-right { stroke: #BE123C; stroke-opacity: 0.85; }
       .icon-q-face { fill: #BE123C; }
       .icon-q-inner { fill: #FFF1F2; stroke: #FDA4AF; }
-      .icon-q-tail { fill: #1E293B; }
+      .icon-q-tail { fill: #BE123C; }
       .icon-d-face { fill: #9F1239; }
       .icon-d-inner { fill: #FFF1F2; stroke: #FDA4AF; }
       .icon-d-highlight { stroke: #BE123C; stroke-opacity: 0.8; }
