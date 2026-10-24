@@ -181,7 +181,7 @@ export function QuestionPreviewModal({
                   key={opt.id}
                   className={`p-3 rounded-xl border text-xs font-semibold flex items-center justify-between ${
                     roleMode === "teacher" && opt.isCorrect
-                      ? "bg-emerald-50 dark:bg-emerald-950/50 border-emerald-400 text-emerald-900 dark:text-emerald-100"
+                      ? "bg-rose-50 dark:bg-rose-950/50 border-rose-400 text-rose-900 dark:text-rose-100"
                       : "bg-gray-50 dark:bg-gray-900 border-gray-200 dark:border-gray-800 text-gray-900 dark:text-gray-100"
                   }`}
                 >
@@ -193,7 +193,7 @@ export function QuestionPreviewModal({
                   </div>
 
                   {roleMode === "teacher" && opt.isCorrect && (
-                    <span className="text-emerald-600 dark:text-emerald-400 font-bold flex items-center">
+                    <span className="text-rose-600 dark:text-rose-400 font-bold flex items-center">
                       <CheckCircle2 className="w-4 h-4 mr-1" /> Correct Answer
                     </span>
                   )}

@@ -85,7 +85,7 @@ export function BulkIssuanceModal({ open, onOpenChange, onComplete }: BulkIssuan
 
         <div className="flex justify-end space-x-2 pt-4 border-t border-gray-100 dark:border-gray-800">
           <Button variant="outline" onClick={() => onOpenChange(false)} className="text-xs rounded-xl">Cancel</Button>
-          <Button onClick={handleRunBulk} disabled={issuing} className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl">
+          <Button onClick={handleRunBulk} disabled={issuing} className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl">
             {issuing ? <RefreshCw className="w-4 h-4 mr-1 animate-spin" /> : <Award className="w-4 h-4 mr-1" />}
             {issuing ? "Generating Batch..." : "Issue 4 Certificates"}
           </Button>

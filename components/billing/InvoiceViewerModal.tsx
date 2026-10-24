@@ -40,7 +40,7 @@ export function InvoiceViewerModal({ invoice, open, onOpenChange }: InvoiceViewe
           <div className="text-right">
             <span className="text-gray-400 block font-semibold text-[10px]">INVOICE DETAILS:</span>
             <div>Date: {invoice.issuedDate}</div>
-            <div>Status: <span className="font-bold text-emerald-600 uppercase">{invoice.paymentStatus}</span></div>
+            <div>Status: <span className="font-bold text-rose-600 uppercase">{invoice.paymentStatus}</span></div>
           </div>
         </div>
 

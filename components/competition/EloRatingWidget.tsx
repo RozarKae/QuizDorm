@@ -26,7 +26,7 @@ export function EloRatingWidget() {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono">
         <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
           <span className="text-purple-200 text-[10px] block font-sans">Current Elo Rating</span>
-          <span className="font-bold text-emerald-400 text-xl">2,450 ELO</span>
+          <span className="font-bold text-rose-400 text-xl">2,450 ELO</span>
         </div>
 
         <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">

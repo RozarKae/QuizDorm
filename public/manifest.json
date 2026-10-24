@@ -4,8 +4,8 @@
   "description": "Premium Quiz, Assessment & Live Competition Engine for Schools and Institutions",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#090D16",
-  "theme_color": "#047857",
+  "background_color": "#0B0708",
+  "theme_color": "#BE123C",
   "icons": [
     {
       "src": "/icon.svg",

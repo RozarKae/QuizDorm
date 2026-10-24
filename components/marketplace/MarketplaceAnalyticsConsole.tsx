@@ -43,8 +43,8 @@ export function MarketplaceAnalyticsConsole() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
           <span className="text-xs font-semibold text-slate-500">Gross Revenue (GMV)</span>
-          <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400">${mockAnalytics.totalGrossRevenueUSD.toLocaleString()}</p>
-          <p className="text-[11px] text-emerald-500 font-semibold flex items-center gap-1">
+          <p className="text-3xl font-black text-rose-600 dark:text-rose-400">${mockAnalytics.totalGrossRevenueUSD.toLocaleString()}</p>
+          <p className="text-[11px] text-rose-500 font-semibold flex items-center gap-1">
             <TrendingUp className="w-3.5 h-3.5" /> +24.8% vs last month
           </p>
         </div>

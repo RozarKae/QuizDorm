@@ -97,11 +97,11 @@ export function AttendanceAutomationSystem() {
           <p className="text-2xl font-black text-slate-900 dark:text-white mt-1">{total}</p>
         </div>
 
-        <div className="bg-emerald-500/10 border border-emerald-500/30 p-4 rounded-2xl text-center">
-          <p className="text-xs text-emerald-600 dark:text-emerald-400 font-bold flex items-center justify-center gap-1">
+        <div className="bg-rose-500/10 border border-rose-500/30 p-4 rounded-2xl text-center">
+          <p className="text-xs text-rose-600 dark:text-rose-400 font-bold flex items-center justify-center gap-1">
             <CheckCircle2 className="w-3.5 h-3.5" /> Present
           </p>
-          <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400 mt-1">{presentCount}</p>
+          <p className="text-2xl font-black text-rose-600 dark:text-rose-400 mt-1">{presentCount}</p>
         </div>
 
         <div className="bg-amber-500/10 border border-amber-500/30 p-4 rounded-2xl text-center">
@@ -222,15 +222,15 @@ export function AttendanceAutomationSystem() {
           {activeMethod === "GPS Geo-Fence" && (
             <div className="flex items-center justify-between w-full">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-emerald-400" />
+                <div className="w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-rose-400" />
                 </div>
                 <div>
                   <h4 className="font-bold text-xs text-white">GPS Classroom Geo-Fence Bounds</h4>
                   <p className="text-[11px] text-slate-400">Latitude: 37.7749° N • Longitude: 122.4194° W (Radius: 50 meters)</p>
                 </div>
               </div>
-              <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xs">
+              <span className="px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 font-bold text-xs">
                 Geo-Fence Enforced
               </span>
             </div>
@@ -298,7 +298,7 @@ export function AttendanceAutomationSystem() {
                     <span
                       className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full font-bold text-[11px] ${
                         r.status === "Present"
-                          ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                          ? "bg-rose-500/10 text-rose-600 dark:text-rose-400"
                           : r.status === "Late"
                           ? "bg-amber-500/10 text-amber-600 dark:text-amber-400"
                           : r.status === "Absent"
@@ -313,7 +313,7 @@ export function AttendanceAutomationSystem() {
                   <td className="p-3 font-mono text-slate-500">{r.timestamp}</td>
                   <td className="p-3 text-slate-500 text-[11px]">
                     {r.confidenceScore ? (
-                      <span className="text-emerald-500 font-semibold">{r.confidenceScore}% Confidence</span>
+                      <span className="text-rose-500 font-semibold">{r.confidenceScore}% Confidence</span>
                     ) : (
                       r.locationDetails || "-"
                     )}
@@ -322,7 +322,7 @@ export function AttendanceAutomationSystem() {
                     <button
                       onClick={() => handleStatusChange(r.id, "Present")}
                       className={`px-2 py-1 rounded-lg text-[10px] font-bold ${
-                        r.status === "Present" ? "bg-emerald-600 text-white" : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
+                        r.status === "Present" ? "bg-rose-600 text-white" : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
                       }`}
                     >
                       P

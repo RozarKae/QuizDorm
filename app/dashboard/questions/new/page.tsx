@@ -30,7 +30,7 @@ export default function CreateQuestionPage() {
         </div>
         <div className="pt-2">
           <Link href="/dashboard/questions">
-            <Button variant="outline" size="sm" className="border-[rgba(160,190,170,0.2)] text-xs font-mono">
+            <Button variant="outline" size="sm" className="border-[rgba(240, 160, 180,0.2)] text-xs font-mono">
               <ArrowLeft className="w-3.5 h-3.5 mr-1.5" /> Back to Question Bank
             </Button>
           </Link>

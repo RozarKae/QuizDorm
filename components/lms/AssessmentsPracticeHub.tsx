@@ -114,7 +114,7 @@ export function AssessmentsPracticeHub() {
                 onClick={handleRunCode}
                 disabled={isExecuting}
                 size="sm"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs rounded-xl font-bold"
+                className="bg-rose-600 hover:bg-rose-700 text-white text-xs rounded-xl font-bold"
               >
                 {isExecuting ? <RefreshCw className="w-3.5 h-3.5 animate-spin mr-1" /> : <Play className="w-3.5 h-3.5 mr-1" />}
                 Run Code
@@ -129,7 +129,7 @@ export function AssessmentsPracticeHub() {
             />
 
             {testOutput && (
-              <div className="p-3 bg-slate-900 border border-emerald-500/40 rounded-xl text-xs font-mono text-emerald-400 whitespace-pre-wrap">
+              <div className="p-3 bg-slate-900 border border-rose-500/40 rounded-xl text-xs font-mono text-rose-400 whitespace-pre-wrap">
                 {testOutput}
               </div>
             )}

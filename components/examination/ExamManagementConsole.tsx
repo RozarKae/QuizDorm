@@ -153,7 +153,7 @@ export function ExamManagementConsole() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold mb-3 border border-indigo-500/30">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" /> Enterprise High-Stakes Examination Engine
+              <ShieldCheck className="w-4 h-4 text-rose-400" /> Enterprise High-Stakes Examination Engine
             </div>
             <h1 className="text-3xl font-black tracking-tight">Examination Management Authority</h1>
             <p className="text-slate-300 text-sm mt-1.5 max-w-xl">
@@ -222,7 +222,7 @@ export function ExamManagementConsole() {
               <span
                 className={`px-3 py-1 rounded-full text-xs font-bold shrink-0 ${
                   exam.status === "In Progress"
-                    ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 animate-pulse border border-emerald-500/30"
+                    ? "bg-rose-500/10 text-rose-600 dark:text-rose-400 animate-pulse border border-rose-500/30"
                     : exam.status === "Scheduled"
                     ? "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400"
                     : "bg-purple-500/10 text-purple-600 dark:text-purple-400"
@@ -251,7 +251,7 @@ export function ExamManagementConsole() {
 
             <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-100 dark:border-slate-800">
               <span className="flex items-center gap-1.5">
-                <Lock className="w-3.5 h-3.5 text-emerald-500" /> AES-256 Paper Encrypted
+                <Lock className="w-3.5 h-3.5 text-rose-500" /> AES-256 Paper Encrypted
               </span>
               <span className="flex items-center gap-1.5">
                 <ShieldCheck className="w-3.5 h-3.5 text-indigo-500" /> {exam.proctoringLevel}

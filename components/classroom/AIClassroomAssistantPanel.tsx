@@ -151,7 +151,7 @@ export function AIClassroomAssistantPanel() {
               <ul className="space-y-2">
                 {summary.keyTakeaways.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-2 bg-slate-50 dark:bg-slate-800/60 p-3 rounded-xl border border-slate-200/60 dark:border-slate-700/60">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-rose-500 shrink-0 mt-0.5" />
                     <span className="text-slate-700 dark:text-slate-200">{item}</span>
                   </li>
                 ))}

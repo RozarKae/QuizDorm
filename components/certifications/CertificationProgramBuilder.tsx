@@ -116,7 +116,7 @@ export function CertificationProgramBuilder() {
                   <h3 className="font-bold text-slate-900 dark:text-white text-base mt-1">{p.title}</h3>
                   <p className="text-xs text-slate-500">{p.issuingAuthority}</p>
                 </div>
-                <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold text-[10px]">
+                <span className="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 font-bold text-[10px]">
                   {p.status}
                 </span>
               </div>
@@ -128,7 +128,7 @@ export function CertificationProgramBuilder() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Exam Passing Threshold:</span>
-                  <span className="font-mono font-bold text-emerald-600">{p.requiredExamScorePercent}% Minimum</span>
+                  <span className="font-mono font-bold text-rose-600">{p.requiredExamScorePercent}% Minimum</span>
                 </div>
               </div>
 

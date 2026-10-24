@@ -58,7 +58,7 @@ export function WhatIfSimulatorCard() {
             Projected Exam Grade Improvement
           </span>
 
-          <div className="text-2xl font-extrabold text-emerald-600 font-mono">
+          <div className="text-2xl font-extrabold text-rose-600 font-mono">
             +{scenario.projectedScoreIncreasePercent}% Gain ({scenario.newPredictedGrade})
           </div>
         </div>

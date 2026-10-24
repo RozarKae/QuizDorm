@@ -100,10 +100,10 @@ export function AdmissionManagementPortal() {
                 <td className="p-3 font-bold text-slate-900 dark:text-white">{app.applicantName}</td>
                 <td className="p-3 text-slate-600 dark:text-slate-300">{app.targetProgram}</td>
                 <td className="p-3 font-mono">{app.gpaPrevious}</td>
-                <td className="p-3 font-mono font-bold text-emerald-600">{app.entranceExamScore}%</td>
+                <td className="p-3 font-mono font-bold text-rose-600">{app.entranceExamScore}%</td>
                 <td className="p-3 font-mono font-bold text-purple-600">#{app.meritRank}</td>
                 <td className="p-3">
-                  <span className={`px-2.5 py-0.5 rounded-full font-bold text-[10px] ${app.status === "Approved" ? "bg-emerald-500/10 text-emerald-600" : "bg-amber-500/10 text-amber-600"}`}>
+                  <span className={`px-2.5 py-0.5 rounded-full font-bold text-[10px] ${app.status === "Approved" ? "bg-rose-500/10 text-rose-600" : "bg-amber-500/10 text-amber-600"}`}>
                     {app.status}
                   </span>
                 </td>
@@ -140,7 +140,7 @@ export function AdmissionManagementPortal() {
                 <div key={idx} className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 flex items-center justify-between">
                   <span className="font-medium text-slate-800 dark:text-slate-200">{doc.docName}</span>
                   {doc.isVerified ? (
-                    <span className="text-emerald-500 font-bold flex items-center gap-1"><Check className="w-3.5 h-3.5" /> Verified</span>
+                    <span className="text-rose-500 font-bold flex items-center gap-1"><Check className="w-3.5 h-3.5" /> Verified</span>
                   ) : (
                     <span className="text-amber-500 font-bold">Pending Check</span>
                   )}
@@ -152,7 +152,7 @@ export function AdmissionManagementPortal() {
               <Button variant="ghost" onClick={() => setSelectedApp(null)} className="rounded-xl text-xs">
                 Cancel
               </Button>
-              <Button onClick={() => handleApproveAdmission(selectedApp.id)} className="bg-emerald-600 text-white rounded-xl text-xs font-bold">
+              <Button onClick={() => handleApproveAdmission(selectedApp.id)} className="bg-rose-600 text-white rounded-xl text-xs font-bold">
                 Approve & Enroll Student
               </Button>
             </div>

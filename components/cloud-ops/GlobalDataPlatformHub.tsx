@@ -36,7 +36,7 @@ export function GlobalDataPlatformHub() {
           <span className="font-bold text-amber-400 flex items-center gap-1.5">
             <HardDrive className="w-4 h-4" /> Global Supabase PostgreSQL Multi-Region Cluster
           </span>
-          <span className="text-emerald-400 font-bold">100% Synced</span>
+          <span className="text-rose-400 font-bold">100% Synced</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
@@ -47,7 +47,7 @@ export function GlobalDataPlatformHub() {
 
           <div className="p-4 bg-slate-900 rounded-xl space-y-1">
             <span className="text-slate-400 text-[10px]">Vector Embeddings Stored</span>
-            <p className="font-bold text-base text-emerald-400">14.2M Vectors</p>
+            <p className="font-bold text-base text-rose-400">14.2M Vectors</p>
           </div>
 
           <div className="p-4 bg-slate-900 rounded-xl space-y-1">

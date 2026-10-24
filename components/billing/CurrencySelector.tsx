@@ -53,7 +53,7 @@ export function CurrencySelector({
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="inline-flex items-center space-x-2 px-2.5 py-1.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.18)] hover:border-[#65F59A]/40 text-xs font-mono text-[#F2F7F3] transition-colors cursor-pointer"
+        className="inline-flex items-center space-x-2 px-2.5 py-1.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.18)] hover:border-[#FF4D6D]/40 text-xs font-mono text-[#F2F7F3] transition-colors cursor-pointer"
         title="Select billing currency"
         aria-label="Select billing currency"
       >
@@ -70,18 +70,18 @@ export function CurrencySelector({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 4, scale: 0.96 }}
             transition={{ duration: 0.12 }}
-            className="absolute right-0 mt-1.5 w-60 rounded-[6px] border border-[rgba(160,190,170,0.22)] bg-[#0C1210] shadow-[0_16px_36px_rgba(0,0,0,0.8)] py-1.5 z-50 overflow-hidden font-mono text-xs"
+            className="absolute right-0 mt-1.5 w-60 rounded-[6px] border border-[rgba(240, 160, 180,0.22)] bg-[#140C0E] shadow-[0_16px_36px_rgba(0,0,0,0.8)] py-1.5 z-50 overflow-hidden font-mono text-xs"
           >
-            <div className="px-3 py-1.5 border-b border-[rgba(160,190,170,0.12)] bg-[#111B17]/60 flex items-center justify-between">
+            <div className="px-3 py-1.5 border-b border-[rgba(240, 160, 180,0.12)] bg-[#1D1013]/60 flex items-center justify-between">
               <span className="text-[10px] uppercase font-bold text-[#69786F] tracking-wider">
                 Billing Currency
               </span>
-              <span className="text-[9px] text-[#38D9B0] bg-[rgba(56,217,176,0.12)] px-1.5 py-0.2 rounded border border-[rgba(56,217,176,0.25)]">
+              <span className="text-[9px] text-[#FF758F] bg-[rgba(255, 117, 143,0.12)] px-1.5 py-0.2 rounded border border-[rgba(255, 117, 143,0.25)]">
                 Base: INR (₹)
               </span>
             </div>
 
-            <div className="max-h-64 overflow-y-auto py-1 divide-y divide-[rgba(160,190,170,0.06)]">
+            <div className="max-h-64 overflow-y-auto py-1 divide-y divide-[rgba(240, 160, 180,0.06)]">
               {supportedCurrencies.map((c) => {
                 const isSelected = currency === c.code;
                 return (
@@ -91,8 +91,8 @@ export function CurrencySelector({
                     onClick={() => handleSelect(c.code)}
                     className={`w-full flex items-center justify-between px-3 py-2 text-left transition-colors cursor-pointer ${
                       isSelected
-                        ? "bg-[rgba(101,245,154,0.1)] text-[#65F59A] font-bold"
-                        : "text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17]"
+                        ? "bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] font-bold"
+                        : "text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#1D1013]"
                     }`}
                   >
                     <div className="flex items-center space-x-2.5">
@@ -106,21 +106,21 @@ export function CurrencySelector({
                       </div>
                     </div>
 
-                    {isSelected && <Check className="h-3.5 w-3.5 text-[#65F59A] shrink-0" />}
+                    {isSelected && <Check className="h-3.5 w-3.5 text-[#FF4D6D] shrink-0" />}
                   </button>
                 );
               })}
             </div>
 
             {isManualOverride && (
-              <div className="p-2 border-t border-[rgba(160,190,170,0.12)] bg-[#111B17]/40">
+              <div className="p-2 border-t border-[rgba(240, 160, 180,0.12)] bg-[#1D1013]/40">
                 <button
                   type="button"
                   onClick={() => {
                     resetToAutoDetect();
                     setOpen(false);
                   }}
-                  className="w-full flex items-center justify-center space-x-1 text-[10px] text-[#A0AEA5] hover:text-[#65F59A] transition-colors py-1 cursor-pointer"
+                  className="w-full flex items-center justify-center space-x-1 text-[10px] text-[#A0AEA5] hover:text-[#FF4D6D] transition-colors py-1 cursor-pointer"
                 >
                   <Globe className="h-3 w-3" />
                   <span>Reset to Auto-Detect ({detectedCountry})</span>

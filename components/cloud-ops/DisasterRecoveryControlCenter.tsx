@@ -30,7 +30,7 @@ export function DisasterRecoveryControlCenter() {
       {/* Top Banner */}
       <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xl">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold mb-2 border border-emerald-500/30">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 text-xs font-bold mb-2 border border-rose-500/30">
             <ShieldCheck className="w-3.5 h-3.5" /> High Availability & Business Continuity
           </div>
           <h2 className="text-2xl font-bold">Disaster Recovery Control Center</h2>
@@ -39,7 +39,7 @@ export function DisasterRecoveryControlCenter() {
           </p>
         </div>
 
-        <Button onClick={handleSimulateFailover} className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-lg">
+        <Button onClick={handleSimulateFailover} className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-lg">
           <Zap className="w-4 h-4 mr-1.5" /> Simulate DR Failover Drill
         </Button>
       </div>
@@ -48,7 +48,7 @@ export function DisasterRecoveryControlCenter() {
       <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4 font-mono text-xs">
         <div className="flex justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
           <span className="font-bold text-slate-900 dark:text-white text-sm font-sans">Active Replication Pipeline</span>
-          <span className="text-emerald-500 font-bold flex items-center gap-1">
+          <span className="text-rose-500 font-bold flex items-center gap-1">
             <CheckCircle2 className="w-4 h-4" /> {drPlan.failoverStatus}
           </span>
         </div>
@@ -65,7 +65,7 @@ export function DisasterRecoveryControlCenter() {
           </div>
         </div>
 
-        <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-between">
+        <div className="p-4 bg-rose-500/10 border border-rose-500/20 rounded-xl flex items-center justify-between">
           <span>RPO: {drPlan.rpoSeconds} Seconds (Zero Data Loss) • RTO: {drPlan.rtoMinutes} Minute</span>
           <span className="text-slate-400 text-[10px]">Last Snapshot: {drPlan.lastBackupSnapshotTime}</span>
         </div>

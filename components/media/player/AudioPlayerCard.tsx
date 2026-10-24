@@ -120,7 +120,7 @@ export function AudioPlayerCard({
               {recording ? "Listening..." : "Record Answer"}
             </Button>
             {recordedText && (
-              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 truncate">
+              <span className="text-xs font-semibold text-rose-600 dark:text-rose-400 truncate">
                 "{recordedText}"
               </span>
             )}

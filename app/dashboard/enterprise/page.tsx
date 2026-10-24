@@ -50,7 +50,7 @@ export default function TenantControlsPage() {
                 <div key={sso.id} className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 space-y-2">
                   <div className="flex items-center justify-between font-bold">
                     <span className="text-gray-900 dark:text-white text-sm uppercase">{sso.provider} Single Sign-On</span>
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold uppercase">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 font-bold uppercase">
                       ACTIVE
                     </span>
                   </div>
@@ -86,7 +86,7 @@ export default function TenantControlsPage() {
                 <span className="font-bold text-gray-900 dark:text-white block">{f.name}</span>
                 <span className="text-[10px] text-gray-400 font-mono">Key: {f.key}</span>
               </div>
-              <span className="text-xs font-mono font-bold text-emerald-600">ENABLED</span>
+              <span className="text-xs font-mono font-bold text-rose-600">ENABLED</span>
             </div>
           ))}
         </div>

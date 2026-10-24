@@ -199,7 +199,7 @@ export function SmartWhiteboardStudio() {
             onClick={handleExportPNG}
             className="text-xs rounded-xl border-slate-700 bg-slate-800 text-white"
           >
-            <Download className="w-3.5 h-3.5 mr-1 text-emerald-400" /> Export PNG
+            <Download className="w-3.5 h-3.5 mr-1 text-rose-400" /> Export PNG
           </Button>
 
           <Button

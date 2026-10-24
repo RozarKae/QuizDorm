@@ -50,21 +50,21 @@ export function QRVerificationCard() {
         <div
           className={`p-4 rounded-2xl border space-y-2 text-xs ${
             result.valid
-              ? "bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800"
+              ? "bg-rose-50/50 dark:bg-rose-950/20 border-rose-300 dark:border-rose-800"
               : "bg-rose-50/50 dark:bg-rose-950/20 border-rose-300 dark:border-rose-800"
           }`}
         >
           <div className="flex items-center justify-between">
             <span className="font-bold text-gray-900 dark:text-white flex items-center">
               {result.valid ? (
-                <ShieldCheck className="w-4 h-4 text-emerald-600 mr-1.5" />
+                <ShieldCheck className="w-4 h-4 text-rose-600 mr-1.5" />
               ) : (
                 <AlertTriangle className="w-4 h-4 text-rose-600 mr-1.5" />
               )}
               {result.message}
             </span>
             <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase ${
-              result.valid ? "bg-emerald-600 text-white" : "bg-rose-600 text-white"
+              result.valid ? "bg-rose-600 text-white" : "bg-rose-600 text-white"
             }`}>
               {result.status}
             </span>

@@ -25,7 +25,7 @@ export function AIDiagnosticsPanel() {
           </p>
         </div>
 
-        <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300">
+        <span className="text-xs font-bold px-3 py-1 rounded-full bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300">
           Uptime: 99.98%
         </span>
       </div>

@@ -20,7 +20,7 @@ export function CreatorStorefrontHeader({ profile }: CreatorStorefrontHeaderProp
           <div>
             <div className="flex items-center space-x-1.5">
               <h2 className="text-xl font-extrabold text-white">{profile.name}</h2>
-              {profile.verifiedBadge && <CheckCircle2 className="w-4 h-4 text-emerald-400" />}
+              {profile.verifiedBadge && <CheckCircle2 className="w-4 h-4 text-rose-400" />}
             </div>
             <span className="text-xs text-indigo-300 font-mono">@{profile.storefrontSlug}</span>
           </div>
@@ -29,7 +29,7 @@ export function CreatorStorefrontHeader({ profile }: CreatorStorefrontHeaderProp
         <div className="flex items-center space-x-4 font-mono text-xs">
           <div className="text-center p-2.5 rounded-xl bg-white/10">
             <span className="text-gray-400 text-[10px] block font-sans">Total Sales</span>
-            <span className="font-bold text-emerald-400 text-sm">${(profile.totalSalesUSD ?? profile.totalEarningsUSD ?? 0).toLocaleString()}</span>
+            <span className="font-bold text-rose-400 text-sm">${(profile.totalSalesUSD ?? profile.totalEarningsUSD ?? 0).toLocaleString()}</span>
           </div>
           <div className="text-center p-2.5 rounded-xl bg-white/10">
             <span className="text-gray-400 text-[10px] block font-sans">Followers</span>

@@ -106,7 +106,7 @@ export default function SubscriberDashboardView() {
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link href="/dashboard/quizzes">
-              <Button className="h-10 px-5 rounded-[4px] bg-gradient-to-r from-amber-500 to-amber-400 text-[#070B0A] hover:brightness-110 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_20px_rgba(234,179,8,0.3)] transition-all">
+              <Button className="h-10 px-5 rounded-[4px] bg-gradient-to-r from-amber-500 to-amber-400 text-[#0B0708] hover:brightness-110 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_20px_rgba(234,179,8,0.3)] transition-all">
                 <BookOpen className="mr-2 h-4 w-4" />
                 The Dorm Vault
               </Button>
@@ -242,7 +242,7 @@ export default function SubscriberDashboardView() {
             className="w-32 px-3 py-2 rounded-[4px] bg-[#171620] border border-amber-500/30 text-amber-300 font-mono text-center tracking-widest text-sm uppercase focus:outline-none focus:border-amber-400"
           />
           <Link href={pinCode ? `/live/join?pin=${pinCode}` : "/live/join"}>
-            <Button className="h-9 px-4 rounded-[4px] bg-gradient-to-r from-amber-500 to-amber-400 text-[#070B0A] hover:brightness-110 font-mono text-xs uppercase font-bold">
+            <Button className="h-9 px-4 rounded-[4px] bg-gradient-to-r from-amber-500 to-amber-400 text-[#0B0708] hover:brightness-110 font-mono text-xs uppercase font-bold">
               Join Arena
             </Button>
           </Link>

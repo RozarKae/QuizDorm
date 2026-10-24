@@ -47,7 +47,7 @@ export function FacultyStaffManagementConsole() {
                   <h3 className="font-bold text-slate-900 dark:text-white text-base mt-1">{st.fullName}</h3>
                   <p className="text-xs text-slate-500">{st.designation}</p>
                 </div>
-                <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold text-[10px]">
+                <span className="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 font-bold text-[10px]">
                   {st.status}
                 </span>
               </div>

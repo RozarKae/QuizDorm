@@ -444,12 +444,12 @@ export default function CreateCompetitionPage() {
         </div>
         <div className="pt-2 flex items-center justify-center gap-3">
           <Link href="/dashboard/competitions">
-            <Button variant="outline" size="sm" className="border-[rgba(160,190,170,0.2)] text-xs font-mono">
+            <Button variant="outline" size="sm" className="border-[rgba(240, 160, 180,0.2)] text-xs font-mono">
               Back to Competitions
             </Button>
           </Link>
           <Link href="/live/join">
-            <Button size="sm" className="bg-[#65F59A] text-[#070B0A] hover:bg-[#52E086] font-mono text-xs font-bold uppercase">
+            <Button size="sm" className="bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF3366] font-mono text-xs font-bold uppercase">
               Join Arena via Room PIN
             </Button>
           </Link>
@@ -464,16 +464,16 @@ export default function CreateCompetitionPage() {
       <div>
         <Link
           href="/dashboard/competitions"
-          className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#65F59A] mb-3 transition-colors"
+          className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#FF4D6D] mb-3 transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> BACK TO COMPETITIONS
         </Link>
         <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5]">
-          <span className="w-2 h-2 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
+          <span className="w-2 h-2 bg-[#FF4D6D] rounded-full animate-pulse shadow-[0_0_8px_#FF4D6D]" />
           <span>LIVE ARENA PROVISIONING // QUESTION ORCHESTRATION</span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold font-display text-[#F2F7F3] flex items-center mt-1">
-          <Trophy className="w-7 h-7 text-[#65F59A] mr-2.5" /> Host New Live Competition
+          <Trophy className="w-7 h-7 text-[#FF4D6D] mr-2.5" /> Host New Live Competition
         </h1>
         <p className="text-xs font-mono text-[#A0AEA5] mt-1">
           Set your battle rules, pick from 535+ topic questions, or cook up questions instantly with AI or PDF.
@@ -482,12 +482,12 @@ export default function CreateCompetitionPage() {
 
       <form onSubmit={handleSave} className="space-y-8">
         {/* SECTION 1: Tournament Metadata & Host Controls */}
-        <div className="bg-[#0C1210] p-6 rounded-2xl border border-[rgba(160,190,170,0.16)] shadow-lg space-y-6">
-          <div className="border-b border-[rgba(160,190,170,0.12)] pb-3 flex items-center justify-between">
-            <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-[#65F59A] flex items-center gap-2">
+        <div className="bg-[#140C0E] p-6 rounded-2xl border border-[rgba(240, 160, 180,0.16)] shadow-lg space-y-6">
+          <div className="border-b border-[rgba(240, 160, 180,0.12)] pb-3 flex items-center justify-between">
+            <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-[#FF4D6D] flex items-center gap-2">
               <Zap className="w-4 h-4 fill-current" /> 1. Arena Metadata &amp; Host Identity
             </h2>
-            <span className="text-[10px] font-mono text-[#38D9B0] bg-[#111B17] px-2.5 py-0.5 rounded-full border border-[rgba(160,190,170,0.14)]">
+            <span className="text-[10px] font-mono text-[#FF758F] bg-[#1D1013] px-2.5 py-0.5 rounded-full border border-[rgba(240, 160, 180,0.14)]">
               SSE Real-Time Sync
             </span>
           </div>
@@ -501,7 +501,7 @@ export default function CreateCompetitionPage() {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="e.g. Tamil Nadu Inter-School Physics Olympiad"
-                className="text-sm font-semibold bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
+                className="text-sm font-semibold bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#FF4D6D]"
                 required
               />
             </div>
@@ -514,7 +514,7 @@ export default function CreateCompetitionPage() {
                 value={hostName}
                 onChange={(e) => setHostName(e.target.value)}
                 placeholder="e.g. Government Model HSS / Choice School Kochi"
-                className="text-sm font-semibold bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
+                className="text-sm font-semibold bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#FF4D6D]"
                 required
               />
             </div>
@@ -529,7 +529,7 @@ export default function CreateCompetitionPage() {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Provide instructions, topics covered, and ranking rules..."
-              className="w-full rounded-[4px] border border-[rgba(160,190,170,0.2)] bg-[#111B17] p-3 text-xs font-mono text-[#F2F7F3] focus:border-[#65F59A] focus:outline-none"
+              className="w-full rounded-[4px] border border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] p-3 text-xs font-mono text-[#F2F7F3] focus:border-[#FF4D6D] focus:outline-none"
             />
           </div>
 
@@ -543,14 +543,14 @@ export default function CreateCompetitionPage() {
                 <Input
                   value={code}
                   readOnly
-                  className="text-xs font-mono font-bold uppercase bg-[#17251E] border-[#65F59A]/30 text-[#65F59A] rounded-[4px]"
+                  className="text-xs font-mono font-bold uppercase bg-[#2A141A] border-[#FF4D6D]/30 text-[#FF4D6D] rounded-[4px]"
                 />
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
                   onClick={handleRegeneratePin}
-                  className="shrink-0 text-xs font-mono border-[rgba(160,190,170,0.2)] bg-[#111B17] hover:bg-[#17251E] text-[#F2F7F3] rounded-[4px]"
+                  className="shrink-0 text-xs font-mono border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] hover:bg-[#2A141A] text-[#F2F7F3] rounded-[4px]"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                 </Button>
@@ -567,7 +567,7 @@ export default function CreateCompetitionPage() {
                 onChange={(e) => setTimePerQuestion(Number(e.target.value))}
                 min={10}
                 max={180}
-                className="text-xs font-mono bg-[#111B17] border-[rgba(160,190,170,0.2)] rounded-[4px]"
+                className="text-xs font-mono bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] rounded-[4px]"
               />
             </div>
 
@@ -581,7 +581,7 @@ export default function CreateCompetitionPage() {
                 onChange={(e) => setDurationMinutes(Number(e.target.value))}
                 min={5}
                 max={240}
-                className="text-xs font-mono bg-[#111B17] border-[rgba(160,190,170,0.2)] rounded-[4px]"
+                className="text-xs font-mono bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] rounded-[4px]"
               />
             </div>
 
@@ -595,28 +595,28 @@ export default function CreateCompetitionPage() {
                 onChange={(e) => setMaxParticipants(Number(e.target.value))}
                 min={2}
                 max={5000}
-                className="text-xs font-mono bg-[#111B17] border-[rgba(160,190,170,0.2)] rounded-[4px]"
+                className="text-xs font-mono bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] rounded-[4px]"
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-[rgba(160,190,170,0.1)]">
-            <label className="flex items-center space-x-3 text-xs font-mono text-[#A0AEA5] cursor-pointer p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 border-t border-[rgba(240, 160, 180,0.1)]">
+            <label className="flex items-center space-x-3 text-xs font-mono text-[#A0AEA5] cursor-pointer p-2.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
               <input
                 type="checkbox"
                 checked={timeBonus}
                 onChange={(e) => setTimeBonus(e.target.checked)}
-                className="w-4 h-4 text-[#65F59A] bg-[#070B0A] rounded border-[rgba(160,190,170,0.3)] focus:ring-[#65F59A]"
+                className="w-4 h-4 text-[#FF4D6D] bg-[#0B0708] rounded border-[rgba(240, 160, 180,0.3)] focus:ring-[#FF4D6D]"
               />
               <span>Speed-Based Time Bonus (Fast answers earn up to +50 bonus pts)</span>
             </label>
 
-            <label className="flex items-center space-x-3 text-xs font-mono text-[#A0AEA5] cursor-pointer p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+            <label className="flex items-center space-x-3 text-xs font-mono text-[#A0AEA5] cursor-pointer p-2.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
               <input
                 type="checkbox"
                 checked={negativeMarking}
                 onChange={(e) => setNegativeMarking(e.target.checked)}
-                className="w-4 h-4 text-[#65F59A] bg-[#070B0A] rounded border-[rgba(160,190,170,0.3)] focus:ring-[#65F59A]"
+                className="w-4 h-4 text-[#FF4D6D] bg-[#0B0708] rounded border-[rgba(240, 160, 180,0.3)] focus:ring-[#FF4D6D]"
               />
               <span>Negative Marking (-25% penalty for wrong submissions)</span>
             </label>
@@ -624,11 +624,11 @@ export default function CreateCompetitionPage() {
         </div>
 
         {/* SECTION 2: Interactive Question Provisioning Studio (The 3 Modes) */}
-        <div className="bg-[#0C1210] p-6 rounded-2xl border border-[rgba(160,190,170,0.16)] shadow-lg space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[rgba(160,190,170,0.12)] gap-3">
+        <div className="bg-[#140C0E] p-6 rounded-2xl border border-[rgba(240, 160, 180,0.16)] shadow-lg space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-[rgba(240, 160, 180,0.12)] gap-3">
             <div>
-              <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-[#65F59A] flex items-center gap-2">
-                <Layers className="w-4 h-4 text-[#65F59A]" /> 2. Question Content Engine (Choose Source)
+              <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-[#FF4D6D] flex items-center gap-2">
+                <Layers className="w-4 h-4 text-[#FF4D6D]" /> 2. Question Content Engine (Choose Source)
               </h2>
               <p className="text-[11px] font-mono text-[#69786F]">
                 Load segregated questions by topic, generate custom questions via AI, or upload image / PDF documents.
@@ -636,13 +636,13 @@ export default function CreateCompetitionPage() {
             </div>
 
             {/* Mode Switcher Tabs */}
-            <div className="flex items-center space-x-1 bg-[#111B17] p-1 rounded-[6px] border border-[rgba(160,190,170,0.14)] self-start sm:self-auto">
+            <div className="flex items-center space-x-1 bg-[#1D1013] p-1 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] self-start sm:self-auto">
               <button
                 type="button"
                 onClick={() => setActiveTab("bank")}
                 className={`px-3 py-1.5 rounded-[4px] text-xs font-mono font-bold flex items-center gap-1.5 transition-all ${
                   activeTab === "bank"
-                    ? "bg-[#65F59A] text-[#070B0A] shadow-[0_0_10px_rgba(101,245,154,0.3)]"
+                    ? "bg-[#FF4D6D] text-[#0B0708] shadow-[0_0_10px_rgba(255, 77, 109,0.3)]"
                     : "text-[#A0AEA5] hover:text-[#F2F7F3]"
                 }`}
               >
@@ -655,7 +655,7 @@ export default function CreateCompetitionPage() {
                 onClick={() => setActiveTab("ai")}
                 className={`px-3 py-1.5 rounded-[4px] text-xs font-mono font-bold flex items-center gap-1.5 transition-all ${
                   activeTab === "ai"
-                    ? "bg-[#65F59A] text-[#070B0A] shadow-[0_0_10px_rgba(101,245,154,0.3)]"
+                    ? "bg-[#FF4D6D] text-[#0B0708] shadow-[0_0_10px_rgba(255, 77, 109,0.3)]"
                     : "text-[#A0AEA5] hover:text-[#F2F7F3]"
                 }`}
               >
@@ -668,7 +668,7 @@ export default function CreateCompetitionPage() {
                 onClick={() => setActiveTab("file")}
                 className={`px-3 py-1.5 rounded-[4px] text-xs font-mono font-bold flex items-center gap-1.5 transition-all ${
                   activeTab === "file"
-                    ? "bg-[#65F59A] text-[#070B0A] shadow-[0_0_10px_rgba(101,245,154,0.3)]"
+                    ? "bg-[#FF4D6D] text-[#0B0708] shadow-[0_0_10px_rgba(255, 77, 109,0.3)]"
                     : "text-[#A0AEA5] hover:text-[#F2F7F3]"
                 }`}
               >
@@ -682,7 +682,7 @@ export default function CreateCompetitionPage() {
           {activeTab === "bank" && (
             <div className="space-y-5">
               {/* Filter Controls Bar */}
-              <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 bg-[#111B17] p-4 rounded-xl border border-[rgba(160,190,170,0.12)]">
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 bg-[#1D1013] p-4 rounded-xl border border-[rgba(240, 160, 180,0.12)]">
                 {/* Subject Selector */}
                 <div className="sm:col-span-4">
                   <label className="block text-[10px] font-mono uppercase tracking-wider text-[#69786F] mb-1">
@@ -694,7 +694,7 @@ export default function CreateCompetitionPage() {
                       setSelectedSubject(e.target.value);
                       setSelectedTopic("All Topics");
                     }}
-                    className="w-full h-9 rounded-[4px] border border-[rgba(160,190,170,0.2)] bg-[#0C1210] px-2.5 text-xs font-mono text-[#F2F7F3] focus:border-[#65F59A] focus:outline-none"
+                    className="w-full h-9 rounded-[4px] border border-[rgba(240, 160, 180,0.2)] bg-[#140C0E] px-2.5 text-xs font-mono text-[#F2F7F3] focus:border-[#FF4D6D] focus:outline-none"
                   >
                     {allSubjects.map((s) => (
                       <option key={s} value={s}>
@@ -712,7 +712,7 @@ export default function CreateCompetitionPage() {
                   <select
                     value={selectedTopic}
                     onChange={(e) => setSelectedTopic(e.target.value)}
-                    className="w-full h-9 rounded-[4px] border border-[rgba(160,190,170,0.2)] bg-[#0C1210] px-2.5 text-xs font-mono text-[#F2F7F3] focus:border-[#65F59A] focus:outline-none"
+                    className="w-full h-9 rounded-[4px] border border-[rgba(240, 160, 180,0.2)] bg-[#140C0E] px-2.5 text-xs font-mono text-[#F2F7F3] focus:border-[#FF4D6D] focus:outline-none"
                   >
                     {availableTopics.map((t) => (
                       <option key={t} value={t}>
@@ -733,7 +733,7 @@ export default function CreateCompetitionPage() {
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="e.g. quantum, constitution, benzene..."
-                      className="pl-8 h-9 text-xs font-mono bg-[#0C1210] border-[rgba(160,190,170,0.2)] rounded-[4px]"
+                      className="pl-8 h-9 text-xs font-mono bg-[#140C0E] border-[rgba(240, 160, 180,0.2)] rounded-[4px]"
                     />
                   </div>
                 </div>
@@ -742,7 +742,7 @@ export default function CreateCompetitionPage() {
               {/* Batch Action Buttons */}
               <div className="flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
                 <span className="text-[#A0AEA5]">
-                  Showing <strong className="text-[#65F59A]">{filteredBankQuestions.length}</strong> matching questions in{" "}
+                  Showing <strong className="text-[#FF4D6D]">{filteredBankQuestions.length}</strong> matching questions in{" "}
                   <strong className="text-[#F2F7F3]">{selectedTopic}</strong>
                 </span>
 
@@ -752,7 +752,7 @@ export default function CreateCompetitionPage() {
                     size="sm"
                     variant="outline"
                     onClick={() => handleAddRandomFromTopic(5)}
-                    className="h-8 text-xs font-mono border-[rgba(160,190,170,0.2)] bg-[#111B17] hover:bg-[#17251E] text-[#38D9B0]"
+                    className="h-8 text-xs font-mono border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] hover:bg-[#2A141A] text-[#FF758F]"
                   >
                     <Plus className="w-3.5 h-3.5 mr-1" /> Quick Pick 5 Questions
                   </Button>
@@ -760,7 +760,7 @@ export default function CreateCompetitionPage() {
                     type="button"
                     size="sm"
                     onClick={handleAddAllFiltered}
-                    className="h-8 text-xs font-mono font-bold bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A]"
+                    className="h-8 text-xs font-mono font-bold bg-[#FF4D6D] hover:bg-[#FF3366] text-[#0B0708]"
                   >
                     <CheckCircle2 className="w-3.5 h-3.5 mr-1" /> Add All ({filteredBankQuestions.length}) to Queue
                   </Button>
@@ -770,7 +770,7 @@ export default function CreateCompetitionPage() {
               {/* Scrollable Question Cards List */}
               <div className="space-y-3 max-h-96 overflow-y-auto pr-1">
                 {filteredBankQuestions.length === 0 ? (
-                  <div className="p-8 text-center text-xs font-mono text-[#69786F] border border-dashed border-[rgba(160,190,170,0.15)] rounded-xl">
+                  <div className="p-8 text-center text-xs font-mono text-[#69786F] border border-dashed border-[rgba(240, 160, 180,0.15)] rounded-xl">
                     No questions found matching your filter criteria. Try selecting another topic or clear search.
                   </div>
                 ) : (
@@ -783,8 +783,8 @@ export default function CreateCompetitionPage() {
                         onClick={() => handleToggleQuestionInQueue(q)}
                         className={`p-4 rounded-xl border text-xs font-mono transition-all cursor-pointer ${
                           isSelected
-                            ? "bg-[#17251E] border-[#65F59A] shadow-[0_0_12px_rgba(101,245,154,0.15)]"
-                            : "bg-[#111B17] border-[rgba(160,190,170,0.12)] hover:border-[rgba(160,190,170,0.3)] text-[#A0AEA5]"
+                            ? "bg-[#2A141A] border-[#FF4D6D] shadow-[0_0_12px_rgba(255, 77, 109,0.15)]"
+                            : "bg-[#1D1013] border-[rgba(240, 160, 180,0.12)] hover:border-[rgba(240, 160, 180,0.3)] text-[#A0AEA5]"
                         }`}
                       >
                         <div className="flex items-start justify-between gap-3">
@@ -793,16 +793,16 @@ export default function CreateCompetitionPage() {
                               <span
                                 className={`w-4 h-4 rounded-[3px] border flex items-center justify-center ${
                                   isSelected
-                                    ? "bg-[#65F59A] border-[#65F59A] text-[#070B0A]"
-                                    : "border-[rgba(160,190,170,0.3)]"
+                                    ? "bg-[#FF4D6D] border-[#FF4D6D] text-[#0B0708]"
+                                    : "border-[rgba(240, 160, 180,0.3)]"
                                 }`}
                               >
                                 {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
                               </span>
-                              <span className="text-[10px] uppercase font-bold text-[#38D9B0] bg-[#070B0A] px-2 py-0.5 rounded-[3px] border border-[rgba(160,190,170,0.14)]">
+                              <span className="text-[10px] uppercase font-bold text-[#FF758F] bg-[#0B0708] px-2 py-0.5 rounded-[3px] border border-[rgba(240, 160, 180,0.14)]">
                                 {q.subject}
                               </span>
-                              <span className="text-[10px] text-[#A0AEA5] bg-[#070B0A] px-2 py-0.5 rounded-[3px] border border-[rgba(160,190,170,0.08)]">
+                              <span className="text-[10px] text-[#A0AEA5] bg-[#0B0708] px-2 py-0.5 rounded-[3px] border border-[rgba(240, 160, 180,0.08)]">
                                 {q.topic}
                               </span>
                               <span
@@ -811,7 +811,7 @@ export default function CreateCompetitionPage() {
                                     ? "bg-[#F87171]/20 text-[#F87171]"
                                     : q.difficulty === "Medium"
                                     ? "bg-[#FFE600]/20 text-[#FFE600]"
-                                    : "bg-[#65F59A]/20 text-[#65F59A]"
+                                    : "bg-[#FF4D6D]/20 text-[#FF4D6D]"
                                 }`}
                               >
                                 {q.difficulty}
@@ -830,8 +830,8 @@ export default function CreateCompetitionPage() {
                                   key={opt.id || i}
                                   className={`p-2 rounded-[4px] border text-[11px] truncate ${
                                     opt.isCorrect
-                                      ? "border-[#65F59A]/40 bg-[#17251E] text-[#65F59A] font-bold"
-                                      : "border-[rgba(160,190,170,0.08)] bg-[#0C1210] text-[#A0AEA5]"
+                                      ? "border-[#FF4D6D]/40 bg-[#2A141A] text-[#FF4D6D] font-bold"
+                                      : "border-[rgba(240, 160, 180,0.08)] bg-[#140C0E] text-[#A0AEA5]"
                                   }`}
                                 >
                                   <span className="mr-1.5 opacity-60 font-bold">{String.fromCharCode(65 + i)}.</span>
@@ -850,7 +850,7 @@ export default function CreateCompetitionPage() {
                             {isSelected ? (
                               <span className="text-[#F87171] hover:underline font-bold">Remove</span>
                             ) : (
-                              <span className="text-[#65F59A] hover:underline font-bold">+ Add</span>
+                              <span className="text-[#FF4D6D] hover:underline font-bold">+ Add</span>
                             )}
                           </Button>
                         </div>
@@ -864,9 +864,9 @@ export default function CreateCompetitionPage() {
 
           {/* TAB 2: AI QUIZMAKER (PROMPT TO QUESTIONS) */}
           {activeTab === "ai" && (
-            <div className="space-y-5 bg-[#111B17] p-5 rounded-xl border border-[rgba(160,190,170,0.14)]">
-              <div className="border-b border-[rgba(160,190,170,0.1)] pb-3">
-                <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#65F59A] flex items-center gap-2">
+            <div className="space-y-5 bg-[#1D1013] p-5 rounded-xl border border-[rgba(240, 160, 180,0.14)]">
+              <div className="border-b border-[rgba(240, 160, 180,0.1)] pb-3">
+                <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#FF4D6D] flex items-center gap-2">
                   <Sparkles className="w-4 h-4 fill-current" /> AI Arena Question Generator
                 </h3>
                 <p className="text-[11px] font-mono text-[#A0AEA5] mt-1">
@@ -883,7 +883,7 @@ export default function CreateCompetitionPage() {
                     value={aiTopic}
                     onChange={(e) => setAiTopic(e.target.value)}
                     placeholder="e.g. Thermodynamics, Mitosis, Tamil Sangam Era..."
-                    className="h-10 text-xs font-mono bg-[#0C1210] border-[rgba(160,190,170,0.2)] rounded-[4px]"
+                    className="h-10 text-xs font-mono bg-[#140C0E] border-[rgba(240, 160, 180,0.2)] rounded-[4px]"
                   />
                 </div>
 
@@ -894,7 +894,7 @@ export default function CreateCompetitionPage() {
                   <select
                     value={aiSubject}
                     onChange={(e) => setAiSubject(e.target.value)}
-                    className="w-full h-10 rounded-[4px] border border-[rgba(160,190,170,0.2)] bg-[#0C1210] px-2.5 text-xs font-mono text-[#F2F7F3] focus:border-[#65F59A] focus:outline-none"
+                    className="w-full h-10 rounded-[4px] border border-[rgba(240, 160, 180,0.2)] bg-[#140C0E] px-2.5 text-xs font-mono text-[#F2F7F3] focus:border-[#FF4D6D] focus:outline-none"
                   >
                     <option value="Computer Science">Computer Science</option>
                     <option value="Science & Technology">Science &amp; Technology</option>
@@ -912,7 +912,7 @@ export default function CreateCompetitionPage() {
                   <select
                     value={aiDifficulty}
                     onChange={(e) => setAiDifficulty(e.target.value as DifficultyLevel)}
-                    className="w-full h-10 rounded-[4px] border border-[rgba(160,190,170,0.2)] bg-[#0C1210] px-2.5 text-xs font-mono text-[#F2F7F3] focus:border-[#65F59A] focus:outline-none"
+                    className="w-full h-10 rounded-[4px] border border-[rgba(240, 160, 180,0.2)] bg-[#140C0E] px-2.5 text-xs font-mono text-[#F2F7F3] focus:border-[#FF4D6D] focus:outline-none"
                   >
                     <option value="Easy">Easy (Fundamentals)</option>
                     <option value="Medium">Medium (Application)</option>
@@ -931,8 +931,8 @@ export default function CreateCompetitionPage() {
                       onClick={() => setAiCount(num)}
                       className={`w-7 h-7 rounded-[4px] border font-bold text-xs ${
                         aiCount === num
-                          ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
-                          : "border-[rgba(160,190,170,0.2)] bg-[#0C1210] text-[#A0AEA5]"
+                          ? "bg-[#FF4D6D] text-[#0B0708] border-[#FF4D6D]"
+                          : "border-[rgba(240, 160, 180,0.2)] bg-[#140C0E] text-[#A0AEA5]"
                       }`}
                     >
                       {num}
@@ -945,7 +945,7 @@ export default function CreateCompetitionPage() {
                   type="button"
                   disabled={isGeneratingAi}
                   onClick={handleGenerateAiQuestions}
-                  className="bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono font-bold text-xs rounded-[4px] h-9 px-5 shadow-[0_0_15px_rgba(101,245,154,0.2)]"
+                  className="bg-[#FF4D6D] hover:bg-[#FF3366] text-[#0B0708] font-mono font-bold text-xs rounded-[4px] h-9 px-5 shadow-[0_0_15px_rgba(255, 77, 109,0.2)]"
                 >
                   {isGeneratingAi ? (
                     <>
@@ -963,16 +963,16 @@ export default function CreateCompetitionPage() {
 
               {/* AI Generated Preview Deck */}
               {aiGeneratedList.length > 0 && (
-                <div className="pt-4 border-t border-[rgba(160,190,170,0.12)] space-y-3">
+                <div className="pt-4 border-t border-[rgba(240, 160, 180,0.12)] space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold text-[#65F59A]">
+                    <span className="text-xs font-mono font-bold text-[#FF4D6D]">
                       ✓ {aiGeneratedList.length} Questions Ready to Roll
                     </span>
                     <Button
                       type="button"
                       size="sm"
                       onClick={handleAddAllAiGeneratedToQueue}
-                      className="bg-[#38D9B0] hover:bg-[#2EC49E] text-[#070B0A] font-mono text-xs font-bold rounded-[4px] h-8"
+                      className="bg-[#FF758F] hover:bg-[#E11D48] text-[#0B0708] font-mono text-xs font-bold rounded-[4px] h-8"
                     >
                       <Plus className="w-3.5 h-3.5 mr-1" /> Add All to Arena Queue
                     </Button>
@@ -982,9 +982,9 @@ export default function CreateCompetitionPage() {
                     {aiGeneratedList.map((q, idx) => (
                       <div
                         key={q.id}
-                        className="p-3 bg-[#0C1210] rounded-lg border border-[rgba(160,190,170,0.14)] text-xs font-mono space-y-1.5"
+                        className="p-3 bg-[#140C0E] rounded-lg border border-[rgba(240, 160, 180,0.14)] text-xs font-mono space-y-1.5"
                       >
-                        <div className="flex items-center justify-between text-[10px] text-[#38D9B0]">
+                        <div className="flex items-center justify-between text-[10px] text-[#FF758F]">
                           <span>AI Question #{idx + 1}</span>
                           <span className="text-[#A0AEA5]">{q.difficulty} • +{q.marks} pts</span>
                         </div>
@@ -1000,10 +1000,10 @@ export default function CreateCompetitionPage() {
 
           {/* TAB 3: ADD IMAGE OR PDF (AI DOCUMENT EXTRACTOR) */}
           {activeTab === "file" && (
-            <div className="space-y-5 bg-[#111B17] p-5 rounded-xl border border-[rgba(160,190,170,0.14)]">
-              <div className="border-b border-[rgba(160,190,170,0.1)] pb-3">
-                <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#65F59A] flex items-center gap-2">
-                  <Upload className="w-4 h-4 text-[#65F59A]" /> Document &amp; Image Question Extractor
+            <div className="space-y-5 bg-[#1D1013] p-5 rounded-xl border border-[rgba(240, 160, 180,0.14)]">
+              <div className="border-b border-[rgba(240, 160, 180,0.1)] pb-3">
+                <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#FF4D6D] flex items-center gap-2">
+                  <Upload className="w-4 h-4 text-[#FF4D6D]" /> Document &amp; Image Question Extractor
                 </h3>
                 <p className="text-[11px] font-mono text-[#A0AEA5] mt-1">
                   Upload a PDF question paper, curriculum document, or problem diagram image (.pdf, .png, .jpg, .webp).
@@ -1013,7 +1013,7 @@ export default function CreateCompetitionPage() {
               {/* Upload Dropzone */}
               <div
                 onClick={() => fileInputRef.current?.click()}
-                className="p-8 border-2 border-dashed border-[rgba(160,190,170,0.25)] hover:border-[#65F59A]/60 rounded-xl bg-[#0C1210] text-center cursor-pointer transition-all space-y-3 group"
+                className="p-8 border-2 border-dashed border-[rgba(240, 160, 180,0.25)] hover:border-[#FF4D6D]/60 rounded-xl bg-[#140C0E] text-center cursor-pointer transition-all space-y-3 group"
               >
                 <input
                   ref={fileInputRef}
@@ -1023,7 +1023,7 @@ export default function CreateCompetitionPage() {
                   className="hidden"
                 />
 
-                <div className="w-12 h-12 rounded-full bg-[#111B17] border border-[rgba(160,190,170,0.15)] group-hover:border-[#65F59A]/50 flex items-center justify-center mx-auto text-[#65F59A]">
+                <div className="w-12 h-12 rounded-full bg-[#1D1013] border border-[rgba(240, 160, 180,0.15)] group-hover:border-[#FF4D6D]/50 flex items-center justify-center mx-auto text-[#FF4D6D]">
                   {selectedFile ? (
                     <FileText className="w-6 h-6" />
                   ) : (
@@ -1034,7 +1034,7 @@ export default function CreateCompetitionPage() {
                 <div>
                   {selectedFile ? (
                     <div>
-                      <p className="font-mono text-xs font-bold text-[#65F59A]">{selectedFile.name}</p>
+                      <p className="font-mono text-xs font-bold text-[#FF4D6D]">{selectedFile.name}</p>
                       <p className="font-mono text-[10px] text-[#A0AEA5] mt-0.5">
                         {(selectedFile.size / 1024).toFixed(1)} KB • Ready for extraction
                       </p>
@@ -1055,12 +1055,12 @@ export default function CreateCompetitionPage() {
               {/* Action Button & Question Count Control */}
               {selectedFile && (
                 <div className="space-y-3 pt-1">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.15)] gap-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-[#140C0E] rounded-[6px] border border-[rgba(240, 160, 180,0.15)] gap-2">
                     <div className="flex items-center space-x-2">
                       <span className="text-xs font-mono font-bold text-[#A0AEA5] uppercase">
                         Questions to Extract:
                       </span>
-                      <span className="text-xs font-mono font-bold text-[#65F59A]">
+                      <span className="text-xs font-mono font-bold text-[#FF4D6D]">
                         {fileExtractCount} Questions
                       </span>
                     </div>
@@ -1072,8 +1072,8 @@ export default function CreateCompetitionPage() {
                           onClick={() => setFileExtractCount(num)}
                           className={`w-8 h-7 rounded-[3px] border font-bold text-xs transition-all ${
                             fileExtractCount === num
-                              ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
-                              : "border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
+                              ? "bg-[#FF4D6D] text-[#0B0708] border-[#FF4D6D]"
+                              : "border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3]"
                           }`}
                         >
                           {num}
@@ -1088,7 +1088,7 @@ export default function CreateCompetitionPage() {
                       variant="outline"
                       size="sm"
                       onClick={() => setSelectedFile(null)}
-                      className="text-xs font-mono rounded-[4px] border-[rgba(160,190,170,0.2)] bg-[#0C1210] text-[#A0AEA5]"
+                      className="text-xs font-mono rounded-[4px] border-[rgba(240, 160, 180,0.2)] bg-[#140C0E] text-[#A0AEA5]"
                     >
                       Clear File
                     </Button>
@@ -1096,7 +1096,7 @@ export default function CreateCompetitionPage() {
                       type="button"
                       disabled={isExtractingFile}
                       onClick={handleExtractFileToQuestions}
-                      className="bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono font-bold text-xs rounded-[4px] h-9 px-5 shadow-[0_0_15px_rgba(101,245,154,0.25)]"
+                      className="bg-[#FF4D6D] hover:bg-[#FF3366] text-[#0B0708] font-mono font-bold text-xs rounded-[4px] h-9 px-5 shadow-[0_0_15px_rgba(255, 77, 109,0.25)]"
                     >
                       {isExtractingFile ? (
                         <>
@@ -1115,7 +1115,7 @@ export default function CreateCompetitionPage() {
               )}
 
               {extractedSummary && (
-                <div className="p-3 bg-[#17251E] rounded-lg border border-[#65F59A]/30 text-xs font-mono text-[#65F59A] flex items-center gap-2">
+                <div className="p-3 bg-[#2A141A] rounded-lg border border-[#FF4D6D]/30 text-xs font-mono text-[#FF4D6D] flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 shrink-0" />
                   <span>{extractedSummary}</span>
                 </div>
@@ -1125,10 +1125,10 @@ export default function CreateCompetitionPage() {
         </div>
 
         {/* SECTION 3: Live Arena Question Queue (Active Delivery Deck) */}
-        <div className="bg-[#0C1210] p-6 rounded-2xl border border-[rgba(160,190,170,0.16)] shadow-lg space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-[rgba(160,190,170,0.12)] gap-3">
+        <div className="bg-[#140C0E] p-6 rounded-2xl border border-[rgba(240, 160, 180,0.16)] shadow-lg space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-[rgba(240, 160, 180,0.12)] gap-3">
             <div>
-              <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-[#65F59A] flex items-center gap-2">
+              <h2 className="font-mono text-xs font-bold uppercase tracking-wider text-[#FF4D6D] flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 fill-current" /> 3. Live Arena Delivery Queue ({selectedQuestions.length} Questions)
               </h2>
               <p className="text-[11px] font-mono text-[#69786F]">
@@ -1137,7 +1137,7 @@ export default function CreateCompetitionPage() {
             </div>
 
             <div className="flex items-center gap-3">
-              <span className="font-mono text-xs text-[#38D9B0] bg-[#111B17] px-3 py-1 rounded-full border border-[rgba(160,190,170,0.14)]">
+              <span className="font-mono text-xs text-[#FF758F] bg-[#1D1013] px-3 py-1 rounded-full border border-[rgba(240, 160, 180,0.14)]">
                 Total Marks: {selectedQuestions.reduce((acc, q) => acc + (q.marks || 4), 0)} pts
               </span>
               <Button
@@ -1153,7 +1153,7 @@ export default function CreateCompetitionPage() {
           </div>
 
           {selectedQuestions.length === 0 ? (
-            <div className="p-8 text-center text-xs font-mono text-[#69786F] border border-dashed border-[rgba(160,190,170,0.15)] rounded-xl space-y-2">
+            <div className="p-8 text-center text-xs font-mono text-[#69786F] border border-dashed border-[rgba(240, 160, 180,0.15)] rounded-xl space-y-2">
               <p className="text-[#A0AEA5] font-bold">No questions loaded in queue yet.</p>
               <p>Pick questions from the Topic Bank, generate with AI Quizmaker, or upload a document.</p>
             </div>
@@ -1162,10 +1162,10 @@ export default function CreateCompetitionPage() {
               {selectedQuestions.map((q, idx) => (
                 <div
                   key={`${q.id}-${idx}`}
-                  className="p-3 bg-[#111B17] rounded-lg border border-[rgba(160,190,170,0.14)] flex items-center justify-between gap-3 text-xs font-mono"
+                  className="p-3 bg-[#1D1013] rounded-lg border border-[rgba(240, 160, 180,0.14)] flex items-center justify-between gap-3 text-xs font-mono"
                 >
                   <div className="flex items-center space-x-3 truncate">
-                    <span className="w-6 h-6 rounded-[3px] bg-[#17251E] text-[#65F59A] font-bold flex items-center justify-center shrink-0 border border-[rgba(101,245,154,0.2)]">
+                    <span className="w-6 h-6 rounded-[3px] bg-[#2A141A] text-[#FF4D6D] font-bold flex items-center justify-center shrink-0 border border-[rgba(255, 77, 109,0.2)]">
                       {idx + 1}
                     </span>
                     <div className="truncate">
@@ -1175,7 +1175,7 @@ export default function CreateCompetitionPage() {
                         <span>•</span>
                         <span>{q.topic || "Core"}</span>
                         <span>•</span>
-                        <span className="text-[#38D9B0]">+{q.marks || 4} Marks</span>
+                        <span className="text-[#FF758F]">+{q.marks || 4} Marks</span>
                       </div>
                     </div>
                   </div>
@@ -1185,7 +1185,7 @@ export default function CreateCompetitionPage() {
                       type="button"
                       disabled={idx === 0}
                       onClick={() => handleMoveQueueItem(idx, "up")}
-                      className="p-1 text-[#A0AEA5] hover:text-[#65F59A] disabled:opacity-30"
+                      className="p-1 text-[#A0AEA5] hover:text-[#FF4D6D] disabled:opacity-30"
                       title="Move Up"
                     >
                       <ArrowUp className="w-3.5 h-3.5" />
@@ -1194,7 +1194,7 @@ export default function CreateCompetitionPage() {
                       type="button"
                       disabled={idx === selectedQuestions.length - 1}
                       onClick={() => handleMoveQueueItem(idx, "down")}
-                      className="p-1 text-[#A0AEA5] hover:text-[#65F59A] disabled:opacity-30"
+                      className="p-1 text-[#A0AEA5] hover:text-[#FF4D6D] disabled:opacity-30"
                       title="Move Down"
                     >
                       <ArrowDown className="w-3.5 h-3.5" />
@@ -1220,7 +1220,7 @@ export default function CreateCompetitionPage() {
             <Button
               type="button"
               variant="outline"
-              className="text-xs font-mono border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] rounded-[4px] h-10 px-6"
+              className="text-xs font-mono border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] rounded-[4px] h-10 px-6"
             >
               Cancel
             </Button>
@@ -1229,7 +1229,7 @@ export default function CreateCompetitionPage() {
           <Button
             type="submit"
             disabled={isSubmitting || selectedQuestions.length === 0}
-            className="w-full sm:w-auto bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono font-bold text-xs rounded-[4px] h-11 px-8 shadow-[0_0_20px_rgba(101,245,154,0.3)] transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto bg-[#FF4D6D] hover:bg-[#FF3366] text-[#0B0708] font-mono font-bold text-xs rounded-[4px] h-11 px-8 shadow-[0_0_20px_rgba(255, 77, 109,0.3)] transition-all flex items-center justify-center gap-2"
           >
             {isSubmitting ? (
               <>

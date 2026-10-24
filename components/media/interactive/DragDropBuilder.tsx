@@ -182,7 +182,7 @@ export function DragDropViewer({
         <label className="text-xs font-bold text-gray-700 dark:text-gray-300">Draggable Item Pool</label>
         <div className="flex flex-wrap gap-2 min-h-12 items-center p-2 bg-white dark:bg-gray-950 rounded-xl border border-dashed border-gray-300 dark:border-gray-800">
           {unplacedItems.length === 0 ? (
-            <span className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold italic">
+            <span className="text-xs text-rose-600 dark:text-rose-400 font-semibold italic">
               All items categorized!
             </span>
           ) : (

@@ -155,11 +155,11 @@ export default function QuizBuilderPage() {
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
       {/* Header & Main Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(160,190,170,0.14)] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(240, 160, 180,0.14)] pb-4">
         <div>
           <Link
             href="/dashboard/quizzes"
-            className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#65F59A] mb-1.5 transition-colors"
+            className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#FF4D6D] mb-1.5 transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back to Quizzes
           </Link>
@@ -170,9 +170,9 @@ export default function QuizBuilderPage() {
             <span
               className={`text-[9px] uppercase font-mono tracking-wider px-2 py-0.5 rounded-[2px] font-semibold border ${
                 status === "Published"
-                  ? "bg-[rgba(101,245,154,0.12)] text-[#65F59A] border-[rgba(101,245,154,0.3)]"
+                  ? "bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] border-[rgba(255, 77, 109,0.3)]"
                   : status === "Archived"
-                  ? "bg-[#111B17] text-[#69786F] border-[rgba(160,190,170,0.14)]"
+                  ? "bg-[#1D1013] text-[#69786F] border-[rgba(240, 160, 180,0.14)]"
                   : "bg-[rgba(251,191,36,0.12)] text-[#FBBF24] border-[rgba(251,191,36,0.3)]"
               }`}
             >
@@ -189,7 +189,7 @@ export default function QuizBuilderPage() {
             className="text-xs font-mono"
             title="Import all questions in this quiz to Question Bank"
           >
-            <Database className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> Import to Bank
+            <Database className="w-3.5 h-3.5 mr-1.5 text-[#FF758F]" /> Import to Bank
           </Button>
           <Button
             variant="outline"
@@ -220,9 +220,9 @@ export default function QuizBuilderPage() {
       {/* Main Grid: Quiz Metadata & Settings vs Question List */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left 4 cols: Quiz Metadata & Settings */}
-        <div className="lg:col-span-4 bg-[#0C1210] p-5 rounded-[6px] border border-[rgba(160,190,170,0.14)] space-y-4">
-          <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F2F7F3] flex items-center border-b border-[rgba(160,190,170,0.12)] pb-2.5">
-            <FileText className="w-3.5 h-3.5 text-[#65F59A] mr-1.5" /> Assessment Configuration
+        <div className="lg:col-span-4 bg-[#140C0E] p-5 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] space-y-4">
+          <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F2F7F3] flex items-center border-b border-[rgba(240, 160, 180,0.12)] pb-2.5">
+            <FileText className="w-3.5 h-3.5 text-[#FF4D6D] mr-1.5" /> Assessment Configuration
           </h3>
 
           <div>
@@ -244,7 +244,7 @@ export default function QuizBuilderPage() {
               rows={2}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full rounded-[4px] border border-[rgba(160,190,170,0.18)] bg-[#17251E] p-2.5 text-xs font-mono text-[#F2F7F3] placeholder:text-[#69786F] focus:outline-hidden focus:border-[#65F59A] focus:ring-1 focus:ring-[#65F59A]"
+              className="w-full rounded-[4px] border border-[rgba(240, 160, 180,0.18)] bg-[#2A141A] p-2.5 text-xs font-mono text-[#F2F7F3] placeholder:text-[#69786F] focus:outline-hidden focus:border-[#FF4D6D] focus:ring-1 focus:ring-[#FF4D6D]"
             />
           </div>
 
@@ -305,7 +305,7 @@ export default function QuizBuilderPage() {
             </div>
           </div>
 
-          <div className="pt-3 border-t border-[rgba(160,190,170,0.12)] space-y-2.5">
+          <div className="pt-3 border-t border-[rgba(240, 160, 180,0.12)] space-y-2.5">
             <p className="text-[10px] font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
               Delivery Controls
             </p>
@@ -315,7 +315,7 @@ export default function QuizBuilderPage() {
                 type="checkbox"
                 checked={randomizeQuestions}
                 onChange={(e) => setRandomizeQuestions(e.target.checked)}
-                className="w-3.5 h-3.5 accent-[#65F59A] rounded"
+                className="w-3.5 h-3.5 accent-[#FF4D6D] rounded"
               />
             </label>
             <label className="flex items-center justify-between text-xs font-mono text-[#A0AEA5] cursor-pointer">
@@ -324,26 +324,26 @@ export default function QuizBuilderPage() {
                 type="checkbox"
                 checked={shuffleOptions}
                 onChange={(e) => setShuffleOptions(e.target.checked)}
-                className="w-3.5 h-3.5 accent-[#65F59A] rounded"
+                className="w-3.5 h-3.5 accent-[#FF4D6D] rounded"
               />
             </label>
           </div>
 
-          <div className="bg-[#111B17] p-3.5 rounded-[4px] border border-[rgba(160,190,170,0.14)] space-y-1.5 text-xs font-mono">
+          <div className="bg-[#1D1013] p-3.5 rounded-[4px] border border-[rgba(240, 160, 180,0.14)] space-y-1.5 text-xs font-mono">
             <div className="flex justify-between font-medium">
               <span className="text-[#A0AEA5]">Questions:</span>
-              <span className="text-[#65F59A] font-bold">{questions.length}</span>
+              <span className="text-[#FF4D6D] font-bold">{questions.length}</span>
             </div>
             <div className="flex justify-between font-medium">
               <span className="text-[#A0AEA5]">Total Marks:</span>
-              <span className="text-[#65F59A] font-bold">{totalMarks} Marks</span>
+              <span className="text-[#FF4D6D] font-bold">{totalMarks} Marks</span>
             </div>
           </div>
         </div>
 
         {/* Right 8 cols: Quiz Question Structuring List */}
         <div className="lg:col-span-8 space-y-3.5">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[#0C1210] p-4 rounded-[6px] border border-[rgba(160,190,170,0.14)]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[#140C0E] p-4 rounded-[6px] border border-[rgba(240, 160, 180,0.14)]">
             <div>
               <h3 className="text-sm font-bold font-display text-[#F2F7F3] uppercase tracking-wide">
                 Structured Questions ({questions.length})
@@ -360,15 +360,15 @@ export default function QuizBuilderPage() {
                 className="text-xs font-mono"
                 title="Import all questions in this quiz to Question Bank"
               >
-                <Database className="w-3.5 h-3.5 mr-1 text-[#38D9B0]" /> Bank All ({questions.length})
+                <Database className="w-3.5 h-3.5 mr-1 text-[#FF758F]" /> Bank All ({questions.length})
               </Button>
               <Button
                 size="sm"
                 variant="outline"
                 onClick={() => setAiModalOpen(true)}
-                className="border-[rgba(101,245,154,0.35)] text-[#65F59A] hover:bg-[rgba(101,245,154,0.12)] text-xs font-mono font-semibold shadow-[0_0_10px_rgba(101,245,154,0.15)] transition-all"
+                className="border-[rgba(255, 77, 109,0.35)] text-[#FF4D6D] hover:bg-[rgba(255, 77, 109,0.12)] text-xs font-mono font-semibold shadow-[0_0_10px_rgba(255, 77, 109,0.15)] transition-all"
               >
-                <Sparkles className="w-3.5 h-3.5 mr-1 text-[#65F59A]" /> AI Document Quiz Maker
+                <Sparkles className="w-3.5 h-3.5 mr-1 text-[#FF4D6D]" /> AI Document Quiz Maker
               </Button>
               <Button
                 onClick={() => setPickerOpen(true)}
@@ -385,10 +385,10 @@ export default function QuizBuilderPage() {
             {questions.map((q, idx) => (
               <div
                 key={q.id}
-                className="bg-[#0C1210] p-4 rounded-[4px] border border-[rgba(160,190,170,0.14)] hover:border-[rgba(160,190,170,0.28)] flex items-start justify-between gap-4 transition-all hover:bg-[#111B17]"
+                className="bg-[#140C0E] p-4 rounded-[4px] border border-[rgba(240, 160, 180,0.14)] hover:border-[rgba(240, 160, 180,0.28)] flex items-start justify-between gap-4 transition-all hover:bg-[#1D1013]"
               >
                 <div className="flex items-start space-x-3">
-                  <span className="w-6 h-6 rounded-[3px] bg-[#17251E] border border-[rgba(160,190,170,0.2)] text-[#65F59A] font-bold font-mono text-xs flex items-center justify-center shrink-0 mt-0.5">
+                  <span className="w-6 h-6 rounded-[3px] bg-[#2A141A] border border-[rgba(240, 160, 180,0.2)] text-[#FF4D6D] font-bold font-mono text-xs flex items-center justify-center shrink-0 mt-0.5">
                     {idx + 1}
                   </span>
                   <div className="space-y-1">
@@ -424,7 +424,7 @@ export default function QuizBuilderPage() {
                       variant="ghost"
                       size="icon-xs"
                       onClick={() => handleImportSingleToQuestionBank(q)}
-                      className="text-[#69786F] hover:text-[#38D9B0] hover:bg-[#17251E]"
+                      className="text-[#69786F] hover:text-[#FF758F] hover:bg-[#2A141A]"
                       title="Import this question to Question Bank"
                     >
                       <Database className="w-3.5 h-3.5" />
@@ -434,7 +434,7 @@ export default function QuizBuilderPage() {
                       size="icon-xs"
                       onClick={() => handleMoveQuestion(idx, "up")}
                       disabled={idx === 0}
-                      className="text-[#69786F] hover:text-[#F2F7F3] hover:bg-[#17251E]"
+                      className="text-[#69786F] hover:text-[#F2F7F3] hover:bg-[#2A141A]"
                     >
                       <ArrowUp className="w-3.5 h-3.5" />
                     </Button>
@@ -443,7 +443,7 @@ export default function QuizBuilderPage() {
                       size="icon-xs"
                       onClick={() => handleMoveQuestion(idx, "down")}
                       disabled={idx === questions.length - 1}
-                      className="text-[#69786F] hover:text-[#F2F7F3] hover:bg-[#17251E]"
+                      className="text-[#69786F] hover:text-[#F2F7F3] hover:bg-[#2A141A]"
                     >
                       <ArrowDown className="w-3.5 h-3.5" />
                     </Button>

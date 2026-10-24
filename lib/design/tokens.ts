@@ -8,36 +8,43 @@
 export const FUTURE_OS_TOKENS = {
   colors: {
     // Foundation Surfaces
-    background: "#070B0A",          // Primary near-black charcoal with subtle green undertone
-    surfacePrimary: "#0C1210",      // Deep graphite primary surface / card
-    surfaceElevated: "#111B17",     // Layered charcoal elevated surface (dropdowns, dialogs, popovers)
-    surfaceInteractive: "#17251E",  // Interactive surface (input fields, active states, hover layers)
-    surfaceSubtle: "rgba(101, 245, 154, 0.04)", // Ambient emerald surface wash
+    background: "#0B0708",          // Primary near-black charcoal with subtle crimson undertone
+    surfacePrimary: "#140C0E",      // Deep obsidian crimson primary surface / card
+    surfaceElevated: "#1D1013",     // Layered crimson elevated surface (dropdowns, dialogs, popovers)
+    surfaceInteractive: "#2A141A",  // Interactive surface (input fields, active states, hover layers)
+    surfaceSubtle: "rgba(255, 77, 109, 0.04)", // Ambient crimson surface wash
 
     // Brand & Semantic Accents
-    accentEmerald: "#65F59A",       // Luminous primary accent (important actions, active states, AI intelligence)
-    accentEmeraldHover: "#52E086",  // Hover state for primary actions
-    accentEmeraldSubtle: "rgba(101, 245, 154, 0.12)", // Tinted background for active indicators
-    accentMint: "#38D9B0",          // Secondary accent (restrained mint/teal for tags, progress, secondary stats)
-    accentMintSubtle: "rgba(56, 217, 176, 0.12)",
+    accentCrimson: "#FF4D6D",       // Electric Neon Crimson primary accent (important actions, active states, AI intelligence)
+    accentCrimsonHover: "#FF3366",  // Hover state for primary actions
+    accentCrimsonSubtle: "rgba(255, 77, 109, 0.12)", // Tinted background for active indicators
+    accentRose: "#FF758F",          // Secondary accent (restrained rose for tags, progress, secondary stats)
+    accentRoseSubtle: "rgba(255, 117, 143, 0.12)",
+
+    // Backward Compatibility Aliases for Emerald & Mint
+    accentEmerald: "#FF4D6D",
+    accentEmeraldHover: "#FF3366",
+    accentEmeraldSubtle: "rgba(255, 77, 109, 0.12)",
+    accentMint: "#FF758F",
+    accentMintSubtle: "rgba(255, 117, 143, 0.12)",
 
     // Typography & Contrast
-    textPrimary: "#F2F7F3",         // Soft white primary text
-    textSecondary: "#A0AEA5",       // Restrained secondary text
-    textMuted: "#69786F",           // Muted labels, metadata, disabled copy
-    textInverse: "#070B0A",         // Dark text when rendered on luminous accents
+    textPrimary: "#FFF0F2",         // Soft white primary text
+    textSecondary: "#B59FA5",       // Restrained secondary text
+    textMuted: "#826E74",           // Muted labels, metadata, disabled copy
+    textInverse: "#0B0708",         // Dark text when rendered on luminous accents
 
     // Borders & Dividers
-    borderSubtle: "rgba(160, 190, 170, 0.14)", // Standard hairline border
-    borderStrong: "rgba(160, 190, 170, 0.28)", // Emphasized border on hover or active cards
-    borderAccent: "rgba(101, 245, 154, 0.40)", // Luminous border for focused or winning states
+    borderSubtle: "rgba(240, 160, 180, 0.14)", // Standard hairline border
+    borderStrong: "rgba(240, 160, 180, 0.28)", // Emphasized border on hover or active cards
+    borderAccent: "rgba(255, 77, 109, 0.40)", // Luminous border for focused or winning states
 
     // Semantic States
     destructive: "#F87171",         // Controlled coral-red for warnings, errors, destructive actions
     destructiveSubtle: "rgba(248, 113, 113, 0.12)",
     warning: "#FBBF24",             // Amber warning
     warningSubtle: "rgba(251, 191, 36, 0.12)",
-    info: "#38D9B0",                // Mint info
+    info: "#FF758F",                // Rose info
   },
   typography: {
     fontDisplay: "var(--font-space-grotesk), 'Space Grotesk', sans-serif",
@@ -55,8 +62,10 @@ export const FUTURE_OS_TOKENS = {
     none: "none",
     hairline: "0 1px 2px rgba(0, 0, 0, 0.4)",
     card: "0 4px 20px -2px rgba(0, 0, 0, 0.5)",
-    glowEmerald: "0 0 24px -4px rgba(101, 245, 154, 0.20)",
-    glowMint: "0 0 24px -4px rgba(56, 217, 176, 0.20)",
+    glowCrimson: "0 0 24px -4px rgba(255, 77, 109, 0.20)",
+    glowRose: "0 0 24px -4px rgba(255, 117, 143, 0.20)",
+    glowEmerald: "0 0 24px -4px rgba(255, 77, 109, 0.20)",
+    glowMint: "0 0 24px -4px rgba(255, 117, 143, 0.20)",
   },
 } as const;
 

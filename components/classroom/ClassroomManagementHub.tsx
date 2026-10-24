@@ -47,7 +47,7 @@ const mockClassrooms: VirtualClassroom[] = [
     coTeachers: [],
     studentCount: 38,
     template: "STEM",
-    bannerColor: "from-emerald-600 to-teal-800",
+    bannerColor: "from-rose-600 to-rose-800",
     isArchived: false,
     announcementsCount: 3,
     activeLiveSession: false,
@@ -413,7 +413,7 @@ export function ClassroomManagementHub() {
                     onClick={() => handleCopyCode(cls.code, cls.id)}
                     className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 font-mono font-bold text-xs hover:bg-indigo-100 transition-colors"
                   >
-                    {copiedCodeId === cls.id ? <Check className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
+                    {copiedCodeId === cls.id ? <Check className="w-3.5 h-3.5 text-rose-500" /> : <Copy className="w-3.5 h-3.5" />}
                     {cls.code}
                   </button>
                 </div>
@@ -541,7 +541,7 @@ export function ClassroomManagementHub() {
                     className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs"
                   >
                     <option value="from-blue-600 to-indigo-800">Royal Sapphire</option>
-                    <option value="from-emerald-600 to-teal-800">Emerald Forest</option>
+                    <option value="from-rose-600 to-rose-800">Emerald Forest</option>
                     <option value="from-amber-600 to-orange-800">Amber Sunset</option>
                     <option value="from-purple-600 to-pink-800">Neon Orchid</option>
                     <option value="from-slate-700 to-slate-900">Midnight Slate</option>

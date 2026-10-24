@@ -45,7 +45,7 @@ export function ImportProgress({ currentStep, progress }: ImportProgressProps) {
       {/* Progress Bar */}
       <div className="w-full bg-gray-100 dark:bg-gray-900 h-2 rounded-full overflow-hidden">
         <div
-          className="bg-gradient-to-r from-indigo-600 via-indigo-500 to-emerald-500 h-full transition-all duration-300 rounded-full"
+          className="bg-gradient-to-r from-indigo-600 via-indigo-500 to-rose-500 h-full transition-all duration-300 rounded-full"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -62,7 +62,7 @@ export function ImportProgress({ currentStep, progress }: ImportProgressProps) {
                 <div
                   className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold transition-all ${
                     isDone
-                      ? "bg-emerald-500 text-white shadow-sm"
+                      ? "bg-rose-500 text-white shadow-sm"
                       : isCurrent
                       ? "bg-indigo-600 text-white ring-4 ring-indigo-100 dark:ring-indigo-950"
                       : "bg-gray-100 dark:bg-gray-900 text-gray-400"
@@ -91,7 +91,7 @@ export function ImportProgress({ currentStep, progress }: ImportProgressProps) {
               {idx < PIPELINE_STEPS.length - 1 && (
                 <div
                   className={`flex-1 h-0.5 mx-1 mb-4 ${
-                    idx < currentIndex ? "bg-emerald-500" : "bg-gray-200 dark:bg-gray-800"
+                    idx < currentIndex ? "bg-rose-500" : "bg-gray-200 dark:bg-gray-800"
                   }`}
                 />
               )}

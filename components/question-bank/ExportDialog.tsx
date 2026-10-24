@@ -52,7 +52,7 @@ export function ExportDialog({ open, onOpenChange, count }: ExportDialogProps) {
             onClick={() => setSelectedFormat("excel")}
             className={`p-4 rounded-2xl border text-center transition-all flex flex-col items-center justify-center space-y-1.5 ${
               selectedFormat === "excel"
-                ? "border-emerald-600 bg-emerald-50/50 dark:bg-emerald-950/40 text-emerald-600 font-bold"
+                ? "border-rose-600 bg-rose-50/50 dark:bg-rose-950/40 text-rose-600 font-bold"
                 : "border-gray-200 dark:border-gray-800 text-gray-600 hover:bg-gray-50"
             }`}
           >

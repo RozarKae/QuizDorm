@@ -66,7 +66,7 @@ export function CertificateVerificationPortal() {
       {/* Top Banner */}
       <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 rounded-2xl border border-indigo-500/30 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold mb-2 border border-emerald-500/30">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 text-xs font-bold mb-2 border border-rose-500/30">
             <ShieldCheck className="w-3.5 h-3.5" /> Cryptographic Verification Authority
           </div>
           <h2 className="text-2xl font-bold">Certificate & Mark Sheet Verification Portal</h2>
@@ -99,9 +99,9 @@ export function CertificateVerificationPortal() {
         </form>
 
         {verificationResult && (
-          <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl text-xs space-y-3">
+          <div className="p-4 bg-rose-500/10 border border-rose-500/30 rounded-2xl text-xs space-y-3">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 text-sm">
+              <span className="font-bold text-rose-600 dark:text-rose-400 flex items-center gap-1.5 text-sm">
                 <CheckCircle2 className="w-4 h-4" /> OFFICIAL CREDENTIAL VERIFIED
               </span>
               <span className="font-mono text-[10px] text-slate-400">{verificationResult.certificateNumber}</span>
@@ -143,7 +143,7 @@ export function CertificateVerificationPortal() {
                 <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl text-xs space-y-1">
                   <div className="flex justify-between">
                     <span className="text-slate-400">Grade:</span>
-                    <span className="font-bold text-emerald-600 dark:text-emerald-400">{cert.gradeAchieved}</span>
+                    <span className="font-bold text-rose-600 dark:text-rose-400">{cert.gradeAchieved}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-slate-400">Issued By:</span>

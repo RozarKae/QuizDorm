@@ -24,7 +24,7 @@ export function AutomationRulesCard() {
           <div key={rule.id} className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 space-y-2">
             <div className="flex items-center justify-between font-bold">
               <span className="text-gray-900 dark:text-white text-sm">{rule.name}</span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold uppercase">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 font-bold uppercase">
                 {rule.eventTrigger}
               </span>
             </div>

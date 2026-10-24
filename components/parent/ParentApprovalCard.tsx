@@ -37,7 +37,7 @@ export function ParentApprovalCard({ studentId }: ParentApprovalCardProps) {
               <span
                 className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
                   appr.status === "approved"
-                    ? "bg-emerald-100 text-emerald-800"
+                    ? "bg-rose-100 text-rose-800"
                     : appr.status === "declined"
                     ? "bg-rose-100 text-rose-800"
                     : "bg-amber-100 text-amber-800"
@@ -59,7 +59,7 @@ export function ParentApprovalCard({ studentId }: ParentApprovalCardProps) {
                 <Button onClick={() => handleUpdate(appr.id, "declined")} size="sm" variant="outline" className="text-xs rounded-xl">
                   Decline
                 </Button>
-                <Button onClick={() => handleUpdate(appr.id, "approved")} size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl">
+                <Button onClick={() => handleUpdate(appr.id, "approved")} size="sm" className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl">
                   <Check className="w-3.5 h-3.5 mr-1" /> Approve Consent
                 </Button>
               </div>

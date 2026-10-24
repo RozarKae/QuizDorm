@@ -29,7 +29,7 @@ export function EnterpriseLMSConsole() {
       {/* Top Banner */}
       <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-indigo-950 text-white p-6 rounded-2xl border border-indigo-500/30 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold mb-2 border border-emerald-500/30">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 text-xs font-bold mb-2 border border-rose-500/30">
             <Building2 className="w-3.5 h-3.5" /> Enterprise Multi-Tenant Administration
           </div>
           <h2 className="text-2xl font-bold">Enterprise LMS & Institutional Platform</h2>
@@ -55,7 +55,7 @@ export function EnterpriseLMSConsole() {
                   </span>
                   <h3 className="font-bold text-slate-900 dark:text-white text-base mt-1">{inst.name}</h3>
                 </div>
-                <span className="text-[10px] text-emerald-600 font-bold bg-emerald-500/10 px-2 py-0.5 rounded">
+                <span className="text-[10px] text-rose-600 font-bold bg-rose-500/10 px-2 py-0.5 rounded">
                   {inst.activeStudents.toLocaleString()} Active Learners
                 </span>
               </div>

@@ -54,7 +54,7 @@ export function OrganizationCard({ organization, isActive, onSelect }: Organizat
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <GraduationCap className="w-4 h-4 text-emerald-600" />
+            <GraduationCap className="w-4 h-4 text-rose-600" />
             <div>
               <p className="font-extrabold text-gray-900 dark:text-white">{organization.studentCount}</p>
               <p className="text-[10px] text-gray-400">Students</p>

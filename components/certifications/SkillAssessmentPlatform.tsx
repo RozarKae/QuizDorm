@@ -34,7 +34,7 @@ export function SkillAssessmentPlatform() {
       <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 text-white shadow-xl space-y-4">
         <div className="flex justify-between items-center border-b border-slate-800 pb-3">
           <span className="font-mono text-xs text-indigo-400 font-bold">Certification Target: CFSQE</span>
-          <span className="text-emerald-400 font-bold text-xs flex items-center gap-1">
+          <span className="text-rose-400 font-bold text-xs flex items-center gap-1">
             <CheckCircle2 className="w-4 h-4" /> Readiness: 92% (ELAPSED)
           </span>
         </div>
@@ -42,7 +42,7 @@ export function SkillAssessmentPlatform() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
           <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
             <span className="text-[10px] text-slate-400 uppercase font-semibold">Quantum Mechanics</span>
-            <p className="text-2xl font-black text-emerald-400">96% Score</p>
+            <p className="text-2xl font-black text-rose-400">96% Score</p>
           </div>
           <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
             <span className="text-[10px] text-slate-400 uppercase font-semibold">PyTorch & Neural Nets</span>

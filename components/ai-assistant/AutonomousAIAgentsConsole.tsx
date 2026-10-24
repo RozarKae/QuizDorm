@@ -99,7 +99,7 @@ export function AutonomousAIAgentsConsole() {
                       ag.status === "Running"
                         ? "bg-amber-500 text-black animate-pulse"
                         : ag.status === "Completed"
-                        ? "bg-emerald-500 text-white"
+                        ? "bg-rose-500 text-white"
                         : "bg-slate-200 dark:bg-slate-800 text-slate-500"
                     }`}
                   >
@@ -139,7 +139,7 @@ export function AutonomousAIAgentsConsole() {
 
             <div className="space-y-1.5 font-mono text-[11px] text-slate-300 bg-slate-900 p-3 rounded-xl border border-slate-800 h-64 overflow-y-auto">
               {selectedAgent.logs.map((log, idx) => (
-                <div key={idx} className="text-emerald-400">{log}</div>
+                <div key={idx} className="text-rose-400">{log}</div>
               ))}
             </div>
           </div>

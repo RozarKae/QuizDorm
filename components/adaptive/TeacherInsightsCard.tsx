@@ -61,14 +61,14 @@ export function TeacherInsightsCard() {
         </div>
 
         {/* Fast learners */}
-        <div className="p-4 rounded-2xl bg-emerald-50/40 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900 space-y-2">
-          <span className="font-bold text-emerald-800 dark:text-emerald-300 flex items-center">
+        <div className="p-4 rounded-2xl bg-rose-50/40 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900 space-y-2">
+          <span className="font-bold text-rose-800 dark:text-rose-300 flex items-center">
             <Sparkles className="w-3.5 h-3.5 mr-1" /> High-Mastery Fast Learners ({insight.fastLearners.length})
           </span>
           {insight.fastLearners.map((s) => (
             <div key={s.id} className="p-2.5 rounded-xl bg-white dark:bg-gray-950 flex justify-between items-center font-medium">
               <span className="font-bold text-gray-900 dark:text-white">{s.name}</span>
-              <span className="font-mono font-bold text-emerald-600">{s.mastery}% Mastery</span>
+              <span className="font-mono font-bold text-rose-600">{s.mastery}% Mastery</span>
             </div>
           ))}
         </div>

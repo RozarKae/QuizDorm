@@ -124,14 +124,14 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
     <div className="max-w-md mx-auto w-full space-y-6">
       {/* Editorial Header */}
       <div className="text-center space-y-2">
-        <div className="inline-flex items-center space-x-2 border border-[rgba(101,245,154,0.3)] bg-[rgba(101,245,154,0.12)] px-3 py-1 rounded-[3px] shadow-xs">
-          <span className="h-2 w-2 rounded-full bg-[#65F59A] animate-pulse" />
-          <span className="font-mono text-[10px] uppercase tracking-widest text-[#65F59A] font-bold">
+        <div className="inline-flex items-center space-x-2 border border-[rgba(255, 77, 109,0.3)] bg-[rgba(255, 77, 109,0.12)] px-3 py-1 rounded-[3px] shadow-xs">
+          <span className="h-2 w-2 rounded-full bg-[#FF4D6D] animate-pulse" />
+          <span className="font-mono text-[10px] uppercase tracking-widest text-[#FF4D6D] font-bold">
             LIVE ARENA // REAL-TIME ACCESS
           </span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-[#F2F7F3] flex items-center justify-center">
-          <Trophy className="w-6 h-6 text-[#65F59A] mr-2" /> Enter Live Arena
+          <Trophy className="w-6 h-6 text-[#FF4D6D] mr-2" /> Enter Live Arena
         </h1>
         <p className="text-xs font-mono text-[#A0AEA5]">
           Enter your room PIN or join via scannable QR link to participate in live tournaments.
@@ -140,7 +140,7 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
 
       <form
         onSubmit={handleJoin}
-        className="bg-[#0C1210] p-6 sm:p-8 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-xl space-y-5"
+        className="bg-[#140C0E] p-6 sm:p-8 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] shadow-xl space-y-5"
       >
         {/* Room PIN Code Input */}
         <div className="space-y-1.5">
@@ -153,21 +153,21 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
               value={code}
               onChange={(e) => setCode(e.target.value.toUpperCase())}
               placeholder="e.g. QD-8492"
-              className="pl-10 h-12 text-lg font-mono font-extrabold tracking-widest text-center uppercase bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
+              className="pl-10 h-12 text-lg font-mono font-extrabold tracking-widest text-center uppercase bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#FF4D6D]"
               maxLength={10}
               required
             />
             {validating && (
-              <RefreshCw className="absolute right-3.5 top-3.5 h-4 w-4 text-[#65F59A] animate-spin" />
+              <RefreshCw className="absolute right-3.5 top-3.5 h-4 w-4 text-[#FF4D6D] animate-spin" />
             )}
           </div>
         </div>
 
         {/* Live Session Preview Banner if PIN is recognized */}
         {sessionMeta && (
-          <div className="p-4 rounded-[4px] bg-[#17251E] text-[#F2F7F3] border border-[rgba(101,245,154,0.3)] space-y-2">
+          <div className="p-4 rounded-[4px] bg-[#2A141A] text-[#F2F7F3] border border-[rgba(255, 77, 109,0.3)] space-y-2">
             <div className="flex items-center justify-between">
-              <Badge className="bg-[rgba(101,245,154,0.18)] text-[#65F59A] border border-[rgba(101,245,154,0.4)] font-mono text-[10px] uppercase font-bold">
+              <Badge className="bg-[rgba(255, 77, 109,0.18)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.4)] font-mono text-[10px] uppercase font-bold">
                 {sessionMeta.status === "WAITING" ? "Waiting Lobby" : sessionMeta.status}
               </Badge>
               <span className="text-[10px] font-mono text-[#A0AEA5]">
@@ -200,7 +200,7 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your name or callsign..."
-              className="pl-10 h-11 text-sm font-semibold bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
+              className="pl-10 h-11 text-sm font-semibold bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#FF4D6D]"
               maxLength={30}
               required
             />
@@ -214,7 +214,7 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
         <Button
           type="submit"
           disabled={joining || !code || (Boolean(sessionMeta) && sessionMeta?.status === "ENDED")}
-          className="w-full h-12 bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono font-bold text-xs tracking-wider rounded-[4px] shadow-[0_0_15px_rgba(101,245,154,0.18)] flex items-center justify-center space-x-2 transition-all hover:shadow-[0_0_24px_rgba(101,245,154,0.3)]"
+          className="w-full h-12 bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-mono font-bold text-xs tracking-wider rounded-[4px] shadow-[0_0_15px_rgba(255, 77, 109,0.18)] flex items-center justify-center space-x-2 transition-all hover:shadow-[0_0_24px_rgba(255, 77, 109,0.3)]"
         >
           {joining ? (
             <>
@@ -230,11 +230,11 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
         </Button>
 
         {/* QR Scan / Help Strip */}
-        <div className="pt-3 border-t border-[rgba(160,190,170,0.12)] flex items-center justify-between text-[11px] text-[#A0AEA5] font-mono">
+        <div className="pt-3 border-t border-[rgba(240, 160, 180,0.12)] flex items-center justify-between text-[11px] text-[#A0AEA5] font-mono">
           <span className="flex items-center">
-            <QrCode className="w-3.5 h-3.5 mr-1 text-[#38D9B0]" /> Direct QR Scannable
+            <QrCode className="w-3.5 h-3.5 mr-1 text-[#FF758F]" /> Direct QR Scannable
           </span>
-          <span className="flex items-center text-[#65F59A] font-semibold">
+          <span className="flex items-center text-[#FF4D6D] font-semibold">
             <ShieldCheck className="w-3.5 h-3.5 mr-1" /> Encrypted Session
           </span>
         </div>

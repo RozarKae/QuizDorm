@@ -50,7 +50,7 @@ export function QualityReportCard({ report, onApplySuggestion }: QualityReportCa
         ].map((item, idx) => (
           <div key={idx} className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 space-y-1">
             <span className="text-[10px] font-semibold text-gray-400 block">{item.label}</span>
-            <span className={`text-base font-extrabold font-mono ${item.score >= 80 ? "text-emerald-600" : item.score >= 60 ? "text-amber-600" : "text-rose-600"}`}>
+            <span className={`text-base font-extrabold font-mono ${item.score >= 80 ? "text-rose-600" : item.score >= 60 ? "text-amber-600" : "text-rose-600"}`}>
               {item.score}/100
             </span>
           </div>

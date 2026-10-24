@@ -60,10 +60,10 @@ export function JoinCompetitionModal({ open, onOpenChange, onJoinSuccess }: Join
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md bg-[#0C1210] border border-[rgba(160,190,170,0.14)] text-[#F2F7F3]">
+      <DialogContent className="max-w-md bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] text-[#F2F7F3]">
         <DialogHeader>
           <DialogTitle className="flex items-center text-[#F2F7F3] font-display font-extrabold text-base">
-            <Trophy className="w-5 h-5 text-[#65F59A] mr-2" /> Join Live Competition Arena
+            <Trophy className="w-5 h-5 text-[#FF4D6D] mr-2" /> Join Live Competition Arena
           </DialogTitle>
           <DialogDescription className="text-xs text-[#A0AEA5]">
             Enter the 6-character competition PIN code provided by your event host to enter the live arena.
@@ -81,7 +81,7 @@ export function JoinCompetitionModal({ open, onOpenChange, onJoinSuccess }: Join
                   setErrorMessage(null);
                 }}
                 placeholder="e.g. QD-8492"
-                className="pl-10 h-12 text-base font-mono font-extrabold tracking-widest text-center uppercase bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
+                className="pl-10 h-12 text-base font-mono font-extrabold tracking-widest text-center uppercase bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#FF4D6D]"
                 maxLength={10}
               />
             </div>
@@ -96,9 +96,9 @@ export function JoinCompetitionModal({ open, onOpenChange, onJoinSuccess }: Join
 
           <div
             onClick={handleScanClick}
-            className="p-4 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.16)] text-center space-y-1.5 cursor-pointer hover:border-[#65F59A]/40 transition-colors"
+            className="p-4 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.16)] text-center space-y-1.5 cursor-pointer hover:border-[#FF4D6D]/40 transition-colors"
           >
-            <QrCode className="w-6 h-6 text-[#38D9B0] mx-auto" />
+            <QrCode className="w-6 h-6 text-[#FF758F] mx-auto" />
             <p className="text-xs font-semibold text-[#F2F7F3]">Or scan host QR Code from your phone</p>
             <p className="text-[10px] text-[#A0AEA5] font-mono">
               Open https://quizclassroom.vercel.app/join from any mobile device
@@ -110,14 +110,14 @@ export function JoinCompetitionModal({ open, onOpenChange, onJoinSuccess }: Join
               type="button"
               variant="outline"
               onClick={() => onOpenChange(false)}
-              className="text-xs font-mono rounded-[4px] border-[rgba(160,190,170,0.18)] text-[#A0AEA5] hover:text-[#F2F7F3]"
+              className="text-xs font-mono rounded-[4px] border-[rgba(240, 160, 180,0.18)] text-[#A0AEA5] hover:text-[#F2F7F3]"
             >
               Cancel
             </Button>
             <Button
               type="submit"
               disabled={loading || !code}
-              className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold rounded-[4px] shadow-[0_0_12px_rgba(101,245,154,0.18)]"
+              className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-mono text-xs font-bold rounded-[4px] shadow-[0_0_12px_rgba(255, 77, 109,0.18)]"
             >
               {loading ? (
                 <>

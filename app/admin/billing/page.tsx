@@ -207,7 +207,7 @@ export default function AdminBillingPage() {
       subtext: "~$14,850 USD (+14.2% MoM)",
       change: "+14.2%",
       isPositive: true,
-      icon: <TrendingUp className="w-4 h-4 text-[#65F59A]" />,
+      icon: <TrendingUp className="w-4 h-4 text-[#FF4D6D]" />,
     },
     {
       label: "Annual Run-Rate (ARR)",
@@ -215,7 +215,7 @@ export default function AdminBillingPage() {
       subtext: "~$178,200 USD (Contracted)",
       change: "+18.6%",
       isPositive: true,
-      icon: <TrendingUp className="w-4 h-4 text-[#38D9B0]" />,
+      icon: <TrendingUp className="w-4 h-4 text-[#FF758F]" />,
     },
     {
       label: "Active Subscriptions",
@@ -223,7 +223,7 @@ export default function AdminBillingPage() {
       subtext: `${subscriptions.length} total registered accounts`,
       change: "+4 this month",
       isPositive: true,
-      icon: <Users className="w-4 h-4 text-[#65F59A]" />,
+      icon: <Users className="w-4 h-4 text-[#FF4D6D]" />,
     },
     {
       label: "Subscriber Churn Rate",
@@ -231,20 +231,20 @@ export default function AdminBillingPage() {
       subtext: "Top-decile SaaS benchmark",
       change: "-0.4% delta",
       isPositive: true,
-      icon: <RefreshCw className="w-4 h-4 text-[#38D9B0]" />,
+      icon: <RefreshCw className="w-4 h-4 text-[#FF758F]" />,
     },
   ];
 
   return (
     <div className="space-y-6 pb-12">
       {/* 1. Cinematic Hero Masthead */}
-      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="relative overflow-hidden rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-6 sm:p-8">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(255, 77, 109,0.08)_0%,transparent_70%)] pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] font-mono text-[10px] font-bold uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
                 Subscription Core // Quota Overrides
               </span>
               <span className="font-mono text-[11px] text-[#69786F]">
@@ -263,9 +263,9 @@ export default function AdminBillingPage() {
             <Button
               onClick={refreshSubscriptions}
               variant="outline"
-              className="h-10 px-4 rounded-[4px] border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] hover:border-[#65F59A]/40 font-mono text-xs uppercase font-bold tracking-wider"
+              className="h-10 px-4 rounded-[4px] border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#F2F7F3] hover:border-[#FF4D6D]/40 font-mono text-xs uppercase font-bold tracking-wider"
             >
-              <RefreshCw className="mr-2 h-3.5 w-3.5 text-[#65F59A]" />
+              <RefreshCw className="mr-2 h-3.5 w-3.5 text-[#FF4D6D]" />
               Sync Ledger
             </Button>
           </div>
@@ -277,13 +277,13 @@ export default function AdminBillingPage() {
         {metrics.map((m) => (
           <div
             key={m.label}
-            className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] hover:border-[rgba(160,190,170,0.28)] transition-all flex flex-col justify-between"
+            className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] hover:border-[rgba(240, 160, 180,0.28)] transition-all flex flex-col justify-between"
           >
-            <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+            <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
               <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
                 {m.label}
               </span>
-              <div className="p-1 rounded-[3px] bg-[#111B17] border border-[rgba(160,190,170,0.12)]">
+              <div className="p-1 rounded-[3px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.12)]">
                 {m.icon}
               </div>
             </div>
@@ -296,7 +296,7 @@ export default function AdminBillingPage() {
                   {m.subtext}
                 </p>
               </div>
-              <span className="inline-flex items-center px-1.5 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.25)]">
+              <span className="inline-flex items-center px-1.5 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.25)]">
                 {m.change}
               </span>
             </div>
@@ -305,7 +305,7 @@ export default function AdminBillingPage() {
       </div>
 
       {/* 3. Navigation Tabs */}
-      <div className="flex items-center space-x-2 border-b border-[rgba(160,190,170,0.14)] pb-2 overflow-x-auto scrollbar-none">
+      <div className="flex items-center space-x-2 border-b border-[rgba(240, 160, 180,0.14)] pb-2 overflow-x-auto scrollbar-none">
         {[
           {
             id: "subscribers",
@@ -331,16 +331,16 @@ export default function AdminBillingPage() {
               onClick={() => setActiveTab(tab.id as any)}
               className={`px-3.5 py-2 rounded-[4px] text-xs font-mono font-medium flex items-center space-x-2 transition-all whitespace-nowrap border ${
                 isActive
-                  ? "bg-[#17251E] border-[#65F59A]/40 text-[#65F59A] shadow-sm shadow-[#65F59A]/10 font-bold"
-                  : "bg-transparent border-transparent text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17]"
+                  ? "bg-[#2A141A] border-[#FF4D6D]/40 text-[#FF4D6D] shadow-sm shadow-[#FF4D6D]/10 font-bold"
+                  : "bg-transparent border-transparent text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#1D1013]"
               }`}
             >
-              <span className={isActive ? "text-[#65F59A]" : "text-[#69786F]"}>
+              <span className={isActive ? "text-[#FF4D6D]" : "text-[#69786F]"}>
                 {tab.icon}
               </span>
               <span>{tab.label}</span>
               {tab.badge && (
-                <span className="px-1.5 py-0.2 rounded-[2px] text-[9px] font-mono bg-[#111B17] text-[#65F59A] border border-[rgba(101,245,154,0.2)]">
+                <span className="px-1.5 py-0.2 rounded-[2px] text-[9px] font-mono bg-[#1D1013] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.2)]">
                   {tab.badge}
                 </span>
               )}
@@ -353,7 +353,7 @@ export default function AdminBillingPage() {
       {activeTab === "subscribers" && (
         <div className="space-y-4">
           {/* Filter Bar */}
-          <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-4 space-y-4">
+          <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-4 space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
               {/* Search */}
               <div className="md:col-span-6 relative">
@@ -363,7 +363,7 @@ export default function AdminBillingPage() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search by institution name, contact email, or sub ID..."
-                  className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#65F59A]/50 transition-colors"
+                  className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#FF4D6D]/50 transition-colors"
                 />
               </div>
 
@@ -372,7 +372,7 @@ export default function AdminBillingPage() {
                 <select
                   value={planFilter}
                   onChange={(e) => setPlanFilter(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
                 >
                   <option value="all">All Plans</option>
                   <option value="enterprise">Enterprise Custom</option>
@@ -388,7 +388,7 @@ export default function AdminBillingPage() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
                 >
                   <option value="all">All Statuses</option>
                   <option value="active">Active Tiers</option>
@@ -409,7 +409,7 @@ export default function AdminBillingPage() {
                     setStatusFilter("all");
                     refreshSubscriptions();
                   }}
-                  className="h-9 w-full md:w-auto px-2.5 border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
+                  className="h-9 w-full md:w-auto px-2.5 border-[rgba(240, 160, 180,0.18)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3]"
                   title="Reset Filters"
                 >
                   <RefreshCw className="h-3.5 w-3.5" />
@@ -419,10 +419,10 @@ export default function AdminBillingPage() {
           </div>
 
           {/* Table */}
-          <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] overflow-hidden">
+          <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#111B17] border-b border-[rgba(160,190,170,0.14)] text-[#69786F] font-mono uppercase tracking-wider text-[10px]">
+                <thead className="bg-[#1D1013] border-b border-[rgba(240, 160, 180,0.14)] text-[#69786F] font-mono uppercase tracking-wider text-[10px]">
                   <tr>
                     <th className="px-4 py-3">Subscriber & Campus</th>
                     <th className="px-4 py-3">Assigned Plan & Cycle</th>
@@ -433,7 +433,7 @@ export default function AdminBillingPage() {
                     <th className="px-4 py-3 text-right">Superadmin Actions</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[rgba(160,190,170,0.08)]">
+                <tbody className="divide-y divide-[rgba(240, 160, 180,0.08)]">
                   {filteredSubscriptions.map((sub) => {
                     const aiPct = Math.min(
                       100,
@@ -450,7 +450,7 @@ export default function AdminBillingPage() {
                     return (
                       <tr
                         key={sub.id}
-                        className="hover:bg-[#111B17]/60 transition-colors"
+                        className="hover:bg-[#1D1013]/60 transition-colors"
                       >
                         {/* Subscriber */}
                         <td className="px-4 py-3.5">
@@ -471,12 +471,12 @@ export default function AdminBillingPage() {
                             <span
                               className={`px-2 py-0.5 rounded-[2px] font-mono text-[10px] font-bold uppercase tracking-wider ${
                                 sub.planId === "enterprise"
-                                  ? "bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[#65F59A]/30"
+                                  ? "bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border border-[#FF4D6D]/30"
                                   : sub.planId === "institution"
-                                  ? "bg-[rgba(56,217,176,0.15)] text-[#38D9B0] border border-[#38D9B0]/30"
+                                  ? "bg-[rgba(255, 117, 143,0.15)] text-[#FF758F] border border-[#FF758F]/30"
                                   : sub.planId === "professional"
                                   ? "bg-[rgba(251,191,36,0.15)] text-[#FBBF24] border border-[#FBBF24]/30"
-                                  : "bg-[#111B17] text-[#A0AEA5] border border-[rgba(160,190,170,0.15)]"
+                                  : "bg-[#1D1013] text-[#A0AEA5] border border-[rgba(240, 160, 180,0.15)]"
                               }`}
                             >
                               {sub.planId}
@@ -499,20 +499,20 @@ export default function AdminBillingPage() {
                             </span>
                             <span
                               className={`text-[9px] font-bold ${
-                                isHighAi ? "text-[#F87171]" : "text-[#65F59A]"
+                                isHighAi ? "text-[#F87171]" : "text-[#FF4D6D]"
                               }`}
                             >
                               {aiPct}%
                             </span>
                           </div>
-                          <div className="w-full bg-[#111B17] h-1.5 rounded-full overflow-hidden border border-[rgba(160,190,170,0.12)]">
+                          <div className="w-full bg-[#1D1013] h-1.5 rounded-full overflow-hidden border border-[rgba(240, 160, 180,0.12)]">
                             <div
                               className={`h-full rounded-full transition-all ${
                                 isHighAi
                                   ? "bg-[#F87171]"
                                   : aiPct > 70
                                   ? "bg-[#FBBF24]"
-                                  : "bg-[#65F59A]"
+                                  : "bg-[#FF4D6D]"
                               }`}
                               style={{ width: `${aiPct}%` }}
                             />
@@ -530,9 +530,9 @@ export default function AdminBillingPage() {
                               {ocrPct}%
                             </span>
                           </div>
-                          <div className="w-full bg-[#111B17] h-1.5 rounded-full overflow-hidden border border-[rgba(160,190,170,0.12)]">
+                          <div className="w-full bg-[#1D1013] h-1.5 rounded-full overflow-hidden border border-[rgba(240, 160, 180,0.12)]">
                             <div
-                              className="h-full rounded-full bg-[#38D9B0] transition-all"
+                              className="h-full rounded-full bg-[#FF758F] transition-all"
                               style={{ width: `${ocrPct}%` }}
                             />
                           </div>
@@ -553,9 +553,9 @@ export default function AdminBillingPage() {
                           <span
                             className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold uppercase ${
                               sub.status === "active"
-                                ? "bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.25)]"
+                                ? "bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.25)]"
                                 : sub.status === "trial"
-                                ? "bg-[rgba(56,217,176,0.1)] text-[#38D9B0] border border-[rgba(56,217,176,0.25)]"
+                                ? "bg-[rgba(255, 117, 143,0.1)] text-[#FF758F] border border-[rgba(255, 117, 143,0.25)]"
                                 : sub.status === "past_due"
                                 ? "bg-[rgba(251,191,36,0.1)] text-[#FBBF24] border border-[rgba(251,191,36,0.25)]"
                                 : "bg-[rgba(248,113,113,0.1)] text-[#F87171] border border-[rgba(248,113,113,0.25)]"
@@ -564,7 +564,7 @@ export default function AdminBillingPage() {
                             <span
                               className={`w-1.5 h-1.5 rounded-full ${
                                 sub.status === "active"
-                                  ? "bg-[#65F59A]"
+                                  ? "bg-[#FF4D6D]"
                                   : sub.status === "past_due"
                                   ? "bg-[#FBBF24]"
                                   : "bg-[#F87171]"
@@ -580,7 +580,7 @@ export default function AdminBillingPage() {
                             {/* Fast Grant +1,000 AI credits */}
                             <button
                               onClick={() => handleQuickGrantAi(sub)}
-                              className="px-2 py-1 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] hover:bg-[#65F59A] hover:text-[#070B0A] font-mono text-[10px] font-bold uppercase transition-all flex items-center gap-1 cursor-pointer"
+                              className="px-2 py-1 rounded-[3px] bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] hover:bg-[#FF4D6D] hover:text-[#0B0708] font-mono text-[10px] font-bold uppercase transition-all flex items-center gap-1 cursor-pointer"
                               title="Inject +1,000 AI Credits immediately"
                             >
                               <Sparkles className="h-3 w-3" />
@@ -590,7 +590,7 @@ export default function AdminBillingPage() {
                             {/* Change Plan Tier */}
                             <button
                               onClick={() => openPlanModal(sub)}
-                              className="px-2 py-1 rounded-[3px] border border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] hover:border-[#65F59A]/40 font-mono text-[10px] font-semibold uppercase transition-all flex items-center gap-1 cursor-pointer"
+                              className="px-2 py-1 rounded-[3px] border border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#F2F7F3] hover:text-[#FF4D6D] hover:border-[#FF4D6D]/40 font-mono text-[10px] font-semibold uppercase transition-all flex items-center gap-1 cursor-pointer"
                               title="Change Subscription Tier"
                             >
                               <Layers className="h-3 w-3" />
@@ -600,7 +600,7 @@ export default function AdminBillingPage() {
                             {/* Override Quotas */}
                             <button
                               onClick={() => openQuotasModal(sub)}
-                              className="px-2 py-1 rounded-[3px] border border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] hover:text-[#38D9B0] hover:border-[#38D9B0]/40 font-mono text-[10px] font-semibold uppercase transition-all flex items-center gap-1 cursor-pointer"
+                              className="px-2 py-1 rounded-[3px] border border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#F2F7F3] hover:text-[#FF758F] hover:border-[#FF758F]/40 font-mono text-[10px] font-semibold uppercase transition-all flex items-center gap-1 cursor-pointer"
                               title="Override Seat, AI, and OCR Quotas"
                             >
                               <Sliders className="h-3 w-3" />
@@ -613,7 +613,7 @@ export default function AdminBillingPage() {
                               className={`p-1 rounded-[3px] border transition-colors cursor-pointer ${
                                 sub.status === "active"
                                   ? "border-[rgba(248,113,113,0.25)] text-[#F87171] hover:bg-[rgba(248,113,113,0.12)]"
-                                  : "border-[rgba(101,245,154,0.25)] text-[#65F59A] hover:bg-[rgba(101,245,154,0.12)]"
+                                  : "border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] hover:bg-[rgba(255, 77, 109,0.12)]"
                               }`}
                               title={
                                 sub.status === "active"
@@ -644,7 +644,7 @@ export default function AdminBillingPage() {
           {SUBSCRIPTION_PLANS.map((plan) => (
             <div
               key={plan.id}
-              className="p-5 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] space-y-4 flex flex-col justify-between"
+              className="p-5 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] space-y-4 flex flex-col justify-between"
             >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
@@ -652,7 +652,7 @@ export default function AdminBillingPage() {
                     {plan.name}
                   </h3>
                   {plan.badge && (
-                    <span className="px-1.5 py-0.2 rounded-[2px] font-mono text-[9px] font-extrabold uppercase bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[#65F59A]/30">
+                    <span className="px-1.5 py-0.2 rounded-[2px] font-mono text-[9px] font-extrabold uppercase bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border border-[#FF4D6D]/30">
                       {plan.badge}
                     </span>
                   )}
@@ -665,13 +665,13 @@ export default function AdminBillingPage() {
                     ${plan.priceMonthlyUSD}
                   </span>
                   <span className="font-mono text-xs text-[#69786F]">/ month</span>
-                  <span className="font-mono text-[11px] text-[#38D9B0] ml-auto">
+                  <span className="font-mono text-[11px] text-[#FF758F] ml-auto">
                     ${plan.priceAnnualUSD} / yr
                   </span>
                 </div>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)] font-mono text-[11px] space-y-1.5">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)] font-mono text-[11px] space-y-1.5">
                 <div className="flex justify-between text-[#A0AEA5]">
                   <span>Faculty Seats:</span>
                   <span className="text-[#F2F7F3] font-bold">
@@ -680,13 +680,13 @@ export default function AdminBillingPage() {
                 </div>
                 <div className="flex justify-between text-[#A0AEA5]">
                   <span>Monthly AI Tokens:</span>
-                  <span className="text-[#65F59A] font-bold">
+                  <span className="text-[#FF4D6D] font-bold">
                     {plan.limits.aiCreditsPerMonth.toLocaleString()} Credits
                   </span>
                 </div>
                 <div className="flex justify-between text-[#A0AEA5]">
                   <span>OCR Scans / Mo:</span>
-                  <span className="text-[#38D9B0] font-bold">
+                  <span className="text-[#FF758F] font-bold">
                     {plan.limits.ocrScansPerMonth.toLocaleString()} Docs
                   </span>
                 </div>
@@ -701,7 +701,7 @@ export default function AdminBillingPage() {
               <ul className="space-y-1 text-xs text-[#A0AEA5]">
                 {plan.features.map((f, i) => (
                   <li key={i} className="flex items-center gap-1.5">
-                    <CheckCircle2 className="h-3 w-3 text-[#65F59A] shrink-0" />
+                    <CheckCircle2 className="h-3 w-3 text-[#FF4D6D] shrink-0" />
                     <span>{f}</span>
                   </li>
                 ))}
@@ -713,11 +713,11 @@ export default function AdminBillingPage() {
 
       {/* 4. MODAL: OVERRIDE QUOTAS */}
       {selectedForQuotas && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070B0A]/85 backdrop-blur-xs">
-          <div className="w-full max-w-lg rounded-[8px] bg-[#0C1210] border border-[#38D9B0]/30 p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
-            <div className="flex items-start justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0708]/85 backdrop-blur-xs">
+          <div className="w-full max-w-lg rounded-[8px] bg-[#140C0E] border border-[#FF758F]/30 p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
+            <div className="flex items-start justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-3">
               <div>
-                <span className="font-mono text-[10px] text-[#38D9B0] uppercase font-bold tracking-widest block">
+                <span className="font-mono text-[10px] text-[#FF758F] uppercase font-bold tracking-widest block">
                   SUPERADMIN OVERRIDE
                 </span>
                 <h3 className="font-display text-base font-bold text-[#F2F7F3]">
@@ -742,28 +742,28 @@ export default function AdminBillingPage() {
                   <button
                     type="button"
                     onClick={() => setEditAiCredits((prev) => prev + 1000)}
-                    className="px-2 py-1 rounded-[3px] bg-[#111B17] border border-[rgba(101,245,154,0.25)] text-[#65F59A] text-[10px] hover:bg-[#65F59A]/10 font-bold"
+                    className="px-2 py-1 rounded-[3px] bg-[#1D1013] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] text-[10px] hover:bg-[#FF4D6D]/10 font-bold"
                   >
                     +1,000 AI Credits
                   </button>
                   <button
                     type="button"
                     onClick={() => setEditAiCredits((prev) => prev + 5000)}
-                    className="px-2 py-1 rounded-[3px] bg-[#111B17] border border-[rgba(101,245,154,0.25)] text-[#65F59A] text-[10px] hover:bg-[#65F59A]/10 font-bold"
+                    className="px-2 py-1 rounded-[3px] bg-[#1D1013] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] text-[10px] hover:bg-[#FF4D6D]/10 font-bold"
                   >
                     +5,000 AI Credits
                   </button>
                   <button
                     type="button"
                     onClick={() => setEditOcrScans((prev) => prev + 500)}
-                    className="px-2 py-1 rounded-[3px] bg-[#111B17] border border-[rgba(56,217,176,0.25)] text-[#38D9B0] text-[10px] hover:bg-[#38D9B0]/10 font-bold"
+                    className="px-2 py-1 rounded-[3px] bg-[#1D1013] border border-[rgba(255, 117, 143,0.25)] text-[#FF758F] text-[10px] hover:bg-[#FF758F]/10 font-bold"
                   >
                     +500 OCR Scans
                   </button>
                   <button
                     type="button"
                     onClick={() => setEditSeats((prev) => prev + 5)}
-                    className="px-2 py-1 rounded-[3px] bg-[#111B17] border border-[rgba(160,190,170,0.25)] text-[#F2F7F3] text-[10px] hover:bg-[#17251E] font-bold"
+                    className="px-2 py-1 rounded-[3px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.25)] text-[#F2F7F3] text-[10px] hover:bg-[#2A141A] font-bold"
                   >
                     +5 Faculty Seats
                   </button>
@@ -780,7 +780,7 @@ export default function AdminBillingPage() {
                     type="number"
                     value={editAiCredits}
                     onChange={(e) => setEditAiCredits(Number(e.target.value))}
-                    className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#65F59A] font-bold focus:outline-none focus:border-[#65F59A]/50"
+                    className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#FF4D6D] font-bold focus:outline-none focus:border-[#FF4D6D]/50"
                   />
                 </div>
 
@@ -792,7 +792,7 @@ export default function AdminBillingPage() {
                     type="number"
                     value={editOcrScans}
                     onChange={(e) => setEditOcrScans(Number(e.target.value))}
-                    className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#38D9B0] font-bold focus:outline-none focus:border-[#38D9B0]/50"
+                    className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#FF758F] font-bold focus:outline-none focus:border-[#FF758F]/50"
                   />
                 </div>
 
@@ -804,7 +804,7 @@ export default function AdminBillingPage() {
                     type="number"
                     value={editSeats}
                     onChange={(e) => setEditSeats(Number(e.target.value))}
-                    className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-bold focus:outline-none focus:border-[#65F59A]/50"
+                    className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-bold focus:outline-none focus:border-[#FF4D6D]/50"
                   />
                 </div>
               </div>
@@ -819,22 +819,22 @@ export default function AdminBillingPage() {
                   placeholder="e.g. Contract expansion, pilot grant, or goodwill top-up"
                   value={overrideNote}
                   onChange={(e) => setOverrideNote(e.target.value)}
-                  className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#38D9B0]/50"
+                  className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF758F]/50"
                 />
               </div>
 
-              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[rgba(160,190,170,0.1)]">
+              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[rgba(240, 160, 180,0.1)]">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => setSelectedForQuotas(null)}
-                  className="border-[rgba(160,190,170,0.2)] text-[#A0AEA5] text-xs font-mono h-9"
+                  className="border-[rgba(240, 160, 180,0.2)] text-[#A0AEA5] text-xs font-mono h-9"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
-                  className="bg-[#38D9B0] text-[#070B0A] hover:bg-[#38D9B0]/90 text-xs font-mono font-bold h-9 uppercase tracking-wider"
+                  className="bg-[#FF758F] text-[#0B0708] hover:bg-[#FF758F]/90 text-xs font-mono font-bold h-9 uppercase tracking-wider"
                 >
                   Save Quotas
                 </Button>
@@ -846,11 +846,11 @@ export default function AdminBillingPage() {
 
       {/* 5. MODAL: CHANGE SUBSCRIPTION TIER */}
       {selectedForPlan && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070B0A]/85 backdrop-blur-xs">
-          <div className="w-full max-w-md rounded-[8px] bg-[#0C1210] border border-[#65F59A]/30 p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
-            <div className="flex items-start justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0708]/85 backdrop-blur-xs">
+          <div className="w-full max-w-md rounded-[8px] bg-[#140C0E] border border-[#FF4D6D]/30 p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
+            <div className="flex items-start justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-3">
               <div>
-                <span className="font-mono text-[10px] text-[#65F59A] uppercase font-bold tracking-widest block">
+                <span className="font-mono text-[10px] text-[#FF4D6D] uppercase font-bold tracking-widest block">
                   PLAN TIER UPGRADE
                 </span>
                 <h3 className="font-display text-base font-bold text-[#F2F7F3]">
@@ -875,7 +875,7 @@ export default function AdminBillingPage() {
                   onChange={(e) =>
                     setTargetPlanId(e.target.value as SubscriptionPlanId)
                   }
-                  className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#65F59A] font-bold focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#FF4D6D] font-bold focus:outline-none focus:border-[#FF4D6D]/50"
                 >
                   <option value="enterprise">Enterprise Custom ($199/mo / $1,900/yr)</option>
                   <option value="institution">School & College ($79/mo / $750/yr)</option>
@@ -894,7 +894,7 @@ export default function AdminBillingPage() {
                   onChange={(e) =>
                     setTargetCycle(e.target.value as BillingCycle)
                   }
-                  className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"
                 >
                   <option value="annual">Annual Billing Cycle</option>
                   <option value="monthly">Monthly Cycle</option>
@@ -912,22 +912,22 @@ export default function AdminBillingPage() {
                   placeholder="e.g. Approved by Dean / Enterprise agreement signed"
                   value={planChangeNote}
                   onChange={(e) => setPlanChangeNote(e.target.value)}
-                  className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"
                 />
               </div>
 
-              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[rgba(160,190,170,0.1)]">
+              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[rgba(240, 160, 180,0.1)]">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => setSelectedForPlan(null)}
-                  className="border-[rgba(160,190,170,0.2)] text-[#A0AEA5] text-xs font-mono h-9"
+                  className="border-[rgba(240, 160, 180,0.2)] text-[#A0AEA5] text-xs font-mono h-9"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
-                  className="bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 text-xs font-mono font-bold h-9 uppercase tracking-wider"
+                  className="bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 text-xs font-mono font-bold h-9 uppercase tracking-wider"
                 >
                   Confirm Plan Elevation
                 </Button>

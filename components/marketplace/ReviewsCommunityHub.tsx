@@ -37,7 +37,7 @@ export function ReviewsCommunityHub() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="font-bold text-slate-900 dark:text-white text-sm">{rev.reviewerName}</span>
-                <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold text-[10px] flex items-center gap-1">
+                <span className="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 font-bold text-[10px] flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3" /> Verified Buyer
                 </span>
               </div>

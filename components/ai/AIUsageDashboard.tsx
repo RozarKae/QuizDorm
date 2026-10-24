@@ -24,7 +24,7 @@ export function AIUsageDashboard() {
           <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
             <span className="text-gray-500 font-medium">Total AI Requests</span>
             <div className="text-2xl font-bold text-gray-900 dark:text-white font-mono">{metrics.totalRequests}</div>
-            <p className="text-[10px] text-emerald-600 font-semibold">{metrics.successRequests} Successful Calls</p>
+            <p className="text-[10px] text-rose-600 font-semibold">{metrics.successRequests} Successful Calls</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
@@ -37,7 +37,7 @@ export function AIUsageDashboard() {
 
           <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
             <span className="text-gray-500 font-medium">Estimated Expenditure</span>
-            <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 font-mono">
+            <div className="text-2xl font-bold text-rose-600 dark:text-rose-400 font-mono">
               ${metrics.totalCostUSD.toFixed(5)}
             </div>
             <p className="text-[10px] text-gray-400">Based on provider API rate limits</p>

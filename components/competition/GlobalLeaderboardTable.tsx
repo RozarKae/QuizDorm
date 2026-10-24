@@ -61,7 +61,7 @@ export function GlobalLeaderboardTable() {
                 <td className="p-3 font-sans text-gray-600 dark:text-gray-300">{entry.schoolName}</td>
                 <td className="p-3 text-gray-400 font-sans">{entry.region}</td>
                 <td className="p-3 font-bold text-indigo-600 dark:text-indigo-400">{entry.eloRating} ELO</td>
-                <td className="p-3 text-emerald-600 font-bold">{entry.totalPoints.toLocaleString()} pts</td>
+                <td className="p-3 text-rose-600 font-bold">{entry.totalPoints.toLocaleString()} pts</td>
                 <td className="p-3 font-sans">
                   <span
                     className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase ${

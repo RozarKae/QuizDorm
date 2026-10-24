@@ -11,21 +11,21 @@ export default function HowItWorks() {
       step: "01",
       title: "Establish Your Academy & Scholar Identity",
       description: "Authenticate into your dedicated workspace — Academy Directorate, Faculty Mentor Console, or Scholar's Hub — and synchronize with your intellectual peers.",
-      icon: <School className="h-5 w-5 text-emerald-700 dark:text-[#65F59A]" />,
+      icon: <School className="h-5 w-5 text-rose-700 dark:text-[#FF4D6D]" />,
       detail: "Seamless Identity Sync",
     },
     {
       step: "02",
       title: "Synthesize or Curate High-Rigor Quests",
       description: "Ingest curriculum materials into the Omni-Curriculum AI Studio, explore verified questions in the Knowledge Matrix, or author challenges across 9 high-cognition formats.",
-      icon: <Sparkles className="h-5 w-5 text-teal-700 dark:text-[#38D9B0]" />,
+      icon: <Sparkles className="h-5 w-5 text-rose-700 dark:text-[#FF758F]" />,
       detail: "AI Synthesis & 9 Formats",
     },
     {
       step: "03",
       title: "Enter the Synchronized Decathlon Arena",
       description: "Broadcast battle PINs, race the clock in synchronized microsecond live rounds, and claim verified honours on the global Podium of Intellect.",
-      icon: <Trophy className="h-5 w-5 text-emerald-700 dark:text-[#65F59A]" />,
+      icon: <Trophy className="h-5 w-5 text-rose-700 dark:text-[#FF4D6D]" />,
       detail: "Synchronized Arena Battle",
     },
   ];
@@ -56,12 +56,12 @@ export default function HowItWorks() {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-border mb-12 gap-6">
           <div className="space-y-3 max-w-2xl">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-emerald-800 bg-emerald-50 dark:text-[#65F59A] dark:bg-[#17251E] px-2.5 py-0.5 rounded-full border border-emerald-300 dark:border-[#65F59A]/20 font-semibold shadow-xs">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-rose-800 bg-rose-50 dark:text-[#FF4D6D] dark:bg-[#2A141A] px-2.5 py-0.5 rounded-full border border-rose-300 dark:border-[#FF4D6D]/20 font-semibold shadow-xs">
               INTELLECTUAL EVOLUTION // 3-PHASE LIFECYCLE
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-[#F2F7F3] tracking-tight">
               From Foundational Concept <br />
-              <span className="text-teal-700 dark:text-[#38D9B0]">to Accelerated Mastery.</span>
+              <span className="text-rose-700 dark:text-[#FF758F]">to Accelerated Mastery.</span>
             </h2>
           </div>
           <p className="text-sm font-normal text-slate-600 dark:text-[#A0AEA5] max-w-md leading-relaxed">
@@ -81,15 +81,15 @@ export default function HowItWorks() {
             <motion.div
               key={itemObj.step}
               variants={item}
-              className="relative flex flex-col justify-between p-6 rounded-2xl bg-card border border-border hover:border-emerald-600/40 transition-all duration-300 shadow-md hover:-translate-y-1 hover:shadow-lg"
+              className="relative flex flex-col justify-between p-6 rounded-2xl bg-card border border-border hover:border-rose-600/40 transition-all duration-300 shadow-md hover:-translate-y-1 hover:shadow-lg"
             >
               <div>
                 {/* Step Header */}
                 <div className="flex items-center justify-between pb-4 border-b border-border mb-4">
-                  <div className="p-2.5 bg-emerald-50 dark:bg-[#17251E] rounded-xl text-emerald-800 dark:text-[#65F59A] border border-emerald-200 dark:border-[#65F59A]/20 shadow-xs">
+                  <div className="p-2.5 bg-rose-50 dark:bg-[#2A141A] rounded-xl text-rose-800 dark:text-[#FF4D6D] border border-rose-200 dark:border-[#FF4D6D]/20 shadow-xs">
                     {itemObj.icon}
                   </div>
-                  <span className="font-mono text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300 dark:bg-[#17251E] dark:text-[#65F59A] dark:border-[#65F59A]/30">
+                  <span className="font-mono text-xs font-bold px-2.5 py-0.5 rounded-full bg-rose-50 text-rose-800 border border-rose-300 dark:bg-[#2A141A] dark:text-[#FF4D6D] dark:border-[#FF4D6D]/30">
                     STAGE {itemObj.step}
                   </span>
                 </div>
@@ -103,8 +103,8 @@ export default function HowItWorks() {
               </div>
 
               <div className="pt-6 mt-6 border-t border-border flex items-center justify-between text-[10px] font-mono text-slate-500 dark:text-[#69786F]">
-                <span className="text-teal-700 dark:text-[#38D9B0] font-semibold">{itemObj.detail}</span>
-                <span className="text-emerald-700 dark:text-[#65F59A] font-semibold">&bull; Active Verified</span>
+                <span className="text-rose-700 dark:text-[#FF758F] font-semibold">{itemObj.detail}</span>
+                <span className="text-rose-700 dark:text-[#FF4D6D] font-semibold">&bull; Active Verified</span>
               </div>
             </motion.div>
           ))}

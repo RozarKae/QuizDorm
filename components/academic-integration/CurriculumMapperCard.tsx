@@ -22,7 +22,7 @@ export function CurriculumMapperCard() {
           <div key={fw.id} className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 space-y-2">
             <div className="flex items-center justify-between font-bold">
               <span className="text-gray-900 dark:text-white text-sm font-extrabold">{fw.name} Standard</span>
-              <span className="text-emerald-600 font-mono text-[11px]">{fw.coveragePercent}% Aligned</span>
+              <span className="text-rose-600 font-mono text-[11px]">{fw.coveragePercent}% Aligned</span>
             </div>
 
             <p className="text-gray-500 font-medium text-[11px]">{fw.subject}</p>

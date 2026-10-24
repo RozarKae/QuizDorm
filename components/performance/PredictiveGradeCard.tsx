@@ -17,16 +17,16 @@ export function PredictiveGradeCard({ prediction }: PredictiveGradeCardProps) {
     <Card className="p-5 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-3xl shadow-sm space-y-3">
       <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-2">
         <h4 className="font-bold text-sm text-gray-900 dark:text-white flex items-center">
-          <TrendingUp className="w-4 h-4 text-emerald-500 mr-2" /> {prediction.subject}
+          <TrendingUp className="w-4 h-4 text-rose-500 mr-2" /> {prediction.subject}
         </h4>
-        <span className="text-xs font-mono font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950 px-2.5 py-0.5 rounded-full">
+        <span className="text-xs font-mono font-bold text-rose-600 bg-rose-50 dark:bg-rose-950 px-2.5 py-0.5 rounded-full">
           {prediction.confidencePercent}% Confidence
         </span>
       </div>
 
       <div className="flex items-baseline justify-between font-mono">
         <span className="text-xs text-gray-400 font-sans">Predicted Grade</span>
-        <span className="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400">
+        <span className="text-2xl font-extrabold text-rose-600 dark:text-rose-400">
           {prediction.predictedGradePercent}%
         </span>
       </div>
@@ -36,7 +36,7 @@ export function PredictiveGradeCard({ prediction }: PredictiveGradeCardProps) {
         <ul className="space-y-1">
           {prediction.keyFactors.map((f, i) => (
             <li key={i} className="text-gray-600 dark:text-gray-400 flex items-center text-[11px]">
-              <CheckCircle2 className="w-3 h-3 text-emerald-500 mr-1.5 shrink-0" /> {f}
+              <CheckCircle2 className="w-3 h-3 text-rose-500 mr-1.5 shrink-0" /> {f}
             </li>
           ))}
         </ul>

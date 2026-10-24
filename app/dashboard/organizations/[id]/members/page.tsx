@@ -112,7 +112,7 @@ export default function OrganizationMembersPage({ params }: { params: { id: stri
                   </td>
                   <td className="py-4 px-4 text-xs font-medium">{m.department}</td>
                   <td className="py-4 px-4">
-                    <Badge className={m.status === "Active" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"}>
+                    <Badge className={m.status === "Active" ? "bg-rose-100 text-rose-700" : "bg-amber-100 text-amber-700"}>
                       ● {m.status}
                     </Badge>
                   </td>

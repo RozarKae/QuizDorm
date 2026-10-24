@@ -47,10 +47,10 @@ export function PaymentHistoryTable() {
   };
 
   return (
-    <div className="bg-[#0C1210] border border-[rgba(160,190,170,0.14)] rounded-[6px] overflow-hidden shadow-sm space-y-4 p-5">
-      <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
+    <div className="bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] rounded-[6px] overflow-hidden shadow-sm space-y-4 p-5">
+      <div className="flex items-center justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-3">
         <h3 className="font-display text-sm font-bold uppercase tracking-wider text-[#F2F7F3] flex items-center">
-          <FileText className="w-4 h-4 text-[#65F59A] mr-2" />
+          <FileText className="w-4 h-4 text-[#FF4D6D] mr-2" />
           Billing History & Tax Invoices
         </h3>
         <span className="text-[10px] text-[#69786F] font-mono uppercase tracking-wider">
@@ -61,7 +61,7 @@ export function PaymentHistoryTable() {
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs border-collapse">
           <thead>
-            <tr className="border-b border-[rgba(160,190,170,0.12)] text-[#69786F] font-mono uppercase tracking-wider text-[10px] bg-[#111B17]">
+            <tr className="border-b border-[rgba(240, 160, 180,0.12)] text-[#69786F] font-mono uppercase tracking-wider text-[10px] bg-[#1D1013]">
               <th className="p-3">Date</th>
               <th className="p-3">Invoice #</th>
               <th className="p-3">Gateway</th>
@@ -71,13 +71,13 @@ export function PaymentHistoryTable() {
               <th className="p-3 text-right">Invoice</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[rgba(160,190,170,0.08)] font-mono text-[11px]">
+          <tbody className="divide-y divide-[rgba(240, 160, 180,0.08)] font-mono text-[11px]">
             {SAMPLE_TRANSACTIONS.map((txn) => (
-              <tr key={txn.id} className="hover:bg-[#111B17]/60 transition-colors">
+              <tr key={txn.id} className="hover:bg-[#1D1013]/60 transition-colors">
                 <td className="p-3 text-[#69786F]">
                   {new Date(txn.timestamp).toLocaleDateString()}
                 </td>
-                <td className="p-3 font-bold text-[#65F59A]">
+                <td className="p-3 font-bold text-[#FF4D6D]">
                   {txn.invoiceNumber}
                 </td>
                 <td className="p-3 font-sans font-semibold uppercase text-[#F2F7F3]">{txn.provider}</td>
@@ -88,7 +88,7 @@ export function PaymentHistoryTable() {
                     : `$${txn.amountUSD.toFixed(2)}`}
                 </td>
                 <td className="p-3 font-sans">
-                  <span className="px-2 py-0.5 rounded-[2px] text-[10px] font-mono font-bold bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.2)] uppercase">
+                  <span className="px-2 py-0.5 rounded-[2px] text-[10px] font-mono font-bold bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.2)] uppercase">
                     {txn.status}
                   </span>
                 </td>
@@ -97,9 +97,9 @@ export function PaymentHistoryTable() {
                     size="sm"
                     variant="outline"
                     onClick={() => handleViewInvoice(txn)}
-                    className="h-7 text-[10px] font-mono uppercase tracking-wider rounded-[3px] border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] hover:border-[#65F59A]/50 hover:text-[#65F59A]"
+                    className="h-7 text-[10px] font-mono uppercase tracking-wider rounded-[3px] border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#F2F7F3] hover:border-[#FF4D6D]/50 hover:text-[#FF4D6D]"
                   >
-                    <FileText className="w-3 h-3 mr-1 text-[#65F59A]" />
+                    <FileText className="w-3 h-3 mr-1 text-[#FF4D6D]" />
                     Tax Invoice
                   </Button>
                 </td>

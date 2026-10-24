@@ -14,7 +14,7 @@ export function AssignmentCard({ assignment }: AssignmentCardProps) {
   const isHomework = assignment.type === "homework";
 
   return (
-    <div className="bg-[#0C1210] p-5 sm:p-6 rounded-[6px] border border-[rgba(160,190,170,0.14)] hover:border-[#65F59A]/40 shadow-xs hover:shadow-[0_8px_20px_rgba(0,0,0,0.5),0_0_12px_rgba(101,245,154,0.06)] transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div className="bg-[#140C0E] p-5 sm:p-6 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] hover:border-[#FF4D6D]/40 shadow-xs hover:shadow-[0_8px_20px_rgba(0,0,0,0.5),0_0_12px_rgba(255, 77, 109,0.06)] transition-all flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div className="space-y-2">
         <div className="flex items-center space-x-2">
           <Badge
@@ -22,7 +22,7 @@ export function AssignmentCard({ assignment }: AssignmentCardProps) {
             className={`text-[9px] font-mono uppercase tracking-widest rounded-[3px] px-2 py-0.5 ${
               isHomework
                 ? "bg-[rgba(251,191,36,0.12)] text-[#FBBF24] border-[rgba(251,191,36,0.3)]"
-                : "bg-[rgba(101,245,154,0.12)] text-[#65F59A] border-[rgba(101,245,154,0.3)]"
+                : "bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] border-[rgba(255, 77, 109,0.3)]"
             }`}
           >
             {isHomework ? "Homework" : "Quiz Assignment"}
@@ -46,7 +46,7 @@ export function AssignmentCard({ assignment }: AssignmentCardProps) {
           <Link href={`/dashboard/quizzes/${assignment.quizId}/take`}>
             <Button
               size="sm"
-              className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono font-bold text-xs rounded-[4px] px-5 h-9 w-full sm:w-auto shadow-[0_0_12px_rgba(101,245,154,0.18)]"
+              className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-mono font-bold text-xs rounded-[4px] px-5 h-9 w-full sm:w-auto shadow-[0_0_12px_rgba(255, 77, 109,0.18)]"
             >
               <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> Start Quiz Now
             </Button>
@@ -55,7 +55,7 @@ export function AssignmentCard({ assignment }: AssignmentCardProps) {
           <Button
             size="sm"
             variant="outline"
-            className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/30 h-9 w-full sm:w-auto"
+            className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[4px] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#FF4D6D]/30 h-9 w-full sm:w-auto"
           >
             Submit Homework <ArrowRight className="w-3.5 h-3.5 ml-1" />
           </Button>

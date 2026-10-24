@@ -85,17 +85,17 @@ export default function AIAdminWorkspace() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070B0A] text-[#F2F7F3] p-4 sm:p-8 space-y-6">
+    <div className="min-h-screen bg-[#0B0708] text-[#F2F7F3] p-4 sm:p-8 space-y-6">
       {/* Header */}
-      <div className="bg-[#0C1210] border border-[rgba(160,190,170,0.14)] rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl">
-        <div className="absolute top-0 right-1/4 w-96 h-32 bg-[#65F59A]/5 blur-3xl pointer-events-none rounded-full" />
+      <div className="bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl">
+        <div className="absolute top-0 right-1/4 w-96 h-32 bg-[#FF4D6D]/5 blur-3xl pointer-events-none rounded-full" />
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
-              <span className="p-2 rounded-xl bg-[#17251E] border border-[#65F59A]/20 text-[#65F59A]">
+              <span className="p-2 rounded-xl bg-[#2A141A] border border-[#FF4D6D]/20 text-[#FF4D6D]">
                 <Cpu className="w-5 h-5" />
               </span>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#65F59A] bg-[#17251E] px-3 py-1 rounded-full border border-[#65F59A]/20">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#FF4D6D] bg-[#2A141A] px-3 py-1 rounded-full border border-[#FF4D6D]/20">
                 Core AI Orchestrator
               </span>
             </div>
@@ -112,14 +112,14 @@ export default function AIAdminWorkspace() {
               onClick={handleTestConnection}
               disabled={testing}
               variant="outline"
-              className="font-mono text-xs border-[rgba(160,190,170,0.18)] bg-[#111B17] hover:bg-[#17251E] text-[#F2F7F3]"
+              className="font-mono text-xs border-[rgba(240, 160, 180,0.18)] bg-[#1D1013] hover:bg-[#2A141A] text-[#F2F7F3]"
             >
-              <RefreshCw className={`w-3.5 h-3.5 mr-1.5 text-[#65F59A] ${testing ? "animate-spin" : ""}`} /> Ping Router Test
+              <RefreshCw className={`w-3.5 h-3.5 mr-1.5 text-[#FF4D6D] ${testing ? "animate-spin" : ""}`} /> Ping Router Test
             </Button>
 
             <Button
               onClick={() => setActiveTab("playground")}
-              className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-bold text-xs shadow-lg shadow-[#65F59A]/10"
+              className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-bold text-xs shadow-lg shadow-[#FF4D6D]/10"
             >
               <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> AI Sandbox Playground
             </Button>
@@ -131,7 +131,7 @@ export default function AIAdminWorkspace() {
       <AIRouterStatusCard settings={settings} />
 
       {/* Tabs Bar */}
-      <div className="flex items-center space-x-2 border-b border-[rgba(160,190,170,0.12)] pb-2 overflow-x-auto scrollbar-none">
+      <div className="flex items-center space-x-2 border-b border-[rgba(240, 160, 180,0.12)] pb-2 overflow-x-auto scrollbar-none">
         {[
           { id: "settings", label: "Provider Connections & Settings", icon: <Key className="w-3.5 h-3.5" /> },
           { id: "playground", label: "AI Playground Sandbox", icon: <Sparkles className="w-3.5 h-3.5" /> },
@@ -147,11 +147,11 @@ export default function AIAdminWorkspace() {
               onClick={() => setActiveTab(tab.id as any)}
               className={`px-3.5 py-2 rounded-xl text-xs font-medium flex items-center space-x-2 transition-all whitespace-nowrap border ${
                 isActive
-                  ? "bg-[#17251E] border-[#65F59A]/40 text-[#65F59A] shadow-sm shadow-[#65F59A]/10"
-                  : "bg-transparent border-transparent text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17]"
+                  ? "bg-[#2A141A] border-[#FF4D6D]/40 text-[#FF4D6D] shadow-sm shadow-[#FF4D6D]/10"
+                  : "bg-transparent border-transparent text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#1D1013]"
               }`}
             >
-              <span className={isActive ? "text-[#65F59A]" : "text-[#69786F]"}>{tab.icon}</span>
+              <span className={isActive ? "text-[#FF4D6D]" : "text-[#69786F]"}>{tab.icon}</span>
               <span>{tab.label}</span>
             </button>
           );
@@ -161,9 +161,9 @@ export default function AIAdminWorkspace() {
       {/* Tab 1: Provider Connections & Credentials */}
       {activeTab === "settings" && (
         <div className="space-y-6">
-          <div className="bg-[#0C1210] border border-[rgba(160,190,170,0.14)] rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
+          <div className="bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl">
             <h3 className="text-sm font-mono uppercase tracking-wider text-[#F2F7F3] flex items-center">
-              <Key className="w-4 h-4 text-[#65F59A] mr-2" /> AI Provider API Credentials & Fallback Policy
+              <Key className="w-4 h-4 text-[#FF4D6D] mr-2" /> AI Provider API Credentials & Fallback Policy
             </h3>
 
             {/* Provider API Keys */}
@@ -179,7 +179,7 @@ export default function AIAdminWorkspace() {
                     placeholder="AIzaSy..."
                     value={geminiApiKey}
                     onChange={(e) => setGeminiApiKey(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#65F59A]/50 focus:ring-1 focus:ring-[#65F59A]/40 transition-colors"
+                    className="w-full text-xs p-3 rounded-xl border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#FF4D6D]/50 focus:ring-1 focus:ring-[#FF4D6D]/40 transition-colors"
                   />
                   <button
                     type="button"
@@ -201,23 +201,23 @@ export default function AIAdminWorkspace() {
                   placeholder="sk-proj-..."
                   value={openaiApiKey}
                   onChange={(e) => setOpenaiApiKey(e.target.value)}
-                  className="w-full text-xs p-3 rounded-xl border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#65F59A]/50 focus:ring-1 focus:ring-[#65F59A]/40 transition-colors"
+                  className="w-full text-xs p-3 rounded-xl border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#FF4D6D]/50 focus:ring-1 focus:ring-[#FF4D6D]/40 transition-colors"
                 />
               </div>
             </div>
 
-            <Button onClick={handleSaveApiKeys} className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-bold text-xs rounded-xl shadow-md shadow-[#65F59A]/15">
+            <Button onClick={handleSaveApiKeys} className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-bold text-xs rounded-xl shadow-md shadow-[#FF4D6D]/15">
               Save API Credentials
             </Button>
 
             {/* Provider Configuration Settings */}
-            <div className="pt-6 border-t border-[rgba(160,190,170,0.12)] grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div className="pt-6 border-t border-[rgba(240, 160, 180,0.12)] grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
               <div>
                 <label className="font-mono text-[11px] text-[#A0AEA5] uppercase tracking-wider block mb-1.5">Primary Provider</label>
                 <select
                   value={settings.defaultProvider}
                   onChange={(e) => handleSaveSettings({ defaultProvider: e.target.value as AIProviderType })}
-                  className="w-full p-2.5 rounded-xl border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono text-xs focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full p-2.5 rounded-xl border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono text-xs focus:outline-none focus:border-[#FF4D6D]/50"
                 >
                   <option value="gemini">Google Gemini AI (Default)</option>
                   <option value="openai">OpenAI GPT-4o</option>
@@ -231,7 +231,7 @@ export default function AIAdminWorkspace() {
                 <select
                   value={settings.fallbackProvider}
                   onChange={(e) => handleSaveSettings({ fallbackProvider: e.target.value as AIProviderType })}
-                  className="w-full p-2.5 rounded-xl border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono text-xs focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full p-2.5 rounded-xl border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono text-xs focus:outline-none focus:border-[#FF4D6D]/50"
                 >
                   <option value="mock">QuizDorm Local Edge Synthesizer (Recommended)</option>
                   <option value="gemini">Google Gemini</option>
@@ -245,7 +245,7 @@ export default function AIAdminWorkspace() {
                   type="number"
                   value={settings.retryAttempts}
                   onChange={(e) => handleSaveSettings({ retryAttempts: Number(e.target.value) })}
-                  className="w-full p-2.5 rounded-xl border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono text-xs focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full p-2.5 rounded-xl border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono text-xs focus:outline-none focus:border-[#FF4D6D]/50"
                 />
               </div>
             </div>

@@ -38,7 +38,7 @@ export function CommunityFeedCard({ post }: CommunityFeedCardProps) {
         </div>
 
         {post.acceptedAnswer && (
-          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 flex items-center">
+          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800 flex items-center">
             <CheckCircle2 className="w-3 h-3 mr-1" /> Answered
           </span>
         )}

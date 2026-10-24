@@ -63,7 +63,7 @@ export default function ResetPasswordPage() {
     return (
       <AuthCard>
         <div className="text-center py-6 space-y-6">
-          <div className="mx-auto flex items-center justify-center h-14 w-14 rounded-full bg-emerald-950/60 border border-emerald-700/60 text-emerald-400">
+          <div className="mx-auto flex items-center justify-center h-14 w-14 rounded-full bg-rose-950/60 border border-rose-700/60 text-rose-400">
             <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
@@ -77,7 +77,7 @@ export default function ResetPasswordPage() {
           <AuthFooter>
             <p className="text-xs font-mono text-[#A0AEA5]">
               Go to{" "}
-              <Link href="/auth/login" className="text-[#65F59A] hover:text-[#52E086] hover:underline font-bold">
+              <Link href="/auth/login" className="text-[#FF4D6D] hover:text-[#FF3366] hover:underline font-bold">
                 Log In
               </Link>
             </p>
@@ -113,7 +113,7 @@ export default function ResetPasswordPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full h-10 bg-[#111B17] border-[rgba(160,190,170,0.18)] text-[#F2F7F3] placeholder:text-[#69786F] focus:border-[#65F59A] rounded-[3px] font-mono text-xs"
+              className="w-full h-10 bg-[#1D1013] border-[rgba(240, 160, 180,0.18)] text-[#F2F7F3] placeholder:text-[#69786F] focus:border-[#FF4D6D] rounded-[3px] font-mono text-xs"
             />
             <PasswordStrengthIndicator password={password} />
           </div>
@@ -129,7 +129,7 @@ export default function ResetPasswordPage() {
               required
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full h-10 bg-[#111B17] border-[rgba(160,190,170,0.18)] text-[#F2F7F3] placeholder:text-[#69786F] focus:border-[#65F59A] rounded-[3px] font-mono text-xs"
+              className="w-full h-10 bg-[#1D1013] border-[rgba(240, 160, 180,0.18)] text-[#F2F7F3] placeholder:text-[#69786F] focus:border-[#FF4D6D] rounded-[3px] font-mono text-xs"
             />
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function ResetPasswordPage() {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full h-10 bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] mt-5 font-mono font-bold text-xs uppercase tracking-wider rounded-[3px] shadow-[0_0_20px_rgba(101,245,154,0.3)] hover:shadow-[0_0_25px_rgba(101,245,154,0.45)] transition-all flex items-center justify-center space-x-2"
+          className="w-full h-10 bg-[#FF4D6D] hover:bg-[#FF3366] text-[#0B0708] mt-5 font-mono font-bold text-xs uppercase tracking-wider rounded-[3px] shadow-[0_0_20px_rgba(255, 77, 109,0.3)] hover:shadow-[0_0_25px_rgba(255, 77, 109,0.45)] transition-all flex items-center justify-center space-x-2"
         >
           <span>{loading ? "Updating password..." : "Reset Password →"}</span>
         </Button>

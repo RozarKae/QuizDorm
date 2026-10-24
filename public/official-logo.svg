@@ -14,7 +14,7 @@
     <!-- 3D Soft Drop Shadow Filter for Floating Cap and Letters -->
     <filter id="qd-drop-shadow" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="0" dy="20" stdDeviation="18" flood-color="#000000" flood-opacity="0.65" />
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#65F59A" flood-opacity="0.2" />
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#FF4D6D" flood-opacity="0.25" />
     </filter>
 
     <!-- Inner Bevel 3D Lighting Filter -->
@@ -27,60 +27,60 @@
       <feComposite in2="SourceGraphic" operator="over" />
     </filter>
 
-    <!-- Top Cap Linear Gradient (Pure Specular White to Radiant Emerald/Mint) -->
+    <!-- Top Cap Linear Gradient (Pure Specular White to Radiant Crimson/Rose) -->
     <linearGradient id="cap-top-grad" x1="250" y1="230" x2="775" y2="460" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="35%" stop-color="#E2FAF0" />
-      <stop offset="70%" stop-color="#65F59A" />
-      <stop offset="100%" stop-color="#38D9B0" />
+      <stop offset="35%" stop-color="#FFE4E8" />
+      <stop offset="70%" stop-color="#FF4D6D" />
+      <stop offset="100%" stop-color="#FF758F" />
     </linearGradient>
 
     <!-- Cap Thickness/Bevel Gradient -->
     <linearGradient id="cap-bevel-left" x1="225" y1="342" x2="500" y2="485" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38D9B0" />
-      <stop offset="100%" stop-color="#1F8A68" />
+      <stop offset="0%" stop-color="#FF758F" />
+      <stop offset="100%" stop-color="#BE123C" />
     </linearGradient>
     <linearGradient id="cap-bevel-right" x1="500" y1="485" x2="775" y2="342" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#1F8A68" />
-      <stop offset="100%" stop-color="#11543E" />
+      <stop offset="0%" stop-color="#BE123C" />
+      <stop offset="100%" stop-color="#881337" />
     </linearGradient>
 
     <!-- Q Left Face Gradient (Illuminated 3D Plane) -->
     <linearGradient id="q-face-grad" x1="285" y1="410" x2="500" y2="740" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="20%" stop-color="#E6FCF3" />
-      <stop offset="60%" stop-color="#65F59A" />
-      <stop offset="100%" stop-color="#2EC49E" />
+      <stop offset="20%" stop-color="#FFE8EC" />
+      <stop offset="60%" stop-color="#FF4D6D" />
+      <stop offset="100%" stop-color="#E11D48" />
     </linearGradient>
 
     <!-- D Right Face Gradient (Isometric Shaded 3D Plane) -->
     <linearGradient id="d-face-grad" x1="515" y1="410" x2="735" y2="740" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#8BF8B7" />
-      <stop offset="40%" stop-color="#38D9B0" />
-      <stop offset="80%" stop-color="#1F8A68" />
-      <stop offset="100%" stop-color="#104E3A" />
+      <stop offset="0%" stop-color="#FFA3B5" />
+      <stop offset="40%" stop-color="#FF758F" />
+      <stop offset="80%" stop-color="#BE123C" />
+      <stop offset="100%" stop-color="#6B0B24" />
     </linearGradient>
 
     <!-- Inner Cutout Depth Shadow (Inside Q and D Holes) -->
     <linearGradient id="cutout-depth-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#08100C" />
-      <stop offset="100%" stop-color="#11241C" />
+      <stop offset="0%" stop-color="#14070A" />
+      <stop offset="100%" stop-color="#2D1017" />
     </linearGradient>
 
     <!-- Dark Obsidian Radial Glow Background -->
     <radialGradient id="bg-glow" cx="50%" cy="48%" r="65%">
-      <stop offset="0%" stop-color="#111E18" />
-      <stop offset="50%" stop-color="#0C1310" />
-      <stop offset="100%" stop-color="#070B0A" />
+      <stop offset="0%" stop-color="#200D13" />
+      <stop offset="50%" stop-color="#160B0F" />
+      <stop offset="100%" stop-color="#0B0708" />
     </radialGradient>
   </defs>
 
-  <!-- Dark Obsidian Base Container with Subtle Cybernetic Border -->
-  <rect x="30" y="30" width="940" height="940" rx="220" fill="url(#bg-glow)" stroke="#65F59A" stroke-width="4" stroke-opacity="0.35" filter="url(#qd-ambient-glow)" />
-  <rect x="45" y="45" width="910" height="910" rx="205" fill="none" stroke="#38D9B0" stroke-width="1.5" stroke-opacity="0.15" />
+  <!-- Dark Obsidian Base Container with Radiant Crimson Cybernetic Border -->
+  <rect x="30" y="30" width="940" height="940" rx="220" fill="url(#bg-glow)" stroke="#FF4D6D" stroke-width="4" stroke-opacity="0.35" filter="url(#qd-ambient-glow)" />
+  <rect x="45" y="45" width="910" height="910" rx="205" fill="none" stroke="#FF758F" stroke-width="1.5" stroke-opacity="0.15" />
 
   <!-- Background Grid Lines -->
-  <g stroke="rgba(160,190,170,0.06)" stroke-width="1.5">
+  <g stroke="rgba(240,160,180,0.06)" stroke-width="1.5">
     <line x1="200" y1="30" x2="200" y2="970" />
     <line x1="350" y1="30" x2="350" y2="970" />
     <line x1="500" y1="30" x2="500" y2="970" />
@@ -93,14 +93,10 @@
     <line x1="30" y1="800" x2="970" y2="800" />
   </g>
 
-  <!-- ======================================================== -->
-  <!-- 3D CUBE LETTERS: Q (LEFT) AND D (RIGHT)                  -->
-  <!-- ======================================================== -->
-
-  <!-- Deep Ground Cast Shadow under QD Block -->
+  <!-- Ground Cast Shadow under QD Block -->
   <ellipse cx="505" cy="765" rx="240" ry="35" fill="#000000" fill-opacity="0.6" filter="blur(20px)" />
 
-  <!-- --- LEFT BLOCK: LETTER Q --- -->
+  <!--  LEFT BLOCK: LETTER Q  -->
   <g filter="url(#qd-drop-shadow)">
     <!-- Q Outer 3D Body -->
     <path d="M 330,410 L 498,454 L 498,710 L 468,746 L 350,670 C 300,640 282,605 282,545 L 282,455 C 282,425 300,410 330,410 Z"
@@ -110,17 +106,16 @@
     <!-- Q Inner Cutout Window (Creates the loop of Q) -->
     <path d="M 360,480 L 435,498 L 435,595 L 360,575 C 342,570 335,560 335,540 L 335,510 C 335,490 342,480 360,480 Z"
           fill="url(#cutout-depth-grad)"
-          stroke="#1A3D2E"
+          stroke="#4C1220"
           stroke-width="4" />
 
     <!-- Q Diagonal 3D Tail Inside and Extending Out -->
-    <!-- Inner Tail Stroke crossing through hole -->
     <path d="M 382,560 L 440,618 L 415,640 L 365,585 Z" fill="#FFFFFF" opacity="0.9" />
     <!-- Outer Tail Spike at Bottom Right Vertex -->
-    <path d="M 435,660 L 498,710 L 468,746 L 435,705 Z" fill="url(#q-face-grad)" stroke="#65F59A" stroke-width="1" />
+    <path d="M 435,660 L 498,710 L 468,746 L 435,705 Z" fill="url(#q-face-grad)" stroke="#FF4D6D" stroke-width="1" />
   </g>
 
-  <!-- --- RIGHT BLOCK: LETTER D --- -->
+  <!--  RIGHT BLOCK: LETTER D  -->
   <g filter="url(#qd-drop-shadow)">
     <!-- D Outer 3D Body -->
     <path d="M 512,454 L 640,418 C 695,402 735,445 735,505 L 735,585 C 735,645 690,695 625,715 L 512,746 Z"
@@ -130,15 +125,15 @@
     <!-- D Inner Cutout Window (Creates the loop of D with 3D Depth) -->
     <path d="M 570,485 L 635,470 C 665,470 680,490 680,535 L 680,595 C 680,635 660,655 630,665 L 570,685 Z"
           fill="url(#cutout-depth-grad)"
-          stroke="#1A3D2E"
+          stroke="#4C1220"
           stroke-width="4" />
     
     <!-- 3D Isometric Inner Rim Highlight of D -->
-    <path d="M 570,485 L 570,685" stroke="#65F59A" stroke-width="5" stroke-opacity="0.7" />
+    <path d="M 570,485 L 570,685" stroke="#FF4D6D" stroke-width="5" stroke-opacity="0.7" />
   </g>
 
   <!-- Center Crevice Seam Shadow and Specular Edge -->
-  <line x1="505" y1="454" x2="505" y2="746" stroke="#060B08" stroke-width="8" stroke-opacity="0.9" />
+  <line x1="505" y1="454" x2="505" y2="746" stroke="#0D0709" stroke-width="8" stroke-opacity="0.9" />
   <line x1="501" y1="454" x2="501" y2="710" stroke="#F2F7F3" stroke-width="2" stroke-opacity="0.9" />
 
   <!-- ======================================================== -->
@@ -153,8 +148,8 @@
     <path d="M 500,460 L 775,342 L 775,370 L 500,488 Z" fill="url(#cap-bevel-right)" />
 
     <!-- Cap Inner Bevel Extrusion (Inside Hole Looking Down) -->
-    <path d="M 310,342 L 500,410 L 500,432 L 310,364 Z" fill="#0D281E" />
-    <path d="M 500,410 L 690,342 L 690,364 L 500,432 Z" fill="#174434" />
+    <path d="M 310,342 L 500,410 L 500,432 L 310,364 Z" fill="#3B0B17" />
+    <path d="M 500,410 L 690,342 L 690,364 L 500,432 Z" fill="#5C1527" />
 
     <!-- Top Cap Diamond Surface (Floating Rhombus with Cutout) -->
     <path d="M 500,225 L 775,342 L 500,460 L 225,342 Z M 500,275 L 310,342 L 500,410 L 690,342 Z"
@@ -167,7 +162,7 @@
 
     <!-- Specular Highlight Ridge Lines on Cap -->
     <path d="M 225,342 L 500,460" stroke="#FFFFFF" stroke-width="4" stroke-opacity="0.9" />
-    <path d="M 500,460 L 775,342" stroke="#65F59A" stroke-width="2.5" stroke-opacity="0.8" />
+    <path d="M 500,460 L 775,342" stroke="#FF4D6D" stroke-width="2.5" stroke-opacity="0.8" />
     <path d="M 500,225 L 225,342" stroke="#FFFFFF" stroke-width="3.5" stroke-opacity="0.95" />
   </g>
 </svg>

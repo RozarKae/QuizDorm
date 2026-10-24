@@ -26,7 +26,7 @@ export function TeacherClassCard({ classItem, onAssignQuiz }: TeacherClassCardPr
 
         <div className="grid grid-cols-2 gap-3 p-3 bg-gray-50/50 dark:bg-gray-900/50 rounded-2xl border border-gray-100 dark:border-gray-850 text-xs mb-4">
           <div className="flex items-center space-x-2">
-            <GraduationCap className="w-4 h-4 text-emerald-600" />
+            <GraduationCap className="w-4 h-4 text-rose-600" />
             <div>
               <p className="font-extrabold text-gray-900 dark:text-white">{classItem.studentCount}</p>
               <p className="text-[10px] text-gray-400">Students</p>

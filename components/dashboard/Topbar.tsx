@@ -56,7 +56,7 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
     switch (r) {
       case "superadmin":
       case "admin":
-        return "text-[#65F59A]";
+        return "text-[#FF4D6D]";
       case "masteradmin":
         return "text-purple-400";
       case "institution":
@@ -115,7 +115,7 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
   const breadcrumbs = getBreadcrumbs();
 
   return (
-    <header className="sticky top-0 z-30 flex h-14 w-full items-center justify-between border-b border-border bg-card/90 dark:bg-[#0C1210]/95 backdrop-blur-md px-4 sm:px-6 transition-colors">
+    <header className="sticky top-0 z-30 flex h-14 w-full items-center justify-between border-b border-border bg-card/90 dark:bg-[#140C0E]/95 backdrop-blur-md px-4 sm:px-6 transition-colors">
       <div className="flex items-center space-x-3 md:space-x-4">
         {/* Toggle Button for Mobile */}
         <Button
@@ -176,9 +176,9 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
           <Input
             type="search"
             placeholder="Search OS... [Ctrl+K]"
-            className="pl-8 pr-12 h-8 w-full bg-secondary dark:bg-[#17251E] border-border text-xs font-mono text-foreground placeholder:text-muted-foreground rounded-[4px] focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary"
+            className="pl-8 pr-12 h-8 w-full bg-secondary dark:bg-[#2A141A] border-border text-xs font-mono text-foreground placeholder:text-muted-foreground rounded-[4px] focus-visible:border-primary focus-visible:ring-1 focus-visible:ring-primary"
           />
-          <span className="absolute right-2 top-2 font-mono text-[9px] text-muted-foreground border border-border px-1 rounded-[2px] bg-card dark:bg-[#0C1210]">
+          <span className="absolute right-2 top-2 font-mono text-[9px] text-muted-foreground border border-border px-1 rounded-[2px] bg-card dark:bg-[#140C0E]">
             ⌘K
           </span>
         </div>
@@ -207,7 +207,7 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
           aria-label="Notifications"
         >
           <Bell className="h-4 w-4" />
-          <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-[#65F59A] ring-2 ring-[#0C1210]" />
+          <span className="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-[#FF4D6D] ring-2 ring-[#140C0E]" />
         </Button>
 
         {/* User Profile */}

@@ -25,7 +25,7 @@ export function AIClassroomCopilot() {
       {/* Top Banner */}
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xl">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold mb-2 border border-emerald-500/30">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 text-xs font-bold mb-2 border border-rose-500/30">
             <Zap className="w-3.5 h-3.5 text-amber-400 animate-pulse" /> Live In-Class AI Teaching Assistant Active
           </div>
           <h2 className="text-2xl font-bold">AI Classroom Copilot Studio</h2>

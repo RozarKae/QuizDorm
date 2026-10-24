@@ -82,7 +82,7 @@ export function DigitalResourceLibraryVault() {
 
             <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
               <span className="text-slate-400">Uploaded by {ast.uploadedBy}</span>
-              <span className="text-emerald-500 font-bold text-[10px]">Vector Indexed</span>
+              <span className="text-rose-500 font-bold text-[10px]">Vector Indexed</span>
             </div>
           </div>
         ))}

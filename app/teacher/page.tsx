@@ -61,8 +61,8 @@ export default function TeacherPage() {
       subtext: "Class median accuracy",
       change: "+3.2% gain",
       isPositive: true,
-      icon: <Award className="h-4 w-4 text-emerald-400" />,
-      border: "border-emerald-500/20",
+      icon: <Award className="h-4 w-4 text-rose-400" />,
+      border: "border-rose-500/20",
     },
   ];
 
@@ -94,8 +94,8 @@ export default function TeacherPage() {
       mastery: 91,
       status: "Mastered",
       recentTopic: "Stoichiometry & Atomic Orbitals",
-      accent: "text-emerald-400",
-      barColor: "bg-emerald-500",
+      accent: "text-rose-400",
+      barColor: "bg-rose-500",
     },
     {
       id: "sec-11a",
@@ -175,7 +175,7 @@ export default function TeacherPage() {
             <Link href="/live/arena">
               <Button
                 variant="outline"
-                className="h-10 px-4 rounded-[6px] border-emerald-500/30 bg-[#0E1719] text-emerald-300 hover:border-emerald-400 hover:text-emerald-200 text-xs font-semibold"
+                className="h-10 px-4 rounded-[6px] border-rose-500/30 bg-[#0E1719] text-rose-300 hover:border-rose-400 hover:text-rose-200 text-xs font-semibold"
               >
                 <Swords className="mr-1.5 h-3.5 w-3.5" />
                 Live Class Arena
@@ -332,7 +332,7 @@ export default function TeacherPage() {
             <h3 className="font-display text-xs font-bold uppercase tracking-wider text-[#F8FAFC]">
               Live Submission Stream
             </h3>
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-rose-400 animate-pulse" />
           </div>
 
           <div className="space-y-3">
@@ -346,7 +346,7 @@ export default function TeacherPage() {
                   <p className="text-[10px] text-[#64748B] mt-0.5">{sub.quiz}</p>
                 </div>
                 <div className="text-right font-mono">
-                  <span className="font-bold text-emerald-400">{sub.score}</span>
+                  <span className="font-bold text-rose-400">{sub.score}</span>
                   <span className="block text-[9px] text-[#64748B]">{sub.time}</span>
                 </div>
               </div>

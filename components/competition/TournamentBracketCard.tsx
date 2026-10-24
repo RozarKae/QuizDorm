@@ -33,7 +33,7 @@ export function TournamentBracketCard() {
               <span className="text-gray-900 dark:text-white text-sm">{n.roundName}</span>
               <span
                 className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
-                  n.status === "completed" ? "bg-emerald-100 text-emerald-800" : "bg-purple-100 text-purple-800"
+                  n.status === "completed" ? "bg-rose-100 text-rose-800" : "bg-purple-100 text-purple-800"
                 }`}
               >
                 {n.status}
@@ -41,13 +41,13 @@ export function TournamentBracketCard() {
             </div>
 
             <div className="grid grid-cols-2 gap-3 font-mono text-[11px] pt-1">
-              <div className={`p-3 rounded-xl border ${n.winnerName === n.player1Name ? "bg-emerald-50 border-emerald-300 font-bold text-emerald-800" : "bg-white dark:bg-gray-950 border-gray-200"}`}>
+              <div className={`p-3 rounded-xl border ${n.winnerName === n.player1Name ? "bg-rose-50 border-rose-300 font-bold text-rose-800" : "bg-white dark:bg-gray-950 border-gray-200"}`}>
                 <span className="font-sans block text-gray-500 text-[10px]">Player #1</span>
                 <span>{n.player1Name}</span>
                 {n.score1 > 0 && <span className="float-right text-indigo-600">{n.score1} pts</span>}
               </div>
 
-              <div className={`p-3 rounded-xl border ${n.winnerName === n.player2Name ? "bg-emerald-50 border-emerald-300 font-bold text-emerald-800" : "bg-white dark:bg-gray-950 border-gray-200"}`}>
+              <div className={`p-3 rounded-xl border ${n.winnerName === n.player2Name ? "bg-rose-50 border-rose-300 font-bold text-rose-800" : "bg-white dark:bg-gray-950 border-gray-200"}`}>
                 <span className="font-sans block text-gray-500 text-[10px]">Player #2</span>
                 <span>{n.player2Name}</span>
                 {n.score2 > 0 && <span className="float-right text-indigo-600">{n.score2} pts</span>}

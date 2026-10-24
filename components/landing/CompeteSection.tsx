@@ -35,13 +35,13 @@ export default function CompeteSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-border mb-12 gap-6">
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center space-x-2">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-emerald-800 bg-emerald-50 dark:text-[#65F59A] dark:bg-[#17251E] px-3 py-1 rounded-full border border-emerald-300 dark:border-[#65F59A]/30 font-semibold shadow-xs">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-rose-800 bg-rose-50 dark:text-[#FF4D6D] dark:bg-[#2A141A] px-3 py-1 rounded-full border border-rose-300 dark:border-[#FF4D6D]/30 font-semibold shadow-xs">
                 SYNCHRONIZED COGNITIVE DECATHLON ENGINE
               </span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-[#F2F7F3] tracking-tight">
               Step Into <br />
-              <span className="bg-gradient-to-r from-[#047857] via-[#0D9488] to-[#047857] dark:from-[#65F59A] dark:via-[#38D9B0] dark:to-[#65F59A] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#BE123C] via-[#0D9488] to-[#BE123C] dark:from-[#FF4D6D] dark:via-[#FF758F] dark:to-[#FF4D6D] bg-clip-text text-transparent">
                 The Battle Arena.
               </span>
             </h2>
@@ -60,7 +60,7 @@ export default function CompeteSection() {
             {/* Terminal Header */}
             <div className="flex items-center justify-between border-b border-border pb-4">
               <div className="flex items-center space-x-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#047857] dark:bg-[#65F59A] animate-pulse" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#BE123C] dark:bg-[#FF4D6D] animate-pulse" />
                 <span className="font-mono text-xs uppercase tracking-widest text-slate-900 dark:text-[#F2F7F3] font-bold">
                   ARENA #QD-8492 // LIVE ROUND 03
                 </span>
@@ -69,7 +69,7 @@ export default function CompeteSection() {
                 className={`font-mono text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5 transition-colors ${
                   timerSeconds <= 3
                     ? "bg-rose-50 text-rose-600 border border-rose-300 dark:bg-[#F87171]/15 dark:text-[#F87171] dark:border-[#F87171]/40 animate-pulse"
-                    : "bg-emerald-50 text-emerald-800 border border-emerald-300 dark:bg-[#111B17] dark:text-[#65F59A] dark:border-[#65F59A]/30 shadow-xs"
+                    : "bg-rose-50 text-rose-800 border border-rose-300 dark:bg-[#1D1013] dark:text-[#FF4D6D] dark:border-[#FF4D6D]/30 shadow-xs"
                 }`}
               >
                 <Clock className="w-3.5 h-3.5" />
@@ -81,7 +81,7 @@ export default function CompeteSection() {
             <div className="space-y-2">
               <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-[#69786F]">
                 <span>Question 03 of 10 • Quantum & Classical Computing</span>
-                <span className="text-teal-700 dark:text-[#38D9B0] font-semibold">+500 Base Points</span>
+                <span className="text-rose-700 dark:text-[#FF758F] font-semibold">+500 Base Points</span>
               </div>
               <p className="font-display text-base sm:text-lg font-bold text-slate-900 dark:text-[#F2F7F3] leading-snug">
                 Which physical phenomenon provides the exponential computational state space utilized in Shor&apos;s factorization algorithm?
@@ -102,16 +102,16 @@ export default function CompeteSection() {
                   onClick={() => setSelectedOption(opt.id)}
                   className={`p-3.5 rounded-xl border text-left transition-all flex items-center justify-between cursor-pointer ${
                     selectedOption === opt.id
-                      ? "border-emerald-600 bg-emerald-50 text-emerald-950 dark:border-[#65F59A] dark:bg-[#17251E] dark:text-[#F2F7F3] shadow-xs"
-                      : "border-border bg-slate-50 dark:bg-[#111B17] text-slate-700 dark:text-[#A0AEA5] hover:border-emerald-600/40 hover:text-slate-900 dark:hover:text-[#F2F7F3]"
+                      ? "border-rose-600 bg-rose-50 text-rose-950 dark:border-[#FF4D6D] dark:bg-[#2A141A] dark:text-[#F2F7F3] shadow-xs"
+                      : "border-border bg-slate-50 dark:bg-[#1D1013] text-slate-700 dark:text-[#A0AEA5] hover:border-rose-600/40 hover:text-slate-900 dark:hover:text-[#F2F7F3]"
                   }`}
                 >
                   <span className="flex items-center">
-                    <span className="font-bold text-emerald-700 dark:text-[#65F59A] mr-2">{opt.id}.</span>
+                    <span className="font-bold text-rose-700 dark:text-[#FF4D6D] mr-2">{opt.id}.</span>
                     <span className="truncate">{opt.text}</span>
                   </span>
                   {selectedOption === opt.id && (
-                    <Zap className="w-3.5 h-3.5 text-emerald-700 dark:text-[#65F59A] shrink-0 ml-1.5" />
+                    <Zap className="w-3.5 h-3.5 text-rose-700 dark:text-[#FF4D6D] shrink-0 ml-1.5" />
                   )}
                 </button>
               ))}
@@ -120,9 +120,9 @@ export default function CompeteSection() {
             {/* Footer Bar */}
             <div className="pt-4 border-t border-border flex items-center justify-between text-xs font-mono text-slate-500 dark:text-[#A0AEA5]">
               <span className="flex items-center gap-1.5">
-                <Users className="w-3.5 h-3.5 text-emerald-700 dark:text-[#65F59A]" /> 42 Competitors Synchronized
+                <Users className="w-3.5 h-3.5 text-rose-700 dark:text-[#FF4D6D]" /> 42 Competitors Synchronized
               </span>
-              <span className="text-emerald-700 dark:text-[#65F59A] font-bold">Answer Locked: Instant Response</span>
+              <span className="text-rose-700 dark:text-[#FF4D6D] font-bold">Answer Locked: Instant Response</span>
             </div>
           </div>
 
@@ -130,12 +130,12 @@ export default function CompeteSection() {
           <div className="lg:col-span-5 bg-card border border-border rounded-2xl p-6 shadow-xl space-y-4">
             <div className="flex items-center justify-between border-b border-border pb-3">
               <div className="flex items-center space-x-2">
-                <Trophy className="w-4 h-4 text-emerald-700 dark:text-[#65F59A]" />
+                <Trophy className="w-4 h-4 text-rose-700 dark:text-[#FF4D6D]" />
                 <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-slate-900 dark:text-[#F2F7F3]">
                   Live Standings
                 </h3>
               </div>
-              <span className="text-[10px] font-mono uppercase text-teal-800 dark:text-[#38D9B0] bg-teal-50 dark:bg-[#111B17] px-2 py-0.5 rounded-full border border-teal-200 dark:border-[rgba(160,190,170,0.14)] font-semibold">
+              <span className="text-[10px] font-mono uppercase text-rose-800 dark:text-[#FF758F] bg-rose-50 dark:bg-[#1D1013] px-2 py-0.5 rounded-full border border-rose-200 dark:border-[rgba(240, 160, 180,0.14)] font-semibold">
                 SSE Live Stream
               </span>
             </div>
@@ -146,8 +146,8 @@ export default function CompeteSection() {
                   key={player.name}
                   className={`p-3 rounded-xl border flex items-center justify-between transition-all ${
                     player.rank === 1
-                      ? "bg-emerald-50/70 border-emerald-300 dark:bg-[#111B17] dark:border-[#65F59A]/40 shadow-xs"
-                      : "bg-slate-50 border-border text-slate-700 dark:bg-[#070B0A] dark:border-[rgba(160,190,170,0.1)] dark:text-[#A0AEA5]"
+                      ? "bg-rose-50/70 border-rose-300 dark:bg-[#1D1013] dark:border-[#FF4D6D]/40 shadow-xs"
+                      : "bg-slate-50 border-border text-slate-700 dark:bg-[#0B0708] dark:border-[rgba(240, 160, 180,0.1)] dark:text-[#A0AEA5]"
                   }`}
                 >
                   <div className="flex items-center space-x-3 truncate">
@@ -164,8 +164,8 @@ export default function CompeteSection() {
                   </div>
 
                   <div className="text-right shrink-0">
-                    <p className="text-xs font-mono font-black text-emerald-700 dark:text-[#65F59A]">{player.score} pts</p>
-                    <span className="text-[9px] font-mono text-teal-700 dark:text-[#38D9B0] font-semibold">{player.delta}</span>
+                    <p className="text-xs font-mono font-black text-rose-700 dark:text-[#FF4D6D]">{player.score} pts</p>
+                    <span className="text-[9px] font-mono text-rose-700 dark:text-[#FF758F] font-semibold">{player.delta}</span>
                   </div>
                 </div>
               ))}
@@ -174,13 +174,13 @@ export default function CompeteSection() {
             {/* Direct Action Gateway */}
             <div className="pt-4 border-t border-border space-y-2.5">
               <Link href="/live/arena">
-                <Button className="w-full bg-[#047857] hover:bg-[#065F46] text-white dark:bg-[#65F59A] dark:hover:bg-[#52E086] dark:text-[#070B0A] font-mono text-xs font-bold rounded-[6px] h-10 shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer">
+                <Button className="w-full bg-[#BE123C] hover:bg-[#9F1239] text-white dark:bg-[#FF4D6D] dark:hover:bg-[#FF3366] dark:text-[#0B0708] font-mono text-xs font-bold rounded-[6px] h-10 shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer">
                   <Sparkles className="w-3.5 h-3.5 fill-current" />
                   <span>Enter Competition Arena</span>
                 </Button>
               </Link>
               <Link href="/live/join">
-                <Button variant="outline" className="w-full border-slate-300 bg-white hover:bg-slate-100 text-slate-800 hover:text-emerald-700 dark:border-[rgba(160,190,170,0.18)] dark:bg-[#111B17] dark:hover:bg-[#17251E] dark:text-[#A0AEA5] dark:hover:text-[#F2F7F3] font-mono text-xs rounded-[6px] h-9 cursor-pointer">
+                <Button variant="outline" className="w-full border-slate-300 bg-white hover:bg-slate-100 text-slate-800 hover:text-rose-700 dark:border-[rgba(240, 160, 180,0.18)] dark:bg-[#1D1013] dark:hover:bg-[#2A141A] dark:text-[#A0AEA5] dark:hover:text-[#F2F7F3] font-mono text-xs rounded-[6px] h-9 cursor-pointer">
                   <span>Join with Room PIN Code &rarr;</span>
                 </Button>
               </Link>

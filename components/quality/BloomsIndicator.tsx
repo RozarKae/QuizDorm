@@ -16,7 +16,7 @@ export function BloomsIndicator({ level: initialLevel, onOverride }: BloomsIndic
   const bloomsConfigs: Record<BloomsTaxonomyLevel, { label: string; color: string; desc: string }> = {
     Remember: { label: "1. Remember (Recall)", color: "bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300", desc: "Recall facts and basic concepts" },
     Understand: { label: "2. Understand (Comprehend)", color: "bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300", desc: "Explain ideas or concepts" },
-    Apply: { label: "3. Apply (Execute)", color: "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300", desc: "Use information in new situations" },
+    Apply: { label: "3. Apply (Execute)", color: "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300", desc: "Use information in new situations" },
     Analyze: { label: "4. Analyze (Dissect)", color: "bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300", desc: "Draw connections among ideas" },
     Evaluate: { label: "5. Evaluate (Judge)", color: "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300", desc: "Justify a stand or decision" },
     Create: { label: "6. Create (Design & Build)", color: "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300", desc: "Produce new or original work" },

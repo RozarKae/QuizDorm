@@ -63,7 +63,7 @@ export default function OrganizationProfilePage({ params }: { params: { id: stri
           <p className="text-xs text-gray-400">Total Teachers</p>
         </div>
         <div className="bg-white dark:bg-gray-950 p-5 rounded-2xl border border-gray-100 dark:border-gray-850 shadow-sm text-center">
-          <GraduationCap className="w-6 h-6 text-emerald-600 mx-auto mb-1" />
+          <GraduationCap className="w-6 h-6 text-rose-600 mx-auto mb-1" />
           <p className="text-2xl font-extrabold text-gray-900 dark:text-white">{activeOrg.studentCount}</p>
           <p className="text-xs text-gray-400">Total Students</p>
         </div>

@@ -96,21 +96,21 @@ export default function CompetitionDetailsPage({
         <Link
           href="/dashboard/competitions"
           onClick={playTap}
-          className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#65F59A] transition-colors mb-4"
+          className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#FF4D6D] transition-colors mb-4"
         >
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> BACK TO COMPETITIONS
         </Link>
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(160,190,170,0.14)] pb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(240, 160, 180,0.14)] pb-6">
           <div className="space-y-1.5">
             <div className="flex items-center space-x-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse shadow-[0_0_8px_#65F59A]" />
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#65F59A] font-bold">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse shadow-[0_0_8px_#FF4D6D]" />
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#FF4D6D] font-bold">
                 ARENA DOSSIER // {comp.code}
               </span>
               <Badge
                 variant="outline"
-                className="text-[9px] font-mono uppercase px-2 py-0.2 rounded border-[rgba(101,245,154,0.3)] bg-[rgba(101,245,154,0.1)] text-[#65F59A]"
+                className="text-[9px] font-mono uppercase px-2 py-0.2 rounded border-[rgba(255, 77, 109,0.3)] bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D]"
               >
                 ● {comp.status}
               </Badge>
@@ -120,7 +120,7 @@ export default function CompetitionDetailsPage({
             </h1>
             <p className="text-xs font-mono text-[#A0AEA5]">
               Organized by <strong className="text-[#F2F7F3]">{comp.organizer}</strong> • Topic:{" "}
-              <span className="text-[#38D9B0]">{comp.topic}</span>
+              <span className="text-[#FF758F]">{comp.topic}</span>
             </p>
           </div>
 
@@ -129,7 +129,7 @@ export default function CompetitionDetailsPage({
               href={`/live/arena/${comp.code}`}
               onClick={playTap}
             >
-              <Button className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono font-bold text-xs rounded-[4px] px-5 h-9 shadow-[0_0_12px_rgba(101,245,154,0.2)]">
+              <Button className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-mono font-bold text-xs rounded-[4px] px-5 h-9 shadow-[0_0_12px_rgba(255, 77, 109,0.2)]">
                 <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> Join as Contender
               </Button>
             </Link>
@@ -140,7 +140,7 @@ export default function CompetitionDetailsPage({
             >
               <Button
                 variant="outline"
-                className="text-xs font-mono border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/40 rounded-[4px] h-9"
+                className="text-xs font-mono border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#FF4D6D]/40 rounded-[4px] h-9"
               >
                 Launch Host Desk
               </Button>
@@ -149,8 +149,8 @@ export default function CompetitionDetailsPage({
         </div>
       </div>
 
-      <div className="bg-[#0C1210] p-6 rounded-[6px] border border-[rgba(160,190,170,0.14)] space-y-3">
-        <h3 className="text-xs font-mono uppercase font-bold text-[#65F59A] tracking-wider flex items-center">
+      <div className="bg-[#140C0E] p-6 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] space-y-3">
+        <h3 className="text-xs font-mono uppercase font-bold text-[#FF4D6D] tracking-wider flex items-center">
           <Sparkles className="w-3.5 h-3.5 mr-1.5" /> Tournament Briefing
         </h3>
         <p className="text-xs sm:text-sm text-[#A0AEA5] leading-relaxed font-sans">
@@ -159,16 +159,16 @@ export default function CompetitionDetailsPage({
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-[#0C1210] p-5 rounded-[6px] border border-[rgba(160,190,170,0.14)] space-y-1.5">
+        <div className="bg-[#140C0E] p-5 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] space-y-1.5">
           <p className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#69786F] flex items-center">
-            <Users className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> Enrolled Contenders
+            <Users className="w-3.5 h-3.5 mr-1.5 text-[#FF758F]" /> Enrolled Contenders
           </p>
           <p className="text-2xl font-mono font-extrabold text-[#F2F7F3]">
             {comp.participants} <span className="text-xs text-[#69786F] font-normal">/ {comp.maxParticipants} max</span>
           </p>
         </div>
 
-        <div className="bg-[#0C1210] p-5 rounded-[6px] border border-[rgba(160,190,170,0.14)] space-y-1.5">
+        <div className="bg-[#140C0E] p-5 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] space-y-1.5">
           <p className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#69786F] flex items-center">
             <Award className="w-3.5 h-3.5 mr-1.5 text-[#FBBF24]" /> Championship Honors
           </p>
@@ -177,11 +177,11 @@ export default function CompetitionDetailsPage({
           </p>
         </div>
 
-        <div className="bg-[#0C1210] p-5 rounded-[6px] border border-[rgba(160,190,170,0.14)] space-y-1.5">
+        <div className="bg-[#140C0E] p-5 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] space-y-1.5">
           <p className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#69786F] flex items-center">
-            <Clock className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" /> Duration Allotted
+            <Clock className="w-3.5 h-3.5 mr-1.5 text-[#FF4D6D]" /> Duration Allotted
           </p>
-          <p className="text-2xl font-mono font-extrabold text-[#65F59A]">
+          <p className="text-2xl font-mono font-extrabold text-[#FF4D6D]">
             {comp.duration}
           </p>
         </div>

@@ -50,7 +50,7 @@ export function WebhookManagerCard() {
           <div key={ep.id} className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 space-y-2">
             <div className="flex items-center justify-between font-bold">
               <span className="text-indigo-600 dark:text-indigo-400 font-mono text-xs">{ep.url}</span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold uppercase">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 font-bold uppercase">
                 {ep.enabled ? "ACTIVE" : "DISABLED"}
               </span>
             </div>

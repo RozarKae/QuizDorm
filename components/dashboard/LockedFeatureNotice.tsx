@@ -20,7 +20,7 @@ export function LockedFeatureNotice({
 }: LockedFeatureNoticeProps) {
   return (
     <div className="max-w-2xl mx-auto py-12 px-4">
-      <div className="rounded-[8px] bg-[#0C1210] border border-[rgba(248,113,113,0.3)] p-6 sm:p-8 space-y-5 text-center shadow-2xl relative overflow-hidden">
+      <div className="rounded-[8px] bg-[#140C0E] border border-[rgba(248,113,113,0.3)] p-6 sm:p-8 space-y-5 text-center shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-[radial-gradient(circle,rgba(248,113,113,0.08)_0%,transparent_70%)] pointer-events-none" />
 
         <div className="mx-auto w-14 h-14 rounded-full bg-[rgba(248,113,113,0.12)] border border-[rgba(248,113,113,0.3)] flex items-center justify-center text-[#F87171] shadow-[0_0_20px_rgba(248,113,113,0.2)]">
@@ -40,14 +40,14 @@ export function LockedFeatureNotice({
           </p>
         </div>
 
-        <div className="p-3.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)] font-mono text-xs text-left space-y-1.5 max-w-md mx-auto">
+        <div className="p-3.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.12)] font-mono text-xs text-left space-y-1.5 max-w-md mx-auto">
           <div className="flex items-center justify-between text-[11px]">
             <span className="text-[#69786F] uppercase">Current Plan:</span>
             <span className="text-[#60A5FA] font-bold">SUBSCRIBER (FREE / SELF-PACED)</span>
           </div>
           <div className="flex items-center justify-between text-[11px]">
             <span className="text-[#69786F] uppercase">Required:</span>
-            <span className="text-[#65F59A] font-bold uppercase">{unlockRequirement}</span>
+            <span className="text-[#FF4D6D] font-bold uppercase">{unlockRequirement}</span>
           </div>
         </div>
 
@@ -56,7 +56,7 @@ export function LockedFeatureNotice({
             <Button
               variant="outline"
               size="sm"
-              className="border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] text-xs font-mono h-9"
+              className="border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] text-xs font-mono h-9"
             >
               <ArrowLeft className="w-3.5 h-3.5 mr-1.5" />
               Back to Personal Hub
@@ -65,7 +65,7 @@ export function LockedFeatureNotice({
           <Link href="/dashboard/quizzes">
             <Button
               size="sm"
-              className="bg-[#65F59A] text-[#070B0A] hover:bg-[#52E086] font-mono text-xs font-bold uppercase tracking-wider h-9 shadow-[0_0_12px_rgba(101,245,154,0.25)]"
+              className="bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF3366] font-mono text-xs font-bold uppercase tracking-wider h-9 shadow-[0_0_12px_rgba(255, 77, 109,0.25)]"
             >
               <Sparkles className="w-3.5 h-3.5 mr-1.5" />
               Practice Free Quizzes

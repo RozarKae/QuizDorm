@@ -8,13 +8,13 @@ export function SecurityOperationsCenterCard() {
   const alerts = EnterpriseAuditLogger.getSecurityAlerts();
 
   return (
-    <div className="p-5 bg-[#0C1210] border border-[rgba(160,190,170,0.14)] rounded-[6px] shadow-sm space-y-4">
-      <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
+    <div className="p-5 bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] rounded-[6px] shadow-sm space-y-4">
+      <div className="flex items-center justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-3">
         <h3 className="font-display text-sm font-bold uppercase tracking-wider text-[#F2F7F3] flex items-center">
           <ShieldAlert className="w-4 h-4 text-[#F87171] mr-2" />
           Security Operations Center (SOC Risk Meter)
         </h3>
-        <span className="text-[10px] font-mono font-bold text-[#65F59A] bg-[rgba(101,245,154,0.1)] px-2.5 py-0.5 rounded-[2px] border border-[rgba(101,245,154,0.2)] uppercase">
+        <span className="text-[10px] font-mono font-bold text-[#FF4D6D] bg-[rgba(255, 77, 109,0.1)] px-2.5 py-0.5 rounded-[2px] border border-[rgba(255, 77, 109,0.2)] uppercase">
           Zero Critical Threats
         </span>
       </div>
@@ -23,7 +23,7 @@ export function SecurityOperationsCenterCard() {
         {alerts.map((a) => (
           <div
             key={a.id}
-            className="p-3.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)] space-y-2"
+            className="p-3.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)] space-y-2"
           >
             <div className="flex items-center justify-between font-bold">
               <span className="text-[#F2F7F3] text-sm flex items-center font-sans">
@@ -42,9 +42,9 @@ export function SecurityOperationsCenterCard() {
 
             <p className="text-xs text-[#A0AEA5] leading-relaxed">{a.description}</p>
 
-            <div className="flex justify-between items-center text-[10px] text-[#69786F] font-mono pt-1 border-t border-[rgba(160,190,170,0.08)]">
+            <div className="flex justify-between items-center text-[10px] text-[#69786F] font-mono pt-1 border-t border-[rgba(240, 160, 180,0.08)]">
               <span>Detected: {new Date(a.timestamp).toLocaleTimeString()}</span>
-              <span className="text-[#65F59A]">STATUS: {a.resolved ? "RESOLVED" : "INVESTIGATING"}</span>
+              <span className="text-[#FF4D6D]">STATUS: {a.resolved ? "RESOLVED" : "INVESTIGATING"}</span>
             </div>
           </div>
         ))}

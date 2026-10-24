@@ -78,7 +78,7 @@ export function HotspotEditor({ imageUrl, regions, onChange }: HotspotEditorProp
               }}
               className={`absolute border-2 rounded-xl flex flex-col items-center justify-center transition-all ${
                 region.isCorrect
-                  ? "border-emerald-500 bg-emerald-500/30 text-white font-bold"
+                  ? "border-rose-500 bg-rose-500/30 text-white font-bold"
                   : "border-rose-500 bg-rose-500/30 text-white font-bold"
               } ${isSelected ? "ring-4 ring-indigo-400 scale-[1.02] z-20" : "z-10"}`}
             >
@@ -111,12 +111,12 @@ export function HotspotEditor({ imageUrl, regions, onChange }: HotspotEditorProp
                     onChange={(e) => handleUpdateRegion(r.id, { label: e.target.value })}
                     className="text-xs font-semibold p-1 rounded-lg border border-gray-200 dark:border-gray-800 bg-transparent flex-1"
                   />
-                  <label className="flex items-center space-x-1 text-[11px] font-semibold text-emerald-600 cursor-pointer">
+                  <label className="flex items-center space-x-1 text-[11px] font-semibold text-rose-600 cursor-pointer">
                     <input
                       type="checkbox"
                       checked={Boolean(r.isCorrect)}
                       onChange={(e) => handleUpdateRegion(r.id, { isCorrect: e.target.checked })}
-                      className="rounded text-emerald-600 focus:ring-emerald-500 h-3.5 w-3.5"
+                      className="rounded text-rose-600 focus:ring-rose-500 h-3.5 w-3.5"
                     />
                     <span>Correct Target</span>
                   </label>
@@ -166,7 +166,7 @@ export function HotspotViewer({
           }
 
           if (isSubmitted) {
-            if (isCorrect) boxColor = "border-emerald-500 bg-emerald-500/40 text-white font-bold";
+            if (isCorrect) boxColor = "border-rose-500 bg-rose-500/40 text-white font-bold";
             else if (isSelected && !isCorrect) boxColor = "border-rose-500 bg-rose-500/40 text-white font-bold";
           }
 

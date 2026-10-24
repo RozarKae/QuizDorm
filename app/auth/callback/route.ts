@@ -93,7 +93,7 @@ export async function GET(request: Request) {
   <title>QuizDorm // Authorizing...</title>
   <style>
     body {
-      background: #070B0A;
+      background: #0B0708;
       color: #F2F7F3;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       display: flex;
@@ -104,14 +104,14 @@ export async function GET(request: Request) {
     }
     .box {
       text-align: center;
-      background: #111B17;
-      border: 1px solid rgba(101, 245, 154, 0.25);
+      background: #1D1013;
+      border: 1px solid rgba(255, 77, 109, 0.25);
       border-radius: 8px;
       padding: 32px 40px;
-      box-shadow: 0 0 30px rgba(101, 245, 154, 0.12);
+      box-shadow: 0 0 30px rgba(255, 77, 109, 0.12);
     }
     .title {
-      color: #65F59A;
+      color: #FF4D6D;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 0.1em;

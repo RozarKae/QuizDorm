@@ -18,19 +18,19 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     assert.ok(cssContent.includes("--color-interactive: var(--interactive)"));
 
     // Light mode foundation variables
-    assert.ok(cssContent.includes("--charcoal: #F8FAF9;"));
+    assert.ok(cssContent.includes("--charcoal: #FAF8F8;"));
     assert.ok(cssContent.includes("--graphite: #FFFFFF;"));
-    assert.ok(cssContent.includes("--elevated: #F1F5F3;"));
+    assert.ok(cssContent.includes("--elevated: #FFF1F2;"));
 
     // Dark mode foundation variables
-    assert.ok(cssContent.includes("--charcoal: #070B0A;"));
-    assert.ok(cssContent.includes("--graphite: #0C1210;"));
-    assert.ok(cssContent.includes("--elevated: #111B17;"));
+    assert.ok(cssContent.includes("--charcoal: #0B0708;"));
+    assert.ok(cssContent.includes("--graphite: #140C0E;"));
+    assert.ok(cssContent.includes("--elevated: #1D1013;"));
 
     // Background inversions in light mode
-    assert.ok(cssContent.includes("html.light .bg-\\[\\#0C1210\\]"));
-    assert.ok(cssContent.includes("html.light .bg-\\[\\#070B0A\\]"));
-    assert.ok(cssContent.includes("html.light .bg-\\[\\#111B17\\]"));
+    assert.ok(cssContent.includes("html.light .bg-\\[\\#140C0E\\]"));
+    assert.ok(cssContent.includes("html.light .bg-\\[\\#0B0708\\]"));
+    assert.ok(cssContent.includes("html.light .bg-\\[\\#1D1013\\]"));
 
     // High-contrast text inversions in light mode
     assert.ok(cssContent.includes("html.light .text-\\[\\#F2F7F3\\]"));
@@ -49,13 +49,13 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
 
     // DORM: Dark green in light mode, light green in dark mode
     assert.ok(
-      logoContent.includes("text-[#047857] dark:text-[#65F59A]"),
+      logoContent.includes("text-[#BE123C] dark:text-[#FF4D6D]"),
       "DORM wordmark must be dark green in light mode and neon green in dark mode"
     );
 
     // Pulse dot
     assert.ok(
-      logoContent.includes("bg-[#047857] dark:bg-[#65F59A]"),
+      logoContent.includes("bg-[#BE123C] dark:bg-[#FF4D6D]"),
       "Pulse dot must be dark green in light mode and neon green in dark mode"
     );
   });
@@ -65,9 +65,9 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
 
     assert.ok(svgContent.includes("@media (prefers-color-scheme: light)"));
     assert.ok(svgContent.includes("--fav-bg: #FFFFFF;"));
-    assert.ok(svgContent.includes("--fav-stroke: #047857;"));
+    assert.ok(svgContent.includes("--fav-stroke: #BE123C;"));
     assert.ok(svgContent.includes("--fav-cap: #1E293B;"));
-    assert.ok(svgContent.includes("--fav-q: #047857;"));
+    assert.ok(svgContent.includes("--fav-q: #BE123C;"));
   });
 
   it("Verifies icon.svg includes light & dark theme color settings", () => {
@@ -83,15 +83,15 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     assert.ok(iconContent.includes("@media (prefers-color-scheme: light)"));
 
     // Dark theme defaults (White cap, light green Q, dark bg)
-    assert.ok(iconContent.includes(".icon-bg { fill: #0C1210;"));
+    assert.ok(iconContent.includes(".icon-bg { fill: #140C0E;"));
     assert.ok(iconContent.includes(".icon-cap-top { fill: #FFFFFF;"));
-    assert.ok(iconContent.includes(".icon-q-face { fill: #65F59A;"));
+    assert.ok(iconContent.includes(".icon-q-face { fill: #FF4D6D;"));
     assert.ok(iconContent.includes(".icon-q-tail { fill: #FFFFFF;"));
 
-    // Light theme settings (Dark grey cap #1E293B, dark green Q #047857, white bg #FFFFFF)
-    assert.ok(iconContent.includes(".icon-bg { fill: #FFFFFF; stroke: #047857;"));
-    assert.ok(iconContent.includes(".icon-cap-top { fill: #1E293B; stroke: #047857;"));
-    assert.ok(iconContent.includes(".icon-q-face { fill: #047857;"));
+    // Light theme settings (Dark grey cap #1E293B, dark green Q #BE123C, white bg #FFFFFF)
+    assert.ok(iconContent.includes(".icon-bg { fill: #FFFFFF; stroke: #BE123C;"));
+    assert.ok(iconContent.includes(".icon-cap-top { fill: #1E293B; stroke: #BE123C;"));
+    assert.ok(iconContent.includes(".icon-q-face { fill: #BE123C;"));
     assert.ok(iconContent.includes(".icon-q-tail { fill: #1E293B;"));
   });
 
@@ -105,13 +105,13 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     const navbarContent = fs.readFileSync(navbarPath, "utf-8");
 
     // CTA must have light-to-dark gradient stops and high contrast text
-    assert.ok(ctaContent.includes("from-white via-slate-50 to-emerald-50/50"));
+    assert.ok(ctaContent.includes("from-white via-slate-50 to-rose-50/50"));
     assert.ok(ctaContent.includes("text-slate-900 dark:text-[#F2F7F3]"));
-    assert.ok(ctaContent.includes("bg-[#047857] hover:bg-[#065F46] text-white dark:bg-[#65F59A]"));
+    assert.ok(ctaContent.includes("bg-[#BE123C] hover:bg-[#9F1239] text-white dark:bg-[#FF4D6D]"));
 
     // Analytics must have theme-aware telemetry card and high-contrast text
     assert.ok(analyticsContent.includes("bg-slate-50 border border-slate-200 dark:bg-gradient-to-br"));
-    assert.ok(analyticsContent.includes("text-emerald-800 dark:text-[#65F59A]"));
+    assert.ok(analyticsContent.includes("text-rose-800 dark:text-[#FF4D6D]"));
 
     // Navbar must include ThemeToggle
     assert.ok(navbarContent.includes("<ThemeToggle />"));
@@ -121,15 +121,15 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     const cssContent = fs.readFileSync(globalsCssPath, "utf-8");
 
     // Accent contrast: Neon green -> dark green in light mode
-    assert.ok(cssContent.includes("html.light .text-\\[\\#65F59A\\]"));
-    assert.ok(cssContent.includes("color: #047857 !important;"));
+    assert.ok(cssContent.includes("html.light .text-\\[\\#FF4D6D\\]"));
+    assert.ok(cssContent.includes("color: #BE123C !important;"));
 
-    // Mint -> deep teal
-    assert.ok(cssContent.includes("html.light .text-\\[\\#38D9B0\\]"));
-    assert.ok(cssContent.includes("color: #0D9488 !important;"));
+    // Rose -> rich burgundy
+    assert.ok(cssContent.includes("html.light .text-\\[\\#FF758F\\]"));
+    assert.ok(cssContent.includes("color: #9F1239 !important;"));
 
     // Gradient stops in light mode
-    assert.ok(cssContent.includes("html.light .from-\\[\\#0C1210\\]"));
+    assert.ok(cssContent.includes("html.light .from-\\[\\#140C0E\\]"));
     assert.ok(cssContent.includes("--tw-gradient-from: #FFFFFF"));
 
     // Dashboard banner gradients inversion
@@ -142,8 +142,8 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     assert.ok(cssContent.includes('color: #0F172A !important;'));
 
     // Codebase hex coverage
-    assert.ok(cssContent.includes("html.light .bg-\\[\\#23372C\\]"));
-    assert.ok(cssContent.includes("html.light .bg-\\[\\#20342a\\]"));
+    assert.ok(cssContent.includes("html.light .bg-\\[\\#34151C\\]"));
+    assert.ok(cssContent.includes("html.light .bg-\\[\\#34151C\\]"));
     assert.ok(cssContent.includes("html.light .bg-\\[\\#251414\\]"));
   });
 
@@ -154,7 +154,7 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     const arenaContent = fs.readFileSync(arenaPath, "utf-8");
     const aboutContent = fs.readFileSync(aboutPath, "utf-8");
 
-    assert.ok(arenaContent.includes("from-white via-slate-50 to-emerald-50/50 dark:from-[#0C1210]"));
+    assert.ok(arenaContent.includes("from-white via-slate-50 to-rose-50/50 dark:from-[#140C0E]"));
     assert.ok(aboutContent.includes("bg-card p-6 rounded-[6px] border border-border"));
   });
 });

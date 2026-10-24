@@ -34,7 +34,7 @@ export function ReviewQueueTable({ reports, onSelectReport, onRefresh }: ReviewQ
   if (reports.length === 0) {
     return (
       <div className="bg-white dark:bg-gray-950 p-8 text-center rounded-3xl border border-gray-200 dark:border-gray-800 space-y-2">
-        <ShieldCheck className="w-10 h-10 text-emerald-500 mx-auto" />
+        <ShieldCheck className="w-10 h-10 text-rose-500 mx-auto" />
         <h4 className="font-bold text-gray-900 dark:text-white text-base">Review Queue is Clear!</h4>
         <p className="text-xs text-gray-500 max-w-sm mx-auto">
           All assessment items in the Question Bank meet QuizDorm educational quality standards.
@@ -89,7 +89,7 @@ export function ReviewQueueTable({ reports, onSelectReport, onRefresh }: ReviewQ
                   <span
                     className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase ${
                       r.status === "approved"
-                        ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+                        ? "bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300"
                         : r.status === "rejected"
                         ? "bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300"
                         : "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
@@ -104,7 +104,7 @@ export function ReviewQueueTable({ reports, onSelectReport, onRefresh }: ReviewQ
                     size="sm"
                     variant="outline"
                     onClick={(e) => handleApprove(r, e)}
-                    className="h-8 text-[11px] rounded-xl border-emerald-300 text-emerald-700 hover:bg-emerald-50"
+                    className="h-8 text-[11px] rounded-xl border-rose-300 text-rose-700 hover:bg-rose-50"
                   >
                     <Check className="w-3.5 h-3.5 mr-1" /> Approve
                   </Button>

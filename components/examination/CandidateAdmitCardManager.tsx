@@ -93,7 +93,7 @@ export function CandidateAdmitCardManager() {
                   {c.allocatedHall} • <span className="font-bold text-slate-900 dark:text-white">Seat {c.seatNumber}</span>
                 </td>
                 <td className="p-3">
-                  <span className={`px-2 py-0.5 rounded-full font-bold text-[10px] ${c.verificationStatus === "Verified" ? "bg-emerald-500/10 text-emerald-600" : "bg-amber-500/10 text-amber-600"}`}>
+                  <span className={`px-2 py-0.5 rounded-full font-bold text-[10px] ${c.verificationStatus === "Verified" ? "bg-rose-500/10 text-rose-600" : "bg-amber-500/10 text-amber-600"}`}>
                     {c.verificationStatus}
                   </span>
                 </td>

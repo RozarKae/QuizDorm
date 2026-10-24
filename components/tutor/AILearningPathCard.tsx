@@ -22,7 +22,7 @@ export function AILearningPathCard() {
             <div className="flex items-center space-x-3">
               <div className="w-6 h-6 rounded-full font-bold flex items-center justify-center text-xs">
                 {m.status === "completed" ? (
-                  <CheckCircle2 className="w-5 h-5 text-emerald-500" />
+                  <CheckCircle2 className="w-5 h-5 text-rose-500" />
                 ) : m.status === "current" ? (
                   <Circle className="w-5 h-5 text-indigo-600 animate-pulse" />
                 ) : (
@@ -38,7 +38,7 @@ export function AILearningPathCard() {
             <span
               className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
                 m.status === "completed"
-                  ? "bg-emerald-100 text-emerald-800"
+                  ? "bg-rose-100 text-rose-800"
                   : m.status === "current"
                   ? "bg-indigo-100 text-indigo-800"
                   : "bg-gray-200 text-gray-700"

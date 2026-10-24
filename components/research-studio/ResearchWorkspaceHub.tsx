@@ -128,7 +128,7 @@ export function ResearchWorkspaceHub() {
               <span className="font-bold text-slate-500 uppercase text-[10px]">Research Milestones</span>
               {p.milestones.map((m, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-slate-700 dark:text-slate-300">
-                  <CheckCircle2 className={`w-4 h-4 ${m.isCompleted ? "text-emerald-500" : "text-slate-300"}`} />
+                  <CheckCircle2 className={`w-4 h-4 ${m.isCompleted ? "text-rose-500" : "text-slate-300"}`} />
                   <span className={m.isCompleted ? "line-through text-slate-400" : ""}>{m.title}</span>
                 </div>
               ))}

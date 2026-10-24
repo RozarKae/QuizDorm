@@ -421,7 +421,7 @@ export function QuestionEditor({ initialQuestion, onSave }: QuestionEditorProps)
             </div>
             {options.map((opt, idx) => (
               <div key={opt.id} className="flex items-center space-x-3 p-3 rounded-2xl border border-gray-200 dark:border-gray-800">
-                <input type={type === "mcq_multiple" ? "checkbox" : "radio"} name="correctChoice" checked={opt.isCorrect || false} onChange={() => handleSetCorrectOption(opt.id)} className="w-4 h-4 text-emerald-600 focus:ring-emerald-500 cursor-pointer" />
+                <input type={type === "mcq_multiple" ? "checkbox" : "radio"} name="correctChoice" checked={opt.isCorrect || false} onChange={() => handleSetCorrectOption(opt.id)} className="w-4 h-4 text-rose-600 focus:ring-rose-500 cursor-pointer" />
                 <span className="text-xs font-bold text-gray-400 w-5">#{idx + 1}</span>
                 <Input value={opt.text} onChange={(e) => setOptions(options.map((o) => (o.id === opt.id ? { ...o, text: e.target.value } : o)))} placeholder={`Option ${idx + 1}`} className="flex-1 h-9 text-sm" />
                 <Button type="button" variant="ghost" size="icon" onClick={() => handleRemoveOption(opt.id)} className="h-8 w-8 text-red-500"><Trash2 className="w-4 h-4" /></Button>
@@ -442,7 +442,7 @@ export function QuestionEditor({ initialQuestion, onSave }: QuestionEditorProps)
                 onClick={() => setTrueFalseCorrect(true)}
                 className={`p-3.5 rounded-2xl border text-xs font-mono font-bold transition-all ${
                   trueFalseCorrect
-                    ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500"
+                    ? "border-rose-500 bg-rose-500/10 text-rose-400 ring-1 ring-rose-500"
                     : "border-gray-200 dark:border-gray-800 text-gray-400 hover:border-gray-400"
                 }`}
               >
@@ -453,7 +453,7 @@ export function QuestionEditor({ initialQuestion, onSave }: QuestionEditorProps)
                 onClick={() => setTrueFalseCorrect(false)}
                 className={`p-3.5 rounded-2xl border text-xs font-mono font-bold transition-all ${
                   !trueFalseCorrect
-                    ? "border-emerald-500 bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500"
+                    ? "border-rose-500 bg-rose-500/10 text-rose-400 ring-1 ring-rose-500"
                     : "border-gray-200 dark:border-gray-800 text-gray-400 hover:border-gray-400"
                 }`}
               >

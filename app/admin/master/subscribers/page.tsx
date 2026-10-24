@@ -175,19 +175,19 @@ export default function MasterAdminSubscribersPage() {
   return (
     <div className="space-y-6">
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="relative overflow-hidden rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-6 sm:p-8">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(255, 77, 109,0.08)_0%,transparent_70%)] pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
               <Link
                 href="/admin/master"
-                className="text-xs font-mono text-[#69786F] hover:text-[#65F59A] flex items-center gap-1"
+                className="text-xs font-mono text-[#69786F] hover:text-[#FF4D6D] flex items-center gap-1"
               >
                 <ArrowLeft className="h-3 w-3" /> Master Admin Hub
               </Link>
               <span className="text-[#69786F]">&bull;</span>
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] font-mono text-[10px] font-bold uppercase tracking-widest">
                 Subscriber OS
               </span>
             </div>
@@ -203,7 +203,7 @@ export default function MasterAdminSubscribersPage() {
             <Link href="/dashboard/quizzes">
               <Button
                 variant="outline"
-                className="h-10 px-4 rounded-[4px] border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] font-mono text-xs uppercase font-bold"
+                className="h-10 px-4 rounded-[4px] border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#F2F7F3] hover:text-[#FF4D6D] font-mono text-xs uppercase font-bold"
               >
                 The Dorm Vault
               </Button>
@@ -214,53 +214,53 @@ export default function MasterAdminSubscribersPage() {
 
       {/* 2. Metrics HUD */}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Active Subscribers
             </span>
-            <Users className="h-4 w-4 text-[#65F59A]" />
+            <Users className="h-4 w-4 text-[#FF4D6D]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
             <p className="font-display text-2xl font-extrabold text-[#F2F7F3] tabular-nums">
               {totalActive}
             </p>
-            <span className="font-mono text-[10px] text-[#65F59A]">In Active Cohort</span>
+            <span className="font-mono text-[10px] text-[#FF4D6D]">In Active Cohort</span>
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Pro & Annual Tiers
             </span>
-            <Sparkles className="h-4 w-4 text-[#38D9B0]" />
+            <Sparkles className="h-4 w-4 text-[#FF758F]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
-            <p className="font-display text-2xl font-extrabold text-[#38D9B0] tabular-nums">
+            <p className="font-display text-2xl font-extrabold text-[#FF758F] tabular-nums">
               {proCount}
             </p>
-            <span className="font-mono text-[10px] text-[#38D9B0]">Paid Scholars</span>
+            <span className="font-mono text-[10px] text-[#FF758F]">Paid Scholars</span>
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Total Quizzes Completed
             </span>
-            <Trophy className="h-4 w-4 text-[#65F59A]" />
+            <Trophy className="h-4 w-4 text-[#FF4D6D]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
-            <p className="font-display text-2xl font-extrabold text-[#65F59A] tabular-nums">
+            <p className="font-display text-2xl font-extrabold text-[#FF4D6D] tabular-nums">
               {totalCompleted}
             </p>
             <span className="font-mono text-[10px] text-[#69786F]">Dorm Runs</span>
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Peak Study Streak
             </span>
@@ -276,7 +276,7 @@ export default function MasterAdminSubscribersPage() {
       </div>
 
       {/* 3. Filters & Search */}
-      <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-4 space-y-4">
+      <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-4 space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
           <div className="md:col-span-6 relative">
             <Search className="absolute left-3 top-3 h-4 w-4 text-[#69786F]" />
@@ -285,7 +285,7 @@ export default function MasterAdminSubscribersPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search scholar by name, email, or UUID..."
-              className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#65F59A]/50 transition-colors"
+              className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#FF4D6D]/50 transition-colors"
             />
           </div>
 
@@ -293,7 +293,7 @@ export default function MasterAdminSubscribersPage() {
             <select
               value={tierFilter}
               onChange={(e) => setTierFilter(e.target.value)}
-              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
             >
               <option value="all">All Subscription Tiers</option>
               <option value="free">Free Scholar (10 Qs/mo)</option>
@@ -307,7 +307,7 @@ export default function MasterAdminSubscribersPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
             >
               <option value="all">All Statuses</option>
               <option value="active">Active Accounts</option>
@@ -325,7 +325,7 @@ export default function MasterAdminSubscribersPage() {
                 setTierFilter("all");
                 setStatusFilter("all");
               }}
-              className="h-9 w-full md:w-auto px-2.5 border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
+              className="h-9 w-full md:w-auto px-2.5 border-[rgba(240, 160, 180,0.18)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3]"
               title="Reset Filters"
             >
               <RefreshCw className="h-3.5 w-3.5" />
@@ -335,11 +335,11 @@ export default function MasterAdminSubscribersPage() {
       </div>
 
       {/* 4. Subscribers Table */}
-      <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] overflow-hidden">
+      <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-[rgba(160,190,170,0.12)] bg-[#070B0A]/60 font-mono text-[10px] uppercase text-[#69786F] tracking-wider">
+              <tr className="border-b border-[rgba(240, 160, 180,0.12)] bg-[#0B0708]/60 font-mono text-[10px] uppercase text-[#69786F] tracking-wider">
                 <th className="px-4 py-3">Scholar Identity</th>
                 <th className="px-4 py-3">Subscription Tier</th>
                 <th className="px-4 py-3">Dorm Run Velocity</th>
@@ -348,7 +348,7 @@ export default function MasterAdminSubscribersPage() {
                 <th className="px-4 py-3 text-right">Master Controls</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[rgba(160,190,170,0.08)]">
+            <tbody className="divide-y divide-[rgba(240, 160, 180,0.08)]">
               {filteredSubscribers.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="px-4 py-8 text-center text-xs font-mono text-[#69786F]">
@@ -359,12 +359,12 @@ export default function MasterAdminSubscribersPage() {
                 filteredSubscribers.map((sub) => (
                   <tr
                     key={sub.id}
-                    className="hover:bg-[#111B17]/60 transition-colors"
+                    className="hover:bg-[#1D1013]/60 transition-colors"
                   >
                     {/* Scholar Identity */}
                     <td className="px-4 py-3.5">
                       <div className="flex items-center gap-2.5">
-                        <div className="w-8 h-8 rounded-full bg-[#17251E] border border-[rgba(101,245,154,0.3)] flex items-center justify-center font-mono font-bold text-xs text-[#65F59A]">
+                        <div className="w-8 h-8 rounded-full bg-[#2A141A] border border-[rgba(255, 77, 109,0.3)] flex items-center justify-center font-mono font-bold text-xs text-[#FF4D6D]">
                           {sub.name.charAt(0)}
                         </div>
                         <div>
@@ -390,12 +390,12 @@ export default function MasterAdminSubscribersPage() {
                         }
                         className={`text-xs px-2 py-1 rounded-[3px] font-mono font-bold uppercase tracking-wider border cursor-pointer ${
                           sub.tier === "annual"
-                            ? "bg-[rgba(101,245,154,0.15)] text-[#65F59A] border-[rgba(101,245,154,0.35)]"
+                            ? "bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border-[rgba(255, 77, 109,0.35)]"
                             : sub.tier === "pro"
-                            ? "bg-[rgba(56,217,176,0.15)] text-[#38D9B0] border-[rgba(56,217,176,0.35)]"
+                            ? "bg-[rgba(255, 117, 143,0.15)] text-[#FF758F] border-[rgba(255, 117, 143,0.35)]"
                             : sub.tier === "basic"
                             ? "bg-[rgba(96,165,250,0.12)] text-[#60A5FA] border-[rgba(96,165,250,0.3)]"
-                            : "bg-[#111B17] text-[#A0AEA5] border-[rgba(160,190,170,0.15)]"
+                            : "bg-[#1D1013] text-[#A0AEA5] border-[rgba(240, 160, 180,0.15)]"
                         }`}
                       >
                         <option value="free">Free Scholar</option>
@@ -408,7 +408,7 @@ export default function MasterAdminSubscribersPage() {
                     {/* Dorm Velocity */}
                     <td className="px-4 py-3.5 font-mono text-xs">
                       <div className="flex items-center gap-1.5">
-                        <Trophy className="h-3.5 w-3.5 text-[#65F59A]" />
+                        <Trophy className="h-3.5 w-3.5 text-[#FF4D6D]" />
                         <span className="text-[#F2F7F3] font-bold">
                           {sub.quizzesCompleted} Quizzes
                         </span>
@@ -426,13 +426,13 @@ export default function MasterAdminSubscribersPage() {
                           <span className="text-[#A0AEA5]">
                             {sub.monthlyQuotaUsed} / {sub.monthlyQuotaLimit} Qs
                           </span>
-                          <span className="text-[#65F59A] font-bold">
+                          <span className="text-[#FF4D6D] font-bold">
                             {Math.round((sub.monthlyQuotaUsed / sub.monthlyQuotaLimit) * 100)}%
                           </span>
                         </div>
-                        <div className="w-24 h-1.5 bg-[#17251E] rounded-full overflow-hidden">
+                        <div className="w-24 h-1.5 bg-[#2A141A] rounded-full overflow-hidden">
                           <div
-                            className="h-full bg-[#65F59A] rounded-full"
+                            className="h-full bg-[#FF4D6D] rounded-full"
                             style={{
                               width: `${Math.min(
                                 100,
@@ -449,7 +449,7 @@ export default function MasterAdminSubscribersPage() {
                       <span
                         className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold uppercase ${
                           sub.status === "active"
-                            ? "bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.25)]"
+                            ? "bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.25)]"
                             : sub.status === "suspended"
                             ? "bg-[rgba(248,113,113,0.1)] text-[#F87171] border border-[rgba(248,113,113,0.25)]"
                             : "bg-[rgba(251,191,36,0.1)] text-[#FBBF24] border border-[rgba(251,191,36,0.25)]"
@@ -458,7 +458,7 @@ export default function MasterAdminSubscribersPage() {
                         <span
                           className={`w-1.5 h-1.5 rounded-full ${
                             sub.status === "active"
-                              ? "bg-[#65F59A]"
+                              ? "bg-[#FF4D6D]"
                               : sub.status === "suspended"
                               ? "bg-[#F87171]"
                               : "bg-[#FBBF24]"
@@ -481,7 +481,7 @@ export default function MasterAdminSubscribersPage() {
                           className={`h-7 px-2.5 rounded-[3px] font-mono text-[10px] uppercase font-bold border transition-colors ${
                             sub.status === "active"
                               ? "border-[rgba(248,113,113,0.3)] text-[#F87171] hover:bg-[rgba(248,113,113,0.1)]"
-                              : "border-[rgba(101,245,154,0.3)] text-[#65F59A] hover:bg-[rgba(101,245,154,0.1)]"
+                              : "border-[rgba(255, 77, 109,0.3)] text-[#FF4D6D] hover:bg-[rgba(255, 77, 109,0.1)]"
                           }`}
                         >
                           {sub.status === "active" ? (

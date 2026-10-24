@@ -22,7 +22,7 @@ export function AIStudyCoachWidget() {
           </div>
         </div>
 
-        <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-mono font-bold text-xs border border-emerald-500/30">
+        <span className="px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 font-mono font-bold text-xs border border-rose-500/30">
           {score}% Exam Readiness
         </span>
       </div>
@@ -32,7 +32,7 @@ export function AIStudyCoachWidget() {
         {goals.map((g) => (
           <div key={g.id} className="p-3 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <CheckCircle2 className={`w-4 h-4 ${g.status === "completed" ? "text-emerald-400" : "text-gray-400"}`} />
+              <CheckCircle2 className={`w-4 h-4 ${g.status === "completed" ? "text-rose-400" : "text-gray-400"}`} />
               <span className="font-bold text-white">{g.title}</span>
             </div>
 

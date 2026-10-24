@@ -62,8 +62,8 @@ export default function MasterAdminPage() {
       subtext: "0 critical factual hallucinations",
       change: "Optimal Quality",
       isPositive: true,
-      icon: <ShieldCheck className="h-4 w-4 text-teal-400" />,
-      border: "border-teal-500/20",
+      icon: <ShieldCheck className="h-4 w-4 text-rose-400" />,
+      border: "border-rose-500/20",
     },
   ];
 
@@ -102,21 +102,21 @@ export default function MasterAdminPage() {
       title: "Assessment Architect",
       description: "Author new multi-modal quizzes with AI-assisted prompt synthesis, distractor generation, and step explanations.",
       href: "/dashboard/quizzes/builder",
-      icon: <Sparkles className="h-4 w-4 text-teal-400" />,
+      icon: <Sparkles className="h-4 w-4 text-rose-400" />,
       actionLabel: "Quiz Builder",
       badge: "AI Powered",
-      accent: "text-teal-300",
-      border: "border-teal-500/25",
+      accent: "text-rose-300",
+      border: "border-rose-500/25",
     },
     {
       title: "Quality Gate & Fact Audit",
       description: "Review automated AI hallucination checks, member feedback flags, citation validity, and curriculum standards.",
       href: "/dashboard/quality",
-      icon: <ShieldCheck className="h-4 w-4 text-emerald-400" />,
+      icon: <ShieldCheck className="h-4 w-4 text-rose-400" />,
       actionLabel: "Quality Audit",
       badge: "99.4% Clean",
-      accent: "text-emerald-300",
-      border: "border-emerald-500/25",
+      accent: "text-rose-300",
+      border: "border-rose-500/25",
     },
     {
       title: "Omni-Curriculum AI Synthesizer",
@@ -382,9 +382,9 @@ export default function MasterAdminPage() {
                     </div>
                     <div className="text-right">
                       <span className="text-[#64748B] block text-[10px] uppercase">Accuracy</span>
-                      <span className="text-emerald-400 font-bold">{matrix.accuracyRate}</span>
+                      <span className="text-rose-400 font-bold">{matrix.accuracyRate}</span>
                     </div>
-                    <span className="px-2 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold uppercase bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                    <span className="px-2 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold uppercase bg-rose-500/15 text-rose-300 border border-rose-500/30">
                       {matrix.status}
                     </span>
                   </div>

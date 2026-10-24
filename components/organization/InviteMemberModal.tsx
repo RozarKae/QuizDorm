@@ -113,7 +113,7 @@ export function InviteMemberModal({ open, onOpenChange, orgName }: InviteMemberM
             <div className="flex space-x-2">
               <Input value={inviteLink} readOnly className="text-xs bg-gray-50 dark:bg-gray-900 font-mono text-gray-600" />
               <Button type="button" variant="outline" size="sm" onClick={handleCopyLink} className="shrink-0 text-xs">
-                {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                {copied ? <Check className="w-3.5 h-3.5 text-rose-600" /> : <Copy className="w-3.5 h-3.5" />}
               </Button>
             </div>
           </div>

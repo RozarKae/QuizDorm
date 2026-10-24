@@ -38,7 +38,7 @@ export function LMSConnectorCard() {
               <span className="text-gray-900 dark:text-white text-sm">{lms.name}</span>
               <span
                 className={`px-2 py-0.5 rounded-full text-[10px] font-mono uppercase ${
-                  lms.status === "connected" ? "bg-emerald-100 text-emerald-800 font-bold" : "bg-gray-200 text-gray-600"
+                  lms.status === "connected" ? "bg-rose-100 text-rose-800 font-bold" : "bg-gray-200 text-gray-600"
                 }`}
               >
                 {lms.status}

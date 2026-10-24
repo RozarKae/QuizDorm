@@ -56,13 +56,13 @@ export default function LearningManagementSuitePage() {
   return (
     <div className="space-y-6 pb-12">
       {/* 1. Cinematic Hero Masthead */}
-      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="relative overflow-hidden rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-6 sm:p-8">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(255, 77, 109,0.08)_0%,transparent_70%)] pointer-events-none" />
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] font-mono text-[10px] font-bold uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
                 Curriculum Matrix // LMS Engine
               </span>
               <span className="font-mono text-[11px] text-[#69786F]">v4.3 Suite</span>
@@ -77,28 +77,28 @@ export default function LearningManagementSuitePage() {
 
           {/* Quick HUD Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-2.5 shrink-0 font-mono">
-            <div className="p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)]">
+            <div className="p-2.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.12)]">
               <div className="text-[10px] uppercase text-[#69786F]">Active Courses</div>
-              <div className="text-sm font-bold text-[#65F59A]">42 Published</div>
+              <div className="text-sm font-bold text-[#FF4D6D]">42 Published</div>
             </div>
-            <div className="p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)]">
+            <div className="p-2.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.12)]">
               <div className="text-[10px] uppercase text-[#69786F]">Enrolled</div>
               <div className="text-sm font-bold text-[#F2F7F3]">3,240 Scholars</div>
             </div>
-            <div className="p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)]">
+            <div className="p-2.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.12)]">
               <div className="text-[10px] uppercase text-[#69786F]">Curriculum</div>
-              <div className="text-sm font-bold text-[#38D9B0]">148 Hours</div>
+              <div className="text-sm font-bold text-[#FF758F]">148 Hours</div>
             </div>
-            <div className="p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)]">
+            <div className="p-2.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.12)]">
               <div className="text-[10px] uppercase text-[#69786F]">Completion</div>
-              <div className="text-sm font-bold text-[#65F59A]">92.4% Avg</div>
+              <div className="text-sm font-bold text-[#FF4D6D]">92.4% Avg</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* 2. Future OS Module Navigation Tabs */}
-      <div className="bg-[#0C1210] p-1.5 rounded-[6px] border border-[rgba(160,190,170,0.14)] flex items-center gap-1 overflow-x-auto scrollbar-none">
+      <div className="bg-[#140C0E] p-1.5 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] flex items-center gap-1 overflow-x-auto scrollbar-none">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -108,8 +108,8 @@ export default function LearningManagementSuitePage() {
               onClick={() => setActiveTab(tab.id)}
               className={`px-3 py-2 rounded-[4px] text-xs font-mono uppercase tracking-wider flex items-center gap-2 whitespace-nowrap transition-all ${
                 isActive
-                  ? "bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] shadow-[0_0_12px_rgba(101,245,154,0.15)] font-bold"
-                  : "text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17]"
+                  ? "bg-[#2A141A] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] shadow-[0_0_12px_rgba(255, 77, 109,0.15)] font-bold"
+                  : "text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#1D1013]"
               }`}
             >
               <Icon className="w-3.5 h-3.5" />
@@ -118,8 +118,8 @@ export default function LearningManagementSuitePage() {
                 <span
                   className={`text-[9px] font-bold px-1 py-0.2 rounded-[2px] ${
                     isActive
-                      ? "bg-[#65F59A] text-[#070B0A]"
-                      : "bg-[#111B17] text-[#65F59A] border border-[rgba(101,245,154,0.25)]"
+                      ? "bg-[#FF4D6D] text-[#0B0708]"
+                      : "bg-[#1D1013] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.25)]"
                   }`}
                 >
                   {tab.badge}

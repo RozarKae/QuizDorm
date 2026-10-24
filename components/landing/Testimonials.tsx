@@ -82,13 +82,13 @@ export default function Testimonials() {
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-border mb-12 gap-6">
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center space-x-2">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-emerald-800 bg-emerald-50 dark:text-[#65F59A] dark:bg-[#111B17] px-3 py-1 rounded-full border border-emerald-300 dark:border-[#65F59A]/30 font-semibold shadow-xs">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-rose-800 bg-rose-50 dark:text-[#FF4D6D] dark:bg-[#1D1013] px-3 py-1 rounded-full border border-rose-300 dark:border-[#FF4D6D]/30 font-semibold shadow-xs">
                 REGIONAL VALIDATION // TAMIL NADU &amp; KERALA
               </span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-[#F2F7F3] tracking-tight">
               Endorsed by Premier <br />
-              <span className="bg-gradient-to-r from-[#047857] via-[#0D9488] to-[#047857] dark:from-[#65F59A] dark:via-[#38D9B0] dark:to-[#65F59A] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#BE123C] via-[#0D9488] to-[#BE123C] dark:from-[#FF4D6D] dark:via-[#FF758F] dark:to-[#FF4D6D] bg-clip-text text-transparent">
                 Educational Institutions.
               </span>
             </h2>
@@ -106,22 +106,22 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className="p-6 rounded-[6px] bg-card border border-border flex flex-col justify-between hover:border-emerald-600/40 transition-all shadow-md group"
+              className="p-6 rounded-[6px] bg-card border border-border flex flex-col justify-between hover:border-rose-600/40 transition-all shadow-md group"
             >
               <div>
                 <div className="flex items-center justify-between pb-4 border-b border-border mb-4">
-                  <div className="flex items-center space-x-1 text-amber-500 dark:text-[#65F59A]">
+                  <div className="flex items-center space-x-1 text-amber-500 dark:text-[#FF4D6D]">
                     {Array.from({ length: t.rating }).map((_, i) => (
                       <Star key={i} className="w-3.5 h-3.5 fill-current" />
                     ))}
                   </div>
-                  <span className="font-mono text-[9px] uppercase tracking-wider text-emerald-800 dark:text-[#65F59A] bg-emerald-50 dark:bg-[#111B17] px-2 py-0.5 rounded-[3px] border border-emerald-300 dark:border-[rgba(101,245,154,0.2)]">
+                  <span className="font-mono text-[9px] uppercase tracking-wider text-rose-800 dark:text-[#FF4D6D] bg-rose-50 dark:bg-[#1D1013] px-2 py-0.5 rounded-[3px] border border-rose-300 dark:border-[rgba(255, 77, 109,0.2)]">
                     {t.board}
                   </span>
                 </div>
 
                 <div className="relative">
-                  <Quote className="w-6 h-6 text-emerald-600/20 dark:text-[#65F59A]/20 absolute -top-1 -left-1" />
+                  <Quote className="w-6 h-6 text-rose-600/20 dark:text-[#FF4D6D]/20 absolute -top-1 -left-1" />
                   <p className="text-slate-700 dark:text-[#C0CEC5] text-xs leading-relaxed italic mb-6 font-normal pl-4">
                     &ldquo;{t.quote}&rdquo;
                   </p>
@@ -130,24 +130,24 @@ export default function Testimonials() {
 
               <div className="pt-4 border-t border-border space-y-3">
                 <div className="flex items-center space-x-3">
-                  <Avatar className="h-10 w-10 rounded-[4px] border border-emerald-300 dark:border-[#65F59A]/30">
-                    <AvatarFallback className="bg-emerald-50 dark:bg-[#111B17] text-emerald-800 dark:text-[#65F59A] font-mono text-xs font-bold rounded-[4px]">
+                  <Avatar className="h-10 w-10 rounded-[4px] border border-rose-300 dark:border-[#FF4D6D]/30">
+                    <AvatarFallback className="bg-rose-50 dark:bg-[#1D1013] text-rose-800 dark:text-[#FF4D6D] font-mono text-xs font-bold rounded-[4px]">
                       {t.avatar}
                     </AvatarFallback>
                   </Avatar>
                   <div className="min-w-0 flex-1">
-                    <h4 className="text-xs font-bold font-display text-slate-900 dark:text-[#F2F7F3] truncate group-hover:text-emerald-700 dark:group-hover:text-[#65F59A] transition-colors">
+                    <h4 className="text-xs font-bold font-display text-slate-900 dark:text-[#F2F7F3] truncate group-hover:text-rose-700 dark:group-hover:text-[#FF4D6D] transition-colors">
                       {t.author}
                     </h4>
-                    <p className="text-[10px] text-emerald-700 dark:text-[#65F59A] font-mono truncate font-medium">
+                    <p className="text-[10px] text-rose-700 dark:text-[#FF4D6D] font-mono truncate font-medium">
                       {t.role}
                     </p>
                   </div>
                 </div>
 
-                <div className="bg-slate-50 dark:bg-[#111B17] p-2 rounded-[4px] border border-border">
+                <div className="bg-slate-50 dark:bg-[#1D1013] p-2 rounded-[4px] border border-border">
                   <p className="text-[10px] font-mono text-slate-600 dark:text-[#A0AEA5] flex items-center gap-1.5 leading-tight">
-                    <School className="w-3 h-3 text-teal-700 dark:text-[#38D9B0] shrink-0" />
+                    <School className="w-3 h-3 text-rose-700 dark:text-[#FF758F] shrink-0" />
                     <span className="truncate">{t.organization}</span>
                   </p>
                 </div>

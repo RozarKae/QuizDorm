@@ -23,12 +23,12 @@ export function AudioToggle({
       variant={variant}
       size={showLabel ? "sm" : "icon-xs"}
       onClick={toggleSound}
-      className={`font-mono text-xs text-[#A0AEA5] hover:text-[#65F59A] hover:bg-[#111B17] rounded-[4px] transition-colors ${className}`}
+      className={`font-mono text-xs text-[#A0AEA5] hover:text-[#FF4D6D] hover:bg-[#1D1013] rounded-[4px] transition-colors ${className}`}
       title={isSoundEnabled ? "Mute sound effects" : "Enable sound effects"}
       aria-label={isSoundEnabled ? "Mute sound effects" : "Enable sound effects"}
     >
       {isSoundEnabled ? (
-        <Volume2 className="h-3.5 w-3.5 text-[#65F59A]" />
+        <Volume2 className="h-3.5 w-3.5 text-[#FF4D6D]" />
       ) : (
         <VolumeX className="h-3.5 w-3.5 text-[#69786F]" />
       )}

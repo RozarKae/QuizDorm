@@ -52,7 +52,7 @@ export function ChildSwitcherCard({ childrenList, activeChildId, onSelectChild }
               </div>
 
               <div className="flex items-center justify-between text-[10px] font-mono pt-2 border-t border-gray-100 dark:border-gray-800 text-gray-500">
-                <span>Score: <strong className="text-emerald-600">{c.overallPerformancePercent}%</strong></span>
+                <span>Score: <strong className="text-rose-600">{c.overallPerformancePercent}%</strong></span>
                 <span>Streak: <strong className="text-amber-500">{c.currentStreak} Days 🔥</strong></span>
               </div>
             </div>

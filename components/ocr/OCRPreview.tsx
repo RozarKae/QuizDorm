@@ -130,7 +130,7 @@ export function OCRPreview({ job, open, onOpenChange }: OCRPreviewProps) {
                           key={opt.id}
                           className={`p-2 rounded-lg border ${
                             opt.isCorrect
-                              ? "bg-emerald-50 dark:bg-emerald-950/50 border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 font-semibold"
+                              ? "bg-rose-50 dark:bg-rose-950/50 border-rose-300 dark:border-rose-800 text-rose-800 dark:text-rose-200 font-semibold"
                               : "bg-gray-50 dark:bg-gray-900 border-gray-100 dark:border-gray-800 text-gray-700 dark:text-gray-300"
                           }`}
                         >

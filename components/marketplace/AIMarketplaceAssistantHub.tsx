@@ -33,7 +33,7 @@ export function AIMarketplaceAssistantHub() {
         {mockRecs.map((rec) => (
           <div key={rec.productId} className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between text-xs gap-4">
             <div className="space-y-1">
-              <span className="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">
+              <span className="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">
                 {rec.matchScorePercent}% AI Match
               </span>
               <h4 className="font-bold text-slate-900 dark:text-white text-sm">{rec.title}</h4>

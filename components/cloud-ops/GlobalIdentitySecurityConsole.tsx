@@ -53,7 +53,7 @@ export function GlobalIdentitySecurityConsole() {
                   </span>
                   <h3 className="font-bold text-slate-900 dark:text-white text-base mt-1">{idp.tenantDomain}</h3>
                 </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 font-bold text-[10px]">
+                <span className="px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 font-bold text-[10px]">
                   MFA ENFORCED
                 </span>
               </div>
@@ -65,7 +65,7 @@ export function GlobalIdentitySecurityConsole() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Security Threats Detected:</span>
-                  <span className="text-emerald-500 font-bold">0 Threats</span>
+                  <span className="text-rose-500 font-bold">0 Threats</span>
                 </div>
               </div>
             </div>

@@ -233,13 +233,13 @@ export default function AdminUsersPage() {
   return (
     <div className="space-y-6 pb-12">
       {/* 1. Cinematic Hero Masthead */}
-      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="relative overflow-hidden rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-6 sm:p-8">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(255, 77, 109,0.08)_0%,transparent_70%)] pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] font-mono text-[10px] font-bold uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
                 Root Authority // IAM Directory
               </span>
               <span className="font-mono text-[11px] text-[#69786F]">RBAC Engine</span>
@@ -259,7 +259,7 @@ export default function AdminUsersPage() {
               onClick={handleToggleInstitutionQuestionAdding}
               className={`h-10 px-4 rounded-[4px] font-mono text-xs font-bold tracking-wider uppercase border transition-all ${
                 instQuestionAllowed
-                  ? "bg-[#111B17] border-[rgba(56,217,176,0.3)] text-[#38D9B0] hover:bg-[rgba(56,217,176,0.1)]"
+                  ? "bg-[#1D1013] border-[rgba(255, 117, 143,0.3)] text-[#FF758F] hover:bg-[rgba(255, 117, 143,0.1)]"
                   : "bg-[rgba(248,113,113,0.12)] border-[rgba(248,113,113,0.4)] text-[#F87171] hover:bg-[rgba(248,113,113,0.2)]"
               }`}
               title="Admin Rule: Toggle whether Institutions can add/import Question Bank items"
@@ -270,7 +270,7 @@ export default function AdminUsersPage() {
 
             <Button
               onClick={() => setIsCreateOpen(true)}
-              className="h-10 px-5 rounded-[4px] bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_20px_rgba(101,245,154,0.25)]"
+              className="h-10 px-5 rounded-[4px] bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_20px_rgba(255, 77, 109,0.25)]"
             >
               <UserPlus className="mr-2 h-4 w-4" />
               Provision User
@@ -281,68 +281,68 @@ export default function AdminUsersPage() {
 
       {/* 2. Platform Identity HUD */}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Total Identified Users
             </span>
-            <Users className="h-4 w-4 text-[#65F59A]" />
+            <Users className="h-4 w-4 text-[#FF4D6D]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
             <p className="font-display text-2xl font-extrabold text-[#F2F7F3] tabular-nums">
               {totalCount}
             </p>
-            <span className="font-mono text-[10px] text-[#65F59A]">In Active Store</span>
+            <span className="font-mono text-[10px] text-[#FF4D6D]">In Active Store</span>
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Superadmins
             </span>
-            <Shield className="h-4 w-4 text-[#65F59A]" />
+            <Shield className="h-4 w-4 text-[#FF4D6D]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
-            <p className="font-display text-2xl font-extrabold text-[#65F59A] tabular-nums">
+            <p className="font-display text-2xl font-extrabold text-[#FF4D6D] tabular-nums">
               {adminCount}
             </p>
             <span className="font-mono text-[10px] text-[#69786F]">Root Access</span>
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Institutions & Handlers
             </span>
-            <School className="h-4 w-4 text-[#38D9B0]" />
+            <School className="h-4 w-4 text-[#FF758F]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
-            <p className="font-display text-2xl font-extrabold text-[#38D9B0] tabular-nums">
+            <p className="font-display text-2xl font-extrabold text-[#FF758F] tabular-nums">
               {facultyCount}
             </p>
             <span className="font-mono text-[10px] text-[#A0AEA5]">Faculty / Admins</span>
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Active Sessions
             </span>
-            <Laptop className="h-4 w-4 text-[#65F59A]" />
+            <Laptop className="h-4 w-4 text-[#FF4D6D]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
             <p className="font-display text-2xl font-extrabold text-[#F2F7F3] tabular-nums">
               {activeSessionsTotal}
             </p>
-            <span className="font-mono text-[10px] text-[#65F59A]">Live Nodes</span>
+            <span className="font-mono text-[10px] text-[#FF4D6D]">Live Nodes</span>
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Suspended / Flagged
             </span>
@@ -358,9 +358,9 @@ export default function AdminUsersPage() {
       </div>
 
       {/* 3. Search & Multi-Filter Control Matrix */}
-      <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-4 space-y-4">
+      <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-4 space-y-4">
         {/* Quick Filter Governance Tabs */}
-        <div className="flex flex-wrap items-center gap-2 pb-3 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="flex flex-wrap items-center gap-2 pb-3 border-b border-[rgba(240, 160, 180,0.1)]">
           <span className="text-[10px] font-mono uppercase tracking-wider text-[#69786F] mr-1">
             Governance View:
           </span>
@@ -369,8 +369,8 @@ export default function AdminUsersPage() {
             onClick={() => setRoleFilter("all")}
             className={`px-3 py-1 rounded-[3px] font-mono text-xs font-semibold uppercase tracking-wider transition-colors ${
               roleFilter === "all"
-                ? "bg-[#65F59A] text-[#070B0A]"
-                : "bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(160,190,170,0.15)]"
+                ? "bg-[#FF4D6D] text-[#0B0708]"
+                : "bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(240, 160, 180,0.15)]"
             }`}
           >
             All Identities
@@ -380,8 +380,8 @@ export default function AdminUsersPage() {
             onClick={() => setRoleFilter("employees")}
             className={`px-3 py-1 rounded-[3px] font-mono text-xs font-semibold uppercase tracking-wider transition-colors ${
               roleFilter === "employees"
-                ? "bg-[#65F59A] text-[#070B0A]"
-                : "bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(160,190,170,0.15)]"
+                ? "bg-[#FF4D6D] text-[#0B0708]"
+                : "bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(240, 160, 180,0.15)]"
             }`}
           >
             Employees & Faculty Handlers
@@ -391,8 +391,8 @@ export default function AdminUsersPage() {
             onClick={() => setRoleFilter("institution")}
             className={`px-3 py-1 rounded-[3px] font-mono text-xs font-semibold uppercase tracking-wider transition-colors ${
               roleFilter === "institution"
-                ? "bg-[#65F59A] text-[#070B0A]"
-                : "bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(160,190,170,0.15)]"
+                ? "bg-[#FF4D6D] text-[#0B0708]"
+                : "bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(240, 160, 180,0.15)]"
             }`}
           >
             Institutes & Campuses
@@ -402,8 +402,8 @@ export default function AdminUsersPage() {
             onClick={() => setRoleFilter("subscriber")}
             className={`px-3 py-1 rounded-[3px] font-mono text-xs font-semibold uppercase tracking-wider transition-colors ${
               roleFilter === "subscriber"
-                ? "bg-[#65F59A] text-[#070B0A]"
-                : "bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(160,190,170,0.15)]"
+                ? "bg-[#FF4D6D] text-[#0B0708]"
+                : "bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(240, 160, 180,0.15)]"
             }`}
           >
             Subscribers & Scholars
@@ -419,7 +419,7 @@ export default function AdminUsersPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by name, email, user UUID, or campus..."
-              className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#65F59A]/50 transition-colors"
+              className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#FF4D6D]/50 transition-colors"
             />
           </div>
 
@@ -428,7 +428,7 @@ export default function AdminUsersPage() {
             <select
               value={roleFilter}
               onChange={(e) => setRoleFilter(e.target.value)}
-              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
             >
               <option value="all">All Roles</option>
               <option value="superadmin">Super Admin</option>
@@ -445,7 +445,7 @@ export default function AdminUsersPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
             >
               <option value="all">All Statuses</option>
               <option value="active">Active Accounts</option>
@@ -459,7 +459,7 @@ export default function AdminUsersPage() {
             <select
               value={providerFilter}
               onChange={(e) => setProviderFilter(e.target.value)}
-              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
             >
               <option value="all">All Providers</option>
               <option value="email">Email + Password</option>
@@ -481,7 +481,7 @@ export default function AdminUsersPage() {
                 setProviderFilter("all");
                 refreshList();
               }}
-              className="h-9 w-full md:w-auto px-2.5 border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
+              className="h-9 w-full md:w-auto px-2.5 border-[rgba(240, 160, 180,0.18)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3]"
               title="Reset Filters"
             >
               <RefreshCw className="h-3.5 w-3.5" />
@@ -491,10 +491,10 @@ export default function AdminUsersPage() {
       </div>
 
       {/* 4. Main Interactive User & Identity Table */}
-      <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] overflow-hidden">
+      <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#111B17] border-b border-[rgba(160,190,170,0.14)] text-[#69786F] font-mono uppercase tracking-wider text-[10px]">
+            <thead className="bg-[#1D1013] border-b border-[rgba(240, 160, 180,0.14)] text-[#69786F] font-mono uppercase tracking-wider text-[10px]">
               <tr>
                 <th className="px-4 py-3">User & System ID</th>
                 <th className="px-4 py-3">Auth & Contact</th>
@@ -505,7 +505,7 @@ export default function AdminUsersPage() {
                 <th className="px-4 py-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[rgba(160,190,170,0.08)]">
+            <tbody className="divide-y divide-[rgba(240, 160, 180,0.08)]">
               {filteredUsers.length === 0 ? (
                 <tr>
                   <td colSpan={7} className="px-4 py-12 text-center text-[#A0AEA5]">
@@ -525,18 +525,18 @@ export default function AdminUsersPage() {
                     <tr
                       key={user.id}
                       onClick={() => setSelectedUser(user)}
-                      className={`hover:bg-[#111B17]/60 transition-colors cursor-pointer ${
+                      className={`hover:bg-[#1D1013]/60 transition-colors cursor-pointer ${
                         isSuspended ? "bg-[rgba(248,113,113,0.04)]" : ""
                       }`}
                     >
                       {/* Name & ID */}
                       <td className="px-4 py-3.5">
                         <div className="flex items-center space-x-3">
-                          <div className="w-8 h-8 rounded-full bg-[#17251E] border border-[rgba(160,190,170,0.18)] flex items-center justify-center font-mono font-bold text-xs text-[#65F59A] shrink-0">
+                          <div className="w-8 h-8 rounded-full bg-[#2A141A] border border-[rgba(240, 160, 180,0.18)] flex items-center justify-center font-mono font-bold text-xs text-[#FF4D6D] shrink-0">
                             {user.name.charAt(0).toUpperCase()}
                           </div>
                           <div>
-                            <span className="font-medium text-[#F2F7F3] block hover:text-[#65F59A] transition-colors">
+                            <span className="font-medium text-[#F2F7F3] block hover:text-[#FF4D6D] transition-colors">
                               {user.name}
                             </span>
                             <div className="flex items-center gap-1.5 mt-0.5">
@@ -545,7 +545,7 @@ export default function AdminUsersPage() {
                               </span>
                               <button
                                 onClick={(e) => handleCopyId(user.id, e)}
-                                className="text-[#69786F] hover:text-[#65F59A] transition-colors"
+                                className="text-[#69786F] hover:text-[#FF4D6D] transition-colors"
                                 title="Copy User UUID"
                               >
                                 <Copy className="h-2.5 w-2.5" />
@@ -559,11 +559,11 @@ export default function AdminUsersPage() {
                       <td className="px-4 py-3.5 font-mono text-[11px]">
                         <span className="text-[#A0AEA5] block">{user.email}</span>
                         <div className="flex items-center gap-1.5 mt-1">
-                          <span className="px-1.5 py-0.2 rounded-[2px] text-[9px] font-mono uppercase bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.2)]">
+                          <span className="px-1.5 py-0.2 rounded-[2px] text-[9px] font-mono uppercase bg-[#2A141A] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.2)]">
                             {user.authProvider}
                           </span>
                           {user.twoFactorEnabled && (
-                            <span className="px-1.5 py-0.2 rounded-[2px] text-[9px] font-mono text-[#38D9B0] bg-[rgba(56,217,176,0.1)] border border-[rgba(56,217,176,0.25)]">
+                            <span className="px-1.5 py-0.2 rounded-[2px] text-[9px] font-mono text-[#FF758F] bg-[rgba(255, 117, 143,0.1)] border border-[rgba(255, 117, 143,0.25)]">
                               2FA ON
                             </span>
                           )}
@@ -587,15 +587,15 @@ export default function AdminUsersPage() {
                           onChange={(e) => handleRoleChange(user, e.target.value as UserRole)}
                           className={`text-xs px-2 py-1 rounded-[3px] font-mono font-bold uppercase tracking-wider border cursor-pointer ${
                             user.role === "admin" || user.role === "superadmin"
-                              ? "bg-[rgba(101,245,154,0.12)] text-[#65F59A] border-[rgba(101,245,154,0.3)]"
+                              ? "bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] border-[rgba(255, 77, 109,0.3)]"
                               : user.role === "masteradmin"
                               ? "bg-[rgba(168,85,247,0.12)] text-[#C084FC] border-[rgba(168,85,247,0.3)]"
                               : user.role === "institution" || user.role === "school"
-                              ? "bg-[rgba(56,217,176,0.12)] text-[#38D9B0] border-[rgba(56,217,176,0.3)]"
+                              ? "bg-[rgba(255, 117, 143,0.12)] text-[#FF758F] border-[rgba(255, 117, 143,0.3)]"
                               : user.role === "handler" || user.role === "teacher"
                               ? "bg-[rgba(251,191,36,0.12)] text-[#FBBF24] border-[rgba(251,191,36,0.3)]"
                               : user.role === "member" || user.role === "student"
-                              ? "bg-[rgba(101,245,154,0.08)] text-[#65F59A] border-[rgba(101,245,154,0.2)]"
+                              ? "bg-[rgba(255, 77, 109,0.08)] text-[#FF4D6D] border-[rgba(255, 77, 109,0.2)]"
                               : "bg-[rgba(96,165,250,0.12)] text-[#60A5FA] border-[rgba(96,165,250,0.3)]"
                           }`}
                         >
@@ -613,7 +613,7 @@ export default function AdminUsersPage() {
                         <span
                           className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold uppercase ${
                             user.status === "active"
-                              ? "bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.25)]"
+                              ? "bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.25)]"
                               : user.status === "suspended"
                               ? "bg-[rgba(248,113,113,0.1)] text-[#F87171] border border-[rgba(248,113,113,0.25)]"
                               : "bg-[rgba(251,191,36,0.1)] text-[#FBBF24] border border-[rgba(251,191,36,0.25)]"
@@ -622,7 +622,7 @@ export default function AdminUsersPage() {
                           <span
                             className={`w-1.5 h-1.5 rounded-full ${
                               user.status === "active"
-                                ? "bg-[#65F59A]"
+                                ? "bg-[#FF4D6D]"
                                 : user.status === "suspended"
                                 ? "bg-[#F87171]"
                                 : "bg-[#FBBF24]"
@@ -638,8 +638,8 @@ export default function AdminUsersPage() {
                           <span
                             className={`px-1.5 py-0.5 rounded-[2px] font-bold ${
                               user.activeSessionsCount > 0
-                                ? "bg-[rgba(101,245,154,0.12)] text-[#65F59A]"
-                                : "bg-[#111B17] text-[#69786F]"
+                                ? "bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D]"
+                                : "bg-[#1D1013] text-[#69786F]"
                             }`}
                           >
                             {user.activeSessionsCount} active
@@ -659,7 +659,7 @@ export default function AdminUsersPage() {
                             className={`p-1.5 rounded-[3px] border transition-colors ${
                               user.status === "active"
                                 ? "border-[rgba(248,113,113,0.2)] text-[#F87171] hover:bg-[rgba(248,113,113,0.1)]"
-                                : "border-[rgba(101,245,154,0.2)] text-[#65F59A] hover:bg-[rgba(101,245,154,0.1)]"
+                                : "border-[rgba(255, 77, 109,0.2)] text-[#FF4D6D] hover:bg-[rgba(255, 77, 109,0.1)]"
                             }`}
                             title={user.status === "active" ? "Suspend Account" : "Activate Account"}
                           >
@@ -673,7 +673,7 @@ export default function AdminUsersPage() {
                           {/* Reset Password */}
                           <button
                             onClick={() => handleResetPassword(user)}
-                            className="p-1.5 rounded-[3px] border border-[rgba(160,190,170,0.15)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#17251E] transition-colors"
+                            className="p-1.5 rounded-[3px] border border-[rgba(240, 160, 180,0.15)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#2A141A] transition-colors"
                             title="Generate Password Recovery Code"
                           >
                             <Key className="h-3.5 w-3.5" />
@@ -682,7 +682,7 @@ export default function AdminUsersPage() {
                           {/* Delete */}
                           <button
                             onClick={() => handleDeleteUser(user)}
-                            className="p-1.5 rounded-[3px] border border-[rgba(160,190,170,0.15)] text-[#69786F] hover:text-[#F87171] hover:bg-[rgba(248,113,113,0.1)] transition-colors"
+                            className="p-1.5 rounded-[3px] border border-[rgba(240, 160, 180,0.15)] text-[#69786F] hover:text-[#F87171] hover:bg-[rgba(248,113,113,0.1)] transition-colors"
                             title="Delete User"
                           >
                             <Trash2 className="h-3.5 w-3.5" />
@@ -700,11 +700,11 @@ export default function AdminUsersPage() {
 
       {/* 5. User Details Inspection Dossier Modal */}
       {selectedUser && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070B0A]/80 backdrop-blur-xs">
-          <div className="w-full max-w-xl rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.2)] p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
-            <div className="flex items-start justify-between border-b border-[rgba(160,190,170,0.12)] pb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0708]/80 backdrop-blur-xs">
+          <div className="w-full max-w-xl rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.2)] p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
+            <div className="flex items-start justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-4">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-full bg-[#17251E] border border-[#65F59A]/30 flex items-center justify-center font-mono font-bold text-sm text-[#65F59A]">
+                <div className="w-10 h-10 rounded-full bg-[#2A141A] border border-[#FF4D6D]/30 flex items-center justify-center font-mono font-bold text-sm text-[#FF4D6D]">
                   {selectedUser.name.charAt(0).toUpperCase()}
                 </div>
                 <div>
@@ -714,7 +714,7 @@ export default function AdminUsersPage() {
                   <div className="flex items-center gap-2 mt-0.5 font-mono text-[11px] text-[#A0AEA5]">
                     <span>{selectedUser.email}</span>
                     <span>•</span>
-                    <span className="text-[#65F59A] uppercase font-bold">
+                    <span className="text-[#FF4D6D] uppercase font-bold">
                       {selectedUser.role}
                     </span>
                   </div>
@@ -730,17 +730,17 @@ export default function AdminUsersPage() {
             </div>
 
             <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Platform UUID</span>
                 <span className="text-[#F2F7F3] font-bold select-all">{selectedUser.id}</span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Account Status</span>
                 <span
                   className={`font-bold uppercase ${
                     selectedUser.status === "active"
-                      ? "text-[#65F59A]"
+                      ? "text-[#FF4D6D]"
                       : selectedUser.status === "suspended"
                       ? "text-[#F87171]"
                       : "text-[#FBBF24]"
@@ -750,45 +750,45 @@ export default function AdminUsersPage() {
                 </span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Institution Workspace</span>
                 <span className="text-[#F2F7F3] font-bold">
                   {selectedUser.organizationName || "Global Root"}
                 </span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Department Unit</span>
                 <span className="text-[#F2F7F3] font-bold">
                   {selectedUser.department || "None"}
                 </span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Auth Identity Mode</span>
-                <span className="text-[#65F59A] font-bold uppercase">{selectedUser.authProvider}</span>
+                <span className="text-[#FF4D6D] font-bold uppercase">{selectedUser.authProvider}</span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Last Known IP Node</span>
                 <span className="text-[#F2F7F3]">{selectedUser.lastKnownIp || "Unknown"}</span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Active Device Sessions</span>
-                <span className="text-[#65F59A] font-bold">{selectedUser.activeSessionsCount} concurrent</span>
+                <span className="text-[#FF4D6D] font-bold">{selectedUser.activeSessionsCount} concurrent</span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Account Created At</span>
                 <span className="text-[#A0AEA5]">{new Date(selectedUser.createdAt).toLocaleDateString()}</span>
               </div>
             </div>
 
             {/* Admin Role Control Section */}
-            <div className="p-3.5 rounded-[4px] bg-[#111B17] border border-[rgba(101,245,154,0.25)] space-y-2">
+            <div className="p-3.5 rounded-[4px] bg-[#1D1013] border border-[rgba(255, 77, 109,0.25)] space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-[#65F59A] font-bold">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#FF4D6D] font-bold">
                   Admin Authority: Change Assigned Role
                 </span>
                 <span className="text-[10px] font-mono text-[#A0AEA5]">
@@ -805,8 +805,8 @@ export default function AdminUsersPage() {
                       onClick={() => handleRoleChange(selectedUser, r)}
                       className={`px-2 py-1.5 rounded-[3px] font-mono text-[10px] uppercase font-bold transition-all border ${
                         isCur
-                          ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A] shadow-[0_0_8px_rgba(101,245,154,0.3)]"
-                          : "bg-[#0C1210] text-[#A0AEA5] hover:text-[#F2F7F3] border-[rgba(160,190,170,0.18)] hover:border-[#65F59A]/40"
+                          ? "bg-[#FF4D6D] text-[#0B0708] border-[#FF4D6D] shadow-[0_0_8px_rgba(255, 77, 109,0.3)]"
+                          : "bg-[#140C0E] text-[#A0AEA5] hover:text-[#F2F7F3] border-[rgba(240, 160, 180,0.18)] hover:border-[#FF4D6D]/40"
                       }`}
                     >
                       {r === "subscriber" ? "Sub" : r === "member" ? "Member" : r === "handler" ? "Handler" : r === "institution" ? "Inst" : "Admin"}
@@ -816,14 +816,14 @@ export default function AdminUsersPage() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between pt-3 border-t border-[rgba(160,190,170,0.12)]">
+            <div className="flex items-center justify-between pt-3 border-t border-[rgba(240, 160, 180,0.12)]">
               <Button
                 variant="outline"
                 onClick={() => handleToggleStatus(selectedUser)}
                 className={`text-xs font-mono h-9 ${
                   selectedUser.status === "active"
                     ? "border-[rgba(248,113,113,0.3)] text-[#F87171] hover:bg-[rgba(248,113,113,0.1)]"
-                    : "border-[rgba(101,245,154,0.3)] text-[#65F59A] hover:bg-[rgba(101,245,154,0.1)]"
+                    : "border-[rgba(255, 77, 109,0.3)] text-[#FF4D6D] hover:bg-[rgba(255, 77, 109,0.1)]"
                 }`}
               >
                 {selectedUser.status === "active" ? "Suspend Account Access" : "Reactivate Account Access"}
@@ -832,14 +832,14 @@ export default function AdminUsersPage() {
               <div className="flex items-center gap-2">
                 <Button
                   onClick={() => handleResetPassword(selectedUser)}
-                  className="bg-[#111B17] border border-[rgba(160,190,170,0.2)] text-[#F2F7F3] hover:text-[#65F59A] hover:border-[#65F59A]/50 text-xs font-mono h-9"
+                  className="bg-[#1D1013] border border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] hover:text-[#FF4D6D] hover:border-[#FF4D6D]/50 text-xs font-mono h-9"
                 >
-                  <Key className="mr-1.5 h-3.5 w-3.5 text-[#65F59A]" />
+                  <Key className="mr-1.5 h-3.5 w-3.5 text-[#FF4D6D]" />
                   Reset Key
                 </Button>
                 <Button
                   onClick={() => setSelectedUser(null)}
-                  className="bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 text-xs font-mono font-bold h-9"
+                  className="bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 text-xs font-mono font-bold h-9"
                 >
                   Close Dossier
                 </Button>
@@ -851,11 +851,11 @@ export default function AdminUsersPage() {
 
       {/* 6. Provision User Modal */}
       {isCreateOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070B0A]/80 backdrop-blur-xs">
-          <div className="w-full max-w-md rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.2)] p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
-            <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0708]/80 backdrop-blur-xs">
+          <div className="w-full max-w-md rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.2)] p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
+            <div className="flex items-center justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-3">
               <div className="flex items-center space-x-2">
-                <UserPlus className="h-4 w-4 text-[#65F59A]" />
+                <UserPlus className="h-4 w-4 text-[#FF4D6D]" />
                 <h3 className="font-display text-sm uppercase font-bold text-[#F2F7F3]">
                   Provision Platform Identity
                 </h3>
@@ -877,7 +877,7 @@ export default function AdminUsersPage() {
                   placeholder="e.g. Prof. David Miller"
                   value={newName}
                   onChange={(e) => setNewName(e.target.value)}
-                  className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"
                 />
               </div>
 
@@ -889,7 +889,7 @@ export default function AdminUsersPage() {
                   placeholder="david.miller@campus.edu"
                   value={newEmail}
                   onChange={(e) => setNewEmail(e.target.value)}
-                  className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"
                 />
               </div>
 
@@ -899,7 +899,7 @@ export default function AdminUsersPage() {
                   <select
                     value={newRole}
                     onChange={(e) => setNewRole(e.target.value as UserRole)}
-                    className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
+                    className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"
                   >
                     <option value="subscriber">Subscriber</option>
                     <option value="member">Member</option>
@@ -916,7 +916,7 @@ export default function AdminUsersPage() {
                     type="text"
                     value={newDept}
                     onChange={(e) => setNewDept(e.target.value)}
-                    className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
+                    className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"
                   />
                 </div>
               </div>
@@ -927,7 +927,7 @@ export default function AdminUsersPage() {
                   type="text"
                   value={newOrg}
                   onChange={(e) => setNewOrg(e.target.value)}
-                  className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"
                 />
               </div>
 
@@ -936,13 +936,13 @@ export default function AdminUsersPage() {
                   type="button"
                   variant="outline"
                   onClick={() => setIsCreateOpen(false)}
-                  className="border-[rgba(160,190,170,0.2)] text-[#A0AEA5] text-xs font-mono h-9"
+                  className="border-[rgba(240, 160, 180,0.2)] text-[#A0AEA5] text-xs font-mono h-9"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
-                  className="bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 text-xs font-mono font-bold h-9 uppercase tracking-wider"
+                  className="bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 text-xs font-mono font-bold h-9 uppercase tracking-wider"
                 >
                   Create & Activate
                 </Button>
@@ -954,9 +954,9 @@ export default function AdminUsersPage() {
 
       {/* 7. Password Recovery Key Dialog */}
       {resetCodeInfo && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070B0A]/85 backdrop-blur-xs">
-          <div className="w-full max-w-sm rounded-[8px] bg-[#0C1210] border border-[#65F59A]/30 p-6 shadow-2xl space-y-4 animate-in fade-in-50 zoom-in-95">
-            <div className="flex items-center space-x-2 text-[#65F59A]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0708]/85 backdrop-blur-xs">
+          <div className="w-full max-w-sm rounded-[8px] bg-[#140C0E] border border-[#FF4D6D]/30 p-6 shadow-2xl space-y-4 animate-in fade-in-50 zoom-in-95">
+            <div className="flex items-center space-x-2 text-[#FF4D6D]">
               <Key className="h-4 w-4" />
               <h3 className="font-display text-sm uppercase font-bold text-[#F2F7F3]">
                 Recovery Key Dispatched
@@ -968,7 +968,7 @@ export default function AdminUsersPage() {
               <strong className="text-[#F2F7F3]">{resetCodeInfo.user.email}</strong>.
             </p>
 
-            <div className="p-3 rounded-[4px] bg-[#111B17] border border-[#65F59A]/40 text-center font-mono text-base font-extrabold text-[#65F59A] tracking-widest select-all">
+            <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[#FF4D6D]/40 text-center font-mono text-base font-extrabold text-[#FF4D6D] tracking-widest select-all">
               {resetCodeInfo.code}
             </div>
 
@@ -978,7 +978,7 @@ export default function AdminUsersPage() {
 
             <Button
               onClick={() => setResetCodeInfo(null)}
-              className="w-full bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs font-bold uppercase tracking-wider h-9"
+              className="w-full bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 font-mono text-xs font-bold uppercase tracking-wider h-9"
             >
               Acknowledged
             </Button>

@@ -16,12 +16,12 @@ export function NotificationCenter({
   const unreadCount = notifications.filter((n) => !n.read).length;
 
   return (
-    <div className="bg-[#0C1210] p-6 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-xs space-y-4">
-      <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F2F7F3] flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-2.5">
+    <div className="bg-[#140C0E] p-6 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] shadow-xs space-y-4">
+      <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F2F7F3] flex items-center justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-2.5">
         <span className="flex items-center">
-          <Bell className="w-4 h-4 text-[#65F59A] mr-2" /> Notification Center
+          <Bell className="w-4 h-4 text-[#FF4D6D] mr-2" /> Notification Center
         </span>
-        <Badge className="bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] text-[10px] font-mono font-bold">
+        <Badge className="bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] text-[10px] font-mono font-bold">
           {unreadCount} New
         </Badge>
       </h3>
@@ -32,13 +32,13 @@ export function NotificationCenter({
             key={n.id}
             className={`p-3 rounded-[4px] border text-xs font-mono space-y-1 transition-all ${
               !n.read
-                ? "border-[rgba(101,245,154,0.3)] bg-[#17251E] text-[#F2F7F3]"
-                : "border-[rgba(160,190,170,0.1)] bg-[#111B17]/60 text-[#A0AEA5]"
+                ? "border-[rgba(255, 77, 109,0.3)] bg-[#2A141A] text-[#F2F7F3]"
+                : "border-[rgba(240, 160, 180,0.1)] bg-[#1D1013]/60 text-[#A0AEA5]"
             }`}
           >
             <div className="flex items-center justify-between">
               <span className="font-bold text-[#F2F7F3] flex items-center text-xs">
-                <Info className="w-3.5 h-3.5 text-[#38D9B0] mr-1.5 shrink-0" />
+                <Info className="w-3.5 h-3.5 text-[#FF758F] mr-1.5 shrink-0" />
                 {n.title}
               </span>
               <span className="text-[10px] text-[#69786F] font-normal">{n.time}</span>

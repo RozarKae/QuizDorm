@@ -55,7 +55,7 @@ export function GoalTrackerCard() {
             <div className="flex items-center justify-between">
               <span className="font-bold text-gray-900 dark:text-white">{g.title}</span>
               <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                g.status === "completed" ? "bg-emerald-100 text-emerald-800" : "bg-indigo-100 text-indigo-800"
+                g.status === "completed" ? "bg-rose-100 text-rose-800" : "bg-indigo-100 text-indigo-800"
               }`}>
                 {g.status.replace(/_/g, " ")}
               </span>
@@ -63,7 +63,7 @@ export function GoalTrackerCard() {
 
             <div className="w-full h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden">
               <div
-                className={`h-full ${g.status === "completed" ? "bg-emerald-500" : "bg-indigo-500"} transition-all duration-500`}
+                className={`h-full ${g.status === "completed" ? "bg-rose-500" : "bg-indigo-500"} transition-all duration-500`}
                 style={{ width: `${Math.min(100, g.currentProgressPercent)}%` }}
               />
             </div>

@@ -38,7 +38,7 @@ export function CampusServerCard() {
               </span>
               <span
                 className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
-                  n.syncStatus === "synced" ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"
+                  n.syncStatus === "synced" ? "bg-rose-100 text-rose-800" : "bg-amber-100 text-amber-800"
                 }`}
               >
                 {n.syncStatus}

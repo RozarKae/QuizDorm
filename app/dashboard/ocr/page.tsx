@@ -279,7 +279,7 @@ export default function DocumentIntelligenceWorkspace() {
         </div>
         <div className="pt-2">
           <Link href="/dashboard/questions">
-            <Button variant="outline" size="sm" className="border-[rgba(160,190,170,0.2)] text-xs font-mono">
+            <Button variant="outline" size="sm" className="border-[rgba(240, 160, 180,0.2)] text-xs font-mono">
               <ArrowLeft className="w-3.5 h-3.5 mr-1.5" /> Back to Question Bank
             </Button>
           </Link>
@@ -291,21 +291,21 @@ export default function DocumentIntelligenceWorkspace() {
   return (
     <div className="p-4 sm:p-6 space-y-6 max-w-7xl mx-auto">
       {/* Workspace Header */}
-      <div className="bg-[#0C1210] text-[#F2F7F3] rounded-[6px] p-6 sm:p-8 border border-[rgba(160,190,170,0.14)] shadow-sm relative overflow-hidden">
+      <div className="bg-[#140C0E] text-[#F2F7F3] rounded-[6px] p-6 sm:p-8 border border-[rgba(240, 160, 180,0.14)] shadow-sm relative overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none opacity-40"
           style={{
-            background: "radial-gradient(circle at 15% 15%, rgba(101, 245, 154, 0.08), transparent 60%)",
+            background: "radial-gradient(circle at 15% 15%, rgba(255, 77, 109, 0.08), transparent 60%)",
           }}
         />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
-              <span className="p-1.5 rounded-[4px] bg-[#17251E] border border-[rgba(101,245,154,0.25)] text-[#65F59A]">
+              <span className="p-1.5 rounded-[4px] bg-[#2A141A] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D]">
                 <ScanText className="w-5 h-5" />
               </span>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#65F59A] bg-[rgba(101,245,154,0.12)] px-2.5 py-0.5 rounded-[3px] border border-[rgba(101,245,154,0.28)]">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#FF4D6D] bg-[rgba(255, 77, 109,0.12)] px-2.5 py-0.5 rounded-[3px] border border-[rgba(255, 77, 109,0.28)]">
                 AI DOCUMENT INTELLIGENCE
               </span>
             </div>
@@ -321,7 +321,7 @@ export default function DocumentIntelligenceWorkspace() {
             <Button
               onClick={() => setAiQuizModalOpen(true)}
               size="sm"
-              className="bg-[#65F59A] hover:bg-[#38D9B0] text-[#070B0A] font-bold font-mono text-xs rounded-[4px] shadow-[0_0_15px_rgba(101,245,154,0.3)] transition-all"
+              className="bg-[#FF4D6D] hover:bg-[#FF758F] text-[#0B0708] font-bold font-mono text-xs rounded-[4px] shadow-[0_0_15px_rgba(255, 77, 109,0.3)] transition-all"
             >
               <Sparkles className="w-3.5 h-3.5 mr-1.5 stroke-[2.5]" /> AI Quiz Maker
             </Button>
@@ -331,7 +331,7 @@ export default function DocumentIntelligenceWorkspace() {
               variant="outline"
               className="text-xs font-mono rounded-[4px]"
             >
-              <Layers className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> Bulk Document Digitizer
+              <Layers className="w-3.5 h-3.5 mr-1.5 text-[#FF758F]" /> Bulk Document Digitizer
             </Button>
 
             <Button
@@ -345,28 +345,28 @@ export default function DocumentIntelligenceWorkspace() {
         </div>
 
         {/* Metrics Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-5 border-t border-[rgba(160,190,170,0.12)] text-xs font-mono">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6 pt-5 border-t border-[rgba(240, 160, 180,0.12)] text-xs font-mono">
           <div className="space-y-1">
             <span className="text-[#69786F] uppercase tracking-wider text-[10px]">Total Digitized</span>
             <div className="text-xl font-bold text-[#F2F7F3]">{totalQuestionsDigitized} Items</div>
           </div>
           <div className="space-y-1">
             <span className="text-[#69786F] uppercase tracking-wider text-[10px]">Review Queue</span>
-            <div className="text-xl font-bold text-[#65F59A]">{reviewReadyJobs.length} Jobs Ready</div>
+            <div className="text-xl font-bold text-[#FF4D6D]">{reviewReadyJobs.length} Jobs Ready</div>
           </div>
           <div className="space-y-1">
             <span className="text-[#69786F] uppercase tracking-wider text-[10px]">Processing Active</span>
-            <div className="text-xl font-bold text-[#38D9B0]">{processingJobs.length} Jobs Active</div>
+            <div className="text-xl font-bold text-[#FF758F]">{processingJobs.length} Jobs Active</div>
           </div>
           <div className="space-y-1">
             <span className="text-[#69786F] uppercase tracking-wider text-[10px]">Avg Accuracy</span>
-            <div className="text-xl font-bold text-[#65F59A]">{avgConfidence}% Confidence</div>
+            <div className="text-xl font-bold text-[#FF4D6D]">{avgConfidence}% Confidence</div>
           </div>
         </div>
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex items-center space-x-1.5 border-b border-[rgba(160,190,170,0.14)] pb-1 overflow-x-auto">
+      <div className="flex items-center space-x-1.5 border-b border-[rgba(240, 160, 180,0.14)] pb-1 overflow-x-auto">
         {[
           { id: "upload", label: "Upload Center", icon: <Upload className="w-3.5 h-3.5" /> },
           {
@@ -386,14 +386,14 @@ export default function DocumentIntelligenceWorkspace() {
               onClick={() => setActiveTab(tab.id as any)}
               className={`px-3 py-2 rounded-[4px] text-xs font-mono font-medium flex items-center space-x-2 transition-all whitespace-nowrap ${
                 isActive
-                  ? "bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] shadow-xs font-semibold"
-                  : "text-[#A0AEA5] hover:bg-[#111B17] hover:text-[#F2F7F3]"
+                  ? "bg-[#2A141A] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] shadow-xs font-semibold"
+                  : "text-[#A0AEA5] hover:bg-[#1D1013] hover:text-[#F2F7F3]"
               }`}
             >
               {tab.icon}
               <span>{tab.label}</span>
               {tab.badge && (
-                <span className={`text-[9px] font-bold px-1.5 py-0.2 rounded-[2px] ${isActive ? "bg-[rgba(101,245,154,0.25)] text-[#65F59A]" : "bg-[#111B17] text-[#65F59A] border border-[rgba(101,245,154,0.2)]"}`}>
+                <span className={`text-[9px] font-bold px-1.5 py-0.2 rounded-[2px] ${isActive ? "bg-[rgba(255, 77, 109,0.25)] text-[#FF4D6D]" : "bg-[#1D1013] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.2)]"}`}>
                   {tab.badge}
                 </span>
               )}

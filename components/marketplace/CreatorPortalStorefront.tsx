@@ -31,7 +31,7 @@ export function CreatorPortalStorefront() {
       <div className="bg-gradient-to-r from-slate-900 via-purple-950 to-slate-900 text-white p-6 sm:p-8 rounded-3xl border border-purple-500/30 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs font-bold mb-3 border border-purple-500/30">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> Verified Marketplace Educator Storefront
+            <ShieldCheck className="w-3.5 h-3.5 text-rose-400" /> Verified Marketplace Educator Storefront
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight">{creator.storeName}</h1>
           <p className="text-slate-300 text-xs sm:text-sm mt-1.5 max-w-xl">{creator.tagline}</p>
@@ -46,8 +46,8 @@ export function CreatorPortalStorefront() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
           <span className="text-xs font-semibold text-slate-500">Total Creator Earnings</span>
-          <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400">${(creator.totalEarningsUSD ?? 0).toLocaleString()}</p>
-          <p className="text-[11px] text-emerald-500 font-semibold flex items-center gap-1">
+          <p className="text-3xl font-black text-rose-600 dark:text-rose-400">${(creator.totalEarningsUSD ?? 0).toLocaleString()}</p>
+          <p className="text-[11px] text-rose-500 font-semibold flex items-center gap-1">
             <TrendingUp className="w-3.5 h-3.5" /> +18.4% this month
           </p>
         </div>

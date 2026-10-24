@@ -17,12 +17,12 @@ export default function AIStudioSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-border mb-12 gap-6">
           <div className="space-y-3 max-w-2xl">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-emerald-800 bg-emerald-50 dark:text-[#65F59A] dark:bg-[#17251E] px-3 py-1 rounded-full border border-emerald-300 dark:border-[#65F59A]/30 font-semibold shadow-xs">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-rose-800 bg-rose-50 dark:text-[#FF4D6D] dark:bg-[#2A141A] px-3 py-1 rounded-full border border-rose-300 dark:border-[#FF4D6D]/30 font-semibold shadow-xs">
               OMNI-CURRICULUM INTELLIGENCE // AI SYNTHESIZER
             </span>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-[#F2F7F3] tracking-tight">
               From Complex Curriculum <br />
-              <span className="bg-gradient-to-r from-[#047857] to-[#0D9488] dark:from-[#65F59A] dark:to-[#38D9B0] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#BE123C] to-[#0D9488] dark:from-[#FF4D6D] dark:to-[#FF758F] bg-clip-text text-transparent">
                 to Exam-Ready Mastery.
               </span>
             </h2>
@@ -36,9 +36,9 @@ export default function AIStudioSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative mb-10">
           
           {/* Step 1 */}
-          <div className="p-6 rounded-2xl bg-card border border-border space-y-4 hover:border-emerald-600/40 transition-all shadow-md group">
+          <div className="p-6 rounded-2xl bg-card border border-border space-y-4 hover:border-rose-600/40 transition-all shadow-md group">
             <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 dark:bg-[#17251E] dark:text-[#65F59A] dark:border-[#65F59A]/20 flex items-center justify-center font-mono font-bold text-xs group-hover:scale-105 transition-transform">
+              <div className="w-10 h-10 rounded-xl bg-rose-50 text-rose-800 border border-rose-200 dark:bg-[#2A141A] dark:text-[#FF4D6D] dark:border-[#FF4D6D]/20 flex items-center justify-center font-mono font-bold text-xs group-hover:scale-105 transition-transform">
                 01
               </div>
               <span className="font-mono text-[10px] uppercase text-slate-500 dark:text-[#69786F]">Drop Notes</span>
@@ -49,15 +49,15 @@ export default function AIStudioSection() {
             <p className="text-xs text-slate-600 dark:text-[#A0AEA5] leading-relaxed">
               Drop PDFs, Word files, Markdown notes, or photos of your test papers. Fast built-in parsing reads your study material cleanly.
             </p>
-            <div className="pt-2 flex items-center gap-2 font-mono text-[11px] text-teal-700 dark:text-[#38D9B0]">
+            <div className="pt-2 flex items-center gap-2 font-mono text-[11px] text-rose-700 dark:text-[#FF758F]">
               <FileCheck className="w-3.5 h-3.5" /> PDF, DOCX, TXT, MD, Photos
             </div>
           </div>
 
           {/* Step 2 */}
-          <div className="p-6 rounded-2xl bg-card border border-border space-y-4 hover:border-teal-600/40 transition-all shadow-md group">
+          <div className="p-6 rounded-2xl bg-card border border-border space-y-4 hover:border-rose-600/40 transition-all shadow-md group">
             <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-800 border border-teal-200 dark:bg-[#17251E] dark:text-[#38D9B0] dark:border-[#38D9B0]/20 flex items-center justify-center font-mono font-bold text-xs group-hover:scale-105 transition-transform">
+              <div className="w-10 h-10 rounded-xl bg-rose-50 text-rose-800 border border-rose-200 dark:bg-[#2A141A] dark:text-[#FF758F] dark:border-[#FF758F]/20 flex items-center justify-center font-mono font-bold text-xs group-hover:scale-105 transition-transform">
                 02
               </div>
               <span className="font-mono text-[10px] uppercase text-slate-500 dark:text-[#69786F]">Exam Focus</span>
@@ -68,18 +68,18 @@ export default function AIStudioSection() {
             <p className="text-xs text-slate-600 dark:text-[#A0AEA5] leading-relaxed">
               QuizDorm AI extracts key formulas, historical dates, theorems, and definitions straight from your material so every question is high-yield.
             </p>
-            <div className="pt-2 flex items-center gap-2 font-mono text-[11px] text-emerald-700 dark:text-[#65F59A]">
+            <div className="pt-2 flex items-center gap-2 font-mono text-[11px] text-rose-700 dark:text-[#FF4D6D]">
               <Cpu className="w-3.5 h-3.5" /> 100% Grounded in Your Material
             </div>
           </div>
 
           {/* Step 3 */}
-          <div className="p-6 rounded-2xl bg-card border border-emerald-300 dark:border-[#65F59A]/30 shadow-md space-y-4 hover:border-emerald-500/60 transition-all group">
+          <div className="p-6 rounded-2xl bg-card border border-rose-300 dark:border-[#FF4D6D]/30 shadow-md space-y-4 hover:border-rose-500/60 transition-all group">
             <div className="flex items-center justify-between">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-300 dark:bg-[#17251E] dark:text-[#65F59A] dark:border-[#65F59A]/40 flex items-center justify-center font-mono font-bold text-xs group-hover:scale-105 transition-transform">
+              <div className="w-10 h-10 rounded-xl bg-rose-50 text-rose-800 border border-rose-300 dark:bg-[#2A141A] dark:text-[#FF4D6D] dark:border-[#FF4D6D]/40 flex items-center justify-center font-mono font-bold text-xs group-hover:scale-105 transition-transform">
                 03
               </div>
-              <span className="font-mono text-[10px] uppercase text-emerald-800 dark:text-[#65F59A] font-bold">Interactive Formats</span>
+              <span className="font-mono text-[10px] uppercase text-rose-800 dark:text-[#FF4D6D] font-bold">Interactive Formats</span>
             </div>
             <h3 className="font-display text-base font-bold text-slate-900 dark:text-[#F2F7F3]">
               Cooks Up 9 Question Styles
@@ -87,7 +87,7 @@ export default function AIStudioSection() {
             <p className="text-xs text-slate-600 dark:text-[#A0AEA5] leading-relaxed">
               Makes MCQs, match-the-following, drag-and-drop, fill-in-blanks, and error-spotting questions with tricky options so you never get caught off guard.
             </p>
-            <div className="pt-2 flex items-center gap-2 font-mono text-[11px] text-emerald-700 dark:text-[#65F59A] font-semibold">
+            <div className="pt-2 flex items-center gap-2 font-mono text-[11px] text-rose-700 dark:text-[#FF4D6D] font-semibold">
               <CheckCircle2 className="w-3.5 h-3.5" /> High-Accuracy Quality Filtered
             </div>
           </div>
@@ -95,9 +95,9 @@ export default function AIStudioSection() {
         </div>
 
         {/* Launch Studio Action Bar */}
-        <div className="bg-slate-50 border border-slate-200 dark:bg-[#111B17] dark:border-[rgba(160,190,170,0.18)] rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+        <div className="bg-slate-50 border border-slate-200 dark:bg-[#1D1013] dark:border-[rgba(240, 160, 180,0.18)] rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
           <div className="space-y-1 text-center sm:text-left">
-            <div className="text-xs font-mono uppercase tracking-widest text-emerald-800 dark:text-[#65F59A] font-bold">
+            <div className="text-xs font-mono uppercase tracking-widest text-rose-800 dark:text-[#FF4D6D] font-bold">
               Ready to Accelerate Your Prep?
             </div>
             <h4 className="text-xl font-bold font-display text-slate-900 dark:text-[#F2F7F3]">
@@ -110,7 +110,7 @@ export default function AIStudioSection() {
 
           <Button
             onClick={() => setModalOpen(true)}
-            className="bg-[#047857] hover:bg-[#065F46] text-white dark:bg-[#65F59A] dark:hover:bg-[#52E086] dark:text-[#070B0A] font-mono text-xs font-bold rounded-[6px] px-7 h-11 shadow-sm flex items-center gap-2 shrink-0 transition-all cursor-pointer"
+            className="bg-[#BE123C] hover:bg-[#9F1239] text-white dark:bg-[#FF4D6D] dark:hover:bg-[#FF3366] dark:text-[#0B0708] font-mono text-xs font-bold rounded-[6px] px-7 h-11 shadow-sm flex items-center gap-2 shrink-0 transition-all cursor-pointer"
           >
             <Sparkles className="w-4 h-4 fill-current" />
             <span>Launch AI Studio</span>

@@ -112,13 +112,13 @@ export function SecureExamEngineSimulator() {
       {/* Lockdown Status Top Bar */}
       <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-2xl">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center">
-            <Lock className="w-5 h-5 text-emerald-400" />
+          <div className="w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center">
+            <Lock className="w-5 h-5 text-rose-400" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h2 className="font-bold text-base text-white">NAT-RECRUIT-2026 • Secure Exam Engine</h2>
-              <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold border border-emerald-500/30 flex items-center gap-1">
+              <span className="px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 text-[10px] font-bold border border-rose-500/30 flex items-center gap-1">
                 <Shield className="w-3 h-3" /> BROWSER LOCKDOWN ACTIVE
               </span>
             </div>
@@ -144,7 +144,7 @@ export function SecureExamEngineSimulator() {
           <Button
             onClick={() => setIsSubmitModalOpen(true)}
             size="sm"
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-lg"
+            className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-lg"
           >
             Submit Examination
           </Button>
@@ -243,7 +243,7 @@ export function SecureExamEngineSimulator() {
                 const ans = answers[q.id];
                 let bgClass = "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400";
                 if (ans?.status === "answered" && ans.selectedOptionId) {
-                  bgClass = "bg-emerald-600 text-white font-bold";
+                  bgClass = "bg-rose-600 text-white font-bold";
                 } else if (ans?.status === "marked-for-review") {
                   bgClass = "bg-amber-500 text-black font-bold";
                 }
@@ -264,7 +264,7 @@ export function SecureExamEngineSimulator() {
 
             <div className="space-y-2 pt-4 border-t border-slate-100 dark:border-slate-800 text-[11px] text-slate-500">
               <div className="flex items-center justify-between">
-                <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-emerald-600 inline-block" /> Answered</span>
+                <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-rose-600 inline-block" /> Answered</span>
                 <span className="font-bold text-slate-900 dark:text-white">{answeredCount}</span>
               </div>
               <div className="flex items-center justify-between">
@@ -280,7 +280,7 @@ export function SecureExamEngineSimulator() {
 
           <div className="p-3 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-[11px] text-indigo-700 dark:text-indigo-300">
             <span className="font-bold flex items-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Auto-Save Enabled
+              <CheckCircle2 className="w-3.5 h-3.5 text-rose-500" /> Auto-Save Enabled
             </span>
             <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Answers synced to cloud every 5 seconds.</p>
           </div>
@@ -293,7 +293,7 @@ export function SecureExamEngineSimulator() {
           <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
               <h3 className="font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <FileCheck className="w-5 h-5 text-emerald-600" /> Confirm Exam Submission
+                <FileCheck className="w-5 h-5 text-rose-600" /> Confirm Exam Submission
               </h3>
               <button onClick={() => setIsSubmitModalOpen(false)} className="text-slate-400">✕</button>
             </div>
@@ -308,7 +308,7 @@ export function SecureExamEngineSimulator() {
               <Button variant="ghost" onClick={() => setIsSubmitModalOpen(false)} className="rounded-xl text-xs">
                 Back to Exam
               </Button>
-              <Button onClick={handleConfirmSubmit} className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold">
+              <Button onClick={handleConfirmSubmit} className="bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold">
                 Submit & Encrypt Test
               </Button>
             </div>

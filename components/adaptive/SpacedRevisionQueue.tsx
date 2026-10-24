@@ -65,7 +65,7 @@ export function SpacedRevisionQueue({ items, onRefresh }: SpacedRevisionQueuePro
                 <Button
                   size="sm"
                   onClick={() => handleReview(item.id, 5)}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl h-8"
+                  className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl h-8"
                 >
                   <Check className="w-3.5 h-3.5 mr-1" /> Easy Recall (+6d)
                 </Button>
@@ -79,7 +79,7 @@ export function SpacedRevisionQueue({ items, onRefresh }: SpacedRevisionQueuePro
                 </Button>
               </div>
             ) : (
-              <span className="text-emerald-600 font-bold font-mono text-[11px] shrink-0">
+              <span className="text-rose-600 font-bold font-mono text-[11px] shrink-0">
                 Scheduled for {new Date(item.dueTimestamp).toLocaleDateString()}
               </span>
             )}

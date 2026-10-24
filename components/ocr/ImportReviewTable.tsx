@@ -212,7 +212,7 @@ export function ImportReviewTable({
   if (questions.length === 0) {
     return (
       <div className="bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-3xl p-12 text-center text-gray-500">
-        <CheckCircle2 className="w-12 h-12 text-emerald-500 mx-auto mb-3" />
+        <CheckCircle2 className="w-12 h-12 text-rose-500 mx-auto mb-3" />
         <h3 className="text-base font-bold text-gray-900 dark:text-white">All questions reviewed!</h3>
         <p className="text-xs text-gray-400 mt-1">No questions remaining in current review queue.</p>
       </div>
@@ -246,7 +246,7 @@ export function ImportReviewTable({
 
           <Button
             onClick={() => onSaveToQuestionBank(questions)}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm flex items-center gap-1.5"
+            className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-sm flex items-center gap-1.5"
           >
             <CheckCircle2 className="w-4 h-4" /> Import to Question Bank ({questions.length})
           </Button>
@@ -597,8 +597,8 @@ export function ImportReviewTable({
                         onClick={() => handleToggleCorrectOption(opt.id)}
                         className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold transition-all border ${
                           opt.isCorrect
-                            ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
-                            : "border-gray-300 dark:border-gray-700 text-gray-500 hover:border-emerald-500"
+                            ? "bg-rose-600 text-white border-rose-600 shadow-sm"
+                            : "border-gray-300 dark:border-gray-700 text-gray-500 hover:border-rose-500"
                         }`}
                         title={opt.isCorrect ? "Correct Answer" : "Click to mark as correct"}
                       >
@@ -611,7 +611,7 @@ export function ImportReviewTable({
                         onChange={(e) => handleOptionTextChange(opt.id, e.target.value)}
                         className={`flex-1 text-xs p-2.5 rounded-xl border ${
                           opt.isCorrect
-                            ? "border-emerald-400 bg-emerald-50/40 dark:bg-emerald-950/30 text-emerald-900 dark:text-emerald-100 font-semibold"
+                            ? "border-rose-400 bg-rose-50/40 dark:bg-rose-950/30 text-rose-900 dark:text-rose-100 font-semibold"
                             : "border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
                         }`}
                       />
@@ -653,14 +653,14 @@ export function ImportReviewTable({
                   type="button"
                   variant="outline"
                   onClick={() => onSaveToQuestionBank(questions)}
-                  className="bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] hover:bg-[#17251E] font-medium text-xs rounded-lg shadow-xs flex items-center gap-1.5"
+                  className="bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] hover:bg-[#2A141A] font-medium text-xs rounded-lg shadow-xs flex items-center gap-1.5"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-[#38D9B0]" /> Save to Bank ({questions.length})
+                  <CheckCircle2 className="w-4 h-4 text-[#FF758F]" /> Save to Bank ({questions.length})
                 </Button>
                 <Button
                   type="button"
                   onClick={handlePublishAndTakeQuiz}
-                  className="bg-[#65F59A] hover:bg-[#38D9B0] text-[#070B0A] font-bold text-xs rounded-lg shadow-[0_0_15px_rgba(101,245,154,0.3)] flex items-center gap-1.5 font-mono transition-all"
+                  className="bg-[#FF4D6D] hover:bg-[#FF758F] text-[#0B0708] font-bold text-xs rounded-lg shadow-[0_0_15px_rgba(255, 77, 109,0.3)] flex items-center gap-1.5 font-mono transition-all"
                 >
                   <Play className="w-3.5 h-3.5 fill-current" /> Publish & Take Quiz Now
                 </Button>

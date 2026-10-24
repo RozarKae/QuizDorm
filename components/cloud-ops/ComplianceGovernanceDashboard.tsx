@@ -27,7 +27,7 @@ export function ComplianceGovernanceDashboard() {
       {/* Top Banner */}
       <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-bold mb-2">
             <ShieldCheck className="w-3.5 h-3.5" /> International Security & Data Privacy Regulatory Standards
           </div>
           <h2 className="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
@@ -38,7 +38,7 @@ export function ComplianceGovernanceDashboard() {
           </p>
         </div>
 
-        <Button onClick={handleRunAudit} className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-lg">
+        <Button onClick={handleRunAudit} className="bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl shadow-lg">
           <Sparkles className="w-4 h-4 mr-1.5" /> Run Compliance Audit
         </Button>
       </div>
@@ -50,13 +50,13 @@ export function ComplianceGovernanceDashboard() {
             <div className="space-y-3">
               <div className="flex items-start justify-between">
                 <div>
-                  <span className="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950">
+                  <span className="font-mono text-xs font-bold text-rose-600 dark:text-rose-400 px-2 py-0.5 rounded bg-rose-50 dark:bg-rose-950">
                     Score: {fw.complianceScorePercent}%
                   </span>
                   <h3 className="font-bold text-slate-900 dark:text-white text-base mt-1">{fw.frameworkName}</h3>
                   <p className="text-xs text-slate-500">Data Residency: {fw.dataResidencyRegion}</p>
                 </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 font-bold text-[10px]">
+                <span className="px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 font-bold text-[10px]">
                   {fw.status}
                 </span>
               </div>

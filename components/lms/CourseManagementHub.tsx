@@ -150,11 +150,11 @@ export function CourseManagementHub() {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
-        <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(circle,rgba(101,245,154,0.06)_0%,transparent_70%)] pointer-events-none" />
+      <div className="relative overflow-hidden rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-6 sm:p-8">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-[radial-gradient(circle,rgba(255, 77, 109,0.06)_0%,transparent_70%)] pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] text-[#65F59A] text-[10px] font-mono font-bold uppercase tracking-wider border border-[rgba(101,245,154,0.2)]">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] text-[10px] font-mono font-bold uppercase tracking-wider border border-[rgba(255, 77, 109,0.2)]">
               <Sparkles className="w-3.5 h-3.5" />
               Enterprise LMS Course Builder
             </div>
@@ -168,7 +168,7 @@ export function CourseManagementHub() {
 
           <Button
             onClick={() => setIsCreateModalOpen(true)}
-            className="h-10 px-5 rounded-[4px] bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_16px_rgba(101,245,154,0.2)] shrink-0"
+            className="h-10 px-5 rounded-[4px] bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_16px_rgba(255, 77, 109,0.2)] shrink-0"
           >
             <Plus className="w-4 h-4 mr-1.5" />
             Create New Course
@@ -177,14 +177,14 @@ export function CourseManagementHub() {
       </div>
 
       {/* Filter & Controls Bar */}
-      <div className="bg-[#0C1210] p-4 rounded-[6px] border border-[rgba(160,190,170,0.14)] flex flex-col md:flex-row items-center justify-between gap-4">
+      <div className="bg-[#140C0E] p-4 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="relative w-full md:w-80">
           <Search className="absolute left-3.5 top-3 h-4 w-4 text-[#69786F]" />
           <Input
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search by course title or code..."
-            className="pl-10 h-10 text-xs rounded-[4px] bg-[#111B17] border-[rgba(160,190,170,0.14)] text-[#F2F7F3] placeholder:text-[#69786F] font-mono"
+            className="pl-10 h-10 text-xs rounded-[4px] bg-[#1D1013] border-[rgba(240, 160, 180,0.14)] text-[#F2F7F3] placeholder:text-[#69786F] font-mono"
           />
         </div>
 
@@ -195,8 +195,8 @@ export function CourseManagementHub() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 py-1.5 rounded-[3px] text-xs font-mono uppercase tracking-wider transition-all ${
                 selectedCategory === cat
-                  ? "bg-[#65F59A] text-[#070B0A] font-bold"
-                  : "bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(160,190,170,0.12)]"
+                  ? "bg-[#FF4D6D] text-[#0B0708] font-bold"
+                  : "bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(240, 160, 180,0.12)]"
               }`}
             >
               {cat}
@@ -210,14 +210,14 @@ export function CourseManagementHub() {
         {filteredCourses.map((course) => (
           <div
             key={course.id}
-            className="bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] hover:border-[rgba(160,190,170,0.28)] transition-all flex flex-col justify-between p-5 space-y-4"
+            className="bg-[#140C0E] rounded-[6px] border border-[rgba(240, 160, 180,0.14)] hover:border-[rgba(240, 160, 180,0.28)] transition-all flex flex-col justify-between p-5 space-y-4"
           >
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="font-mono text-xs font-bold text-[#65F59A] px-2 py-0.5 rounded-[2px] bg-[rgba(101,245,154,0.08)] border border-[rgba(101,245,154,0.2)]">
+                <span className="font-mono text-xs font-bold text-[#FF4D6D] px-2 py-0.5 rounded-[2px] bg-[rgba(255, 77, 109,0.08)] border border-[rgba(255, 77, 109,0.2)]">
                   {course.code}
                 </span>
-                <span className="px-2 py-0.5 rounded-[2px] bg-[rgba(56,217,176,0.1)] text-[#38D9B0] text-[10px] font-mono font-bold uppercase border border-[rgba(56,217,176,0.2)]">
+                <span className="px-2 py-0.5 rounded-[2px] bg-[rgba(255, 117, 143,0.1)] text-[#FF758F] text-[10px] font-mono font-bold uppercase border border-[rgba(255, 117, 143,0.2)]">
                   {course.level}
                 </span>
               </div>
@@ -226,7 +226,7 @@ export function CourseManagementHub() {
               <p className="text-xs text-[#A0AEA5] line-clamp-2 leading-relaxed">{course.subtitle}</p>
             </div>
 
-            <div className="grid grid-cols-3 gap-2 p-3 bg-[#111B17] rounded-[4px] border border-[rgba(160,190,170,0.1)] text-center text-xs font-mono">
+            <div className="grid grid-cols-3 gap-2 p-3 bg-[#1D1013] rounded-[4px] border border-[rgba(240, 160, 180,0.1)] text-center text-xs font-mono">
               <div>
                 <p className="text-[#69786F] text-[10px] uppercase font-semibold">Enrolled</p>
                 <p className="font-extrabold text-[#F2F7F3] mt-0.5">{course.enrolledStudents}</p>
@@ -243,7 +243,7 @@ export function CourseManagementHub() {
               </div>
             </div>
 
-            <div className="flex items-center justify-between text-xs text-[#69786F] pt-2 border-t border-[rgba(160,190,170,0.1)] font-mono text-[11px]">
+            <div className="flex items-center justify-between text-xs text-[#69786F] pt-2 border-t border-[rgba(240, 160, 180,0.1)] font-mono text-[11px]">
               <span>By {course.instructorName}</span>
               <span className="text-[#A0AEA5]">{course.durationHours} Hours</span>
             </div>
@@ -253,13 +253,13 @@ export function CourseManagementHub() {
                 onClick={() => handleDuplicateCourse(course)}
                 variant="ghost"
                 size="sm"
-                className="h-8 text-xs rounded-[4px] text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17] font-mono"
+                className="h-8 text-xs rounded-[4px] text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#1D1013] font-mono"
               >
                 <Copy className="w-3.5 h-3.5 mr-1" /> Duplicate
               </Button>
               <Button
                 size="sm"
-                className="h-8 bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider rounded-[4px]"
+                className="h-8 bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 font-mono text-xs uppercase font-bold tracking-wider rounded-[4px]"
               >
                 <BookOpen className="w-3.5 h-3.5 mr-1" /> Open Syllabus
               </Button>
@@ -271,10 +271,10 @@ export function CourseManagementHub() {
       {/* Modal: Create Course */}
       {isCreateModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#0C1210] rounded-[8px] p-6 max-w-md w-full shadow-2xl border border-[rgba(160,190,170,0.2)] space-y-4">
-            <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
+          <div className="bg-[#140C0E] rounded-[8px] p-6 max-w-md w-full shadow-2xl border border-[rgba(240, 160, 180,0.2)] space-y-4">
+            <div className="flex items-center justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-3">
               <h3 className="font-display font-bold uppercase tracking-tight text-[#F2F7F3] flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-[#65F59A]" /> Create LMS Course
+                <BookOpen className="w-4 h-4 text-[#FF4D6D]" /> Create LMS Course
               </h3>
               <button
                 onClick={() => setIsCreateModalOpen(false)}
@@ -292,7 +292,7 @@ export function CourseManagementHub() {
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
                   placeholder="e.g. Advanced Quantum Algorithms & Qiskit"
-                  className="rounded-[4px] bg-[#111B17] border-[rgba(160,190,170,0.14)] text-[#F2F7F3] text-xs font-mono"
+                  className="rounded-[4px] bg-[#1D1013] border-[rgba(240, 160, 180,0.14)] text-[#F2F7F3] text-xs font-mono"
                   required
                 />
               </div>
@@ -305,7 +305,7 @@ export function CourseManagementHub() {
                   value={newSubtitle}
                   onChange={(e) => setNewSubtitle(e.target.value)}
                   placeholder="e.g. Hands-on quantum circuit design"
-                  className="rounded-[4px] bg-[#111B17] border-[rgba(160,190,170,0.14)] text-[#F2F7F3] text-xs font-mono"
+                  className="rounded-[4px] bg-[#1D1013] border-[rgba(240, 160, 180,0.14)] text-[#F2F7F3] text-xs font-mono"
                 />
               </div>
 
@@ -317,7 +317,7 @@ export function CourseManagementHub() {
                   <select
                     value={newCategory}
                     onChange={(e) => setNewCategory(e.target.value)}
-                    className="w-full bg-[#111B17] border border-[rgba(160,190,170,0.14)] text-[#F2F7F3] rounded-[4px] px-3 py-2 text-xs font-mono"
+                    className="w-full bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] text-[#F2F7F3] rounded-[4px] px-3 py-2 text-xs font-mono"
                   >
                     <option value="Computer Science">Computer Science</option>
                     <option value="STEM">STEM</option>
@@ -332,7 +332,7 @@ export function CourseManagementHub() {
                   <select
                     value={newLevel}
                     onChange={(e) => setNewLevel(e.target.value as CourseLevel)}
-                    className="w-full bg-[#111B17] border border-[rgba(160,190,170,0.14)] text-[#F2F7F3] rounded-[4px] px-3 py-2 text-xs font-mono"
+                    className="w-full bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] text-[#F2F7F3] rounded-[4px] px-3 py-2 text-xs font-mono"
                   >
                     <option value="Beginner">Beginner</option>
                     <option value="Intermediate">Intermediate</option>
@@ -342,7 +342,7 @@ export function CourseManagementHub() {
                 </div>
               </div>
 
-              <div className="flex justify-end gap-2 pt-3 border-t border-[rgba(160,190,170,0.1)]">
+              <div className="flex justify-end gap-2 pt-3 border-t border-[rgba(240, 160, 180,0.1)]">
                 <Button
                   type="button"
                   variant="ghost"
@@ -353,7 +353,7 @@ export function CourseManagementHub() {
                 </Button>
                 <Button
                   type="submit"
-                  className="bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider rounded-[4px]"
+                  className="bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 font-mono text-xs uppercase font-bold tracking-wider rounded-[4px]"
                 >
                   Publish Course
                 </Button>

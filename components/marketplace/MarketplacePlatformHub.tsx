@@ -109,7 +109,7 @@ export function MarketplacePlatformHub() {
                   <h3 className="font-bold text-slate-900 dark:text-white text-base mt-1">{p.title}</h3>
                   <p className="text-xs text-slate-500">By {p.creatorName}</p>
                 </div>
-                <span className="font-mono text-xl font-black text-emerald-600 dark:text-emerald-400">
+                <span className="font-mono text-xl font-black text-rose-600 dark:text-rose-400">
                   ${p.priceUSD}
                 </span>
               </div>

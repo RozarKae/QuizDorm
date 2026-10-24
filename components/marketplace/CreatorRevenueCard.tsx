@@ -24,9 +24,9 @@ export function CreatorRevenueCard({ totalSalesUSD }: CreatorRevenueCardProps) {
     <Card className="p-6 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-3xl shadow-sm space-y-4">
       <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-3">
         <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
-          <DollarSign className="w-5 h-5 text-emerald-500 mr-2" /> Creator Earnings & Revenue Share (80/20)
+          <DollarSign className="w-5 h-5 text-rose-500 mr-2" /> Creator Earnings & Revenue Share (80/20)
         </h3>
-        <Button onClick={handleRequestPayout} className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-2xl">
+        <Button onClick={handleRequestPayout} className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-2xl">
           <ArrowUpRight className="w-4 h-4 mr-1" /> Request Earnings Payout
         </Button>
       </div>
@@ -39,7 +39,7 @@ export function CreatorRevenueCard({ totalSalesUSD }: CreatorRevenueCardProps) {
 
         <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
           <span className="text-gray-400 text-[10px] block font-sans">Creator Net Share (80%)</span>
-          <span className="font-bold text-emerald-600 text-lg">${calc.netEarningsUSD.toLocaleString()}</span>
+          <span className="font-bold text-rose-600 text-lg">${calc.netEarningsUSD.toLocaleString()}</span>
         </div>
 
         <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
@@ -53,8 +53,8 @@ export function CreatorRevenueCard({ totalSalesUSD }: CreatorRevenueCardProps) {
         {payouts.map((p) => (
           <div key={p.id} className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 flex items-center justify-between font-mono">
             <span>Payout #${p.id}</span>
-            <span className="font-bold text-emerald-600">${p.amountUSD.toLocaleString()} USD</span>
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] bg-emerald-100 text-emerald-800 font-bold uppercase">{p.status}</span>
+            <span className="font-bold text-rose-600">${p.amountUSD.toLocaleString()} USD</span>
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] bg-rose-100 text-rose-800 font-bold uppercase">{p.status}</span>
           </div>
         ))}
       </div>

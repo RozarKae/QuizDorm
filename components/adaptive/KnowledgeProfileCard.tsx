@@ -19,7 +19,7 @@ export function KnowledgeProfileCard({ profile }: KnowledgeProfileCardProps) {
           </div>
           <div>
             <h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center">
-              {profile.studentName} <span className="ml-2 text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-semibold">Mastery: Level 4</span>
+              {profile.studentName} <span className="ml-2 text-xs px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 font-semibold">Mastery: Level 4</span>
             </h3>
             <p className="text-xs text-gray-500">Continuous Adaptive Learning Profile • Last updated today</p>
           </div>
@@ -48,9 +48,9 @@ export function KnowledgeProfileCard({ profile }: KnowledgeProfileCardProps) {
 
         <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
           <span className="text-gray-500 flex items-center font-medium">
-            <Zap className="w-3.5 h-3.5 text-emerald-500 mr-1" /> Accuracy Rate
+            <Zap className="w-3.5 h-3.5 text-rose-500 mr-1" /> Accuracy Rate
           </span>
-          <div className="text-xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono">
+          <div className="text-xl font-extrabold text-rose-600 dark:text-rose-400 font-mono">
             {profile.overallAccuracyPercent}%
           </div>
         </div>

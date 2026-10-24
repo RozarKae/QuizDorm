@@ -28,7 +28,7 @@ const tabsListVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-[#111B17] border border-[rgba(160,190,170,0.14)]",
+        default: "bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)]",
         line: "gap-1 bg-transparent",
       },
     },
@@ -58,9 +58,9 @@ function TabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props) {
     <TabsPrimitive.Tab
       data-slot="tabs-trigger"
       className={cn(
-        "relative inline-flex h-[calc(100%-2px)] flex-1 items-center justify-center gap-1.5 rounded-[3px] border border-transparent px-2.5 py-1 text-xs font-mono font-medium whitespace-nowrap text-[#A0AEA5] transition-all group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-[#F2F7F3] hover:bg-[#17251E] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#65F59A] disabled:pointer-events-none disabled:opacity-40",
-        "data-active:bg-[#17251E] data-active:text-[#65F59A] data-active:border-[rgba(101,245,154,0.25)] data-active:font-semibold data-active:shadow-xs",
-        "after:absolute after:bg-[#65F59A] after:opacity-0 after:transition-opacity group-data-horizontal/tabs:after:inset-x-0 group-data-horizontal/tabs:after:bottom-[-2px] group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-0 group-data-vertical/tabs:after:-right-1 group-data-vertical/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-active:after:opacity-100",
+        "relative inline-flex h-[calc(100%-2px)] flex-1 items-center justify-center gap-1.5 rounded-[3px] border border-transparent px-2.5 py-1 text-xs font-mono font-medium whitespace-nowrap text-[#A0AEA5] transition-all group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start hover:text-[#F2F7F3] hover:bg-[#2A141A] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#FF4D6D] disabled:pointer-events-none disabled:opacity-40",
+        "data-active:bg-[#2A141A] data-active:text-[#FF4D6D] data-active:border-[rgba(255, 77, 109,0.25)] data-active:font-semibold data-active:shadow-xs",
+        "after:absolute after:bg-[#FF4D6D] after:opacity-0 after:transition-opacity group-data-horizontal/tabs:after:inset-x-0 group-data-horizontal/tabs:after:bottom-[-2px] group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:inset-y-0 group-data-vertical/tabs:after:-right-1 group-data-vertical/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-active:after:opacity-100",
         className
       )}
       {...props}

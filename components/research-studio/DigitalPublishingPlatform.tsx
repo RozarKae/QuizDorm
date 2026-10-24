@@ -74,7 +74,7 @@ export function DigitalPublishingPlatform() {
                   <h3 className="font-bold text-slate-900 dark:text-white text-base mt-1">{p.publicationTitle}</h3>
                   <p className="text-xs text-slate-500">{p.publisher}</p>
                 </div>
-                <span className={`px-2.5 py-0.5 rounded-full font-bold text-[10px] ${p.status === "Published" ? "bg-emerald-500/10 text-emerald-600" : "bg-amber-500/10 text-amber-600"}`}>
+                <span className={`px-2.5 py-0.5 rounded-full font-bold text-[10px] ${p.status === "Published" ? "bg-rose-500/10 text-rose-600" : "bg-amber-500/10 text-amber-600"}`}>
                   {p.status}
                 </span>
               </div>
@@ -94,7 +94,7 @@ export function DigitalPublishingPlatform() {
             <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
               <span className="text-slate-400 font-mono text-[10px]">Format: {p.format}</span>
               {p.status === "Scheduled" ? (
-                <Button onClick={() => handlePublishRelease(p.id)} size="sm" className="bg-emerald-600 text-white text-xs rounded-xl font-bold">
+                <Button onClick={() => handlePublishRelease(p.id)} size="sm" className="bg-rose-600 text-white text-xs rounded-xl font-bold">
                   Release Catalog
                 </Button>
               ) : (

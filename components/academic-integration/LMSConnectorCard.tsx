@@ -40,7 +40,7 @@ export function LMSConnectorCard() {
               <span className="text-gray-900 dark:text-white text-sm flex items-center">
                 <BookOpen className="w-4 h-4 text-indigo-500 mr-1.5" /> {c.providerName}
               </span>
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 font-bold uppercase">
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 font-bold uppercase">
                 {c.status}
               </span>
             </div>

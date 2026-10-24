@@ -25,8 +25,8 @@ export function MasteryHeatmap({ topics }: MasteryHeatmapProps) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {topics.map((t) => {
-          let badgeColor = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300";
-          let barColor = "bg-emerald-500";
+          let badgeColor = "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300";
+          let barColor = "bg-rose-500";
 
           if (t.masteryPercent < 70) {
             badgeColor = "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300";

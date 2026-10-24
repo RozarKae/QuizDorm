@@ -49,7 +49,7 @@ export function AIResourceRecommendationEngine() {
                 <span className="px-2 py-0.5 rounded bg-purple-500/10 text-purple-600 dark:text-purple-400 text-[10px] font-bold uppercase">
                   {res.type}
                 </span>
-                <span className="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                <span className="font-mono text-xs font-bold text-rose-600 dark:text-rose-400">
                   {res.relevanceScore}% AI Match
                 </span>
               </div>

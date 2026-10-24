@@ -41,7 +41,7 @@ export default function IntegrationsMarketplacePage() {
           <p className="text-xs text-gray-500">
             Automatically backup question bank exports, student submission PDFs, and certificates to Google Drive or OneDrive.
           </p>
-          <span className="text-xs font-mono font-bold text-emerald-600 block">
+          <span className="text-xs font-mono font-bold text-rose-600 block">
             Google Drive & OneDrive Connected
           </span>
         </Card>
@@ -54,7 +54,7 @@ export default function IntegrationsMarketplacePage() {
           <p className="text-xs text-gray-500">
             Sync quiz due dates, live competitions, and review sessions to Google Calendar and Microsoft Outlook Calendar.
           </p>
-          <span className="text-xs font-mono font-bold text-emerald-600 block">
+          <span className="text-xs font-mono font-bold text-rose-600 block">
             Google Calendar & Outlook Calendar Synced
           </span>
         </Card>

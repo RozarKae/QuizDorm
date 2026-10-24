@@ -15,7 +15,7 @@ export function OfflineStorageAnalyzerCard() {
         <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
           <HardDrive className="w-5 h-5 text-indigo-600 mr-2" /> Encrypted Storage Quota & Cache Analyzer
         </h3>
-        <span className="text-xs font-mono font-bold text-emerald-600">
+        <span className="text-xs font-mono font-bold text-rose-600">
           {stats.usedMB} MB / {stats.maxQuotaMB} MB Quota
         </span>
       </div>
@@ -36,7 +36,7 @@ export function OfflineStorageAnalyzerCard() {
           </div>
           <div className="p-2 rounded-xl bg-gray-50 dark:bg-gray-900">
             <span className="text-gray-400 block text-[9px] font-sans">Certificates</span>
-            <span className="font-bold text-emerald-600">14.2 MB</span>
+            <span className="font-bold text-rose-600">14.2 MB</span>
           </div>
         </div>
       </div>

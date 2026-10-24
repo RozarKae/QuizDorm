@@ -9,7 +9,7 @@ import React, { useEffect, useRef, useState } from "react";
  * - Neon Orange (#FF7700)
  * - Neon Red    (#FF0055)
  * - Neon Blue   (#00F0FF)
- * - Neon Green  (#39FF14)
+ * - Neon Green  (#FF4D6D)
  * Tuned with feather-soft diffusion (blur: 40px) and minimal opacity (2% - 4%)
  * so text and UI remain crystal clear without visual clutter.
  */
@@ -109,7 +109,7 @@ export default function MouseGlow() {
               rgba(255, 119, 0, 0.03) 22%,
               rgba(255, 0, 85, 0.025) 42%,
               rgba(0, 240, 255, 0.03) 62%,
-              rgba(57, 255, 20, 0.02) 82%,
+              rgba(255, 77, 109, 0.02) 82%,
               transparent 100%
             )`,
             filter: "blur(36px)",
@@ -124,7 +124,7 @@ export default function MouseGlow() {
               circle at center,
               rgba(255, 255, 255, 0.06) 0%,
               rgba(0, 240, 255, 0.035) 45%,
-              rgba(57, 255, 20, 0.02) 75%,
+              rgba(255, 77, 109, 0.02) 75%,
               transparent 100%
             )`,
             filter: "blur(16px)",

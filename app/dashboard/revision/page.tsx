@@ -76,9 +76,9 @@ export default function RevisionCenterPage() {
 
         <Card className="p-4 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm space-y-1">
           <span className="text-[11px] font-semibold text-gray-500 flex items-center">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 mr-1" /> Memory Retention Rate
+            <CheckCircle2 className="w-3.5 h-3.5 text-rose-500 mr-1" /> Memory Retention Rate
           </span>
-          <div className="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono">
+          <div className="text-2xl font-extrabold text-rose-600 dark:text-rose-400 font-mono">
             96.4%
           </div>
         </Card>

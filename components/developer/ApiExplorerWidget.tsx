@@ -29,7 +29,7 @@ export function ApiExplorerWidget() {
         <h3 className="text-base font-bold flex items-center">
           <Code2 className="w-5 h-5 text-indigo-400 mr-2" /> Interactive REST API Explorer (Swagger Console)
         </h3>
-        <span className="text-xs font-mono text-emerald-400 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/10">
+        <span className="text-xs font-mono text-rose-400 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/10">
           OpenAPI 3.0 Standard
         </span>
       </div>
@@ -54,7 +54,7 @@ export function ApiExplorerWidget() {
 
       {responseJson && (
         <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
-          <div className="flex justify-between items-center text-[10px] font-mono text-emerald-400 border-b border-slate-800 pb-2">
+          <div className="flex justify-between items-center text-[10px] font-mono text-rose-400 border-b border-slate-800 pb-2">
             <span>HTTP/1.1 200 OK</span>
             <span>Content-Type: application/json</span>
           </div>

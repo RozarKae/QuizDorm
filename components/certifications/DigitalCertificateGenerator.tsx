@@ -87,7 +87,7 @@ export function DigitalCertificateGenerator() {
         {/* Signatures & QR Code Footer */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-slate-800 text-xs relative z-10 items-end">
           <div className="text-center sm:text-left space-y-1">
-            <span className="font-mono text-[10px] text-emerald-400 block font-bold">DIGITALLY SIGNED</span>
+            <span className="font-mono text-[10px] text-rose-400 block font-bold">DIGITALLY SIGNED</span>
             <p className="font-mono text-[9px] text-slate-400 truncate">{cert.digitalSignatureHash}</p>
             <p className="text-slate-400 text-[10px]">Issue Date: {cert.issueDate}</p>
           </div>

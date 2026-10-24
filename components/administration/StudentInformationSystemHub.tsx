@@ -159,7 +159,7 @@ export function StudentInformationSystemHub() {
                 <td className="p-3 text-slate-500">{st.parentName}</td>
                 <td className="p-3 font-mono font-semibold text-rose-600">{st.bloodGroup}</td>
                 <td className="p-3">
-                  <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 font-bold text-[10px]">
+                  <span className="px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-600 font-bold text-[10px]">
                     {st.status}
                   </span>
                 </td>

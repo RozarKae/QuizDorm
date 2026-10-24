@@ -24,13 +24,13 @@ export function QuestionCard({ question, isSelected, onSelectToggle, onDelete }:
     }
     if (diff === "Medium") {
       return (
-        <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[3px] font-bold bg-[#111B17] text-[#38D9B0] border border-[rgba(56,217,176,0.3)]">
+        <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[3px] font-bold bg-[#1D1013] text-[#FF758F] border border-[rgba(255, 117, 143,0.3)]">
           Medium
         </span>
       );
     }
     return (
-      <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[3px] font-bold bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)]">
+      <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[3px] font-bold bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)]">
         Easy
       </span>
     );
@@ -38,10 +38,10 @@ export function QuestionCard({ question, isSelected, onSelectToggle, onDelete }:
 
   return (
     <div
-      className={`bg-[#0C1210] p-5 rounded-[6px] border transition-all shadow-sm flex flex-col justify-between hover:-translate-y-0.5 hover:shadow-[0_12px_25px_rgba(0,0,0,0.6),0_0_15px_rgba(101,245,154,0.1)] ${
+      className={`bg-[#140C0E] p-5 rounded-[6px] border transition-all shadow-sm flex flex-col justify-between hover:-translate-y-0.5 hover:shadow-[0_12px_25px_rgba(0,0,0,0.6),0_0_15px_rgba(255, 77, 109,0.1)] ${
         isSelected
-          ? "border-[#65F59A] ring-1 ring-[#65F59A] bg-[rgba(101,245,154,0.06)]"
-          : "border-[rgba(160,190,170,0.14)] hover:border-[#65F59A]/40"
+          ? "border-[#FF4D6D] ring-1 ring-[#FF4D6D] bg-[rgba(255, 77, 109,0.06)]"
+          : "border-[rgba(240, 160, 180,0.14)] hover:border-[#FF4D6D]/40"
       }`}
     >
       <div>
@@ -52,7 +52,7 @@ export function QuestionCard({ question, isSelected, onSelectToggle, onDelete }:
                 type="checkbox"
                 checked={isSelected}
                 onChange={() => onSelectToggle(question.id)}
-                className="w-3.5 h-3.5 accent-[#65F59A] border-[rgba(160,190,170,0.2)] rounded-[2px] cursor-pointer mt-0.5"
+                className="w-3.5 h-3.5 accent-[#FF4D6D] border-[rgba(240, 160, 180,0.2)] rounded-[2px] cursor-pointer mt-0.5"
               />
             )}
             <QuestionTypeBadge type={question.type} />
@@ -66,7 +66,7 @@ export function QuestionCard({ question, isSelected, onSelectToggle, onDelete }:
         </h3>
 
         <div className="flex flex-wrap items-center gap-1.5 font-mono text-[11px] text-[#A0AEA5] mb-3">
-          <span className="font-semibold text-[#65F59A]">{question.topic || question.subject}</span>
+          <span className="font-semibold text-[#FF4D6D]">{question.topic || question.subject}</span>
           <span className="text-[#69786F]">/</span>
           <span>{question.subject}</span>
           {(question.gradeLevel || question.grade) && (
@@ -87,12 +87,12 @@ export function QuestionCard({ question, isSelected, onSelectToggle, onDelete }:
                 key={opt.id}
                 className={`p-2 rounded-[3px] border flex items-center justify-between ${
                   opt.isCorrect
-                    ? "border-[#65F59A]/40 bg-[rgba(101,245,154,0.08)] text-[#F2F7F3] font-semibold"
-                    : "border-[rgba(160,190,170,0.12)] bg-[#111B17] text-[#A0AEA5]"
+                    ? "border-[#FF4D6D]/40 bg-[rgba(255, 77, 109,0.08)] text-[#F2F7F3] font-semibold"
+                    : "border-[rgba(240, 160, 180,0.12)] bg-[#1D1013] text-[#A0AEA5]"
                 }`}
               >
                 <span className="truncate">{opt.text}</span>
-                {opt.isCorrect && <CheckCircle2 className="w-3.5 h-3.5 text-[#65F59A] shrink-0 ml-1" />}
+                {opt.isCorrect && <CheckCircle2 className="w-3.5 h-3.5 text-[#FF4D6D] shrink-0 ml-1" />}
               </div>
             ))}
             {question.options.length > 3 && (

@@ -17,7 +17,7 @@ export function MobilePreviewFrame() {
       <div className="px-6 py-1 flex items-center justify-between text-[10px] text-slate-400 font-mono shrink-0">
         <span>9:41 AM</span>
         <div className="flex items-center space-x-1">
-          <Wifi className="w-3 h-3 text-emerald-400" />
+          <Wifi className="w-3 h-3 text-rose-400" />
           <Battery className="w-3.5 h-3.5 text-slate-300" />
         </div>
       </div>
@@ -26,7 +26,7 @@ export function MobilePreviewFrame() {
       <div className="flex-1 p-4 overflow-y-auto space-y-4 text-xs">
         <div className="flex items-center justify-between">
           <Logo />
-          <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          <span className="text-[9px] font-mono font-bold px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30">
             OFFLINE READY
           </span>
         </div>
@@ -43,7 +43,7 @@ export function MobilePreviewFrame() {
         <div className="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
           <div className="flex items-center justify-between font-bold">
             <span className="text-white text-xs">Calculus & Algebra Practice</span>
-            <span className="text-[10px] text-emerald-400">150 Qs Offline</span>
+            <span className="text-[10px] text-rose-400">150 Qs Offline</span>
           </div>
           <p className="text-[10px] text-slate-400">Cached in local IndexedDB for zero latency quiz taking.</p>
           <Button size="sm" className="w-full text-xs h-7 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold">

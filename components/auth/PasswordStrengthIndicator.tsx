@@ -60,11 +60,11 @@ export default function PasswordStrengthIndicator({ password = "", className = "
       case 2:
         return "bg-amber-400";
       case 3:
-        return "bg-[#38D9B0]";
+        return "bg-[#FF758F]";
       case 4:
-        return "bg-[#65F59A]";
+        return "bg-[#FF4D6D]";
       default:
-        return "bg-[#17251E]";
+        return "bg-[#2A141A]";
     }
   };
 
@@ -75,9 +75,9 @@ export default function PasswordStrengthIndicator({ password = "", className = "
       case 2:
         return "text-amber-400";
       case 3:
-        return "text-[#38D9B0]";
+        return "text-[#FF758F]";
       case 4:
-        return "text-[#65F59A]";
+        return "text-[#FF4D6D]";
       default:
         return "text-[#A0AEA5]";
     }
@@ -99,12 +99,12 @@ export default function PasswordStrengthIndicator({ password = "", className = "
           <span className="text-[#A0AEA5] font-mono text-[11px]">Password Strength:</span>
           <span className={`font-mono text-[11px] font-bold ${getLabelColor(result.score)}`}>{result.label}</span>
         </div>
-        <div className="grid grid-cols-4 gap-1.5 h-1.5 w-full bg-[#111B17] rounded-full overflow-hidden border border-[rgba(160,190,170,0.12)]">
+        <div className="grid grid-cols-4 gap-1.5 h-1.5 w-full bg-[#1D1013] rounded-full overflow-hidden border border-[rgba(240, 160, 180,0.12)]">
           {[1, 2, 3, 4].map((step) => (
             <div
               key={step}
               className={`h-full transition-all duration-300 ${
-                step <= result.score ? getBarColor(result.score) : "bg-[#17251E]"
+                step <= result.score ? getBarColor(result.score) : "bg-[#2A141A]"
               }`}
             />
           ))}
@@ -118,12 +118,12 @@ export default function PasswordStrengthIndicator({ password = "", className = "
             key={idx}
             className={`flex items-center space-x-1.5 font-medium ${
               item.valid
-                ? "text-emerald-400"
+                ? "text-rose-400"
                 : "text-zinc-400"
             }`}
           >
             {item.valid ? (
-              <Check className="w-3 h-3 text-emerald-400 shrink-0" />
+              <Check className="w-3 h-3 text-rose-400 shrink-0" />
             ) : (
               <X className="w-3 h-3 text-zinc-600 shrink-0" />
             )}

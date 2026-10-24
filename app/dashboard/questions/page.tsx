@@ -208,9 +208,9 @@ export default function QuestionBankPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border">
         <div>
           <h1 className="text-2xl font-bold font-display text-[#F2F7F3] flex items-center">
-            <Database className="w-5 h-5 text-[#65F59A] mr-2" /> Curriculum Knowledge Matrix
+            <Database className="w-5 h-5 text-[#FF4D6D] mr-2" /> Curriculum Knowledge Matrix
             {isLoaded && (
-              <span className="ml-3 font-mono text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] shadow-[0_0_8px_rgba(101,245,154,0.2)]">
+              <span className="ml-3 font-mono text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] shadow-[0_0_8px_rgba(255, 77, 109,0.2)]">
                 {questions.length} Items // Verified
               </span>
             )}
@@ -224,38 +224,38 @@ export default function QuestionBankPage() {
           {addPermission.allowed ? (
             <>
               <Link href="/dashboard/ocr">
-                <Button size="sm" variant="outline" className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] hover:bg-[#17251E] h-8 transition-colors">
-                  <ScanText className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> AI OCR Digitizer
+                <Button size="sm" variant="outline" className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[4px] bg-[#1D1013] text-[#F2F7F3] hover:text-[#FF4D6D] hover:bg-[#2A141A] h-8 transition-colors">
+                  <ScanText className="w-3.5 h-3.5 mr-1.5 text-[#FF758F]" /> AI OCR Digitizer
                 </Button>
               </Link>
-              <Button variant="outline" size="sm" onClick={() => setCategoryOpen(true)} className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] hover:bg-[#17251E] h-8 transition-colors">
-                <BookOpen className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" /> Taxonomy
+              <Button variant="outline" size="sm" onClick={() => setCategoryOpen(true)} className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[4px] bg-[#1D1013] text-[#F2F7F3] hover:text-[#FF4D6D] hover:bg-[#2A141A] h-8 transition-colors">
+                <BookOpen className="w-3.5 h-3.5 mr-1.5 text-[#FF4D6D]" /> Taxonomy
               </Button>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setImportOpen(true)}
-                className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] hover:bg-[#17251E] h-8 transition-colors"
+                className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[4px] bg-[#1D1013] text-[#F2F7F3] hover:text-[#FF4D6D] hover:bg-[#2A141A] h-8 transition-colors"
                 title="Import questions from CSV, Excel, or JSON into Question Bank"
               >
-                <Upload className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> Import
+                <Upload className="w-3.5 h-3.5 mr-1.5 text-[#FF758F]" /> Import
               </Button>
-              <Button variant="outline" size="sm" onClick={() => setExportOpen(true)} className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] hover:bg-[#17251E] h-8 transition-colors">
-                <Download className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" /> Export
+              <Button variant="outline" size="sm" onClick={() => setExportOpen(true)} className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[4px] bg-[#1D1013] text-[#F2F7F3] hover:text-[#FF4D6D] hover:bg-[#2A141A] h-8 transition-colors">
+                <Download className="w-3.5 h-3.5 mr-1.5 text-[#FF4D6D]" /> Export
               </Button>
               <Link href="/dashboard/questions/new">
-                <Button size="sm" className="bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono text-xs font-bold rounded-[4px] h-8 shadow-[0_0_12px_rgba(101,245,154,0.25)] transition-all">
+                <Button size="sm" className="bg-[#FF4D6D] hover:bg-[#FF3366] text-[#0B0708] font-mono text-xs font-bold rounded-[4px] h-8 shadow-[0_0_12px_rgba(255, 77, 109,0.25)] transition-all">
                   <Plus className="w-3.5 h-3.5 mr-1.5" /> Add Question
                 </Button>
               </Link>
             </>
           ) : (
             <>
-              <Button variant="outline" size="sm" onClick={() => setCategoryOpen(true)} className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] hover:bg-[#17251E] h-8 transition-colors">
-                <BookOpen className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" /> Taxonomy
+              <Button variant="outline" size="sm" onClick={() => setCategoryOpen(true)} className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[4px] bg-[#1D1013] text-[#F2F7F3] hover:text-[#FF4D6D] hover:bg-[#2A141A] h-8 transition-colors">
+                <BookOpen className="w-3.5 h-3.5 mr-1.5 text-[#FF4D6D]" /> Taxonomy
               </Button>
-              <Button variant="outline" size="sm" onClick={() => setExportOpen(true)} className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] hover:bg-[#17251E] h-8 transition-colors">
-                <Download className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" /> Export
+              <Button variant="outline" size="sm" onClick={() => setExportOpen(true)} className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[4px] bg-[#1D1013] text-[#F2F7F3] hover:text-[#FF4D6D] hover:bg-[#2A141A] h-8 transition-colors">
+                <Download className="w-3.5 h-3.5 mr-1.5 text-[#FF4D6D]" /> Export
               </Button>
               <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-1 rounded-[3px] bg-[rgba(248,113,113,0.12)] text-[#F87171] border border-[rgba(248,113,113,0.3)]">
                 Authoring Restricted
@@ -267,7 +267,7 @@ export default function QuestionBankPage() {
 
       {/* Ground Rule Notice when question addition is restricted */}
       {!addPermission.allowed && (
-        <div className="p-3.5 rounded-[4px] bg-[#0C1210] border border-[rgba(248,113,113,0.3)] flex items-center justify-between text-xs font-mono">
+        <div className="p-3.5 rounded-[4px] bg-[#140C0E] border border-[rgba(248,113,113,0.3)] flex items-center justify-between text-xs font-mono">
           <div className="flex items-center space-x-2 text-[#F87171]">
             <span className="w-1.5 h-1.5 rounded-full bg-[#F87171] animate-pulse" />
             <span className="font-bold uppercase">Restricted Mode:</span>

@@ -153,12 +153,12 @@ export default function RegisterPage() {
               name="role"
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="flex h-10 w-full rounded-[3px] border border-[rgba(160,190,170,0.18)] bg-[#111B17] px-3 py-2 text-xs font-mono text-[#F2F7F3] focus-visible:ring-1 focus-visible:ring-[#65F59A] focus-visible:border-[#65F59A] outline-none cursor-pointer"
+              className="flex h-10 w-full rounded-[3px] border border-[rgba(240, 160, 180,0.18)] bg-[#1D1013] px-3 py-2 text-xs font-mono text-[#F2F7F3] focus-visible:ring-1 focus-visible:ring-[#FF4D6D] focus-visible:border-[#FF4D6D] outline-none cursor-pointer"
             >
-              <option value="subscriber" className="bg-[#111B17] text-[#F2F7F3]">Subscriber (Free & Pro Personal Learner)</option>
-              <option value="member" className="bg-[#111B17] text-[#F2F7F3]">Member (Campus & Dorm Student)</option>
-              <option value="handler" className="bg-[#111B17] text-[#F2F7F3]">Handler (Teacher / Course Faculty)</option>
-              <option value="institution" className="bg-[#111B17] text-[#F2F7F3]">Institution (School / University Admin)</option>
+              <option value="subscriber" className="bg-[#1D1013] text-[#F2F7F3]">Subscriber (Free & Pro Personal Learner)</option>
+              <option value="member" className="bg-[#1D1013] text-[#F2F7F3]">Member (Campus & Dorm Student)</option>
+              <option value="handler" className="bg-[#1D1013] text-[#F2F7F3]">Handler (Teacher / Course Faculty)</option>
+              <option value="institution" className="bg-[#1D1013] text-[#F2F7F3]">Institution (School / University Admin)</option>
             </select>
           </div>
 
@@ -200,7 +200,7 @@ export default function RegisterPage() {
                 name="terms"
                 type="checkbox"
                 required
-                className="h-3.5 w-3.5 accent-[#65F59A] text-[#65F59A] focus:ring-[#65F59A] border-[rgba(160,190,170,0.25)] bg-[#111B17] rounded-[2px]"
+                className="h-3.5 w-3.5 accent-[#FF4D6D] text-[#FF4D6D] focus:ring-[#FF4D6D] border-[rgba(240, 160, 180,0.25)] bg-[#1D1013] rounded-[2px]"
               />
             </div>
             <div className="ml-2 text-xs font-mono text-[#A0AEA5] font-medium">
@@ -214,7 +214,7 @@ export default function RegisterPage() {
         <Button
           type="submit"
           disabled={loading}
-          className="w-full bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] mt-5 font-mono text-xs font-bold rounded-[3px] h-10 shadow-[0_0_20px_rgba(101,245,154,0.3)] hover:shadow-[0_0_25px_rgba(101,245,154,0.45)] cursor-pointer transition-all uppercase tracking-wider"
+          className="w-full bg-[#FF4D6D] hover:bg-[#FF3366] text-[#0B0708] mt-5 font-mono text-xs font-bold rounded-[3px] h-10 shadow-[0_0_20px_rgba(255, 77, 109,0.3)] hover:shadow-[0_0_25px_rgba(255, 77, 109,0.45)] cursor-pointer transition-all uppercase tracking-wider"
         >
           {loading ? "Creating Account..." : "Create Account →"}
         </Button>
@@ -222,10 +222,10 @@ export default function RegisterPage() {
 
       <div className="relative my-5">
         <div className="absolute inset-0 flex items-center" aria-hidden="true">
-          <div className="w-full border-t border-[rgba(160,190,170,0.14)]"></div>
+          <div className="w-full border-t border-[rgba(240, 160, 180,0.14)]"></div>
         </div>
         <div className="relative flex justify-center text-[10px] uppercase font-mono tracking-wider">
-          <span className="bg-[#0C1210] px-3 text-[#A0AEA5] font-semibold border border-[rgba(160,190,170,0.12)] rounded-[3px]">
+          <span className="bg-[#140C0E] px-3 text-[#A0AEA5] font-semibold border border-[rgba(240, 160, 180,0.12)] rounded-[3px]">
             Or sign up with
           </span>
         </div>
@@ -237,11 +237,11 @@ export default function RegisterPage() {
           type="button"
           disabled={googleLoading}
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center space-x-2 border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#F2F7F3] hover:bg-[#17251E] hover:border-[#65F59A]/40 h-10 rounded-[3px] text-xs font-mono font-medium transition-all cursor-pointer"
+          className="w-full flex items-center justify-center space-x-2 border-[rgba(240, 160, 180,0.18)] bg-[#1D1013] text-[#F2F7F3] hover:bg-[#2A141A] hover:border-[#FF4D6D]/40 h-10 rounded-[3px] text-xs font-mono font-medium transition-all cursor-pointer"
         >
           {googleLoading ? (
             <span className="flex items-center gap-2">
-              <span className="w-3.5 h-3.5 border-2 border-[#65F59A] border-t-transparent rounded-full animate-spin" />
+              <span className="w-3.5 h-3.5 border-2 border-[#FF4D6D] border-t-transparent rounded-full animate-spin" />
               <span>Connecting Google Auth...</span>
             </span>
           ) : (
@@ -261,7 +261,7 @@ export default function RegisterPage() {
       <AuthFooter>
         <p className="text-xs font-mono text-[#A0AEA5]">
           Already have an account?{" "}
-          <Link href="/auth/login" className="text-[#65F59A] hover:text-[#52E086] hover:underline font-bold">
+          <Link href="/auth/login" className="text-[#FF4D6D] hover:text-[#FF3366] hover:underline font-bold">
             Log In
           </Link>
         </p>

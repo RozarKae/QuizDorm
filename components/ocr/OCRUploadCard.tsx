@@ -185,16 +185,16 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
   };
 
   return (
-    <div className="bg-[#0C1210] border border-[rgba(160,190,170,0.18)] rounded-[8px] p-6 sm:p-7 shadow-lg transition-all space-y-6">
+    <div className="bg-[#140C0E] border border-[rgba(240, 160, 180,0.18)] rounded-[8px] p-6 sm:p-7 shadow-lg transition-all space-y-6">
       {/* 1. Header with Luminous Badges */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[rgba(160,190,170,0.12)]">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[rgba(240, 160, 180,0.12)]">
         <div>
           <div className="flex items-center space-x-2">
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] font-mono text-[10px] font-bold uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
               Document Intelligence Studio
             </span>
-            <span className="font-mono text-[11px] text-[#38D9B0] border border-[rgba(56,217,176,0.2)] px-2 py-0.5 rounded-[3px] bg-[#111B17]">
+            <span className="font-mono text-[11px] text-[#FF758F] border border-[rgba(255, 117, 143,0.2)] px-2 py-0.5 rounded-[3px] bg-[#1D1013]">
               Phase 2.1 Multimodal Ingestion
             </span>
           </div>
@@ -207,14 +207,14 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
         </div>
 
         {/* Global Subject Picker */}
-        <div className="flex items-center space-x-2 bg-[#111B17] border border-[rgba(160,190,170,0.14)] p-2 rounded-[5px] shrink-0">
+        <div className="flex items-center space-x-2 bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] p-2 rounded-[5px] shrink-0">
           <label className="text-xs font-mono font-bold text-[#A0AEA5] flex items-center shrink-0">
-            <BookOpen className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" /> Target Subject:
+            <BookOpen className="w-3.5 h-3.5 mr-1.5 text-[#FF4D6D]" /> Target Subject:
           </label>
           <select
             value={selectedSubject}
             onChange={(e) => setSelectedSubject(e.target.value)}
-            className="text-xs font-mono py-1 px-2.5 rounded-[3px] border border-[rgba(160,190,170,0.2)] bg-[#0C1210] text-[#F2F7F3] focus:border-[#65F59A] focus:outline-none"
+            className="text-xs font-mono py-1 px-2.5 rounded-[3px] border border-[rgba(240, 160, 180,0.2)] bg-[#140C0E] text-[#F2F7F3] focus:border-[#FF4D6D] focus:outline-none"
           >
             <option value="auto">✨ Auto-Detect from Content</option>
             <option value="Physics">Physics</option>
@@ -239,8 +239,8 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
           onClick={() => fileInputRef.current?.click()}
           className={`border-2 border-dashed rounded-[6px] p-8 sm:p-12 text-center transition-all cursor-pointer flex flex-col items-center justify-center space-y-4 group ${
             dragActive
-              ? "border-[#65F59A] bg-[#111B17]/90 scale-[1.01] shadow-[0_0_25px_rgba(101,245,154,0.15)]"
-              : "border-[rgba(160,190,170,0.2)] bg-[#0C1210] hover:border-[#65F59A]/60 hover:bg-[#111B17]/60"
+              ? "border-[#FF4D6D] bg-[#1D1013]/90 scale-[1.01] shadow-[0_0_25px_rgba(255, 77, 109,0.15)]"
+              : "border-[rgba(240, 160, 180,0.2)] bg-[#140C0E] hover:border-[#FF4D6D]/60 hover:bg-[#1D1013]/60"
           }`}
         >
           <input
@@ -251,7 +251,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
             className="hidden"
           />
 
-          <div className="p-4 rounded-[6px] bg-[#111B17] border border-[rgba(160,190,170,0.15)] text-[#65F59A] group-hover:scale-105 group-hover:border-[#65F59A]/40 transition-all shadow-sm">
+          <div className="p-4 rounded-[6px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.15)] text-[#FF4D6D] group-hover:scale-105 group-hover:border-[#FF4D6D]/40 transition-all shadow-sm">
             <Upload className="w-9 h-9 animate-bounce" />
           </div>
 
@@ -273,7 +273,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
               type="button"
               onClick={() => fileInputRef.current?.click()}
               disabled={loading}
-              className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono font-bold text-xs rounded-[4px] h-9 px-4 shadow-[0_0_15px_rgba(101,245,154,0.2)]"
+              className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-mono font-bold text-xs rounded-[4px] h-9 px-4 shadow-[0_0_15px_rgba(255, 77, 109,0.2)]"
             >
               <FileText className="w-4 h-4 mr-1.5" /> Select Document
             </Button>
@@ -283,9 +283,9 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
               variant="outline"
               onClick={handleSimulatedCameraPhoto}
               disabled={loading || cameraActive}
-              className="border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/40 font-mono text-xs rounded-[4px] h-9 px-4"
+              className="border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#FF4D6D]/40 font-mono text-xs rounded-[4px] h-9 px-4"
             >
-              <Camera className="w-4 h-4 mr-1.5 text-[#38D9B0]" />
+              <Camera className="w-4 h-4 mr-1.5 text-[#FF758F]" />
               {cameraActive ? "Capturing Document..." : "Take Camera Photo"}
             </Button>
           </div>
@@ -296,9 +296,9 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
       {stagedFile && (
         <div className="space-y-6 animate-in fade-in-50 zoom-in-95 duration-200">
           {/* Staged Document Snapshot Header */}
-          <div className="p-4 rounded-[6px] bg-[#111B17] border border-[rgba(101,245,154,0.3)] shadow-[0_0_20px_rgba(101,245,154,0.08)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-4 rounded-[6px] bg-[#1D1013] border border-[rgba(255, 77, 109,0.3)] shadow-[0_0_20px_rgba(255, 77, 109,0.08)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="flex items-center space-x-3.5">
-              <div className="w-10 h-10 rounded-[5px] bg-[#0C1210] border border-[rgba(101,245,154,0.35)] flex items-center justify-center text-[#65F59A] shrink-0">
+              <div className="w-10 h-10 rounded-[5px] bg-[#140C0E] border border-[rgba(255, 77, 109,0.35)] flex items-center justify-center text-[#FF4D6D] shrink-0">
                 <FileCode className="w-5 h-5" />
               </div>
               <div>
@@ -306,7 +306,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
                   <h4 className="font-mono text-sm font-bold text-[#F2F7F3] truncate max-w-xs sm:max-w-md">
                     {stagedFile.name}
                   </h4>
-                  <span className="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-[#65F59A]/15 text-[#65F59A] border border-[#65F59A]/30">
+                  <span className="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-[2px] bg-[#FF4D6D]/15 text-[#FF4D6D] border border-[#FF4D6D]/30">
                     Staged &bull; Ready
                   </span>
                 </div>
@@ -321,31 +321,31 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
               variant="outline"
               size="sm"
               onClick={() => setStagedFile(null)}
-              className="border-[rgba(160,190,170,0.2)] bg-[#0C1210] text-[#A0AEA5] hover:text-[#F87171] hover:border-[#F87171]/40 font-mono text-xs rounded-[4px] self-start sm:self-auto shrink-0"
+              className="border-[rgba(240, 160, 180,0.2)] bg-[#140C0E] text-[#A0AEA5] hover:text-[#F87171] hover:border-[#F87171]/40 font-mono text-xs rounded-[4px] self-start sm:self-auto shrink-0"
             >
               <RotateCcw className="w-3.5 h-3.5 mr-1.5" /> Change Document
             </Button>
           </div>
 
           {/* Configuration Matrix */}
-          <div className="p-5 rounded-[6px] bg-[#111B17] border border-[rgba(160,190,170,0.16)] space-y-6">
+          <div className="p-5 rounded-[6px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.16)] space-y-6">
             {/* Control Section 1: Question Count (The Core User Request!) */}
             <div>
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center space-x-2">
-                  <Hash className="w-4 h-4 text-[#65F59A]" />
+                  <Hash className="w-4 h-4 text-[#FF4D6D]" />
                   <label className="text-xs font-mono font-bold uppercase tracking-wider text-[#F2F7F3]">
                     How Many Questions Should Be Generated?
                   </label>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)]">
+                  <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)]">
                     TARGET: {effectiveCount} QUESTIONS
                   </span>
                   <button
                     type="button"
                     onClick={() => setIsCustomCount(!isCustomCount)}
-                    className="text-[11px] font-mono text-[#38D9B0] hover:underline"
+                    className="text-[11px] font-mono text-[#FF758F] hover:underline"
                   >
                     {isCustomCount ? "Use Standard Presets" : "+ Custom Number (1-50)"}
                   </button>
@@ -353,7 +353,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
               </div>
 
               {isCustomCount ? (
-                <div className="flex items-center gap-3 p-3 bg-[#0C1210] rounded-[5px] border border-[#65F59A]/40">
+                <div className="flex items-center gap-3 p-3 bg-[#140C0E] rounded-[5px] border border-[#FF4D6D]/40">
                   <div className="w-48">
                     <input
                       type="number"
@@ -362,7 +362,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
                       value={customCountInput}
                       onChange={(e) => setCustomCountInput(e.target.value)}
                       placeholder="Enter 1 - 50..."
-                      className="w-full bg-[#111B17] border border-[rgba(160,190,170,0.2)] rounded-[4px] px-3 py-1.5 text-xs font-mono font-bold text-[#65F59A] focus:border-[#65F59A] focus:outline-none"
+                      className="w-full bg-[#1D1013] border border-[rgba(240, 160, 180,0.2)] rounded-[4px] px-3 py-1.5 text-xs font-mono font-bold text-[#FF4D6D] focus:border-[#FF4D6D] focus:outline-none"
                     />
                   </div>
                   <span className="text-xs font-mono text-[#A0AEA5]">
@@ -380,8 +380,8 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
                         onClick={() => setQuestionCount(preset.count)}
                         className={`p-3 rounded-[5px] border text-left font-mono transition-all relative ${
                           isSelected
-                            ? "bg-[rgba(101,245,154,0.18)] border-[#65F59A] text-[#65F59A] shadow-[0_0_15px_rgba(101,245,154,0.15)]"
-                            : "bg-[#0C1210] border-[rgba(160,190,170,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[rgba(160,190,170,0.25)]"
+                            ? "bg-[rgba(255, 77, 109,0.18)] border-[#FF4D6D] text-[#FF4D6D] shadow-[0_0_15px_rgba(255, 77, 109,0.15)]"
+                            : "bg-[#140C0E] border-[rgba(240, 160, 180,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[rgba(240, 160, 180,0.25)]"
                         }`}
                       >
                         <div className="flex items-center justify-between">
@@ -389,7 +389,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
                           {preset.badge && (
                             <span
                               className={`text-[9px] font-bold px-1.5 py-0.2 rounded-[2px] ${
-                                isSelected ? "bg-[#65F59A] text-[#070B0A]" : "bg-[#17251E] text-[#69786F]"
+                                isSelected ? "bg-[#FF4D6D] text-[#0B0708]" : "bg-[#2A141A] text-[#69786F]"
                               }`}
                             >
                               {preset.badge}
@@ -408,7 +408,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
             <div>
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center space-x-2">
-                  <Sliders className="w-4 h-4 text-[#38D9B0]" />
+                  <Sliders className="w-4 h-4 text-[#FF758F]" />
                   <label className="text-xs font-mono font-bold uppercase tracking-wider text-[#F2F7F3]">
                     Question Format &amp; Variety Matrix ({selectedQuestionTypes.length} Selected)
                   </label>
@@ -417,7 +417,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
                   <button
                     type="button"
                     onClick={handleSelectAllTypes}
-                    className="hover:text-[#65F59A] underline"
+                    className="hover:text-[#FF4D6D] underline"
                   >
                     All 9 Types
                   </button>
@@ -425,7 +425,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
                   <button
                     type="button"
                     onClick={handleSelectBalanced}
-                    className="hover:text-[#65F59A] underline"
+                    className="hover:text-[#FF4D6D] underline"
                   >
                     Balanced Mix
                   </button>
@@ -433,7 +433,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
                   <button
                     type="button"
                     onClick={handleSelectMcqOnly}
-                    className="hover:text-[#65F59A] underline"
+                    className="hover:text-[#FF4D6D] underline"
                   >
                     MCQ Only
                   </button>
@@ -449,15 +449,15 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
                       onClick={() => handleToggleQuestionType(fmt.id)}
                       className={`p-2.5 rounded-[4px] border text-left cursor-pointer transition-all flex items-start space-x-2.5 ${
                         isChecked
-                          ? "bg-[rgba(56,217,176,0.12)] border-[#38D9B0] text-[#F2F7F3]"
-                          : "bg-[#0C1210] border-[rgba(160,190,170,0.1)] text-[#69786F] hover:border-[rgba(160,190,170,0.22)] hover:text-[#A0AEA5]"
+                          ? "bg-[rgba(255, 117, 143,0.12)] border-[#FF758F] text-[#F2F7F3]"
+                          : "bg-[#140C0E] border-[rgba(240, 160, 180,0.1)] text-[#69786F] hover:border-[rgba(240, 160, 180,0.22)] hover:text-[#A0AEA5]"
                       }`}
                     >
                       <div
                         className={`w-4 h-4 rounded-[2px] border mt-0.5 flex items-center justify-center shrink-0 ${
                           isChecked
-                            ? "bg-[#38D9B0] border-[#38D9B0] text-[#070B0A]"
-                            : "border-[rgba(160,190,170,0.2)] bg-[#111B17]"
+                            ? "bg-[#FF758F] border-[#FF758F] text-[#0B0708]"
+                            : "border-[rgba(240, 160, 180,0.2)] bg-[#1D1013]"
                         }`}
                       >
                         {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
@@ -473,7 +473,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
             </div>
 
             {/* Control Section 3 & 4: Difficulty & Chapter Focus */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1 border-t border-[rgba(160,190,170,0.1)]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1 border-t border-[rgba(240, 160, 180,0.1)]">
               {/* Difficulty */}
               <div>
                 <label className="block text-xs font-mono font-bold uppercase tracking-wider text-[#A0AEA5] mb-2">
@@ -497,9 +497,9 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
                             ? lvl.id === "Hard"
                               ? "bg-[rgba(248,113,113,0.18)] border-[#F87171] text-[#F87171]"
                               : lvl.id === "Easy"
-                              ? "bg-[rgba(101,245,154,0.18)] border-[#65F59A] text-[#65F59A]"
-                              : "bg-[rgba(56,217,176,0.18)] border-[#38D9B0] text-[#38D9B0]"
-                            : "bg-[#0C1210] border-[rgba(160,190,170,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3]"
+                              ? "bg-[rgba(255, 77, 109,0.18)] border-[#FF4D6D] text-[#FF4D6D]"
+                              : "bg-[rgba(255, 117, 143,0.18)] border-[#FF758F] text-[#FF758F]"
+                            : "bg-[#140C0E] border-[rgba(240, 160, 180,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3]"
                         }`}
                       >
                         <div className="font-bold">{lvl.label}</div>
@@ -520,7 +520,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
                   value={topicScope}
                   onChange={(e) => setTopicScope(e.target.value)}
                   placeholder="e.g. Focus on Chapter 3: Cell Division and Checkpoints..."
-                  className="w-full bg-[#0C1210] border border-[rgba(160,190,170,0.2)] rounded-[4px] px-3 py-2 text-xs font-mono text-[#F2F7F3] placeholder:text-[#69786F] focus:border-[#65F59A] focus:outline-none"
+                  className="w-full bg-[#140C0E] border border-[rgba(240, 160, 180,0.2)] rounded-[4px] px-3 py-2 text-xs font-mono text-[#F2F7F3] placeholder:text-[#69786F] focus:border-[#FF4D6D] focus:outline-none"
                 />
                 <p className="text-[10px] font-mono text-[#69786F] mt-1">
                   Leave empty to auto-extract across the entire uploaded document.
@@ -532,8 +532,8 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
           {/* Launch Action Footer */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
             <div className="text-xs font-mono text-[#A0AEA5]">
-              Ready to extract <span className="text-[#65F59A] font-bold">{effectiveCount} questions</span> across{" "}
-              <span className="text-[#38D9B0] font-bold">{selectedQuestionTypes.length} formats</span> at{" "}
+              Ready to extract <span className="text-[#FF4D6D] font-bold">{effectiveCount} questions</span> across{" "}
+              <span className="text-[#FF758F] font-bold">{selectedQuestionTypes.length} formats</span> at{" "}
               <span className="text-[#F2F7F3] font-bold">{difficulty}</span> difficulty.
             </div>
 
@@ -542,7 +542,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
                 type="button"
                 variant="outline"
                 onClick={() => setStagedFile(null)}
-                className="w-full sm:w-auto border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] font-mono text-xs rounded-[4px] h-10 px-4"
+                className="w-full sm:w-auto border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] font-mono text-xs rounded-[4px] h-10 px-4"
               >
                 Cancel
               </Button>
@@ -551,7 +551,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
                 type="button"
                 disabled={loading}
                 onClick={handleLaunchExtraction}
-                className="w-full sm:w-auto bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono font-bold text-xs uppercase tracking-wider rounded-[4px] h-10 px-6 shadow-[0_0_20px_rgba(101,245,154,0.28)]"
+                className="w-full sm:w-auto bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-mono font-bold text-xs uppercase tracking-wider rounded-[4px] h-10 px-6 shadow-[0_0_20px_rgba(255, 77, 109,0.28)]"
               >
                 {loading ? (
                   <>
@@ -571,13 +571,13 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
       )}
 
       {/* 4. Supported Formats Strip */}
-      <div className="flex flex-wrap items-center justify-between gap-3 text-xs border-t border-[rgba(160,190,170,0.12)] pt-3.5 font-mono">
+      <div className="flex flex-wrap items-center justify-between gap-3 text-xs border-t border-[rgba(240, 160, 180,0.12)] pt-3.5 font-mono">
         <div className="flex flex-wrap items-center gap-1.5">
           <span className="font-semibold text-[#69786F] mr-1 text-[11px]">Supported Formats:</span>
           {["PDF", "DOCX", "TXT", "Markdown", "JPG / PNG", "WEBP", "Scanned Worksheets", "Photos"].map((fmt) => (
             <span
               key={fmt}
-              className="px-2 py-0.5 rounded-[3px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] text-[#A0AEA5] font-medium text-[10px]"
+              className="px-2 py-0.5 rounded-[3px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] text-[#A0AEA5] font-medium text-[10px]"
             >
               {fmt}
             </span>
@@ -585,7 +585,7 @@ export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRU
         </div>
 
         <div className="flex items-center gap-1.5 text-[11px] text-[#69786F]">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
           <span>Multimodal Pipeline Active (High-Accuracy Curriculum Engine)</span>
         </div>
       </div>

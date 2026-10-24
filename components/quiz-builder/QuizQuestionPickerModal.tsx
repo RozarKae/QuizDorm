@@ -80,10 +80,10 @@ export function QuizQuestionPickerModal({ open, onOpenChange, onQuestionsSelecte
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[90vh] flex flex-col bg-[#0C1210] border border-[rgba(160,190,170,0.14)] text-[#F2F7F3]">
+      <DialogContent className="max-w-2xl max-h-[90vh] flex flex-col bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] text-[#F2F7F3]">
         <DialogHeader>
           <DialogTitle className="flex items-center text-[#F2F7F3] font-display font-bold text-base">
-            <Plus className="w-5 h-5 text-[#65F59A] mr-2" /> Add Questions from Question Bank
+            <Plus className="w-5 h-5 text-[#FF4D6D] mr-2" /> Add Questions from Question Bank
           </DialogTitle>
           <DialogDescription className="text-xs text-[#A0AEA5]">
             Browse by domain or search the catalog of {bankQuestions.length} verified questions.
@@ -98,14 +98,14 @@ export function QuizQuestionPickerModal({ open, onOpenChange, onQuestionsSelecte
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search statements..."
-              className="pl-9 h-9 text-xs font-mono bg-[#111B17] border-[rgba(160,190,170,0.18)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
+              className="pl-9 h-9 text-xs font-mono bg-[#1D1013] border-[rgba(240, 160, 180,0.18)] text-[#F2F7F3] rounded-[4px] focus:border-[#FF4D6D]"
             />
           </div>
 
           <Select
             value={selectedTopic}
             onChange={(e) => setSelectedTopic(e.target.value)}
-            className="h-9 text-xs font-mono bg-[#111B17] border-[rgba(160,190,170,0.18)] text-[#F2F7F3] rounded-[4px]"
+            className="h-9 text-xs font-mono bg-[#1D1013] border-[rgba(240, 160, 180,0.18)] text-[#F2F7F3] rounded-[4px]"
             options={[
               { value: "All", label: "All Topics" },
               ...topicsList.map((t) => ({ value: t, label: t })),
@@ -115,7 +115,7 @@ export function QuizQuestionPickerModal({ open, onOpenChange, onQuestionsSelecte
           <Select
             value={selectedGrade}
             onChange={(e) => setSelectedGrade(e.target.value)}
-            className="h-9 text-xs font-mono bg-[#111B17] border-[rgba(160,190,170,0.18)] text-[#F2F7F3] rounded-[4px]"
+            className="h-9 text-xs font-mono bg-[#1D1013] border-[rgba(240, 160, 180,0.18)] text-[#F2F7F3] rounded-[4px]"
             options={[
               { value: "All", label: "Grade: All Levels" },
               ...gradesList.map((g) => ({ value: g, label: g })),
@@ -127,7 +127,7 @@ export function QuizQuestionPickerModal({ open, onOpenChange, onQuestionsSelecte
           <span>Found {filtered.length} questions</span>
           <button
             onClick={handleSelectAllFiltered}
-            className="text-xs text-[#65F59A] hover:underline font-semibold"
+            className="text-xs text-[#FF4D6D] hover:underline font-semibold"
           >
             {selectedIds.length === filtered.length && filtered.length > 0 ? "Deselect All" : "Select All Filtered"}
           </button>
@@ -148,14 +148,14 @@ export function QuizQuestionPickerModal({ open, onOpenChange, onQuestionsSelecte
                   onClick={() => handleToggle(q.id)}
                   className={`p-3 rounded-[4px] border transition-all cursor-pointer flex items-center justify-between gap-3 ${
                     isChecked
-                      ? "border-[#65F59A] bg-[#17251E] ring-1 ring-[#65F59A] shadow-[0_0_10px_rgba(101,245,154,0.1)]"
-                      : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 hover:border-[#65F59A]/30 hover:bg-[#111B17]"
+                      ? "border-[#FF4D6D] bg-[#2A141A] ring-1 ring-[#FF4D6D] shadow-[0_0_10px_rgba(255, 77, 109,0.1)]"
+                      : "border-[rgba(240, 160, 180,0.14)] bg-[#1D1013]/60 hover:border-[#FF4D6D]/30 hover:bg-[#1D1013]"
                   }`}
                 >
                   <div className="space-y-1 max-w-lg min-w-0">
                     <div className="flex flex-wrap items-center gap-1.5 text-[11px] font-mono">
                       <QuestionTypeBadge type={q.type} />
-                      <span className="font-bold text-[#65F59A]">{q.topic || q.subject}</span>
+                      <span className="font-bold text-[#FF4D6D]">{q.topic || q.subject}</span>
                       {(q.gradeLevel || q.grade) && (
                         <span className="text-[#A0AEA5]">• {q.gradeLevel || q.grade}</span>
                       )}
@@ -166,7 +166,7 @@ export function QuizQuestionPickerModal({ open, onOpenChange, onQuestionsSelecte
 
                   <div
                     className={`w-5 h-5 rounded-[3px] shrink-0 flex items-center justify-center border transition-all ${
-                      isChecked ? "bg-[#65F59A] border-[#65F59A] text-[#070B0A]" : "border-[rgba(160,190,170,0.3)] bg-[#111B17]"
+                      isChecked ? "bg-[#FF4D6D] border-[#FF4D6D] text-[#0B0708]" : "border-[rgba(240, 160, 180,0.3)] bg-[#1D1013]"
                     }`}
                   >
                     {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
@@ -182,13 +182,13 @@ export function QuizQuestionPickerModal({ open, onOpenChange, onQuestionsSelecte
             {selectedIds.length} question{selectedIds.length === 1 ? "" : "s"} selected
           </span>
           <div className="flex items-center space-x-2">
-            <Button variant="outline" onClick={() => onOpenChange(false)} className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] h-8 text-[#A0AEA5] hover:text-[#F2F7F3]">
+            <Button variant="outline" onClick={() => onOpenChange(false)} className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[4px] h-8 text-[#A0AEA5] hover:text-[#F2F7F3]">
               Cancel
             </Button>
             <Button
               onClick={handleConfirm}
               disabled={selectedIds.length === 0}
-              className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold rounded-[4px] h-8 shadow-[0_0_12px_rgba(101,245,154,0.18)]"
+              className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-mono text-xs font-bold rounded-[4px] h-8 shadow-[0_0_12px_rgba(255, 77, 109,0.18)]"
             >
               Add Selected ({selectedIds.length})
             </Button>

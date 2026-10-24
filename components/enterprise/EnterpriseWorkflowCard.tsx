@@ -24,7 +24,7 @@ export function EnterpriseWorkflowCard() {
               <span className="text-gray-900 dark:text-white text-sm">{wf.title}</span>
               <span
                 className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
-                  wf.status === "approved" ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"
+                  wf.status === "approved" ? "bg-rose-100 text-rose-800" : "bg-amber-100 text-amber-800"
                 }`}
               >
                 {wf.status}
@@ -37,7 +37,7 @@ export function EnterpriseWorkflowCard() {
                   key={idx}
                   className={`p-2 rounded-xl border ${
                     step.approved
-                      ? "bg-emerald-50/60 dark:bg-emerald-950/30 border-emerald-300 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300"
+                      ? "bg-rose-50/60 dark:bg-rose-950/30 border-rose-300 dark:border-rose-800 text-rose-800 dark:text-rose-300"
                       : "bg-amber-50/60 dark:bg-amber-950/30 border-amber-300 dark:border-amber-800 text-amber-800 dark:text-amber-300"
                   }`}
                 >

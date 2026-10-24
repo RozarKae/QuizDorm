@@ -88,14 +88,14 @@ export default function CompetitionsPage() {
   return (
     <div className="space-y-8 max-w-7xl mx-auto text-[#F2F7F3]">
       {/* Editorial Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(160,190,170,0.14)] pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(240, 160, 180,0.14)] pb-5">
         <div className="space-y-1">
           <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5]">
-            <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
+            <span className="w-1.5 h-1.5 bg-[#FF4D6D] rounded-full animate-pulse shadow-[0_0_8px_#FF4D6D]" />
             <span>SYNCHRONIZED COGNITIVE DECATHLON // BATTLE ARENA</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-[#F2F7F3] flex items-center">
-            <Trophy className="w-6 h-6 text-[#65F59A] mr-2" /> Synchronized Battle Arenas
+            <Trophy className="w-6 h-6 text-[#FF4D6D] mr-2" /> Synchronized Battle Arenas
           </h1>
           <p className="text-xs font-mono text-[#A0AEA5]">
             {canHost
@@ -109,15 +109,15 @@ export default function CompetitionsPage() {
             variant="outline"
             size="sm"
             onClick={() => setJoinModalOpen(true)}
-            className="text-xs font-mono tracking-wider rounded-[4px] border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/30 h-9"
+            className="text-xs font-mono tracking-wider rounded-[4px] border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#FF4D6D]/30 h-9"
           >
-            <Key className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> ROOM PIN CODE
+            <Key className="w-3.5 h-3.5 mr-1.5 text-[#FF758F]" /> ROOM PIN CODE
           </Button>
 
           {/* Ground Rule: Students & Subscribers CANNOT host arena */}
           {canHost && (
             <Link href="/dashboard/competitions/new">
-              <Button size="sm" className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold tracking-wider rounded-[4px] h-9 shadow-[0_0_15px_rgba(101,245,154,0.18)]">
+              <Button size="sm" className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-mono text-xs font-bold tracking-wider rounded-[4px] h-9 shadow-[0_0_15px_rgba(255, 77, 109,0.18)]">
                 <Plus className="w-3.5 h-3.5 mr-1.5" /> HOST TOURNAMENT
               </Button>
             </Link>
@@ -127,15 +127,15 @@ export default function CompetitionsPage() {
 
       {/* When NO arenas are actively hosted -> Clean Zero State (No Test Arenas) */}
       {isLoaded && competitions.length === 0 ? (
-        <div className="rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.18)] p-8 sm:p-12 text-center space-y-6 max-w-2xl mx-auto shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-1/4 w-80 h-40 bg-[radial-gradient(ellipse_at_center,rgba(101,245,154,0.06)_0%,transparent_70%)] blur-[50px] pointer-events-none" />
+        <div className="rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.18)] p-8 sm:p-12 text-center space-y-6 max-w-2xl mx-auto shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-1/4 w-80 h-40 bg-[radial-gradient(ellipse_at_center,rgba(255, 77, 109,0.06)_0%,transparent_70%)] blur-[50px] pointer-events-none" />
 
-          <div className="w-16 h-16 rounded-full bg-[#111B17] border border-[rgba(160,190,170,0.2)] mx-auto flex items-center justify-center text-[#65F59A] shadow-[0_0_20px_rgba(101,245,154,0.1)]">
-            <Radio className="w-8 h-8 animate-pulse text-[#38D9B0]" />
+          <div className="w-16 h-16 rounded-full bg-[#1D1013] border border-[rgba(240, 160, 180,0.2)] mx-auto flex items-center justify-center text-[#FF4D6D] shadow-[0_0_20px_rgba(255, 77, 109,0.1)]">
+            <Radio className="w-8 h-8 animate-pulse text-[#FF758F]" />
           </div>
 
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[3px] bg-[#111B17] border border-[rgba(160,190,170,0.2)] text-[#A0AEA5] font-mono text-[10px] font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[3px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.2)] text-[#A0AEA5] font-mono text-[10px] font-bold uppercase tracking-wider">
               <span>Telemetry Standby</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold font-display uppercase tracking-tight text-[#F2F7F3]">
@@ -156,12 +156,12 @@ export default function CompetitionsPage() {
                 value={inlinePin}
                 onChange={(e) => setInlinePin(e.target.value)}
                 placeholder="Enter Room PIN (e.g. QD-8492)"
-                className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] placeholder-[#69786F] font-mono uppercase tracking-widest focus:outline-none focus:border-[#65F59A]"
+                className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#F2F7F3] placeholder-[#69786F] font-mono uppercase tracking-widest focus:outline-none focus:border-[#FF4D6D]"
               />
             </div>
             <Button
               type="submit"
-              className="w-full sm:w-auto bg-[#65F59A] text-[#070B0A] hover:bg-[#52E086] font-mono text-xs font-bold uppercase tracking-wider h-10 px-5 shadow-[0_0_15px_rgba(101,245,154,0.2)] shrink-0"
+              className="w-full sm:w-auto bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF3366] font-mono text-xs font-bold uppercase tracking-wider h-10 px-5 shadow-[0_0_15px_rgba(255, 77, 109,0.2)] shrink-0"
             >
               <Swords className="w-3.5 h-3.5 mr-1.5" />
               Join Arena
@@ -169,9 +169,9 @@ export default function CompetitionsPage() {
           </form>
 
           {canHost && (
-            <div className="pt-4 border-t border-[rgba(160,190,170,0.12)]">
+            <div className="pt-4 border-t border-[rgba(240, 160, 180,0.12)]">
               <Link href="/dashboard/competitions/new">
-                <Button variant="outline" size="sm" className="border-[rgba(101,245,154,0.3)] bg-[#17251E] text-[#65F59A] hover:bg-[#65F59A] hover:text-[#070B0A] font-mono text-xs font-bold uppercase h-8 transition-all">
+                <Button variant="outline" size="sm" className="border-[rgba(255, 77, 109,0.3)] bg-[#2A141A] text-[#FF4D6D] hover:bg-[#FF4D6D] hover:text-[#0B0708] font-mono text-xs font-bold uppercase h-8 transition-all">
                   <Plus className="w-3.5 h-3.5 mr-1.5" />
                   Launch New Live Arena
                 </Button>
@@ -182,15 +182,15 @@ export default function CompetitionsPage() {
       ) : (
         <>
           {/* Active Tournament Live List */}
-          <div className="bg-[#0C1210] p-3.5 rounded-[6px] border border-[rgba(160,190,170,0.14)] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
-            <div className="flex items-center space-x-1 bg-[#111B17] border border-[rgba(160,190,170,0.16)] p-1 rounded-[4px] w-full sm:w-auto overflow-x-auto">
+          <div className="bg-[#140C0E] p-3.5 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xs">
+            <div className="flex items-center space-x-1 bg-[#1D1013] border border-[rgba(240, 160, 180,0.16)] p-1 rounded-[4px] w-full sm:w-auto overflow-x-auto">
               {(["All", "Live", "Upcoming", "Completed"] as const).map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`px-3 py-1 rounded-[3px] text-xs font-mono uppercase tracking-wider transition-all ${
                     activeTab === tab
-                      ? "bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] font-bold shadow-xs"
+                      ? "bg-[#2A141A] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] font-bold shadow-xs"
                       : "text-[#A0AEA5] hover:text-[#F2F7F3]"
                   }`}
                 >
@@ -205,7 +205,7 @@ export default function CompetitionsPage() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search tournament or PIN..."
-                className="pl-9 h-9 bg-[#111B17] text-xs font-mono rounded-[4px] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] focus:border-[#65F59A]"
+                className="pl-9 h-9 bg-[#1D1013] text-xs font-mono rounded-[4px] border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] focus:border-[#FF4D6D]"
               />
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function CompetitionsPage() {
                 key={comp.id}
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.2 }}
-                className="bg-[#0C1210] p-6 rounded-[6px] border border-[rgba(160,190,170,0.14)] hover:border-[#65F59A]/40 transition-colors flex flex-col justify-between group shadow-sm hover:shadow-[0_12px_24px_rgba(0,0,0,0.6),0_0_15px_rgba(101,245,154,0.08)]"
+                className="bg-[#140C0E] p-6 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] hover:border-[#FF4D6D]/40 transition-colors flex flex-col justify-between group shadow-sm hover:shadow-[0_12px_24px_rgba(0,0,0,0.6),0_0_15px_rgba(255, 77, 109,0.08)]"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
@@ -225,7 +225,7 @@ export default function CompetitionsPage() {
                       className={`text-[9px] font-mono uppercase tracking-widest rounded-[3px] px-2 py-0.5 ${
                         comp.status === "Live"
                           ? "border-[rgba(248,113,113,0.4)] bg-[rgba(248,113,113,0.12)] text-[#F87171] animate-pulse"
-                          : "border-[rgba(101,245,154,0.3)] bg-[rgba(101,245,154,0.12)] text-[#65F59A]"
+                          : "border-[rgba(255, 77, 109,0.3)] bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D]"
                       }`}
                     >
                       ● {comp.status}
@@ -233,15 +233,15 @@ export default function CompetitionsPage() {
                     <span className="text-[10px] text-[#A0AEA5] font-mono font-bold">PIN: {comp.code}</span>
                   </div>
 
-                  <h3 className="text-base font-bold font-display text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors line-clamp-2 mb-2">
+                  <h3 className="text-base font-bold font-display text-[#F2F7F3] group-hover:text-[#FF4D6D] transition-colors line-clamp-2 mb-2">
                     {comp.title}
                   </h3>
                   <p className="text-xs text-[#A0AEA5] line-clamp-2 mb-4 leading-relaxed font-sans">{comp.description}</p>
 
-                  <div className="space-y-2 text-xs font-mono text-[#A0AEA5] mb-6 border-t border-[rgba(160,190,170,0.12)] pt-3">
+                  <div className="space-y-2 text-xs font-mono text-[#A0AEA5] mb-6 border-t border-[rgba(240, 160, 180,0.12)] pt-3">
                     <div className="flex items-center justify-between">
                       <span className="flex items-center text-[#69786F]">
-                        <Users className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" /> HOST
+                        <Users className="w-3.5 h-3.5 mr-1.5 text-[#FF758F]" /> HOST
                       </span>
                       <span className="font-bold text-[#F2F7F3] truncate max-w-[150px]">
                         {comp.hostName || "Authorized Host"}
@@ -249,16 +249,16 @@ export default function CompetitionsPage() {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="flex items-center text-[#69786F]">
-                        <Clock className="w-3.5 h-3.5 mr-1.5 text-[#65F59A]" /> DURATION
+                        <Clock className="w-3.5 h-3.5 mr-1.5 text-[#FF4D6D]" /> DURATION
                       </span>
                       <span className="font-bold text-[#F2F7F3]">{comp.durationMinutes} MINS</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-[rgba(160,190,170,0.12)] flex items-center justify-between">
+                <div className="pt-4 border-t border-[rgba(240, 160, 180,0.12)] flex items-center justify-between">
                   <Link href={`/live/arena/${comp.code}`}>
-                    <Button size="sm" className="bg-[#17251E] hover:bg-[#65F59A] text-[#65F59A] hover:text-[#070B0A] border border-[rgba(101,245,154,0.3)] font-mono text-xs tracking-wider rounded-[4px] font-bold transition-all">
+                    <Button size="sm" className="bg-[#2A141A] hover:bg-[#FF4D6D] text-[#FF4D6D] hover:text-[#0B0708] border border-[rgba(255, 77, 109,0.3)] font-mono text-xs tracking-wider rounded-[4px] font-bold transition-all">
                       <Swords className="w-3.5 h-3.5 mr-1.5" /> JOIN BATTLE
                     </Button>
                   </Link>

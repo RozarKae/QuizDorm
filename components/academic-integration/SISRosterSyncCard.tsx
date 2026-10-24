@@ -20,7 +20,7 @@ export function SISRosterSyncCard() {
         <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
           <School className="w-5 h-5 text-indigo-600 mr-2" /> Student Information System (SIS) Roster Sync
         </h3>
-        <span className="text-xs font-mono font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950 px-2.5 py-0.5 rounded-full">
+        <span className="text-xs font-mono font-bold text-rose-600 bg-rose-50 dark:bg-rose-950 px-2.5 py-0.5 rounded-full">
           {sis.status}
         </span>
       </div>

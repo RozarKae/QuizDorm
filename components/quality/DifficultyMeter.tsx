@@ -28,7 +28,7 @@ export function DifficultyMeter({ difficulty }: DifficultyMeterProps) {
 
         <div className="p-2 rounded-xl bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800">
           <span className="text-[10px] text-gray-400 block font-sans">AI Predicted</span>
-          <span className={`font-bold ${matchesTeacher ? "text-emerald-600" : "text-amber-600"}`}>
+          <span className={`font-bold ${matchesTeacher ? "text-rose-600" : "text-amber-600"}`}>
             {predictedLevel}
           </span>
         </div>
@@ -36,7 +36,7 @@ export function DifficultyMeter({ difficulty }: DifficultyMeterProps) {
 
       <div className="flex items-start space-x-1.5 text-[11px] text-gray-500 pt-1">
         {matchesTeacher ? (
-          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
+          <CheckCircle2 className="w-3.5 h-3.5 text-rose-500 shrink-0 mt-0.5" />
         ) : (
           <AlertCircle className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
         )}

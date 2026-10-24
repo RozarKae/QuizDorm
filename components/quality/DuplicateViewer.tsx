@@ -14,8 +14,8 @@ interface DuplicateViewerProps {
 export function DuplicateViewer({ alerts, currentQuestionTitle }: DuplicateViewerProps) {
   if (alerts.length === 0) {
     return (
-      <div className="p-4 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900 flex items-center space-x-2 text-xs text-emerald-800 dark:text-emerald-300">
-        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+      <div className="p-4 rounded-2xl bg-rose-50/50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900 flex items-center space-x-2 text-xs text-rose-800 dark:text-rose-300">
+        <CheckCircle2 className="w-4 h-4 text-rose-600 shrink-0" />
         <span>No duplicate or reworded items detected in Question Bank.</span>
       </div>
     );

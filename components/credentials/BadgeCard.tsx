@@ -75,7 +75,7 @@ export function BadgeCard({ badge }: BadgeCardProps) {
       </div>
 
       {badge.unlocked ? (
-        <span className="text-[10px] text-emerald-600 font-bold block">
+        <span className="text-[10px] text-rose-600 font-bold block">
           Unlocked on {badge.unlockedAt}
         </span>
       ) : (

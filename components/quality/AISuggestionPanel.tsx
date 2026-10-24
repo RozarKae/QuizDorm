@@ -44,7 +44,7 @@ export function AISuggestionPanel({ suggestions, onApplySuggestion }: AISuggesti
             key={sug.id}
             className={`p-4 rounded-2xl border transition-all space-y-3 text-xs ${
               isApplied
-                ? "bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-300 dark:border-emerald-800 opacity-70"
+                ? "bg-rose-50/50 dark:bg-rose-950/20 border-rose-300 dark:border-rose-800 opacity-70"
                 : "bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 shadow-sm"
             }`}
           >
@@ -65,7 +65,7 @@ export function AISuggestionPanel({ suggestions, onApplySuggestion }: AISuggesti
                   - {sug.originalSnippet}
                 </div>
               )}
-              <div className="text-emerald-600 dark:text-emerald-400 font-semibold">
+              <div className="text-rose-600 dark:text-rose-400 font-semibold">
                 + {sug.suggestedSnippet}
               </div>
             </div>
@@ -78,7 +78,7 @@ export function AISuggestionPanel({ suggestions, onApplySuggestion }: AISuggesti
                 onClick={() => handleAccept(sug)}
                 className={`text-xs rounded-xl ${
                   isApplied
-                    ? "border-emerald-300 text-emerald-700"
+                    ? "border-rose-300 text-rose-700"
                     : "bg-indigo-600 hover:bg-indigo-700 text-white font-bold"
                 }`}
               >

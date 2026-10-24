@@ -24,7 +24,7 @@ export function MentorBookingCard({ mentor }: MentorBookingCardProps) {
         </div>
         <div>
           <h4 className="font-bold text-sm text-gray-900 dark:text-white flex items-center">
-            {mentor.name} <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 ml-1.5" />
+            {mentor.name} <CheckCircle2 className="w-3.5 h-3.5 text-rose-500 ml-1.5" />
           </h4>
           <span className="text-xs text-gray-500">{mentor.title} • {mentor.organization}</span>
         </div>

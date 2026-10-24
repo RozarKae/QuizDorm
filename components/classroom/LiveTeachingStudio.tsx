@@ -130,7 +130,7 @@ export function LiveTeachingStudio() {
             <span className="font-mono font-bold text-slate-200">{formatTime(secondsElapsed)}</span>
           </div>
           <div className="flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-xl border border-slate-700">
-            <Users className="w-4 h-4 text-emerald-400" />
+            <Users className="w-4 h-4 text-rose-400" />
             <span className="font-bold">{inClassParticipants.length} Online</span>
             {waitingParticipants.length > 0 && (
               <span className="ml-1 px-1.5 py-0.5 rounded-full bg-amber-500 text-black text-[10px] font-bold">
@@ -197,19 +197,19 @@ export function LiveTeachingStudio() {
                 </div>
                 <p className="text-white font-bold text-base mt-4">Dr. Eleanor Vance (Host)</p>
                 <div className="flex items-center gap-2 text-xs text-indigo-300 mt-1">
-                  <Volume2 className="w-4 h-4 text-emerald-400 animate-pulse" /> Speaking...
+                  <Volume2 className="w-4 h-4 text-rose-400 animate-pulse" /> Speaking...
                 </div>
 
                 {/* Equalizer Bar Animation */}
                 <div className="flex items-center gap-1 mt-3">
-                  <div className="w-1.5 h-6 bg-emerald-500 rounded-full animate-bounce" />
-                  <div className="w-1.5 h-10 bg-emerald-400 rounded-full animate-bounce delay-100" />
-                  <div className="w-1.5 h-4 bg-emerald-500 rounded-full animate-bounce delay-200" />
-                  <div className="w-1.5 h-8 bg-emerald-400 rounded-full animate-bounce delay-75" />
+                  <div className="w-1.5 h-6 bg-rose-500 rounded-full animate-bounce" />
+                  <div className="w-1.5 h-10 bg-rose-400 rounded-full animate-bounce delay-100" />
+                  <div className="w-1.5 h-4 bg-rose-500 rounded-full animate-bounce delay-200" />
+                  <div className="w-1.5 h-8 bg-rose-400 rounded-full animate-bounce delay-75" />
                 </div>
 
                 <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg text-white text-xs font-semibold flex items-center gap-2 border border-white/10">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500" /> Dr. Eleanor Vance (Instructor)
+                  <span className="w-2 h-2 rounded-full bg-rose-500" /> Dr. Eleanor Vance (Instructor)
                 </div>
               </div>
             ) : (
@@ -251,7 +251,7 @@ export function LiveTeachingStudio() {
                 onClick={() => setIsMicOn(!isMicOn)}
                 className="rounded-xl text-xs"
               >
-                {isMicOn ? <Mic className="w-4 h-4 mr-1 text-emerald-400" /> : <MicOff className="w-4 h-4 mr-1" />}
+                {isMicOn ? <Mic className="w-4 h-4 mr-1 text-rose-400" /> : <MicOff className="w-4 h-4 mr-1" />}
                 {isMicOn ? "Mute" : "Unmute"}
               </Button>
 
@@ -381,7 +381,7 @@ export function LiveTeachingStudio() {
                         <div className="flex items-center gap-1">
                           <button
                             onClick={() => handleAdmitParticipant(p.id)}
-                            className="p-1 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md"
+                            className="p-1 bg-rose-600 hover:bg-rose-700 text-white rounded-md"
                             title="Admit"
                           >
                             <Check className="w-3.5 h-3.5" />
@@ -425,7 +425,7 @@ export function LiveTeachingStudio() {
 
                       <div className="flex items-center gap-1 text-slate-400">
                         {p.handRaised && <Hand className="w-3.5 h-3.5 text-amber-400 animate-bounce" />}
-                        {p.hasAudio ? <Mic className="w-3.5 h-3.5 text-emerald-400" /> : <MicOff className="w-3.5 h-3.5 text-slate-600" />}
+                        {p.hasAudio ? <Mic className="w-3.5 h-3.5 text-rose-400" /> : <MicOff className="w-3.5 h-3.5 text-slate-600" />}
                         {p.hasVideo ? <Video className="w-3.5 h-3.5 text-indigo-400" /> : <VideoOff className="w-3.5 h-3.5 text-slate-600" />}
                       </div>
                     </div>

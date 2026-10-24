@@ -80,7 +80,7 @@ export default function DigitalCredentialsPage() {
 
             <Button
               onClick={() => setBulkModalOpen(true)}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-2xl shadow-lg shadow-emerald-600/30"
+              className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-2xl shadow-lg shadow-rose-600/30"
             >
               <Users className="w-4 h-4 mr-1.5" /> Bulk Batch Issuance
             </Button>

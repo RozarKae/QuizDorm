@@ -14,11 +14,11 @@ export function TenantManagerCard({ onOpenWhiteLabel }: TenantManagerCardProps) 
   const [tenants, setTenants] = useState<Tenant[]>(TenantManager.getTenants());
 
   return (
-    <div className="bg-[#0C1210] border border-[rgba(160,190,170,0.14)] rounded-[6px] p-5 shadow-sm space-y-4">
-      <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
+    <div className="bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] rounded-[6px] p-5 shadow-sm space-y-4">
+      <div className="flex items-center justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-3">
         <div>
           <h3 className="font-display text-sm font-bold uppercase tracking-wider text-[#F2F7F3] flex items-center">
-            <Building className="w-4 h-4 text-[#65F59A] mr-2" />
+            <Building className="w-4 h-4 text-[#FF4D6D] mr-2" />
             Enterprise Multi-Tenant Directory
           </h3>
           <p className="text-xs text-[#A0AEA5] mt-0.5">
@@ -31,18 +31,18 @@ export function TenantManagerCard({ onOpenWhiteLabel }: TenantManagerCardProps) 
         {tenants.map((t) => (
           <div
             key={t.id}
-            className="p-4 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)] hover:border-[rgba(160,190,170,0.22)] transition-all space-y-3"
+            className="p-4 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)] hover:border-[rgba(240, 160, 180,0.22)] transition-all space-y-3"
           >
             <div className="flex items-center justify-between font-bold">
               <span className="text-[#F2F7F3] text-sm font-sans">{t.name}</span>
-              <span className="px-2 py-0.5 rounded-[2px] text-[10px] font-mono font-bold bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.2)] uppercase">
+              <span className="px-2 py-0.5 rounded-[2px] text-[10px] font-mono font-bold bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.2)] uppercase">
                 {t.status}
               </span>
             </div>
 
             <div className="space-y-1 font-mono text-[11px] text-[#A0AEA5]">
               <div>
-                Domain: <span className="font-bold text-[#65F59A]">{t.domain}</span>
+                Domain: <span className="font-bold text-[#FF4D6D]">{t.domain}</span>
               </div>
               <div>
                 Isolation: <span className="font-bold text-[#F2F7F3] uppercase">{t.isolationMode}</span>
@@ -59,9 +59,9 @@ export function TenantManagerCard({ onOpenWhiteLabel }: TenantManagerCardProps) 
               <Button
                 onClick={() => onOpenWhiteLabel(t)}
                 variant="outline"
-                className="w-full text-xs h-8 rounded-[4px] font-mono uppercase tracking-wider border-[rgba(160,190,170,0.2)] bg-[#0C1210] text-[#F2F7F3] hover:border-[#65F59A]/50 hover:text-[#65F59A]"
+                className="w-full text-xs h-8 rounded-[4px] font-mono uppercase tracking-wider border-[rgba(240, 160, 180,0.2)] bg-[#140C0E] text-[#F2F7F3] hover:border-[#FF4D6D]/50 hover:text-[#FF4D6D]"
               >
-                <Sliders className="w-3.5 h-3.5 mr-1 text-[#65F59A]" />
+                <Sliders className="w-3.5 h-3.5 mr-1 text-[#FF4D6D]" />
                 White-Label Settings
               </Button>
             )}

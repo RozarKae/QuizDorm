@@ -17,7 +17,7 @@ export function PerformancePredictorCard({ prediction }: PerformancePredictorCar
       <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-3">
         <div>
           <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
-            <TrendingUp className="w-5 h-5 text-emerald-600 mr-2" /> Predictive Exam & Quiz Performance
+            <TrendingUp className="w-5 h-5 text-rose-600 mr-2" /> Predictive Exam & Quiz Performance
           </h3>
           <p className="text-xs text-gray-500 dark:text-gray-400">
             Machine learning forecast of future assessment readiness and risk indicators.
@@ -26,7 +26,7 @@ export function PerformancePredictorCard({ prediction }: PerformancePredictorCar
 
         <span className={`text-xs font-extrabold px-3 py-1 rounded-full uppercase ${
           riskStatus === "low"
-            ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
+            ? "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300"
             : "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300"
         }`}>
           Risk Status: {riskStatus}
@@ -43,7 +43,7 @@ export function PerformancePredictorCard({ prediction }: PerformancePredictorCar
 
         <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
           <span className="text-gray-400 text-[10px] block font-sans">Exam Readiness</span>
-          <span className="text-xl font-extrabold text-emerald-600 dark:text-emerald-400">
+          <span className="text-xl font-extrabold text-rose-600 dark:text-rose-400">
             {examReadinessPercent}%
           </span>
         </div>

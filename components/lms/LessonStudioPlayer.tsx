@@ -47,7 +47,7 @@ export function LessonStudioPlayer() {
           <Button
             onClick={() => handleToggleComplete(activeLesson.id)}
             variant={activeLesson.isCompleted ? "default" : "outline"}
-            className={`text-xs rounded-xl ${activeLesson.isCompleted ? "bg-emerald-600 text-white" : "border-slate-700 text-white"}`}
+            className={`text-xs rounded-xl ${activeLesson.isCompleted ? "bg-rose-600 text-white" : "border-slate-700 text-white"}`}
           >
             <CheckCircle2 className="w-4 h-4 mr-1.5" />
             {activeLesson.isCompleted ? "Completed" : "Mark Complete"}
@@ -123,7 +123,7 @@ export function LessonStudioPlayer() {
                     {les.lessonTitle}
                   </span>
                   {les.isCompleted ? (
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-rose-500 shrink-0" />
                   ) : (
                     <Circle className="w-4 h-4 text-slate-300 shrink-0" />
                   )}

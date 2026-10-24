@@ -7,7 +7,7 @@ import React from "react";
  * Creates a quiet, cinematic background atmosphere:
  * - Neon Yellow (#FFE600)
  * - Neon Blue   (#00F0FF)
- * - Neon Green  (#39FF14)
+ * - Neon Green  (#FF4D6D)
  * - Neon Red    (#FF0055)
  * - Neon Orange (#FF7700)
  * Tuned with minimal opacity and high blur for maximum text contrast and elegance.
@@ -15,11 +15,11 @@ import React from "react";
 export default function AnimatedBackground() {
   return (
     <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden bg-background transition-colors duration-300 dark:opacity-100 opacity-60" aria-hidden="true">
-      {/* 1. Neon Green Center-Top Aurora Wave */}
+      {/* 1. Neon Crimson Center-Top Aurora Wave */}
       <div 
         className="absolute top-[-10%] left-[20%] w-[60vw] h-[45vh] rounded-full opacity-25 animate-aurora-float"
         style={{
-          background: "radial-gradient(ellipse at center, rgba(57, 255, 20, 0.06) 0%, rgba(101, 245, 154, 0.02) 50%, transparent 75%)",
+          background: "radial-gradient(ellipse at center, rgba(255, 77, 109, 0.06) 0%, rgba(255, 117, 143, 0.02) 50%, transparent 75%)",
           filter: "blur(70px)",
         }}
       />
@@ -74,7 +74,7 @@ export default function AnimatedBackground() {
             rgba(255, 119, 0, 0.06) 72deg,  /* Orange */
             rgba(255, 0, 85, 0.08) 144deg,  /* Red */
             rgba(0, 240, 255, 0.08) 216deg, /* Blue */
-            rgba(57, 255, 20, 0.08) 288deg, /* Green */
+            rgba(255, 77, 109, 0.08) 288deg, /* Crimson */
             rgba(255, 230, 0, 0.08) 360deg
           )`,
           filter: "blur(100px)",
@@ -86,8 +86,8 @@ export default function AnimatedBackground() {
         className="absolute inset-0 opacity-[0.035]"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(160, 210, 180, 0.4) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(160, 210, 180, 0.4) 1px, transparent 1px)
+            linear-gradient(to right, rgba(240, 160, 180, 0.4) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(240, 160, 180, 0.4) 1px, transparent 1px)
           `,
           backgroundSize: "40px 40px",
         }}
@@ -97,7 +97,7 @@ export default function AnimatedBackground() {
       <div 
         className="absolute inset-0" 
         style={{
-          background: "radial-gradient(circle at 50% 50%, transparent 40%, rgba(7, 11, 10, 0.75) 100%)",
+          background: "radial-gradient(circle at 50% 50%, transparent 40%, rgba(11, 7, 8, 0.75) 100%)",
         }}
       />
     </div>

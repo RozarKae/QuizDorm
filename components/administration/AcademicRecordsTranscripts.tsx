@@ -69,7 +69,7 @@ export function AcademicRecordsTranscripts() {
           <div className="flex items-center gap-4">
             <div className="text-center">
               <span className="text-[10px] text-slate-400 uppercase font-semibold">Cumulative GPA</span>
-              <p className="text-3xl font-black text-emerald-400">{transcript.cumulativeGPA} / 4.0</p>
+              <p className="text-3xl font-black text-rose-400">{transcript.cumulativeGPA} / 4.0</p>
             </div>
             <div className="text-center">
               <span className="text-[10px] text-slate-400 uppercase font-semibold">Credits</span>
@@ -79,7 +79,7 @@ export function AcademicRecordsTranscripts() {
         </div>
 
         <div className="flex items-center justify-between text-xs text-slate-300">
-          <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
+          <span className="flex items-center gap-1.5 text-rose-400 font-bold">
             <CheckCircle2 className="w-4 h-4" /> Graduation Eligibility: CONFIRMED
           </span>
           <span className="text-slate-400">Class Rank: #1 of 140</span>
@@ -104,7 +104,7 @@ export function AcademicRecordsTranscripts() {
                   </div>
                   <div className="flex items-center gap-4">
                     <span className="text-slate-400">{crs.credits} Credits</span>
-                    <span className="font-mono font-black text-emerald-600 dark:text-emerald-400 text-sm">{crs.grade}</span>
+                    <span className="font-mono font-black text-rose-600 dark:text-rose-400 text-sm">{crs.grade}</span>
                   </div>
                 </div>
               ))}

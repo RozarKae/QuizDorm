@@ -20,7 +20,7 @@ export function AttendanceTrackerCard({ records }: AttendanceTrackerCardProps) {
         <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
           <Calendar className="w-5 h-5 text-indigo-600 mr-2" /> Attendance Tracker & Check-in History
         </h3>
-        <span className="text-xs font-mono font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-950 px-2.5 py-0.5 rounded-full">
+        <span className="text-xs font-mono font-bold text-rose-600 bg-rose-50 dark:bg-rose-950 px-2.5 py-0.5 rounded-full">
           {attendanceRate}% Monthly Rate
         </span>
       </div>
@@ -29,7 +29,7 @@ export function AttendanceTrackerCard({ records }: AttendanceTrackerCardProps) {
         {records.map((r) => (
           <div key={r.id} className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              {r.status === "present" && <CheckCircle2 className="w-4 h-4 text-emerald-500" />}
+              {r.status === "present" && <CheckCircle2 className="w-4 h-4 text-rose-500" />}
               {r.status === "late" && <Clock className="w-4 h-4 text-amber-500" />}
               {r.status === "absent" && <XCircle className="w-4 h-4 text-rose-500" />}
               <span className="font-mono font-bold text-gray-900 dark:text-white">{r.date}</span>
@@ -40,7 +40,7 @@ export function AttendanceTrackerCard({ records }: AttendanceTrackerCardProps) {
               <span
                 className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
                   r.status === "present"
-                    ? "bg-emerald-100 text-emerald-800"
+                    ? "bg-rose-100 text-rose-800"
                     : r.status === "late"
                     ? "bg-amber-100 text-amber-800"
                     : "bg-rose-100 text-rose-800"

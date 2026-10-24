@@ -538,12 +538,12 @@ export function AIDocumentQuizModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-4xl max-w-5xl max-h-[92vh] overflow-y-auto bg-[#0C1210] border border-[rgba(160,190,170,0.22)] p-0 text-[#F2F7F3] shadow-[0_24px_60px_rgba(0,0,0,0.85)]">
+      <DialogContent className="sm:max-w-4xl max-w-5xl max-h-[92vh] overflow-y-auto bg-[#140C0E] border border-[rgba(240, 160, 180,0.22)] p-0 text-[#F2F7F3] shadow-[0_24px_60px_rgba(0,0,0,0.85)]">
         {/* Header */}
-        <div className="p-6 border-b border-[rgba(160,190,170,0.12)] bg-[#111B17]/60">
+        <div className="p-6 border-b border-[rgba(240, 160, 180,0.12)] bg-[#1D1013]/60">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-[6px] bg-[rgba(101,245,154,0.12)] border border-[rgba(101,245,154,0.3)] flex items-center justify-center text-[#65F59A] shadow-[0_0_15px_rgba(101,245,154,0.2)]">
+              <div className="w-10 h-10 rounded-[6px] bg-[rgba(255, 77, 109,0.12)] border border-[rgba(255, 77, 109,0.3)] flex items-center justify-center text-[#FF4D6D] shadow-[0_0_15px_rgba(255, 77, 109,0.2)]">
                 <Sparkles className="w-5 h-5" />
               </div>
               <div>
@@ -551,8 +551,8 @@ export function AIDocumentQuizModal({
                   <DialogTitle className="text-xl font-bold tracking-tight text-[#F2F7F3]">
                     Omni-Curriculum Intelligence Studio
                   </DialogTitle>
-                  <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+                  <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
                     QuizDorm Intelligence
                   </span>
                 </div>
@@ -563,11 +563,11 @@ export function AIDocumentQuizModal({
             </div>
 
             {/* Stepper Pill Indicator */}
-            <div className="hidden sm:flex items-center gap-1.5 bg-[#070B0A] border border-[rgba(160,190,170,0.14)] p-1 rounded-[6px] text-[11px] font-mono">
+            <div className="hidden sm:flex items-center gap-1.5 bg-[#0B0708] border border-[rgba(240, 160, 180,0.14)] p-1 rounded-[6px] text-[11px] font-mono">
               <span
                 className={`px-2.5 py-1 rounded-[4px] transition-colors ${
                   phase === "config"
-                    ? "bg-[#17251E] text-[#65F59A] font-bold border border-[rgba(101,245,154,0.3)]"
+                    ? "bg-[#2A141A] text-[#FF4D6D] font-bold border border-[rgba(255, 77, 109,0.3)]"
                     : "text-[#69786F]"
                 }`}
               >
@@ -577,7 +577,7 @@ export function AIDocumentQuizModal({
               <span
                 className={`px-2.5 py-1 rounded-[4px] transition-colors ${
                   phase === "generating"
-                    ? "bg-[#17251E] text-[#65F59A] font-bold border border-[rgba(101,245,154,0.3)]"
+                    ? "bg-[#2A141A] text-[#FF4D6D] font-bold border border-[rgba(255, 77, 109,0.3)]"
                     : "text-[#69786F]"
                 }`}
               >
@@ -587,7 +587,7 @@ export function AIDocumentQuizModal({
               <span
                 className={`px-2.5 py-1 rounded-[4px] transition-colors ${
                   phase === "review"
-                    ? "bg-[#17251E] text-[#65F59A] font-bold border border-[rgba(101,245,154,0.3)]"
+                    ? "bg-[#2A141A] text-[#FF4D6D] font-bold border border-[rgba(255, 77, 109,0.3)]"
                     : "text-[#69786F]"
                 }`}
               >
@@ -641,10 +641,10 @@ export function AIDocumentQuizModal({
                 onClick={() => fileInputRef.current?.click()}
                 className={`relative border-2 border-dashed rounded-[8px] p-6 text-center cursor-pointer transition-all ${
                   dragActive
-                    ? "border-[#65F59A] bg-[rgba(101,245,154,0.06)] shadow-[0_0_20px_rgba(101,245,154,0.15)]"
+                    ? "border-[#FF4D6D] bg-[rgba(255, 77, 109,0.06)] shadow-[0_0_20px_rgba(255, 77, 109,0.15)]"
                     : selectedFile
-                      ? "border-[rgba(101,245,154,0.4)] bg-[#111B17]"
-                      : "border-[rgba(160,190,170,0.2)] bg-[#070B0A]/70 hover:border-[rgba(160,190,170,0.4)] hover:bg-[#111B17]/50"
+                      ? "border-[rgba(255, 77, 109,0.4)] bg-[#1D1013]"
+                      : "border-[rgba(240, 160, 180,0.2)] bg-[#0B0708]/70 hover:border-[rgba(240, 160, 180,0.4)] hover:bg-[#1D1013]/50"
                 }`}
               >
                 <input
@@ -656,9 +656,9 @@ export function AIDocumentQuizModal({
                 />
 
                 {selectedFile ? (
-                  <div className="flex items-center justify-between max-w-lg mx-auto bg-[#070B0A] border border-[rgba(160,190,170,0.18)] p-3.5 rounded-[6px]">
+                  <div className="flex items-center justify-between max-w-lg mx-auto bg-[#0B0708] border border-[rgba(240, 160, 180,0.18)] p-3.5 rounded-[6px]">
                     <div className="flex items-center gap-3 truncate text-left">
-                      <div className="w-9 h-9 rounded-[4px] bg-[rgba(101,245,154,0.15)] text-[#65F59A] flex items-center justify-center shrink-0">
+                      <div className="w-9 h-9 rounded-[4px] bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] flex items-center justify-center shrink-0">
                         <FileCheck className="w-5 h-5" />
                       </div>
                       <div className="truncate">
@@ -685,12 +685,12 @@ export function AIDocumentQuizModal({
                   </div>
                 ) : (
                   <div className="space-y-2">
-                    <div className="w-12 h-12 mx-auto rounded-full bg-[#111B17] border border-[rgba(160,190,170,0.2)] flex items-center justify-center text-[#65F59A]">
+                    <div className="w-12 h-12 mx-auto rounded-full bg-[#1D1013] border border-[rgba(240, 160, 180,0.2)] flex items-center justify-center text-[#FF4D6D]">
                       <Upload className="w-6 h-6" />
                     </div>
                     <div className="text-sm font-medium text-[#F2F7F3]">
                       Drag and drop your syllabus or document here, or{" "}
-                      <span className="text-[#65F59A] underline underline-offset-4">browse files</span>
+                      <span className="text-[#FF4D6D] underline underline-offset-4">browse files</span>
                     </div>
                     <p className="text-xs text-[#69786F]">
                       Supported formats: PDF, DOCX, TXT, Markdown, PNG, JPG (up to 50MB)
@@ -702,7 +702,7 @@ export function AIDocumentQuizModal({
               {/* Sample Preset Buttons for Instant 1-Click Test */}
               <div className="mt-3">
                 <div className="text-[11px] font-mono uppercase tracking-wider text-[#69786F] mb-1.5 flex items-center gap-1.5">
-                  <Zap className="w-3.5 h-3.5 text-[#65F59A]" /> Or select a standard curriculum syllabus template:
+                  <Zap className="w-3.5 h-3.5 text-[#FF4D6D]" /> Or select a standard curriculum syllabus template:
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {SAMPLE_PRESETS.map((preset) => (
@@ -712,11 +712,11 @@ export function AIDocumentQuizModal({
                       onClick={() => handleSelectPreset(preset)}
                       className={`text-left p-2.5 rounded-[5px] border transition-all text-xs ${
                         selectedPresetId === preset.id
-                          ? "bg-[rgba(101,245,154,0.12)] border-[#65F59A] text-[#F2F7F3]"
-                          : "bg-[#070B0A] border-[rgba(160,190,170,0.14)] text-[#A0AEA5] hover:border-[rgba(160,190,170,0.3)] hover:text-[#F2F7F3]"
+                          ? "bg-[rgba(255, 77, 109,0.12)] border-[#FF4D6D] text-[#F2F7F3]"
+                          : "bg-[#0B0708] border-[rgba(240, 160, 180,0.14)] text-[#A0AEA5] hover:border-[rgba(240, 160, 180,0.3)] hover:text-[#F2F7F3]"
                       }`}
                     >
-                      <div className="font-semibold text-[#65F59A] truncate">{preset.name}</div>
+                      <div className="font-semibold text-[#FF4D6D] truncate">{preset.name}</div>
                       <div className="text-[10px] text-[#69786F] mt-0.5 line-clamp-1">
                         {preset.description}
                       </div>
@@ -727,7 +727,7 @@ export function AIDocumentQuizModal({
             </div>
 
             {/* Generation Parameters */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-[rgba(160,190,170,0.1)]">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-[rgba(240, 160, 180,0.1)]">
               {/* Subject */}
               <div>
                 <label className="block text-xs font-mono uppercase tracking-wider text-[#A0AEA5] mb-1.5 flex items-center justify-between">
@@ -739,7 +739,7 @@ export function AIDocumentQuizModal({
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
                   placeholder="Auto-detected from document (or e.g. Biology)"
-                  className="w-full bg-[#070B0A] border border-[rgba(160,190,170,0.2)] rounded-[5px] px-3 py-2 text-sm text-[#F2F7F3] focus:outline-none focus:border-[#65F59A] placeholder:text-[#4A5750]"
+                  className="w-full bg-[#0B0708] border border-[rgba(240, 160, 180,0.2)] rounded-[5px] px-3 py-2 text-sm text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D] placeholder:text-[#4A5750]"
                 />
               </div>
 
@@ -754,7 +754,7 @@ export function AIDocumentQuizModal({
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
                   placeholder="Auto-detected from document (or e.g. Mitosis)"
-                  className="w-full bg-[#070B0A] border border-[rgba(160,190,170,0.2)] rounded-[5px] px-3 py-2 text-sm text-[#F2F7F3] focus:outline-none focus:border-[#65F59A] placeholder:text-[#4A5750]"
+                  className="w-full bg-[#0B0708] border border-[rgba(240, 160, 180,0.2)] rounded-[5px] px-3 py-2 text-sm text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D] placeholder:text-[#4A5750]"
                 />
               </div>
 
@@ -762,12 +762,12 @@ export function AIDocumentQuizModal({
               <div>
                 <div className="flex items-center justify-between mb-1.5">
                   <label className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5]">
-                    Question Count: <span className="text-[#65F59A] font-bold">{isCustomCount ? customCountInput || "1" : questionCount}</span>
+                    Question Count: <span className="text-[#FF4D6D] font-bold">{isCustomCount ? customCountInput || "1" : questionCount}</span>
                   </label>
                   <button
                     type="button"
                     onClick={() => setIsCustomCount(!isCustomCount)}
-                    className="text-[10px] font-mono uppercase text-[#38D9B0] hover:underline"
+                    className="text-[10px] font-mono uppercase text-[#FF758F] hover:underline"
                   >
                     {isCustomCount ? "Use Presets" : "+ Custom Number"}
                   </button>
@@ -782,7 +782,7 @@ export function AIDocumentQuizModal({
                       value={customCountInput}
                       onChange={(e) => setCustomCountInput(e.target.value)}
                       placeholder="Enter 1 - 50..."
-                      className="w-full bg-[#070B0A] border border-[#65F59A] rounded-[4px] px-3 py-1.5 text-xs font-mono font-bold text-[#65F59A] focus:outline-none"
+                      className="w-full bg-[#0B0708] border border-[#FF4D6D] rounded-[4px] px-3 py-1.5 text-xs font-mono font-bold text-[#FF4D6D] focus:outline-none"
                     />
                     <span className="text-[11px] font-mono text-[#69786F] shrink-0">Max: 50</span>
                   </div>
@@ -795,8 +795,8 @@ export function AIDocumentQuizModal({
                         onClick={() => setQuestionCount(count)}
                         className={`py-1.5 rounded-[4px] font-mono text-xs font-semibold border transition-all ${
                           questionCount === count
-                            ? "bg-[rgba(101,245,154,0.2)] border-[#65F59A] text-[#65F59A]"
-                            : "bg-[#070B0A] border-[rgba(160,190,170,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3]"
+                            ? "bg-[rgba(255, 77, 109,0.2)] border-[#FF4D6D] text-[#FF4D6D]"
+                            : "bg-[#0B0708] border-[rgba(240, 160, 180,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3]"
                         }`}
                       >
                         {count}
@@ -822,9 +822,9 @@ export function AIDocumentQuizModal({
                           ? d === "Hard"
                             ? "bg-[rgba(248,113,113,0.18)] border-[#F87171] text-[#F87171]"
                             : d === "Medium"
-                              ? "bg-[rgba(56,217,176,0.18)] border-[#38D9B0] text-[#38D9B0]"
-                              : "bg-[rgba(101,245,154,0.18)] border-[#65F59A] text-[#65F59A]"
-                          : "bg-[#070B0A] border-[rgba(160,190,170,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3]"
+                              ? "bg-[rgba(255, 117, 143,0.18)] border-[#FF758F] text-[#FF758F]"
+                              : "bg-[rgba(255, 77, 109,0.18)] border-[#FF4D6D] text-[#FF4D6D]"
+                          : "bg-[#0B0708] border-[rgba(240, 160, 180,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3]"
                       }`}
                     >
                       {d}
@@ -835,7 +835,7 @@ export function AIDocumentQuizModal({
             </div>
 
             {/* Question Types Checkboxes */}
-            <div className="pt-2 border-t border-[rgba(160,190,170,0.1)]">
+            <div className="pt-2 border-t border-[rgba(240, 160, 180,0.1)]">
               <div className="flex items-center justify-between mb-2">
                 <label className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5]">
                   Question Types ({selectedQuestionTypes.length} Selected)
@@ -856,7 +856,7 @@ export function AIDocumentQuizModal({
                         "assertion_reasoning",
                       ])
                     }
-                    className="text-[10px] font-mono uppercase text-[#65F59A] hover:underline"
+                    className="text-[10px] font-mono uppercase text-[#FF4D6D] hover:underline"
                   >
                     Select All
                   </button>
@@ -890,15 +890,15 @@ export function AIDocumentQuizModal({
                       onClick={() => toggleQuestionType(typeItem.id)}
                       className={`flex items-center gap-2 px-3 py-2 rounded-[5px] border text-xs font-medium transition-all ${
                         isChecked
-                          ? "bg-[#17251E] border-[rgba(101,245,154,0.4)] text-[#F2F7F3]"
-                          : "bg-[#070B0A] border-[rgba(160,190,170,0.14)] text-[#69786F] hover:text-[#A0AEA5]"
+                          ? "bg-[#2A141A] border-[rgba(255, 77, 109,0.4)] text-[#F2F7F3]"
+                          : "bg-[#0B0708] border-[rgba(240, 160, 180,0.14)] text-[#69786F] hover:text-[#A0AEA5]"
                       }`}
                     >
                       <div
                         className={`w-3.5 h-3.5 rounded-[3px] border flex items-center justify-center shrink-0 ${
                           isChecked
-                            ? "bg-[#65F59A] border-[#65F59A] text-[#070B0A]"
-                            : "border-[rgba(160,190,170,0.3)] bg-transparent"
+                            ? "bg-[#FF4D6D] border-[#FF4D6D] text-[#0B0708]"
+                            : "border-[rgba(240, 160, 180,0.3)] bg-transparent"
                         }`}
                       >
                         {isChecked && <Check className="w-2.5 h-2.5 stroke-[3]" />}
@@ -916,7 +916,7 @@ export function AIDocumentQuizModal({
         {phase === "generating" && (
           <div className="p-8 space-y-6">
             <div className="text-center space-y-3">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.3)] text-[#65F59A] shadow-[0_0_30px_rgba(101,245,154,0.25)]">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.3)] text-[#FF4D6D] shadow-[0_0_30px_rgba(255, 77, 109,0.25)]">
                 <Cpu className="w-8 h-8 animate-pulse" />
               </div>
               <h3 className="text-lg font-bold text-[#F2F7F3]">
@@ -924,7 +924,7 @@ export function AIDocumentQuizModal({
               </h3>
               <p className="text-xs text-[#A0AEA5] max-w-md mx-auto">
                 Analyzing core study concepts from{" "}
-                <span className="font-mono text-[#65F59A]">{selectedFile?.name}</span> using
+                <span className="font-mono text-[#FF4D6D]">{selectedFile?.name}</span> using
                 QuizDorm AI.
               </p>
             </div>
@@ -932,15 +932,15 @@ export function AIDocumentQuizModal({
             {/* Future OS Telemetry Bar */}
             <div className="max-w-xl mx-auto space-y-2">
               <div className="flex items-center justify-between font-mono text-xs text-[#A0AEA5]">
-                <span className="text-[#65F59A] flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#65F59A] animate-ping" />
+                <span className="text-[#FF4D6D] flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#FF4D6D] animate-ping" />
                   {telemetryStepText}
                 </span>
                 <span>{telemetryProgress}%</span>
               </div>
-              <div className="w-full h-2 bg-[#070B0A] rounded-full overflow-hidden border border-[rgba(160,190,170,0.18)]">
+              <div className="w-full h-2 bg-[#0B0708] rounded-full overflow-hidden border border-[rgba(240, 160, 180,0.18)]">
                 <div
-                  className="h-full bg-gradient-to-r from-[#38D9B0] to-[#65F59A] transition-all duration-300 shadow-[0_0_12px_rgba(101,245,154,0.4)]"
+                  className="h-full bg-gradient-to-r from-[#FF758F] to-[#FF4D6D] transition-all duration-300 shadow-[0_0_12px_rgba(255, 77, 109,0.4)]"
                   style={{ width: `${telemetryProgress}%` }}
                 />
               </div>
@@ -968,10 +968,10 @@ export function AIDocumentQuizModal({
                     key={idx}
                     className={`flex items-center justify-between p-2.5 rounded-[5px] border text-xs font-mono transition-all ${
                       isDone
-                        ? "bg-[#111B17] border-[rgba(101,245,154,0.3)] text-[#F2F7F3]"
+                        ? "bg-[#1D1013] border-[rgba(255, 77, 109,0.3)] text-[#F2F7F3]"
                         : isCurrent
-                          ? "bg-[rgba(101,245,154,0.06)] border-[rgba(101,245,154,0.2)] text-[#65F59A]"
-                          : "bg-[#070B0A] border-[rgba(160,190,170,0.08)] text-[#69786F]"
+                          ? "bg-[rgba(255, 77, 109,0.06)] border-[rgba(255, 77, 109,0.2)] text-[#FF4D6D]"
+                          : "bg-[#0B0708] border-[rgba(240, 160, 180,0.08)] text-[#69786F]"
                     }`}
                   >
                     <span className="flex items-center gap-2">
@@ -982,9 +982,9 @@ export function AIDocumentQuizModal({
                     </span>
                     <span>
                       {isDone ? (
-                        <Check className="w-4 h-4 text-[#65F59A]" />
+                        <Check className="w-4 h-4 text-[#FF4D6D]" />
                       ) : isCurrent ? (
-                        <span className="text-[10px] uppercase tracking-wider text-[#65F59A] animate-pulse">
+                        <span className="text-[10px] uppercase tracking-wider text-[#FF4D6D] animate-pulse">
                           Processing
                         </span>
                       ) : (
@@ -1002,9 +1002,9 @@ export function AIDocumentQuizModal({
         {phase === "review" && (
           <div className="p-6 space-y-6">
             {/* Meta summary card */}
-            <div className="bg-[#111B17] border border-[rgba(101,245,154,0.25)] rounded-[6px] p-4 flex flex-wrap items-center justify-between gap-4">
+            <div className="bg-[#1D1013] border border-[rgba(255, 77, 109,0.25)] rounded-[6px] p-4 flex flex-wrap items-center justify-between gap-4">
               <div className="space-y-1">
-                <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-[#65F59A]">
+                <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-[#FF4D6D]">
                   <CheckCircle2 className="w-4 h-4" /> Questions Generated & Validated
                 </div>
                 <h4 className="text-base font-bold text-[#F2F7F3]">
@@ -1018,21 +1018,21 @@ export function AIDocumentQuizModal({
               </div>
 
               <div className="flex items-center gap-3 font-mono text-xs">
-                <div className="text-center px-3 py-1.5 rounded-[4px] bg-[#070B0A] border border-[rgba(160,190,170,0.14)]">
+                <div className="text-center px-3 py-1.5 rounded-[4px] bg-[#0B0708] border border-[rgba(240, 160, 180,0.14)]">
                   <div className="text-[#69786F] text-[10px] uppercase">Questions</div>
-                  <div className="text-base font-bold text-[#65F59A]">
+                  <div className="text-base font-bold text-[#FF4D6D]">
                     {generatedQuestions.length}
                   </div>
                 </div>
-                <div className="text-center px-3 py-1.5 rounded-[4px] bg-[#070B0A] border border-[rgba(160,190,170,0.14)]">
+                <div className="text-center px-3 py-1.5 rounded-[4px] bg-[#0B0708] border border-[rgba(240, 160, 180,0.14)]">
                   <div className="text-[#69786F] text-[10px] uppercase">Total Marks</div>
                   <div className="text-base font-bold text-[#F2F7F3]">
                     {generatedQuestions.reduce((acc, q) => acc + (q.marks || 1), 0)}
                   </div>
                 </div>
-                <div className="text-center px-3 py-1.5 rounded-[4px] bg-[#070B0A] border border-[rgba(160,190,170,0.14)]">
+                <div className="text-center px-3 py-1.5 rounded-[4px] bg-[#0B0708] border border-[rgba(240, 160, 180,0.14)]">
                   <div className="text-[#69786F] text-[10px] uppercase">Confidence</div>
-                  <div className="text-base font-bold text-[#38D9B0]">95%</div>
+                  <div className="text-base font-bold text-[#FF758F]">95%</div>
                 </div>
               </div>
             </div>
@@ -1057,18 +1057,18 @@ export function AIDocumentQuizModal({
               {generatedQuestions.map((question, qIdx) => (
                 <div
                   key={question.id}
-                  className="bg-[#070B0A] border border-[rgba(160,190,170,0.16)] rounded-[6px] p-4 space-y-3 hover:border-[rgba(101,245,154,0.3)] transition-all"
+                  className="bg-[#0B0708] border border-[rgba(240, 160, 180,0.16)] rounded-[6px] p-4 space-y-3 hover:border-[rgba(255, 77, 109,0.3)] transition-all"
                 >
                   {/* Question Header */}
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <span className="w-6 h-6 rounded-[4px] bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] text-xs font-mono font-bold flex items-center justify-center">
+                      <span className="w-6 h-6 rounded-[4px] bg-[#2A141A] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] text-xs font-mono font-bold flex items-center justify-center">
                         {qIdx + 1}
                       </span>
-                      <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] text-[#A0AEA5]">
+                      <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] text-[#A0AEA5]">
                         {question.type}
                       </span>
-                      <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.25)]">
+                      <span className="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.25)]">
                         {question.difficulty} • {question.marks} Marks
                       </span>
                     </div>
@@ -1092,7 +1092,7 @@ export function AIDocumentQuizModal({
                       rows={2}
                       value={question.title}
                       onChange={(e) => handleUpdateQuestionTitle(qIdx, e.target.value)}
-                      className="w-full bg-[#111B17] border border-[rgba(160,190,170,0.18)] rounded-[4px] p-2 text-sm text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]"
+                      className="w-full bg-[#1D1013] border border-[rgba(240, 160, 180,0.18)] rounded-[4px] p-2 text-sm text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]"
                     />
                   </div>
 
@@ -1108,8 +1108,8 @@ export function AIDocumentQuizModal({
                             key={opt.id}
                             className={`flex items-center gap-2 p-2 rounded-[4px] border text-xs transition-all ${
                               opt.isCorrect
-                                ? "bg-[rgba(101,245,154,0.08)] border-[rgba(101,245,154,0.35)]"
-                                : "bg-[#111B17] border-[rgba(160,190,170,0.12)]"
+                                ? "bg-[rgba(255, 77, 109,0.08)] border-[rgba(255, 77, 109,0.35)]"
+                                : "bg-[#1D1013] border-[rgba(240, 160, 180,0.12)]"
                             }`}
                           >
                             <button
@@ -1117,8 +1117,8 @@ export function AIDocumentQuizModal({
                               onClick={() => handleToggleOptionCorrect(qIdx, opt.id)}
                               className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
                                 opt.isCorrect
-                                  ? "bg-[#65F59A] border-[#65F59A] text-[#070B0A]"
-                                  : "border-[rgba(160,190,170,0.4)] hover:border-[#65F59A]"
+                                  ? "bg-[#FF4D6D] border-[#FF4D6D] text-[#0B0708]"
+                                  : "border-[rgba(240, 160, 180,0.4)] hover:border-[#FF4D6D]"
                               }`}
                             >
                               {opt.isCorrect && <Check className="w-2.5 h-2.5 stroke-[3]" />}
@@ -1146,10 +1146,10 @@ export function AIDocumentQuizModal({
                       <div className="space-y-1.5">
                         {question.matchingPairs.map((pair, pIdx) => (
                           <div key={pair.id || pIdx} className="grid grid-cols-2 gap-2 text-xs font-mono">
-                            <div className="p-2 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)] text-[#F2F7F3]">
-                              <span className="text-[#65F59A] font-bold mr-1.5">{pIdx + 1}.</span> {pair.leftItem}
+                            <div className="p-2 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.12)] text-[#F2F7F3]">
+                              <span className="text-[#FF4D6D] font-bold mr-1.5">{pIdx + 1}.</span> {pair.leftItem}
                             </div>
-                            <div className="p-2 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)] text-[#38D9B0]">
+                            <div className="p-2 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.12)] text-[#FF758F]">
                               <span className="text-[#A0AEA5] mr-1.5">→</span> {pair.rightItem}
                             </div>
                           </div>
@@ -1166,8 +1166,8 @@ export function AIDocumentQuizModal({
                       </label>
                       <div className="space-y-1">
                         {question.sequenceItems.map((seq, sIdx) => (
-                          <div key={seq.id || sIdx} className="p-2 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)] text-xs font-mono flex items-center gap-2">
-                            <span className="w-5 h-5 rounded-[2px] bg-[#17251E] text-[#65F59A] font-bold flex items-center justify-center shrink-0 border border-[rgba(101,245,154,0.3)] text-[10px]">
+                          <div key={seq.id || sIdx} className="p-2 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.12)] text-xs font-mono flex items-center gap-2">
+                            <span className="w-5 h-5 rounded-[2px] bg-[#2A141A] text-[#FF4D6D] font-bold flex items-center justify-center shrink-0 border border-[rgba(255, 77, 109,0.3)] text-[10px]">
                               {seq.order || sIdx + 1}
                             </span>
                             <span className="text-[#F2F7F3]">{seq.text}</span>
@@ -1185,13 +1185,13 @@ export function AIDocumentQuizModal({
                       </label>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
                         {question.dragDropCategories.map((cat) => (
-                          <div key={cat.id} className="p-2.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] space-y-1.5">
-                            <div className="font-bold text-[#65F59A]">{(cat as any).title || cat.name || cat.id}</div>
+                          <div key={cat.id} className="p-2.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] space-y-1.5">
+                            <div className="font-bold text-[#FF4D6D]">{(cat as any).title || cat.name || cat.id}</div>
                             <div className="flex flex-wrap gap-1">
                               {(question.dragDropItems || [])
                                 .filter((i) => i.categoryId === cat.id || i.targetCategoryId === cat.id)
                                 .map((item) => (
-                                  <span key={item.id} className="px-2 py-0.5 rounded-[3px] bg-[#17251E] text-[#A0AEA5] border border-[rgba(160,190,170,0.1)] text-[11px]">
+                                  <span key={item.id} className="px-2 py-0.5 rounded-[3px] bg-[#2A141A] text-[#A0AEA5] border border-[rgba(240, 160, 180,0.1)] text-[11px]">
                                     {item.text}
                                   </span>
                                 ))}
@@ -1212,7 +1212,7 @@ export function AIDocumentQuizModal({
                       value={question.explanation || ""}
                       onChange={(e) => handleUpdateExplanation(qIdx, e.target.value)}
                       placeholder="Add an explanation for the solution..."
-                      className="w-full bg-[#111B17] border border-[rgba(160,190,170,0.14)] rounded-[4px] px-2.5 py-1.5 text-xs text-[#A0AEA5] focus:outline-none focus:border-[#65F59A]"
+                      className="w-full bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] rounded-[4px] px-2.5 py-1.5 text-xs text-[#A0AEA5] focus:outline-none focus:border-[#FF4D6D]"
                     />
                   </div>
                 </div>
@@ -1222,7 +1222,7 @@ export function AIDocumentQuizModal({
         )}
 
         {/* Footer Actions */}
-        <div className="p-4 bg-[#070B0A] border-t border-[rgba(160,190,170,0.12)] flex flex-wrap items-center justify-between gap-3">
+        <div className="p-4 bg-[#0B0708] border-t border-[rgba(240, 160, 180,0.12)] flex flex-wrap items-center justify-between gap-3">
           {phase === "config" && (
             <>
               <Button
@@ -1235,7 +1235,7 @@ export function AIDocumentQuizModal({
               <Button
                 onClick={handleStartGeneration}
                 disabled={!selectedFile}
-                className="bg-[#65F59A] text-[#070B0A] hover:bg-[#38D9B0] font-bold px-5 font-mono shadow-[0_0_15px_rgba(101,245,154,0.3)] transition-all"
+                className="bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF758F] font-bold px-5 font-mono shadow-[0_0_15px_rgba(255, 77, 109,0.3)] transition-all"
               >
                 <Sparkles className="w-4 h-4 mr-2" />
                 Synthesize High-Rigor Assessment
@@ -1246,7 +1246,7 @@ export function AIDocumentQuizModal({
           {phase === "generating" && (
             <div className="w-full flex items-center justify-between text-xs text-[#A0AEA5] font-mono">
               <span>Synthesizing high-rigor assessment questions with QuizDorm Intelligence...</span>
-              <span className="text-[#65F59A] animate-pulse">Running</span>
+              <span className="text-[#FF4D6D] animate-pulse">Running</span>
             </div>
           )}
 
@@ -1257,7 +1257,7 @@ export function AIDocumentQuizModal({
                   variant="outline"
                   size="sm"
                   onClick={() => setPhase("config")}
-                  className="bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#A0AEA5] hover:text-[#F2F7F3] font-mono text-xs"
+                  className="bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] text-[#A0AEA5] hover:text-[#F2F7F3] font-mono text-xs"
                 >
                   <RotateCcw className="w-3.5 h-3.5 mr-1.5" /> Re-generate
                 </Button>
@@ -1265,7 +1265,7 @@ export function AIDocumentQuizModal({
                   variant="outline"
                   size="sm"
                   onClick={handleImportToBank}
-                  className="bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#A0AEA5] hover:text-[#F2F7F3] font-mono text-xs"
+                  className="bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] text-[#A0AEA5] hover:text-[#F2F7F3] font-mono text-xs"
                 >
                   <Save className="w-3.5 h-3.5 mr-1.5" /> Save to Question Bank
                 </Button>
@@ -1273,7 +1273,7 @@ export function AIDocumentQuizModal({
                   variant="outline"
                   size="sm"
                   onClick={handleExportJson}
-                  className="bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#A0AEA5] hover:text-[#F2F7F3] font-mono text-xs"
+                  className="bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] text-[#A0AEA5] hover:text-[#F2F7F3] font-mono text-xs"
                 >
                   <Download className="w-3.5 h-3.5 mr-1.5" /> Export JSON
                 </Button>
@@ -1284,7 +1284,7 @@ export function AIDocumentQuizModal({
                   <Button
                     variant="outline"
                     onClick={handleAddToCurrentQuiz}
-                    className="border-[rgba(101,245,154,0.4)] text-[#65F59A] bg-[#111B17] hover:bg-[rgba(101,245,154,0.1)] font-mono text-xs"
+                    className="border-[rgba(255, 77, 109,0.4)] text-[#FF4D6D] bg-[#1D1013] hover:bg-[rgba(255, 77, 109,0.1)] font-mono text-xs"
                   >
                     <Plus className="w-4 h-4 mr-1.5" /> Add to Current Quiz
                   </Button>
@@ -1292,7 +1292,7 @@ export function AIDocumentQuizModal({
 
                 <Button
                   onClick={handlePublishAndTakeNow}
-                  className="bg-[#65F59A] text-[#070B0A] hover:bg-[#38D9B0] font-bold px-5 font-mono shadow-[0_0_20px_rgba(101,245,154,0.35)] transition-all"
+                  className="bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF758F] font-bold px-5 font-mono shadow-[0_0_20px_rgba(255, 77, 109,0.35)] transition-all"
                 >
                   <Play className="w-4 h-4 mr-2 fill-current" />
                   Publish & Take Quiz Now

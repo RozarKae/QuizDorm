@@ -61,7 +61,7 @@ export default function BillingDashboardPage() {
               placeholder="Promo Code (e.g. TEACHER50)..."
               className="bg-transparent text-white placeholder-indigo-200 border-none text-xs w-48 focus:ring-0"
             />
-            <Button onClick={handleApplyCoupon} size="sm" className="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs rounded-xl">
+            <Button onClick={handleApplyCoupon} size="sm" className="bg-rose-500 hover:bg-rose-600 text-slate-950 font-bold text-xs rounded-xl">
               Apply Code
             </Button>
           </div>

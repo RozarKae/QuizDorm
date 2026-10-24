@@ -25,12 +25,12 @@ export function SubscriptionCard({ subscription }: SubscriptionCardProps) {
               Active SaaS Plan
             </span>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center">
-              {plan.name} <ShieldCheck className="w-4 h-4 text-emerald-500 ml-1.5" />
+              {plan.name} <ShieldCheck className="w-4 h-4 text-rose-500 ml-1.5" />
             </h3>
           </div>
         </div>
 
-        <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 uppercase">
+        <span className="text-xs font-bold px-3 py-1 rounded-full bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 uppercase">
           Status: {subscription.status}
         </span>
       </div>
@@ -55,7 +55,7 @@ export function SubscriptionCard({ subscription }: SubscriptionCardProps) {
 
         <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
           <span className="text-gray-400 text-[10px] block font-sans">Auto Renewal</span>
-          <span className="font-bold text-emerald-600">
+          <span className="font-bold text-rose-600">
             {subscription.autoRenew ? "Enabled" : "Disabled"}
           </span>
         </div>

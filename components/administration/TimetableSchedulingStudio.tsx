@@ -64,7 +64,7 @@ export function TimetableSchedulingStudio() {
                     <AlertTriangle className="w-3 h-3" /> CONFLICT
                   </span>
                 ) : (
-                  <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold text-[10px]">
+                  <span className="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 font-bold text-[10px]">
                     VALID
                   </span>
                 )}

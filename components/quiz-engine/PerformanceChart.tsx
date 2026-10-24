@@ -13,14 +13,14 @@ export function PerformanceChart({ percentage, isPassed, score, totalMarks }: Pe
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] relative text-center shadow-xs">
+    <div className="flex flex-col items-center justify-center p-6 bg-[#140C0E] rounded-[6px] border border-[rgba(240, 160, 180,0.14)] relative text-center shadow-xs">
       <div className="relative w-40 h-40 flex items-center justify-center">
         <svg className="w-full h-full transform -rotate-90">
           <circle
             cx="80"
             cy="80"
             r={radius}
-            className="stroke-[#111B17]"
+            className="stroke-[#1D1013]"
             strokeWidth="10"
             fill="transparent"
           />
@@ -29,7 +29,7 @@ export function PerformanceChart({ percentage, isPassed, score, totalMarks }: Pe
             cy="80"
             r={radius}
             className={`transition-all duration-1000 ${
-              isPassed ? "stroke-[#65F59A]" : "stroke-[#F87171]"
+              isPassed ? "stroke-[#FF4D6D]" : "stroke-[#F87171]"
             }`}
             strokeWidth="10"
             strokeDasharray={circumference}
@@ -38,7 +38,7 @@ export function PerformanceChart({ percentage, isPassed, score, totalMarks }: Pe
             fill="transparent"
             style={{
               filter: isPassed
-                ? "drop-shadow(0 0 6px rgba(101, 245, 154, 0.4))"
+                ? "drop-shadow(0 0 6px rgba(255, 77, 109, 0.4))"
                 : "drop-shadow(0 0 6px rgba(248, 113, 113, 0.4))",
             }}
           />
@@ -54,7 +54,7 @@ export function PerformanceChart({ percentage, isPassed, score, totalMarks }: Pe
         <span
           className={`inline-block px-3 py-1 rounded-[3px] text-[10px] font-mono font-bold uppercase tracking-widest border ${
             isPassed
-              ? "bg-[rgba(101,245,154,0.12)] text-[#65F59A] border-[rgba(101,245,154,0.3)] shadow-[0_0_10px_rgba(101,245,154,0.15)]"
+              ? "bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] border-[rgba(255, 77, 109,0.3)] shadow-[0_0_10px_rgba(255, 77, 109,0.15)]"
               : "bg-[rgba(248,113,113,0.12)] text-[#F87171] border-[rgba(248,113,113,0.3)]"
           }`}
         >

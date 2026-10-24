@@ -32,8 +32,8 @@ export function QuizClubCard({ club }: QuizClubCardProps) {
             {club.category.replace("_", " ")}
           </span>
           {club.verifiedBadge && (
-            <span className="text-[10px] font-mono text-emerald-600 font-bold flex items-center">
-              <CheckCircle2 className="w-3.5 h-3.5 mr-1 text-emerald-500" /> Verified Club
+            <span className="text-[10px] font-mono text-rose-600 font-bold flex items-center">
+              <CheckCircle2 className="w-3.5 h-3.5 mr-1 text-rose-500" /> Verified Club
             </span>
           )}
         </div>
@@ -51,7 +51,7 @@ export function QuizClubCard({ club }: QuizClubCardProps) {
         <Button
           onClick={handleJoin}
           disabled={isMember}
-          className={`w-full font-bold text-xs rounded-xl h-8 ${isMember ? "bg-emerald-600 text-white" : "bg-indigo-600 hover:bg-indigo-700 text-white"}`}
+          className={`w-full font-bold text-xs rounded-xl h-8 ${isMember ? "bg-rose-600 text-white" : "bg-indigo-600 hover:bg-indigo-700 text-white"}`}
         >
           {isMember ? <CheckCircle2 className="w-3.5 h-3.5 mr-1" /> : <UserPlus className="w-3.5 h-3.5 mr-1" />}
           {isMember ? "Joined Club" : "Join Club"}

@@ -53,7 +53,7 @@ export function DigitalProductMarketplace() {
             </div>
 
             <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800 text-xs">
-              <span className="font-mono font-bold text-emerald-600 text-base">${p.priceUSD}</span>
+              <span className="font-mono font-bold text-rose-600 text-base">${p.priceUSD}</span>
               <Button onClick={() => toast.success(`Purchased & Downloaded "${p.title}"`)} size="sm" className="bg-purple-600 text-white text-xs rounded-xl font-bold">
                 <Download className="w-3.5 h-3.5 mr-1" /> Buy & Download
               </Button>

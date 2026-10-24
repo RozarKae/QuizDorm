@@ -39,7 +39,7 @@ export function CodeSnippetViewer({
           onClick={() => setShowConsoleOutput(!showConsoleOutput)}
           className="h-7 text-[11px] bg-slate-800 border-slate-700 text-slate-200 hover:bg-slate-700"
         >
-          <Terminal className="w-3.5 h-3.5 mr-1 text-emerald-400" /> Run Code Output
+          <Terminal className="w-3.5 h-3.5 mr-1 text-rose-400" /> Run Code Output
         </Button>
       </div>
 
@@ -68,7 +68,7 @@ export function CodeSnippetViewer({
 
       {/* Simulated Console Output */}
       {showConsoleOutput && (
-        <div className="p-3 bg-black border-t border-slate-800 text-emerald-400 font-mono text-[11px] space-y-1">
+        <div className="p-3 bg-black border-t border-slate-800 text-rose-400 font-mono text-[11px] space-y-1">
           <div className="flex items-center justify-between text-slate-500 text-[10px]">
             <span>Console Execution Result</span>
             <span>Exit Code: 0</span>

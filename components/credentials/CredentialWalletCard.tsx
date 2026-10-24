@@ -30,9 +30,9 @@ export function CredentialWalletCard({ certificates, badges }: CredentialWalletC
 
         <div className="p-4 rounded-2xl bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 space-y-1 shadow-sm">
           <span className="text-gray-500 font-medium flex items-center">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 mr-1" /> Verified Status
+            <ShieldCheck className="w-3.5 h-3.5 text-rose-500 mr-1" /> Verified Status
           </span>
-          <div className="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono">
+          <div className="text-2xl font-extrabold text-rose-600 dark:text-rose-400 font-mono">
             100% Authentic
           </div>
         </div>
@@ -79,7 +79,7 @@ export function CredentialWalletCard({ certificates, badges }: CredentialWalletC
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-xs font-bold text-gray-900 dark:text-white">{cert.title}</span>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300">
                     VERIFIED
                   </span>
                 </div>

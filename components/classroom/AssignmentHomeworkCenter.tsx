@@ -228,7 +228,7 @@ export function AssignmentHomeworkCenter() {
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">{selectedAssignment.title}</h3>
-                <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold text-[10px]">
+                <span className="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 font-bold text-[10px]">
                   {selectedAssignment.status}
                 </span>
               </div>
@@ -263,7 +263,7 @@ export function AssignmentHomeworkCenter() {
                       {sub.isLate ? (
                         <span className="px-2 py-0.5 rounded bg-red-500/10 text-red-500 text-[10px] font-bold">LATE</span>
                       ) : (
-                        <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 text-[10px] font-bold">ON TIME</span>
+                        <span className="px-2 py-0.5 rounded bg-rose-500/10 text-rose-500 text-[10px] font-bold">ON TIME</span>
                       )}
                     </div>
                     <p className="text-xs text-slate-400">Submitted: {sub.submittedAt}</p>

@@ -30,7 +30,7 @@ export function OlympiadQualificationCard() {
               <span className="text-gray-900 dark:text-white text-sm">{ol.title}</span>
               <span
                 className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
-                  ol.status === "live" ? "bg-emerald-100 text-emerald-800" : "bg-indigo-100 text-indigo-800"
+                  ol.status === "live" ? "bg-rose-100 text-rose-800" : "bg-indigo-100 text-indigo-800"
                 }`}
               >
                 {ol.status}

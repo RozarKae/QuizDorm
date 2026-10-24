@@ -48,20 +48,20 @@ export default function ExaminationAuthorityPlatformPage() {
   return (
     <div className="space-y-6 pb-12 max-w-7xl mx-auto text-[#F2F7F3]">
       {/* Top Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[rgba(160,190,170,0.14)] pb-5">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[rgba(240, 160, 180,0.14)] pb-5">
         <div>
           <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5] mb-1">
-            <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
+            <span className="w-1.5 h-1.5 bg-[#FF4D6D] rounded-full animate-pulse shadow-[0_0_8px_#FF4D6D]" />
             <span>EXAMINATION AUTHORITY // HIGH-STAKES OS</span>
           </div>
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-[4px] bg-[#17251E] border border-[rgba(101,245,154,0.3)] flex items-center justify-center shadow-xs">
-              <ShieldCheck className="w-5 h-5 text-[#65F59A]" />
+            <div className="w-9 h-9 rounded-[4px] bg-[#2A141A] border border-[rgba(255, 77, 109,0.3)] flex items-center justify-center shadow-xs">
+              <ShieldCheck className="w-5 h-5 text-[#FF4D6D]" />
             </div>
             <div>
               <h1 className="text-xl sm:text-2xl font-bold font-display tracking-tight text-[#F2F7F3] flex items-center gap-2">
                 Examination Authority Platform
-                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-[2px] bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)]">
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-[2px] bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)]">
                   ENTERPRISE
                 </span>
               </h1>
@@ -74,7 +74,7 @@ export default function ExaminationAuthorityPlatformPage() {
       </div>
 
       {/* Module Navigation Tabs */}
-      <div className="bg-[#0C1210] p-1.5 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-xs flex items-center gap-1.5 overflow-x-auto scrollbar-thin">
+      <div className="bg-[#140C0E] p-1.5 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] shadow-xs flex items-center gap-1.5 overflow-x-auto scrollbar-thin">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -84,8 +84,8 @@ export default function ExaminationAuthorityPlatformPage() {
               onClick={() => setActiveTab(tab.id)}
               className={`px-3 py-2 rounded-[3px] text-xs font-mono transition-all flex items-center gap-2 whitespace-nowrap border ${
                 isActive
-                  ? "bg-[#17251E] text-[#65F59A] border-[rgba(101,245,154,0.3)] font-bold shadow-[0_0_10px_rgba(101,245,154,0.1)]"
-                  : "border-transparent text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17]"
+                  ? "bg-[#2A141A] text-[#FF4D6D] border-[rgba(255, 77, 109,0.3)] font-bold shadow-[0_0_10px_rgba(255, 77, 109,0.1)]"
+                  : "border-transparent text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#1D1013]"
               }`}
             >
               <Icon className="w-3.5 h-3.5" />
@@ -94,10 +94,10 @@ export default function ExaminationAuthorityPlatformPage() {
                 <span
                   className={`text-[8.5px] font-mono font-bold px-1.5 py-0.2 rounded-[2px] ${
                     tab.badge === "LOCK"
-                      ? "bg-[rgba(101,245,154,0.18)] text-[#65F59A] border border-[rgba(101,245,154,0.3)]"
+                      ? "bg-[rgba(255, 77, 109,0.18)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)]"
                       : tab.badge === "AI"
                       ? "bg-[rgba(248,113,113,0.18)] text-[#F87171] border border-[rgba(248,113,113,0.3)] animate-pulse"
-                      : "bg-[#111B17] text-[#38D9B0] border border-[rgba(56,217,176,0.3)]"
+                      : "bg-[#1D1013] text-[#FF758F] border border-[rgba(255, 117, 143,0.3)]"
                   }`}
                 >
                   {tab.badge}

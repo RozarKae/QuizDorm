@@ -158,18 +158,18 @@ export default function QuizzesListPage() {
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
       {/* Editorial Header */}
-      <div className="border border-[rgba(160,190,170,0.16)] bg-[#0C1210] p-6 rounded-[6px] space-y-4 shadow-sm">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(160,190,170,0.12)] pb-4">
+      <div className="border border-[rgba(240, 160, 180,0.16)] bg-[#140C0E] p-6 rounded-[6px] space-y-4 shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(240, 160, 180,0.12)] pb-4">
           <div className="space-y-1">
             <div className="flex items-center space-x-2 text-[10px] font-mono tracking-widest uppercase text-[#A0AEA5]">
-              <span className="w-1.5 h-1.5 bg-[#65F59A] rounded-full animate-pulse shadow-[0_0_8px_#65F59A]" />
+              <span className="w-1.5 h-1.5 bg-[#FF4D6D] rounded-full animate-pulse shadow-[0_0_8px_#FF4D6D]" />
               <span>THE DORM VAULT // UNIVERSAL QUIZ REPOSITORY</span>
             </div>
             <div className="flex items-center space-x-2.5">
               <h1 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-[#F2F7F3]">
                 The Dorm Vault
               </h1>
-              <Badge variant="outline" className="border-[rgba(101,245,154,0.3)] bg-[rgba(101,245,154,0.1)] text-[#65F59A] font-mono text-[9px] uppercase tracking-widest rounded-[3px]">
+              <Badge variant="outline" className="border-[rgba(255, 77, 109,0.3)] bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] font-mono text-[9px] uppercase tracking-widest rounded-[3px]">
                 {quizzes.length} ASSESSMENTS
               </Badge>
             </div>
@@ -182,14 +182,14 @@ export default function QuizzesListPage() {
             <Button
               size="sm"
               onClick={() => setAiDocModalOpen(true)}
-              className="bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono font-bold text-xs tracking-wider rounded-[4px] shadow-[0_0_15px_rgba(101,245,154,0.3)] transition-all"
+              className="bg-[#FF4D6D] hover:bg-[#FF3366] text-[#0B0708] font-mono font-bold text-xs tracking-wider rounded-[4px] shadow-[0_0_15px_rgba(255, 77, 109,0.3)] transition-all"
             >
               <Sparkles className="w-3.5 h-3.5 mr-1.5 stroke-[2.5]" />
               AI QUIZ MAKER
             </Button>
             <Link href="/create-quiz">
-              <Button variant="outline" size="sm" className="border-[rgba(160,190,170,0.18)] bg-[#111B17] hover:bg-[#17251E] text-[#F2F7F3] hover:text-[#65F59A] text-xs font-mono tracking-wider rounded-[4px] transition-colors">
-                <FileText className="w-3.5 h-3.5 mr-1.5 text-[#38D9B0]" />
+              <Button variant="outline" size="sm" className="border-[rgba(240, 160, 180,0.18)] bg-[#1D1013] hover:bg-[#2A141A] text-[#F2F7F3] hover:text-[#FF4D6D] text-xs font-mono tracking-wider rounded-[4px] transition-colors">
+                <FileText className="w-3.5 h-3.5 mr-1.5 text-[#FF758F]" />
                 IMPORT PDF
               </Button>
             </Link>
@@ -199,19 +199,19 @@ export default function QuizzesListPage() {
                 setInstantTopic(topicFilter !== "All" ? topicFilter : "All");
                 setInstantModalOpen(true);
               }}
-              className="bg-[#111B17] hover:bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] hover:border-[#65F59A]/60 text-xs font-mono tracking-wider rounded-[4px] transition-all shadow-[0_0_10px_rgba(101,245,154,0.1)]"
+              className="bg-[#1D1013] hover:bg-[#2A141A] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] hover:border-[#FF4D6D]/60 text-xs font-mono tracking-wider rounded-[4px] transition-all shadow-[0_0_10px_rgba(255, 77, 109,0.1)]"
             >
               <Zap className="w-3.5 h-3.5 mr-1.5 fill-current" />
               INSTANT QUIZ
             </Button>
             <Link href="/dashboard/quizzes/builder">
-              <Button variant="outline" size="sm" className="border-[rgba(160,190,170,0.18)] bg-[#111B17] hover:bg-[#17251E] text-[#F2F7F3] hover:text-[#65F59A] text-xs font-mono tracking-wider rounded-[4px] transition-colors">
+              <Button variant="outline" size="sm" className="border-[rgba(240, 160, 180,0.18)] bg-[#1D1013] hover:bg-[#2A141A] text-[#F2F7F3] hover:text-[#FF4D6D] text-xs font-mono tracking-wider rounded-[4px] transition-colors">
                 <HelpCircle className="w-3.5 h-3.5 mr-1.5" />
                 BUILDER
               </Button>
             </Link>
             <Link href="/dashboard/quizzes/new">
-              <Button size="sm" className="bg-[#17251E] hover:bg-[#23372C] text-[#F2F7F3] border border-[rgba(160,190,170,0.2)] text-xs font-mono tracking-wider rounded-[4px] transition-colors">
+              <Button size="sm" className="bg-[#2A141A] hover:bg-[#34151C] text-[#F2F7F3] border border-[rgba(240, 160, 180,0.2)] text-xs font-mono tracking-wider rounded-[4px] transition-colors">
                 <Plus className="w-3.5 h-3.5 mr-1.5" />
                 COMPOSE
               </Button>
@@ -223,13 +223,13 @@ export default function QuizzesListPage() {
         <div className="space-y-2.5 pt-1">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2 text-[10px] font-mono font-bold uppercase tracking-widest text-[#A0AEA5]">
-              <Layers className="w-3.5 h-3.5 text-[#65F59A]" />
+              <Layers className="w-3.5 h-3.5 text-[#FF4D6D]" />
               <span>Browse By Curricular Domain ({topicsSummary.length} Domains)</span>
             </div>
             {topicFilter !== "All" && (
               <button
                 onClick={() => setTopicFilter("All")}
-                className="text-[10px] font-mono text-[#65F59A] hover:underline"
+                className="text-[10px] font-mono text-[#FF4D6D] hover:underline"
               >
                 RESET TO ALL
               </button>
@@ -241,8 +241,8 @@ export default function QuizzesListPage() {
               onClick={() => setTopicFilter("All")}
               className={`px-3 py-1 rounded-[3px] text-xs font-mono uppercase tracking-wider transition-all whitespace-nowrap shrink-0 border ${
                 topicFilter === "All"
-                  ? "bg-[rgba(101,245,154,0.15)] text-[#65F59A] border-[#65F59A]/40 font-bold shadow-[0_0_10px_rgba(101,245,154,0.15)]"
-                  : "bg-[#0C1210] border-[rgba(160,190,170,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3]"
+                  ? "bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border-[#FF4D6D]/40 font-bold shadow-[0_0_10px_rgba(255, 77, 109,0.15)]"
+                  : "bg-[#140C0E] border-[rgba(240, 160, 180,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3]"
               }`}
             >
               All Domains ({quizzes.length})
@@ -253,16 +253,16 @@ export default function QuizzesListPage() {
                 onClick={() => setTopicFilter(ts.topic)}
                 className={`px-2.5 py-1 rounded-[3px] text-xs font-mono uppercase tracking-wider transition-all whitespace-nowrap shrink-0 flex items-center space-x-1.5 border ${
                   topicFilter === ts.topic
-                    ? "bg-[rgba(101,245,154,0.15)] text-[#65F59A] border-[#65F59A]/40 font-bold shadow-[0_0_10px_rgba(101,245,154,0.15)]"
-                    : "bg-[#0C1210] border-[rgba(160,190,170,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3]"
+                    ? "bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border-[#FF4D6D]/40 font-bold shadow-[0_0_10px_rgba(255, 77, 109,0.15)]"
+                    : "bg-[#140C0E] border-[rgba(240, 160, 180,0.14)] text-[#A0AEA5] hover:text-[#F2F7F3]"
                 }`}
               >
                 <span>{ts.topic}</span>
                 <span
                   className={`text-[9px] px-1 py-0 rounded-[2px] font-mono ${
                     topicFilter === ts.topic
-                      ? "bg-[#65F59A]/20 text-[#65F59A] font-bold"
-                      : "bg-[#111B17] text-[#69786F]"
+                      ? "bg-[#FF4D6D]/20 text-[#FF4D6D] font-bold"
+                      : "bg-[#1D1013] text-[#69786F]"
                   }`}
                 >
                   {ts.questionCount}
@@ -358,12 +358,12 @@ export default function QuizzesListPage() {
             return (
               <div
                 key={quiz.id}
-                className="bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] p-6 hover:border-[#65F59A]/40 transition-all flex flex-col justify-between group hover:-translate-y-0.5 hover:shadow-[0_12px_25px_rgba(0,0,0,0.6),0_0_15px_rgba(101,245,154,0.1)]"
+                className="bg-[#140C0E] rounded-[6px] border border-[rgba(240, 160, 180,0.14)] p-6 hover:border-[#FF4D6D]/40 transition-all flex flex-col justify-between group hover:-translate-y-0.5 hover:shadow-[0_12px_25px_rgba(0,0,0,0.6),0_0_15px_rgba(255, 77, 109,0.1)]"
               >
                 <div>
                   {/* Topic and Difficulty Header */}
                   <div className="flex items-center justify-between mb-3 gap-2">
-                    <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-[#111B17] text-[#F2F7F3] border border-[rgba(160,190,170,0.14)] truncate max-w-[180px]">
+                    <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-[#1D1013] text-[#F2F7F3] border border-[rgba(240, 160, 180,0.14)] truncate max-w-[180px]">
                       {quiz.topic || quiz.category}
                     </span>
                     <Badge
@@ -372,8 +372,8 @@ export default function QuizzesListPage() {
                         quiz.difficulty === "Hard"
                           ? "border-[#F87171]/40 bg-[#F87171]/10 text-[#F87171]"
                           : quiz.difficulty === "Medium"
-                          ? "border-[rgba(56,217,176,0.3)] bg-[rgba(56,217,176,0.1)] text-[#38D9B0]"
-                          : "border-[rgba(101,245,154,0.3)] bg-[rgba(101,245,154,0.1)] text-[#65F59A]"
+                          ? "border-[rgba(255, 117, 143,0.3)] bg-[rgba(255, 117, 143,0.1)] text-[#FF758F]"
+                          : "border-[rgba(255, 77, 109,0.3)] bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D]"
                       }`}
                     >
                       {quiz.difficulty}
@@ -381,14 +381,14 @@ export default function QuizzesListPage() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base font-bold font-display text-[#F2F7F3] line-clamp-2 mb-2 group-hover:text-[#65F59A] transition-colors">
+                  <h3 className="text-base font-bold font-display text-[#F2F7F3] line-clamp-2 mb-2 group-hover:text-[#FF4D6D] transition-colors">
                     {quiz.title}
                   </h3>
 
                   {/* Metadata Chips */}
                   <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-[#A0AEA5] mb-4">
                     {(quiz.gradeLevel || quiz.grade) && (
-                      <span className="flex items-center bg-[#111B17] px-2 py-0.5 rounded-[3px] text-[10px] border border-[rgba(160,190,170,0.12)]">
+                      <span className="flex items-center bg-[#1D1013] px-2 py-0.5 rounded-[3px] text-[10px] border border-[rgba(240, 160, 180,0.12)]">
                         <GraduationCap className="w-3 h-3 mr-1 text-[#A0AEA5]" />
                         {quiz.gradeLevel || quiz.grade}
                       </span>
@@ -411,11 +411,11 @@ export default function QuizzesListPage() {
                 </div>
 
                 {/* Card Footer */}
-                <div className="pt-4 border-t border-[rgba(160,190,170,0.12)] flex items-center justify-between">
+                <div className="pt-4 border-t border-[rgba(240, 160, 180,0.12)] flex items-center justify-between">
                   <Link href={`/dashboard/quizzes/${quiz.id}/take`}>
                     <Button
                       size="sm"
-                      className="bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono text-xs font-bold tracking-wider rounded-[4px] px-4 shadow-[0_0_12px_rgba(101,245,154,0.25)] transition-all"
+                      className="bg-[#FF4D6D] hover:bg-[#FF3366] text-[#0B0708] font-mono text-xs font-bold tracking-wider rounded-[4px] px-4 shadow-[0_0_12px_rgba(255, 77, 109,0.25)] transition-all"
                     >
                       <Play className="w-3.5 h-3.5 mr-1 fill-current" /> TAKE QUIZ
                     </Button>
@@ -428,7 +428,7 @@ export default function QuizzesListPage() {
                       </Button>
                     </Link>
                     <Link href={`/dashboard/quizzes/${quiz.id}/edit`}>
-                      <Button variant="ghost" size="icon" className="h-7 w-7 text-[#38D9B0] hover:bg-[#38D9B0]/10 rounded-[3px]" title="Edit Quiz">
+                      <Button variant="ghost" size="icon" className="h-7 w-7 text-[#FF758F] hover:bg-[#FF758F]/10 rounded-[3px]" title="Edit Quiz">
                         <Edit className="w-3.5 h-3.5" />
                       </Button>
                     </Link>
@@ -457,7 +457,7 @@ export default function QuizzesListPage() {
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center text-gray-900 dark:text-white">
-              <Zap className="w-5 h-5 text-emerald-600 mr-2 fill-current" />
+              <Zap className="w-5 h-5 text-rose-600 mr-2 fill-current" />
               Start Instant Shuffled Quiz
             </DialogTitle>
             <DialogDescription>
@@ -526,7 +526,7 @@ export default function QuizzesListPage() {
               Cancel
             </Button>
             <Button
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold"
+              className="bg-rose-600 hover:bg-rose-700 text-white font-bold"
               onClick={() => handleLaunchInstantQuiz()}
             >
               <Play className="w-4 h-4 mr-1.5 fill-current" />

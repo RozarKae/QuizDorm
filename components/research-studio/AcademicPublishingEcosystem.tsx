@@ -60,7 +60,7 @@ export function AcademicPublishingEcosystem() {
                   <h3 className="font-bold text-slate-900 dark:text-white text-base mt-1">{paper.title}</h3>
                   <p className="text-xs text-slate-500">{paper.authors}</p>
                 </div>
-                <span className={`px-2.5 py-0.5 rounded-full font-bold text-[10px] ${paper.reviewStatus === "Accepted & Published" ? "bg-emerald-500/10 text-emerald-600" : "bg-amber-500/10 text-amber-600"}`}>
+                <span className={`px-2.5 py-0.5 rounded-full font-bold text-[10px] ${paper.reviewStatus === "Accepted & Published" ? "bg-rose-500/10 text-rose-600" : "bg-amber-500/10 text-amber-600"}`}>
                   {paper.reviewStatus}
                 </span>
               </div>

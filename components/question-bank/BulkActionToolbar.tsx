@@ -21,19 +21,19 @@ export function BulkActionToolbar({
   if (selectedCount === 0) return null;
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#0C1210]/95 backdrop-blur-xl text-[#F2F7F3] px-6 py-3 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_25px_rgba(101,245,154,0.15)] border border-[rgba(160,190,170,0.22)] flex items-center space-x-6 animate-in slide-in-from-bottom-5">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#140C0E]/95 backdrop-blur-xl text-[#F2F7F3] px-6 py-3 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_25px_rgba(255, 77, 109,0.15)] border border-[rgba(240, 160, 180,0.22)] flex items-center space-x-6 animate-in slide-in-from-bottom-5">
       <div className="flex items-center space-x-2 text-xs font-mono font-semibold">
-        <span className="bg-[rgba(101,245,154,0.18)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] px-2.5 py-0.5 rounded-full text-xs">
+        <span className="bg-[rgba(255, 77, 109,0.18)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] px-2.5 py-0.5 rounded-full text-xs">
           {selectedCount}
         </span>
         <span className="text-[#F2F7F3]">Items Selected</span>
       </div>
 
-      <div className="h-4 w-px bg-[rgba(160,190,170,0.16)]" />
+      <div className="h-4 w-px bg-[rgba(240, 160, 180,0.16)]" />
 
       <div className="flex items-center space-x-3">
         <Select
-          className="h-8 text-xs bg-[#111B17] text-[#F2F7F3] border-[rgba(160,190,170,0.18)] rounded-[4px] w-36 font-mono"
+          className="h-8 text-xs bg-[#1D1013] text-[#F2F7F3] border-[rgba(240, 160, 180,0.18)] rounded-[4px] w-36 font-mono"
           onChange={(e) => e.target.value && onBulkCategoryChange(e.target.value)}
           options={[
             { value: "", label: "Update Category" },
@@ -45,7 +45,7 @@ export function BulkActionToolbar({
         />
 
         <Select
-          className="h-8 text-xs bg-[#111B17] text-[#F2F7F3] border-[rgba(160,190,170,0.18)] rounded-[4px] w-36 font-mono"
+          className="h-8 text-xs bg-[#1D1013] text-[#F2F7F3] border-[rgba(240, 160, 180,0.18)] rounded-[4px] w-36 font-mono"
           onChange={(e) => e.target.value && onBulkDifficultyChange(e.target.value)}
           options={[
             { value: "", label: "Update Difficulty" },

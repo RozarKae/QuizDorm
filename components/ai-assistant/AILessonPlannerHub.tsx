@@ -140,7 +140,7 @@ export function AILessonPlannerHub() {
         {/* Minute-by-Minute Timeline */}
         <div className="space-y-3">
           <h3 className="font-bold text-xs text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-            <Clock className="w-4 h-4 text-emerald-600" /> Minute-by-Minute Instructional Timeline
+            <Clock className="w-4 h-4 text-rose-600" /> Minute-by-Minute Instructional Timeline
           </h3>
 
           <div className="space-y-2">

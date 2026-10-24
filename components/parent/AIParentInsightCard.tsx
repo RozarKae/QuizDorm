@@ -34,11 +34,11 @@ export function AIParentInsightCard({ insight }: AIParentInsightCardProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {/* Strengths */}
-          <div className="p-3.5 rounded-2xl bg-emerald-50/40 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900 space-y-1.5">
-            <span className="font-bold text-emerald-800 dark:text-emerald-300 flex items-center">
+          <div className="p-3.5 rounded-2xl bg-rose-50/40 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-900 space-y-1.5">
+            <span className="font-bold text-rose-800 dark:text-rose-300 flex items-center">
               <CheckCircle2 className="w-3.5 h-3.5 mr-1" /> Key Academic Strengths
             </span>
-            <ul className="space-y-1 text-[11px] text-emerald-900 dark:text-emerald-200 list-disc list-inside">
+            <ul className="space-y-1 text-[11px] text-rose-900 dark:text-rose-200 list-disc list-inside">
               {insight.strengths.map((s, idx) => (
                 <li key={idx}>{s}</li>
               ))}

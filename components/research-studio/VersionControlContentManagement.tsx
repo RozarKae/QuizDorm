@@ -59,7 +59,7 @@ export function VersionControlContentManagement() {
                   <span className="font-bold text-slate-900 dark:text-white">{ver.commitMessage}</span>
                 </div>
                 <p className="text-slate-500 font-mono text-[11px]">
-                  Author: {ver.author} • {ver.timestamp} • <span className="text-emerald-600 font-bold">+{ver.linesAdded}</span> <span className="text-rose-600 font-bold">-{ver.linesDeleted}</span>
+                  Author: {ver.author} • {ver.timestamp} • <span className="text-rose-600 font-bold">+{ver.linesAdded}</span> <span className="text-rose-600 font-bold">-{ver.linesDeleted}</span>
                 </p>
               </div>
 

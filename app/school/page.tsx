@@ -47,7 +47,7 @@ export default function SchoolPage() {
       value: "85.2%",
       subtext: "Median campus benchmark",
       change: "Top decile",
-      icon: <BarChart3 className="h-4 w-4 text-emerald-400" />,
+      icon: <BarChart3 className="h-4 w-4 text-rose-400" />,
     },
   ];
 
@@ -213,13 +213,13 @@ export default function SchoolPage() {
                     {dept.facultyCount} Faculty &bull; {dept.studentLoad} Enrolled
                   </td>
                   <td className="px-4 py-3.5 font-mono">
-                    <span className="font-bold text-emerald-400">{dept.proficiency}</span>
+                    <span className="font-bold text-rose-400">{dept.proficiency}</span>
                   </td>
                   <td className="px-4 py-3.5 font-mono text-[11px] text-[#64748B]">
                     {dept.quizzesRun} completed
                   </td>
                   <td className="px-4 py-3.5 text-right font-mono">
-                    <span className="px-2 py-0.5 rounded-[2px] text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span className="px-2 py-0.5 rounded-[2px] text-[10px] font-semibold bg-rose-500/10 text-rose-400 border border-rose-500/20">
                       {dept.status}
                     </span>
                   </td>

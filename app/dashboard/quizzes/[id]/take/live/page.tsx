@@ -79,9 +79,9 @@ export default function DistractionFreeQuizEnginePage({
 
   if (!currentQuestion) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-[#070B0A] text-[#F2F7F3] font-mono">
+      <div className="fixed inset-0 flex items-center justify-center bg-[#0B0708] text-[#F2F7F3] font-mono">
         <div className="flex items-center space-x-3">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#65F59A] animate-pulse" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#FF4D6D] animate-pulse" />
           <p className="text-xs text-[#A0AEA5]">Initializing secure assessment session...</p>
         </div>
       </div>
@@ -92,12 +92,12 @@ export default function DistractionFreeQuizEnginePage({
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-[#070B0A] text-[#F2F7F3] flex flex-col justify-between overflow-hidden transition-all duration-300 ${
+      className={`fixed inset-0 z-50 bg-[#0B0708] text-[#F2F7F3] flex flex-col justify-between overflow-hidden transition-all duration-300 ${
         isUrgent ? "animate-edge-urgency" : ""
       }`}
     >
       {/* Header Bar */}
-      <header className="bg-[#0C1210] border-b border-[rgba(160,190,170,0.14)] px-6 py-3 flex items-center justify-between shadow-xs relative z-20">
+      <header className="bg-[#140C0E] border-b border-[rgba(240, 160, 180,0.14)] px-6 py-3 flex items-center justify-between shadow-xs relative z-20">
         <div>
           <h2 className="text-sm font-bold font-display text-[#F2F7F3] truncate max-w-xs sm:max-w-md">
             {targetQuiz.title}
@@ -115,7 +115,7 @@ export default function DistractionFreeQuizEnginePage({
               playTap();
               setSubmitModalOpen(true);
             }}
-            className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-[3px] h-8 shadow-[0_0_12px_rgba(101,245,154,0.18)]"
+            className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] text-xs font-mono font-bold rounded-[3px] h-8 shadow-[0_0_12px_rgba(255, 77, 109,0.18)]"
           >
             <Send className="w-3.5 h-3.5 mr-1.5" /> Submit Assessment
           </Button>
@@ -123,9 +123,9 @@ export default function DistractionFreeQuizEnginePage({
       </header>
 
       {/* Progress Bar */}
-      <div className="h-1 w-full bg-[#111B17]">
+      <div className="h-1 w-full bg-[#1D1013]">
         <div
-          className="h-full bg-gradient-to-r from-[#38D9B0] to-[#65F59A] transition-all duration-300 shadow-[0_0_8px_rgba(101,245,154,0.3)]"
+          className="h-full bg-gradient-to-r from-[#FF758F] to-[#FF4D6D] transition-all duration-300 shadow-[0_0_8px_rgba(255, 77, 109,0.3)]"
           style={{ width: `${((currentIdx + 1) / questions.length) * 100}%` }}
         />
       </div>
@@ -157,7 +157,7 @@ export default function DistractionFreeQuizEnginePage({
       </main>
 
       {/* Navigation Footer */}
-      <footer className="bg-[#0C1210] border-t border-[rgba(160,190,170,0.14)] px-6 py-3 flex items-center justify-between relative z-20">
+      <footer className="bg-[#140C0E] border-t border-[rgba(240, 160, 180,0.14)] px-6 py-3 flex items-center justify-between relative z-20">
         <div className="flex items-center space-x-2">
           <Button
             variant="outline"
@@ -169,7 +169,7 @@ export default function DistractionFreeQuizEnginePage({
             className={`text-xs font-mono rounded-[3px] h-8 ${
               markedForReview.includes(currentQuestion.id)
                 ? "bg-[rgba(248,113,113,0.15)] text-[#F87171] border-[#F87171] font-bold"
-                : "border-[rgba(160,190,170,0.18)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/30"
+                : "border-[rgba(240, 160, 180,0.18)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#FF4D6D]/30"
             }`}
           >
             <Bookmark className="w-3.5 h-3.5 mr-1" />
@@ -200,7 +200,7 @@ export default function DistractionFreeQuizEnginePage({
               playTap();
               setCurrentIdx(currentIdx - 1);
             }}
-            className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[3px] h-8 text-[#A0AEA5] hover:text-[#F2F7F3] disabled:opacity-30"
+            className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[3px] h-8 text-[#A0AEA5] hover:text-[#F2F7F3] disabled:opacity-30"
           >
             <ChevronLeft className="w-4 h-4 mr-1" /> Previous
           </Button>
@@ -212,7 +212,7 @@ export default function DistractionFreeQuizEnginePage({
                 playTap();
                 setCurrentIdx(currentIdx + 1);
               }}
-              className="bg-[#17251E] hover:bg-[#20342a] text-[#F2F7F3] border border-[rgba(160,190,170,0.2)] text-xs font-mono font-semibold rounded-[3px] h-8"
+              className="bg-[#2A141A] hover:bg-[#34151C] text-[#F2F7F3] border border-[rgba(240, 160, 180,0.2)] text-xs font-mono font-semibold rounded-[3px] h-8"
             >
               Next <ChevronRight className="w-4 h-4 ml-1" />
             </Button>
@@ -223,7 +223,7 @@ export default function DistractionFreeQuizEnginePage({
                 playTap();
                 setSubmitModalOpen(true);
               }}
-              className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold rounded-[3px] h-8 shadow-[0_0_12px_rgba(101,245,154,0.18)]"
+              className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] text-xs font-mono font-bold rounded-[3px] h-8 shadow-[0_0_12px_rgba(255, 77, 109,0.18)]"
             >
               Finish &amp; Submit
             </Button>

@@ -28,14 +28,14 @@ export function QuestionRenderer({
   }, [question.matchingPairs]);
 
   return (
-    <div className="bg-[#0C1210] p-6 sm:p-8 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-sm space-y-6">
+    <div className="bg-[#140C0E] p-6 sm:p-8 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] shadow-sm space-y-6">
       {/* Header Info */}
-      <div className="flex items-center justify-between pb-3 border-b border-[rgba(160,190,170,0.12)]">
+      <div className="flex items-center justify-between pb-3 border-b border-[rgba(240, 160, 180,0.12)]">
         <div className="flex items-center space-x-2">
           <QuestionTypeBadge type={question.type} />
           <span className="font-mono text-[11px] text-[#A0AEA5]">{question.category || question.subject}</span>
         </div>
-        <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-[2px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] text-[#65F59A]">
+        <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-[2px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] text-[#FF4D6D]">
           {question.marks} {question.marks === 1 ? "Mark" : "Marks"}
         </span>
       </div>
@@ -51,7 +51,7 @@ export function QuestionRenderer({
           <img
             src={question.image}
             alt="Question Diagram"
-            className="rounded-[4px] max-h-56 object-contain border border-[rgba(160,190,170,0.16)] mx-auto bg-[#070B0A] p-2"
+            className="rounded-[4px] max-h-56 object-contain border border-[rgba(240, 160, 180,0.16)] mx-auto bg-[#0B0708] p-2"
           />
         )}
       </div>
@@ -89,23 +89,23 @@ export function QuestionRenderer({
                 className={`p-3.5 rounded-[4px] border text-xs font-mono transition-all flex items-center justify-between ${
                   showExplanation
                     ? isCorrectOption
-                      ? "border-[#65F59A] bg-[rgba(101,245,154,0.1)] text-[#65F59A] font-semibold ring-1 ring-[#65F59A]/50"
+                      ? "border-[#FF4D6D] bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] font-semibold ring-1 ring-[#FF4D6D]/50"
                       : isSelected
                         ? "border-[#F87171] bg-[rgba(248,113,113,0.1)] text-[#F87171] ring-1 ring-[#F87171]/50"
-                        : "border-[rgba(160,190,170,0.1)] bg-[#070B0A]/40 text-[#69786F] opacity-60"
+                        : "border-[rgba(240, 160, 180,0.1)] bg-[#0B0708]/40 text-[#69786F] opacity-60"
                     : isSelected
-                      ? "border-[#65F59A] bg-[#17251E] text-[#F2F7F3] font-semibold ring-1 ring-[#65F59A] shadow-[0_0_12px_rgba(101,245,154,0.12)] cursor-pointer"
-                      : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 text-[#A0AEA5] hover:border-[#65F59A]/40 hover:text-[#F2F7F3] hover:bg-[#111B17] cursor-pointer"
+                      ? "border-[#FF4D6D] bg-[#2A141A] text-[#F2F7F3] font-semibold ring-1 ring-[#FF4D6D] shadow-[0_0_12px_rgba(255, 77, 109,0.12)] cursor-pointer"
+                      : "border-[rgba(240, 160, 180,0.14)] bg-[#1D1013]/60 text-[#A0AEA5] hover:border-[#FF4D6D]/40 hover:text-[#F2F7F3] hover:bg-[#1D1013] cursor-pointer"
                 }`}
               >
                 <div className="flex items-center space-x-3">
                   <span
                     className={`w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 border ${
                       showExplanation && isCorrectOption
-                        ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
+                        ? "bg-[#FF4D6D] text-[#0B0708] border-[#FF4D6D]"
                         : isSelected
-                          ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
-                          : "bg-[#17251E] text-[#A0AEA5] border-[rgba(160,190,170,0.2)]"
+                          ? "bg-[#FF4D6D] text-[#0B0708] border-[#FF4D6D]"
+                          : "bg-[#2A141A] text-[#A0AEA5] border-[rgba(240, 160, 180,0.2)]"
                     }`}
                   >
                     {String.fromCharCode(65 + idx)}
@@ -114,12 +114,12 @@ export function QuestionRenderer({
                 </div>
                 {showExplanation ? (
                   isCorrectOption ? (
-                    <span className="text-[10px] font-bold text-[#65F59A] font-mono uppercase">Correct Key</span>
+                    <span className="text-[10px] font-bold text-[#FF4D6D] font-mono uppercase">Correct Key</span>
                   ) : isSelected ? (
                     <span className="text-[10px] font-bold text-[#F87171] font-mono uppercase">Your Choice</span>
                   ) : null
                 ) : (
-                  isSelected && <CheckCircle2 className="w-4 h-4 text-[#65F59A] shrink-0" />
+                  isSelected && <CheckCircle2 className="w-4 h-4 text-[#FF4D6D] shrink-0" />
                 )}
               </div>
             );
@@ -149,13 +149,13 @@ export function QuestionRenderer({
                 className={`p-4 rounded-[4px] border font-mono text-xs font-bold transition-all uppercase ${
                   showExplanation
                     ? isCorrectChoice
-                      ? "border-[#65F59A] bg-[rgba(101,245,154,0.12)] text-[#65F59A] ring-1 ring-[#65F59A]"
+                      ? "border-[#FF4D6D] bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] ring-1 ring-[#FF4D6D]"
                       : isSelected
                         ? "border-[#F87171] bg-[rgba(248,113,113,0.12)] text-[#F87171] ring-1 ring-[#F87171]"
-                        : "border-[rgba(160,190,170,0.1)] bg-[#070B0A] text-[#69786F] opacity-60"
+                        : "border-[rgba(240, 160, 180,0.1)] bg-[#0B0708] text-[#69786F] opacity-60"
                     : isSelected
-                      ? "border-[#65F59A] bg-[#17251E] text-[#65F59A] ring-1 ring-[#65F59A] shadow-[0_0_12px_rgba(101,245,154,0.12)] cursor-pointer"
-                      : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 text-[#A0AEA5] hover:border-[#65F59A]/40 hover:text-[#F2F7F3] hover:bg-[#111B17] cursor-pointer"
+                      ? "border-[#FF4D6D] bg-[#2A141A] text-[#FF4D6D] ring-1 ring-[#FF4D6D] shadow-[0_0_12px_rgba(255, 77, 109,0.12)] cursor-pointer"
+                      : "border-[rgba(240, 160, 180,0.14)] bg-[#1D1013]/60 text-[#A0AEA5] hover:border-[#FF4D6D]/40 hover:text-[#F2F7F3] hover:bg-[#1D1013] cursor-pointer"
                 }`}
               >
                 {val}
@@ -175,14 +175,14 @@ export function QuestionRenderer({
             disabled={showExplanation}
             onChange={(e) => onAnswerChange(e.target.value)}
             placeholder="Enter answer keyword..."
-            className="text-sm font-semibold font-mono h-11 rounded-[4px] bg-[#17251E] border-[rgba(160,190,170,0.18)]"
+            className="text-sm font-semibold font-mono h-11 rounded-[4px] bg-[#2A141A] border-[rgba(240, 160, 180,0.18)]"
           />
 
           {showExplanation && (
-            <div className="p-3 rounded-[4px] border border-[rgba(160,190,170,0.14)] bg-[#111B17] font-mono text-xs space-y-1.5">
+            <div className="p-3 rounded-[4px] border border-[rgba(240, 160, 180,0.14)] bg-[#1D1013] font-mono text-xs space-y-1.5">
               <div className="flex items-center justify-between">
                 <span className="text-[#A0AEA5]">Accepted Answer(s):</span>
-                <span className="font-bold text-[#65F59A]">
+                <span className="font-bold text-[#FF4D6D]">
                   {[
                     ...(question.fillBlanks || []),
                     ...question.options.filter((o) => o.isCorrect).map((o) => o.text),
@@ -223,13 +223,13 @@ export function QuestionRenderer({
                   className={`p-3.5 rounded-[4px] border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono transition-colors ${
                     showExplanation
                       ? isMatchCorrect
-                        ? "border-[#65F59A]/50 bg-[rgba(101,245,154,0.06)] text-[#F2F7F3]"
+                        ? "border-[#FF4D6D]/50 bg-[rgba(255, 77, 109,0.06)] text-[#F2F7F3]"
                         : "border-[#F87171]/50 bg-[rgba(248,113,113,0.06)] text-[#F2F7F3]"
-                      : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 text-[#F2F7F3]"
+                      : "border-[rgba(240, 160, 180,0.14)] bg-[#1D1013]/60 text-[#F2F7F3]"
                   }`}
                 >
                   <div className="flex items-center space-x-3 flex-1">
-                    <span className="w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-[#17251E] border border-[rgba(160,190,170,0.18)] text-[#65F59A]">
+                    <span className="w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-[#2A141A] border border-[rgba(240, 160, 180,0.18)] text-[#FF4D6D]">
                       {idx + 1}
                     </span>
                     <span className="font-semibold text-[#F2F7F3]">{p.leftItem}</span>
@@ -240,18 +240,18 @@ export function QuestionRenderer({
                       <div className="flex flex-col sm:items-end">
                         <span className="text-[11px] text-[#A0AEA5]">
                           Your Answer:{" "}
-                          <span className={isMatchCorrect ? "text-[#65F59A] font-bold" : "text-[#F87171] font-bold"}>
+                          <span className={isMatchCorrect ? "text-[#FF4D6D] font-bold" : "text-[#F87171] font-bold"}>
                             {studentChoice || "Not Answered"}
                           </span>
                         </span>
                         {!isMatchCorrect && (
-                          <span className="text-[11px] text-[#65F59A] font-bold">
+                          <span className="text-[11px] text-[#FF4D6D] font-bold">
                             Correct: {p.rightItem}
                           </span>
                         )}
                       </div>
                       {isMatchCorrect ? (
-                        <CheckCircle2 className="w-4 h-4 text-[#65F59A] shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#FF4D6D] shrink-0" />
                       ) : (
                         <XCircle className="w-4 h-4 text-[#F87171] shrink-0" />
                       )}
@@ -268,7 +268,7 @@ export function QuestionRenderer({
                           currentAnswers[p.id] = e.target.value;
                           onAnswerChange(currentAnswers);
                         }}
-                        className="w-full text-xs font-mono p-2 rounded-[3px] border border-[rgba(160,190,170,0.18)] bg-[#17251E] text-[#F2F7F3] focus:outline-hidden focus:ring-1 focus:ring-[#65F59A]"
+                        className="w-full text-xs font-mono p-2 rounded-[3px] border border-[rgba(240, 160, 180,0.18)] bg-[#2A141A] text-[#F2F7F3] focus:outline-hidden focus:ring-1 focus:ring-[#FF4D6D]"
                       >
                         <option value="">-- Select Match --</option>
                         {availableRightItems.map((rightTerm, rIdx) => (
@@ -289,7 +289,7 @@ export function QuestionRenderer({
       {/* 6: Error Spotting */}
       {question.type === "error_spotting" && (
         <div className="space-y-3 pt-2">
-          <div className="p-3.5 rounded-[4px] bg-[#111B17] border border-[rgba(245,158,11,0.25)] flex items-start gap-2.5">
+          <div className="p-3.5 rounded-[4px] bg-[#1D1013] border border-[rgba(245,158,11,0.25)] flex items-start gap-2.5">
             <AlertTriangle className="w-4 h-4 text-[#F59E0B] shrink-0 mt-0.5" />
             <div className="text-xs font-mono text-[#A0AEA5]">
               <span className="font-bold text-[#F2F7F3]">Error Spotting:</span> Identify the specific segment or choice that contains a factual, logical, or grammatical error.
@@ -311,23 +311,23 @@ export function QuestionRenderer({
                   className={`p-3.5 rounded-[4px] border text-xs font-mono transition-all flex items-center justify-between ${
                     showExplanation
                       ? isCorrectOption
-                        ? "border-[#65F59A] bg-[rgba(101,245,154,0.1)] text-[#65F59A] font-semibold ring-1 ring-[#65F59A]/50"
+                        ? "border-[#FF4D6D] bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] font-semibold ring-1 ring-[#FF4D6D]/50"
                         : isSelected
                           ? "border-[#F87171] bg-[rgba(248,113,113,0.1)] text-[#F87171] ring-1 ring-[#F87171]/50"
-                          : "border-[rgba(160,190,170,0.1)] bg-[#070B0A]/40 text-[#69786F] opacity-60"
+                          : "border-[rgba(240, 160, 180,0.1)] bg-[#0B0708]/40 text-[#69786F] opacity-60"
                       : isSelected
                         ? "border-[#F59E0B] bg-[#1F1A0E] text-[#F2F7F3] font-semibold ring-1 ring-[#F59E0B] shadow-[0_0_12px_rgba(245,158,11,0.12)] cursor-pointer"
-                        : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 text-[#A0AEA5] hover:border-[#F59E0B]/40 hover:text-[#F2F7F3] hover:bg-[#111B17] cursor-pointer"
+                        : "border-[rgba(240, 160, 180,0.14)] bg-[#1D1013]/60 text-[#A0AEA5] hover:border-[#F59E0B]/40 hover:text-[#F2F7F3] hover:bg-[#1D1013] cursor-pointer"
                   }`}
                 >
                   <div className="flex items-center space-x-3">
                     <span
                       className={`w-6 h-6 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 border ${
                         showExplanation && isCorrectOption
-                          ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
+                          ? "bg-[#FF4D6D] text-[#0B0708] border-[#FF4D6D]"
                           : isSelected
-                            ? "bg-[#F59E0B] text-[#070B0A] border-[#F59E0B]"
-                            : "bg-[#17251E] text-[#A0AEA5] border-[rgba(160,190,170,0.2)]"
+                            ? "bg-[#F59E0B] text-[#0B0708] border-[#F59E0B]"
+                            : "bg-[#2A141A] text-[#A0AEA5] border-[rgba(240, 160, 180,0.2)]"
                       }`}
                     >
                       {String.fromCharCode(65 + idx)}
@@ -336,7 +336,7 @@ export function QuestionRenderer({
                   </div>
                   {showExplanation ? (
                     isCorrectOption ? (
-                      <span className="text-[10px] font-bold text-[#65F59A] font-mono uppercase">Erroneous Part (Key)</span>
+                      <span className="text-[10px] font-bold text-[#FF4D6D] font-mono uppercase">Erroneous Part (Key)</span>
                     ) : isSelected ? (
                       <span className="text-[10px] font-bold text-[#F87171] font-mono uppercase">Your Choice</span>
                     ) : null
@@ -353,7 +353,7 @@ export function QuestionRenderer({
       {/* 7: Assertion & Reasoning */}
       {question.type === "assertion_reasoning" && (
         <div className="space-y-3 pt-2">
-          <div className="p-3.5 rounded-[4px] bg-[#111B17] border border-[rgba(168,85,247,0.25)] text-xs font-mono text-[#A0AEA5] space-y-1">
+          <div className="p-3.5 rounded-[4px] bg-[#1D1013] border border-[rgba(168,85,247,0.25)] text-xs font-mono text-[#A0AEA5] space-y-1">
             <span className="font-bold text-[#C084FC]">Assertion & Reason Evaluation:</span> Examine both premises carefully to determine individual veracity and whether Reason correctly explains Assertion.
           </div>
 
@@ -372,23 +372,23 @@ export function QuestionRenderer({
                   className={`p-3.5 rounded-[4px] border text-xs font-mono transition-all flex items-center justify-between ${
                     showExplanation
                       ? isCorrectOption
-                        ? "border-[#65F59A] bg-[rgba(101,245,154,0.1)] text-[#65F59A] font-semibold ring-1 ring-[#65F59A]/50"
+                        ? "border-[#FF4D6D] bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] font-semibold ring-1 ring-[#FF4D6D]/50"
                         : isSelected
                           ? "border-[#F87171] bg-[rgba(248,113,113,0.1)] text-[#F87171] ring-1 ring-[#F87171]/50"
-                          : "border-[rgba(160,190,170,0.1)] bg-[#070B0A]/40 text-[#69786F] opacity-60"
+                          : "border-[rgba(240, 160, 180,0.1)] bg-[#0B0708]/40 text-[#69786F] opacity-60"
                       : isSelected
                         ? "border-[#A855F7] bg-[#1E142B] text-[#F2F7F3] font-semibold ring-1 ring-[#A855F7] shadow-[0_0_12px_rgba(168,85,247,0.12)] cursor-pointer"
-                        : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 text-[#A0AEA5] hover:border-[#A855F7]/40 hover:text-[#F2F7F3] hover:bg-[#111B17] cursor-pointer"
+                        : "border-[rgba(240, 160, 180,0.14)] bg-[#1D1013]/60 text-[#A0AEA5] hover:border-[#A855F7]/40 hover:text-[#F2F7F3] hover:bg-[#1D1013] cursor-pointer"
                   }`}
                 >
                   <div className="flex items-center space-x-3">
                     <span
                       className={`w-6 h-6 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 border ${
                         showExplanation && isCorrectOption
-                          ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A]"
+                          ? "bg-[#FF4D6D] text-[#0B0708] border-[#FF4D6D]"
                           : isSelected
-                            ? "bg-[#A855F7] text-[#070B0A] border-[#A855F7]"
-                            : "bg-[#17251E] text-[#A0AEA5] border-[rgba(160,190,170,0.2)]"
+                            ? "bg-[#A855F7] text-[#0B0708] border-[#A855F7]"
+                            : "bg-[#2A141A] text-[#A0AEA5] border-[rgba(240, 160, 180,0.2)]"
                       }`}
                     >
                       {String.fromCharCode(65 + idx)}
@@ -397,7 +397,7 @@ export function QuestionRenderer({
                   </div>
                   {showExplanation ? (
                     isCorrectOption ? (
-                      <span className="text-[10px] font-bold text-[#65F59A] font-mono uppercase">Correct Key</span>
+                      <span className="text-[10px] font-bold text-[#FF4D6D] font-mono uppercase">Correct Key</span>
                     ) : isSelected ? (
                       <span className="text-[10px] font-bold text-[#F87171] font-mono uppercase">Your Choice</span>
                     ) : null
@@ -447,20 +447,20 @@ export function QuestionRenderer({
                       className={`p-3 rounded-[4px] border flex items-center justify-between text-xs font-mono ${
                         showExplanation
                           ? isCorrectPos
-                            ? "border-[#65F59A]/50 bg-[rgba(101,245,154,0.06)] text-[#F2F7F3]"
+                            ? "border-[#FF4D6D]/50 bg-[rgba(255, 77, 109,0.06)] text-[#F2F7F3]"
                             : "border-[#F87171]/50 bg-[rgba(248,113,113,0.06)] text-[#F2F7F3]"
-                          : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 text-[#F2F7F3]"
+                          : "border-[rgba(240, 160, 180,0.14)] bg-[#1D1013]/60 text-[#F2F7F3]"
                       }`}
                     >
                       <div className="flex items-center space-x-3">
-                        <span className="w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-[#17251E] border border-[rgba(160,190,170,0.18)] text-[#65F59A]">
+                        <span className="w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-[#2A141A] border border-[rgba(240, 160, 180,0.18)] text-[#FF4D6D]">
                           {idx + 1}
                         </span>
                         <span className="font-semibold">{item.text}</span>
                       </div>
 
                       {showExplanation ? (
-                        <span className={`text-[11px] font-bold ${isCorrectPos ? "text-[#65F59A]" : "text-[#F87171]"}`}>
+                        <span className={`text-[11px] font-bold ${isCorrectPos ? "text-[#FF4D6D]" : "text-[#F87171]"}`}>
                           {isCorrectPos ? "Correct Position" : `Expected #${item.order}`}
                         </span>
                       ) : (
@@ -469,7 +469,7 @@ export function QuestionRenderer({
                             type="button"
                             disabled={idx === 0}
                             onClick={() => handleMove(idx, "up")}
-                            className="p-1 rounded bg-[#17251E] hover:bg-[#203429] disabled:opacity-30 text-[#A0AEA5] hover:text-[#65F59A] transition-colors"
+                            className="p-1 rounded bg-[#2A141A] hover:bg-[#34151C] disabled:opacity-30 text-[#A0AEA5] hover:text-[#FF4D6D] transition-colors"
                           >
                             <ArrowUp className="w-3.5 h-3.5" />
                           </button>
@@ -477,7 +477,7 @@ export function QuestionRenderer({
                             type="button"
                             disabled={idx === currentOrder.length - 1}
                             onClick={() => handleMove(idx, "down")}
-                            className="p-1 rounded bg-[#17251E] hover:bg-[#203429] disabled:opacity-30 text-[#A0AEA5] hover:text-[#65F59A] transition-colors"
+                            className="p-1 rounded bg-[#2A141A] hover:bg-[#34151C] disabled:opacity-30 text-[#A0AEA5] hover:text-[#FF4D6D] transition-colors"
                           >
                             <ArrowDown className="w-3.5 h-3.5" />
                           </button>
@@ -516,13 +516,13 @@ export function QuestionRenderer({
                   className={`p-3.5 rounded-[4px] border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono ${
                     showExplanation
                       ? isMatchCorrect
-                        ? "border-[#65F59A]/50 bg-[rgba(101,245,154,0.06)] text-[#F2F7F3]"
+                        ? "border-[#FF4D6D]/50 bg-[rgba(255, 77, 109,0.06)] text-[#F2F7F3]"
                         : "border-[#F87171]/50 bg-[rgba(248,113,113,0.06)] text-[#F2F7F3]"
-                      : "border-[rgba(160,190,170,0.14)] bg-[#111B17]/60 text-[#F2F7F3]"
+                      : "border-[rgba(240, 160, 180,0.14)] bg-[#1D1013]/60 text-[#F2F7F3]"
                   }`}
                 >
                   <div className="flex items-center space-x-3 flex-1">
-                    <span className="w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-[#17251E] border border-[rgba(160,190,170,0.18)] text-[#65F59A]">
+                    <span className="w-5 h-5 rounded-[2px] text-[10px] font-mono font-bold flex items-center justify-center shrink-0 bg-[#2A141A] border border-[rgba(240, 160, 180,0.18)] text-[#FF4D6D]">
                       {idx + 1}
                     </span>
                     <span className="font-semibold text-[#F2F7F3]">{item.text}</span>
@@ -530,7 +530,7 @@ export function QuestionRenderer({
 
                   {showExplanation ? (
                     <div className="text-xs">
-                      <span className={isMatchCorrect ? "text-[#65F59A] font-bold" : "text-[#F87171] font-bold"}>
+                      <span className={isMatchCorrect ? "text-[#FF4D6D] font-bold" : "text-[#F87171] font-bold"}>
                         {isMatchCorrect ? "Correct Category" : `Expected: ${targetCategory?.title || targetCategory?.name || item.categoryId}`}
                       </span>
                     </div>
@@ -542,7 +542,7 @@ export function QuestionRenderer({
                           const updated = { ...currentCategoryMap, [item.id]: e.target.value };
                           onAnswerChange(updated);
                         }}
-                        className="w-full text-xs font-mono p-2 rounded-[3px] border border-[rgba(160,190,170,0.18)] bg-[#17251E] text-[#F2F7F3] focus:outline-hidden focus:ring-1 focus:ring-[#65F59A]"
+                        className="w-full text-xs font-mono p-2 rounded-[3px] border border-[rgba(240, 160, 180,0.18)] bg-[#2A141A] text-[#F2F7F3] focus:outline-hidden focus:ring-1 focus:ring-[#FF4D6D]"
                       >
                         <option value="">-- Choose Category --</option>
                         {(question.dragDropCategories || []).map((cat) => (
@@ -562,9 +562,9 @@ export function QuestionRenderer({
 
       {/* Explanation Box */}
       {showExplanation && question.explanation && (
-        <div className="p-4 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] space-y-1 text-xs font-mono">
+        <div className="p-4 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] space-y-1 text-xs font-mono">
           <p className="font-bold text-[#F2F7F3] flex items-center">
-            <HelpCircle className="w-4 h-4 mr-1.5 text-[#38D9B0]" /> Explanation & Solution Note:
+            <HelpCircle className="w-4 h-4 mr-1.5 text-[#FF758F]" /> Explanation & Solution Note:
           </p>
           <p className="text-[#A0AEA5] leading-relaxed">{question.explanation}</p>
         </div>

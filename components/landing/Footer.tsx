@@ -31,8 +31,8 @@ export default function Footer() {
           <p className="text-xs text-slate-600 dark:text-[#A0AEA5] leading-relaxed font-normal">
             QuizDorm is the universal dormitory for every quiz format and cognitive discipline. Synthesize high-rigor assessments, sharpen intellectual stamina, accelerate IQ, and dominate live decathlon arenas.
           </p>
-          <div className="inline-flex items-center space-x-2 font-mono text-[10px] text-emerald-800 dark:text-[#65F59A] bg-emerald-50 dark:bg-[#17251E] px-2.5 py-1 rounded-full border border-emerald-300 dark:border-[#65F59A]/20 shadow-xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#047857] dark:bg-[#65F59A] animate-pulse" />
+          <div className="inline-flex items-center space-x-2 font-mono text-[10px] text-rose-800 dark:text-[#FF4D6D] bg-rose-50 dark:bg-[#2A141A] px-2.5 py-1 rounded-full border border-rose-300 dark:border-[#FF4D6D]/20 shadow-xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#BE123C] dark:bg-[#FF4D6D] animate-pulse" />
             <span>Universal Quiz Dormitory &amp; IQ Acceleration</span>
           </div>
         </div>
@@ -45,7 +45,7 @@ export default function Footer() {
           <ul className="space-y-2">
             {quickLinks.map((link) => (
               <li key={link.name}>
-                <Link href={link.href} className="text-xs text-slate-600 dark:text-[#A0AEA5] hover:text-[#047857] dark:hover:text-[#65F59A] transition-colors font-mono">
+                <Link href={link.href} className="text-xs text-slate-600 dark:text-[#A0AEA5] hover:text-[#BE123C] dark:hover:text-[#FF4D6D] transition-colors font-mono">
                   {link.name}
                 </Link>
               </li>
@@ -61,7 +61,7 @@ export default function Footer() {
           <ul className="space-y-2">
             {resources.map((link) => (
               <li key={link.name}>
-                <Link href={link.href} className="text-xs text-slate-600 dark:text-[#A0AEA5] hover:text-[#047857] dark:hover:text-[#65F59A] transition-colors font-mono">
+                <Link href={link.href} className="text-xs text-slate-600 dark:text-[#A0AEA5] hover:text-[#BE123C] dark:hover:text-[#FF4D6D] transition-colors font-mono">
                   {link.name}
                 </Link>
               </li>
@@ -77,7 +77,7 @@ export default function Footer() {
           <ul className="space-y-2">
             {company.map((link) => (
               <li key={link.name}>
-                <Link href={link.href} className="text-xs text-slate-600 dark:text-[#A0AEA5] hover:text-[#047857] dark:hover:text-[#65F59A] transition-colors font-mono">
+                <Link href={link.href} className="text-xs text-slate-600 dark:text-[#A0AEA5] hover:text-[#BE123C] dark:hover:text-[#FF4D6D] transition-colors font-mono">
                   {link.name}
                 </Link>
               </li>
@@ -90,7 +90,7 @@ export default function Footer() {
         <p>
           &copy; {new Date().getFullYear()} QuizDorm Platform. Founded by <strong className="text-slate-900 dark:text-[#F2F7F3]">RK Akbar</strong> (Tamil Nadu &amp; Kerala).
         </p>
-        <p className="mt-2 sm:mt-0 text-[11px] text-[#047857] dark:text-[#65F59A] font-semibold">
+        <p className="mt-2 sm:mt-0 text-[11px] text-[#BE123C] dark:text-[#FF4D6D] font-semibold">
           Engineered for Institutional &amp; Competitive Excellence
         </p>
       </div>

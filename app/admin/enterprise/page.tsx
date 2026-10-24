@@ -17,13 +17,13 @@ export default function EnterpriseControlCenterPage() {
   return (
     <div className="space-y-6 pb-12">
       {/* 1. Futuristic Cinematic Masthead */}
-      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="relative overflow-hidden rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-6 sm:p-8">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(255, 77, 109,0.08)_0%,transparent_70%)] pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] font-mono text-[10px] font-bold uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
                 Enterprise Security Core // SOC Matrix
               </span>
               <span className="font-mono text-[11px] text-[#69786F]">v2.0 Enterprise OS</span>
@@ -37,8 +37,8 @@ export default function EnterpriseControlCenterPage() {
           </div>
 
           <div className="flex items-center gap-3 shrink-0">
-            <span className="px-3 py-1.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] font-mono text-xs text-[#65F59A] flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-[#65F59A]" />
+            <span className="px-3 py-1.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] font-mono text-xs text-[#FF4D6D] flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-[#FF4D6D]" />
               SOC-2 Type II Certified
             </span>
           </div>

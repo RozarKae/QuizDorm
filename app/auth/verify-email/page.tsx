@@ -88,16 +88,16 @@ function VerifyEmailContent() {
       {isVerified ? (
         /* Confirmed / Verified Success Screen */
         <div className="text-center py-6 space-y-6">
-          <div className="inline-flex items-center space-x-2 border border-[#65F59A]/30 bg-[#111B17] px-3.5 py-1 rounded-full text-[10px] font-mono shadow-[0_0_15px_rgba(101,245,154,0.15)]">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
-            <span className="text-[#65F59A] font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center space-x-2 border border-[#FF4D6D]/30 bg-[#1D1013] px-3.5 py-1 rounded-full text-[10px] font-mono shadow-[0_0_15px_rgba(255, 77, 109,0.15)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
+            <span className="text-[#FF4D6D] font-bold uppercase tracking-wider">
               CREDENTIAL VERIFIED // ACADEMIC OS
             </span>
           </div>
 
           {/* Animated Celebration Icon */}
-          <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-[#111B17] border-2 border-[#65F59A] text-[#65F59A] shadow-[0_0_30px_rgba(101,245,154,0.3)] animate-in zoom-in-75 duration-300">
-            <CheckCircle2 className="h-10 w-10 text-[#65F59A]" />
+          <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-[#1D1013] border-2 border-[#FF4D6D] text-[#FF4D6D] shadow-[0_0_30px_rgba(255, 77, 109,0.3)] animate-in zoom-in-75 duration-300">
+            <CheckCircle2 className="h-10 w-10 text-[#FF4D6D]" />
           </div>
 
           <div className="space-y-2">
@@ -110,12 +110,12 @@ function VerifyEmailContent() {
           </div>
 
           {/* Account Snapshot Card */}
-          <div className="bg-[#111B17] p-4 rounded-[6px] border border-[rgba(160,190,170,0.18)] text-left space-y-2.5 max-w-sm mx-auto">
+          <div className="bg-[#1D1013] p-4 rounded-[6px] border border-[rgba(240, 160, 180,0.18)] text-left space-y-2.5 max-w-sm mx-auto">
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-mono uppercase tracking-wider text-[#69786F]">
                 Authenticated User
               </span>
-              <span className="text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-[2px] bg-[#65F59A]/15 text-[#65F59A] border border-[#65F59A]/30 font-bold">
+              <span className="text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-[2px] bg-[#FF4D6D]/15 text-[#FF4D6D] border border-[#FF4D6D]/30 font-bold">
                 Active &bull; Verified
               </span>
             </div>
@@ -123,11 +123,11 @@ function VerifyEmailContent() {
             <div>
               <p className="text-sm font-bold text-[#F2F7F3] font-display">{displayName}</p>
               {displayEmail && (
-                <p className="text-xs font-mono text-[#65F59A] truncate">{displayEmail}</p>
+                <p className="text-xs font-mono text-[#FF4D6D] truncate">{displayEmail}</p>
               )}
             </div>
 
-            <div className="pt-2 border-t border-[rgba(160,190,170,0.12)] flex items-center justify-between text-[11px] font-mono text-[#A0AEA5]">
+            <div className="pt-2 border-t border-[rgba(240, 160, 180,0.12)] flex items-center justify-between text-[11px] font-mono text-[#A0AEA5]">
               <span>Assigned Role:</span>
               <span className="font-bold text-[#F2F7F3] uppercase tracking-wider">{roleParam}</span>
             </div>
@@ -136,21 +136,21 @@ function VerifyEmailContent() {
           {/* Countdown & Action */}
           <div className="space-y-3 pt-2 max-w-sm mx-auto">
             <Link href={targetWorkspace} className="w-full block">
-              <Button className="w-full h-11 bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] rounded-[4px] font-mono font-bold text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(101,245,154,0.25)] flex items-center justify-center space-x-2">
+              <Button className="w-full h-11 bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] rounded-[4px] font-mono font-bold text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(255, 77, 109,0.25)] flex items-center justify-center space-x-2">
                 <span>Proceed to Workspace</span>
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
 
             <p className="text-[11px] font-mono text-[#69786F]">
-              Auto-routing to workspace in <span className="text-[#65F59A] font-bold">{countdown}</span> seconds...
+              Auto-routing to workspace in <span className="text-[#FF4D6D] font-bold">{countdown}</span> seconds...
             </p>
           </div>
         </div>
       ) : (
         /* Pending Verification Screen */
         <div className="text-center py-6 space-y-6">
-          <div className="inline-flex items-center space-x-2 border border-[rgba(160,190,170,0.2)] bg-[#111B17] px-3.5 py-1 rounded-full text-[10px] font-mono text-[#A0AEA5]">
+          <div className="inline-flex items-center space-x-2 border border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] px-3.5 py-1 rounded-full text-[10px] font-mono text-[#A0AEA5]">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
             <span className="text-amber-400 font-bold uppercase tracking-wider">
               AWAITING ACTIVATION // STEP 2 OF 2
@@ -158,8 +158,8 @@ function VerifyEmailContent() {
           </div>
 
           {/* Mail Envelope Icon */}
-          <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-[#111B17] border border-[rgba(160,190,170,0.25)] text-[#65F59A] shadow-lg">
-            <Mail className="h-9 w-9 text-[#65F59A]" />
+          <div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-[#1D1013] border border-[rgba(240, 160, 180,0.25)] text-[#FF4D6D] shadow-lg">
+            <Mail className="h-9 w-9 text-[#FF4D6D]" />
           </div>
 
           <div className="space-y-2">
@@ -177,19 +177,19 @@ function VerifyEmailContent() {
               placeholder="you@school.edu"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full h-11 text-center bg-[#17251E] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] placeholder:text-[#69786F] rounded-[4px] font-mono text-xs focus-visible:border-[#65F59A]"
+              className="w-full h-11 text-center bg-[#2A141A] border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] placeholder:text-[#69786F] rounded-[4px] font-mono text-xs focus-visible:border-[#FF4D6D]"
             />
             <div className="flex flex-col space-y-2 pt-1">
               <Button
                 onClick={handleResend}
                 disabled={resending}
                 variant="outline"
-                className="w-full h-11 border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#17251E] rounded-[4px] font-mono text-xs"
+                className="w-full h-11 border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#2A141A] rounded-[4px] font-mono text-xs"
               >
                 {resending ? "Dispatching..." : "Resend Verification Link"}
               </Button>
               <Link href="/auth/login" className="w-full">
-                <Button className="w-full h-11 bg-[#17251E] hover:bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(160,190,170,0.14)] rounded-[4px] font-mono text-xs">
+                <Button className="w-full h-11 bg-[#2A141A] hover:bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(240, 160, 180,0.14)] rounded-[4px] font-mono text-xs">
                   Return to Login &rarr;
                 </Button>
               </Link>
@@ -199,7 +199,7 @@ function VerifyEmailContent() {
           <AuthFooter>
             <p className="text-xs font-mono text-[#69786F]">
               Need help? Reach the{" "}
-              <Link href="/contact" className="text-[#65F59A] hover:underline font-semibold">
+              <Link href="/contact" className="text-[#FF4D6D] hover:underline font-semibold">
                 QuizDorm Helpdesk
               </Link>
             </p>

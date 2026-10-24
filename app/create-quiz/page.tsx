@@ -362,16 +362,16 @@ export default function CreateOwnQuizPage() {
         </div>
 
         {/* AI Document Quiz Maker Banner */}
-        <div className="bg-[#0C1210] border border-[rgba(101,245,154,0.25)] rounded-[6px] p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
+        <div className="bg-[#140C0E] border border-[rgba(255, 77, 109,0.25)] rounded-[6px] p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.5)]">
           <div className="flex items-center space-x-3.5">
-            <div className="w-11 h-11 rounded-[6px] bg-[rgba(101,245,154,0.12)] border border-[rgba(101,245,154,0.3)] text-[#65F59A] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(101,245,154,0.2)]">
+            <div className="w-11 h-11 rounded-[6px] bg-[rgba(255, 77, 109,0.12)] border border-[rgba(255, 77, 109,0.3)] text-[#FF4D6D] flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255, 77, 109,0.2)]">
               <Sparkles className="w-5 h-5" />
             </div>
             <div>
               <h3 className="text-sm font-bold font-display text-[#F2F7F3] flex items-center gap-2">
                 AI Document Quiz Maker
-                <span className="text-[9px] uppercase font-mono font-bold px-1.5 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+                <span className="text-[9px] uppercase font-mono font-bold px-1.5 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
                   QuizDorm AI
                 </span>
               </h3>
@@ -384,12 +384,12 @@ export default function CreateOwnQuizPage() {
             <Button
               onClick={() => setPdfModalOpen(true)}
               size="sm"
-              className="bg-[#65F59A] hover:bg-[#38D9B0] text-[#070B0A] font-mono font-bold text-xs rounded-[4px] px-4 h-9 shadow-[0_0_15px_rgba(101,245,154,0.3)] flex items-center gap-1.5 transition-all"
+              className="bg-[#FF4D6D] hover:bg-[#FF758F] text-[#0B0708] font-mono font-bold text-xs rounded-[4px] px-4 h-9 shadow-[0_0_15px_rgba(255, 77, 109,0.3)] flex items-center gap-1.5 transition-all"
             >
               <Upload className="w-3.5 h-3.5 stroke-[2.5]" /> Drop Notes / PDF
             </Button>
             <Link href="/dashboard/ocr">
-              <Button variant="outline" size="sm" className="text-xs font-mono border-[rgba(160,190,170,0.2)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#111B17] rounded-[4px] h-9">
+              <Button variant="outline" size="sm" className="text-xs font-mono border-[rgba(240, 160, 180,0.2)] text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#1D1013] rounded-[4px] h-9">
                 OCR Queue &rarr;
               </Button>
             </Link>

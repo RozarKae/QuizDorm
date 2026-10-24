@@ -32,8 +32,8 @@ export function GlobalEducationEcosystem() {
       {/* Top Banner */}
       <div className="bg-gradient-to-r from-slate-950 via-indigo-950 to-purple-950 text-white p-6 sm:p-8 rounded-3xl border border-indigo-500/30 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold mb-3 border border-emerald-500/30">
-            <Globe className="w-3.5 h-3.5 text-emerald-400" /> Worldwide Education Operating System (EduOS)
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 text-xs font-bold mb-3 border border-rose-500/30">
+            <Globe className="w-3.5 h-3.5 text-rose-400" /> Worldwide Education Operating System (EduOS)
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight">Global Education Ecosystem & EduOS Network</h1>
           <p className="text-slate-300 text-xs sm:text-sm mt-1.5 max-w-xl">
@@ -41,7 +41,7 @@ export function GlobalEducationEcosystem() {
           </p>
         </div>
 
-        <Button onClick={handleConnectNode} className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-lg">
+        <Button onClick={handleConnectNode} className="bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold rounded-xl shadow-lg">
           <Sparkles className="w-4 h-4 mr-1.5" /> Connect Ecosystem Node
         </Button>
       </div>
@@ -49,7 +49,7 @@ export function GlobalEducationEcosystem() {
       {/* Network Nodes Grid */}
       <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 text-white shadow-xl space-y-4">
         <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-          <span className="font-mono text-xs font-bold text-emerald-400 flex items-center gap-1.5">
+          <span className="font-mono text-xs font-bold text-rose-400 flex items-center gap-1.5">
             <Globe className="w-4 h-4" /> EduOS Active Federated Nodes Map
           </span>
           <span className="text-[10px] text-slate-400 font-mono">Total Federated Learners: 5.09M</span>
@@ -60,7 +60,7 @@ export function GlobalEducationEcosystem() {
             <div key={n.nodeName} className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2 text-xs font-mono">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-amber-400">{n.nodeName}</span>
-                <span className="text-emerald-400 text-[10px] font-bold flex items-center gap-1">
+                <span className="text-rose-400 text-[10px] font-bold flex items-center gap-1">
                   <CheckCircle2 className="w-3.5 h-3.5" /> {n.status}
                 </span>
               </div>

@@ -148,7 +148,7 @@ export function SessionQrCard({ code, competitionTitle, className = "" }: Sessio
               variant="outline"
               className="h-7 text-[11px] font-mono border-white/30 bg-white/10 hover:bg-white/20 text-white rounded-lg px-2.5"
             >
-              {copied ? <Check className="w-3 h-3 mr-1 text-emerald-400" /> : <Copy className="w-3 h-3 mr-1" />}
+              {copied ? <Check className="w-3 h-3 mr-1 text-rose-400" /> : <Copy className="w-3 h-3 mr-1" />}
               {copied ? "Copied" : "Copy Link"}
             </Button>
 

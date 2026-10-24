@@ -48,15 +48,15 @@ export function AICreditTrackerCard({ subscription }: AICreditTrackerCardProps) 
         <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-2 border border-gray-100 dark:border-gray-800">
           <div className="flex items-center justify-between font-bold">
             <span className="text-gray-700 dark:text-gray-300 flex items-center">
-              <ScanText className="w-4 h-4 text-emerald-500 mr-1.5" /> OCR Document Scan Credits
+              <ScanText className="w-4 h-4 text-rose-500 mr-1.5" /> OCR Document Scan Credits
             </span>
-            <span className="font-mono text-emerald-600">
+            <span className="font-mono text-rose-600">
               {subscription.ocrCreditsTotal - subscription.ocrCreditsUsed} Left
             </span>
           </div>
 
           <div className="w-full h-2 rounded-full bg-gray-200 dark:bg-gray-800 overflow-hidden">
-            <div className="h-full bg-emerald-500 transition-all duration-500" style={{ width: `${ocrPercent}%` }} />
+            <div className="h-full bg-rose-500 transition-all duration-500" style={{ width: `${ocrPercent}%` }} />
           </div>
 
           <div className="flex justify-between text-[10px] font-mono text-gray-400">

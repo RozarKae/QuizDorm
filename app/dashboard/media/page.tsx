@@ -156,7 +156,7 @@ export default function MultimediaWorkspacePage() {
           </div>
           <div>
             <span className="text-indigo-200/70 font-medium">Storage Used</span>
-            <div className="text-xl font-bold text-emerald-400">{usedMB} MB / 10 GB</div>
+            <div className="text-xl font-bold text-rose-400">{usedMB} MB / 10 GB</div>
           </div>
         </div>
       </div>
@@ -281,7 +281,7 @@ export default function MultimediaWorkspacePage() {
 
             <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
               <span className="font-bold text-gray-900 dark:text-white flex items-center">
-                <Layers className="w-4 h-4 text-emerald-500 mr-1.5" /> Diagrams
+                <Layers className="w-4 h-4 text-rose-500 mr-1.5" /> Diagrams
               </span>
               <p className="text-gray-500">{quota.diagramCount} files</p>
             </div>

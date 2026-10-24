@@ -135,21 +135,21 @@ export default function QualityDashboardPage() {
   return (
     <div className="min-h-screen bg-gray-50/50 dark:bg-gray-900/50 p-4 sm:p-8 space-y-6">
       {/* Header */}
-      <div className="bg-gradient-to-r from-emerald-950 via-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+      <div className="bg-gradient-to-r from-rose-950 via-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
-              <span className="p-2 rounded-2xl bg-white/10 backdrop-blur-md text-emerald-300">
+              <span className="p-2 rounded-2xl bg-white/10 backdrop-blur-md text-rose-300">
                 <ShieldCheck className="w-6 h-6" />
               </span>
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-300 bg-white/10 px-3 py-1 rounded-full border border-white/10">
+              <span className="text-xs font-bold uppercase tracking-widest text-rose-300 bg-white/10 px-3 py-1 rounded-full border border-white/10">
                 Phase 2.3 Quality Engine
               </span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
               AI Question Quality & Intelligent Validation Dashboard
             </h1>
-            <p className="text-xs sm:text-sm text-emerald-100/80 max-w-2xl">
+            <p className="text-xs sm:text-sm text-rose-100/80 max-w-2xl">
               Automated 360-degree educational quality evaluation, Bloom's Taxonomy classification, difficulty prediction, distractor analysis, and Educator Review Queue.
             </p>
           </div>
@@ -158,7 +158,7 @@ export default function QualityDashboardPage() {
             <Button
               onClick={handleRunBulkAnalysis}
               disabled={bulkAnalyzing}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-2xl shadow-lg shadow-emerald-600/30"
+              className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-2xl shadow-lg shadow-rose-600/30"
             >
               <RefreshCw className={`w-4 h-4 mr-1.5 ${bulkAnalyzing ? "animate-spin" : ""}`} /> Bulk Quality Audit
             </Button>
@@ -170,9 +170,9 @@ export default function QualityDashboardPage() {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <Card className="p-4 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm space-y-1">
           <span className="text-[11px] font-semibold text-gray-500 flex items-center">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 mr-1" /> Overall Bank Quality
+            <ShieldCheck className="w-3.5 h-3.5 text-rose-500 mr-1" /> Overall Bank Quality
           </span>
-          <div className="text-2xl font-extrabold text-emerald-600 dark:text-emerald-400 font-mono">
+          <div className="text-2xl font-extrabold text-rose-600 dark:text-rose-400 font-mono">
             {overallAvgQuality}/100
           </div>
         </Card>
@@ -197,7 +197,7 @@ export default function QualityDashboardPage() {
 
         <Card className="p-4 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-2xl shadow-sm space-y-1">
           <span className="text-[11px] font-semibold text-gray-500 flex items-center">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 mr-1" /> Validated Questions
+            <CheckCircle2 className="w-3.5 h-3.5 text-rose-500 mr-1" /> Validated Questions
           </span>
           <div className="text-2xl font-extrabold text-gray-900 dark:text-white font-mono">
             {reports.length} Audited
@@ -221,7 +221,7 @@ export default function QualityDashboardPage() {
               onClick={() => setActiveTab(tab.id as any)}
               className={`px-4 py-2.5 rounded-2xl text-xs font-bold flex items-center space-x-2 transition-all whitespace-nowrap ${
                 isActive
-                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20"
+                  ? "bg-rose-600 text-white shadow-md shadow-rose-600/20"
                   : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900"
               }`}
             >
@@ -326,7 +326,7 @@ export default function QualityDashboardPage() {
       {/* Tab 3: Bulk Review */}
       {activeTab === "bulk" && (
         <Card className="p-8 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-3xl text-center space-y-4">
-          <RefreshCw className={`w-12 h-12 text-emerald-500 mx-auto ${bulkAnalyzing ? "animate-spin" : ""}`} />
+          <RefreshCw className={`w-12 h-12 text-rose-500 mx-auto ${bulkAnalyzing ? "animate-spin" : ""}`} />
           <h3 className="text-lg font-bold text-gray-900 dark:text-white">Batch Question Quality Audit</h3>
           <p className="text-xs text-gray-500 max-w-md mx-auto">
             Analyze entire Question Banks, imported OCR items, or quiz sets in parallel for readability, distractors, difficulty prediction & duplicates.
@@ -335,13 +335,13 @@ export default function QualityDashboardPage() {
           {bulkAnalyzing && (
             <div className="max-w-md mx-auto space-y-2">
               <div className="w-full h-3 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                <div className="h-full bg-emerald-500 transition-all duration-300" style={{ width: `${bulkProgress}%` }} />
+                <div className="h-full bg-rose-500 transition-all duration-300" style={{ width: `${bulkProgress}%` }} />
               </div>
-              <span className="text-xs font-mono font-bold text-emerald-600">{bulkProgress}% Complete</span>
+              <span className="text-xs font-mono font-bold text-rose-600">{bulkProgress}% Complete</span>
             </div>
           )}
 
-          <Button onClick={handleRunBulkAnalysis} disabled={bulkAnalyzing} className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl">
+          <Button onClick={handleRunBulkAnalysis} disabled={bulkAnalyzing} className="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl">
             Run Batch Analysis Now
           </Button>
         </Card>
@@ -352,7 +352,7 @@ export default function QualityDashboardPage() {
         <div className="space-y-4">
           {reports.flatMap((r) => r.duplicateAlerts).length === 0 ? (
             <Card className="p-8 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-3xl text-center space-y-2">
-              <CheckCircle2 className="w-10 h-10 text-emerald-500 mx-auto" />
+              <CheckCircle2 className="w-10 h-10 text-rose-500 mx-auto" />
               <h4 className="font-bold text-gray-900 dark:text-white">No Duplicates Found!</h4>
               <p className="text-xs text-gray-500">All questions in the Question Bank are unique and distinct.</p>
             </Card>
@@ -375,7 +375,7 @@ export default function QualityDashboardPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900">
               <span className="text-gray-500 font-medium">Average Quality Score</span>
-              <div className="text-2xl font-bold text-emerald-600 font-mono">{overallAvgQuality}/100</div>
+              <div className="text-2xl font-bold text-rose-600 font-mono">{overallAvgQuality}/100</div>
             </div>
             <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900">
               <span className="text-gray-500 font-medium">Bloom's Taxonomy Spread</span>

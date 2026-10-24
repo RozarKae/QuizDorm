@@ -143,27 +143,27 @@ export default function AdminSessionsPage() {
   const getDeviceIcon = (category: DeviceCategory) => {
     switch (category) {
       case "mobile":
-        return <Smartphone className="h-4 w-4 text-[#38D9B0]" />;
+        return <Smartphone className="h-4 w-4 text-[#FF758F]" />;
       case "tablet":
-        return <Tablet className="h-4 w-4 text-[#38D9B0]" />;
+        return <Tablet className="h-4 w-4 text-[#FF758F]" />;
       case "bot":
       case "headless":
         return <AlertTriangle className="h-4 w-4 text-[#F87171]" />;
       default:
-        return <Laptop className="h-4 w-4 text-[#65F59A]" />;
+        return <Laptop className="h-4 w-4 text-[#FF4D6D]" />;
     }
   };
 
   return (
     <div className="space-y-6 pb-12">
       {/* 1. Cinematic Hero Masthead */}
-      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="relative overflow-hidden rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-6 sm:p-8">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(255, 77, 109,0.08)_0%,transparent_70%)] pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-ping" />
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] font-mono text-[10px] font-bold uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-ping" />
                 Live Telemetry // Session Gateway
               </span>
               <span className="font-mono text-[11px] text-[#69786F]">Token Control</span>
@@ -180,14 +180,14 @@ export default function AdminSessionsPage() {
             <Button
               onClick={handlePurgeInactive}
               variant="outline"
-              className="h-10 px-4 rounded-[4px] border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#65F59A]/40 font-mono text-xs uppercase font-bold tracking-wider"
+              className="h-10 px-4 rounded-[4px] border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3] hover:border-[#FF4D6D]/40 font-mono text-xs uppercase font-bold tracking-wider"
             >
               <Trash2 className="mr-2 h-3.5 w-3.5" />
               Purge Inactive
             </Button>
             <Button
               onClick={refreshList}
-              className="h-10 px-4 rounded-[4px] bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_16px_rgba(101,245,154,0.25)]"
+              className="h-10 px-4 rounded-[4px] bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_16px_rgba(255, 77, 109,0.25)]"
             >
               <RefreshCw className="mr-2 h-3.5 w-3.5" />
               Sync Stream
@@ -198,29 +198,29 @@ export default function AdminSessionsPage() {
 
       {/* 2. Precision HUD Metrics */}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Live Active Sessions
             </span>
-            <Radio className="h-4 w-4 text-[#65F59A]" />
+            <Radio className="h-4 w-4 text-[#FF4D6D]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
-            <p className="font-display text-3xl font-extrabold text-[#65F59A] tabular-nums">
+            <p className="font-display text-3xl font-extrabold text-[#FF4D6D] tabular-nums">
               {activeSessionsCount}
             </p>
-            <span className="font-mono text-[10px] text-[#65F59A] bg-[rgba(101,245,154,0.1)] px-1.5 py-0.5 rounded-[2px]">
+            <span className="font-mono text-[10px] text-[#FF4D6D] bg-[rgba(255, 77, 109,0.1)] px-1.5 py-0.5 rounded-[2px]">
               Connected Now
             </span>
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Unique Active Users
             </span>
-            <ShieldCheck className="h-4 w-4 text-[#38D9B0]" />
+            <ShieldCheck className="h-4 w-4 text-[#FF758F]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
             <p className="font-display text-3xl font-extrabold text-[#F2F7F3] tabular-nums">
@@ -230,8 +230,8 @@ export default function AdminSessionsPage() {
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               High-Risk / Suspicious
             </span>
@@ -247,8 +247,8 @@ export default function AdminSessionsPage() {
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Idle Sessions
             </span>
@@ -264,7 +264,7 @@ export default function AdminSessionsPage() {
       </div>
 
       {/* 3. Search & Multi-Filter Matrix */}
-      <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-4 space-y-4">
+      <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-4 space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
           {/* Search bar */}
           <div className="md:col-span-5 relative">
@@ -274,7 +274,7 @@ export default function AdminSessionsPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Filter by user, IP address, OS, city, or session ID..."
-              className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#65F59A]/50 transition-colors"
+              className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#FF4D6D]/50 transition-colors"
             />
           </div>
 
@@ -283,7 +283,7 @@ export default function AdminSessionsPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
             >
               <option value="all">All States</option>
               <option value="active">Active Streams</option>
@@ -298,7 +298,7 @@ export default function AdminSessionsPage() {
             <select
               value={riskFilter}
               onChange={(e) => setRiskFilter(e.target.value)}
-              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
             >
               <option value="all">All Risk Levels</option>
               <option value="low">Low Risk (Verified)</option>
@@ -312,7 +312,7 @@ export default function AdminSessionsPage() {
             <select
               value={deviceFilter}
               onChange={(e) => setDeviceFilter(e.target.value)}
-              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
             >
               <option value="all">All Devices</option>
               <option value="desktop">Desktop / Workstation</option>
@@ -334,7 +334,7 @@ export default function AdminSessionsPage() {
                 setDeviceFilter("all");
                 refreshList();
               }}
-              className="h-9 w-full md:w-auto px-2.5 border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
+              className="h-9 w-full md:w-auto px-2.5 border-[rgba(240, 160, 180,0.18)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3]"
               title="Reset Filters"
             >
               <RefreshCw className="h-3.5 w-3.5" />
@@ -344,10 +344,10 @@ export default function AdminSessionsPage() {
       </div>
 
       {/* 4. Active Sessions Table */}
-      <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] overflow-hidden">
+      <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#111B17] border-b border-[rgba(160,190,170,0.14)] text-[#69786F] font-mono uppercase tracking-wider text-[10px]">
+            <thead className="bg-[#1D1013] border-b border-[rgba(240, 160, 180,0.14)] text-[#69786F] font-mono uppercase tracking-wider text-[10px]">
               <tr>
                 <th className="px-4 py-3">Client Device & OS</th>
                 <th className="px-4 py-3">Authenticated Account</th>
@@ -357,7 +357,7 @@ export default function AdminSessionsPage() {
                 <th className="px-4 py-3 text-right">Revocation</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[rgba(160,190,170,0.08)]">
+            <tbody className="divide-y divide-[rgba(240, 160, 180,0.08)]">
               {filteredSessions.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="px-4 py-12 text-center text-[#A0AEA5]">
@@ -378,7 +378,7 @@ export default function AdminSessionsPage() {
                     <tr
                       key={session.id}
                       onClick={() => setSelectedSession(session)}
-                      className={`hover:bg-[#111B17]/60 transition-colors cursor-pointer ${
+                      className={`hover:bg-[#1D1013]/60 transition-colors cursor-pointer ${
                         isRevoked
                           ? "opacity-50 bg-[rgba(248,113,113,0.03)]"
                           : isFlagged
@@ -389,7 +389,7 @@ export default function AdminSessionsPage() {
                       {/* Device & OS */}
                       <td className="px-4 py-3.5">
                         <div className="flex items-center space-x-3">
-                          <div className="p-2 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] shrink-0">
+                          <div className="p-2 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] shrink-0">
                             {getDeviceIcon(session.deviceCategory)}
                           </div>
                           <div>
@@ -398,7 +398,7 @@ export default function AdminSessionsPage() {
                                 {session.browser}
                               </span>
                               {session.isCurrentSession && (
-                                <span className="px-1.5 py-0.2 rounded-[2px] text-[9px] font-mono font-bold uppercase bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[#65F59A]/30">
+                                <span className="px-1.5 py-0.2 rounded-[2px] text-[9px] font-mono font-bold uppercase bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border border-[#FF4D6D]/30">
                                   Current Device
                                 </span>
                               )}
@@ -418,7 +418,7 @@ export default function AdminSessionsPage() {
                         <div className="flex items-center gap-2 mt-0.5 font-mono text-[10px] text-[#69786F]">
                           <span className="truncate max-w-[160px]">{session.userEmail}</span>
                           <span>•</span>
-                          <span className="text-[#65F59A] uppercase font-bold">
+                          <span className="text-[#FF4D6D] uppercase font-bold">
                             {getRoleDisplayName(session.userRole)}
                           </span>
                         </div>
@@ -430,7 +430,7 @@ export default function AdminSessionsPage() {
                           <span className="text-[#F2F7F3] font-bold">{session.ipAddress}</span>
                           <button
                             onClick={(e) => handleCopy(session.ipAddress, "IP Address", e)}
-                            className="text-[#69786F] hover:text-[#65F59A] transition-colors"
+                            className="text-[#69786F] hover:text-[#FF4D6D] transition-colors"
                             title="Copy IP"
                           >
                             <Copy className="h-2.5 w-2.5" />
@@ -447,16 +447,16 @@ export default function AdminSessionsPage() {
                           <span
                             className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold uppercase ${
                               session.status === "active"
-                                ? "bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.25)]"
+                                ? "bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.25)]"
                                 : session.status === "idle"
-                                ? "bg-[rgba(160,190,170,0.1)] text-[#A0AEA5] border border-[rgba(160,190,170,0.2)]"
+                                ? "bg-[rgba(240, 160, 180,0.1)] text-[#A0AEA5] border border-[rgba(240, 160, 180,0.2)]"
                                 : session.status === "flagged"
                                 ? "bg-[rgba(248,113,113,0.12)] text-[#F87171] border border-[rgba(248,113,113,0.3)]"
-                                : "bg-[rgba(248,113,113,0.08)] text-[#A0AEA5] line-through border border-[rgba(160,190,170,0.15)]"
+                                : "bg-[rgba(248,113,113,0.08)] text-[#A0AEA5] line-through border border-[rgba(240, 160, 180,0.15)]"
                             }`}
                           >
                             {session.status === "active" && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
                             )}
                             {session.status}
                           </span>
@@ -478,7 +478,7 @@ export default function AdminSessionsPage() {
                       {/* Heartbeat / Expiry */}
                       <td className="px-4 py-3.5 font-mono text-[11px]">
                         <div className="flex items-center gap-1.5 text-[#F2F7F3]">
-                          <Clock className="h-3 w-3 text-[#65F59A]" />
+                          <Clock className="h-3 w-3 text-[#FF4D6D]" />
                           <span>Active {session.lastActiveAt}</span>
                         </div>
                         <span className="text-[10px] text-[#69786F] block mt-0.5">
@@ -502,7 +502,7 @@ export default function AdminSessionsPage() {
 
                               <button
                                 onClick={(e) => handleRevokeAllForUser(session, e)}
-                                className="p-1 rounded-[3px] border border-[rgba(160,190,170,0.15)] text-[#A0AEA5] hover:text-[#F87171] hover:bg-[rgba(248,113,113,0.08)] transition-colors"
+                                className="p-1 rounded-[3px] border border-[rgba(240, 160, 180,0.15)] text-[#A0AEA5] hover:text-[#F87171] hover:bg-[rgba(248,113,113,0.08)] transition-colors"
                                 title="Log Out User From All Devices"
                               >
                                 <UserX className="h-3.5 w-3.5" />
@@ -526,11 +526,11 @@ export default function AdminSessionsPage() {
 
       {/* 5. Deep Session Dossier Modal */}
       {selectedSession && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070B0A]/85 backdrop-blur-xs">
-          <div className="w-full max-w-xl rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.2)] p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
-            <div className="flex items-start justify-between border-b border-[rgba(160,190,170,0.12)] pb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0708]/85 backdrop-blur-xs">
+          <div className="w-full max-w-xl rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.2)] p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
+            <div className="flex items-start justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-4">
               <div className="flex items-center space-x-3">
-                <div className="p-2.5 rounded-[4px] bg-[#17251E] border border-[#65F59A]/30 flex items-center justify-center text-[#65F59A]">
+                <div className="p-2.5 rounded-[4px] bg-[#2A141A] border border-[#FF4D6D]/30 flex items-center justify-center text-[#FF4D6D]">
                   {getDeviceIcon(selectedSession.deviceCategory)}
                 </div>
                 <div>
@@ -540,7 +540,7 @@ export default function AdminSessionsPage() {
                   <div className="flex items-center gap-2 mt-0.5 font-mono text-[11px] text-[#A0AEA5]">
                     <span>Node ID: {selectedSession.id}</span>
                     <span>•</span>
-                    <span className="text-[#65F59A]">{selectedSession.userName}</span>
+                    <span className="text-[#FF4D6D]">{selectedSession.userName}</span>
                   </div>
                 </div>
               </div>
@@ -554,17 +554,17 @@ export default function AdminSessionsPage() {
             </div>
 
             <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Authenticated Account</span>
                 <span className="text-[#F2F7F3] font-bold select-all">{selectedSession.userEmail}</span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Session State</span>
                 <span
                   className={`font-bold uppercase ${
                     selectedSession.status === "active"
-                      ? "text-[#65F59A]"
+                      ? "text-[#FF4D6D]"
                       : selectedSession.status === "flagged"
                       ? "text-[#F87171]"
                       : "text-[#A0AEA5]"
@@ -574,17 +574,17 @@ export default function AdminSessionsPage() {
                 </span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Client Network IP</span>
                 <span className="text-[#F2F7F3] font-bold">{selectedSession.ipAddress}</span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Origin Geolocation</span>
                 <span className="text-[#F2F7F3]">{selectedSession.location}</span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Threat Evaluation</span>
                 <span
                   className={`font-bold uppercase ${
@@ -592,28 +592,28 @@ export default function AdminSessionsPage() {
                       ? "text-[#F87171]"
                       : selectedSession.riskScore === "high"
                       ? "text-[#FBBF24]"
-                      : "text-[#65F59A]"
+                      : "text-[#FF4D6D]"
                   }`}
                 >
                   {selectedSession.riskScore}
                 </span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">Client Fingerprint</span>
-                <span className="text-[#65F59A]">{selectedSession.clientFingerprint}</span>
+                <span className="text-[#FF4D6D]">{selectedSession.clientFingerprint}</span>
               </div>
             </div>
 
             {/* Raw User Agent Box */}
-            <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)] font-mono text-[10px] space-y-1">
+            <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)] font-mono text-[10px] space-y-1">
               <span className="text-[#69786F] uppercase block">Raw HTTP User-Agent String:</span>
-              <p className="text-[#A0AEA5] break-all leading-relaxed bg-[#0C1210] p-2 rounded-[3px] border border-[rgba(160,190,170,0.08)]">
+              <p className="text-[#A0AEA5] break-all leading-relaxed bg-[#140C0E] p-2 rounded-[3px] border border-[rgba(240, 160, 180,0.08)]">
                 {selectedSession.userAgent}
               </p>
             </div>
 
-            <div className="flex items-center justify-between pt-3 border-t border-[rgba(160,190,170,0.12)]">
+            <div className="flex items-center justify-between pt-3 border-t border-[rgba(240, 160, 180,0.12)]">
               {selectedSession.status !== "revoked" ? (
                 <Button
                   variant="outline"
@@ -632,14 +632,14 @@ export default function AdminSessionsPage() {
               <div className="flex items-center gap-2">
                 <Button
                   onClick={() => handleCopy(selectedSession.id, "Session ID")}
-                  className="bg-[#111B17] border border-[rgba(160,190,170,0.2)] text-[#F2F7F3] hover:text-[#65F59A] text-xs font-mono h-9"
+                  className="bg-[#1D1013] border border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] hover:text-[#FF4D6D] text-xs font-mono h-9"
                 >
                   <Copy className="mr-1.5 h-3.5 w-3.5" />
                   Copy ID
                 </Button>
                 <Button
                   onClick={() => setSelectedSession(null)}
-                  className="bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 text-xs font-mono font-bold h-9 uppercase"
+                  className="bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 text-xs font-mono font-bold h-9 uppercase"
                 >
                   Done
                 </Button>

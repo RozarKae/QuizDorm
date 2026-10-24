@@ -26,10 +26,10 @@ export default function GlobalEducationHubPage() {
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
-              <span className="p-2 rounded-2xl bg-white/10 backdrop-blur-md text-emerald-300">
+              <span className="p-2 rounded-2xl bg-white/10 backdrop-blur-md text-rose-300">
                 <Globe className="w-6 h-6" />
               </span>
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-300 bg-white/10 px-3 py-1 rounded-full border border-white/10">
+              <span className="text-xs font-bold uppercase tracking-widest text-rose-300 bg-white/10 px-3 py-1 rounded-full border border-white/10">
                 Phase 3.9 Global Education Cloud (Version 3.0 Final Release)
               </span>
             </div>
@@ -42,7 +42,7 @@ export default function GlobalEducationHubPage() {
           </div>
 
           <Link href="/dashboard/global/exchange">
-            <Button className="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold text-xs rounded-2xl shadow-lg shadow-emerald-500/30">
+            <Button className="bg-rose-500 hover:bg-rose-600 text-slate-950 font-extrabold text-xs rounded-2xl shadow-lg shadow-rose-500/30">
               <Share2 className="w-4 h-4 mr-1.5" /> Launch Curriculum Exchange & Cloud Node Status
             </Button>
           </Link>

@@ -106,7 +106,7 @@ export default function StudentGenZDashboardView() {
 
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link href="/live/join">
-              <Button className="h-11 px-6 rounded-[8px] bg-gradient-to-r from-cyan-500 via-teal-500 to-emerald-500 text-white dark:text-[#070B0A] hover:brightness-110 font-mono text-xs uppercase font-extrabold tracking-wider shadow-[0_0_25px_rgba(6,182,212,0.4)]">
+              <Button className="h-11 px-6 rounded-[8px] bg-gradient-to-r from-cyan-500 via-rose-500 to-rose-500 text-white dark:text-[#0B0708] hover:brightness-110 font-mono text-xs uppercase font-extrabold tracking-wider shadow-[0_0_25px_rgba(6,182,212,0.4)]">
                 <Swords className="mr-2 h-4 w-4" />
                 Battle Arena
               </Button>
@@ -195,7 +195,7 @@ export default function StudentGenZDashboardView() {
                 >
                   <div className="flex items-center gap-3">
                     {q.completed ? (
-                      <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-rose-600 dark:text-rose-400 shrink-0" />
                     ) : (
                       <Circle className="h-4 w-4 text-violet-500 dark:text-violet-400 shrink-0" />
                     )}

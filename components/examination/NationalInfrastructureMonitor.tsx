@@ -37,7 +37,7 @@ export function NationalInfrastructureMonitor() {
       {/* Top Banner */}
       <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 text-white flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xl">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold mb-2 border border-emerald-500/30">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 text-xs font-bold mb-2 border border-rose-500/30">
             <Globe className="w-3.5 h-3.5 animate-pulse" /> National Scale Infrastructure Telemetry
           </div>
           <h2 className="text-2xl font-bold">Multi-Region Examination Cloud & Edge Matrix</h2>
@@ -49,7 +49,7 @@ export function NationalInfrastructureMonitor() {
         <div className="flex items-center gap-3">
           <div className="bg-slate-900 px-4 py-2 rounded-xl border border-slate-800 text-center">
             <span className="text-[10px] text-slate-400 uppercase font-semibold block">Total Live Candidates</span>
-            <span className="text-xl font-black text-emerald-400">{totalConcurrent.toLocaleString()} Active</span>
+            <span className="text-xl font-black text-rose-400">{totalConcurrent.toLocaleString()} Active</span>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@ export function NationalInfrastructureMonitor() {
                 <span
                   className={`px-2.5 py-0.5 rounded-full font-extrabold text-[10px] uppercase ${
                     node.status === "Healthy"
-                      ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                      ? "bg-rose-500/10 text-rose-600 dark:text-rose-400"
                       : node.status === "High Load"
                       ? "bg-amber-500/10 text-amber-600 dark:text-amber-400"
                       : "bg-purple-500/10 text-purple-600 dark:text-purple-400"
@@ -94,7 +94,7 @@ export function NationalInfrastructureMonitor() {
                 </div>
                 <div>
                   <span className="text-[10px] text-slate-400 font-semibold uppercase">Latency</span>
-                  <p className="font-extrabold text-emerald-600 font-mono">{node.latencyMs} ms</p>
+                  <p className="font-extrabold text-rose-600 font-mono">{node.latencyMs} ms</p>
                 </div>
               </div>
 
@@ -115,7 +115,7 @@ export function NationalInfrastructureMonitor() {
 
             <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800">
               <span className="text-xs text-slate-400 flex items-center gap-1">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> SLA: 99.999%
+                <CheckCircle2 className="w-3.5 h-3.5 text-rose-500" /> SLA: 99.999%
               </span>
               <Button
                 onClick={() => handleSimulateFailover(node.nodeId)}

@@ -57,14 +57,14 @@ export function AIHealthWidget() {
             key={res.providerId}
             className={`p-4 rounded-2xl border flex flex-col justify-between space-y-3 ${
               res.connected
-                ? "bg-emerald-50/40 dark:bg-emerald-950/20 border-emerald-200 dark:border-emerald-900"
+                ? "bg-rose-50/40 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900"
                 : "bg-rose-50/40 dark:bg-rose-950/20 border-rose-200 dark:border-rose-900"
             }`}
           >
             <div className="flex items-center justify-between">
               <ProviderBadge providerId={res.providerId} size="sm" />
               <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                res.connected ? "bg-emerald-500 text-white" : "bg-rose-500 text-white"
+                res.connected ? "bg-rose-500 text-white" : "bg-rose-500 text-white"
               }`}>
                 {res.connected ? "ONLINE" : "OFFLINE"}
               </span>

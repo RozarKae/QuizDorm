@@ -10,27 +10,27 @@ const badgeVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[rgba(160,190,170,0.1)] text-[#F2F7F3] border-[rgba(160,190,170,0.22)]",
+          "bg-[rgba(240, 160, 180,0.1)] text-[#F2F7F3] border-[rgba(240, 160, 180,0.22)]",
         secondary:
-          "bg-[#111B17] text-[#A0AEA5] border-[rgba(160,190,170,0.14)]",
+          "bg-[#1D1013] text-[#A0AEA5] border-[rgba(240, 160, 180,0.14)]",
         outline:
-          "border-[rgba(160,190,170,0.2)] text-[#A0AEA5] bg-transparent",
+          "border-[rgba(240, 160, 180,0.2)] text-[#A0AEA5] bg-transparent",
         emerald:
-          "bg-[rgba(101,245,154,0.12)] text-[#65F59A] border-[rgba(101,245,154,0.30)]",
+          "bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] border-[rgba(255, 77, 109,0.30)]",
         mint:
-          "bg-[rgba(56,217,176,0.12)] text-[#38D9B0] border-[rgba(56,217,176,0.30)]",
+          "bg-[rgba(255, 117, 143,0.12)] text-[#FF758F] border-[rgba(255, 117, 143,0.30)]",
         cobalt:
-          "bg-[rgba(101,245,154,0.15)] text-[#65F59A] border-[rgba(101,245,154,0.35)]",
+          "bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border-[rgba(255, 77, 109,0.35)]",
         lime:
-          "bg-[rgba(101,245,154,0.15)] text-[#65F59A] border-[rgba(101,245,154,0.35)]",
+          "bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border-[rgba(255, 77, 109,0.35)]",
         coral:
           "bg-[rgba(248,113,113,0.12)] text-[#F87171] border-[rgba(248,113,113,0.30)]",
         destructive:
           "bg-[rgba(248,113,113,0.12)] text-[#F87171] border-[rgba(248,113,113,0.30)]",
         ghost:
-          "border-transparent bg-transparent text-[#A0AEA5] hover:bg-[#17251E]",
+          "border-transparent bg-transparent text-[#A0AEA5] hover:bg-[#2A141A]",
         link:
-          "text-[#65F59A] underline-offset-4 hover:underline border-transparent",
+          "text-[#FF4D6D] underline-offset-4 hover:underline border-transparent",
       },
     },
     defaultVariants: {

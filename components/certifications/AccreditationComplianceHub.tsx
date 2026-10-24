@@ -50,7 +50,7 @@ export function AccreditationComplianceHub() {
                   </span>
                   <h3 className="font-bold text-slate-900 dark:text-white text-base mt-1">{st.standardName}</h3>
                 </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 font-bold text-[10px]">
+                <span className="px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 font-bold text-[10px]">
                   {st.auditStatus}
                 </span>
               </div>
@@ -58,7 +58,7 @@ export function AccreditationComplianceHub() {
               <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl space-y-1 text-xs">
                 <div className="flex justify-between">
                   <span className="text-slate-400">Compliance Audit Rating:</span>
-                  <span className="font-mono font-bold text-emerald-600">{st.complianceScore}% Score</span>
+                  <span className="font-mono font-bold text-rose-600">{st.complianceScore}% Score</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Last Audit Date:</span>

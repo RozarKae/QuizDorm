@@ -90,8 +90,8 @@ function StandaloneArenaContent() {
 
   if (isLoading && !session) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center space-y-3 font-mono text-xs bg-[#070B0A] text-[#F2F7F3]">
-        <RefreshCw className="w-6 h-6 animate-spin text-[#65F59A]" />
+      <div className="min-h-screen flex flex-col items-center justify-center space-y-3 font-mono text-xs bg-[#0B0708] text-[#F2F7F3]">
+        <RefreshCw className="w-6 h-6 animate-spin text-[#FF4D6D]" />
         <p className="text-[#A0AEA5]">Connecting to Live Arena ({codeParam})...</p>
       </div>
     );
@@ -99,7 +99,7 @@ function StandaloneArenaContent() {
 
   if (connectionError && !session) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-4 bg-[#070B0A]">
+      <div className="min-h-screen flex items-center justify-center p-4 bg-[#0B0708]">
         <div className="max-w-md w-full p-6 rounded-[6px] border border-[rgba(248,113,113,0.3)] bg-[rgba(248,113,113,0.08)] text-center space-y-4">
           <AlertCircle className="w-10 h-10 text-[#F87171] mx-auto" />
           <h2 className="text-base font-bold text-[#F2F7F3]">Arena Connection Failed</h2>
@@ -132,22 +132,22 @@ function StandaloneArenaContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070B0A] text-[#F2F7F3] py-6 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-6 relative aurora-grid">
+    <div className="min-h-screen bg-[#0B0708] text-[#F2F7F3] py-6 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-6 relative aurora-grid">
       {/* Ambient Arena Spotlight */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(101,245,154,0.1)_0%,transparent_70%)] blur-[90px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-[radial-gradient(ellipse_at_center,rgba(255, 77, 109,0.1)_0%,transparent_70%)] blur-[90px] pointer-events-none" />
 
       {/* Top Header */}
-      <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.14)] pb-4 relative z-10">
+      <div className="flex items-center justify-between border-b border-[rgba(240, 160, 180,0.14)] pb-4 relative z-10">
         <Link
           href="/live/join"
-          className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#65F59A] transition-colors"
+          className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#FF4D6D] transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> EXIT ARENA
         </Link>
         <div className="flex items-center space-x-3">
           <AudioToggle />
-          <span className="font-mono text-xs font-bold text-[#65F59A] bg-[rgba(101,245,154,0.12)] border border-[rgba(101,245,154,0.3)] px-3 py-1 rounded-[4px] shadow-[0_0_15px_rgba(101,245,154,0.25)] flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+          <span className="font-mono text-xs font-bold text-[#FF4D6D] bg-[rgba(255, 77, 109,0.12)] border border-[rgba(255, 77, 109,0.3)] px-3 py-1 rounded-[4px] shadow-[0_0_15px_rgba(255, 77, 109,0.25)] flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
             ARENA PIN: {session?.code || codeParam}
           </span>
         </div>
@@ -174,8 +174,8 @@ function StandaloneArenaContent() {
 
       {/* Contestant Callsign Prompt if not enrolled yet and NOT the host */}
       {!currentParticipant && !isHost ? (
-        <div className="max-w-md mx-auto my-12 bg-[#0C1210] p-6 sm:p-8 rounded-[6px] border border-[rgba(101,245,154,0.3)] shadow-[0_0_24px_rgba(101,245,154,0.12)] text-center space-y-5 relative z-10">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-[3px] bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] text-xs font-mono font-bold uppercase tracking-wider">
+        <div className="max-w-md mx-auto my-12 bg-[#140C0E] p-6 sm:p-8 rounded-[6px] border border-[rgba(255, 77, 109,0.3)] shadow-[0_0_24px_rgba(255, 77, 109,0.12)] text-center space-y-5 relative z-10">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-[3px] bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] text-xs font-mono font-bold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
             <span>JOIN ARENA // CONTENDER CALLSIGN</span>
           </div>
@@ -193,14 +193,14 @@ function StandaloneArenaContent() {
                 value={nameInput}
                 onChange={(e) => setNameInput(e.target.value)}
                 placeholder="Enter your full name or callsign..."
-                className="pl-9 h-10 text-sm font-mono bg-[#111B17] border-[rgba(160,190,170,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#65F59A]"
+                className="pl-9 h-10 text-sm font-mono bg-[#1D1013] border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] rounded-[4px] focus:border-[#FF4D6D]"
                 maxLength={25}
                 autoFocus
               />
             </div>
             <Button
               type="submit"
-              className="w-full bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono font-bold text-xs rounded-[4px] h-10 shadow-[0_0_12px_rgba(101,245,154,0.2)]"
+              className="w-full bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-mono font-bold text-xs rounded-[4px] h-10 shadow-[0_0_12px_rgba(255, 77, 109,0.2)]"
             >
               <Zap className="w-3.5 h-3.5 mr-1.5 fill-current" /> Enter Battle Arena
             </Button>

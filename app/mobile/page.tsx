@@ -25,7 +25,7 @@ export default function StandaloneMobilePwaPage() {
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-800 pb-4">
           <Logo />
-          <span className="text-[10px] font-mono font-bold text-emerald-400 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/10">
+          <span className="text-[10px] font-mono font-bold text-rose-400 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/10">
             PWA OFFLINE ENGINE
           </span>
         </div>
@@ -43,7 +43,7 @@ export default function StandaloneMobilePwaPage() {
             <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-sm text-indigo-300">Class 12 Calculus &amp; Advanced Math</span>
-                <span className="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-mono bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full">
                   READY OFFLINE
                 </span>
               </div>

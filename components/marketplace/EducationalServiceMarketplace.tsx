@@ -47,7 +47,7 @@ export function EducationalServiceMarketplace() {
                   <h3 className="font-bold text-slate-900 dark:text-white text-base mt-1">{s.title}</h3>
                   <p className="text-xs text-slate-500">Provider: {s.providerName}</p>
                 </div>
-                <span className="font-mono text-lg font-black text-emerald-600 dark:text-emerald-400">
+                <span className="font-mono text-lg font-black text-rose-600 dark:text-rose-400">
                   ${s.hourlyRateUSD}/hr
                 </span>
               </div>

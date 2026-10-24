@@ -58,7 +58,7 @@ export function EmployerRecruiterPortal() {
               <div>
                 <div className="flex items-center gap-2">
                   <h3 className="font-bold text-slate-900 dark:text-white text-lg">{cand.name}</h3>
-                  <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold text-[10px] flex items-center gap-1">
+                  <span className="px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 font-bold text-[10px] flex items-center gap-1">
                     <ShieldCheck className="w-3.5 h-3.5" /> Verified Credentials
                   </span>
                 </div>
@@ -81,7 +81,7 @@ export function EmployerRecruiterPortal() {
                 {cand.topSkills.map((sk) => (
                   <div key={sk.skillName} className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl flex justify-between items-center">
                     <span className="font-semibold text-slate-900 dark:text-white">{sk.skillName}</span>
-                    <span className="font-mono font-bold text-emerald-600">{sk.proficiencyPercent}%</span>
+                    <span className="font-mono font-bold text-rose-600">{sk.proficiencyPercent}%</span>
                   </div>
                 ))}
               </div>

@@ -27,7 +27,7 @@ export function ConfidenceBadge({ confidence, showDetails = false, size = "md" }
 
   const score = Math.round(scores.overall);
 
-  let badgeColor = "bg-emerald-100 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800";
+  let badgeColor = "bg-rose-100 text-rose-700 dark:bg-rose-950/80 dark:text-rose-300 border-rose-200 dark:border-rose-800";
   let icon = <ShieldCheck className="w-3.5 h-3.5 mr-1" />;
   let label = "High Confidence";
 

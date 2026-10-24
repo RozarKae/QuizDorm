@@ -35,7 +35,7 @@ export default function ContactPage() {
             <div className="bg-white dark:bg-gray-950 p-8 rounded-3xl border border-gray-200 dark:border-gray-800 shadow-sm">
               {submitted ? (
                 <div className="text-center py-12 space-y-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-600 mx-auto flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-rose-100 dark:bg-rose-950 text-rose-600 mx-auto flex items-center justify-center">
                     <Send className="w-8 h-8" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Message Sent!</h3>

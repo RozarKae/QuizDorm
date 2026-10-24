@@ -22,10 +22,10 @@ export default function EdgeOfflineOSPage() {
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
-              <span className="p-2 rounded-2xl bg-white/10 backdrop-blur-md text-emerald-300">
+              <span className="p-2 rounded-2xl bg-white/10 backdrop-blur-md text-rose-300">
                 <WifiOff className="w-6 h-6" />
               </span>
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-300 bg-white/10 px-3 py-1 rounded-full border border-white/10">
+              <span className="text-xs font-bold uppercase tracking-widest text-rose-300 bg-white/10 px-3 py-1 rounded-full border border-white/10">
                 Phase 3.2 Edge Computing & Resilient Sync
               </span>
             </div>
@@ -37,7 +37,7 @@ export default function EdgeOfflineOSPage() {
             </p>
           </div>
 
-          <Button onClick={() => setEdgeModalOpen(true)} className="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold text-xs rounded-2xl shadow-lg shadow-emerald-500/30">
+          <Button onClick={() => setEdgeModalOpen(true)} className="bg-rose-500 hover:bg-rose-600 text-slate-950 font-extrabold text-xs rounded-2xl shadow-lg shadow-rose-500/30">
             <Play className="w-4 h-4 mr-1.5" /> Host LAN Competition (No Internet)
           </Button>
         </div>
@@ -49,9 +49,9 @@ export default function EdgeOfflineOSPage() {
           <Card className="p-6 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-3xl shadow-sm space-y-3">
             <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-3">
               <span className="font-bold text-gray-900 dark:text-white flex items-center text-sm">
-                <Wifi className="w-4 h-4 text-emerald-500 mr-2" /> Universal Network Mode
+                <Wifi className="w-4 h-4 text-rose-500 mr-2" /> Universal Network Mode
               </span>
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-100 text-emerald-800 uppercase">
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-rose-100 text-rose-800 uppercase">
                 {netStatus}
               </span>
             </div>

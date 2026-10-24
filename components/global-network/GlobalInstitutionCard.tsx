@@ -26,8 +26,8 @@ export function GlobalInstitutionCard({ institution }: GlobalInstitutionCardProp
             {institution.country}
           </span>
           {institution.verifiedBadge && (
-            <span className="text-[10px] font-mono text-emerald-600 font-bold flex items-center">
-              <CheckCircle2 className="w-3.5 h-3.5 mr-1 text-emerald-500" /> Accredited
+            <span className="text-[10px] font-mono text-rose-600 font-bold flex items-center">
+              <CheckCircle2 className="w-3.5 h-3.5 mr-1 text-rose-500" /> Accredited
             </span>
           )}
         </div>
@@ -45,7 +45,7 @@ export function GlobalInstitutionCard({ institution }: GlobalInstitutionCardProp
         <Button
           onClick={handlePartnerRequest}
           disabled={partnered}
-          className={`w-full font-bold text-xs rounded-xl h-8 ${partnered ? "bg-emerald-600 text-white" : "bg-indigo-600 hover:bg-indigo-700 text-white"}`}
+          className={`w-full font-bold text-xs rounded-xl h-8 ${partnered ? "bg-rose-600 text-white" : "bg-indigo-600 hover:bg-indigo-700 text-white"}`}
         >
           {partnered ? "Partnership Requested" : "Request Academic Partnership"}
         </Button>

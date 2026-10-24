@@ -79,7 +79,7 @@ function LiveArenaContent() {
   if (isLoading && !session) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-3 font-mono text-xs">
-        <RefreshCw className="w-6 h-6 animate-spin text-[#65F59A]" />
+        <RefreshCw className="w-6 h-6 animate-spin text-[#FF4D6D]" />
         <p className="text-[#A0AEA5]">Connecting to Live Arena Engine ({codeParam})...</p>
       </div>
     );
@@ -93,12 +93,12 @@ function LiveArenaContent() {
         <p className="text-xs text-[#A0AEA5]">{connectionError}</p>
         <div className="pt-2 flex justify-center gap-3">
           <Link href="/dashboard/competitions">
-            <Button variant="outline" size="sm" className="text-xs font-mono border-[rgba(160,190,170,0.18)] text-[#A0AEA5] hover:text-[#F2F7F3]">
+            <Button variant="outline" size="sm" className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] text-[#A0AEA5] hover:text-[#F2F7F3]">
               Return to Competitions
             </Button>
           </Link>
           <Link href="/live/join">
-            <Button size="sm" className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] text-xs font-mono font-bold shadow-[0_0_12px_rgba(101,245,154,0.18)]">
+            <Button size="sm" className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] text-xs font-mono font-bold shadow-[0_0_12px_rgba(255, 77, 109,0.18)]">
               Enter Different PIN
             </Button>
           </Link>
@@ -132,22 +132,22 @@ function LiveArenaContent() {
   return (
     <div className="space-y-6 max-w-7xl mx-auto">
       {/* Top Header & Role Switcher */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(160,190,170,0.14)] pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[rgba(240, 160, 180,0.14)] pb-4">
         <Link
           href="/dashboard/competitions"
-          className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#65F59A] transition-colors"
+          className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#FF4D6D] transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> EXIT ARENA
         </Link>
 
         {/* Role view toggle for testing & multi-context verification */}
-        <div className="flex items-center space-x-1.5 bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-1 rounded-[4px]">
+        <div className="flex items-center space-x-1.5 bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-1 rounded-[4px]">
           <button
             type="button"
             onClick={() => setUserRole("host")}
             className={`px-3 py-1.5 rounded-[3px] text-xs font-mono font-bold transition-all flex items-center ${
               userRole === "host"
-                ? "bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] shadow-[0_0_8px_rgba(101,245,154,0.1)]"
+                ? "bg-[#2A141A] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] shadow-[0_0_8px_rgba(255, 77, 109,0.1)]"
                 : "text-[#A0AEA5] hover:text-[#F2F7F3]"
             }`}
           >
@@ -158,7 +158,7 @@ function LiveArenaContent() {
             onClick={() => setUserRole("participant")}
             className={`px-3 py-1.5 rounded-[3px] text-xs font-mono font-bold transition-all flex items-center ${
               userRole === "participant"
-                ? "bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.3)] shadow-[0_0_8px_rgba(101,245,154,0.1)]"
+                ? "bg-[#2A141A] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] shadow-[0_0_8px_rgba(255, 77, 109,0.1)]"
                 : "text-[#A0AEA5] hover:text-[#F2F7F3]"
             }`}
           >

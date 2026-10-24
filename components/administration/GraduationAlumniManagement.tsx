@@ -37,7 +37,7 @@ export function GraduationAlumniManagement() {
 
         <div className="bg-slate-900/90 p-4 rounded-2xl border border-slate-800 text-center">
           <span className="text-[10px] text-slate-400 uppercase font-semibold">Placement Rate</span>
-          <p className="text-2xl font-black text-emerald-400">97.8% Placed</p>
+          <p className="text-2xl font-black text-rose-400">97.8% Placed</p>
         </div>
       </div>
 

@@ -28,7 +28,7 @@ export default function AdminPage() {
       subtext: "Across 48 institutions",
       change: "+12% this month",
       isPositive: true,
-      icon: <Users className="h-4 w-4 text-[#65F59A]" />,
+      icon: <Users className="h-4 w-4 text-[#FF4D6D]" />,
     },
     {
       title: "Active Licenses",
@@ -36,7 +36,7 @@ export default function AdminPage() {
       subtext: "Enterprise & Campus tiers",
       change: "+3 new campuses",
       isPositive: true,
-      icon: <BookOpen className="h-4 w-4 text-[#38D9B0]" />,
+      icon: <BookOpen className="h-4 w-4 text-[#FF758F]" />,
     },
     {
       title: "Platform Security",
@@ -44,7 +44,7 @@ export default function AdminPage() {
       subtext: "0 threat anomalies",
       change: "Optimal",
       isPositive: true,
-      icon: <Shield className="h-4 w-4 text-[#65F59A]" />,
+      icon: <Shield className="h-4 w-4 text-[#FF4D6D]" />,
     },
     {
       title: "Cluster Load & Latency",
@@ -52,7 +52,7 @@ export default function AdminPage() {
       subtext: "42ms median response",
       change: "Normal load",
       isPositive: true,
-      icon: <Cpu className="h-4 w-4 text-[#38D9B0]" />,
+      icon: <Cpu className="h-4 w-4 text-[#FF758F]" />,
     },
   ];
 
@@ -63,7 +63,7 @@ export default function AdminPage() {
       status: "100% Operational",
       latency: "420ms",
       load: "18%",
-      color: "text-[#65F59A]",
+      color: "text-[#FF4D6D]",
     },
     {
       name: "Realtime Arena Broadcast Engine",
@@ -71,7 +71,7 @@ export default function AdminPage() {
       status: "Operational",
       latency: "18ms",
       load: "8%",
-      color: "text-[#65F59A]",
+      color: "text-[#FF4D6D]",
     },
     {
       name: "Persistence & Vector Knowledge Store",
@@ -79,7 +79,7 @@ export default function AdminPage() {
       status: "Healthy",
       latency: "28ms",
       load: "14%",
-      color: "text-[#38D9B0]",
+      color: "text-[#FF758F]",
     },
     {
       name: "Edge Delivery Network & Assets",
@@ -87,7 +87,7 @@ export default function AdminPage() {
       status: "99.99% Hit Ratio",
       latency: "12ms",
       load: "5%",
-      color: "text-[#65F59A]",
+      color: "text-[#FF4D6D]",
     },
   ];
 
@@ -96,28 +96,28 @@ export default function AdminPage() {
       title: "Users & Identity Access (IAM)",
       description: "Manage logins, UUIDs, elevate or downgrade roles, ban rogue users, and reset credentials.",
       href: "/admin/users",
-      icon: <Users className="h-4 w-4 text-[#65F59A]" />,
+      icon: <Users className="h-4 w-4 text-[#FF4D6D]" />,
       actionLabel: "User Directory",
     },
     {
       title: "Active Session & Token Control",
       description: "Monitor live authenticated client devices, IP geolocation telemetry, and revoke compromised tokens.",
       href: "/admin/sessions",
-      icon: <Server className="h-4 w-4 text-[#38D9B0]" />,
+      icon: <Server className="h-4 w-4 text-[#FF758F]" />,
       actionLabel: "Session Monitor",
     },
     {
       title: "AI Engine & Prompt Studio",
       description: "Manage API keys, routing fallback tiers, rate limits, and custom prompt templates.",
       href: "/admin/ai",
-      icon: <Sparkles className="h-4 w-4 text-[#65F59A]" />,
+      icon: <Sparkles className="h-4 w-4 text-[#FF4D6D]" />,
       actionLabel: "AI Studio",
     },
     {
       title: "Master Organization Governance",
       description: "Approve pending campuses, configure custom subdomains, and assign enterprise tier quotas.",
       href: "/admin/organizations",
-      icon: <Layers className="h-4 w-4 text-[#65F59A]" />,
+      icon: <Layers className="h-4 w-4 text-[#FF4D6D]" />,
       actionLabel: "Master Orgs",
     },
     {
@@ -131,7 +131,7 @@ export default function AdminPage() {
       title: "Cloud Infrastructure & Ops",
       description: "Inspect cluster uptime, real-time memory usage, and background cron schedules.",
       href: "/dashboard/cloud-ops",
-      icon: <Server className="h-4 w-4 text-[#38D9B0]" />,
+      icon: <Server className="h-4 w-4 text-[#FF758F]" />,
       actionLabel: "Cloud Ops",
     },
     {
@@ -187,13 +187,13 @@ export default function AdminPage() {
   return (
     <div className="space-y-6">
       {/* 1. Cinematic Hero Masthead */}
-      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="relative overflow-hidden rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-6 sm:p-8">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(255, 77, 109,0.08)_0%,transparent_70%)] pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] font-mono text-[10px] font-bold uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
                 Root Authority // Master Platform Governance
               </span>
               <span className="font-mono text-[11px] text-[#69786F]">Super Admin Command OS</span>
@@ -207,7 +207,7 @@ export default function AdminPage() {
           </div>
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <Link href="/admin/ai">
-              <Button className="h-10 px-5 rounded-[4px] bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_20px_rgba(101,245,154,0.25)]">
+              <Button className="h-10 px-5 rounded-[4px] bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_20px_rgba(255, 77, 109,0.25)]">
                 <Sparkles className="mr-2 h-3.5 w-3.5" />
                 AI Studio
               </Button>
@@ -215,7 +215,7 @@ export default function AdminPage() {
             <Link href="/dashboard/cloud-ops">
               <Button
                 variant="outline"
-                className="h-10 px-5 rounded-[4px] border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] hover:border-[#65F59A]/50 hover:text-[#65F59A] font-mono text-xs uppercase font-bold tracking-wider"
+                className="h-10 px-5 rounded-[4px] border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#F2F7F3] hover:border-[#FF4D6D]/50 hover:text-[#FF4D6D] font-mono text-xs uppercase font-bold tracking-wider"
               >
                 Cloud Ops
               </Button>
@@ -229,13 +229,13 @@ export default function AdminPage() {
         {stats.map((stat) => (
           <div
             key={stat.title}
-            className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] hover:border-[rgba(160,190,170,0.28)] transition-all flex flex-col justify-between"
+            className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] hover:border-[rgba(240, 160, 180,0.28)] transition-all flex flex-col justify-between"
           >
-            <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+            <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
               <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
                 {stat.title}
               </span>
-              <div className="p-1 rounded-[3px] bg-[#111B17] border border-[rgba(160,190,170,0.12)]">
+              <div className="p-1 rounded-[3px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.12)]">
                 {stat.icon}
               </div>
             </div>
@@ -246,7 +246,7 @@ export default function AdminPage() {
                 </p>
                 <p className="text-[11px] text-[#A0AEA5] mt-0.5 font-sans">{stat.subtext}</p>
               </div>
-              <span className="inline-flex items-center px-1.5 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.25)]">
+              <span className="inline-flex items-center px-1.5 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.25)]">
                 {stat.change}
               </span>
             </div>
@@ -259,16 +259,16 @@ export default function AdminPage() {
         {/* Left: Infrastructure & Operations Matrix */}
         <div className="lg:col-span-2 space-y-6">
           {/* Infrastructure Health Status Matrix */}
-          <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-5">
-            <div className="flex items-center justify-between pb-3 mb-4 border-b border-[rgba(160,190,170,0.12)]">
+          <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-5">
+            <div className="flex items-center justify-between pb-3 mb-4 border-b border-[rgba(240, 160, 180,0.12)]">
               <div className="flex items-center gap-2">
-                <div className="w-1.5 h-3 bg-[#65F59A] rounded-[1px] shadow-[0_0_6px_#65F59A]" />
+                <div className="w-1.5 h-3 bg-[#FF4D6D] rounded-[1px] shadow-[0_0_6px_#FF4D6D]" />
                 <h2 className="font-display text-sm font-bold uppercase tracking-wider text-[#F2F7F3]">
                   Core Infrastructure Mesh Status
                 </h2>
               </div>
-              <span className="font-mono text-[11px] text-[#65F59A] flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+              <span className="font-mono text-[11px] text-[#FF4D6D] flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
                 All Systems Nominal
               </span>
             </div>
@@ -277,7 +277,7 @@ export default function AdminPage() {
               {infrastructureNodes.map((node) => (
                 <div
                   key={node.name}
-                  className="p-3.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)] flex flex-col sm:flex-row sm:items-center justify-between gap-3"
+                  className="p-3.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)] flex flex-col sm:flex-row sm:items-center justify-between gap-3"
                 >
                   <div>
                     <h4 className="text-sm font-semibold text-[#F2F7F3]">{node.name}</h4>
@@ -292,7 +292,7 @@ export default function AdminPage() {
                       <span className="text-[#69786F] block text-[10px] uppercase">Load</span>
                       <span className="text-[#F2F7F3] font-bold">{node.load}</span>
                     </div>
-                    <span className="px-2 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold uppercase bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.2)]">
+                    <span className="px-2 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold uppercase bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.2)]">
                       {node.status}
                     </span>
                   </div>
@@ -302,9 +302,9 @@ export default function AdminPage() {
           </div>
 
           {/* Quick Actions Matrix */}
-          <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-5">
-            <div className="flex items-center gap-2 pb-3 mb-4 border-b border-[rgba(160,190,170,0.12)]">
-              <div className="w-1.5 h-3 bg-[#38D9B0] rounded-[1px] shadow-[0_0_6px_#38D9B0]" />
+          <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-5">
+            <div className="flex items-center gap-2 pb-3 mb-4 border-b border-[rgba(240, 160, 180,0.12)]">
+              <div className="w-1.5 h-3 bg-[#FF758F] rounded-[1px] shadow-[0_0_6px_#FF758F]" />
               <h2 className="font-display text-sm font-bold uppercase tracking-wider text-[#F2F7F3]">
                 Superadmin Platform Operations
               </h2>
@@ -314,21 +314,21 @@ export default function AdminPage() {
                 <Link
                   key={action.title}
                   href={action.href}
-                  className="group block p-4 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)] hover:border-[#65F59A]/50 hover:bg-[#17251E] transition-all relative"
+                  className="group block p-4 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.12)] hover:border-[#FF4D6D]/50 hover:bg-[#2A141A] transition-all relative"
                 >
                   <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-2.5 text-[#65F59A]">
+                    <div className="flex items-center gap-2.5 text-[#FF4D6D]">
                       {action.icon}
-                      <h4 className="font-display text-sm font-bold text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors">
+                      <h4 className="font-display text-sm font-bold text-[#F2F7F3] group-hover:text-[#FF4D6D] transition-colors">
                         {action.title}
                       </h4>
                     </div>
-                    <ArrowUpRight className="h-3.5 w-3.5 text-[#69786F] group-hover:text-[#65F59A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <ArrowUpRight className="h-3.5 w-3.5 text-[#69786F] group-hover:text-[#FF4D6D] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </div>
                   <p className="mt-2 text-xs text-[#A0AEA5] leading-relaxed line-clamp-2">
                     {action.description}
                   </p>
-                  <div className="mt-3 flex items-center gap-1 font-mono text-[10px] uppercase font-bold text-[#65F59A] tracking-wider">
+                  <div className="mt-3 flex items-center gap-1 font-mono text-[10px] uppercase font-bold text-[#FF4D6D] tracking-wider">
                     <span>{action.actionLabel}</span>
                   </div>
                 </Link>
@@ -339,21 +339,21 @@ export default function AdminPage() {
 
         {/* Right: Security Stream & Audit */}
         <div className="space-y-6">
-          <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-5">
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-[rgba(160,190,170,0.12)]">
+          <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-5">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-[rgba(240, 160, 180,0.12)]">
               <div className="flex items-center gap-2">
-                <Activity className="h-4 w-4 text-[#65F59A]" />
+                <Activity className="h-4 w-4 text-[#FF4D6D]" />
                 <h3 className="font-display text-xs uppercase font-bold tracking-wider text-[#F2F7F3]">
                   System Audit & Security Feed
                 </h3>
               </div>
-              <span className="font-mono text-[10px] text-[#65F59A] flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-ping" />
+              <span className="font-mono text-[10px] text-[#FF4D6D] flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-ping" />
                 Live
               </span>
             </div>
 
-            <div className="divide-y divide-[rgba(160,190,170,0.08)]">
+            <div className="divide-y divide-[rgba(240, 160, 180,0.08)]">
               {activities.map((act) => (
                 <div key={act.id} className="py-3 first:pt-0 last:pb-0 space-y-1">
                   <div className="flex items-center justify-between gap-2">
@@ -367,8 +367,8 @@ export default function AdminPage() {
           </div>
 
           {/* Quick AI Diagnostics Link Card */}
-          <div className="p-4 rounded-[6px] bg-[rgba(101,245,154,0.06)] border border-[rgba(101,245,154,0.2)] space-y-2">
-            <div className="flex items-center gap-2 text-[#65F59A]">
+          <div className="p-4 rounded-[6px] bg-[rgba(255, 77, 109,0.06)] border border-[rgba(255, 77, 109,0.2)] space-y-2">
+            <div className="flex items-center gap-2 text-[#FF4D6D]">
               <Sparkles className="h-4 w-4" />
               <h4 className="font-display text-xs uppercase font-bold text-[#F2F7F3]">
                 AI Multi-Model Router
@@ -379,7 +379,7 @@ export default function AdminPage() {
             </p>
             <Link
               href="/admin/ai"
-              className="inline-block mt-1 font-mono text-[10px] text-[#65F59A] hover:underline font-bold uppercase tracking-wider"
+              className="inline-block mt-1 font-mono text-[10px] text-[#FF4D6D] hover:underline font-bold uppercase tracking-wider"
             >
               Configure AI Providers →
             </Link>

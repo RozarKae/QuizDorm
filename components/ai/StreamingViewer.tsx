@@ -25,7 +25,7 @@ export function StreamingViewer({ streamedText, isStreaming, metadata }: Streami
               <Loader2 className="w-3 h-3 mr-1 animate-spin" /> Live Streaming...
             </span>
           ) : streamedText ? (
-            <span className="text-[10px] font-bold text-emerald-400 flex items-center">
+            <span className="text-[10px] font-bold text-rose-400 flex items-center">
               <CheckCircle2 className="w-3 h-3 mr-1" /> Complete
             </span>
           ) : null}

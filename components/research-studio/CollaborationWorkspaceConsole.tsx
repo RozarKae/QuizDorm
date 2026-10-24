@@ -92,7 +92,7 @@ export function CollaborationWorkspaceConsole() {
                   Resolve
                 </Button>
               ) : (
-                <span className="text-emerald-500 font-bold text-[10px] flex items-center gap-1 shrink-0">
+                <span className="text-rose-500 font-bold text-[10px] flex items-center gap-1 shrink-0">
                   <CheckCircle2 className="w-3.5 h-3.5" /> Resolved
                 </span>
               )}

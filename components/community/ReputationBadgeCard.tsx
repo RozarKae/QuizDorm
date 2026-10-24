@@ -35,7 +35,7 @@ export function ReputationBadgeCard() {
             </div>
 
             <div className="flex items-center space-x-3">
-              <span className="text-emerald-400 font-bold">{user.reputationPoints.toLocaleString()} PTS</span>
+              <span className="text-rose-400 font-bold">{user.reputationPoints.toLocaleString()} PTS</span>
               <span className="px-2.5 py-0.5 rounded-full text-[10px] bg-purple-500/30 text-purple-200 font-sans font-bold">
                 {user.badgeTitle}
               </span>

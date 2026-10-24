@@ -17,20 +17,20 @@ export function QuestionPalette({
   onSelectQuestion,
 }: QuestionPaletteProps) {
   return (
-    <div className="bg-[#0C1210] p-4 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-xs space-y-4">
+    <div className="bg-[#140C0E] p-4 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] shadow-xs space-y-4">
       <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F2F7F3] flex items-center justify-between">
         <span>Question Palette</span>
         <span className="text-[10px] text-[#A0AEA5] font-normal">{questions.length} Items</span>
       </h4>
 
       {/* Legend */}
-      <div className="grid grid-cols-2 gap-2 text-[10px] font-mono text-[#A0AEA5] pb-2 border-b border-[rgba(160,190,170,0.12)]">
+      <div className="grid grid-cols-2 gap-2 text-[10px] font-mono text-[#A0AEA5] pb-2 border-b border-[rgba(240, 160, 180,0.12)]">
         <div className="flex items-center space-x-1.5">
-          <span className="w-2.5 h-2.5 rounded-[2px] bg-[#65F59A] inline-block" />
+          <span className="w-2.5 h-2.5 rounded-[2px] bg-[#FF4D6D] inline-block" />
           <span>Answered</span>
         </div>
         <div className="flex items-center space-x-1.5">
-          <span className="w-2.5 h-2.5 rounded-[2px] bg-[#111B17] border border-[rgba(160,190,170,0.2)] inline-block" />
+          <span className="w-2.5 h-2.5 rounded-[2px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.2)] inline-block" />
           <span>Unanswered</span>
         </div>
         <div className="flex items-center space-x-1.5">
@@ -57,13 +57,13 @@ export function QuestionPalette({
               className={`relative h-8 w-full rounded-[3px] text-xs font-mono font-bold transition-all flex items-center justify-center border ${
                 isCurrent
                   ? "ring-1 ring-[#F2F7F3] border-[#F2F7F3] font-extrabold shadow-xs"
-                  : "border-[rgba(160,190,170,0.14)]"
+                  : "border-[rgba(240, 160, 180,0.14)]"
               } ${
                 isMarked
                   ? "bg-[rgba(248,113,113,0.2)] text-[#F87171] border-[#F87171]"
                   : isAnswered
-                  ? "bg-[#65F59A] text-[#070B0A] border-[#65F59A] shadow-[0_0_8px_rgba(101,245,154,0.15)]"
-                  : "bg-[#111B17] text-[#A0AEA5] hover:bg-[#17251E] hover:text-[#F2F7F3]"
+                  ? "bg-[#FF4D6D] text-[#0B0708] border-[#FF4D6D] shadow-[0_0_8px_rgba(255, 77, 109,0.15)]"
+                  : "bg-[#1D1013] text-[#A0AEA5] hover:bg-[#2A141A] hover:text-[#F2F7F3]"
               }`}
             >
               <span>{idx + 1}</span>

@@ -295,7 +295,7 @@ export function ClassroomCollaborationHub() {
                   <div className="flex items-center justify-between">
                     <h4 className="font-bold text-slate-900 dark:text-white text-sm">{q.question}</h4>
                     {q.isAnswered && (
-                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 font-bold text-[10px] flex items-center gap-1">
+                      <span className="px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 font-bold text-[10px] flex items-center gap-1">
                         <CheckCircle2 className="w-3 h-3" /> Answered
                       </span>
                     )}
@@ -323,7 +323,7 @@ export function ClassroomCollaborationHub() {
             <h3 className="font-bold text-slate-900 dark:text-white text-base flex items-center gap-2">
               <BarChart3 className="w-5 h-5 text-indigo-600" /> Active Live Poll
             </h3>
-            <span className="px-2.5 py-0.5 rounded-full bg-emerald-500 text-white font-bold text-[10px] animate-pulse">
+            <span className="px-2.5 py-0.5 rounded-full bg-rose-500 text-white font-bold text-[10px] animate-pulse">
               LIVE
             </span>
           </div>

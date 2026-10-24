@@ -65,7 +65,7 @@ export function ClassroomResourceLibrary() {
       case "Video": return <Video className="w-5 h-5 text-red-500" />;
       case "Presentation": return <FileText className="w-5 h-5 text-amber-500" />;
       case "PDF": return <File className="w-5 h-5 text-indigo-500" />;
-      case "Link": return <LinkIcon className="w-5 h-5 text-emerald-500" />;
+      case "Link": return <LinkIcon className="w-5 h-5 text-rose-500" />;
       case "Audio": return <Music className="w-5 h-5 text-purple-500" />;
       default: return <FileText className="w-5 h-5 text-slate-500" />;
     }

@@ -49,10 +49,10 @@ export default function NotFound() {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen bg-[#070B0A] text-[#F2F7F3] aurora-grid flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
+    <div className="min-h-screen bg-[#0B0708] text-[#F2F7F3] aurora-grid flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
       
       {/* Background glow radial */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] pointer-events-none blur-3xl" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(255, 77, 109,0.08)_0%,transparent_70%)] pointer-events-none blur-3xl" />
 
       <div className="relative z-10 max-w-md w-full space-y-6">
         
@@ -62,9 +62,9 @@ export default function NotFound() {
         </div>
 
         {/* 404 Badge */}
-        <div className="inline-flex items-center space-x-2 border border-[#65F59A]/30 bg-[#111B17] px-3.5 py-1.5 rounded-full text-xs font-mono">
-          <span className="w-2 h-2 rounded-full bg-[#65F59A] animate-pulse" />
-          <span className="text-[#65F59A] font-bold uppercase tracking-wider">
+        <div className="inline-flex items-center space-x-2 border border-[#FF4D6D]/30 bg-[#1D1013] px-3.5 py-1.5 rounded-full text-xs font-mono">
+          <span className="w-2 h-2 rounded-full bg-[#FF4D6D] animate-pulse" />
+          <span className="text-[#FF4D6D] font-bold uppercase tracking-wider">
             STATUS 404 // ROUTE NOT FOUND
           </span>
         </div>
@@ -81,26 +81,26 @@ export default function NotFound() {
 
         {/* Explanation */}
         <p className="text-xs sm:text-sm text-[#A0AEA5] font-mono leading-relaxed">
-          The requested path <code className="text-[#65F59A] bg-[#111B17] px-1.5 py-0.5 rounded border border-[rgba(160,190,170,0.15)]">{pathname || "/..."}</code> does not exist on QuizDorm or has been relocated.
+          The requested path <code className="text-[#FF4D6D] bg-[#1D1013] px-1.5 py-0.5 rounded border border-[rgba(240, 160, 180,0.15)]">{pathname || "/..."}</code> does not exist on QuizDorm or has been relocated.
         </p>
 
         {/* Smart Suggester Card */}
-        <div className="bg-[#0C1210] border border-[rgba(101,245,154,0.3)] rounded-[6px] p-4 text-left shadow-[0_0_25px_rgba(101,245,154,0.1)] space-y-2.5">
-          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-[#38D9B0]">
+        <div className="bg-[#140C0E] border border-[rgba(255, 77, 109,0.3)] rounded-[6px] p-4 text-left shadow-[0_0_25px_rgba(255, 77, 109,0.1)] space-y-2.5">
+          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-[#FF758F]">
             <span className="flex items-center gap-1.5">
-              <Compass className="w-3.5 h-3.5 text-[#65F59A]" />
+              <Compass className="w-3.5 h-3.5 text-[#FF4D6D]" />
               <span>Smart Route Suggestion</span>
             </span>
             <span className="text-[#69786F]">{suggestion.reason}</span>
           </div>
 
           <p className="text-xs font-mono text-[#F2F7F3]">
-            Were you looking for <strong className="text-[#65F59A]">{suggestion.title}</strong>?
+            Were you looking for <strong className="text-[#FF4D6D]">{suggestion.title}</strong>?
           </p>
 
           <Link href={suggestion.href} className="block">
             <Button
-              className="w-full bg-[#65F59A] hover:bg-[#52E086] text-[#070B0A] font-mono text-xs font-bold rounded-[3px] h-9 flex items-center justify-center space-x-1.5 shadow-[0_0_15px_rgba(101,245,154,0.25)] transition-all cursor-pointer uppercase tracking-wider"
+              className="w-full bg-[#FF4D6D] hover:bg-[#FF3366] text-[#0B0708] font-mono text-xs font-bold rounded-[3px] h-9 flex items-center justify-center space-x-1.5 shadow-[0_0_15px_rgba(255, 77, 109,0.25)] transition-all cursor-pointer uppercase tracking-wider"
             >
               <span>Go to {suggestion.title}</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -113,9 +113,9 @@ export default function NotFound() {
           <Link href="/dashboard">
             <Button
               variant="outline"
-              className="w-full border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] hover:bg-[#17251E] hover:border-[#65F59A]/40 font-mono text-xs h-9 rounded-[3px] flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
+              className="w-full border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#F2F7F3] hover:bg-[#2A141A] hover:border-[#FF4D6D]/40 font-mono text-xs h-9 rounded-[3px] flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
             >
-              <LayoutDashboard className="w-3.5 h-3.5 text-[#65F59A]" />
+              <LayoutDashboard className="w-3.5 h-3.5 text-[#FF4D6D]" />
               <span>Dashboard</span>
             </Button>
           </Link>
@@ -123,9 +123,9 @@ export default function NotFound() {
           <Link href="/live/arena">
             <Button
               variant="outline"
-              className="w-full border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] hover:bg-[#17251E] hover:border-[#65F59A]/40 font-mono text-xs h-9 rounded-[3px] flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
+              className="w-full border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#F2F7F3] hover:bg-[#2A141A] hover:border-[#FF4D6D]/40 font-mono text-xs h-9 rounded-[3px] flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
             >
-              <Swords className="w-3.5 h-3.5 text-[#65F59A]" />
+              <Swords className="w-3.5 h-3.5 text-[#FF4D6D]" />
               <span>Live Arena</span>
             </Button>
           </Link>
@@ -135,7 +135,7 @@ export default function NotFound() {
         <div className="pt-2">
           <Link
             href="/"
-            className="text-[11px] font-mono text-[#A0AEA5] hover:text-[#65F59A] transition-colors inline-flex items-center gap-1.5"
+            className="text-[11px] font-mono text-[#A0AEA5] hover:text-[#FF4D6D] transition-colors inline-flex items-center gap-1.5"
           >
             <Home className="w-3 h-3" />
             <span>Or return to Homepage</span>

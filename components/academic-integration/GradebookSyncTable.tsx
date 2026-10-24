@@ -41,7 +41,7 @@ export function GradebookSyncTable() {
                 <td className="p-3 font-sans text-gray-500">{log.gradebookTarget}</td>
                 <td className="p-3 text-gray-400">{new Date(log.syncedAt).toLocaleTimeString()}</td>
                 <td className="p-3 font-sans">
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 uppercase">
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 uppercase">
                     {log.status}
                   </span>
                 </td>

@@ -16,10 +16,10 @@ export default function OfflineSyncPage() {
       <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
         <div className="space-y-2">
           <div className="flex items-center space-x-2">
-            <span className="p-2 rounded-2xl bg-white/10 backdrop-blur-md text-emerald-300">
+            <span className="p-2 rounded-2xl bg-white/10 backdrop-blur-md text-rose-300">
               <RefreshCw className="w-6 h-6" />
             </span>
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-300 bg-white/10 px-3 py-1 rounded-full border border-white/10">
+            <span className="text-xs font-bold uppercase tracking-widest text-rose-300 bg-white/10 px-3 py-1 rounded-full border border-white/10">
               Offline-First Sync Engine
             </span>
           </div>
@@ -52,13 +52,13 @@ export default function OfflineSyncPage() {
 
         <Card className="p-6 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-3xl shadow-sm space-y-3">
           <div className="flex items-center space-x-2 font-bold text-gray-900 dark:text-white">
-            <HardDrive className="w-5 h-5 text-emerald-600" />
+            <HardDrive className="w-5 h-5 text-rose-600" />
             <span>Encrypted Local IndexedDB Storage</span>
           </div>
           <p className="text-xs text-gray-500">
             AES-256 encrypted local database storing user credentials, question bank caches, and certificate verification records.
           </p>
-          <span className="text-xs font-mono font-bold text-emerald-600 block">
+          <span className="text-xs font-mono font-bold text-rose-600 block">
             Storage Usage: 65.4 MB / 500 MB Quota
           </span>
         </Card>

@@ -247,13 +247,13 @@ export default function AdminOrganizationsPage() {
   return (
     <div className="space-y-6 pb-12">
       {/* 1. Cinematic Hero Masthead */}
-      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] pointer-events-none" />
+      <div className="relative overflow-hidden rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-6 sm:p-8">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(255, 77, 109,0.08)_0%,transparent_70%)] pointer-events-none" />
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] font-mono text-[10px] font-bold uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#FF4D6D] animate-pulse" />
                 Root Authority // Multi-Tenant Controller
               </span>
               <span className="font-mono text-[11px] text-[#69786F]">
@@ -271,7 +271,7 @@ export default function AdminOrganizationsPage() {
           <div className="flex items-center gap-3 shrink-0">
             <Button
               onClick={() => setIsProvisionOpen(true)}
-              className="h-10 px-5 rounded-[4px] bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_20px_rgba(101,245,154,0.25)]"
+              className="h-10 px-5 rounded-[4px] bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_20px_rgba(255, 77, 109,0.25)]"
             >
               <Plus className="mr-2 h-4 w-4" />
               Provision Campus
@@ -282,32 +282,32 @@ export default function AdminOrganizationsPage() {
 
       {/* 2. Precision HUD Metrics */}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Total Managed Campuses
             </span>
-            <Building2 className="h-4 w-4 text-[#65F59A]" />
+            <Building2 className="h-4 w-4 text-[#FF4D6D]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
             <p className="font-display text-3xl font-extrabold text-[#F2F7F3] tabular-nums">
               {totalOrgs}
             </p>
-            <span className="font-mono text-[10px] text-[#65F59A]">
+            <span className="font-mono text-[10px] text-[#FF4D6D]">
               {approvedCount} Live & Active
             </span>
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Enrolled Students
             </span>
-            <Users className="h-4 w-4 text-[#38D9B0]" />
+            <Users className="h-4 w-4 text-[#FF758F]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
-            <p className="font-display text-3xl font-extrabold text-[#38D9B0] tabular-nums">
+            <p className="font-display text-3xl font-extrabold text-[#FF758F] tabular-nums">
               {totalStudents.toLocaleString()}
             </p>
             <span className="font-mono text-[10px] text-[#A0AEA5]">
@@ -316,25 +316,25 @@ export default function AdminOrganizationsPage() {
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Active Faculty Roster
             </span>
-            <School className="h-4 w-4 text-[#65F59A]" />
+            <School className="h-4 w-4 text-[#FF4D6D]" />
           </div>
           <div className="mt-3 flex items-baseline justify-between">
             <p className="font-display text-3xl font-extrabold text-[#F2F7F3] tabular-nums">
               {totalFaculty}
             </p>
-            <span className="font-mono text-[10px] text-[#65F59A]">
+            <span className="font-mono text-[10px] text-[#FF4D6D]">
               Teacher Licenses
             </span>
           </div>
         </div>
 
-        <div className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
+        <div className="p-4 rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] flex flex-col justify-between">
+          <div className="flex items-center justify-between pb-2 border-b border-[rgba(240, 160, 180,0.1)]">
             <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
               Pending Approval Queue
             </span>
@@ -343,7 +343,7 @@ export default function AdminOrganizationsPage() {
           <div className="mt-3 flex items-baseline justify-between">
             <p
               className={`font-display text-3xl font-extrabold tabular-nums ${
-                pendingCount > 0 ? "text-[#FBBF24]" : "text-[#65F59A]"
+                pendingCount > 0 ? "text-[#FBBF24]" : "text-[#FF4D6D]"
               }`}
             >
               {pendingCount}
@@ -352,7 +352,7 @@ export default function AdminOrganizationsPage() {
               className={`font-mono text-[10px] px-1.5 py-0.5 rounded-[2px] ${
                 pendingCount > 0
                   ? "bg-[rgba(251,191,36,0.1)] text-[#FBBF24]"
-                  : "bg-[rgba(101,245,154,0.1)] text-[#65F59A]"
+                  : "bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D]"
               }`}
             >
               {pendingCount > 0 ? "Action Required" : "All Clear"}
@@ -362,7 +362,7 @@ export default function AdminOrganizationsPage() {
       </div>
 
       {/* 3. Search & Filter Bar */}
-      <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-4 space-y-4">
+      <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] p-4 space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
           {/* Search */}
           <div className="md:col-span-5 relative">
@@ -372,7 +372,7 @@ export default function AdminOrganizationsPage() {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search by institution name, domain, admin email, or city..."
-              className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#65F59A]/50 transition-colors"
+              className="w-full text-xs pl-9 pr-3 py-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] placeholder-[#69786F] font-mono focus:outline-none focus:border-[#FF4D6D]/50 transition-colors"
             />
           </div>
 
@@ -381,7 +381,7 @@ export default function AdminOrganizationsPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
             >
               <option value="all">All Statuses</option>
               <option value="approved">Approved & Live</option>
@@ -395,7 +395,7 @@ export default function AdminOrganizationsPage() {
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
             >
               <option value="all">All Types</option>
               <option value="School">K-12 School</option>
@@ -410,7 +410,7 @@ export default function AdminOrganizationsPage() {
             <select
               value={planFilter}
               onChange={(e) => setPlanFilter(e.target.value)}
-              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
+              className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#FF4D6D]/50"
             >
               <option value="all">All Tiers</option>
               <option value="enterprise">Enterprise Custom</option>
@@ -432,7 +432,7 @@ export default function AdminOrganizationsPage() {
                 setPlanFilter("all");
                 refreshList();
               }}
-              className="h-9 w-full md:w-auto px-2.5 border-[rgba(160,190,170,0.18)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
+              className="h-9 w-full md:w-auto px-2.5 border-[rgba(240, 160, 180,0.18)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3]"
               title="Reset Filters"
             >
               <RefreshCw className="h-3.5 w-3.5" />
@@ -442,10 +442,10 @@ export default function AdminOrganizationsPage() {
       </div>
 
       {/* 4. Master Organizations Table */}
-      <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] overflow-hidden">
+      <div className="rounded-[6px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="bg-[#111B17] border-b border-[rgba(160,190,170,0.14)] text-[#69786F] font-mono uppercase tracking-wider text-[10px]">
+            <thead className="bg-[#1D1013] border-b border-[rgba(240, 160, 180,0.14)] text-[#69786F] font-mono uppercase tracking-wider text-[10px]">
               <tr>
                 <th className="px-4 py-3">Campus & Domain Routing</th>
                 <th className="px-4 py-3">Primary Administrator</th>
@@ -456,7 +456,7 @@ export default function AdminOrganizationsPage() {
                 <th className="px-4 py-3 text-right">Superadmin Control</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[rgba(160,190,170,0.08)]">
+            <tbody className="divide-y divide-[rgba(240, 160, 180,0.08)]">
               {filteredOrgs.map((org) => {
                 const isPending = org.approvalStatus === "pending_review";
                 const isSuspended = org.approvalStatus === "suspended";
@@ -465,7 +465,7 @@ export default function AdminOrganizationsPage() {
                   <tr
                     key={org.id}
                     onClick={() => setSelectedOrg(org)}
-                    className={`hover:bg-[#111B17]/60 transition-colors cursor-pointer ${
+                    className={`hover:bg-[#1D1013]/60 transition-colors cursor-pointer ${
                       isPending
                         ? "bg-[rgba(251,191,36,0.04)]"
                         : isSuspended
@@ -481,11 +481,11 @@ export default function AdminOrganizationsPage() {
                           style={{ backgroundColor: org.primaryColor }}
                         />
                         <div>
-                          <span className="font-semibold text-[#F2F7F3] block hover:text-[#65F59A] transition-colors">
+                          <span className="font-semibold text-[#F2F7F3] block hover:text-[#FF4D6D] transition-colors">
                             {org.name}
                           </span>
                           <div className="flex items-center gap-1.5 mt-0.5 font-mono text-[10px]">
-                            <span className="text-[#65F59A] font-bold">
+                            <span className="text-[#FF4D6D] font-bold">
                               {org.domain}
                             </span>
                             <span>•</span>
@@ -521,12 +521,12 @@ export default function AdminOrganizationsPage() {
                         }
                         className={`text-xs px-2 py-1 rounded-[3px] font-mono font-bold uppercase tracking-wider border cursor-pointer ${
                           org.planTier === "enterprise"
-                            ? "bg-[rgba(101,245,154,0.12)] text-[#65F59A] border-[#65F59A]/30"
+                            ? "bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] border-[#FF4D6D]/30"
                             : org.planTier === "institution"
-                            ? "bg-[rgba(56,217,176,0.12)] text-[#38D9B0] border-[#38D9B0]/30"
+                            ? "bg-[rgba(255, 117, 143,0.12)] text-[#FF758F] border-[#FF758F]/30"
                             : org.planTier === "professional"
                             ? "bg-[rgba(251,191,36,0.12)] text-[#FBBF24] border-[#FBBF24]/30"
-                            : "bg-[#111B17] text-[#A0AEA5] border-[rgba(160,190,170,0.15)]"
+                            : "bg-[#1D1013] text-[#A0AEA5] border-[rgba(240, 160, 180,0.15)]"
                         }`}
                       >
                         <option value="enterprise">Enterprise</option>
@@ -539,11 +539,11 @@ export default function AdminOrganizationsPage() {
                     {/* Isolation & Region */}
                     <td className="px-4 py-3.5 font-mono text-[11px]">
                       <div className="flex items-center gap-1.5">
-                        <span className="px-1.5 py-0.2 rounded-[2px] text-[9px] font-bold uppercase bg-[#17251E] text-[#65F59A] border border-[rgba(101,245,154,0.2)]">
+                        <span className="px-1.5 py-0.2 rounded-[2px] text-[9px] font-bold uppercase bg-[#2A141A] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.2)]">
                           {org.isolationMode}
                         </span>
                         {org.ssoConfigured && (
-                          <span className="px-1.5 py-0.2 rounded-[2px] text-[9px] font-bold uppercase bg-[rgba(56,217,176,0.15)] text-[#38D9B0]">
+                          <span className="px-1.5 py-0.2 rounded-[2px] text-[9px] font-bold uppercase bg-[rgba(255, 117, 143,0.15)] text-[#FF758F]">
                             SSO
                           </span>
                         )}
@@ -572,7 +572,7 @@ export default function AdminOrganizationsPage() {
                       <span
                         className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold uppercase ${
                           org.approvalStatus === "approved"
-                            ? "bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.25)]"
+                            ? "bg-[rgba(255, 77, 109,0.1)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.25)]"
                             : org.approvalStatus === "pending_review"
                             ? "bg-[rgba(251,191,36,0.15)] text-[#FBBF24] border border-[rgba(251,191,36,0.3)] animate-pulse"
                             : "bg-[rgba(248,113,113,0.1)] text-[#F87171] border border-[rgba(248,113,113,0.25)]"
@@ -581,7 +581,7 @@ export default function AdminOrganizationsPage() {
                         <span
                           className={`w-1.5 h-1.5 rounded-full ${
                             org.approvalStatus === "approved"
-                              ? "bg-[#65F59A]"
+                              ? "bg-[#FF4D6D]"
                               : org.approvalStatus === "pending_review"
                               ? "bg-[#FBBF24]"
                               : "bg-[#F87171]"
@@ -601,7 +601,7 @@ export default function AdminOrganizationsPage() {
                         {isPending && (
                           <button
                             onClick={(e) => handleApprove(org, e)}
-                            className="px-2.5 py-1 rounded-[3px] bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-[10px] font-bold uppercase transition-all shadow-[0_0_10px_rgba(101,245,154,0.3)] cursor-pointer"
+                            className="px-2.5 py-1 rounded-[3px] bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 font-mono text-[10px] font-bold uppercase transition-all shadow-[0_0_10px_rgba(255, 77, 109,0.3)] cursor-pointer"
                             title="Approve and activate institutional workspace"
                           >
                             Approve
@@ -611,7 +611,7 @@ export default function AdminOrganizationsPage() {
                         {/* Edit Domain & White-label */}
                         <button
                           onClick={(e) => openDomainModal(org, e)}
-                          className="px-2 py-1 rounded-[3px] border border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] hover:text-[#65F59A] hover:border-[#65F59A]/40 font-mono text-[10px] font-semibold uppercase transition-all flex items-center gap-1 cursor-pointer"
+                          className="px-2 py-1 rounded-[3px] border border-[rgba(240, 160, 180,0.2)] bg-[#1D1013] text-[#F2F7F3] hover:text-[#FF4D6D] hover:border-[#FF4D6D]/40 font-mono text-[10px] font-semibold uppercase transition-all flex items-center gap-1 cursor-pointer"
                           title="Domain & White-label Config"
                         >
                           <Globe className="h-3 w-3" />
@@ -624,7 +624,7 @@ export default function AdminOrganizationsPage() {
                           className={`p-1.5 rounded-[3px] border transition-colors cursor-pointer ${
                             org.approvalStatus === "approved"
                               ? "border-[rgba(248,113,113,0.25)] text-[#F87171] hover:bg-[rgba(248,113,113,0.12)]"
-                              : "border-[rgba(101,245,154,0.25)] text-[#65F59A] hover:bg-[rgba(101,245,154,0.12)]"
+                              : "border-[rgba(255, 77, 109,0.25)] text-[#FF4D6D] hover:bg-[rgba(255, 77, 109,0.12)]"
                           }`}
                           title={
                             org.approvalStatus === "approved"
@@ -650,9 +650,9 @@ export default function AdminOrganizationsPage() {
 
       {/* 5. Organization Dossier Modal */}
       {selectedOrg && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070B0A]/85 backdrop-blur-xs">
-          <div className="w-full max-w-xl rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.2)] p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
-            <div className="flex items-start justify-between border-b border-[rgba(160,190,170,0.12)] pb-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0708]/85 backdrop-blur-xs">
+          <div className="w-full max-w-xl rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.2)] p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
+            <div className="flex items-start justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-4">
               <div className="flex items-center space-x-3">
                 <div
                   className="w-10 h-10 rounded-[6px] flex items-center justify-center font-bold text-base text-white shadow-md"
@@ -665,7 +665,7 @@ export default function AdminOrganizationsPage() {
                     {selectedOrg.name}
                   </h3>
                   <div className="flex items-center gap-2 mt-0.5 font-mono text-[11px] text-[#A0AEA5]">
-                    <span className="text-[#65F59A]">{selectedOrg.domain}</span>
+                    <span className="text-[#FF4D6D]">{selectedOrg.domain}</span>
                     <span>•</span>
                     <span className="uppercase">{selectedOrg.type}</span>
                   </div>
@@ -681,7 +681,7 @@ export default function AdminOrganizationsPage() {
             </div>
 
             <div className="grid grid-cols-2 gap-3 text-xs font-mono">
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">
                   Tenant Node ID
                 </span>
@@ -690,7 +690,7 @@ export default function AdminOrganizationsPage() {
                 </span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">
                   Primary Administrator
                 </span>
@@ -699,25 +699,25 @@ export default function AdminOrganizationsPage() {
                 </span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">
                   Data Isolation Mode
                 </span>
-                <span className="text-[#65F59A] font-bold uppercase">
+                <span className="text-[#FF4D6D] font-bold uppercase">
                   {selectedOrg.isolationMode}
                 </span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">
                   Cloud Hosting Region
                 </span>
-                <span className="text-[#38D9B0] font-bold uppercase">
+                <span className="text-[#FF758F] font-bold uppercase">
                   {selectedOrg.hostingRegion}
                 </span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">
                   Member Enrolled Seats
                 </span>
@@ -726,7 +726,7 @@ export default function AdminOrganizationsPage() {
                 </span>
               </div>
 
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <span className="text-[#69786F] text-[10px] uppercase block">
                   Handler & Faculty Seats
                 </span>
@@ -737,7 +737,7 @@ export default function AdminOrganizationsPage() {
             </div>
 
             {selectedOrg.notes && (
-              <div className="p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)] font-mono text-[11px] space-y-1">
+              <div className="p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)] font-mono text-[11px] space-y-1">
                 <span className="text-[#69786F] uppercase text-[10px] block">
                   Institutional Governance Notes
                 </span>
@@ -745,14 +745,14 @@ export default function AdminOrganizationsPage() {
               </div>
             )}
 
-            <div className="flex items-center justify-between pt-3 border-t border-[rgba(160,190,170,0.12)]">
+            <div className="flex items-center justify-between pt-3 border-t border-[rgba(240, 160, 180,0.12)]">
               <Button
                 variant="outline"
                 onClick={() => handleToggleStatus(selectedOrg)}
                 className={`text-xs font-mono h-9 ${
                   selectedOrg.approvalStatus === "approved"
                     ? "border-[rgba(248,113,113,0.3)] text-[#F87171] hover:bg-[rgba(248,113,113,0.1)]"
-                    : "border-[rgba(101,245,154,0.3)] text-[#65F59A] hover:bg-[rgba(101,245,154,0.1)]"
+                    : "border-[rgba(255, 77, 109,0.3)] text-[#FF4D6D] hover:bg-[rgba(255, 77, 109,0.1)]"
                 }`}
               >
                 {selectedOrg.approvalStatus === "approved"
@@ -762,14 +762,14 @@ export default function AdminOrganizationsPage() {
 
               <div className="flex items-center gap-2">
                 <Link href={`/dashboard/organizations/${selectedOrg.id}`}>
-                  <Button className="bg-[#111B17] border border-[rgba(160,190,170,0.2)] text-[#F2F7F3] hover:text-[#65F59A] text-xs font-mono h-9">
+                  <Button className="bg-[#1D1013] border border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] hover:text-[#FF4D6D] text-xs font-mono h-9">
                     <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
                     Open Workspace
                   </Button>
                 </Link>
                 <Button
                   onClick={() => setSelectedOrg(null)}
-                  className="bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 text-xs font-mono font-bold h-9 uppercase"
+                  className="bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 text-xs font-mono font-bold h-9 uppercase"
                 >
                   Done
                 </Button>
@@ -781,11 +781,11 @@ export default function AdminOrganizationsPage() {
 
       {/* 6. MODAL: Domain & White-Label Config */}
       {editingDomainOrg && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070B0A]/85 backdrop-blur-xs">
-          <div className="w-full max-w-md rounded-[8px] bg-[#0C1210] border border-[#65F59A]/30 p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
-            <div className="flex items-start justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0708]/85 backdrop-blur-xs">
+          <div className="w-full max-w-md rounded-[8px] bg-[#140C0E] border border-[#FF4D6D]/30 p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
+            <div className="flex items-start justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-3">
               <div>
-                <span className="font-mono text-[10px] text-[#65F59A] uppercase font-bold tracking-widest block">
+                <span className="font-mono text-[10px] text-[#FF4D6D] uppercase font-bold tracking-widest block">
                   DOMAIN ROUTER & BRANDING
                 </span>
                 <h3 className="font-display text-base font-bold text-[#F2F7F3]">
@@ -810,14 +810,14 @@ export default function AdminOrganizationsPage() {
                   required
                   value={customDomain}
                   onChange={(e) => setCustomDomain(e.target.value)}
-                  className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#65F59A] font-bold focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#FF4D6D] font-bold focus:outline-none focus:border-[#FF4D6D]/50"
                 />
                 <span className="text-[10px] text-[#69786F]">
                   Supports *.quizdorm.org subdomains or verified custom domains.
                 </span>
               </div>
 
-              <div className="flex items-center justify-between p-3 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)]">
+              <div className="flex items-center justify-between p-3 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.1)]">
                 <div>
                   <span className="text-[#F2F7F3] font-bold block">
                     White-Label Custom Theming
@@ -830,22 +830,22 @@ export default function AdminOrganizationsPage() {
                   type="checkbox"
                   checked={whiteLabelToggle}
                   onChange={(e) => setWhiteLabelToggle(e.target.checked)}
-                  className="h-4 w-4 accent-[#65F59A]"
+                  className="h-4 w-4 accent-[#FF4D6D]"
                 />
               </div>
 
-              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[rgba(160,190,170,0.1)]">
+              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[rgba(240, 160, 180,0.1)]">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => setEditingDomainOrg(null)}
-                  className="border-[rgba(160,190,170,0.2)] text-[#A0AEA5] text-xs font-mono h-9"
+                  className="border-[rgba(240, 160, 180,0.2)] text-[#A0AEA5] text-xs font-mono h-9"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
-                  className="bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 text-xs font-mono font-bold h-9 uppercase tracking-wider"
+                  className="bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 text-xs font-mono font-bold h-9 uppercase tracking-wider"
                 >
                   Save Configuration
                 </Button>
@@ -857,11 +857,11 @@ export default function AdminOrganizationsPage() {
 
       {/* 7. MODAL: Provision New Campus */}
       {isProvisionOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#070B0A]/85 backdrop-blur-xs">
-          <div className="w-full max-w-lg rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.2)] p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
-            <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0B0708]/85 backdrop-blur-xs">
+          <div className="w-full max-w-lg rounded-[8px] bg-[#140C0E] border border-[rgba(240, 160, 180,0.2)] p-6 shadow-2xl space-y-5 animate-in fade-in-50 zoom-in-95">
+            <div className="flex items-center justify-between border-b border-[rgba(240, 160, 180,0.12)] pb-3">
               <div className="flex items-center space-x-2">
-                <Building className="h-4 w-4 text-[#65F59A]" />
+                <Building className="h-4 w-4 text-[#FF4D6D]" />
                 <h3 className="font-display text-sm uppercase font-bold text-[#F2F7F3]">
                   Provision New Institutional Tenant
                 </h3>
@@ -888,7 +888,7 @@ export default function AdminOrganizationsPage() {
                   placeholder="e.g. Oxford Collegiate Academy"
                   value={formName}
                   onChange={(e) => setFormName(e.target.value)}
-                  className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
+                  className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"
                 />
               </div>
 
@@ -902,7 +902,7 @@ export default function AdminOrganizationsPage() {
                     placeholder="e.g. oxford-collegiate"
                     value={formSlug}
                     onChange={(e) => setFormSlug(e.target.value)}
-                    className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#65F59A] focus:outline-none focus:border-[#65F59A]/50"
+                    className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#FF4D6D] focus:outline-none focus:border-[#FF4D6D]/50"
                   />
                 </div>
 
@@ -915,7 +915,7 @@ export default function AdminOrganizationsPage() {
                     onChange={(e) =>
                       setFormType(e.target.value as OrganizationType)
                     }
-                    className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
+                    className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"
                   >
                     <option value="School">School</option>
                     <option value="College">College</option>
@@ -936,7 +936,7 @@ export default function AdminOrganizationsPage() {
                     placeholder="dean@oxford.edu"
                     value={formAdminEmail}
                     onChange={(e) => setFormAdminEmail(e.target.value)}
-                    className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
+                    className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"
                   />
                 </div>
 
@@ -949,7 +949,7 @@ export default function AdminOrganizationsPage() {
                     placeholder="Dr. Arthur Davies"
                     value={formAdminName}
                     onChange={(e) => setFormAdminName(e.target.value)}
-                    className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
+                    className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"
                   />
                 </div>
               </div>
@@ -964,7 +964,7 @@ export default function AdminOrganizationsPage() {
                     onChange={(e) =>
                       setFormPlanTier(e.target.value as SubscriptionPlanId)
                     }
-                    className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#65F59A] font-bold focus:outline-none focus:border-[#65F59A]/50"
+                    className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#FF4D6D] font-bold focus:outline-none focus:border-[#FF4D6D]/50"
                   >
                     <option value="institution">School & College ($79/mo)</option>
                     <option value="enterprise">Enterprise Custom ($199/mo)</option>
@@ -981,7 +981,7 @@ export default function AdminOrganizationsPage() {
                     onChange={(e) =>
                       setFormIsolation(e.target.value as TenantIsolationTier)
                     }
-                    className="w-full p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] focus:outline-none focus:border-[#65F59A]/50"
+                    className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"
                   >
                     <option value="multi_tenant">Multi-Tenant (Shared Edge)</option>
                     <option value="dedicated">Dedicated DB Schema</option>
@@ -990,18 +990,18 @@ export default function AdminOrganizationsPage() {
                 </div>
               </div>
 
-              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[rgba(160,190,170,0.1)]">
+              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[rgba(240, 160, 180,0.1)]">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => setIsProvisionOpen(false)}
-                  className="border-[rgba(160,190,170,0.2)] text-[#A0AEA5] text-xs font-mono h-9"
+                  className="border-[rgba(240, 160, 180,0.2)] text-[#A0AEA5] text-xs font-mono h-9"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
-                  className="bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 text-xs font-mono font-bold h-9 uppercase tracking-wider"
+                  className="bg-[#FF4D6D] text-[#0B0708] hover:bg-[#FF4D6D]/90 text-xs font-mono font-bold h-9 uppercase tracking-wider"
                 >
                   Provision & Route
                 </Button>

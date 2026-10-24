@@ -26,7 +26,7 @@ export function CertificatePreviewCard({ certificate, onPrint }: CertificatePrev
     classic_gold: "bg-gradient-to-b from-amber-50/80 via-white to-amber-50/80 border-amber-500/40 text-amber-950",
     modern_indigo: "bg-gradient-to-b from-indigo-950 via-slate-900 to-indigo-950 border-indigo-400/40 text-white",
     academic_navy: "bg-gradient-to-b from-slate-900 via-sky-950 to-slate-900 border-sky-400/40 text-white",
-    corporate_emerald: "bg-gradient-to-b from-emerald-950 via-slate-900 to-emerald-950 border-emerald-400/40 text-white",
+    corporate_emerald: "bg-gradient-to-b from-rose-950 via-slate-900 to-rose-950 border-rose-400/40 text-white",
   };
 
   const activeStyle = bgStyles[certificate.templateId] || bgStyles.classic_gold;

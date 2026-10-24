@@ -87,7 +87,7 @@ export default function AITeachingAssistantPlatformPage() {
                 <span
                   className={`text-[9px] font-extrabold px-1.5 py-0.2 rounded-full ${
                     tab.badge === "LIVE"
-                      ? "bg-emerald-500 text-white animate-pulse"
+                      ? "bg-rose-500 text-white animate-pulse"
                       : tab.badge === "AGENT"
                       ? "bg-amber-500 text-black"
                       : "bg-indigo-500 text-white"

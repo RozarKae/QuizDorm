@@ -61,7 +61,7 @@ export function SubscriptionCommerceEngine() {
                 <h4 className="font-bold text-slate-900 dark:text-white text-sm">{item.title}</h4>
                 <p className="text-slate-400">Qty: {item.quantity}</p>
               </div>
-              <span className="font-mono text-base font-black text-emerald-600 dark:text-emerald-400">${item.priceUSD}</span>
+              <span className="font-mono text-base font-black text-rose-600 dark:text-rose-400">${item.priceUSD}</span>
             </div>
           ))}
         </div>
@@ -88,7 +88,7 @@ export function SubscriptionCommerceEngine() {
               <span>${subtotal.toFixed(2)}</span>
             </div>
             {discountPercent > 0 && (
-              <div className="flex justify-between text-emerald-400">
+              <div className="flex justify-between text-rose-400">
                 <span>Discount ({discountPercent}%):</span>
                 <span>-${(subtotal * (discountPercent / 100)).toFixed(2)}</span>
               </div>
@@ -99,7 +99,7 @@ export function SubscriptionCommerceEngine() {
             </div>
           </div>
 
-          <Button onClick={handleCheckout} disabled={cart.length === 0} className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-lg">
+          <Button onClick={handleCheckout} disabled={cart.length === 0} className="w-full bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs rounded-xl shadow-lg">
             <CreditCard className="w-4 h-4 mr-1.5" /> Complete Secure Purchase
           </Button>
         </div>

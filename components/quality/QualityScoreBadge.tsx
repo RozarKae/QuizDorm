@@ -10,7 +10,7 @@ interface QualityScoreBadgeProps {
 }
 
 export function QualityScoreBadge({ score, size = "md" }: QualityScoreBadgeProps) {
-  let colorStyle = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 border-emerald-300";
+  let colorStyle = "bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 border-rose-300";
   let icon = <CheckCircle2 className="w-3.5 h-3.5 mr-1" />;
 
   if (score < 60) {

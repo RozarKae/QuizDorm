@@ -86,7 +86,7 @@ export function AITeacherWorkspaceDashboard() {
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  {t.isDone ? <CheckCircle2 className="w-4 h-4 text-emerald-500" /> : <Circle className="w-4 h-4 text-slate-300" />}
+                  {t.isDone ? <CheckCircle2 className="w-4 h-4 text-rose-500" /> : <Circle className="w-4 h-4 text-slate-300" />}
                   <span>{t.title}</span>
                 </div>
                 <span className="font-mono text-slate-400">{t.dueTime}</span>

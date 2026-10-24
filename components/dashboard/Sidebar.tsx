@@ -74,10 +74,10 @@ const getRoleAccentColors = (r: string) => {
     case "superadmin":
     case "admin":
       return {
-        bar: "before:bg-[#65F59A]",
-        text: "text-[#65F59A]",
-        border: "border-[rgba(101,245,154,0.3)]",
-        glow: "shadow-[0_0_12px_rgba(101,245,154,0.12)]",
+        bar: "before:bg-[#FF4D6D]",
+        text: "text-[#FF4D6D]",
+        border: "border-[rgba(255, 77, 109,0.3)]",
+        glow: "shadow-[0_0_12px_rgba(255, 77, 109,0.12)]",
       };
     case "masteradmin":
       return {
@@ -249,7 +249,7 @@ export default function Sidebar({
       {/* Mobile drawer overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-40 bg-[#070B0A]/85 backdrop-blur-xs md:hidden transition-opacity duration-300"
+          className="fixed inset-0 z-40 bg-[#0B0708]/85 backdrop-blur-xs md:hidden transition-opacity duration-300"
           onClick={onClose}
         />
       )}
@@ -260,7 +260,7 @@ export default function Sidebar({
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         } ${collapsed ? "w-16" : "w-60"}`}
       >
-        <div className="relative flex h-full flex-col justify-between bg-card dark:bg-[#0C1210] border-r border-border transition-colors duration-200 overflow-hidden">
+        <div className="relative flex h-full flex-col justify-between bg-card dark:bg-[#140C0E] border-r border-border transition-colors duration-200 overflow-hidden">
           {/* Cybernetic Vertical Scanning Beam */}
           <div className="aurora-side-scanner" />
 
@@ -316,14 +316,14 @@ export default function Sidebar({
                         className={`group relative flex items-center justify-between rounded-[4px] px-2.5 py-1.5 text-xs transition-all ${
                           isActive
                             ? `text-foreground font-medium before:absolute before:left-0 before:top-1.5 before:bottom-1.5 before:w-[2px] ${roleAccents.bar} before:rounded-r shadow-xs`
-                            : "text-muted-foreground hover:bg-secondary dark:hover:bg-[#111B17] hover:text-foreground font-normal"
+                            : "text-muted-foreground hover:bg-secondary dark:hover:bg-[#1D1013] hover:text-foreground font-normal"
                         }`}
                         title={collapsed ? item.name : undefined}
                       >
                         {isActive && (
                           <motion.div
                             layoutId="sidebarActiveGlider"
-                            className={`absolute inset-0 rounded-[4px] bg-secondary/80 dark:bg-[#17251E]/80 border ${roleAccents.border} ${roleAccents.glow} -z-10`}
+                            className={`absolute inset-0 rounded-[4px] bg-secondary/80 dark:bg-[#2A141A]/80 border ${roleAccents.border} ${roleAccents.glow} -z-10`}
                             transition={{ type: "spring", stiffness: 350, damping: 30 }}
                           />
                         )}
@@ -367,7 +367,7 @@ export default function Sidebar({
           {/* Audio Controls & System Status */}
           <div className="p-2 border-t border-border space-y-1.5">
             {!collapsed && (
-              <div className="flex items-center justify-between px-2 py-1 text-[9px] font-mono text-muted-foreground bg-secondary/60 dark:bg-[#070B0A]/60 rounded border border-border">
+              <div className="flex items-center justify-between px-2 py-1 text-[9px] font-mono text-muted-foreground bg-secondary/60 dark:bg-[#0B0708]/60 rounded border border-border">
                 <span className="flex items-center gap-1.5">
                   <span className="relative flex h-1.5 w-1.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
@@ -410,7 +410,7 @@ export default function Sidebar({
             <Button
               variant="outline"
               onClick={() => setCollapsed(!collapsed)}
-              className="w-full flex items-center justify-center py-1 h-7 text-xs font-mono border-border rounded-[4px] bg-secondary/50 dark:bg-[#070B0A]/40 text-muted-foreground hover:text-foreground hover:bg-secondary"
+              className="w-full flex items-center justify-center py-1 h-7 text-xs font-mono border-border rounded-[4px] bg-secondary/50 dark:bg-[#0B0708]/40 text-muted-foreground hover:text-foreground hover:bg-secondary"
               aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             >
               {collapsed ? (

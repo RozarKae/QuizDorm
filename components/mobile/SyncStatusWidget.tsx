@@ -24,7 +24,7 @@ export function SyncStatusWidget() {
     <div className="bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-3xl p-6 shadow-sm space-y-4">
       <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-3">
         <div className="flex items-center space-x-3">
-          <div className={`p-2.5 rounded-2xl ${online ? "bg-emerald-500 text-white" : "bg-rose-500 text-white"}`}>
+          <div className={`p-2.5 rounded-2xl ${online ? "bg-rose-500 text-white" : "bg-rose-500 text-white"}`}>
             {online ? <Wifi className="w-5 h-5" /> : <WifiOff className="w-5 h-5" />}
           </div>
           <div>
@@ -51,7 +51,7 @@ export function SyncStatusWidget() {
 
         <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
           <span className="text-gray-400 text-[10px] block font-sans">Offline Mode</span>
-          <span className="font-bold text-emerald-600">IndexedDB Cache Active</span>
+          <span className="font-bold text-rose-600">IndexedDB Cache Active</span>
         </div>
 
         <div className="p-3 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1 col-span-2 sm:col-span-1">

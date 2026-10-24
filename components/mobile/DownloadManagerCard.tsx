@@ -49,7 +49,7 @@ export function DownloadManagerCard() {
               </span>
 
               {b.status === "ready" ? (
-                <span className="flex items-center text-emerald-600 font-bold text-[11px]">
+                <span className="flex items-center text-rose-600 font-bold text-[11px]">
                   <CheckCircle2 className="w-4 h-4 mr-1" /> Ready Offline
                 </span>
               ) : (

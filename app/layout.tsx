@@ -29,7 +29,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className="h-full antialiased selection:bg-[#65F59A] selection:text-[#070B0A]"
+      className="h-full antialiased selection:bg-[#FF4D6D] selection:text-[#0B0708]"
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />

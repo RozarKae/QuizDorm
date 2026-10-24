@@ -62,7 +62,7 @@ export function ComplianceAuditLogger() {
         </div>
 
         <span className="text-xs text-slate-500 font-semibold">
-          Logs Sealed: <span className="font-bold text-emerald-600">{logs.length} Entries</span>
+          Logs Sealed: <span className="font-bold text-rose-600">{logs.length} Entries</span>
         </span>
       </div>
 
@@ -94,7 +94,7 @@ export function ComplianceAuditLogger() {
                 </td>
                 <td className="p-3 text-slate-700 dark:text-slate-200 font-medium">{log.action}</td>
                 <td className="p-3 font-mono text-slate-500 text-[11px]">{log.ipAddress}</td>
-                <td className="p-3 text-right font-mono text-[10px] text-emerald-600 font-bold">{log.hashSignature}</td>
+                <td className="p-3 text-right font-mono text-[10px] text-rose-600 font-bold">{log.hashSignature}</td>
               </tr>
             ))}
           </tbody>

@@ -52,7 +52,7 @@ export function AICloudServicesConsole() {
                   <h3 className="font-bold text-slate-900 dark:text-white text-base mt-1">{m.modelName}</h3>
                   <p className="text-xs text-slate-500">Hardware: {m.gpuClusterNodes} GPU Cluster Nodes</p>
                 </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 font-bold text-[10px]">
+                <span className="px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 font-bold text-[10px]">
                   {m.status}
                 </span>
               </div>
@@ -60,7 +60,7 @@ export function AICloudServicesConsole() {
               <div className="p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl space-y-1.5 text-xs font-mono">
                 <div className="flex justify-between">
                   <span className="text-slate-400">Inference Latency:</span>
-                  <span className="font-bold text-emerald-500">{m.inferenceLatencyMs} ms</span>
+                  <span className="font-bold text-rose-500">{m.inferenceLatencyMs} ms</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">RAG Vectors Index:</span>

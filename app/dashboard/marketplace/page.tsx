@@ -51,7 +51,7 @@ export default function EducationMarketplacePage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
         <div>
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-emerald-500 flex items-center justify-center shadow-lg shadow-purple-500/20">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-rose-500 flex items-center justify-center shadow-lg shadow-purple-500/20">
               <ShoppingBag className="w-6 h-6 text-white" />
             </div>
             <div>

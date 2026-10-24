@@ -22,14 +22,14 @@ export function QuizTimer({ timeRemainingSeconds }: QuizTimerProps) {
         isCritical
           ? "bg-[rgba(248,113,113,0.12)] text-[#F87171] border-[#F87171] font-bold animate-pulse"
           : isWarning
-          ? "bg-[#111B17] text-[#FBBF24] border-[rgba(251,191,36,0.35)] font-semibold"
-          : "bg-[#111B17] text-[#65F59A] border-[rgba(101,245,154,0.3)] font-semibold shadow-[0_0_10px_rgba(101,245,154,0.1)]"
+          ? "bg-[#1D1013] text-[#FBBF24] border-[rgba(251,191,36,0.35)] font-semibold"
+          : "bg-[#1D1013] text-[#FF4D6D] border-[rgba(255, 77, 109,0.3)] font-semibold shadow-[0_0_10px_rgba(255, 77, 109,0.1)]"
       }`}
     >
       {isCritical ? (
         <AlertTriangle className="w-3.5 h-3.5 text-[#F87171] shrink-0" />
       ) : (
-        <Clock className="w-3.5 h-3.5 text-[#65F59A] shrink-0" />
+        <Clock className="w-3.5 h-3.5 text-[#FF4D6D] shrink-0" />
       )}
       <span className="tracking-wider tabular-nums font-bold text-xs">{formatTime(timeRemainingSeconds)}</span>
     </div>

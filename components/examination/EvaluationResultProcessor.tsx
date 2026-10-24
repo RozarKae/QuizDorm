@@ -75,7 +75,7 @@ export function EvaluationResultProcessor() {
             onClick={handlePublishResults}
             disabled={isResultsPublished}
             className={`text-xs font-bold rounded-xl shadow-lg ${
-              isResultsPublished ? "bg-emerald-600 text-white" : "bg-purple-600 hover:bg-purple-700 text-white"
+              isResultsPublished ? "bg-rose-600 text-white" : "bg-purple-600 hover:bg-purple-700 text-white"
             }`}
           >
             <CheckCircle2 className="w-4 h-4 mr-1.5" />
@@ -133,7 +133,7 @@ export function EvaluationResultProcessor() {
                 </td>
                 <td className="p-3 text-right">
                   <span className={`px-2.5 py-0.5 rounded-full font-bold text-[10px] ${
-                    ev.status === "Moderated" ? "bg-emerald-500/10 text-emerald-600" : "bg-amber-500/10 text-amber-600"
+                    ev.status === "Moderated" ? "bg-rose-500/10 text-rose-600" : "bg-amber-500/10 text-amber-600"
                   }`}>
                     {ev.status}
                   </span>

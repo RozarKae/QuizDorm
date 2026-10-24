@@ -80,7 +80,7 @@ export function CertificateDocumentManagement() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Digital Signature:</span>
-                  <span className="font-mono text-[10px] text-emerald-500 font-bold">{doc.digitalSignatureHash}</span>
+                  <span className="font-mono text-[10px] text-rose-500 font-bold">{doc.digitalSignatureHash}</span>
                 </div>
               </div>
             </div>

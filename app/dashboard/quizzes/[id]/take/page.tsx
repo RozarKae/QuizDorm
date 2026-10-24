@@ -30,21 +30,21 @@ export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: s
       <div>
         <Link
           href="/dashboard/quizzes"
-          className="inline-flex items-center text-xs font-mono uppercase tracking-wider text-[#A0AEA5] hover:text-[#65F59A] mb-4 transition-colors"
+          className="inline-flex items-center text-xs font-mono uppercase tracking-wider text-[#A0AEA5] hover:text-[#FF4D6D] mb-4 transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back to The Dorm Vault
         </Link>
         <div className="flex flex-wrap items-center gap-2 mb-2 font-mono">
           {quiz.topic && (
-            <span className="bg-[rgba(101,245,154,0.12)] text-[#65F59A] font-bold text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] border border-[rgba(101,245,154,0.3)]">
+            <span className="bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] font-bold text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] border border-[rgba(255, 77, 109,0.3)]">
               {quiz.topic}
             </span>
           )}
-          <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] text-[#F2F7F3] font-medium">
+          <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] text-[#F2F7F3] font-medium">
             {quiz.subject || quiz.category}
           </span>
           {(quiz.gradeLevel || quiz.grade) && (
-            <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-[#111B17] border border-[rgba(160,190,170,0.14)] text-[#A0AEA5] font-medium">
+            <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-[3px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] text-[#A0AEA5] font-medium">
               {quiz.gradeLevel || quiz.grade}
             </span>
           )}
@@ -53,11 +53,11 @@ export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: s
               Hard
             </span>
           ) : quiz.difficulty === "Medium" ? (
-            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[3px] font-bold bg-[#111B17] text-[#38D9B0] border border-[rgba(56,217,176,0.3)]">
+            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[3px] font-bold bg-[#1D1013] text-[#FF758F] border border-[rgba(255, 117, 143,0.3)]">
               Medium
             </span>
           ) : (
-            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[3px] font-bold bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.3)]">
+            <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded-[3px] font-bold bg-[rgba(255, 77, 109,0.12)] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)]">
               Easy
             </span>
           )}
@@ -72,32 +72,32 @@ export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: s
 
       {/* Overview Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div className="p-4 bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] text-center shadow-xs">
-          <HelpCircle className="w-4 h-4 text-[#38D9B0] mx-auto mb-1" />
+        <div className="p-4 bg-[#140C0E] rounded-[6px] border border-[rgba(240, 160, 180,0.14)] text-center shadow-xs">
+          <HelpCircle className="w-4 h-4 text-[#FF758F] mx-auto mb-1" />
           <p className="text-xl font-extrabold font-display text-[#F2F7F3] tabular-nums">{questionsCount}</p>
           <p className="text-[10px] font-mono uppercase tracking-wider text-[#69786F]">Questions</p>
         </div>
-        <div className="p-4 bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] text-center shadow-xs">
-          <Clock className="w-4 h-4 text-[#65F59A] mx-auto mb-1" />
+        <div className="p-4 bg-[#140C0E] rounded-[6px] border border-[rgba(240, 160, 180,0.14)] text-center shadow-xs">
+          <Clock className="w-4 h-4 text-[#FF4D6D] mx-auto mb-1" />
           <p className="text-xl font-extrabold font-display text-[#F2F7F3] tabular-nums">{quiz.durationMinutes}m</p>
           <p className="text-[10px] font-mono uppercase tracking-wider text-[#69786F]">Duration</p>
         </div>
-        <div className="p-4 bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] text-center shadow-xs">
-          <Award className="w-4 h-4 text-[#65F59A] mx-auto mb-1" />
+        <div className="p-4 bg-[#140C0E] rounded-[6px] border border-[rgba(240, 160, 180,0.14)] text-center shadow-xs">
+          <Award className="w-4 h-4 text-[#FF4D6D] mx-auto mb-1" />
           <p className="text-xl font-extrabold font-display text-[#F2F7F3] tabular-nums">{totalMarks}</p>
           <p className="text-[10px] font-mono uppercase tracking-wider text-[#69786F]">Marks</p>
         </div>
-        <div className="p-4 bg-[#0C1210] rounded-[6px] border border-[rgba(160,190,170,0.14)] text-center shadow-xs">
-          <ShieldCheck className="w-4 h-4 text-[#38D9B0] mx-auto mb-1" />
+        <div className="p-4 bg-[#140C0E] rounded-[6px] border border-[rgba(240, 160, 180,0.14)] text-center shadow-xs">
+          <ShieldCheck className="w-4 h-4 text-[#FF758F] mx-auto mb-1" />
           <p className="text-xl font-extrabold font-display text-[#F2F7F3] tabular-nums">{passMarksPercent}%</p>
           <p className="text-[10px] font-mono uppercase tracking-wider text-[#69786F]">Passing Score</p>
         </div>
       </div>
 
       {/* Rules & Instructions */}
-      <div className="bg-[#0C1210] p-6 rounded-[6px] border border-[rgba(160,190,170,0.14)] shadow-xs space-y-4">
+      <div className="bg-[#140C0E] p-6 rounded-[6px] border border-[rgba(240, 160, 180,0.14)] shadow-xs space-y-4">
         <h3 className="text-sm font-bold font-display text-[#F2F7F3] flex items-center">
-          <AlertCircle className="w-4 h-4 text-[#65F59A] mr-2" /> Assessment Protocols & Instructions
+          <AlertCircle className="w-4 h-4 text-[#FF4D6D] mr-2" /> Assessment Protocols & Instructions
         </h3>
         <ul className="space-y-2 text-xs font-mono text-[#A0AEA5] leading-relaxed list-disc list-inside">
           <li>Questions are freshly randomized for each attempt to test true recall.</li>
@@ -112,13 +112,13 @@ export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: s
       {/* Action CTA */}
       <div className="flex justify-end space-x-3 pt-2">
         <Link href="/dashboard/quizzes">
-          <Button variant="outline" className="px-5 rounded-[4px] font-mono text-xs border-[rgba(160,190,170,0.18)] h-9 hover:border-[#65F59A]/30">
+          <Button variant="outline" className="px-5 rounded-[4px] font-mono text-xs border-[rgba(240, 160, 180,0.18)] h-9 hover:border-[#FF4D6D]/30">
             Cancel
           </Button>
         </Link>
         <Button
           onClick={handleStart}
-          className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-mono text-xs font-bold rounded-[4px] px-6 h-9 shadow-[0_0_15px_rgba(101,245,154,0.18)] transition-all hover:shadow-[0_0_22px_rgba(101,245,154,0.3)]"
+          className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-mono text-xs font-bold rounded-[4px] px-6 h-9 shadow-[0_0_15px_rgba(255, 77, 109,0.18)] transition-all hover:shadow-[0_0_22px_rgba(255, 77, 109,0.3)]"
         >
           <Play className="w-3.5 h-3.5 mr-1.5 fill-current" /> Commence Cognitive Sprint
         </Button>

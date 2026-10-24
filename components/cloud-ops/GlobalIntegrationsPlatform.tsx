@@ -40,7 +40,7 @@ export function GlobalIntegrationsPlatform() {
         {apis.map((api) => (
           <div key={api.endpoint} className="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between text-xs font-mono gap-4">
             <div className="flex items-center gap-3">
-              <span className={`px-2 py-0.5 rounded font-bold text-[10px] ${api.method === "GET" ? "bg-emerald-500/10 text-emerald-600" : "bg-indigo-500/10 text-indigo-600"}`}>
+              <span className={`px-2 py-0.5 rounded font-bold text-[10px] ${api.method === "GET" ? "bg-rose-500/10 text-rose-600" : "bg-indigo-500/10 text-indigo-600"}`}>
                 {api.method}
               </span>
               <div>

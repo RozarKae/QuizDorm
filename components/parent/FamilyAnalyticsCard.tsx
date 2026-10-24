@@ -28,7 +28,7 @@ export function FamilyAnalyticsCard({ studentName }: FamilyAnalyticsCardProps) {
 
         <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">
           <span className="text-gray-400 text-[10px] block font-sans">Monthly Growth Rate</span>
-          <span className="font-bold text-emerald-600 text-lg">+8.4%</span>
+          <span className="font-bold text-rose-600 text-lg">+8.4%</span>
         </div>
 
         <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-900 space-y-1">

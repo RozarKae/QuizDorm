@@ -18,7 +18,7 @@ export function CredentialWalletCard() {
           </div>
         </div>
 
-        <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-mono font-bold text-xs border border-emerald-500/30">
+        <span className="px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 font-mono font-bold text-xs border border-rose-500/30">
           VERIFIED STUDENT WALLET
         </span>
       </div>
@@ -26,7 +26,7 @@ export function CredentialWalletCard() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs font-mono">
         <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
           <span className="text-purple-200 text-[10px] block font-sans">Verified Certificates</span>
-          <span className="font-bold text-emerald-400 text-xl">14 Certificates</span>
+          <span className="font-bold text-rose-400 text-xl">14 Certificates</span>
         </div>
 
         <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">

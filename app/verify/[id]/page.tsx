@@ -46,12 +46,12 @@ export default function PublicVerificationPage() {
         <div
           className={`p-6 rounded-3xl border flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl ${
             result.valid
-              ? "bg-emerald-950/40 border-emerald-500/40 text-emerald-100"
+              ? "bg-rose-950/40 border-rose-500/40 text-rose-100"
               : "bg-rose-950/40 border-rose-500/40 text-rose-100"
           }`}
         >
           <div className="flex items-center space-x-4 text-left">
-            <div className={`p-3 rounded-2xl ${result.valid ? "bg-emerald-500 text-white" : "bg-rose-500 text-white"}`}>
+            <div className={`p-3 rounded-2xl ${result.valid ? "bg-rose-500 text-white" : "bg-rose-500 text-white"}`}>
               {result.valid ? <ShieldCheck className="w-8 h-8" /> : <AlertTriangle className="w-8 h-8" />}
             </div>
             <div>

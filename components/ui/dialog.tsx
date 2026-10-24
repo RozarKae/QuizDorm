@@ -31,7 +31,7 @@ function DialogOverlay({
     <DialogPrimitive.Backdrop
       data-slot="dialog-overlay"
       className={cn(
-        "fixed inset-0 isolate z-50 bg-[#070B0A]/80 duration-150 backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
+        "fixed inset-0 isolate z-50 bg-[#0B0708]/80 duration-150 backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
         className
       )}
       {...props}
@@ -53,7 +53,7 @@ function DialogContent({
       <DialogPrimitive.Popup
         data-slot="dialog-content"
         className={cn(
-          "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-[6px] bg-[#111B17] p-5 text-sm text-[#F2F7F3] border border-[rgba(160,190,170,0.22)] shadow-[0_16px_40px_rgba(0,0,0,0.8)] duration-150 outline-none sm:max-w-md data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-[6px] bg-[#1D1013] p-5 text-sm text-[#F2F7F3] border border-[rgba(240, 160, 180,0.22)] shadow-[0_16px_40px_rgba(0,0,0,0.8)] duration-150 outline-none sm:max-w-md data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           className
         )}
         {...props}
@@ -65,7 +65,7 @@ function DialogContent({
             render={
               <Button
                 variant="ghost"
-                className="absolute top-3 right-3 text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#17251E]"
+                className="absolute top-3 right-3 text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#2A141A]"
                 size="icon-xs"
               />
             }
@@ -83,7 +83,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="dialog-header"
-      className={cn("flex flex-col gap-1.5 pb-2 border-b border-[rgba(160,190,170,0.12)]", className)}
+      className={cn("flex flex-col gap-1.5 pb-2 border-b border-[rgba(240, 160, 180,0.12)]", className)}
       {...props}
     />
   )
@@ -101,7 +101,7 @@ function DialogFooter({
     <div
       data-slot="dialog-footer"
       className={cn(
-        "-mx-5 -mb-5 flex flex-col-reverse gap-2 rounded-b-[5px] border-t border-[rgba(160,190,170,0.12)] bg-[#0C1210] p-4 sm:flex-row sm:justify-end",
+        "-mx-5 -mb-5 flex flex-col-reverse gap-2 rounded-b-[5px] border-t border-[rgba(240, 160, 180,0.12)] bg-[#140C0E] p-4 sm:flex-row sm:justify-end",
         className
       )}
       {...props}

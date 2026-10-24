@@ -23,7 +23,7 @@ export function AttemptCard({ attempt }: AttemptCardProps) {
           <Badge
             className={
               attempt.isPassed
-                ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+                ? "bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300"
                 : "bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300"
             }
           >

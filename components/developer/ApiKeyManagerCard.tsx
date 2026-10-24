@@ -59,7 +59,7 @@ export function ApiKeyManagerCard() {
               <div className="flex items-center space-x-2">
                 <span
                   className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
-                    k.environment === "production" ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-800"
+                    k.environment === "production" ? "bg-rose-100 text-rose-800" : "bg-amber-100 text-amber-800"
                   }`}
                 >
                   {k.environment}
@@ -123,9 +123,9 @@ export function ApiKeyManagerCard() {
               </div>
             ) : (
               <div className="space-y-4 text-xs">
-                <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300 dark:border-emerald-800 space-y-2">
-                  <span className="font-bold text-emerald-800 dark:text-emerald-300 block">Copy API Key Secret</span>
-                  <p className="text-[11px] text-emerald-700 dark:text-emerald-400">
+                <div className="p-4 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-800 space-y-2">
+                  <span className="font-bold text-rose-800 dark:text-rose-300 block">Copy API Key Secret</span>
+                  <p className="text-[11px] text-rose-700 dark:text-rose-400">
                     Make sure to copy your API key now. You will not be able to see it again!
                   </p>
                   <div className="p-2.5 bg-white dark:bg-gray-950 rounded-xl border font-mono font-bold text-indigo-600 break-all text-[11px] flex justify-between items-center">

@@ -31,7 +31,7 @@ export function ExportReportDialog({ open, onOpenChange, reportTitle = "Class Ac
       <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center text-[#F2F7F3] font-display">
-            <Download className="w-5 h-5 text-[#65F59A] mr-2" /> Generate & Export Report
+            <Download className="w-5 h-5 text-[#FF4D6D] mr-2" /> Generate & Export Report
           </DialogTitle>
           <DialogDescription className="text-[#A0AEA5] text-xs">
             Export <span className="font-bold text-[#F2F7F3]">{reportTitle}</span> into your desired format.
@@ -47,8 +47,8 @@ export function ExportReportDialog({ open, onOpenChange, reportTitle = "Class Ac
                 onClick={() => setFormat("PDF")}
                 className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center space-y-1.5 ${
                   format === "PDF"
-                    ? "border-[#65F59A] bg-[#17251E] text-[#65F59A] font-bold shadow-md shadow-[#65F59A]/10"
-                    : "border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
+                    ? "border-[#FF4D6D] bg-[#2A141A] text-[#FF4D6D] font-bold shadow-md shadow-[#FF4D6D]/10"
+                    : "border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3]"
                 }`}
               >
                 <FileText className="w-5 h-5" />
@@ -60,8 +60,8 @@ export function ExportReportDialog({ open, onOpenChange, reportTitle = "Class Ac
                 onClick={() => setFormat("Excel")}
                 className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center space-y-1.5 ${
                   format === "Excel"
-                    ? "border-[#38D9B0] bg-[#111B17] text-[#38D9B0] font-bold shadow-md shadow-[#38D9B0]/10"
-                    : "border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
+                    ? "border-[#FF758F] bg-[#1D1013] text-[#FF758F] font-bold shadow-md shadow-[#FF758F]/10"
+                    : "border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3]"
                 }`}
               >
                 <FileSpreadsheet className="w-5 h-5" />
@@ -73,8 +73,8 @@ export function ExportReportDialog({ open, onOpenChange, reportTitle = "Class Ac
                 onClick={() => setFormat("CSV")}
                 className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center justify-center space-y-1.5 ${
                   format === "CSV"
-                    ? "border-[#65F59A] bg-[#17251E] text-[#65F59A] font-bold shadow-md shadow-[#65F59A]/10"
-                    : "border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3]"
+                    ? "border-[#FF4D6D] bg-[#2A141A] text-[#FF4D6D] font-bold shadow-md shadow-[#FF4D6D]/10"
+                    : "border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#A0AEA5] hover:text-[#F2F7F3]"
                 }`}
               >
                 <FileCode className="w-5 h-5" />
@@ -93,14 +93,14 @@ export function ExportReportDialog({ open, onOpenChange, reportTitle = "Class Ac
                 { value: "Q2 2026", label: "Second Quarter 2026" },
                 { value: "Full Term", label: "Full Academic Term 2025-2026" },
               ]}
-              className="text-xs h-10 bg-[#111B17] border-[rgba(160,190,170,0.15)] text-[#F2F7F3] rounded-xl font-mono"
+              className="text-xs h-10 bg-[#1D1013] border-[rgba(240, 160, 180,0.15)] text-[#F2F7F3] rounded-xl font-mono"
             />
           </div>
         </div>
 
         <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)} className="border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3]">Cancel</Button>
-          <Button onClick={handleDownload} disabled={loading} className="bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-bold shadow-md shadow-[#65F59A]/15">
+          <Button variant="outline" onClick={() => onOpenChange(false)} className="border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3]">Cancel</Button>
+          <Button onClick={handleDownload} disabled={loading} className="bg-[#FF4D6D] hover:bg-[#FF4D6D]/90 text-[#0B0708] font-bold shadow-md shadow-[#FF4D6D]/15">
             {loading ? "Exporting..." : "Download Dossier"}
           </Button>
         </DialogFooter>

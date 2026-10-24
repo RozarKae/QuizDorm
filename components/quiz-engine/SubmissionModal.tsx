@@ -29,7 +29,7 @@ export function SubmissionModal({
       <DialogContent className="max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center text-[#F2F7F3] font-display text-base">
-            <CheckCircle2 className="w-5 h-5 text-[#65F59A] mr-2" /> Confirm Assessment Submission
+            <CheckCircle2 className="w-5 h-5 text-[#FF4D6D] mr-2" /> Confirm Assessment Submission
           </DialogTitle>
           <DialogDescription className="text-xs text-[#A0AEA5]">
             Confirm your responses before concluding this timed assessment session.
@@ -39,11 +39,11 @@ export function SubmissionModal({
         <div className="space-y-4 py-3">
           {/* Answer Breakdown */}
           <div className="grid grid-cols-3 gap-2.5 text-center font-mono">
-            <div className="p-3 bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] rounded-[4px]">
-              <p className="text-xl font-extrabold text-[#65F59A]">{answeredCount}</p>
+            <div className="p-3 bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.25)] rounded-[4px]">
+              <p className="text-xl font-extrabold text-[#FF4D6D]">{answeredCount}</p>
               <p className="text-[10px] text-[#A0AEA5] font-semibold uppercase tracking-wider">Answered</p>
             </div>
-            <div className="p-3 bg-[#17251E] border border-[rgba(160,190,170,0.14)] rounded-[4px]">
+            <div className="p-3 bg-[#2A141A] border border-[rgba(240, 160, 180,0.14)] rounded-[4px]">
               <p className="text-xl font-extrabold text-[#A0AEA5]">{unansweredCount}</p>
               <p className="text-[10px] text-[#69786F] font-semibold uppercase tracking-wider">Unanswered</p>
             </div>
@@ -63,7 +63,7 @@ export function SubmissionModal({
 
           <div className="flex items-center justify-between text-xs font-mono text-[#A0AEA5] pt-1">
             <span>Remaining Time:</span>
-            <span className="font-bold text-[#65F59A]">{timeRemaining}</span>
+            <span className="font-bold text-[#FF4D6D]">{timeRemaining}</span>
           </div>
         </div>
 

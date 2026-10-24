@@ -130,7 +130,7 @@ export function AILogsViewer() {
                     <span
                       className={`px-2 py-0.5 rounded-full text-[10px] uppercase ${
                         log.status === "success"
-                          ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+                          ? "bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300"
                           : log.status === "fallback_success"
                           ? "bg-amber-100 text-amber-700 dark:bg-amber-950 dark:text-amber-300"
                           : "bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300"
@@ -142,7 +142,7 @@ export function AILogsViewer() {
 
                   <td className="p-3 font-bold">{log.tokensTotal}</td>
                   <td className="p-3 text-gray-500">{log.latencyMs} ms</td>
-                  <td className="p-3 text-right font-bold text-emerald-600">${log.costEstimateUSD.toFixed(5)}</td>
+                  <td className="p-3 text-right font-bold text-rose-600">${log.costEstimateUSD.toFixed(5)}</td>
                 </tr>
               ))
             )}

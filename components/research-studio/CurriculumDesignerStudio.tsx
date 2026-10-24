@@ -63,7 +63,7 @@ export function CurriculumDesignerStudio() {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 font-bold text-xs">
+            <span className="px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 font-bold text-xs">
               ABET Accredited
             </span>
           </div>
@@ -84,7 +84,7 @@ export function CurriculumDesignerStudio() {
                   </span>
                   <p className="font-medium text-slate-900 dark:text-white">{out.outcomeStatement}</p>
                 </div>
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-rose-500 shrink-0" />
               </div>
             ))}
           </div>

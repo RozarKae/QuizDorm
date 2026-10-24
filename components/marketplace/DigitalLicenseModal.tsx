@@ -43,9 +43,9 @@ export function DigitalLicenseModal({ product, open, onOpenChange }: DigitalLice
 
         {purchasedKey ? (
           <div className="space-y-4 text-center">
-            <div className="p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 space-y-2">
-              <span className="text-xs text-emerald-800 font-bold uppercase block">Digital DRM License Key Issued</span>
-              <div className="text-xl font-extrabold font-mono text-emerald-600 tracking-wider">
+            <div className="p-4 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800 space-y-2">
+              <span className="text-xs text-rose-800 font-bold uppercase block">Digital DRM License Key Issued</span>
+              <div className="text-xl font-extrabold font-mono text-rose-600 tracking-wider">
                 {purchasedKey}
               </div>
               <p className="text-xs text-gray-500">Unlocked full access to {product.previewQuestionsCount}+ questions with DRM watermark.</p>
@@ -81,7 +81,7 @@ export function DigitalLicenseModal({ product, open, onOpenChange }: DigitalLice
 
             <div className="p-3.5 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 flex justify-between items-center font-bold">
               <span>Total Price:</span>
-              <span className="text-base text-emerald-600 font-mono">${finalPrice.toFixed(2)}</span>
+              <span className="text-base text-rose-600 font-mono">${finalPrice.toFixed(2)}</span>
             </div>
 
             <div className="flex justify-end space-x-2 pt-2">

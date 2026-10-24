@@ -9,8 +9,8 @@ export function DonutChartWidget({ title, slices }: DonutChartWidgetProps) {
   const total = slices.reduce((sum, s) => sum + s.value, 0) || 1;
 
   return (
-    <div className="bg-[#0C1210] p-6 rounded-2xl border border-[rgba(160,190,170,0.14)] space-y-4 text-center shadow-xl">
-      <div className="border-b border-[rgba(160,190,170,0.12)] pb-3 text-left">
+    <div className="bg-[#140C0E] p-6 rounded-2xl border border-[rgba(240, 160, 180,0.14)] space-y-4 text-center shadow-xl">
+      <div className="border-b border-[rgba(240, 160, 180,0.12)] pb-3 text-left">
         <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#F2F7F3]">{title}</h3>
       </div>
 
@@ -40,7 +40,7 @@ export function DonutChartWidget({ title, slices }: DonutChartWidgetProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-2 text-left pt-3 border-t border-[rgba(160,190,170,0.12)]">
+      <div className="grid grid-cols-2 gap-2 text-left pt-3 border-t border-[rgba(240, 160, 180,0.12)]">
         {slices.map((slice, idx) => (
           <div key={idx} className="flex items-center space-x-2 text-xs">
             <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: slice.color }} />

@@ -38,7 +38,7 @@ export default function SystemHealthPage() {
         <div className="bg-white dark:bg-gray-950 p-6 rounded-3xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-gray-400">Database Connection</span>
-            <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 text-[10px]">Operational</Badge>
+            <Badge className="bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300 text-[10px]">Operational</Badge>
           </div>
           <p className="text-2xl font-mono font-extrabold text-gray-900 dark:text-white">12 ms</p>
           <p className="text-[10px] text-gray-400">PostgreSQL Connection Pool Status: Healthy</p>
@@ -47,7 +47,7 @@ export default function SystemHealthPage() {
         <div className="bg-white dark:bg-gray-950 p-6 rounded-3xl border border-gray-100 dark:border-gray-850 shadow-sm space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold text-gray-400">API Response Speed</span>
-            <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300 text-[10px]">Optimal</Badge>
+            <Badge className="bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300 text-[10px]">Optimal</Badge>
           </div>
           <p className="text-2xl font-mono font-extrabold text-gray-900 dark:text-white">45 ms</p>
           <p className="text-[10px] text-gray-400">Turbopack SSR / Edge Latency</p>

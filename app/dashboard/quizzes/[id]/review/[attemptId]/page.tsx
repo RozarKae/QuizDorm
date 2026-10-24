@@ -92,16 +92,16 @@ export default function AnswerReviewPage({
       <div>
         <Link
           href={`/dashboard/quizzes/${id}/result/${attemptId}`}
-          className="inline-flex items-center text-xs font-mono uppercase tracking-wider text-[#A0AEA5] hover:text-[#65F59A] mb-3 transition-colors"
+          className="inline-flex items-center text-xs font-mono uppercase tracking-wider text-[#A0AEA5] hover:text-[#FF4D6D] mb-3 transition-colors"
         >
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back to Quiz Result
         </Link>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h1 className="text-2xl font-bold font-display text-[#F2F7F3]">Question-by-Question Answer Review</h1>
-            <p className="text-xs font-mono text-[#A0AEA5]">Attempt ID: <span className="text-[#38D9B0]">{attemptId}</span></p>
+            <p className="text-xs font-mono text-[#A0AEA5]">Attempt ID: <span className="text-[#FF758F]">{attemptId}</span></p>
           </div>
-          <div className="flex items-center space-x-1.5 overflow-x-auto max-w-[240px] p-1 bg-[#0C1210] rounded-[4px] border border-[rgba(160,190,170,0.14)]">
+          <div className="flex items-center space-x-1.5 overflow-x-auto max-w-[240px] p-1 bg-[#140C0E] rounded-[4px] border border-[rgba(240, 160, 180,0.14)]">
             {mockReviewQuestions.map((q, i) => (
               <button
                 key={q.id}
@@ -112,7 +112,7 @@ export default function AnswerReviewPage({
                     : "border-transparent"
                 } ${
                   q.isCorrect
-                    ? "bg-[rgba(101,245,154,0.15)] text-[#65F59A] border-[rgba(101,245,154,0.3)]"
+                    ? "bg-[rgba(255, 77, 109,0.15)] text-[#FF4D6D] border-[rgba(255, 77, 109,0.3)]"
                     : "bg-[rgba(248,113,113,0.15)] text-[#F87171] border-[rgba(248,113,113,0.3)]"
                 }`}
               >
@@ -127,13 +127,13 @@ export default function AnswerReviewPage({
       <div
         className={`p-4 rounded-[6px] border flex items-center justify-between text-xs font-mono font-semibold ${
           currentQ.isCorrect
-            ? "bg-[rgba(101,245,154,0.08)] text-[#65F59A] border-[rgba(101,245,154,0.25)]"
+            ? "bg-[rgba(255, 77, 109,0.08)] text-[#FF4D6D] border-[rgba(255, 77, 109,0.25)]"
             : "bg-[rgba(248,113,113,0.08)] text-[#F87171] border-[rgba(248,113,113,0.25)]"
         }`}
       >
         <div className="flex items-center space-x-2">
           {currentQ.isCorrect ? (
-            <CheckCircle2 className="w-5 h-5 text-[#65F59A]" />
+            <CheckCircle2 className="w-5 h-5 text-[#FF4D6D]" />
           ) : (
             <XCircle className="w-5 h-5 text-[#F87171]" />
           )}
@@ -162,7 +162,7 @@ export default function AnswerReviewPage({
           variant="outline"
           disabled={currentIdx === 0}
           onClick={() => setCurrentIdx(currentIdx - 1)}
-          className="text-xs font-mono border-[rgba(160,190,170,0.18)] rounded-[4px] h-9 text-[#A0AEA5] hover:text-[#F2F7F3] disabled:opacity-30"
+          className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[4px] h-9 text-[#A0AEA5] hover:text-[#F2F7F3] disabled:opacity-30"
         >
           <ChevronLeft className="w-4 h-4 mr-1" /> Previous Question
         </Button>
@@ -170,7 +170,7 @@ export default function AnswerReviewPage({
         <Button
           disabled={currentIdx === mockReviewQuestions.length - 1}
           onClick={() => setCurrentIdx(currentIdx + 1)}
-          className="bg-[#17251E] hover:bg-[#20342a] text-[#F2F7F3] border border-[rgba(160,190,170,0.2)] text-xs font-mono font-semibold rounded-[4px] h-9 disabled:opacity-30"
+          className="bg-[#2A141A] hover:bg-[#34151C] text-[#F2F7F3] border border-[rgba(240, 160, 180,0.2)] text-xs font-mono font-semibold rounded-[4px] h-9 disabled:opacity-30"
         >
           Next Question <ChevronRight className="w-4 h-4 ml-1" />
         </Button>

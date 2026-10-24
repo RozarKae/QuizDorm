@@ -18,7 +18,7 @@ export function MarketplaceProductCard({ product, onBuyNow }: MarketplaceProduct
           <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300">
             {product.category.replace("_", " ")}
           </span>
-          <span className="text-sm font-extrabold font-mono text-emerald-600 dark:text-emerald-400">
+          <span className="text-sm font-extrabold font-mono text-rose-600 dark:text-rose-400">
             ${product.priceUSD.toFixed(2)}
           </span>
         </div>

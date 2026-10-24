@@ -109,7 +109,7 @@ export default function ProfilePage() {
 
         <div className="text-right text-xs text-gray-400 shrink-0">
           <p>Member Since: <span className="font-semibold text-gray-700 dark:text-gray-300">{profile?.createdAt || "Jul 2026"}</span></p>
-          <p className="text-emerald-600 font-semibold mt-1">● Active Account</p>
+          <p className="text-rose-600 font-semibold mt-1">● Active Account</p>
         </div>
       </div>
 

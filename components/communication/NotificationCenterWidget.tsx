@@ -21,7 +21,7 @@ export function NotificationCenterWidget() {
   const icons: Record<string, React.ReactNode> = {
     certificate: <Award className="w-4 h-4 text-amber-500" />,
     ai_alert: <Sparkles className="w-4 h-4 text-indigo-500" />,
-    payment: <CreditCard className="w-4 h-4 text-emerald-500" />,
+    payment: <CreditCard className="w-4 h-4 text-rose-500" />,
     system: <ShieldCheck className="w-4 h-4 text-blue-500" />,
   };
 

@@ -132,7 +132,7 @@ export function OCRHistory({ jobs, onSelectJob, onDeleteJob }: OCRHistoryProps) 
                     <span
                       className={`px-2.5 py-0.5 rounded-full text-[11px] uppercase ${
                         job.status === "completed"
-                          ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300"
+                          ? "bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300"
                           : job.status === "review_ready"
                           ? "bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300"
                           : job.status === "failed"

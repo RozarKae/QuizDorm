@@ -80,14 +80,14 @@ export function ThemeToggle({
           variant={variant}
           size={showLabel ? "sm" : "icon-xs"}
           onClick={handleQuickToggle}
-          className={`font-mono text-xs text-[#A0AEA5] hover:text-[#65F59A] hover:bg-[#111B17] rounded-[4px] transition-colors cursor-pointer ${className}`}
+          className={`font-mono text-xs text-[#A0AEA5] hover:text-[#FF4D6D] hover:bg-[#1D1013] rounded-[4px] transition-colors cursor-pointer ${className}`}
           title={`Theme: ${theme || "system"} (Click to switch to ${isDark ? "light" : "dark"})`}
           aria-label="Toggle light and dark theme"
         >
           {theme === "system" ? (
-            <Laptop className="h-3.5 w-3.5 text-[#38D9B0]" />
+            <Laptop className="h-3.5 w-3.5 text-[#FF758F]" />
           ) : isDark ? (
-            <Moon className="h-3.5 w-3.5 text-[#65F59A]" />
+            <Moon className="h-3.5 w-3.5 text-[#FF4D6D]" />
           ) : (
             <Sun className="h-3.5 w-3.5 text-[#F59E0B]" />
           )}
@@ -122,9 +122,9 @@ export function ThemeToggle({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 4, scale: 0.95 }}
             transition={{ duration: 0.12 }}
-            className="absolute right-0 mt-1.5 w-36 rounded-[5px] border border-[rgba(160,190,170,0.22)] bg-[#111B17] shadow-[0_12px_30px_rgba(0,0,0,0.7)] py-1 z-50 overflow-hidden font-mono text-xs"
+            className="absolute right-0 mt-1.5 w-36 rounded-[5px] border border-[rgba(240, 160, 180,0.22)] bg-[#1D1013] shadow-[0_12px_30px_rgba(0,0,0,0.7)] py-1 z-50 overflow-hidden font-mono text-xs"
           >
-            <div className="px-2.5 py-1 text-[9px] uppercase tracking-wider text-[#69786F] border-b border-[rgba(160,190,170,0.1)]">
+            <div className="px-2.5 py-1 text-[9px] uppercase tracking-wider text-[#69786F] border-b border-[rgba(240, 160, 180,0.1)]">
               Appearance
             </div>
 
@@ -133,15 +133,15 @@ export function ThemeToggle({
               onClick={() => handleSelectTheme("system")}
               className={`w-full flex items-center justify-between px-2.5 py-1.5 text-left text-[11px] transition-colors cursor-pointer ${
                 theme === "system"
-                  ? "text-[#65F59A] bg-[rgba(101,245,154,0.08)] font-bold"
-                  : "text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#17251E]"
+                  ? "text-[#FF4D6D] bg-[rgba(255, 77, 109,0.08)] font-bold"
+                  : "text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#2A141A]"
               }`}
             >
               <div className="flex items-center space-x-2">
                 <Laptop className="h-3 w-3" />
                 <span>System (Auto)</span>
               </div>
-              {theme === "system" && <Check className="h-3 w-3 text-[#65F59A]" />}
+              {theme === "system" && <Check className="h-3 w-3 text-[#FF4D6D]" />}
             </button>
 
             <button
@@ -149,15 +149,15 @@ export function ThemeToggle({
               onClick={() => handleSelectTheme("light")}
               className={`w-full flex items-center justify-between px-2.5 py-1.5 text-left text-[11px] transition-colors cursor-pointer ${
                 theme === "light"
-                  ? "text-[#65F59A] bg-[rgba(101,245,154,0.08)] font-bold"
-                  : "text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#17251E]"
+                  ? "text-[#FF4D6D] bg-[rgba(255, 77, 109,0.08)] font-bold"
+                  : "text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#2A141A]"
               }`}
             >
               <div className="flex items-center space-x-2">
                 <Sun className="h-3 w-3 text-[#F59E0B]" />
                 <span>Light</span>
               </div>
-              {theme === "light" && <Check className="h-3 w-3 text-[#65F59A]" />}
+              {theme === "light" && <Check className="h-3 w-3 text-[#FF4D6D]" />}
             </button>
 
             <button
@@ -165,15 +165,15 @@ export function ThemeToggle({
               onClick={() => handleSelectTheme("dark")}
               className={`w-full flex items-center justify-between px-2.5 py-1.5 text-left text-[11px] transition-colors cursor-pointer ${
                 theme === "dark"
-                  ? "text-[#65F59A] bg-[rgba(101,245,154,0.08)] font-bold"
-                  : "text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#17251E]"
+                  ? "text-[#FF4D6D] bg-[rgba(255, 77, 109,0.08)] font-bold"
+                  : "text-[#A0AEA5] hover:text-[#F2F7F3] hover:bg-[#2A141A]"
               }`}
             >
               <div className="flex items-center space-x-2">
-                <Moon className="h-3 w-3 text-[#65F59A]" />
+                <Moon className="h-3 w-3 text-[#FF4D6D]" />
                 <span>Dark</span>
               </div>
-              {theme === "dark" && <Check className="h-3 w-3 text-[#65F59A]" />}
+              {theme === "dark" && <Check className="h-3 w-3 text-[#FF4D6D]" />}
             </button>
           </motion.div>
         )}

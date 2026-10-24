@@ -44,8 +44,8 @@ export function ParentGuardianPortalConsole() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
           <span className="text-xs font-semibold text-slate-500">Live Attendance</span>
-          <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400">{mockSummary.attendancePercent}%</p>
-          <p className="text-[11px] text-emerald-500 font-semibold">Verified Daily</p>
+          <p className="text-3xl font-black text-rose-600 dark:text-rose-400">{mockSummary.attendancePercent}%</p>
+          <p className="text-[11px] text-rose-500 font-semibold">Verified Daily</p>
         </div>
 
         <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">

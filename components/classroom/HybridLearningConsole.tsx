@@ -84,10 +84,10 @@ export function HybridLearningConsole() {
           <p className="text-[11px] text-slate-500">Connected via HD Web Stream</p>
         </div>
 
-        <div className="p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-2">
-          <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Total Hybrid Roster</span>
-          <p className="text-4xl font-black text-emerald-600 dark:text-emerald-400">42</p>
-          <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-bold">100% Unified Participation</p>
+        <div className="p-5 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-center space-y-2">
+          <span className="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Total Hybrid Roster</span>
+          <p className="text-4xl font-black text-rose-600 dark:text-rose-400">42</p>
+          <p className="text-[11px] text-rose-600 dark:text-rose-400 font-bold">100% Unified Participation</p>
         </div>
       </div>
 
@@ -111,7 +111,7 @@ export function HybridLearningConsole() {
                   {dev.deviceType === "Smart TV" && <Tv className="w-5 h-5 text-indigo-600" />}
                   {dev.deviceType === "Interactive Board" && <Monitor className="w-5 h-5 text-amber-500" />}
                   {dev.deviceType === "Tablet" && <Tablet className="w-5 h-5 text-purple-500" />}
-                  {dev.deviceType === "Mobile" && <Smartphone className="w-5 h-5 text-emerald-500" />}
+                  {dev.deviceType === "Mobile" && <Smartphone className="w-5 h-5 text-rose-500" />}
                 </div>
 
                 <div>
@@ -121,7 +121,7 @@ export function HybridLearningConsole() {
               </div>
 
               <div className="text-right">
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 font-bold text-[10px]">
+                <span className="px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 font-bold text-[10px]">
                   {dev.status}
                 </span>
               </div>
