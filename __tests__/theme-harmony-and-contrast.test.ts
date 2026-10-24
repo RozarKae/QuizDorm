@@ -131,5 +131,30 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     // Gradient stops in light mode
     assert.ok(cssContent.includes("html.light .from-\\[\\#0C1210\\]"));
     assert.ok(cssContent.includes("--tw-gradient-from: #FFFFFF"));
+
+    // Dashboard banner gradients inversion
+    assert.ok(cssContent.includes("html.light .from-slate-900"));
+    assert.ok(cssContent.includes("html.light .from-indigo-950"));
+    assert.ok(cssContent.includes("html.light .from-purple-950"));
+
+    // Inverted card text-white contrast
+    assert.ok(cssContent.includes('html.light [class*="bg-gradient-to"].text-white'));
+    assert.ok(cssContent.includes('color: #0F172A !important;'));
+
+    // Codebase hex coverage
+    assert.ok(cssContent.includes("html.light .bg-\\[\\#23372C\\]"));
+    assert.ok(cssContent.includes("html.light .bg-\\[\\#20342a\\]"));
+    assert.ok(cssContent.includes("html.light .bg-\\[\\#251414\\]"));
+  });
+
+  it("Verifies Live Arena & About pages use responsive theme banners", () => {
+    const arenaPath = path.join(process.cwd(), "app/live/arena/page.tsx");
+    const aboutPath = path.join(process.cwd(), "app/(marketing)/about/page.tsx");
+
+    const arenaContent = fs.readFileSync(arenaPath, "utf-8");
+    const aboutContent = fs.readFileSync(aboutPath, "utf-8");
+
+    assert.ok(arenaContent.includes("from-white via-slate-50 to-emerald-50/50 dark:from-[#0C1210]"));
+    assert.ok(aboutContent.includes("bg-card p-6 rounded-[6px] border border-border"));
   });
 });

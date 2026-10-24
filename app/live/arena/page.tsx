@@ -107,19 +107,19 @@ export default function LiveArenaIndexPage() {
       {/* Main Container */}
       <main className="max-w-7xl mx-auto w-full px-4 sm:px-6 py-8 sm:py-12 space-y-10 flex-1">
         {/* Banner Section */}
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#0C1210] via-[#111B17] to-[#0C1210] border border-[rgba(160,190,170,0.18)] p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#65F59A]/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-white via-slate-50 to-emerald-50/50 dark:from-[#0C1210] dark:via-[#111B17] dark:to-[#0C1210] border border-slate-200 dark:border-[rgba(160,190,170,0.18)] p-6 sm:p-10 shadow-lg dark:shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-500/5 dark:bg-[#65F59A]/5 rounded-full blur-3xl pointer-events-none" />
           <div className="relative z-10 max-w-3xl space-y-4">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-[#17251E] border border-[rgba(101,245,154,0.3)] text-[#65F59A] text-[11px] font-mono tracking-wider">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-50 dark:bg-[#17251E] border border-emerald-300 dark:border-[rgba(101,245,154,0.3)] text-emerald-800 dark:text-[#65F59A] text-[11px] font-mono tracking-wider shadow-xs">
               <Radio className="w-3.5 h-3.5 animate-pulse" />
               <span>SYNCHRONIZED MULTI-PLAYER ARENA ENGINE</span>
             </div>
 
-            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-[#F2F7F3] tracking-tight leading-tight uppercase">
-              Real-Time Competitive <span className="text-[#65F59A]">Live Arenas</span>
+            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-[#F2F7F3] tracking-tight leading-tight uppercase">
+              Real-Time Competitive <span className="text-[#047857] dark:text-[#65F59A]">Live Arenas</span>
             </h1>
 
-            <p className="text-xs sm:text-sm text-[#A0AEA5] leading-relaxed max-w-2xl font-sans">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-[#A0AEA5] leading-relaxed max-w-2xl font-sans">
               Enter real-time head-to-head academic decathlons, live classroom quizzes, and Olympiad showdowns with microsecond scoring and live podiums.
             </p>
           </div>
@@ -260,13 +260,13 @@ export default function LiveArenaIndexPage() {
             )}
 
             {/* Host Banner Card */}
-            <div className="bg-gradient-to-r from-[#111B17] via-[#0C1210] to-[#17251E] p-5 rounded-xl border border-[rgba(160,190,170,0.18)] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="bg-slate-50 border border-slate-200 dark:bg-gradient-to-r dark:from-[#111B17] dark:via-[#0C1210] dark:to-[#17251E] p-5 rounded-xl dark:border-[rgba(160,190,170,0.18)] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
               <div className="space-y-1 text-center sm:text-left">
-                <h4 className="font-display text-sm font-bold text-[#F2F7F3] flex items-center justify-center sm:justify-start gap-1.5">
-                  <PlusCircle className="w-4 h-4 text-[#65F59A]" />
+                <h4 className="font-display text-sm font-bold text-slate-900 dark:text-[#F2F7F3] flex items-center justify-center sm:justify-start gap-1.5">
+                  <PlusCircle className="w-4 h-4 text-[#047857] dark:text-[#65F59A]" />
                   Launch Your Own Competition Arena
                 </h4>
-                <p className="text-[11px] font-mono text-[#A0AEA5]">
+                <p className="text-[11px] font-mono text-slate-600 dark:text-[#A0AEA5]">
                   Host real-time decathlons for your classroom or school with live podiums and question broadcasts.
                 </p>
               </div>

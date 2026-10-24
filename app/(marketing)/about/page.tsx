@@ -76,18 +76,18 @@ export default function AboutPage() {
               </div>
 
               {/* Founder Vignette Card */}
-              <div className="lg:col-span-4 bg-[#111B17] p-6 rounded-[6px] border border-[rgba(160,190,170,0.18)] text-center space-y-3 shrink-0 shadow-lg">
-                <div className="w-20 h-20 rounded-full mx-auto bg-gradient-to-tr from-[#17251E] via-[#65F59A]/30 to-[#38D9B0]/20 flex items-center justify-center border-2 border-[#65F59A] text-2xl font-mono font-extrabold text-[#65F59A] shadow-[0_0_20px_rgba(101,245,154,0.3)]">
+              <div className="lg:col-span-4 bg-card p-6 rounded-[6px] border border-border text-center space-y-3 shrink-0 shadow-lg">
+                <div className="w-20 h-20 rounded-full mx-auto bg-gradient-to-tr from-emerald-50 via-emerald-100 to-teal-50 dark:from-[#17251E] dark:via-[#65F59A]/30 dark:to-[#38D9B0]/20 flex items-center justify-center border-2 border-[#047857] dark:border-[#65F59A] text-2xl font-mono font-extrabold text-[#047857] dark:text-[#65F59A] shadow-md dark:shadow-[0_0_20px_rgba(101,245,154,0.3)]">
                   RKA
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-base text-[#F2F7F3]">RK Akbar</h3>
-                  <p className="text-[11px] font-mono text-[#A0AEA5]">Visionary Educator &amp; Technologist</p>
+                  <h3 className="font-display font-bold text-base text-slate-900 dark:text-[#F2F7F3]">RK Akbar</h3>
+                  <p className="text-[11px] font-mono text-slate-600 dark:text-[#A0AEA5]">Visionary Educator &amp; Technologist</p>
                 </div>
-                <div className="border-t border-[rgba(160,190,170,0.12)] pt-3 text-[10px] font-mono text-[#69786F] space-y-1">
+                <div className="border-t border-border pt-3 text-[10px] font-mono text-slate-500 dark:text-[#69786F] space-y-1">
                   <p>Origins: Tamil Nadu &amp; Kerala</p>
                   <p>Platform Architecture: AI Assessment OS</p>
-                  <p className="text-[#65F59A] font-semibold">Active &bull; Verified Ownership</p>
+                  <p className="text-[#047857] dark:text-[#65F59A] font-semibold">Active &bull; Verified Ownership</p>
                 </div>
               </div>
             </div>

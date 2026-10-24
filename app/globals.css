@@ -238,9 +238,50 @@
   html:not(.dark) .bg-\[\#140D2B\],
   html.light .bg-\[\#140D2B\],
   html:not(.dark) .bg-\[\#0E071D\],
-  html.light .bg-\[\#0E071D\] {
+  html.light .bg-\[\#0E071D\],
+  html:not(.dark) .bg-\[\#0D071B\],
+  html.light .bg-\[\#0D071B\],
+  html:not(.dark) .bg-\[\#1E142B\],
+  html.light .bg-\[\#1E142B\] {
     background-color: #FFFFFF !important;
     border-color: rgba(139, 92, 246, 0.2) !important;
+  }
+
+  /* Additional Dark Hex Inversions from Codebase Scan */
+  html:not(.dark) .bg-\[\#23372C\],
+  html.light .bg-\[\#23372C\],
+  html:not(.dark) .bg-\[\#20342a\],
+  html.light .bg-\[\#20342a\],
+  html:not(.dark) .bg-\[\#203429\],
+  html.light .bg-\[\#203429\],
+  html:not(.dark) .bg-\[\#0E1719\],
+  html.light .bg-\[\#0E1719\],
+  html:not(.dark) .bg-\[\#090D16\],
+  html.light .bg-\[\#090D16\],
+  html:not(.dark) .bg-\[\#08100C\],
+  html.light .bg-\[\#08100C\],
+  html:not(.dark) .bg-\[\#060B08\],
+  html.light .bg-\[\#060B08\] {
+    background-color: #FFFFFF !important;
+    border-color: rgba(15, 23, 42, 0.12) !important;
+  }
+
+  html:not(.dark) .bg-\[\#251414\],
+  html.light .bg-\[\#251414\] {
+    background-color: #FEF2F2 !important;
+    border-color: rgba(239, 68, 68, 0.2) !important;
+  }
+
+  html:not(.dark) .bg-\[\#1F1A0E\],
+  html.light .bg-\[\#1F1A0E\] {
+    background-color: #FEF3C7 !important;
+    border-color: rgba(245, 158, 11, 0.25) !important;
+  }
+
+  html:not(.dark) .bg-\[\#0E0D14\],
+  html.light .bg-\[\#0E0D14\] {
+    background-color: #FFFFFF !important;
+    border-color: rgba(15, 23, 42, 0.12) !important;
   }
 
   /* Light Theme Universal Text Contrast Inversion */
@@ -277,8 +318,27 @@
   }
 
   html:not(.dark) .text-\[\#C0CEC5\],
-  html.light .text-\[\#C0CEC5\] {
+  html.light .text-\[\#C0CEC5\],
+  html:not(.dark) .text-\[\#4A5750\],
+  html.light .text-\[\#4A5750\] {
     color: #334155 !important;
+  }
+
+  html:not(.dark) .text-\[\#E2E8F0\],
+  html.light .text-\[\#E2E8F0\] {
+    color: #0F172A !important;
+  }
+
+  html:not(.dark) .text-\[\#FEF3C7\],
+  html.light .text-\[\#FEF3C7\],
+  html:not(.dark) .text-\[\#FDE68A\],
+  html.light .text-\[\#FDE68A\] {
+    color: #92400E !important;
+  }
+
+  html:not(.dark) .text-\[\#FCA5A5\],
+  html.light .text-\[\#FCA5A5\] {
+    color: #991B1B !important;
   }
 
   html:not(.dark) .fill-\[\#65F59A\],
@@ -286,13 +346,25 @@
     fill: #047857 !important;
   }
 
-  /* Light Theme Universal Gradient Inversions */
+  /* Universal Dark Dashboard Banner & Gradient Inversions */
   html:not(.dark) .from-\[\#0C1210\],
   html.light .from-\[\#0C1210\],
   html:not(.dark) .from-\[\#070B0A\],
   html.light .from-\[\#070B0A\],
   html:not(.dark) .from-\[\#111B17\],
-  html.light .from-\[\#111B17\] {
+  html.light .from-\[\#111B17\],
+  html:not(.dark) .from-slate-900,
+  html.light .from-slate-900,
+  html:not(.dark) .from-slate-950,
+  html.light .from-slate-950,
+  html:not(.dark) .from-indigo-950,
+  html.light .from-indigo-950,
+  html:not(.dark) .from-purple-950,
+  html.light .from-purple-950,
+  html:not(.dark) .from-amber-950,
+  html.light .from-amber-950,
+  html:not(.dark) .from-rose-950,
+  html.light .from-rose-950 {
     --tw-gradient-from: #FFFFFF var(--tw-gradient-from-position) !important;
     --tw-gradient-to: rgba(255, 255, 255, 0) var(--tw-gradient-to-position) !important;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
@@ -301,7 +373,17 @@
   html:not(.dark) .via-\[\#111B17\],
   html.light .via-\[\#111B17\],
   html:not(.dark) .via-\[\#0C1210\],
-  html.light .via-\[\#0C1210\] {
+  html.light .via-\[\#0C1210\],
+  html:not(.dark) .via-slate-900,
+  html.light .via-slate-900,
+  html:not(.dark) .via-slate-950,
+  html.light .via-slate-950,
+  html:not(.dark) .via-indigo-950,
+  html.light .via-indigo-950,
+  html:not(.dark) .via-purple-950,
+  html.light .via-purple-950,
+  html:not(.dark) .via-rose-950,
+  html.light .via-rose-950 {
     --tw-gradient-stops: var(--tw-gradient-from), #F8FAFC var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
   }
 
@@ -310,13 +392,73 @@
   html:not(.dark) .to-\[\#070B0A\],
   html.light .to-\[\#070B0A\],
   html:not(.dark) .to-\[\#111B17\],
-  html.light .to-\[\#111B17\] {
+  html.light .to-\[\#111B17\],
+  html:not(.dark) .to-slate-900,
+  html.light .to-slate-900,
+  html:not(.dark) .to-slate-950,
+  html.light .to-slate-950,
+  html:not(.dark) .to-indigo-950,
+  html.light .to-indigo-950,
+  html:not(.dark) .to-purple-950,
+  html.light .to-purple-950,
+  html:not(.dark) .to-amber-950,
+  html.light .to-amber-950,
+  html:not(.dark) .to-rose-950,
+  html.light .to-rose-950 {
     --tw-gradient-to: #F1F5F9 var(--tw-gradient-to-position) !important;
   }
 
   html:not(.dark) .from-\[\#17251E\],
   html.light .from-\[\#17251E\] {
     --tw-gradient-from: #F0FDF4 var(--tw-gradient-from-position) !important;
+  }
+
+  /* Banner Text & Subtitle Contrast inside Inverted Gradient Cards */
+  html:not(.dark) [class*="bg-gradient-to"].text-white,
+  html.light [class*="bg-gradient-to"].text-white,
+  html:not(.dark) [class*="from-slate-900"].text-white,
+  html.light [class*="from-slate-900"].text-white,
+  html:not(.dark) [class*="from-indigo-950"].text-white,
+  html.light [class*="from-indigo-950"].text-white,
+  html:not(.dark) [class*="from-purple-950"].text-white,
+  html.light [class*="from-purple-950"].text-white {
+    color: #0F172A !important;
+    border-color: rgba(15, 23, 42, 0.12) !important;
+  }
+
+  html:not(.dark) [class*="bg-gradient-to"] .text-white,
+  html.light [class*="bg-gradient-to"] .text-white {
+    color: #0F172A !important;
+  }
+
+  html:not(.dark) [class*="bg-gradient-to"] .text-indigo-200,
+  html.light [class*="bg-gradient-to"] .text-indigo-200,
+  html:not(.dark) [class*="bg-gradient-to"] .text-purple-200,
+  html.light [class*="bg-gradient-to"] .text-purple-200,
+  html:not(.dark) [class*="bg-gradient-to"] .text-slate-300,
+  html.light [class*="bg-gradient-to"] .text-slate-300,
+  html:not(.dark) [class*="bg-gradient-to"] .text-slate-400,
+  html.light [class*="bg-gradient-to"] .text-slate-400,
+  html:not(.dark) [class*="bg-gradient-to"] .text-white\/80,
+  html.light [class*="bg-gradient-to"] .text-white\/80,
+  html:not(.dark) [class*="bg-gradient-to"] .text-white\/70,
+  html.light [class*="bg-gradient-to"] .text-white\/70 {
+    color: #334155 !important;
+  }
+
+  html:not(.dark) [class*="bg-gradient-to"] .border-white\/20,
+  html.light [class*="bg-gradient-to"] .border-white\/20,
+  html:not(.dark) [class*="bg-gradient-to"] .border-white\/10,
+  html.light [class*="bg-gradient-to"] .border-white\/10 {
+    border-color: rgba(15, 23, 42, 0.12) !important;
+  }
+
+  /* Primary Button Text Contrast Inversion in Light Mode */
+  html:not(.dark) button.bg-\[\#65F59A\] .text-\[\#070B0A\],
+  html.light button.bg-\[\#65F59A\] .text-\[\#070B0A\],
+  html:not(.dark) a .bg-\[\#65F59A\] .text-\[\#070B0A\],
+  html.light a .bg-\[\#65F59A\] .text-\[\#070B0A\] {
+    color: #FFFFFF !important;
   }
 
   /* Text Gradient Inversion for Emerald Headers */
