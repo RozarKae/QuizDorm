@@ -78,17 +78,16 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
     );
   });
 
-  it("Verifies public/favicon.svg includes prefers-color-scheme media query", () => {
+  it("Verifies public/favicon.svg includes prefers-color-scheme media query and embedded emblems", () => {
     const svgContent = fs.readFileSync(faviconSvgPath, "utf-8");
 
     assert.ok(svgContent.includes("@media (prefers-color-scheme: light)"));
-    assert.ok(svgContent.includes("--fav-bg: #FFFFFF;"));
-    assert.ok(svgContent.includes("--fav-stroke: #BE123C;"));
-    assert.ok(svgContent.includes("--fav-cap: #BE123C;"));
-    assert.ok(svgContent.includes("--fav-q: #BE123C;"));
+    assert.ok(svgContent.includes('class="dark-emblem"'));
+    assert.ok(svgContent.includes('class="light-emblem"'));
+    assert.ok(svgContent.includes("data:image/jpeg;base64,"));
   });
 
-  it("Verifies icon.svg includes light & dark theme color settings", () => {
+  it("Verifies icon.svg includes light & dark theme embedded artwork", () => {
     const publicIconPath = path.join(process.cwd(), "public/icon.svg");
     const appIconPath = path.join(process.cwd(), "app/icon.svg");
 
@@ -99,18 +98,9 @@ describe("Universal Theme Harmony & Contrast Suite", () => {
 
     // Media query
     assert.ok(iconContent.includes("@media (prefers-color-scheme: light)"));
-
-    // Dark theme defaults (Crimson cap, glowing crimson Q, obsidian bg)
-    assert.ok(iconContent.includes(".icon-bg { fill: #090406;"));
-    assert.ok(iconContent.includes(".icon-cap-top { fill: #FF4D6D;"));
-    assert.ok(iconContent.includes(".icon-q-face { fill: #FF4D6D;"));
-    assert.ok(iconContent.includes(".icon-q-tail { fill: #FFFFFF;"));
-
-    // Light theme settings (Ruby cap #BE123C, dark ruby Q #BE123C, white bg #FFFFFF)
-    assert.ok(iconContent.includes(".icon-bg { fill: #FFFFFF; stroke: #BE123C;"));
-    assert.ok(iconContent.includes(".icon-cap-top { fill: #BE123C;"));
-    assert.ok(iconContent.includes(".icon-q-face { fill: #BE123C;"));
-    assert.ok(iconContent.includes(".icon-q-tail { fill: #BE123C;"));
+    assert.ok(iconContent.includes('class="dark-emblem"'));
+    assert.ok(iconContent.includes('class="light-emblem"'));
+    assert.ok(iconContent.includes("data:image/jpeg;base64,"));
   });
 
   it("Verifies Landing Page CTA & Analytics components use light & dark theme harmony", () => {

@@ -3,14 +3,14 @@ import Image from "next/image";
 
 export function OfficialEmblem({ className = "w-7 h-7" }: { className?: string }) {
   return (
-    <div className={`relative ${className} shrink-0 transition-transform duration-300 group-hover:scale-105`}>
+    <div className={`relative ${className} shrink-0 transition-transform duration-300 group-hover:scale-105 rounded-lg overflow-hidden`}>
       {/* Light Theme 3D Metallic Ruby Emblem */}
       <Image
         src="/official-logo-light.png"
         alt="QuizDorm Official 3D Emblem"
         width={64}
         height={64}
-        className="w-full h-full object-contain block dark:hidden drop-shadow-[0_4px_10px_rgba(190,18,60,0.22)]"
+        className="w-full h-full object-cover block dark:hidden drop-shadow-[0_4px_10px_rgba(190,18,60,0.22)]"
         priority
       />
       {/* Dark Theme 3D Glowing Obsidian Crimson Emblem */}
@@ -19,7 +19,7 @@ export function OfficialEmblem({ className = "w-7 h-7" }: { className?: string }
         alt="QuizDorm Official 3D Emblem"
         width={64}
         height={64}
-        className="w-full h-full object-contain hidden dark:block drop-shadow-[0_0_14px_rgba(255,77,109,0.50)]"
+        className="w-full h-full object-cover hidden dark:block drop-shadow-[0_0_14px_rgba(255,77,109,0.50)]"
         priority
       />
     </div>
