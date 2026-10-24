@@ -1,239 +1,224 @@
 "use client";
 
+import React, { useState } from "react";
 import Link from "next/link";
 import {
-  Award,
+  Users,
   BookOpen,
   Clock,
-  Users,
-  School,
-  Megaphone,
-  Calendar,
+  Award,
+  Plus,
+  Swords,
   Sparkles,
   ArrowUpRight,
   TrendingUp,
-  Activity,
   CheckCircle2,
   AlertCircle,
   BarChart3,
-  Layers,
+  Calendar,
+  Megaphone,
+  School,
+  Check,
+  ChevronRight,
+  Filter,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function TeacherPage() {
+  const [activeTab, setActiveTab] = useState<"cohorts" | "queue" | "feed">("cohorts");
+
   const stats = [
     {
-      title: "Enrolled Scholars",
+      title: "Active Students",
       value: "128",
-      subtext: "Across 4 active sections",
-      change: "+6 new",
+      subtext: "Across 4 course sections",
+      change: "+6 this month",
       isPositive: true,
-      icon: <Users className="h-4 w-4 text-[#65F59A]" />,
+      icon: <Users className="h-4 w-4 text-indigo-400" />,
+      border: "border-indigo-500/20",
     },
     {
-      title: "Quizzes Created",
+      title: "Classroom Quizzes",
       value: "14",
-      subtext: "2 active, 3 drafted",
+      subtext: "8 published, 6 drafts",
       change: "+2 this week",
       isPositive: true,
-      icon: <BookOpen className="h-4 w-4 text-[#38D9B0]" />,
+      icon: <BookOpen className="h-4 w-4 text-indigo-400" />,
+      border: "border-indigo-500/20",
     },
     {
-      title: "Pending Review",
+      title: "Pending Evaluations",
       value: "8",
-      subtext: "Needs manual evaluation",
+      subtext: "Subjective essays to grade",
       change: "Action required",
       isPositive: false,
-      icon: <Clock className="h-4 w-4 text-[#FBBF24]" />,
+      icon: <Clock className="h-4 w-4 text-amber-400" />,
+      border: "border-amber-500/30",
     },
     {
-      title: "Cohort Mastery",
-      value: "82.4%",
-      subtext: "Class median score",
+      title: "Average Cohort Mastery",
+      value: "84.2%",
+      subtext: "Class median accuracy",
       change: "+3.2% gain",
       isPositive: true,
-      icon: <Award className="h-4 w-4 text-[#65F59A]" />,
+      icon: <Award className="h-4 w-4 text-emerald-400" />,
+      border: "border-emerald-500/20",
     },
   ];
 
   const cohorts = [
     {
+      id: "sec-12a",
       name: "AP Chemistry — Section 12-A",
       students: 34,
       mastery: 86,
       status: "Excelling",
       recentTopic: "Thermodynamics & Reaction Kinetics",
-      color: "from-[#65F59A] to-[#38D9B0]",
+      accent: "text-indigo-400",
+      barColor: "bg-indigo-500",
     },
     {
+      id: "sec-12b",
       name: "Advanced Physics — Section 12-B",
       students: 28,
       mastery: 79,
       status: "Review Required",
       recentTopic: "Electromagnetism & Wave Mechanics",
-      color: "from-[#38D9B0] to-blue-500",
+      accent: "text-amber-400",
+      barColor: "bg-amber-500",
     },
     {
+      id: "sec-10a",
       name: "Foundations of STEM — Section 10-A",
       students: 36,
       mastery: 91,
       status: "Mastered",
       recentTopic: "Stoichiometry & Atomic Orbitals",
-      color: "from-[#65F59A] to-emerald-400",
+      accent: "text-emerald-400",
+      barColor: "bg-emerald-500",
     },
     {
+      id: "sec-11a",
       name: "Organic Chemistry Lab — Section 11-A",
       students: 30,
       mastery: 83,
       status: "On Track",
       recentTopic: "Alkanes & Functional Groups",
-      color: "from-teal-400 to-[#38D9B0]",
+      accent: "text-sky-400",
+      barColor: "bg-sky-500",
     },
   ];
 
-  const quickActions = [
+  const triageQueue = [
     {
-      title: "Classrooms & Rosters",
-      description: "Manage Grade 12-A & 11-B classrooms, student rosters, and co-instructors.",
-      href: "/dashboard/classes",
-      icon: <School className="h-4 w-4" />,
-      actionLabel: "Manage Classes",
+      student: "Aarav Sharma",
+      section: "Section 12-A",
+      quiz: "Thermodynamics Midterm Free Response",
+      submitted: "24 mins ago",
+      scoreSuggestion: "9/10 (AI Evaluated)",
     },
     {
-      title: "Omni-Curriculum AI Studio",
-      description: "Synthesize high-rigor multi-format assessments from syllabus notes or PDFs in seconds.",
-      href: "/dashboard/quizzes/create",
-      icon: <Sparkles className="h-4 w-4 text-[#65F59A]" />,
-      actionLabel: "Launch Studio",
+      student: "Meera Patel",
+      section: "Section 12-B",
+      quiz: "Magnetic Induction Lab Explanation",
+      submitted: "1 hour ago",
+      scoreSuggestion: "7.5/10 (Needs Review)",
     },
     {
-      title: "Assign Assessment",
-      description: "Publish quizzes with strict deadlines, attempt rules, and proctoring safeguards.",
-      href: "/dashboard/assignments",
-      icon: <Layers className="h-4 w-4" />,
-      actionLabel: "Assign Quiz",
-    },
-    {
-      title: "Announcements Publisher",
-      description: "Broadcast targeted instructions, exam schedules, and curriculum updates.",
-      href: "/dashboard/announcements",
-      icon: <Megaphone className="h-4 w-4" />,
-      actionLabel: "Post Notice",
-    },
-    {
-      title: "Academic Calendar",
-      description: "Track scheduled quiz dates, assignment milestones, and live tournaments.",
-      href: "/dashboard/calendar",
-      icon: <Calendar className="h-4 w-4" />,
-      actionLabel: "Open Schedule",
-    },
-    {
-      title: "Gradebook & Diagnostics",
-      description: "Inspect cohort score distributions, pass rates, and individualized report cards.",
-      href: "/teacher/reports",
-      icon: <BarChart3 className="h-4 w-4" />,
-      actionLabel: "View Diagnostics",
+      student: "David Miller",
+      section: "Section 10-A",
+      quiz: "Atomic Structure Concept Check",
+      submitted: "2 hours ago",
+      scoreSuggestion: "10/10 (Auto-Scored)",
     },
   ];
 
-  const activities = [
-    {
-      id: "1",
-      title: "12 submissions for AP Chemistry Midterm",
-      description: "Automatic scoring processed 10 MCQs; 2 subjective questions flagged for review.",
-      time: "14 mins ago",
-      type: "submission",
-    },
-    {
-      id: "2",
-      title: "New quiz published: Organic Chemistry Basics",
-      description: "Quiz generated from notes with 25 questions across 4 formats.",
-      time: "2 hours ago",
-      type: "draft",
-    },
-    {
-      id: "3",
-      title: "Exam notice broadcasted to Grade 12-A",
-      description: "Live arena competition scheduled for Thursday at 09:00 UTC.",
-      time: "Yesterday",
-      type: "notice",
-    },
-    {
-      id: "4",
-      title: "Gradebook sync completed",
-      description: "Synced 128 student records to the school academic record ledger.",
-      time: "2 days ago",
-      type: "sync",
-    },
+  const submissionFeed = [
+    { student: "Ananya Sharma", quiz: "Reaction Kinetics Quiz", score: "94%", time: "10 mins ago" },
+    { student: "Rohan Gupta", quiz: "Thermodynamics Concept Drill", score: "88%", time: "35 mins ago" },
+    { student: "Chloe Zhao", quiz: "Wave Interference Sprint", score: "92%", time: "1 hour ago" },
+    { student: "Liam Smith", quiz: "Stoichiometry Diagnostics", score: "76%", time: "2 hours ago" },
   ];
 
   return (
     <div className="space-y-6">
-      {/* 1. Cinematic Hero Masthead */}
-      <div className="relative overflow-hidden rounded-[8px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-6 sm:p-8">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(101,245,154,0.08)_0%,transparent_70%)] pointer-events-none" />
+      {/* 1. Millennial Productivity Masthead (Warm Indigo & Refined Slate) */}
+      <div className="relative overflow-hidden rounded-[10px] bg-[#0B0F19] border border-indigo-500/25 p-6 sm:p-8 shadow-[0_0_35px_rgba(99,102,241,0.08)]">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[radial-gradient(circle,rgba(99,102,241,0.12)_0%,transparent_70%)] pointer-events-none" />
+
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.1)] border border-[rgba(101,245,154,0.25)] text-[#65F59A] font-mono text-[10px] font-bold uppercase tracking-widest">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-pulse" />
-                Faculty Mentor Console
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[4px] bg-indigo-500/15 border border-indigo-500/30 text-indigo-300 font-mono text-[10px] font-bold uppercase tracking-widest">
+                <School className="w-3 h-3 text-indigo-400" />
+                Faculty Mentor Console // Academic Session 2026
               </span>
-              <span className="font-mono text-[11px] text-[#69786F]">v2.6 OS</span>
+              <span className="text-[#64748B]">&bull;</span>
+              <span className="font-mono text-xs text-[#94A3B8]">4 Active Cohorts</span>
             </div>
-            <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-tight text-[#F2F7F3]">
-              Faculty &amp; Cohort Command Console
+
+            <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#F8FAFC]">
+              Classroom & Assessment Orchestrator
             </h1>
-            <p className="text-xs sm:text-sm text-[#A0AEA5] max-w-2xl leading-relaxed">
-              Oversee academic classrooms, host synchronized battle arenas, track cohort cognitive trajectories, and synthesize assessments with QuizDorm Intelligence.
+            <p className="text-xs sm:text-sm text-[#94A3B8] max-w-2xl leading-relaxed">
+              Plan and publish curriculum assessments, review student submissions in real time, and launch synchronized class arena showdowns.
             </p>
           </div>
+
           <div className="flex flex-wrap items-center gap-3 shrink-0">
-            <Link href="/dashboard/quizzes/create">
-              <Button className="h-10 px-5 rounded-[4px] bg-[#65F59A] text-[#070B0A] hover:bg-[#65F59A]/90 font-mono text-xs uppercase font-bold tracking-wider shadow-[0_0_20px_rgba(101,245,154,0.25)]">
-                <Sparkles className="mr-2 h-3.5 w-3.5" />
-                Synthesize Assessment
+            <Link href="/dashboard/quizzes/builder">
+              <Button className="h-10 px-5 rounded-[6px] bg-indigo-600 text-white hover:bg-indigo-500 font-medium text-xs tracking-wider shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all">
+                <Plus className="mr-1.5 h-4 w-4" />
+                Create Assessment
               </Button>
             </Link>
-            <Link href="/dashboard/competitions">
+            <Link href="/live/arena">
               <Button
                 variant="outline"
-                className="h-10 px-5 rounded-[4px] border-[rgba(160,190,170,0.2)] bg-[#111B17] text-[#F2F7F3] hover:border-[#65F59A]/50 hover:text-[#65F59A] font-mono text-xs uppercase font-bold tracking-wider"
+                className="h-10 px-4 rounded-[6px] border-emerald-500/30 bg-[#0E1719] text-emerald-300 hover:border-emerald-400 hover:text-emerald-200 text-xs font-semibold"
               >
-                Launch Arena
+                <Swords className="mr-1.5 h-3.5 w-3.5" />
+                Live Class Arena
+              </Button>
+            </Link>
+            <Link href="/teacher/reports">
+              <Button
+                variant="outline"
+                className="h-10 px-4 rounded-[6px] border-slate-700 bg-[#0F172A] text-slate-300 hover:text-white text-xs font-medium"
+              >
+                <BarChart3 className="mr-1.5 h-3.5 w-3.5 text-slate-400" />
+                Gradebook
               </Button>
             </Link>
           </div>
         </div>
       </div>
 
-      {/* 2. Precision Brain Stats HUD */}
+      {/* 2. Focused Productivity Metric Cards */}
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
           <div
             key={stat.title}
-            className="p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] hover:border-[rgba(160,190,170,0.28)] transition-all flex flex-col justify-between"
+            className={`p-4 rounded-[8px] bg-[#0B0F19] border ${stat.border} hover:border-indigo-500/40 transition-all flex flex-col justify-between`}
           >
-            <div className="flex items-center justify-between pb-2 border-b border-[rgba(160,190,170,0.1)]">
-              <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#69786F]">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+              <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-[#94A3B8]">
                 {stat.title}
               </span>
-              <div className="p-1 rounded-[3px] bg-[#111B17] border border-[rgba(160,190,170,0.12)]">
-                {stat.icon}
-              </div>
+              <div className="p-1 rounded-[4px] bg-slate-800/60">{stat.icon}</div>
             </div>
             <div className="mt-3 flex items-baseline justify-between">
               <div>
-                <p className="font-display text-2xl sm:text-3xl font-extrabold text-[#F2F7F3] tabular-nums tracking-tight">
+                <p className="font-display text-2xl font-bold text-[#F8FAFC] tabular-nums">
                   {stat.value}
                 </p>
-                <p className="text-[11px] text-[#A0AEA5] mt-0.5 font-sans">{stat.subtext}</p>
+                <p className="text-[11px] text-[#64748B] mt-0.5">{stat.subtext}</p>
               </div>
               <span
-                className={`inline-flex items-center px-1.5 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold ${
+                className={`px-1.5 py-0.5 rounded text-[10px] font-mono font-medium ${
                   stat.isPositive
-                    ? "bg-[rgba(101,245,154,0.12)] text-[#65F59A] border border-[rgba(101,245,154,0.25)]"
-                    : "bg-[rgba(251,191,36,0.12)] text-[#FBBF24] border border-[rgba(251,191,36,0.25)]"
+                    ? "bg-indigo-500/10 text-indigo-400 border border-indigo-500/20"
+                    : "bg-amber-500/10 text-amber-400 border border-amber-500/20 font-bold"
                 }`}
               >
                 {stat.change}
@@ -243,149 +228,137 @@ export default function TeacherPage() {
         ))}
       </div>
 
-      {/* 3. Main Workspace Grid */}
-      <div className="grid gap-6 lg:grid-cols-3">
-        {/* Left Column: Cohorts & Operations Matrix */}
-        <div className="lg:col-span-2 space-y-6">
-          {/* Cohort Mastery Radar */}
-          <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-5">
-            <div className="flex items-center justify-between pb-3 mb-4 border-b border-[rgba(160,190,170,0.12)]">
-              <div className="flex items-center gap-2">
-                <div className="w-1.5 h-3 bg-[#65F59A] rounded-[1px] shadow-[0_0_6px_#65F59A]" />
-                <h2 className="font-display text-sm font-bold uppercase tracking-wider text-[#F2F7F3]">
-                  Classroom Squads & Topic Mastery
-                </h2>
-              </div>
-              <Link
-                href="/dashboard/classes"
-                className="font-mono text-[11px] text-[#65F59A] hover:underline flex items-center gap-1"
-              >
-                Roster Details <ArrowUpRight className="h-3 w-3" />
-              </Link>
-            </div>
-
-            <div className="space-y-4">
-              {cohorts.map((cohort) => (
-                <div
-                  key={cohort.name}
-                  className="p-3.5 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.1)] hover:border-[rgba(160,190,170,0.22)] transition-all"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
-                    <div>
-                      <h4 className="text-sm font-semibold text-[#F2F7F3]">{cohort.name}</h4>
-                      <p className="text-[11px] text-[#A0AEA5] mt-0.5">
-                        {cohort.students} Scholars • Topic: <span className="text-[#F2F7F3]">{cohort.recentTopic}</span>
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-xs font-bold text-[#F2F7F3] tabular-nums">
-                        {cohort.mastery}%
-                      </span>
-                      <span
-                        className={`px-2 py-0.5 rounded-[2px] font-mono text-[10px] font-semibold uppercase ${
-                          cohort.mastery >= 85
-                            ? "bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.2)]"
-                            : cohort.mastery >= 80
-                            ? "bg-[rgba(56,217,176,0.1)] text-[#38D9B0] border border-[rgba(56,217,176,0.2)]"
-                            : "bg-[rgba(251,191,36,0.1)] text-[#FBBF24] border border-[rgba(251,191,36,0.2)]"
-                        }`}
-                      >
-                        {cohort.status}
-                      </span>
-                    </div>
-                  </div>
-                  {/* Progress Track */}
-                  <div className="w-full h-1.5 rounded-full bg-[#17251E] overflow-hidden">
-                    <div
-                      className={`h-full rounded-full bg-gradient-to-r ${cohort.color}`}
-                      style={{ width: `${cohort.mastery}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
+      {/* 3. Action Triage Queue (Items Needing Grading/Evaluation) */}
+      <div className="rounded-[8px] bg-[#0B0F19] border border-amber-500/30 p-5 space-y-3">
+        <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+          <div className="flex items-center gap-2">
+            <Clock className="h-4 w-4 text-amber-400" />
+            <h3 className="font-display text-xs font-bold uppercase tracking-wider text-[#F8FAFC]">
+              Action Triage Queue (Pending Evaluations)
+            </h3>
           </div>
+          <span className="font-mono text-[11px] text-amber-400 font-bold">
+            3 items awaiting approval
+          </span>
+        </div>
 
-          {/* Quick Action Matrix */}
-          <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-5">
-            <div className="flex items-center gap-2 pb-3 mb-4 border-b border-[rgba(160,190,170,0.12)]">
-              <div className="w-1.5 h-3 bg-[#38D9B0] rounded-[1px] shadow-[0_0_6px_#38D9B0]" />
-              <h2 className="font-display text-sm font-bold uppercase tracking-wider text-[#F2F7F3]">
-                Teacher Tools & Actions
+        <div className="grid gap-2.5 sm:grid-cols-3">
+          {triageQueue.map((item, idx) => (
+            <div
+              key={idx}
+              className="p-3.5 rounded-[6px] bg-[#101626] border border-slate-800 hover:border-amber-500/40 transition-all space-y-2"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div>
+                  <h4 className="text-xs font-bold text-[#F8FAFC]">{item.student}</h4>
+                  <span className="text-[10px] font-mono text-indigo-400">{item.section}</span>
+                </div>
+                <span className="text-[9px] font-mono text-[#64748B]">{item.submitted}</span>
+              </div>
+              <p className="text-[11px] text-[#94A3B8] line-clamp-1">{item.quiz}</p>
+              <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between">
+                <span className="text-[10px] font-mono text-amber-300">{item.scoreSuggestion}</span>
+                <Button size="sm" className="h-6 px-2 bg-indigo-600/30 text-indigo-300 hover:bg-indigo-600 hover:text-white text-[10px] font-medium rounded-[3px]">
+                  Review &rarr;
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 4. Active Cohorts & Real-Time Feed Grid */}
+      <div className="grid gap-6 lg:grid-cols-3">
+        {/* Left 2 Cols: Cohort Performance Cards */}
+        <div className="lg:col-span-2 space-y-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-3 bg-indigo-500 rounded-[1px]" />
+              <h2 className="font-display text-sm font-bold uppercase tracking-wider text-[#F8FAFC]">
+                Classroom Sections Overview
               </h2>
             </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {quickActions.map((action) => (
-                <Link
-                  key={action.title}
-                  href={action.href}
-                  className="group block p-4 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)] hover:border-[#65F59A]/50 hover:bg-[#17251E] transition-all relative"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-2.5 text-[#65F59A]">
-                      {action.icon}
-                      <h4 className="font-display text-sm font-bold text-[#F2F7F3] group-hover:text-[#65F59A] transition-colors">
-                        {action.title}
-                      </h4>
-                    </div>
-                    <ArrowUpRight className="h-3.5 w-3.5 text-[#69786F] group-hover:text-[#65F59A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            <Link href="/dashboard/classes" className="text-xs font-mono text-indigo-400 hover:underline">
+              Manage Rosters &rarr;
+            </Link>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {cohorts.map((cohort) => (
+              <div
+                key={cohort.id}
+                className="p-4 rounded-[8px] bg-[#0B0F19] border border-slate-800 hover:border-indigo-500/40 transition-all flex flex-col justify-between space-y-3"
+              >
+                <div>
+                  <div className="flex items-start justify-between gap-2">
+                    <h3 className="text-xs font-bold text-[#F8FAFC]">{cohort.name}</h3>
+                    <span className={`text-[10px] font-mono font-bold ${cohort.accent}`}>
+                      {cohort.status}
+                    </span>
                   </div>
-                  <p className="mt-2 text-xs text-[#A0AEA5] leading-relaxed line-clamp-2">
-                    {action.description}
+                  <p className="text-[11px] text-[#64748B] mt-1">
+                    Current Module: <span className="text-[#94A3B8]">{cohort.recentTopic}</span>
                   </p>
-                  <div className="mt-3 flex items-center gap-1 font-mono text-[10px] uppercase font-bold text-[#65F59A] tracking-wider">
-                    <span>{action.actionLabel}</span>
+                </div>
+
+                <div className="space-y-1.5 pt-2 border-t border-slate-800/80">
+                  <div className="flex items-center justify-between font-mono text-[11px]">
+                    <span className="text-[#64748B]">{cohort.students} Enrolled</span>
+                    <span className="text-[#F8FAFC] font-bold">{cohort.mastery}% Mastery</span>
                   </div>
-                </Link>
-              ))}
-            </div>
+                  <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                    <div className={`h-full ${cohort.barColor} rounded-full`} style={{ width: `${cohort.mastery}%` }} />
+                  </div>
+                </div>
+
+                <div className="pt-2 flex items-center justify-between">
+                  <Link href={`/dashboard/assignments?section=${cohort.id}`}>
+                    <Button size="sm" variant="outline" className="h-7 px-3 border-slate-700 text-xs text-[#94A3B8] hover:text-white">
+                      Assign Quiz
+                    </Button>
+                  </Link>
+                  <Link href={`/dashboard/classes`} className="text-[11px] text-indigo-400 hover:underline">
+                    Class Hub &rarr;
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Right Column: Real-time Telemetry Stream */}
-        <div className="space-y-6">
-          <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-5">
-            <div className="flex items-center justify-between pb-3 mb-3 border-b border-[rgba(160,190,170,0.12)]">
-              <div className="flex items-center gap-2">
-                <Activity className="h-4 w-4 text-[#65F59A]" />
-                <h3 className="font-display text-xs uppercase font-bold tracking-wider text-[#F2F7F3]">
-                  Live Class Activity
-                </h3>
-              </div>
-              <span className="font-mono text-[10px] text-[#65F59A] flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#65F59A] animate-ping" />
-                Live
-              </span>
-            </div>
-
-            <div className="divide-y divide-[rgba(160,190,170,0.08)]">
-              {activities.map((act) => (
-                <div key={act.id} className="py-3 first:pt-0 last:pb-0 space-y-1">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-xs font-semibold text-[#F2F7F3] leading-snug">{act.title}</p>
-                    <span className="font-mono text-[10px] text-[#69786F] shrink-0">{act.time}</span>
-                  </div>
-                  <p className="text-[11px] text-[#A0AEA5] leading-relaxed">{act.description}</p>
-                </div>
-              ))}
-            </div>
+        {/* Right Col: Real-Time Submissions Feed */}
+        <div className="rounded-[8px] bg-[#0B0F19] border border-slate-800 p-5 space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+            <h3 className="font-display text-xs font-bold uppercase tracking-wider text-[#F8FAFC]">
+              Live Submission Stream
+            </h3>
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           </div>
 
-          {/* Quick Grading Action Alert */}
-          <div className="p-4 rounded-[6px] bg-[rgba(251,191,36,0.06)] border border-[rgba(251,191,36,0.25)] flex items-start gap-3">
-            <AlertCircle className="h-4 w-4 text-[#FBBF24] shrink-0 mt-0.5" />
-            <div className="space-y-1 text-xs">
-              <p className="font-semibold text-[#F2F7F3]">8 Pending Subjective Evaluations</p>
-              <p className="text-[#A0AEA5]">
-                Submissions from Chemistry Midterm are pending teacher sign-off to finalize gradebook averages.
-              </p>
-              <Link
-                href="/dashboard/assignments"
-                className="inline-block mt-1 font-mono text-[10px] text-[#FBBF24] hover:underline font-bold uppercase tracking-wider"
+          <div className="space-y-3">
+            {submissionFeed.map((sub, i) => (
+              <div
+                key={i}
+                className="p-2.5 rounded-[4px] bg-[#101626] border border-slate-850 flex items-center justify-between text-xs"
               >
-                Open Review Queue →
-              </Link>
-            </div>
+                <div>
+                  <h5 className="font-semibold text-[#F8FAFC]">{sub.student}</h5>
+                  <p className="text-[10px] text-[#64748B] mt-0.5">{sub.quiz}</p>
+                </div>
+                <div className="text-right font-mono">
+                  <span className="font-bold text-emerald-400">{sub.score}</span>
+                  <span className="block text-[9px] text-[#64748B]">{sub.time}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="pt-2 border-t border-slate-800">
+            <Link href="/dashboard/calendar">
+              <Button variant="ghost" className="w-full justify-between h-8 text-xs text-indigo-400 hover:text-indigo-300">
+                View Academic Calendar <ArrowUpRight className="h-3.5 w-3.5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

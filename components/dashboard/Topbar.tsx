@@ -52,6 +52,28 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
     }
   };
 
+  const getWorkspaceColor = (r: string) => {
+    switch (r) {
+      case "superadmin":
+      case "admin":
+        return "text-[#65F59A]";
+      case "masteradmin":
+        return "text-purple-400";
+      case "institution":
+      case "school":
+        return "text-blue-400";
+      case "handler":
+      case "teacher":
+        return "text-indigo-400";
+      case "subscriber":
+        return "text-amber-400";
+      case "member":
+      case "student":
+      default:
+        return "text-violet-400";
+    }
+  };
+
   const getWorkspaceRoot = (r: string) => {
     switch (r) {
       case "superadmin":
@@ -115,7 +137,7 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
 
         {/* Desktop Breadcrumbs with Technical Monospace */}
         <nav className="hidden md:flex items-center space-x-2 text-xs font-mono text-[#69786F]">
-          <div className="flex items-center space-x-1.5 text-[#65F59A]">
+          <div className={`flex items-center space-x-1.5 ${getWorkspaceColor(role)}`}>
             <Terminal className="w-3.5 h-3.5" />
             <Link
               href={getWorkspaceRoot(role)}

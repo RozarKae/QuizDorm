@@ -69,6 +69,58 @@ interface SidebarProps {
   setCollapsed: (collapsed: boolean) => void;
 }
 
+const getRoleAccentColors = (r: string) => {
+  switch (r) {
+    case "superadmin":
+    case "admin":
+      return {
+        bar: "before:bg-[#65F59A]",
+        text: "text-[#65F59A]",
+        border: "border-[rgba(101,245,154,0.3)]",
+        glow: "shadow-[0_0_12px_rgba(101,245,154,0.12)]",
+      };
+    case "masteradmin":
+      return {
+        bar: "before:bg-purple-400",
+        text: "text-purple-400",
+        border: "border-purple-500/35",
+        glow: "shadow-[0_0_12px_rgba(168,85,247,0.15)]",
+      };
+    case "institution":
+    case "school":
+      return {
+        bar: "before:bg-blue-400",
+        text: "text-blue-400",
+        border: "border-blue-500/35",
+        glow: "shadow-[0_0_12px_rgba(37,99,235,0.15)]",
+      };
+    case "handler":
+    case "teacher":
+      return {
+        bar: "before:bg-indigo-400",
+        text: "text-indigo-400",
+        border: "border-indigo-500/35",
+        glow: "shadow-[0_0_12px_rgba(99,102,241,0.15)]",
+      };
+    case "subscriber":
+      return {
+        bar: "before:bg-amber-400",
+        text: "text-amber-400",
+        border: "border-amber-500/35",
+        glow: "shadow-[0_0_12px_rgba(234,179,8,0.15)]",
+      };
+    case "member":
+    case "student":
+    default:
+      return {
+        bar: "before:bg-violet-400",
+        text: "text-violet-400",
+        border: "border-violet-500/35",
+        glow: "shadow-[0_0_12px_rgba(139,92,246,0.15)]",
+      };
+  }
+};
+
 export default function Sidebar({
   role,
   isOpen,
@@ -82,6 +134,7 @@ export default function Sidebar({
     dashboardNavConfig.member ||
     dashboardNavConfig.subscriber ||
     dashboardNavConfig.student;
+  const roleAccents = getRoleAccentColors(role);
   const { logout } = useAuth();
   const { playTap, playHover } = useSound();
   const [isSigningOut, setIsSigningOut] = useState(false);
@@ -262,7 +315,7 @@ export default function Sidebar({
                         }}
                         className={`group relative flex items-center justify-between rounded-[4px] px-2.5 py-1.5 text-xs transition-all ${
                           isActive
-                            ? "text-[#F2F7F3] font-medium before:absolute before:left-0 before:top-1.5 before:bottom-1.5 before:w-[2px] before:bg-[#65F59A] before:rounded-r shadow-xs"
+                            ? `text-[#F2F7F3] font-medium before:absolute before:left-0 before:top-1.5 before:bottom-1.5 before:w-[2px] ${roleAccents.bar} before:rounded-r shadow-xs`
                             : "text-[#A0AEA5] hover:bg-[#111B17] hover:text-[#F2F7F3] font-normal"
                         }`}
                         title={collapsed ? item.name : undefined}
@@ -270,14 +323,14 @@ export default function Sidebar({
                         {isActive && (
                           <motion.div
                             layoutId="sidebarActiveGlider"
-                            className="absolute inset-0 rounded-[4px] bg-[#17251E] border border-[rgba(101,245,154,0.3)] shadow-[0_0_12px_rgba(101,245,154,0.12)] -z-10"
+                            className={`absolute inset-0 rounded-[4px] bg-[#17251E]/80 border ${roleAccents.border} ${roleAccents.glow} -z-10`}
                             transition={{ type: "spring", stiffness: 350, damping: 30 }}
                           />
                         )}
                         <div className="flex items-center space-x-2.5 min-w-0">
                           <div
                             className={`shrink-0 transition-colors ${
-                              isActive ? "text-[#65F59A]" : "text-[#69786F] group-hover:text-[#A0AEA5]"
+                              isActive ? roleAccents.text : "text-[#69786F] group-hover:text-[#A0AEA5]"
                             }`}
                           >
                             {item.icon && iconMap[item.icon] ? (
