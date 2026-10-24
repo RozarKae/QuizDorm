@@ -1,12 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
-  <!-- Dark Obsidian Base with Glowing Emerald Bezel -->
-  <rect x="1" y="1" width="30" height="30" rx="7" fill="#0C1210" stroke="#65F59A" stroke-width="1.2" stroke-opacity="0.85" />
+  <style>
+    :root {
+      --fav-bg: #0C1210;
+      --fav-stroke: #65F59A;
+      --fav-cap: #FFFFFF;
+      --fav-q: #65F59A;
+      --fav-tail: #FFFFFF;
+      --fav-d: #38D9B0;
+      --fav-center: #070B0A;
+      --fav-center-line: #FFFFFF;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --fav-bg: #FFFFFF;
+        --fav-stroke: #047857;
+        --fav-cap: #1E293B;
+        --fav-q: #047857;
+        --fav-tail: #1E293B;
+        --fav-d: #0D9488;
+        --fav-center: #E2E8F0;
+        --fav-center-line: #047857;
+      }
+    }
+  </style>
+
+  <!-- Base with Glowing Bezel -->
+  <rect x="1" y="1" width="30" height="30" rx="7" fill="var(--fav-bg)" stroke="var(--fav-stroke)" stroke-width="1.2" stroke-opacity="0.9" />
 
   <!-- Top Mortarboard Cap -->
   <path
     d="M 16,5 L 26,9.5 L 16,14 L 6,9.5 Z M 16,7.5 L 9.5,9.5 L 16,11.5 L 22.5,9.5 Z"
-    fill="#FFFFFF"
-    stroke="#65F59A"
+    fill="var(--fav-cap)"
+    stroke="var(--fav-stroke)"
     stroke-width="0.8"
     fill-rule="evenodd"
   />
@@ -14,20 +39,20 @@
   <!-- Q Left Block Letter -->
   <path
     d="M 8,13 L 15.2,14.8 L 15.2,25.5 L 13.8,27.2 L 9.8,24.5 C 8.2,23.5 7.5,22 7.5,20 L 7.5,15 C 7.5,13.5 8,13 8,13 Z M 10,16 L 13,16.8 L 13,21 L 10,20.2 Z"
-    fill="#65F59A"
+    fill="var(--fav-q)"
     fill-rule="evenodd"
   />
   <!-- Q Tail -->
-  <path d="M 11.5,19.5 L 14.5,23.5 L 13.8,27.2 Z" fill="#FFFFFF" />
+  <path d="M 11.5,19.5 L 14.5,23.5 L 13.8,27.2 Z" fill="var(--fav-tail)" />
 
   <!-- D Right Block Letter -->
   <path
     d="M 16.8,14.8 L 21.5,13.5 C 23.5,13 25,14.5 25,17 L 25,20.5 C 25,23 23,25 20.5,25.8 L 16.8,27.2 Z M 18.5,16.5 L 21,16 C 22.2,16 23,17 23,18.5 L 23,20.5 C 23,22 22,23 20.8,23.5 L 18.5,24.2 Z"
-    fill="#38D9B0"
+    fill="var(--fav-d)"
     fill-rule="evenodd"
   />
 
   <!-- Center Crevice -->
-  <line x1="16" y1="14.8" x2="16" y2="27.2" stroke="#070B0A" stroke-width="1" />
-  <line x1="15.5" y1="14.8" x2="15.5" y2="25.5" stroke="#FFFFFF" stroke-width="0.6" stroke-opacity="0.9" />
+  <line x1="16" y1="14.8" x2="16" y2="27.2" stroke="var(--fav-center)" stroke-width="1" />
+  <line x1="15.5" y1="14.8" x2="15.5" y2="25.5" stroke="var(--fav-center-line)" stroke-width="0.6" stroke-opacity="0.9" />
 </svg>

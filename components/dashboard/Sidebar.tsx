@@ -260,13 +260,13 @@ export default function Sidebar({
           isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         } ${collapsed ? "w-16" : "w-60"}`}
       >
-        <div className="relative flex h-full flex-col justify-between bg-[#0C1210] border-r border-[rgba(160,190,170,0.14)] transition-colors duration-200 overflow-hidden">
+        <div className="relative flex h-full flex-col justify-between bg-card dark:bg-[#0C1210] border-r border-border transition-colors duration-200 overflow-hidden">
           {/* Cybernetic Vertical Scanning Beam */}
           <div className="aurora-side-scanner" />
 
           <div>
             {/* Header */}
-            <div className="flex h-14 items-center justify-between px-3.5 border-b border-[rgba(160,190,170,0.12)]">
+            <div className="flex h-14 items-center justify-between px-3.5 border-b border-border">
               <Link href={getRoleHomeUrl(role)} className="flex items-center space-x-2">
                 {!collapsed ? (
                   <Logo />
@@ -278,7 +278,7 @@ export default function Sidebar({
                 variant="ghost"
                 size="icon-xs"
                 onClick={onClose}
-                className="md:hidden text-[#A0AEA5] hover:text-[#F2F7F3] rounded-[3px]"
+                className="md:hidden text-muted-foreground hover:text-foreground rounded-[3px]"
                 aria-label="Close sidebar"
               >
                 <X className="h-4 w-4" />
@@ -290,11 +290,11 @@ export default function Sidebar({
               {Object.entries(groupedNav).map(([category, items]) => (
                 <div key={category} className="space-y-0.5">
                   {!collapsed ? (
-                    <div className="px-2.5 pb-1 text-[9px] font-mono uppercase tracking-widest text-[#69786F] font-semibold">
+                    <div className="px-2.5 pb-1 text-[9px] font-mono uppercase tracking-widest text-muted-foreground font-semibold">
                       {category}
                     </div>
                   ) : (
-                    <div className="my-1.5 border-t border-[rgba(160,190,170,0.08)]" />
+                    <div className="my-1.5 border-t border-border" />
                   )}
 
                   {items.map((item) => {
@@ -315,22 +315,22 @@ export default function Sidebar({
                         }}
                         className={`group relative flex items-center justify-between rounded-[4px] px-2.5 py-1.5 text-xs transition-all ${
                           isActive
-                            ? `text-[#F2F7F3] font-medium before:absolute before:left-0 before:top-1.5 before:bottom-1.5 before:w-[2px] ${roleAccents.bar} before:rounded-r shadow-xs`
-                            : "text-[#A0AEA5] hover:bg-[#111B17] hover:text-[#F2F7F3] font-normal"
+                            ? `text-foreground font-medium before:absolute before:left-0 before:top-1.5 before:bottom-1.5 before:w-[2px] ${roleAccents.bar} before:rounded-r shadow-xs`
+                            : "text-muted-foreground hover:bg-secondary dark:hover:bg-[#111B17] hover:text-foreground font-normal"
                         }`}
                         title={collapsed ? item.name : undefined}
                       >
                         {isActive && (
                           <motion.div
                             layoutId="sidebarActiveGlider"
-                            className={`absolute inset-0 rounded-[4px] bg-[#17251E]/80 border ${roleAccents.border} ${roleAccents.glow} -z-10`}
+                            className={`absolute inset-0 rounded-[4px] bg-secondary/80 dark:bg-[#17251E]/80 border ${roleAccents.border} ${roleAccents.glow} -z-10`}
                             transition={{ type: "spring", stiffness: 350, damping: 30 }}
                           />
                         )}
                         <div className="flex items-center space-x-2.5 min-w-0">
                           <div
                             className={`shrink-0 transition-colors ${
-                              isActive ? roleAccents.text : "text-[#69786F] group-hover:text-[#A0AEA5]"
+                              isActive ? roleAccents.text : "text-muted-foreground group-hover:text-foreground"
                             }`}
                           >
                             {item.icon && iconMap[item.icon] ? (
@@ -349,8 +349,8 @@ export default function Sidebar({
                               item.badge === "Locked"
                                 ? "bg-[rgba(248,113,113,0.15)] text-[#F87171] border border-[rgba(248,113,113,0.3)] font-bold flex items-center gap-0.5"
                                 : isActive
-                                ? "bg-[rgba(101,245,154,0.18)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] font-semibold"
-                                : "bg-[#111B17] text-[#69786F] border border-[rgba(160,190,170,0.12)] font-medium"
+                                ? "bg-accent/15 text-primary border border-primary/30 font-semibold"
+                                : "bg-muted text-muted-foreground border border-border font-medium"
                             }`}
                           >
                             {item.badge === "Locked" ? "🔒 Locked" : item.badge}
@@ -365,17 +365,17 @@ export default function Sidebar({
           </div>
 
           {/* Audio Controls & System Status */}
-          <div className="p-2 border-t border-[rgba(160,190,170,0.12)] space-y-1.5">
+          <div className="p-2 border-t border-border space-y-1.5">
             {!collapsed && (
-              <div className="flex items-center justify-between px-2 py-1 text-[9px] font-mono text-[#69786F] bg-[#070B0A]/60 rounded border border-[rgba(160,190,170,0.08)]">
+              <div className="flex items-center justify-between px-2 py-1 text-[9px] font-mono text-muted-foreground bg-secondary/60 dark:bg-[#070B0A]/60 rounded border border-border">
                 <span className="flex items-center gap-1.5">
                   <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#65F59A] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#65F59A]"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
                   </span>
                   <span>LIVE SYNC</span>
                 </span>
-                <span className="text-[#65F59A]">18ms</span>
+                <span className="text-primary font-bold">18ms</span>
               </div>
             )}
             <div className="flex items-center justify-between">
@@ -387,7 +387,7 @@ export default function Sidebar({
           </div>
 
           {/* Sign Out Button */}
-          <div className="p-2 border-t border-[rgba(160,190,170,0.12)]">
+          <div className="p-2 border-t border-border">
             <button
               onClick={handleSignOut}
               disabled={isSigningOut}
@@ -406,15 +406,15 @@ export default function Sidebar({
           </div>
 
           {/* Collapse Toggle Button (Desktop Only) */}
-          <div className="hidden md:block p-2 border-t border-[rgba(160,190,170,0.12)]">
+          <div className="hidden md:block p-2 border-t border-border">
             <Button
               variant="outline"
               onClick={() => setCollapsed(!collapsed)}
-              className="w-full flex items-center justify-center py-1 h-7 text-xs font-mono border-[rgba(160,190,170,0.14)] rounded-[4px] bg-[#070B0A]/40 text-[#69786F] hover:text-[#F2F7F3] hover:bg-[#111B17]"
+              className="w-full flex items-center justify-center py-1 h-7 text-xs font-mono border-border rounded-[4px] bg-secondary/50 dark:bg-[#070B0A]/40 text-muted-foreground hover:text-foreground hover:bg-secondary"
               aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             >
               {collapsed ? (
-                <ChevronRight className="h-3.5 w-3.5 text-[#65F59A]" />
+                <ChevronRight className="h-3.5 w-3.5 text-primary" />
               ) : (
                 <ChevronLeft className="h-3.5 w-3.5" />
               )}
