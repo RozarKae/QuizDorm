@@ -8,6 +8,16 @@ export type SubscriptionPlanId =
 
 export type BillingCycle = "monthly" | "quarterly" | "annual" | "lifetime";
 
+export type CurrencyCode =
+  | "INR"
+  | "USD"
+  | "EUR"
+  | "GBP"
+  | "AED"
+  | "SGD"
+  | "CAD"
+  | "AUD";
+
 export type PaymentProviderType =
   | "razorpay"
   | "stripe"
@@ -34,6 +44,7 @@ export interface SubscriptionPlan {
   priceMonthlyUSD: number;
   priceAnnualUSD: number;
   priceMonthlyINR: number;
+  priceAnnualINR: number;
   limits: PlanLimits;
   features: string[];
   popular?: boolean;
@@ -67,7 +78,7 @@ export interface PaymentTransaction {
   provider: PaymentProviderType;
   amountUSD: number;
   amountINR: number;
-  currency: "USD" | "INR";
+  currency: CurrencyCode;
   status: "success" | "pending" | "failed" | "refunded";
   paymentMethod: string;
   timestamp: string;

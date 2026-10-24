@@ -3,7 +3,9 @@
 import React, { useState } from "react";
 import { SUBSCRIPTION_PLANS } from "@/lib/billing/subscriptionManager";
 import { SubscriptionPlanId } from "@/lib/types/billing";
-import { Check, Zap, Sparkles, ShieldCheck, ArrowRight } from "lucide-react";
+import { useCurrency } from "@/lib/hooks/useCurrency";
+import { CurrencySelector } from "@/components/billing/CurrencySelector";
+import { Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -14,71 +16,93 @@ interface PricingTableProps {
 
 export function PricingTable({ currentPlanId, onSelectPlan }: PricingTableProps) {
   const [isAnnual, setIsAnnual] = useState(true);
+  const { formatPrice, currency } = useCurrency();
 
   return (
-    <div className="space-y-6">
-      {/* Monthly vs Annual Toggle */}
-      <div className="flex items-center justify-center space-x-3 text-xs font-bold">
-        <span className={!isAnnual ? "text-indigo-600 dark:text-indigo-400 font-extrabold" : "text-gray-500"}>
-          Monthly Billing
-        </span>
+    <div className="space-y-6 text-[#F2F7F3]">
+      {/* Controls Bar: Billing Cycle & Currency Selector */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)]">
+        {/* Monthly vs Annual Toggle */}
+        <div className="flex items-center space-x-3 text-xs font-mono">
+          <span className={!isAnnual ? "text-[#65F59A] font-bold" : "text-[#A0AEA5]"}>
+            Monthly Sprints
+          </span>
 
-        <button
-          onClick={() => setIsAnnual(!isAnnual)}
-          className="w-12 h-6 rounded-full bg-indigo-600 p-1 flex items-center transition-all cursor-pointer"
-        >
-          <div
-            className={`w-4 h-4 rounded-full bg-white transition-transform ${
-              isAnnual ? "translate-x-6" : "translate-x-0"
-            }`}
-          />
-        </button>
+          <button
+            type="button"
+            onClick={() => setIsAnnual(!isAnnual)}
+            className="w-12 h-6 rounded-full bg-[#17251E] p-1 border border-[rgba(160,190,170,0.2)] flex items-center transition-all cursor-pointer"
+            aria-label="Toggle annual billing discount"
+          >
+            <div
+              className={`w-4 h-4 rounded-full bg-[#65F59A] shadow-[0_0_8px_#65F59A] transition-transform ${
+                isAnnual ? "translate-x-6" : "translate-x-0"
+              }`}
+            />
+          </button>
 
-        <span className={isAnnual ? "text-indigo-600 dark:text-indigo-400 font-extrabold" : "text-gray-500"}>
-          Annual Billing <span className="ml-1 text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-extrabold">SAVE 20%</span>
-        </span>
+          <span className={isAnnual ? "text-[#65F59A] font-bold" : "text-[#A0AEA5]"}>
+            Annual Commitment{" "}
+            <span className="ml-1 text-[10px] px-2 py-0.5 rounded-[3px] bg-[rgba(101,245,154,0.15)] text-[#65F59A] border border-[rgba(101,245,154,0.3)] font-bold">
+              2 MONTHS FREE
+            </span>
+          </span>
+        </div>
+
+        {/* Dynamic Currency Selector */}
+        <div className="flex items-center space-x-2">
+          <span className="text-[11px] font-mono text-[#A0AEA5]">Currency:</span>
+          <CurrencySelector />
+        </div>
       </div>
 
       {/* Plans Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {SUBSCRIPTION_PLANS.map((plan) => {
           const isCurrent = currentPlanId === plan.id;
-          const price = isAnnual ? plan.priceAnnualUSD / 12 : plan.priceMonthlyUSD;
+          const monthlyRateINR = isAnnual ? plan.priceAnnualINR / 12 : plan.priceMonthlyINR;
 
           return (
             <div
               key={plan.id}
-              className={`p-5 rounded-3xl border flex flex-col justify-between space-y-4 text-xs transition-all relative ${
+              className={`p-5 rounded-[6px] border flex flex-col justify-between space-y-4 text-xs transition-all relative ${
                 plan.popular
-                  ? "bg-gradient-to-b from-indigo-950/20 via-white to-white dark:from-indigo-950/60 dark:via-gray-950 dark:to-gray-950 border-indigo-500 shadow-xl ring-2 ring-indigo-500/20"
-                  : "bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 shadow-sm hover:border-gray-300"
+                  ? "bg-[#111B17] border-[#65F59A]/60 shadow-[0_0_24px_rgba(101,245,154,0.15)]"
+                  : "bg-[#0C1210] border-[rgba(160,190,170,0.14)] hover:border-[rgba(160,190,170,0.3)]"
               }`}
             >
               {plan.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-indigo-600 text-white font-extrabold text-[10px] uppercase shadow-md">
+                <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-[2px] bg-[#65F59A] text-[#070B0A] font-extrabold font-mono text-[9px] uppercase tracking-wider shadow-md">
                   {plan.badge}
                 </div>
               )}
 
               <div className="space-y-2">
-                <h4 className="font-extrabold text-base text-gray-900 dark:text-white pt-1">{plan.name}</h4>
-                <p className="text-[11px] text-gray-500 dark:text-gray-400 leading-tight">{plan.description}</p>
+                <h4 className="font-bold text-sm text-[#F2F7F3] font-display pt-1">{plan.name}</h4>
+                <p className="text-[11px] text-[#A0AEA5] leading-snug">{plan.description}</p>
 
                 <div className="pt-2">
-                  <span className="text-3xl font-extrabold text-gray-900 dark:text-white font-mono">
-                    ${Math.round(price)}
+                  <span className="text-2xl font-extrabold text-[#F2F7F3] font-mono tracking-tight">
+                    {formatPrice(monthlyRateINR)}
                   </span>
-                  <span className="text-gray-400 text-[11px]"> / month</span>
+                  <span className="text-[#69786F] text-[11px] font-mono"> / mo</span>
+                  {isAnnual && plan.priceAnnualINR > 0 && (
+                    <p className="text-[10px] font-mono text-[#38D9B0] mt-0.5">
+                      Billed {formatPrice(plan.priceAnnualINR)} annually
+                    </p>
+                  )}
                 </div>
               </div>
 
-              <div className="space-y-2 pt-2 border-t border-gray-100 dark:border-gray-800 text-[11px]">
-                <span className="font-bold text-gray-700 dark:text-gray-300 block">Plan Features:</span>
-                <ul className="space-y-1.5 text-gray-600 dark:text-gray-400">
+              <div className="space-y-2 pt-2 border-t border-[rgba(160,190,170,0.1)] text-[11px]">
+                <span className="font-bold font-mono text-[10px] uppercase text-[#69786F] block tracking-wider">
+                  Features:
+                </span>
+                <ul className="space-y-1.5 text-[#A0AEA5] font-mono text-[11px]">
                   {plan.features.map((f, idx) => (
-                    <li key={idx} className="flex items-center space-x-1.5">
-                      <Check className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-                      <span className="line-clamp-1">{f}</span>
+                    <li key={idx} className="flex items-start space-x-1.5">
+                      <Check className="w-3.5 h-3.5 text-[#65F59A] shrink-0 mt-0.5" />
+                      <span className="line-clamp-2">{f}</span>
                     </li>
                   ))}
                 </ul>
@@ -87,15 +111,15 @@ export function PricingTable({ currentPlanId, onSelectPlan }: PricingTableProps)
               <Link href={`/checkout?plan=${plan.id}&cycle=${isAnnual ? "annual" : "monthly"}`}>
                 <Button
                   disabled={isCurrent}
-                  className={`w-full text-xs font-bold rounded-xl ${
+                  className={`w-full text-xs font-mono font-bold rounded-[3px] h-8 tracking-wider ${
                     isCurrent
-                      ? "bg-gray-100 text-gray-400 dark:bg-gray-800 dark:text-gray-500"
+                      ? "bg-[#17251E] text-[#69786F] border border-[rgba(160,190,170,0.12)] cursor-not-allowed"
                       : plan.popular
-                      ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-md"
-                      : "bg-gray-900 hover:bg-gray-800 text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+                      ? "bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] shadow-[0_0_12px_rgba(101,245,154,0.25)]"
+                      : "bg-[#17251E] hover:bg-[#111B17] text-[#F2F7F3] border border-[rgba(160,190,170,0.2)] hover:border-[#65F59A]/40"
                   }`}
                 >
-                  {isCurrent ? "Current Active Plan" : "Upgrade Plan"}
+                  {isCurrent ? "ACTIVE PLAN" : "UPGRADE"}
                 </Button>
               </Link>
             </div>

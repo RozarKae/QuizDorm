@@ -6,6 +6,7 @@ import { Search, Bell, Menu, Terminal } from "lucide-react";
 import Logo from "@/components/layout/Logo";
 import ProfileMenu from "./ProfileMenu";
 import { AudioToggle } from "@/components/audio/AudioToggle";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -30,8 +31,11 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
 
   const getWorkspaceTitle = (r: string) => {
     switch (r) {
+      case "superadmin":
       case "admin":
         return "SUPER ADMIN COMMAND OS";
+      case "masteradmin":
+        return "MASTER ADMIN CONTENT & SCHOLAR OS";
       case "institution":
       case "school":
         return "ACADEMY DIRECTORATE";
@@ -50,8 +54,11 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
 
   const getWorkspaceRoot = (r: string) => {
     switch (r) {
+      case "superadmin":
       case "admin":
         return "/admin";
+      case "masteradmin":
+        return "/admin/master";
       case "institution":
       case "school":
         return "/school";
@@ -70,7 +77,8 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
     const n = name.toLowerCase();
     const roleNorm = r.toLowerCase();
     if (n === roleNorm) return true;
-    if (roleNorm === "admin" && n === "admin") return true;
+    if ((roleNorm === "admin" || roleNorm === "superadmin") && (n === "admin" || n === "superadmin")) return true;
+    if (roleNorm === "masteradmin" && (n === "masteradmin" || n === "master")) return true;
     if ((roleNorm === "institution" || roleNorm === "school") && (n === "institution" || n === "school")) return true;
     if ((roleNorm === "handler" || roleNorm === "teacher") && (n === "handler" || n === "teacher")) return true;
     if (
@@ -165,6 +173,9 @@ export default function Topbar({ role, onMenuClick }: TopbarProps) {
 
         {/* Audio Effects Toggle */}
         <AudioToggle />
+
+        {/* Light & Dark Theme Toggle */}
+        <ThemeToggle />
 
         {/* Notifications Button with Luminous Pip */}
         <Button

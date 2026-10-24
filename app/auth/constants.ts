@@ -11,12 +11,30 @@ export interface TestAccount {
 }
 
 export const TEST_ACCOUNTS: Record<string, TestAccount> = {
+  "superadmin@quizdorm.com": {
+    id: "usr-superadmin-01",
+    email: "superadmin@quizdorm.com",
+    name: "Corporate Super Admin (Employees & Institutes)",
+    role: "superadmin",
+    roleLabel: "Super Admin",
+    password: "SuperAdmin#2026!",
+    redirectUrl: "/admin",
+  },
+  "masteradmin@quizdorm.com": {
+    id: "usr-masteradmin-01",
+    email: "masteradmin@quizdorm.com",
+    name: "Academic Master Admin (Content, Quizzes & Subscribers)",
+    role: "masteradmin",
+    roleLabel: "Master Admin",
+    password: "MasterAdmin#2026!",
+    redirectUrl: "/admin/master",
+  },
   "admin@quizdorm.com": {
     id: "usr-admin-01",
     email: "admin@quizdorm.com",
-    name: "Master Superadmin",
-    role: "admin",
-    roleLabel: "Superadmin",
+    name: "Corporate Super Admin",
+    role: "superadmin",
+    roleLabel: "Super Admin",
     password: "Admin#QuizDorm2026!",
     redirectUrl: "/admin",
   },

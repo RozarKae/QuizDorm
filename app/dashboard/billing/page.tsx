@@ -24,7 +24,7 @@ export default function BillingDashboardPage() {
 
   const handleApplyCoupon = () => {
     if (!couponCode.trim()) return;
-    const res = CouponManager.validateCoupon(couponCode, 29);
+    const res = CouponManager.validateCoupon(couponCode, 249, "₹");
     if (res.valid) {
       toast.success(res.message);
     } else {

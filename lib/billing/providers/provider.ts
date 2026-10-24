@@ -1,11 +1,11 @@
-import { PaymentProviderType, PaymentTransaction } from "@/lib/types/billing";
+import { PaymentProviderType, PaymentTransaction, CurrencyCode } from "@/lib/types/billing";
 
 export interface ProcessPaymentParams {
   userId: string;
   planId: string;
   amountUSD: number;
   amountINR: number;
-  currency: "USD" | "INR";
+  currency: CurrencyCode;
   paymentMethod: string;
   couponCode?: string;
 }

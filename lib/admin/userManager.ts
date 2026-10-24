@@ -26,18 +26,34 @@ const STORAGE_KEY_ADMIN_USERS = "quizdorm_admin_users_db_v2";
 
 export const SEED_ADMIN_USERS: AdminUser[] = [
   {
-    id: "usr-admin-01",
-    name: "Master Superadmin",
-    email: "admin@quizdorm.com",
-    role: "admin",
+    id: "usr-superadmin-01",
+    name: "Corporate Super Admin",
+    email: "superadmin@quizdorm.com",
+    role: "superadmin",
     status: "active",
     authProvider: "email",
-    organizationName: "QuizDorm Global Infrastructure",
+    organizationName: "QuizDorm Operations & Staff Governance",
     organizationId: "tnt-101",
-    department: "System Security & Ops",
+    department: "Executive Operations",
     twoFactorEnabled: true,
     activeSessionsCount: 2,
     lastLoginAt: "Just now",
+    createdAt: "2025-01-01T00:00:00Z",
+    lastKnownIp: "127.0.0.1 (Local Node)",
+  },
+  {
+    id: "usr-masteradmin-01",
+    name: "Academic Master Admin",
+    email: "masteradmin@quizdorm.com",
+    role: "masteradmin",
+    status: "active",
+    authProvider: "email",
+    organizationName: "QuizDorm Curriculum & Scholar Directorate",
+    organizationId: "tnt-102",
+    department: "Academic & Content Governance",
+    twoFactorEnabled: true,
+    activeSessionsCount: 1,
+    lastLoginAt: "5 mins ago",
     createdAt: "2025-01-01T00:00:00Z",
     lastKnownIp: "127.0.0.1 (Local Node)",
   },
@@ -195,8 +211,11 @@ export class AdminUserManager {
         return SEED_ADMIN_USERS;
       }
       const parsed: AdminUser[] = JSON.parse(saved);
+      const existingIds = new Set(parsed.map((u) => u.id));
+      const missingSeeds = SEED_ADMIN_USERS.filter((s) => !existingIds.has(s.id));
+      const combined = [...parsed, ...missingSeeds];
       // Seamlessly upgrade any stored users to canonical modern roles
-      return parsed.map((u) => ({
+      return combined.map((u) => ({
         ...u,
         role: normalizeCanonicalRole(u.role),
       }));

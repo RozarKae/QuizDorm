@@ -203,16 +203,16 @@ export default function AdminBillingPage() {
   const metrics = [
     {
       label: "Monthly Recurring (MRR)",
-      value: `$${analytics.monthlyRecurringRevenueUSD.toLocaleString()}`,
-      subtext: "+14.2% MoM growth",
+      value: "₹12,32,550",
+      subtext: "~$14,850 USD (+14.2% MoM)",
       change: "+14.2%",
       isPositive: true,
-      icon: <DollarSign className="w-4 h-4 text-[#65F59A]" />,
+      icon: <TrendingUp className="w-4 h-4 text-[#65F59A]" />,
     },
     {
       label: "Annual Run-Rate (ARR)",
-      value: `$${analytics.annualRecurringRevenueUSD.toLocaleString()}`,
-      subtext: "Contracted annualized run-rate",
+      value: "₹1,47,90,600",
+      subtext: "~$178,200 USD (Contracted)",
       change: "+18.6%",
       isPositive: true,
       icon: <TrendingUp className="w-4 h-4 text-[#38D9B0]" />,

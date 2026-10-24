@@ -16,7 +16,7 @@ export class StripePaymentProvider implements IPaymentProvider {
       provider: "stripe",
       amountUSD: params.amountUSD,
       amountINR: params.amountINR,
-      currency: "USD",
+      currency: params.currency || "USD",
       status: "success",
       paymentMethod: params.paymentMethod || "Visa / Mastercard",
       timestamp: new Date().toISOString(),

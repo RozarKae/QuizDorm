@@ -15,36 +15,47 @@ export type DashboardNavConfig = {
 };
 
 // Role-aware curated navigation structures using the QuizDorm Creative Professional Lexicon
-const adminNavItems: NavItem[] = [
-  // Core Operations
-  { name: "Overview", href: "/admin", icon: "dashboard", category: "Core Operations" },
-  { name: "Users & Identities", href: "/admin/users", icon: "users", badge: "Root", category: "Core Operations" },
-  { name: "Active Sessions", href: "/admin/sessions", icon: "sessions", badge: "Live", category: "Core Operations" },
-  { name: "Organizations & Campuses", href: "/admin/organizations", icon: "organization", badge: "Master", category: "Core Operations" },
-  { name: "Enterprise OS", href: "/admin/enterprise", icon: "enterprise_admin", badge: "v2.0", category: "Core Operations" },
-  { name: "Tenant Controls", href: "/dashboard/enterprise", icon: "tenant_controls", badge: "Multi-Tenant", category: "Core Operations" },
-  { name: "Subscriptions & Billing", href: "/admin/billing", icon: "billing", badge: "Pro SaaS", category: "Core Operations" },
 
-  // Assessment & Competitions
-  { name: "Curriculum Knowledge Matrix", href: "/dashboard/questions", icon: "bank", category: "Assessment Engine" },
-  { name: "The Dorm Vault (All Quizzes)", href: "/dashboard/quizzes", icon: "quizzes", category: "Assessment Engine" },
-  { name: "Assessment Architect", href: "/dashboard/quizzes/builder", icon: "builder", category: "Assessment Engine" },
-  { name: "Synchronized Arena Control", href: "/dashboard/competitions", icon: "competitions", badge: "Live", category: "Assessment Engine" },
-  { name: "Decathlon Director", href: "/dashboard/competitions/organizer", icon: "tournament_control", badge: "Organizer", category: "Assessment Engine" },
-  { name: "Global Olympiads", href: "/dashboard/competitions/global", icon: "global_olympiads", category: "Assessment Engine" },
+// 1. SuperAdmin: Operations, Employees (Staff) & Institutes (Campuses)
+const superAdminNavItems: NavItem[] = [
+  // Institutional & Staff Governance
+  { name: "Executive Overview", href: "/admin", icon: "dashboard", category: "Institutional Governance" },
+  { name: "Institutes & Campuses", href: "/admin/organizations", icon: "organization", badge: "Master", category: "Institutional Governance" },
+  { name: "Employees & Faculty Mentors", href: "/admin/users", icon: "users", badge: "Staff", category: "Institutional Governance" },
+  { name: "Classrooms & Cohorts", href: "/dashboard/classes", icon: "school", category: "Institutional Governance" },
+  { name: "Enterprise OS", href: "/admin/enterprise", icon: "enterprise_admin", badge: "v2.0", category: "Institutional Governance" },
+  { name: "Tenant Partitioning", href: "/dashboard/enterprise", icon: "tenant_controls", badge: "Multi-Tenant", category: "Institutional Governance" },
 
-  // Intelligence & AI Foundation
-  { name: "AI Admin Panel", href: "/admin/ai", icon: "ai_admin", badge: "AI Core", category: "AI & Intelligence" },
-  { name: "Omni-Curriculum AI Synthesizer", href: "/dashboard/ocr", icon: "ocr", badge: "OCR", category: "AI & Intelligence" },
-  { name: "Quality & Audit", href: "/dashboard/quality", icon: "quality", badge: "Audit", category: "AI & Intelligence" },
-  { name: "Adaptive Engine", href: "/dashboard/adaptive", icon: "adaptive", category: "AI & Intelligence" },
+  // Operational Infrastructure & Security
+  { name: "Active Live Sessions", href: "/admin/sessions", icon: "sessions", badge: "Live", category: "Security & Operations" },
+  { name: "Contracts & Institutional Billing", href: "/admin/billing", icon: "billing", badge: "Pro SaaS", category: "Security & Operations" },
+  { name: "AI Engine Infrastructure", href: "/admin/ai", icon: "ai_admin", badge: "Keys", category: "Security & Operations" },
+  { name: "Global IQ Telemetry", href: "/admin/analytics", icon: "ai_performance", category: "Security & Operations" },
+  { name: "Audit & Compliance Reports", href: "/admin/reports", icon: "credentials", category: "Security & Operations" },
+  { name: "Developer APIs & Security", href: "/dashboard/developer", icon: "developer", badge: "API", category: "Security & Operations" },
+  { name: "Super Admin Settings", href: "/admin/settings", icon: "settings", category: "Security & Operations" },
+];
 
-  // Analytics & Systems
-  { name: "Global IQ & System Telemetry", href: "/admin/analytics", icon: "ai_performance", category: "Analytics & Platform" },
-  { name: "Audit Reports", href: "/admin/reports", icon: "credentials", category: "Analytics & Platform" },
-  { name: "Developer APIs", href: "/dashboard/developer", icon: "developer", badge: "API", category: "Analytics & Platform" },
-  { name: "Integrations Hub", href: "/dashboard/integrations", icon: "integrations", category: "Analytics & Platform" },
-  { name: "Admin Settings", href: "/admin/settings", icon: "settings", category: "Analytics & Platform" },
+// 2. Master Admin: Academic, Content, Quizzes, Question Bank & Subscribers
+const masterAdminNavItems: NavItem[] = [
+  // Scholar Community & Subscribers
+  { name: "Academic Directorate", href: "/admin/master", icon: "dashboard", category: "Scholar Community" },
+  { name: "Subscribers & Contenders", href: "/admin/master/subscribers", icon: "users", badge: "Active", category: "Scholar Community" },
+  { name: "Podium of Intellect", href: "/dashboard/leaderboard", icon: "credentials", category: "Scholar Community" },
+
+  // The Dorm Vault & Knowledge Matrix
+  { name: "The Dorm Vault (All Quizzes)", href: "/dashboard/quizzes", icon: "quizzes", badge: "Vault", category: "Curriculum & Assessments" },
+  { name: "Curriculum Knowledge Matrix", href: "/dashboard/questions", icon: "bank", badge: "535+", category: "Curriculum & Assessments" },
+  { name: "Assessment Architect", href: "/dashboard/quizzes/builder", icon: "builder", badge: "9 Formats", category: "Curriculum & Assessments" },
+  { name: "Synchronized Arena Control", href: "/dashboard/competitions", icon: "competitions", badge: "Live", category: "Curriculum & Assessments" },
+  { name: "Decathlon Director", href: "/dashboard/competitions/organizer", icon: "tournament_control", badge: "Proctor", category: "Curriculum & Assessments" },
+  { name: "Global Olympiads", href: "/dashboard/competitions/global", icon: "global_olympiads", category: "Curriculum & Assessments" },
+
+  // Intelligence & Quality
+  { name: "Omni-Curriculum AI Synthesizer", href: "/dashboard/ocr", icon: "ocr", badge: "OCR", category: "Intelligence & Quality" },
+  { name: "Quality Gate & Bloom's Audit", href: "/dashboard/quality", icon: "quality", badge: "Audit", category: "Intelligence & Quality" },
+  { name: "Adaptive Engine", href: "/dashboard/adaptive", icon: "adaptive", category: "Intelligence & Quality" },
+  { name: "Cognitive Depth Analytics", href: "/dashboard/analytics", icon: "ai_performance", category: "Intelligence & Quality" },
 ];
 
 const schoolNavItems: NavItem[] = [
@@ -145,9 +156,17 @@ const subscriberNavItems: NavItem[] = [
 ];
 
 export const dashboardNavConfig: DashboardNavConfig = {
+  superadmin: {
+    title: "Super Admin Command OS",
+    items: superAdminNavItems,
+  },
   admin: {
     title: "Super Admin Command OS",
-    items: adminNavItems,
+    items: superAdminNavItems,
+  },
+  masteradmin: {
+    title: "Master Admin Content & Scholar OS",
+    items: masterAdminNavItems,
   },
   institution: {
     title: "Academy Directorate",

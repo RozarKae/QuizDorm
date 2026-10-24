@@ -59,6 +59,7 @@ import { useAuth } from "@/components/auth/AuthProvider";
 import { signOutUser } from "@/app/auth/actions";
 import { useSound } from "@/components/audio/useSound";
 import { AudioToggle } from "@/components/audio/AudioToggle";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 interface SidebarProps {
   role: string;
@@ -171,8 +172,11 @@ export default function Sidebar({
 
   const getRoleHomeUrl = (r: string) => {
     switch (r) {
+      case "superadmin":
       case "admin":
         return "/admin";
+      case "masteradmin":
+        return "/admin/master";
       case "institution":
       case "school":
         return "/school";
@@ -323,6 +327,9 @@ export default function Sidebar({
             )}
             <div className="flex items-center justify-between">
               <AudioToggle showLabel={!collapsed} className="w-full justify-start" />
+            </div>
+            <div className="flex items-center justify-between">
+              <ThemeToggle showLabel={!collapsed} className="w-full justify-start" />
             </div>
           </div>
 

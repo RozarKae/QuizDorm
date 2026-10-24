@@ -19,23 +19,27 @@ export default function DashboardLayout({ children, role: propRole }: DashboardL
   const { role: authRole } = useAuth();
 
   // Dynamic role resolution:
-  // 1. Explicit admin route prefix -> enforce admin
-  // 2. Explicit school route prefix -> enforce institution
-  // 3. Explicit teacher route prefix -> enforce handler
-  // 4. Explicit student route prefix -> student/member/subscriber
-  // 5. In shared /dashboard/* routes or root: if logged-in user is admin, enforce admin
-  // 6. Fallback to authRole or propRole
+  // 1. Explicit /admin/master route prefix -> enforce masteradmin
+  // 2. Explicit admin route prefix -> enforce superadmin (or masteradmin if logged in as masteradmin)
+  // 3. Explicit school route prefix -> enforce institution
+  // 4. Explicit teacher route prefix -> enforce handler
+  // 5. Explicit student route prefix -> student/member/subscriber
+  // 6. In shared /dashboard/* routes or root: prioritize logged-in role
   let effectiveRole = propRole || "subscriber";
-  if (pathname.startsWith("/admin")) {
-    effectiveRole = "admin";
+  if (pathname.startsWith("/admin/master")) {
+    effectiveRole = "masteradmin";
+  } else if (pathname.startsWith("/admin")) {
+    effectiveRole = authRole === "masteradmin" ? "masteradmin" : "superadmin";
   } else if (pathname.startsWith("/school")) {
     effectiveRole = "institution";
   } else if (pathname.startsWith("/teacher")) {
     effectiveRole = "handler";
   } else if (pathname.startsWith("/student")) {
     effectiveRole = authRole || propRole || "subscriber";
-  } else if (authRole === "admin") {
-    effectiveRole = "admin";
+  } else if (authRole === "masteradmin") {
+    effectiveRole = "masteradmin";
+  } else if (authRole === "superadmin" || authRole === "admin") {
+    effectiveRole = "superadmin";
   } else if (authRole) {
     effectiveRole = authRole;
   }

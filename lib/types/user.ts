@@ -1,4 +1,6 @@
 export type UserRole =
+  | "superadmin"
+  | "masteradmin"
   | "admin"
   | "institution"
   | "handler"
@@ -34,8 +36,11 @@ export interface PasswordValidationResult {
  */
 export function getRoleDisplayName(role: UserRole | string | undefined | null): string {
   switch (role) {
+    case "superadmin":
     case "admin":
-      return "Platform Admin";
+      return "Super Admin";
+    case "masteradmin":
+      return "Master Admin";
     case "institution":
     case "school":
       return "Institution";
@@ -55,10 +60,16 @@ export function getRoleDisplayName(role: UserRole | string | undefined | null): 
 /**
  * Maps legacy role tokens to their modern canonical system roles
  */
-export function normalizeCanonicalRole(role: string | undefined | null): "admin" | "institution" | "handler" | "member" | "subscriber" {
+export function normalizeCanonicalRole(
+  role: string | undefined | null
+): "superadmin" | "masteradmin" | "admin" | "institution" | "handler" | "member" | "subscriber" {
   switch (role) {
+    case "superadmin":
+      return "superadmin";
+    case "masteradmin":
+      return "masteradmin";
     case "admin":
-      return "admin";
+      return "superadmin";
     case "institution":
     case "school":
       return "institution";

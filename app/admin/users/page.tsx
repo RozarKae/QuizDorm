@@ -106,9 +106,13 @@ export default function AdminUsersPage() {
     const matchesRole =
       roleFilter === "all" ||
       u.role === roleFilter ||
-      (roleFilter === "member" && u.role === "student") ||
-      (roleFilter === "handler" && u.role === "teacher") ||
-      (roleFilter === "institution" && u.role === "school");
+      (roleFilter === "superadmin" && (u.role === "superadmin" || u.role === "admin")) ||
+      (roleFilter === "masteradmin" && u.role === "masteradmin") ||
+      (roleFilter === "employees" && (u.role === "handler" || u.role === "teacher")) ||
+      (roleFilter === "institution" && (u.role === "institution" || u.role === "school")) ||
+      (roleFilter === "handler" && (u.role === "handler" || u.role === "teacher")) ||
+      (roleFilter === "member" && (u.role === "member" || u.role === "student")) ||
+      (roleFilter === "subscriber" && u.role === "subscriber");
     const matchesStatus = statusFilter === "all" || u.status === statusFilter;
     const matchesProvider =
       providerFilter === "all" || u.authProvider === providerFilter;
@@ -207,7 +211,9 @@ export default function AdminUsersPage() {
 
   // Metrics Counters
   const totalCount = users.length;
-  const adminCount = users.filter((u) => u.role === "admin").length;
+  const adminCount = users.filter(
+    (u) => u.role === "admin" || u.role === "superadmin" || u.role === "masteradmin"
+  ).length;
   const facultyCount = users.filter(
     (u) =>
       u.role === "handler" ||
@@ -353,6 +359,57 @@ export default function AdminUsersPage() {
 
       {/* 3. Search & Multi-Filter Control Matrix */}
       <div className="rounded-[6px] bg-[#0C1210] border border-[rgba(160,190,170,0.14)] p-4 space-y-4">
+        {/* Quick Filter Governance Tabs */}
+        <div className="flex flex-wrap items-center gap-2 pb-3 border-b border-[rgba(160,190,170,0.1)]">
+          <span className="text-[10px] font-mono uppercase tracking-wider text-[#69786F] mr-1">
+            Governance View:
+          </span>
+          <button
+            type="button"
+            onClick={() => setRoleFilter("all")}
+            className={`px-3 py-1 rounded-[3px] font-mono text-xs font-semibold uppercase tracking-wider transition-colors ${
+              roleFilter === "all"
+                ? "bg-[#65F59A] text-[#070B0A]"
+                : "bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(160,190,170,0.15)]"
+            }`}
+          >
+            All Identities
+          </button>
+          <button
+            type="button"
+            onClick={() => setRoleFilter("employees")}
+            className={`px-3 py-1 rounded-[3px] font-mono text-xs font-semibold uppercase tracking-wider transition-colors ${
+              roleFilter === "employees"
+                ? "bg-[#65F59A] text-[#070B0A]"
+                : "bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(160,190,170,0.15)]"
+            }`}
+          >
+            Employees & Faculty Handlers
+          </button>
+          <button
+            type="button"
+            onClick={() => setRoleFilter("institution")}
+            className={`px-3 py-1 rounded-[3px] font-mono text-xs font-semibold uppercase tracking-wider transition-colors ${
+              roleFilter === "institution"
+                ? "bg-[#65F59A] text-[#070B0A]"
+                : "bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(160,190,170,0.15)]"
+            }`}
+          >
+            Institutes & Campuses
+          </button>
+          <button
+            type="button"
+            onClick={() => setRoleFilter("subscriber")}
+            className={`px-3 py-1 rounded-[3px] font-mono text-xs font-semibold uppercase tracking-wider transition-colors ${
+              roleFilter === "subscriber"
+                ? "bg-[#65F59A] text-[#070B0A]"
+                : "bg-[#111B17] text-[#A0AEA5] hover:text-[#F2F7F3] border border-[rgba(160,190,170,0.15)]"
+            }`}
+          >
+            Subscribers & Scholars
+          </button>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
           {/* Search bar */}
           <div className="md:col-span-5 relative">
@@ -374,11 +431,12 @@ export default function AdminUsersPage() {
               className="w-full text-xs p-2.5 rounded-[4px] border border-[rgba(160,190,170,0.15)] bg-[#111B17] text-[#F2F7F3] font-mono focus:outline-none focus:border-[#65F59A]/50"
             >
               <option value="all">All Roles</option>
-              <option value="admin">Superadmin</option>
-              <option value="institution">Institution</option>
-              <option value="handler">Handler</option>
-              <option value="member">Member</option>
-              <option value="subscriber">Subscriber</option>
+              <option value="superadmin">Super Admin</option>
+              <option value="masteradmin">Master Admin</option>
+              <option value="employees">Employees / Handlers</option>
+              <option value="institution">Institutes / Campuses</option>
+              <option value="subscriber">Subscribers / Scholars</option>
+              <option value="member">Students / Members</option>
             </select>
           </div>
 
@@ -528,8 +586,10 @@ export default function AdminUsersPage() {
                           value={user.role}
                           onChange={(e) => handleRoleChange(user, e.target.value as UserRole)}
                           className={`text-xs px-2 py-1 rounded-[3px] font-mono font-bold uppercase tracking-wider border cursor-pointer ${
-                            user.role === "admin"
+                            user.role === "admin" || user.role === "superadmin"
                               ? "bg-[rgba(101,245,154,0.12)] text-[#65F59A] border-[rgba(101,245,154,0.3)]"
+                              : user.role === "masteradmin"
+                              ? "bg-[rgba(168,85,247,0.12)] text-[#C084FC] border-[rgba(168,85,247,0.3)]"
                               : user.role === "institution" || user.role === "school"
                               ? "bg-[rgba(56,217,176,0.12)] text-[#38D9B0] border-[rgba(56,217,176,0.3)]"
                               : user.role === "handler" || user.role === "teacher"
@@ -539,9 +599,10 @@ export default function AdminUsersPage() {
                               : "bg-[rgba(96,165,250,0.12)] text-[#60A5FA] border-[rgba(96,165,250,0.3)]"
                           }`}
                         >
-                          <option value="admin">Superadmin</option>
+                          <option value="superadmin">Super Admin</option>
+                          <option value="masteradmin">Master Admin</option>
                           <option value="institution">Institution</option>
-                          <option value="handler">Handler</option>
+                          <option value="handler">Handler (Employee)</option>
                           <option value="member">Member</option>
                           <option value="subscriber">Subscriber</option>
                         </select>
@@ -842,9 +903,10 @@ export default function AdminUsersPage() {
                   >
                     <option value="subscriber">Subscriber</option>
                     <option value="member">Member</option>
-                    <option value="handler">Handler</option>
+                    <option value="handler">Handler (Employee)</option>
                     <option value="institution">Institution</option>
-                    <option value="admin">Superadmin</option>
+                    <option value="masteradmin">Master Admin</option>
+                    <option value="superadmin">Super Admin</option>
                   </select>
                 </div>
 

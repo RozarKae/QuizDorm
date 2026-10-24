@@ -52,13 +52,40 @@
 
 @layer base {
   :root,
-  .dark {
+  .light {
     --font-plus-jakarta: "Plus Jakarta Sans", sans-serif;
     --font-inter: "Inter", sans-serif;
     --font-jetbrains-mono: "JetBrains Mono", monospace;
     --font-space-grotesk: "Space Grotesk", sans-serif;
 
-    /* Immersive Future OS Foundation */
+    /* Crisp High-Contrast Light Foundation */
+    --background: #F8FAF9;
+    --foreground: #0A130E;
+    --card: #FFFFFF;
+    --card-foreground: #0A130E;
+    --popover: #FFFFFF;
+    --popover-foreground: #0A130E;
+    --border: rgba(10, 25, 18, 0.12);
+    --border-strong: rgba(10, 25, 18, 0.24);
+    --input: #EDF3EF;
+    --ring: #059669;
+    --radius: 0.375rem;
+
+    --primary: #059669;
+    --primary-foreground: #FFFFFF;
+    --secondary: #F0F4F2;
+    --secondary-foreground: #0A130E;
+    --accent: #0D9488;
+    --accent-foreground: #FFFFFF;
+    --destructive: #DC2626;
+    --destructive-foreground: #FFFFFF;
+    --muted: #F0F4F2;
+    --muted-foreground: #44584E;
+    --text-muted: #667A70;
+  }
+
+  .dark {
+    /* Immersive Future OS Foundation (Dark) */
     --background: #070B0A;
     --foreground: #F2F7F3;
     --card: #0C1210;
@@ -129,6 +156,171 @@
   color: var(--card-foreground);
   border: 1px solid rgba(160, 190, 170, 0.16);
   border-radius: var(--radius);
+}
+
+/* ==========================================================================
+   Light Theme Inversion System
+   Automatically inverts dark tokens into high-contrast paper/card surfaces
+   ========================================================================== */
+
+html.light,
+html:not(.dark) {
+  color-scheme: light;
+}
+
+/* Background Inversions */
+html.light .bg-\[\#070B0A\],
+html.light [class*="bg-[#070B0A]"] {
+  background-color: #F8FAF9 !important;
+}
+
+html.light .bg-\[\#0C1210\],
+html.light [class*="bg-[#0C1210]"] {
+  background-color: #FFFFFF !important;
+}
+
+html.light .bg-\[\#111B17\],
+html.light [class*="bg-[#111B17]"] {
+  background-color: #F0F4F2 !important;
+}
+
+html.light .bg-\[\#17251E\],
+html.light [class*="bg-[#17251E]"] {
+  background-color: #E2ECE6 !important;
+}
+
+html.light .bg-\[\#070B0A\]\/80,
+html.light .bg-\[\#070B0A\]\/85,
+html.light .bg-\[\#070B0A\]\/90 {
+  background-color: rgba(248, 250, 249, 0.88) !important;
+}
+
+html.light .bg-\[\#0C1210\]\/95 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+html.light .bg-\[\#0C1210\]\/60 {
+  background-color: rgba(255, 255, 255, 0.65) !important;
+}
+
+html.light .bg-\[\#070B0A\]\/40 {
+  background-color: rgba(240, 244, 242, 0.6) !important;
+}
+
+html.light .bg-\[\#070B0A\]\/60 {
+  background-color: rgba(240, 244, 242, 0.7) !important;
+}
+
+html.light .bg-\[\#111B17\]\/60 {
+  background-color: rgba(240, 244, 242, 0.7) !important;
+}
+
+/* Text Inversions */
+html.light .text-\[\#F2F7F3\],
+html.light [class*="text-[#F2F7F3]"] {
+  color: #0A130E !important;
+}
+
+html.light .text-\[\#A0AEA5\],
+html.light [class*="text-[#A0AEA5]"] {
+  color: #44584E !important;
+}
+
+html.light .text-\[\#69786F\],
+html.light [class*="text-[#69786F]"] {
+  color: #667A70 !important;
+}
+
+html.light .text-\[\#C0CEC5\],
+html.light [class*="text-[#C0CEC5]"] {
+  color: #1F2D26 !important;
+}
+
+/* Emerald Accents: Shift neon to accessible deep emerald in light mode */
+html.light .text-\[\#65F59A\] {
+  color: #059669 !important;
+}
+
+html.light .text-\[\#38D9B0\] {
+  color: #0D9488 !important;
+}
+
+html.light .bg-\[\#65F59A\] {
+  background-color: #059669 !important;
+  color: #FFFFFF !important;
+}
+
+html.light .bg-\[\#38D9B0\] {
+  background-color: #0D9488 !important;
+  color: #FFFFFF !important;
+}
+
+html.light [class*="bg-[rgba(101,245,154"] {
+  background-color: rgba(5, 150, 105, 0.12) !important;
+}
+
+html.light [class*="border-[rgba(101,245,154"] {
+  border-color: rgba(5, 150, 105, 0.3) !important;
+}
+
+html.light [class*="bg-[rgba(56,217,176"] {
+  background-color: rgba(13, 148, 136, 0.12) !important;
+}
+
+html.light [class*="border-[rgba(56,217,176"] {
+  border-color: rgba(13, 148, 136, 0.3) !important;
+}
+
+/* Border Inversions */
+html.light [class*="border-[rgba(160,190,170"] {
+  border-color: rgba(10, 25, 18, 0.12) !important;
+}
+
+html.light [class*="divide-[rgba(160,190,170"] {
+  border-color: rgba(10, 25, 18, 0.12) !important;
+}
+
+html.light .os-card-elevated {
+  background-color: #FFFFFF !important;
+  border-color: rgba(10, 25, 18, 0.12) !important;
+}
+
+/* Hover & Focus Interactions */
+html.light .hover\:text-\[\#65F59A\]:hover {
+  color: #059669 !important;
+}
+
+html.light .hover\:text-\[\#F2F7F3\]:hover {
+  color: #0A130E !important;
+}
+
+html.light .hover\:bg-\[\#17251E\]:hover {
+  background-color: #E2ECE6 !important;
+}
+
+html.light .hover\:bg-\[\#111B17\]:hover {
+  background-color: #EDF3EF !important;
+}
+
+html.light .hover\:border-\[\#65F59A\]\/35:hover,
+html.light .hover\:border-\[\#65F59A\]\/40:hover {
+  border-color: rgba(5, 150, 105, 0.45) !important;
+}
+
+html.light .focus-visible\:border-\[\#65F59A\]:focus-visible {
+  border-color: #059669 !important;
+}
+
+/* Inputs & Forms in Light Mode */
+html.light input,
+html.light select,
+html.light textarea {
+  color: #0A130E !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #667A70 !important;
 }
 
 /* Subtle Emerald Glow */

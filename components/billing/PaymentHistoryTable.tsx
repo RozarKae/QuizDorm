@@ -13,9 +13,9 @@ export const SAMPLE_TRANSACTIONS: PaymentTransaction[] = [
     subscriptionId: "sub-101",
     userId: "usr-teacher-1",
     provider: "razorpay",
-    amountUSD: 29,
+    amountUSD: 29.99,
     amountINR: 2499,
-    currency: "USD",
+    currency: "INR",
     status: "success",
     paymentMethod: "UPI (Google Pay)",
     timestamp: "2026-01-01T10:30:00Z",
@@ -27,7 +27,7 @@ export const SAMPLE_TRANSACTIONS: PaymentTransaction[] = [
     subscriptionId: "sub-100",
     userId: "usr-teacher-1",
     provider: "stripe",
-    amountUSD: 12,
+    amountUSD: 11.99,
     amountINR: 999,
     currency: "USD",
     status: "success",
@@ -82,7 +82,11 @@ export function PaymentHistoryTable() {
                 </td>
                 <td className="p-3 font-sans font-semibold uppercase text-[#F2F7F3]">{txn.provider}</td>
                 <td className="p-3 font-sans text-[#A0AEA5]">{txn.paymentMethod}</td>
-                <td className="p-3 font-bold text-[#F2F7F3]">${txn.amountUSD.toFixed(2)}</td>
+                <td className="p-3 font-bold text-[#F2F7F3]">
+                  {txn.currency === "INR"
+                    ? `₹${txn.amountINR.toLocaleString("en-IN")}`
+                    : `$${txn.amountUSD.toFixed(2)}`}
+                </td>
                 <td className="p-3 font-sans">
                   <span className="px-2 py-0.5 rounded-[2px] text-[10px] font-mono font-bold bg-[rgba(101,245,154,0.1)] text-[#65F59A] border border-[rgba(101,245,154,0.2)] uppercase">
                     {txn.status}

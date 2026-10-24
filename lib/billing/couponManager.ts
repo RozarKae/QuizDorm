@@ -10,7 +10,11 @@ export class CouponManager {
   /**
    * Validate coupon code and return discount calculation
    */
-  public static validateCoupon(code: string, originalAmountUSD: number): { valid: boolean; discountAmountUSD: number; finalAmountUSD: number; message: string } {
+  public static validateCoupon(
+    code: string,
+    originalAmountUSD: number,
+    currencySymbol: string = "$"
+  ): { valid: boolean; discountAmountUSD: number; finalAmountUSD: number; message: string } {
     const cleanCode = code.trim().toUpperCase();
     const coupon = VALID_COUPONS.find((c) => c.code === cleanCode);
 
@@ -19,7 +23,7 @@ export class CouponManager {
         valid: false,
         discountAmountUSD: 0,
         finalAmountUSD: originalAmountUSD,
-        message: "Invalid or expired coupon code.",
+        message: "Invalid or expired promotional code.",
       };
     }
 
@@ -36,7 +40,7 @@ export class CouponManager {
       valid: true,
       discountAmountUSD: Number(discountUSD.toFixed(2)),
       finalAmountUSD: finalUSD,
-      message: `Coupon [${coupon.code}] applied successfully! You saved $${discountUSD.toFixed(2)}.`,
+      message: `Coupon [${coupon.code}] applied! You saved ${currencySymbol}${discountUSD.toFixed(2)}.`,
     };
   }
 }

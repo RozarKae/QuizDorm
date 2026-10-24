@@ -8,9 +8,12 @@ import { MockPaymentProvider } from "@/lib/billing/providers/mockPaymentProvider
 import { RazorpayPaymentProvider } from "@/lib/billing/providers/razorpayProvider";
 import { StripePaymentProvider } from "@/lib/billing/providers/stripeProvider";
 import { CouponManager } from "@/lib/billing/couponManager";
+import { useCurrency } from "@/lib/hooks/useCurrency";
+import { CurrencySelector } from "@/components/billing/CurrencySelector";
+import { CurrencyManager } from "@/lib/billing/currencyManager";
 import Logo from "@/components/layout/Logo";
 
-import { CreditCard, ShieldCheck, Lock, Check, Zap, ArrowRight, Tag } from "lucide-react";
+import { CreditCard, ShieldCheck, Lock, Check, Zap, ArrowRight, Tag, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
@@ -19,28 +22,46 @@ import Link from "next/link";
 function CheckoutContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { currency, formatPrice, config } = useCurrency();
 
   const planId = (searchParams?.get("plan") as SubscriptionPlanId) || "professional";
   const cycle = searchParams?.get("cycle") === "annual" ? "annual" : "monthly";
 
   const plan = SubscriptionManager.getPlan(planId);
-  const basePriceUSD = cycle === "annual" ? plan.priceAnnualUSD : plan.priceMonthlyUSD;
+  const basePriceINR = cycle === "annual" ? plan.priceAnnualINR : plan.priceMonthlyINR;
+  const basePriceSelected = currency === "INR" ? basePriceINR : CurrencyManager.convertINR(basePriceINR, currency);
 
-  const [provider, setProvider] = useState<PaymentProviderType>("mock");
+  // Set default provider based on currency
+  const [provider, setProvider] = useState<PaymentProviderType>(() => (currency === "INR" ? "razorpay" : "stripe"));
   const [couponCode, setCouponCode] = useState("");
-  const [discountUSD, setDiscountUSD] = useState(0);
+  const [discountPercent, setDiscountPercent] = useState(0);
   const [gstin, setGstin] = useState("");
   const [processing, setProcessing] = useState(false);
 
-  const finalPriceUSD = Math.max(0, basePriceUSD - discountUSD);
-  const taxUSD = Number((finalPriceUSD * 0.18).toFixed(2));
-  const totalAmountUSD = Number((finalPriceUSD + taxUSD).toFixed(2));
+  // Auto-switch gateway when user toggles currency
+  React.useEffect(() => {
+    if (currency === "INR" && provider === "stripe") {
+      setProvider("razorpay");
+    } else if (currency !== "INR" && provider === "razorpay") {
+      setProvider("stripe");
+    }
+  }, [currency]);
+
+  const discountAmount = Number(((basePriceSelected * discountPercent) / 100).toFixed(2));
+  const finalPrice = Math.max(0, basePriceSelected - discountAmount);
+
+  // Indian GST applies at 18% for INR billing; standard zero-rated export for international
+  const taxRate = currency === "INR" ? 0.18 : 0.0;
+  const taxAmount = Number((finalPrice * taxRate).toFixed(2));
+  const totalAmount = Number((finalPrice + taxAmount).toFixed(2));
 
   const handleApplyCoupon = () => {
     if (!couponCode.trim()) return;
-    const res = CouponManager.validateCoupon(couponCode, basePriceUSD);
+    const res = CouponManager.validateCoupon(couponCode, basePriceSelected, config.symbol);
     if (res.valid) {
-      setDiscountUSD(res.discountAmountUSD);
+      // Extract coupon percent or standard 20%
+      const pct = couponCode.toUpperCase().includes("50") ? 50 : 20;
+      setDiscountPercent(pct);
       toast.success(res.message);
     } else {
       toast.error(res.message);
@@ -57,11 +78,11 @@ function CheckoutContent() {
       const txn = await paymentEngine.processPayment({
         userId: "usr-teacher-1",
         planId: plan.id,
-        amountUSD: totalAmountUSD,
-        amountINR: totalAmountUSD * 83,
-        currency: "USD",
-        paymentMethod: `${provider.toUpperCase()} Gateway (1-Click Safe)`,
-        couponCode: discountUSD > 0 ? couponCode : undefined,
+        amountUSD: currency === "USD" ? totalAmount : CurrencyManager.convertINR(basePriceINR * 1.18, "USD"),
+        amountINR: currency === "INR" ? totalAmount : basePriceINR * 1.18,
+        currency: currency,
+        paymentMethod: `${provider.toUpperCase()} Gateway (${currency})`,
+        couponCode: discountAmount > 0 ? couponCode : undefined,
       });
 
       SubscriptionManager.updateSubscription(plan.id, cycle as any);
@@ -74,60 +95,83 @@ function CheckoutContent() {
     }
   };
 
-  return (
-    <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
-      {/* Left Column: Order Summary & Coupon */}
-      <div className="lg:col-span-6 space-y-6">
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-4 shadow-xl">
-          <h3 className="text-base font-bold text-white flex items-center">
-            <CreditCard className="w-5 h-5 text-indigo-400 mr-2" /> Order Summary
-          </h3>
+  const formattedBase = CurrencyManager.format(basePriceSelected, currency);
+  const formattedDiscount = CurrencyManager.format(discountAmount, currency);
+  const formattedTax = CurrencyManager.format(taxAmount, currency);
+  const formattedTotal = CurrencyManager.format(totalAmount, currency);
 
-          <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+  return (
+    <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 text-[#F2F7F3]">
+      {/* Left Column: Order Summary & Currency */}
+      <div className="lg:col-span-6 space-y-6">
+        <div className="bg-[#0C1210] border border-[rgba(160,190,170,0.16)] rounded-[8px] p-6 space-y-5 shadow-xl">
+          <div className="flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-4">
+            <h3 className="text-sm font-bold font-display text-[#F2F7F3] flex items-center">
+              <CreditCard className="w-4 h-4 text-[#65F59A] mr-2" /> Order Summary
+            </h3>
+            <CurrencySelector />
+          </div>
+
+          <div className="p-4 rounded-[4px] bg-[#111B17] border border-[rgba(160,190,170,0.12)] space-y-1.5">
             <div className="flex justify-between items-center">
-              <span className="font-bold text-sm text-indigo-300">{plan.name}</span>
-              <span className="text-xs font-mono uppercase bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded-full">
+              <span className="font-bold text-sm text-[#F2F7F3] font-display">{plan.name}</span>
+              <span className="text-[10px] font-mono uppercase bg-[rgba(101,245,154,0.15)] text-[#65F59A] px-2 py-0.5 rounded-[2px] border border-[rgba(101,245,154,0.3)] font-bold">
                 {cycle}
               </span>
             </div>
-            <p className="text-xs text-slate-400">{plan.description}</p>
+            <p className="text-xs text-[#A0AEA5] font-mono leading-relaxed">{plan.description}</p>
           </div>
 
-          <div className="space-y-2 text-xs font-mono">
+          <div className="space-y-2.5 text-xs font-mono">
             <div className="flex justify-between">
-              <span className="text-slate-400">Plan Base Price:</span>
-              <span>${basePriceUSD.toFixed(2)}</span>
+              <span className="text-[#A0AEA5]">Plan Base Price ({cycle}):</span>
+              <span className="font-semibold text-[#F2F7F3]">{formattedBase}</span>
             </div>
 
-            {discountUSD > 0 && (
-              <div className="flex justify-between text-emerald-400">
+            {discountAmount > 0 && (
+              <div className="flex justify-between text-[#65F59A]">
                 <span>Coupon Discount ({couponCode.toUpperCase()}):</span>
-                <span>-${discountUSD.toFixed(2)}</span>
+                <span>-{formattedDiscount}</span>
               </div>
             )}
 
             <div className="flex justify-between">
-              <span className="text-slate-400">GST / Tax (18%):</span>
-              <span>${taxUSD.toFixed(2)}</span>
+              <span className="text-[#A0AEA5]">
+                {currency === "INR" ? "GST (18% Educational SAC 998431):" : "Applicable Regional Taxes (0%):"}
+              </span>
+              <span className="font-semibold text-[#F2F7F3]">{formattedTax}</span>
             </div>
 
-            <div className="flex justify-between text-base font-extrabold text-white border-t border-slate-800 pt-2 font-mono">
+            <div className="flex justify-between text-base font-extrabold text-[#F2F7F3] border-t border-[rgba(160,190,170,0.12)] pt-3 font-mono">
               <span>Total Due Today:</span>
-              <span className="text-emerald-400">${totalAmountUSD.toFixed(2)}</span>
+              <span className="text-[#65F59A] font-display">{formattedTotal}</span>
             </div>
+
+            {currency !== "INR" && (
+              <p className="text-[10px] text-[#69786F] italic">
+                * Converted dynamically from base rate ₹{basePriceINR.toLocaleString("en-IN")}.
+              </p>
+            )}
           </div>
 
           {/* Coupon Redeemer */}
-          <div className="pt-2">
-            <label className="text-[11px] font-semibold text-slate-400 block mb-1">Have a Promo Coupon?</label>
+          <div className="pt-2 border-t border-[rgba(160,190,170,0.12)]">
+            <label className="text-[11px] font-mono text-[#A0AEA5] block mb-1.5">
+              Have a Promotional Voucher?
+            </label>
             <div className="flex space-x-2">
               <Input
                 value={couponCode}
                 onChange={(e) => setCouponCode(e.target.value)}
                 placeholder="TEACHER50"
-                className="bg-slate-950 text-xs font-mono uppercase border-slate-800"
+                className="bg-[#111B17] text-xs font-mono uppercase border-[rgba(160,190,170,0.18)] text-[#F2F7F3] focus:border-[#65F59A] rounded-[4px] h-9"
               />
-              <Button onClick={handleApplyCoupon} size="sm" variant="outline" className="text-xs rounded-xl border-slate-700">
+              <Button
+                onClick={handleApplyCoupon}
+                size="sm"
+                variant="outline"
+                className="text-xs font-mono rounded-[4px] border-[rgba(160,190,170,0.2)] hover:border-[#65F59A]/40 text-[#F2F7F3] h-9"
+              >
                 Apply
               </Button>
             </div>
@@ -135,54 +179,106 @@ function CheckoutContent() {
         </div>
       </div>
 
-      {/* Right Column: Payment Method & Pay Button */}
+      {/* Right Column: Payment Gateway & Details */}
       <div className="lg:col-span-6 space-y-6">
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 space-y-4 shadow-xl">
-          <h3 className="text-base font-bold text-white flex items-center">
-            <ShieldCheck className="w-5 h-5 text-emerald-400 mr-2" /> Payment Gateway & Details
+        <div className="bg-[#0C1210] border border-[rgba(160,190,170,0.16)] rounded-[8px] p-6 space-y-5 shadow-xl">
+          <h3 className="text-sm font-bold font-display text-[#F2F7F3] flex items-center border-b border-[rgba(160,190,170,0.12)] pb-4">
+            <ShieldCheck className="w-4 h-4 text-[#65F59A] mr-2" /> Payment Method &amp; Gateway
           </h3>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold text-slate-300 block">Select Payment Gateway</label>
+            <label className="text-xs font-mono font-bold text-[#A0AEA5] block uppercase tracking-wider">
+              {currency === "INR" ? "Indian Payment Rails (INR)" : "International Payment Rails"}
+            </label>
             <div className="grid grid-cols-3 gap-2">
-              {[
-                { id: "mock", label: "Instant Activation" },
-                { id: "razorpay", label: "Razorpay (UPI)" },
-                { id: "stripe", label: "Stripe (Cards)" },
-              ].map((p) => (
-                <button
-                  key={p.id}
-                  type="button"
-                  onClick={() => setProvider(p.id as any)}
-                  className={`p-3 rounded-2xl border text-xs font-bold text-center transition-all ${
-                    provider === p.id
-                      ? "border-emerald-500 bg-emerald-950/40 text-emerald-300 ring-2 ring-emerald-500/20"
-                      : "border-slate-800 bg-slate-950 text-slate-400 hover:border-slate-700"
-                  }`}
-                >
-                  {p.label}
-                </button>
-              ))}
+              {currency === "INR" ? (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => setProvider("razorpay")}
+                    className={`p-3 rounded-[4px] border text-xs font-mono font-bold text-center transition-all cursor-pointer ${
+                      provider === "razorpay"
+                        ? "border-[#65F59A] bg-[rgba(101,245,154,0.1)] text-[#65F59A] shadow-[0_0_12px_rgba(101,245,154,0.15)]"
+                        : "border-[rgba(160,190,170,0.14)] bg-[#111B17] text-[#A0AEA5] hover:border-[rgba(160,190,170,0.25)]"
+                    }`}
+                  >
+                    UPI / RuPay
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setProvider("stripe")}
+                    className={`p-3 rounded-[4px] border text-xs font-mono font-bold text-center transition-all cursor-pointer ${
+                      provider === "stripe"
+                        ? "border-[#65F59A] bg-[rgba(101,245,154,0.1)] text-[#65F59A] shadow-[0_0_12px_rgba(101,245,154,0.15)]"
+                        : "border-[rgba(160,190,170,0.14)] bg-[#111B17] text-[#A0AEA5] hover:border-[rgba(160,190,170,0.25)]"
+                    }`}
+                  >
+                    Credit / Debit
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setProvider("mock")}
+                    className={`p-3 rounded-[4px] border text-xs font-mono font-bold text-center transition-all cursor-pointer ${
+                      provider === "mock"
+                        ? "border-[#65F59A] bg-[rgba(101,245,154,0.1)] text-[#65F59A] shadow-[0_0_12px_rgba(101,245,154,0.15)]"
+                        : "border-[rgba(160,190,170,0.14)] bg-[#111B17] text-[#A0AEA5] hover:border-[rgba(160,190,170,0.25)]"
+                    }`}
+                  >
+                    Test Sandbox
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => setProvider("stripe")}
+                    className={`p-3 rounded-[4px] border text-xs font-mono font-bold text-center transition-all cursor-pointer ${
+                      provider === "stripe"
+                        ? "border-[#65F59A] bg-[rgba(101,245,154,0.1)] text-[#65F59A] shadow-[0_0_12px_rgba(101,245,154,0.15)]"
+                        : "border-[rgba(160,190,170,0.14)] bg-[#111B17] text-[#A0AEA5] hover:border-[rgba(160,190,170,0.25)]"
+                    }`}
+                  >
+                    Stripe Cards
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setProvider("mock")}
+                    className={`p-3 rounded-[4px] border text-xs font-mono font-bold text-center transition-all cursor-pointer ${
+                      provider === "mock"
+                        ? "border-[#65F59A] bg-[rgba(101,245,154,0.1)] text-[#65F59A] shadow-[0_0_12px_rgba(101,245,154,0.15)]"
+                        : "border-[rgba(160,190,170,0.14)] bg-[#111B17] text-[#A0AEA5] hover:border-[rgba(160,190,170,0.25)]"
+                    }`}
+                  >
+                    Test Sandbox
+                  </button>
+                </>
+              )}
             </div>
           </div>
 
           <div>
-            <label className="text-xs font-bold text-slate-300 block mb-1">Organization GSTIN (Optional)</label>
+            <label className="text-xs font-mono text-[#A0AEA5] block mb-1.5">
+              {currency === "INR" ? "Institution GSTIN (Optional for ITC):" : "Tax ID / VAT Number (Optional):"}
+            </label>
             <Input
               value={gstin}
               onChange={(e) => setGstin(e.target.value)}
-              placeholder="27AAACQ1234F1Z9"
-              className="bg-slate-950 text-xs font-mono border-slate-800"
+              placeholder={currency === "INR" ? "33AAAAA0000A1Z5" : "EU123456789"}
+              className="bg-[#111B17] text-xs font-mono border-[rgba(160,190,170,0.18)] text-[#F2F7F3] focus:border-[#65F59A] rounded-[4px] h-9"
             />
           </div>
 
           <Button
             onClick={handlePayNow}
             disabled={processing}
-            className="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold text-sm rounded-2xl py-6 shadow-lg shadow-emerald-500/30"
+            className="w-full bg-[#65F59A] hover:bg-[#65F59A]/90 text-[#070B0A] font-extrabold font-mono text-xs rounded-[4px] py-6 shadow-[0_0_20px_rgba(101,245,154,0.25)] tracking-wider transition-all cursor-pointer"
           >
-            {processing ? "Processing Order..." : `Pay $${totalAmountUSD.toFixed(2)} & Activate Plan`}
+            {processing ? "PROCESSING PAYMENT..." : `AUTHORIZE ${formattedTotal} & ACTIVATE PLAN`}
           </Button>
+
+          <p className="text-[10px] text-center font-mono text-[#69786F]">
+            Secured via 256-bit TLS encryption. Invoices instantly accessible in your Directorate Console.
+          </p>
         </div>
       </div>
     </div>
@@ -191,16 +287,24 @@ function CheckoutContent() {
 
 export default function CheckoutPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white p-4 sm:p-8 space-y-6">
+    <div className="min-h-screen bg-[#070B0A] text-[#F2F7F3] p-4 sm:p-8 space-y-6">
       {/* Header */}
-      <div className="max-w-4xl mx-auto flex items-center justify-between border-b border-white/10 pb-4">
-        <Logo />
-        <span className="text-xs font-mono font-bold text-emerald-400 bg-white/10 px-3 py-1 rounded-full border border-white/10 flex items-center">
-          <Lock className="w-3.5 h-3.5 mr-1" /> 256-Bit SSL Encrypted Checkout
+      <div className="max-w-4xl mx-auto flex items-center justify-between border-b border-[rgba(160,190,170,0.12)] pb-4">
+        <div className="flex items-center space-x-4">
+          <Link
+            href="/dashboard/billing"
+            className="inline-flex items-center text-xs font-mono text-[#A0AEA5] hover:text-[#65F59A] transition-colors"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back
+          </Link>
+          <Logo />
+        </div>
+        <span className="text-[10px] font-mono font-bold text-[#65F59A] bg-[#111B17] px-3 py-1 rounded-[3px] border border-[rgba(101,245,154,0.3)] flex items-center shadow-[0_0_10px_rgba(101,245,154,0.15)]">
+          <Lock className="w-3 h-3 mr-1" /> 256-Bit SSL Encrypted Checkout
         </span>
       </div>
 
-      <Suspense fallback={<div className="text-center font-mono py-12 text-slate-400">Loading Checkout Order...</div>}>
+      <Suspense fallback={<div className="text-center font-mono py-12 text-[#A0AEA5]">Loading Checkout Order...</div>}>
         <CheckoutContent />
       </Suspense>
     </div>

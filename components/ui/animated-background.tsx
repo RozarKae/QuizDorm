@@ -14,7 +14,7 @@ import React from "react";
  */
 export default function AnimatedBackground() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden bg-[#070B0A]" aria-hidden="true">
+    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden bg-[#070B0A] transition-colors duration-300 dark:opacity-100 opacity-50" aria-hidden="true">
       {/* 1. Neon Green Center-Top Aurora Wave */}
       <div 
         className="absolute top-[-10%] left-[20%] w-[60vw] h-[45vh] rounded-full opacity-25 animate-aurora-float"

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import AuthProvider from "@/components/auth/AuthProvider";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import AnimatedBackground from "@/components/ui/animated-background";
 import MouseGlow from "@/components/ui/mouse-glow";
 
@@ -26,7 +27,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="dark h-full antialiased selection:bg-[#65F59A] selection:text-[#070B0A]"
+      suppressHydrationWarning
+      className="h-full antialiased selection:bg-[#65F59A] selection:text-[#070B0A]"
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,10 +38,18 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col bg-background text-foreground font-sans overflow-x-hidden relative transition-colors duration-150">
-        <AnimatedBackground />
-        <MouseGlow />
-        <AuthProvider>{children}</AuthProvider>
+      <body className="min-h-full flex flex-col bg-background text-foreground font-sans overflow-x-hidden relative transition-colors duration-200">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          storageKey="quizdorm-theme"
+          disableTransitionOnChange={false}
+        >
+          <AnimatedBackground />
+          <MouseGlow />
+          <AuthProvider>{children}</AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

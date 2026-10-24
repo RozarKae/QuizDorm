@@ -2,11 +2,12 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { User, Settings, HelpCircle, LogOut } from "lucide-react";
+import { User, Settings, HelpCircle, LogOut, Sun, Moon, Laptop } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { signOutUser } from "@/app/auth/actions";
+import { useTheme } from "next-themes";
 
 interface ProfileMenuProps {
   role: string;
@@ -17,6 +18,7 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
   const [isSigningOut, setIsSigningOut] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const { user, profile, logout } = useAuth();
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -132,7 +134,61 @@ export default function ProfileMenu({ role }: ProfileMenuProps) {
               </Link>
             </div>
 
-            <div className="border-t border-[rgba(160,190,170,0.12)] my-0.5" />
+            <div className="border-t border-[rgba(160,190,170,0.12)] my-1" />
+
+            {/* Theme Preference Switcher */}
+            <div className="px-3.5 py-1.5 flex items-center justify-between text-xs text-[#A0AEA5]">
+              <div className="flex items-center space-x-2">
+                {theme === "system" ? (
+                  <Laptop className="h-3.5 w-3.5 text-[#38D9B0]" />
+                ) : resolvedTheme === "dark" ? (
+                  <Moon className="h-3.5 w-3.5 text-[#65F59A]" />
+                ) : (
+                  <Sun className="h-3.5 w-3.5 text-[#F59E0B]" />
+                )}
+                <span>Theme</span>
+              </div>
+              <div className="flex items-center space-x-1 font-mono text-[10px] bg-[#0C1210] p-0.5 rounded border border-[rgba(160,190,170,0.12)]">
+                <button
+                  type="button"
+                  onClick={() => setTheme("light")}
+                  className={`px-1.5 py-0.5 rounded-[2px] transition-colors cursor-pointer ${
+                    theme === "light"
+                      ? "bg-[#65F59A] text-[#070B0A] font-bold"
+                      : "text-[#69786F] hover:text-[#F2F7F3]"
+                  }`}
+                  title="Light mode"
+                >
+                  Light
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTheme("dark")}
+                  className={`px-1.5 py-0.5 rounded-[2px] transition-colors cursor-pointer ${
+                    theme === "dark"
+                      ? "bg-[#65F59A] text-[#070B0A] font-bold"
+                      : "text-[#69786F] hover:text-[#F2F7F3]"
+                  }`}
+                  title="Dark mode"
+                >
+                  Dark
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTheme("system")}
+                  className={`px-1.5 py-0.5 rounded-[2px] transition-colors cursor-pointer ${
+                    theme === "system"
+                      ? "bg-[#65F59A] text-[#070B0A] font-bold"
+                      : "text-[#69786F] hover:text-[#F2F7F3]"
+                  }`}
+                  title="System preference"
+                >
+                  Auto
+                </button>
+              </div>
+            </div>
+
+            <div className="border-t border-[rgba(160,190,170,0.12)] my-1" />
 
             <button
               type="button"
