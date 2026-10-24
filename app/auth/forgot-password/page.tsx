@@ -5,6 +5,7 @@ import AuthCard from "@/components/auth/AuthCard";
 import AuthHeader from "@/components/auth/AuthHeader";
 import AuthForm from "@/components/auth/AuthForm";
 import AuthFooter from "@/components/auth/AuthFooter";
+import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -57,11 +58,10 @@ export default function ForgotPasswordPage() {
               >
                 Email Address
               </label>
-              <Input
+              <EmailSuggestionInput
                 id="email"
                 name="email"
-                type="email"
-                placeholder="you@example.com"
+                placeholder="you@quizdorm.com"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}

@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import AuthCard from "@/components/auth/AuthCard";
 import AuthFooter from "@/components/auth/AuthFooter";
 import { Button } from "@/components/ui/button";
+import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { resendVerificationEmail } from "../actions";
@@ -172,9 +173,8 @@ function VerifyEmailContent() {
           </div>
 
           <div className="space-y-3 pt-2 max-w-sm mx-auto">
-            <Input
-              type="email"
-              placeholder="you@school.edu"
+            <EmailSuggestionInput
+              placeholder="you@quizdorm.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="w-full h-11 text-center bg-[#2A141A] border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3] placeholder:text-[#69786F] rounded-[4px] font-mono text-xs focus-visible:border-[#FF4D6D]"

@@ -3,6 +3,7 @@ import { UserPlus, Mail, Link as LinkIcon, Copy, Check } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
 import { Select } from "@/components/ui/select";
 import { toast } from "sonner";
 
@@ -61,12 +62,11 @@ export function InviteMemberModal({ open, onOpenChange, orgName }: InviteMemberM
               Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
-              <Input
-                type="email"
+              <Mail className="absolute left-3 top-2.5 h-4 w-4 text-gray-400 z-10 pointer-events-none" />
+              <EmailSuggestionInput
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="teacher@school.edu"
+                placeholder="teacher@quizdorm.com"
                 className="pl-9 text-xs h-10"
               />
             </div>

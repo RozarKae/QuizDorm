@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import {
@@ -883,10 +884,9 @@ export default function AdminUsersPage() {
 
               <div className="space-y-1">
                 <label className="text-[#A0AEA5] uppercase text-[10px]">Email Address</label>
-                <input
-                  type="email"
+                <EmailSuggestionInput
                   required
-                  placeholder="david.miller@campus.edu"
+                  placeholder="david.miller@quizdorm.com"
                   value={newEmail}
                   onChange={(e) => setNewEmail(e.target.value)}
                   className="w-full p-2.5 rounded-[4px] border border-[rgba(240, 160, 180,0.15)] bg-[#1D1013] text-[#F2F7F3] focus:outline-none focus:border-[#FF4D6D]/50"

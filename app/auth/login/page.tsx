@@ -6,6 +6,7 @@ import AuthHeader from "@/components/auth/AuthHeader";
 import AuthForm from "@/components/auth/AuthForm";
 import AuthFooter from "@/components/auth/AuthFooter";
 import PasswordInput from "@/components/auth/PasswordInput";
+import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -182,13 +183,12 @@ function LoginContent() {
             <label htmlFor="email" className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
               Email Address
             </label>
-            <Input
+            <EmailSuggestionInput
               id="email"
               name="email"
-              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
+              placeholder="you@quizdorm.com"
               required
               className="w-full font-mono text-xs h-10 rounded-[3px]"
             />

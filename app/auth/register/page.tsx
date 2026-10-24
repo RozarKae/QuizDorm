@@ -7,6 +7,7 @@ import AuthHeader from "@/components/auth/AuthHeader";
 import AuthForm from "@/components/auth/AuthForm";
 import AuthFooter from "@/components/auth/AuthFooter";
 import PasswordInput from "@/components/auth/PasswordInput";
+import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
 import PasswordStrengthIndicator, { evaluatePasswordStrength } from "@/components/auth/PasswordStrengthIndicator";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -139,9 +140,15 @@ export default function RegisterPage() {
 
           <div className="space-y-1.5">
             <label htmlFor="email" className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
-              Institutional Email
+              Email Address / Institutional Email
             </label>
-            <Input id="email" name="email" type="email" placeholder="alex@school.edu" required className="w-full font-mono text-xs h-10 rounded-[3px]" />
+            <EmailSuggestionInput
+              id="email"
+              name="email"
+              placeholder="alex@quizdorm.com"
+              required
+              className="w-full font-mono text-xs h-10 rounded-[3px]"
+            />
           </div>
 
           <div className="space-y-1.5">
