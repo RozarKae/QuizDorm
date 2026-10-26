@@ -93,5 +93,17 @@ describe("SuperAdmin and MasterAdmin Governance Split", () => {
       assert.ok(!allowedRolesForAdmin.includes("subscriber"));
       assert.ok(!allowedRolesForAdmin.includes("member"));
     });
+
+    it("verifies Option 2 Sovereign Admin Gateway (/admin/login) file and routing rules", () => {
+      const fs = require("node:fs");
+      const path = require("node:path");
+
+      const adminLoginPath = path.join(process.cwd(), "app/admin/login/page.tsx");
+      assert.ok(fs.existsSync(adminLoginPath), "app/admin/login/page.tsx must exist");
+
+      const proxyContent = fs.readFileSync(path.join(process.cwd(), "proxy.ts"), "utf-8");
+      assert.ok(proxyContent.includes('pathname === "/admin/login"'), "proxy.ts must recognize /admin/login");
+      assert.ok(proxyContent.includes('new URL("/admin/login", request.url)'), "proxy.ts must redirect unauthenticated admin paths to /admin/login");
+    });
   });
 });

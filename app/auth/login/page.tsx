@@ -282,6 +282,15 @@ function LoginContent() {
             Sign Up
           </Link>
         </p>
+        <div className="pt-2.5 border-t border-[rgba(240,160,180,0.12)] mt-2.5">
+          <Link
+            href="/admin/login"
+            className="text-[11px] font-mono text-[#69786F] hover:text-[#FF4D6D] transition-colors flex items-center justify-center space-x-1.5"
+          >
+            <Lock className="w-3 h-3 text-[#FF4D6D]" />
+            <span>Executive Governance? Sovereign Admin Gateway &rarr;</span>
+          </Link>
+        </div>
       </AuthFooter>
     </>
   );

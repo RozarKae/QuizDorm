@@ -102,13 +102,15 @@ export async function proxy(request: NextRequest) {
     pathname.startsWith("/api/live");
 
   // Paths requiring authentication
+  const isAdminAuthRoute = pathname === "/admin/login";
   const protectedRoutes = ["/admin", "/school", "/teacher", "/student", "/dashboard"];
   const isProtectedRoute =
     !isPublicLiveRoute &&
+    !isAdminAuthRoute &&
     protectedRoutes.some((route) => pathname === route || pathname.startsWith(`${route}/`));
 
   // Public Auth paths
-  const isAuthRoute = pathname.startsWith("/auth");
+  const isAuthRoute = pathname.startsWith("/auth") || isAdminAuthRoute;
 
   // Check if user is explicitly logging out or requesting logout
   const isExplicitLogout = request.nextUrl.searchParams.get("logout") === "true";
@@ -156,8 +158,19 @@ export async function proxy(request: NextRequest) {
     };
 
     if (isAuthRoute && !pathname.startsWith("/auth/verify-email") && !pathname.startsWith("/auth/reset-password")) {
-      // Authenticated user accessing auth page -> redirect to role-specific workspace
-      return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
+      // Authenticated user accessing auth page:
+      // If user is already an admin accessing /admin/login, route straight into their command OS
+      if (isAdminAuthRoute) {
+        if (role === "superadmin" || role === "admin") {
+          return NextResponse.redirect(new URL("/admin", request.url));
+        }
+        if (role === "masteradmin") {
+          return NextResponse.redirect(new URL("/admin/master", request.url));
+        }
+        // If a student or teacher visits /admin/login, allow them to view it to sign in with executive credentials
+      } else {
+        return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
+      }
     }
 
     // Direct /dashboard navigation -> redirect authenticated users to their canonical role workspace
@@ -171,7 +184,7 @@ export async function proxy(request: NextRequest) {
       if (!["masteradmin", "superadmin", "admin"].includes(role)) {
         return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
       }
-    } else if (pathname.startsWith("/admin")) {
+    } else if (pathname.startsWith("/admin") && !isAdminAuthRoute) {
       // Super Admin Root OS: accessible by superadmin and masteradmin
       if (!["superadmin", "admin", "masteradmin"].includes(role)) {
         return NextResponse.redirect(new URL(getRoleDefaultPath(role), request.url));
@@ -204,6 +217,12 @@ export async function proxy(request: NextRequest) {
   } else {
     // Unauthenticated user trying to access protected route
     if (isProtectedRoute) {
+      if (pathname.startsWith("/admin")) {
+        // Administrative path -> redirect directly to Sovereign Admin Gateway
+        const adminLoginUrl = new URL("/admin/login", request.url);
+        adminLoginUrl.searchParams.set("redirectedFrom", pathname);
+        return NextResponse.redirect(adminLoginUrl);
+      }
       const loginUrl = new URL("/auth/login", request.url);
       loginUrl.searchParams.set("redirectedFrom", pathname);
       return NextResponse.redirect(loginUrl);
