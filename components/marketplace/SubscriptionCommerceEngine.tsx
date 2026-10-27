@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { ShoppingCartItem } from "@/lib/types/marketplace";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  ShoppingBag, CreditCard, Tag, CheckCircle2, Trash2, Sparkles
+import { ShoppingCartItem } from "@/lib/types/marketplace";
+import {
+CreditCard,
+ShoppingBag
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockCart: ShoppingCartItem[] = [

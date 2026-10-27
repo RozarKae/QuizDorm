@@ -1,11 +1,9 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { BarChart3, TrendingUp, AlertTriangle, CheckCircle2, ArrowRight, Brain, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionDivider from "@/components/ui/section-divider";
+import { Activity,AlertTriangle,ArrowRight,Brain } from "lucide-react";
+import Link from "next/link";
 
 export default function AnalyticsSection() {
   const topics = [

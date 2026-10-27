@@ -1,6 +1,6 @@
+import AuthFooter from "@/components/auth/AuthFooter";
 import AuthHeader from "@/components/auth/AuthHeader";
 import RoleCard from "@/components/auth/RoleCard";
-import AuthFooter from "@/components/auth/AuthFooter";
 
 export default function ChooseRolePage() {
   const roles = [

@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { usePathname } from "next/navigation";
 import { useAuth } from "@/components/auth/AuthProvider";
+import Footer from "@/components/layout/Footer";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
-import Footer from "@/components/layout/Footer";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;

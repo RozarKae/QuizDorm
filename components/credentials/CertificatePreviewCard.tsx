@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { Certificate } from "@/lib/types/credentials";
-import { Award, ShieldCheck, QrCode, Download, Share2, Printer, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Certificate } from "@/lib/types/credentials";
+import { Award,Printer,QrCode,Share2,ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 
 interface CertificatePreviewCardProps {
@@ -14,7 +13,11 @@ interface CertificatePreviewCardProps {
 export function CertificatePreviewCard({ certificate, onPrint }: CertificatePreviewCardProps) {
   const handleDownloadPdf = () => {
     toast.success(`Preparing PDF download for ${certificate.verificationId}...`);
-    window.print();
+    if (onPrint) {
+      onPrint();
+    } else {
+      window.print();
+    }
   };
 
   const handleShare = () => {
@@ -30,7 +33,6 @@ export function CertificatePreviewCard({ certificate, onPrint }: CertificatePrev
   };
 
   const activeStyle = bgStyles[certificate.templateId] || bgStyles.classic_gold;
-  const isDark = certificate.templateId !== "classic_gold";
 
   return (
     <div className="space-y-4">

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 
 /**
  * Multi-Spectral Neon Ambient Texture (Minimal & Subtle)

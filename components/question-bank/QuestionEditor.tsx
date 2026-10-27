@@ -1,41 +1,24 @@
 "use client";
 
-import React, { useState } from "react";
-import { QuestionItem, QuestionType, QuestionOption, MatchPair, SequenceItem } from "@/lib/types/question";
-import { HotspotRegion, DragDropCategory, DragDropItem, DiagramLabelPin, TimelineEventItem, VideoTimestampMarker, CodeQuestionData } from "@/lib/types/media";
-import { QuestionTypeBadge } from "./QuestionTypeBadge";
-import { ImageDropzone } from "@/components/ui/image-dropzone";
-import { Select } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { RichTextEquationEditor } from "@/components/media/editors/RichTextEquationEditor";
-import { HotspotEditor } from "@/components/media/interactive/HotspotEditor";
 import { DragDropBuilder } from "@/components/media/interactive/DragDropBuilder";
+import { HotspotEditor } from "@/components/media/interactive/HotspotEditor";
 import { QuestionPreviewModal } from "@/components/media/QuestionPreviewModal";
+import { Button } from "@/components/ui/button";
+import { ImageDropzone } from "@/components/ui/image-dropzone";
+import { Input } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
 import { resolveTopicsForQuestion } from "@/lib/data/taxonomy";
+import { CodeQuestionData,DragDropCategory,DragDropItem,HotspotRegion,TimelineEventItem } from "@/lib/types/media";
+import { MatchPair,QuestionItem,QuestionOption,QuestionType,SequenceItem } from "@/lib/types/question";
 import {
-  Plus,
-  Trash2,
-  CheckCircle2,
-  Eye,
-  Save,
-  HelpCircle,
-  Tag as TagIcon,
-  ArrowUpDown,
-  ListOrdered,
-  Layers,
-  Sparkles,
-  Smartphone,
-  Monitor,
-  Target,
-  Move,
-  Volume2,
-  Video,
-  Code,
-  Globe,
-  Clock,
+Eye,
+HelpCircle,
+Plus,
+Save,
+Trash2
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface QuestionEditorProps {
@@ -45,12 +28,12 @@ interface QuestionEditorProps {
 
 export function QuestionEditor({ initialQuestion, onSave }: QuestionEditorProps) {
   const [title, setTitle] = useState(initialQuestion?.title || "");
-  const [description, setDescription] = useState(initialQuestion?.description || "");
+  const [description] = useState(initialQuestion?.description || "");
   const [type, setType] = useState<QuestionType>(initialQuestion?.type || "mcq_single");
   const [subject, setSubject] = useState(initialQuestion?.subject || "Mathematics");
   const [category, setCategory] = useState(initialQuestion?.category || "Algebra");
-  const [topic, setTopic] = useState(initialQuestion?.topic || "Calculus");
-  const [subtopic, setSubtopic] = useState(initialQuestion?.subtopic || "");
+  const [topic] = useState(initialQuestion?.topic || "Calculus");
+  const [subtopic] = useState(initialQuestion?.subtopic || "");
   const [difficulty, setDifficulty] = useState(initialQuestion?.difficulty || "Medium");
   const [marks, setMarks] = useState(initialQuestion?.marks || 4);
   const [timeLimit, setTimeLimit] = useState(initialQuestion?.timeLimitSeconds || 60);
@@ -59,10 +42,8 @@ export function QuestionEditor({ initialQuestion, onSave }: QuestionEditorProps)
   const [videoUrl, setVideoUrl] = useState(initialQuestion?.videoUrl || "");
   const [transcript, setTranscript] = useState(initialQuestion?.transcript || "");
   const [explanation, setExplanation] = useState(initialQuestion?.explanation || "");
-  const [hints, setHints] = useState<string[]>(initialQuestion?.hints || ["Recall power rule for derivatives"]);
-  const [newHint, setNewHint] = useState("");
-  const [tags, setTags] = useState<string[]>(initialQuestion?.tags || ["calculus", "derivatives", "grade12"]);
-  const [newTag, setNewTag] = useState("");
+  const [hints] = useState<string[]>(initialQuestion?.hints || ["Recall power rule for derivatives"]);
+  const [tags] = useState<string[]>(initialQuestion?.tags || ["calculus", "derivatives", "grade12"]);
 
   // Question Type specific states
   const [options, setOptions] = useState<QuestionOption[]>(
@@ -86,7 +67,7 @@ export function QuestionEditor({ initialQuestion, onSave }: QuestionEditorProps)
     ]
   );
 
-  const [sequenceItems, setSequenceItems] = useState<SequenceItem[]>(
+  const [sequenceItems] = useState<SequenceItem[]>(
     initialQuestion?.sequenceItems || [
       { id: "s1", text: "Identify the function f(x)", order: 1 },
       { id: "s2", text: "Apply power rule term by term", order: 2 },
@@ -135,18 +116,6 @@ export function QuestionEditor({ initialQuestion, onSave }: QuestionEditorProps)
 
   // Live Preview Modal
   const [previewModalOpen, setPreviewModalOpen] = useState(false);
-
-  // Tag management
-  const handleAddTag = () => {
-    if (newTag && !tags.includes(newTag.trim())) {
-      setTags([...tags, newTag.trim()]);
-      setNewTag("");
-    }
-  };
-
-  const handleRemoveTag = (tag: string) => {
-    setTags(tags.filter((t) => t !== tag));
-  };
 
   // Options handlers
   const handleAddOption = () => {
@@ -321,7 +290,7 @@ export function QuestionEditor({ initialQuestion, onSave }: QuestionEditorProps)
           </div>
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400 mb-1">Difficulty</label>
-            <Select value={difficulty} onChange={(e) => setDifficulty(e.target.value as any)} options={[{ value: "Easy", label: "Easy" }, { value: "Medium", label: "Medium" }, { value: "Hard", label: "Hard" }]} />
+            <Select value={difficulty} onChange={(e) => setDifficulty(e.target.value as QuestionItem["difficulty"])} options={[{ value: "Easy", label: "Easy" }, { value: "Medium", label: "Medium" }, { value: "Hard", label: "Hard" }]} />
           </div>
         </div>
 

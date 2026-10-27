@@ -1,4 +1,4 @@
-import { AuditLogEntry, SecurityAlert } from "@/lib/types/enterprise";
+import { AuditLogEntry,SecurityAlert } from "@/lib/types/enterprise";
 
 const STORAGE_KEY_AUDIT_LOGS = "quizdorm_audit_logs";
 

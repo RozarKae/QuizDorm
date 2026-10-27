@@ -1,7 +1,7 @@
 "use client";
 
+import { motion,useReducedMotion,type HTMLMotionProps } from "framer-motion";
 import React from "react";
-import { motion, useReducedMotion, type HTMLMotionProps } from "framer-motion";
 
 /**
  * Project Aurora // Motion Primitives

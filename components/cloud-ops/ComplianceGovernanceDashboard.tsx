@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { ComplianceFramework } from "@/lib/types/cloud-ops";
 import { Button } from "@/components/ui/button";
-import { 
-  ShieldCheck, CheckCircle2, FileText, Lock, Globe, Sparkles
+import { ComplianceFramework } from "@/lib/types/cloud-ops";
+import {
+FileText,
+ShieldCheck,
+Sparkles
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockFrameworks: ComplianceFramework[] = [
@@ -16,7 +18,7 @@ const mockFrameworks: ComplianceFramework[] = [
 ];
 
 export function ComplianceGovernanceDashboard() {
-  const [frameworks, setFrameworks] = useState<ComplianceFramework[]>(mockFrameworks);
+  const [frameworks] = useState<ComplianceFramework[]>(mockFrameworks);
 
   const handleRunAudit = () => {
     toast.success("Ran Real-Time Compliance Governance Audit across all global tenant regions: 100% Pass Rate!");

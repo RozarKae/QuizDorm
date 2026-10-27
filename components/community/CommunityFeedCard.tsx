@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { CommunityPost } from "@/lib/types/community";
-import { ThumbsUp, MessageSquare, CheckCircle2, Sparkles, User, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CommunityPost } from "@/lib/types/community";
+import { CheckCircle2,MessageSquare,Sparkles,ThumbsUp } from "lucide-react";
+import { useState } from "react";
 
 interface CommunityFeedCardProps {
   post: CommunityPost;

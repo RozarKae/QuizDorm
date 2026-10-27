@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { Certificate, AchievementBadge } from "@/lib/types/credentials";
-import { CertificatePreviewCard } from "./CertificatePreviewCard";
+import { AchievementBadge,Certificate } from "@/lib/types/credentials";
+import { Award,ShieldCheck } from "lucide-react";
+import { useState } from "react";
 import { BadgeCard } from "./BadgeCard";
-import { Award, ShieldCheck, Download, Share2, Eye } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CertificatePreviewCard } from "./CertificatePreviewCard";
 
 interface CredentialWalletCardProps {
   certificates: Certificate[];

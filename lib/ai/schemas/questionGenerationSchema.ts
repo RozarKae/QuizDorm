@@ -237,3 +237,36 @@ export type PdfQuestionGenerationInput = z.infer<
   typeof PdfQuestionGenerationInputSchema
 >;
 
+/**
+ * Generation source modes for Phase 2.0 AI Question Generation
+ */
+export const GenerationSourceModeEnum = z.enum(["topic", "syllabus", "text", "pdf"]);
+export type GenerationSourceMode = z.infer<typeof GenerationSourceModeEnum>;
+
+/**
+ * Enhanced configuration schema for batch question generation from any source
+ */
+export const BatchQuestionGenerationInputSchema = z.object({
+  sourceMode: GenerationSourceModeEnum.default("topic"),
+  topic: z.string().min(2, "Topic or Title is required"),
+  subject: z.string().min(2, "Subject is required").default("General Academic"),
+  category: z.string().optional(),
+  subtopic: z.string().optional(),
+  gradeLevel: z.string().default("Grade 9-10"),
+  difficulty: DifficultyLevelEnum.default("Medium"),
+  bloomsLevel: z.union([BloomsLevelEnum, z.literal("Mixed")]).default("Understand"),
+  questionCount: z.number().int().min(1).max(20).default(5),
+  questionTypes: z
+    .array(QuestionTypeEnum)
+    .optional()
+    .default(["mcq_single", "mcq_multiple", "true_false"]),
+  language: z.string().default("English"),
+  sourceContent: z.string().optional(),
+  syllabusUnits: z.array(z.string()).optional(),
+  targetLearningObjective: z.string().optional(),
+});
+export type BatchQuestionGenerationInput = z.infer<
+  typeof BatchQuestionGenerationInputSchema
+>;
+
+

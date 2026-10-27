@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
+import { Button } from "@/components/ui/button";
 import { EnterpriseAuditLogger } from "@/lib/enterprise/auditLogger";
 import { ComplianceEngine } from "@/lib/enterprise/complianceEngine";
-import { FileText, Download, CheckCircle2, Shield } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Download,FileText } from "lucide-react";
 import { toast } from "sonner";
 
 export function AuditLogTable() {

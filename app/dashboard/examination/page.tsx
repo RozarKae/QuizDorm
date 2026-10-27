@@ -1,20 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
-import { ExamManagementConsole } from "@/components/examination/ExamManagementConsole";
-import { SecureExamEngineSimulator } from "@/components/examination/SecureExamEngineSimulator";
 import { AIProctoringDashboard } from "@/components/examination/AIProctoringDashboard";
 import { CandidateAdmitCardManager } from "@/components/examination/CandidateAdmitCardManager";
-import { QuestionPaperSecurityHub } from "@/components/examination/QuestionPaperSecurityHub";
-import { EvaluationResultProcessor } from "@/components/examination/EvaluationResultProcessor";
 import { CertificateVerificationPortal } from "@/components/examination/CertificateVerificationPortal";
-import { ExamAnalyticsConsole } from "@/components/examination/ExamAnalyticsConsole";
 import { ComplianceAuditLogger } from "@/components/examination/ComplianceAuditLogger";
+import { EvaluationResultProcessor } from "@/components/examination/EvaluationResultProcessor";
+import { ExamAnalyticsConsole } from "@/components/examination/ExamAnalyticsConsole";
+import { ExamManagementConsole } from "@/components/examination/ExamManagementConsole";
 import { NationalInfrastructureMonitor } from "@/components/examination/NationalInfrastructureMonitor";
+import { QuestionPaperSecurityHub } from "@/components/examination/QuestionPaperSecurityHub";
+import { SecureExamEngineSimulator } from "@/components/examination/SecureExamEngineSimulator";
+import React,{ useState } from "react";
 
-import { 
-  ShieldCheck, Lock, Eye, UserCheck, Key, Award, 
-  QrCode, BarChart3, FileText, Server, Sparkles
+import {
+Award,
+BarChart3,
+Eye,
+FileText,
+Key,
+Lock,
+QrCode,
+Server,
+ShieldCheck,
+UserCheck
 } from "lucide-react";
 
 export type ExaminationModuleTab = 

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { LiveClassroomSuggestion } from "@/lib/types/ai-assistant";
 import { Button } from "@/components/ui/button";
-import { 
-  Eye, Sparkles, MessageSquare, Clock, Lightbulb, Zap, RefreshCw
+import { LiveClassroomSuggestion } from "@/lib/types/ai-assistant";
+import {
+Sparkles,
+Zap
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockSuggestions: LiveClassroomSuggestion[] = [
@@ -14,7 +15,7 @@ const mockSuggestions: LiveClassroomSuggestion[] = [
 ];
 
 export function AIClassroomCopilot() {
-  const [suggestions, setSuggestions] = useState<LiveClassroomSuggestion[]>(mockSuggestions);
+  const [suggestions] = useState<LiveClassroomSuggestion[]>(mockSuggestions);
 
   const handleTriggerSuggestion = (action: string) => {
     toast.success(`Triggered AI action: ${action}`);

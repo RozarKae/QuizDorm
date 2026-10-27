@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
-import { ExamAnalyticsData } from "@/lib/types/examination";
 import { Button } from "@/components/ui/button";
-import { 
-  BarChart3, TrendingUp, Users, Award, Download, 
-  Sparkles, CheckCircle2, AlertTriangle, Building2
+import { ExamAnalyticsData } from "@/lib/types/examination";
+import {
+BarChart3,
+Building2,
+Download,
+TrendingUp
 } from "lucide-react";
 import { toast } from "sonner";
 

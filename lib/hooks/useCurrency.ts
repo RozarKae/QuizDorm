@@ -1,41 +1,49 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { CurrencyConfig,CurrencyManager,SUPPORTED_CURRENCIES } from "@/lib/billing/currencyManager";
 import { CurrencyCode } from "@/lib/types/billing";
-import { CurrencyManager, SUPPORTED_CURRENCIES, CurrencyConfig } from "@/lib/billing/currencyManager";
+import { useCallback,useEffect,useState,useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "quizdorm_user_currency";
 const COOKIE_NAME = "quizdorm_currency";
+const emptySubscribe = () => () => {};
 
 export function useCurrency() {
-  const [currency, setCurrencyState] = useState<CurrencyCode>("INR");
-  const [detectedCountry, setDetectedCountry] = useState<string>("IN");
-  const [isManualOverride, setIsManualOverride] = useState<boolean>(false);
-  const [mounted, setMounted] = useState<boolean>(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
+
+  const [currency, setCurrencyState] = useState<CurrencyCode>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(STORAGE_KEY) as CurrencyCode | null;
+      if (saved && SUPPORTED_CURRENCIES[saved]) return saved;
+      const tzCountry = CurrencyManager.detectClientCountryFromTimezone();
+      return CurrencyManager.mapCountryToCurrency(tzCountry);
+    }
+    return "INR";
+  });
+
+  const [detectedCountry, setDetectedCountry] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      return CurrencyManager.detectClientCountryFromTimezone();
+    }
+    return "IN";
+  });
+
+  const [isManualOverride, setIsManualOverride] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(STORAGE_KEY) as CurrencyCode | null;
+      return Boolean(saved && SUPPORTED_CURRENCIES[saved]);
+    }
+    return false;
+  });
 
   useEffect(() => {
-    setMounted(true);
+    if (isManualOverride) return;
 
-    // 1. Check if user already explicitly selected a currency
-    const saved = localStorage.getItem(STORAGE_KEY) as CurrencyCode | null;
-    if (saved && SUPPORTED_CURRENCIES[saved]) {
-      setCurrencyState(saved);
-      setIsManualOverride(true);
-      return;
-    }
-
-    // 2. Synchronous fast fallback via timezone heuristic (no flashing)
-    const tzCountry = CurrencyManager.detectClientCountryFromTimezone();
-    const tzCurrency = CurrencyManager.mapCountryToCurrency(tzCountry);
-    setDetectedCountry(tzCountry);
-    setCurrencyState(tzCurrency);
-
-    // 3. Asynchronous network detection via server GeoIP API
+    // Asynchronous network detection via server GeoIP API
     fetch("/api/geo/detect")
       .then((res) => res.json())
       .then((data) => {
         if (data?.currency && SUPPORTED_CURRENCIES[data.currency as CurrencyCode]) {
-          // Only apply if user hasn't manually selected while request was pending
           const currentSaved = localStorage.getItem(STORAGE_KEY);
           if (!currentSaved) {
             setCurrencyState(data.currency as CurrencyCode);
@@ -43,10 +51,8 @@ export function useCurrency() {
           }
         }
       })
-      .catch(() => {
-        // Retain timezone heuristic on error
-      });
-  }, []);
+      .catch(() => {});
+  }, [isManualOverride]);
 
   const setCurrency = useCallback((newCurrency: CurrencyCode) => {
     if (!SUPPORTED_CURRENCIES[newCurrency]) return;

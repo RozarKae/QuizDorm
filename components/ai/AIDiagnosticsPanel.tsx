@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { Activity, AlertTriangle, ShieldCheck, Zap, RefreshCw, Server } from "lucide-react";
-import { AIUsageAnalytics, AILogger } from "@/lib/ai/analytics/analytics";
+import { AILogger,AIUsageAnalytics } from "@/lib/ai/analytics/analytics";
 import { AISettingsManager } from "@/lib/ai/settings/settingsManager";
+import { Activity,AlertTriangle,RefreshCw,Zap } from "lucide-react";
 
 export function AIDiagnosticsPanel() {
   const metrics = AIUsageAnalytics.getMetrics();

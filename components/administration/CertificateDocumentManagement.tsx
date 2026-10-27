@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { OfficialCertificate } from "@/lib/types/administration";
 import { Button } from "@/components/ui/button";
-import { 
-  FileText, QrCode, Download, ShieldCheck, CheckCircle2, Sparkles
+import { OfficialCertificate } from "@/lib/types/administration";
+import {
+Download,
+FileText,QrCode
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockDocs: OfficialCertificate[] = [

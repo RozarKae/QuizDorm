@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
 import { LiveSessionManager } from "@/lib/live/liveSessionManager";
+import { NextRequest,NextResponse } from "next/server";
 
 export async function POST(
   req: NextRequest,
@@ -39,9 +39,10 @@ export async function POST(
       success: true,
       session: result.session,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const errorMsg = err instanceof Error ? err.message : "Failed to execute host action";
     return NextResponse.json(
-      { success: false, error: err.message || "Failed to execute host action" },
+      { success: false, error: errorMsg },
       { status: 500 }
     );
   }

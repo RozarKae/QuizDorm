@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { Sparkles, CheckCircle2, Trophy, Rocket } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { CheckCircle2,Trophy } from "lucide-react";
 
 export function Version3MilestoneCard() {
   const version3Phases = [

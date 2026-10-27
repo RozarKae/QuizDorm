@@ -1,16 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { ParentManager } from "@/lib/parent/parentManager";
 import { ParentAIService } from "@/lib/parent/parentAIService";
+import { ParentManager } from "@/lib/parent/parentManager";
+import { useState } from "react";
 
 import { AIParentInsightCard } from "@/components/parent/AIParentInsightCard";
-import { FamilyAnalyticsCard } from "@/components/parent/FamilyAnalyticsCard";
 import { ChildSwitcherCard } from "@/components/parent/ChildSwitcherCard";
+import { FamilyAnalyticsCard } from "@/components/parent/FamilyAnalyticsCard";
 
-import { Sparkles, TrendingUp, HeartHandshake } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Sparkles } from "lucide-react";
 
 export default function AIParentInsightsPage() {
   const parent = ParentManager.getParentProfile();

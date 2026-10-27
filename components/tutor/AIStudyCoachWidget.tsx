@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { AIStudyCoach } from "@/lib/tutor/studyCoach";
-import { Sparkles, CheckCircle2, Target, Calendar } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { AIStudyCoach } from "@/lib/tutor/studyCoach";
+import { CheckCircle2,Sparkles } from "lucide-react";
 
 export function AIStudyCoachWidget() {
   const goals = AIStudyCoach.getGoals();

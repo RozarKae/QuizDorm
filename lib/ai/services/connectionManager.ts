@@ -1,5 +1,5 @@
-import { AIProviderType, ProviderHealth } from "@/lib/types/ai";
-import { getAIProvider, getAllAIProviders } from "../providers";
+import { AIProviderType } from "@/lib/types/ai";
+import { getAIProvider,getAllAIProviders } from "../providers";
 import { APIKeyManager } from "../security/apiKeyManager";
 
 export interface ConnectionTestResult {
@@ -21,7 +21,7 @@ export class AIConnectionManager {
     const apiKey = APIKeyManager.getApiKey(providerId);
 
     try {
-      const response = await provider.generateCompletion(
+      await provider.generateCompletion(
         {
           featureId: "test_prompt",
           userPrompt: "Ping connection test for QuizDorm AI Foundation.",
@@ -39,13 +39,14 @@ export class AIConnectionManager {
         message: `Successfully connected to ${provider.name}. Response latency: ${latencyMs}ms.`,
         timestamp: new Date().toISOString(),
       };
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const errMsg = err instanceof Error ? err.message : "Unknown error";
       return {
         providerId,
         providerName: provider.name,
         connected: false,
         latencyMs: Date.now() - startTime,
-        message: `Connection failed: ${err.message || "Unknown error"}`,
+        message: `Connection failed: ${errMsg}`,
         timestamp: new Date().toISOString(),
       };
     }

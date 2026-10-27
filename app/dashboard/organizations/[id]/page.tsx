@@ -1,23 +1,18 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { useOrganization } from "@/components/organization/OrganizationContext";
 import { BrandingPreview } from "@/components/organization/BrandingPreview";
-import { Button } from "@/components/ui/button";
+import { useOrganization } from "@/components/organization/OrganizationContext";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
-  Building2,
-  Users,
-  GraduationCap,
-  FileText,
-  Trophy,
-  Palette,
-  Settings,
-  ArrowRight,
-  UserPlus,
-  BookOpen,
+Building2,
+FileText,
+GraduationCap,
+Settings,
+UserPlus,
+Users
 } from "lucide-react";
+import Link from "next/link";
 
 export default function OrganizationProfilePage({ params }: { params: { id: string } }) {
   const { activeOrg } = useOrganization();

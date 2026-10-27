@@ -1,11 +1,9 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
-import { FileText, Shield, ArrowLeft, CheckCircle2, Scale, AlertCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Navbar from "@/components/landing/Navbar";
+import { ArrowLeft,CheckCircle2,Scale } from "lucide-react";
+import Link from "next/link";
 
 export default function TermsOfServicePage() {
   return (

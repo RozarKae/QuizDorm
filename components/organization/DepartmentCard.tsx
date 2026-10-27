@@ -1,7 +1,6 @@
-import React from "react";
-import { DepartmentItem } from "@/lib/types/organization";
 import { Button } from "@/components/ui/button";
-import { Building2, Users, FileText, Edit, Trash2 } from "lucide-react";
+import { DepartmentItem } from "@/lib/types/organization";
+import { Building2,Edit,Trash2 } from "lucide-react";
 
 interface DepartmentCardProps {
   department: DepartmentItem;

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
 import { ConfidenceScores } from "@/lib/types/ocr";
-import { ShieldCheck, AlertTriangle, HelpCircle, Info } from "lucide-react";
+import { AlertTriangle,HelpCircle,Info,ShieldCheck } from "lucide-react";
+import { useState } from "react";
 
 interface ConfidenceBadgeProps {
   confidence: ConfidenceScores | number;
@@ -53,7 +53,7 @@ export function ConfidenceBadge({ confidence, showDetails = false, size = "md" }
         type="button"
         onClick={() => setPopoverOpen(!popoverOpen)}
         className={`inline-flex items-center font-semibold rounded-full border transition-all hover:scale-[1.02] cursor-pointer ${badgeColor} ${sizeClasses[size]}`}
-        title="Click to view detailed OCR confidence scores"
+        title={`${label}: Click to view detailed OCR confidence scores`}
       >
         {icon}
         <span>{score}% Confidence</span>

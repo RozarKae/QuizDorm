@@ -1,11 +1,9 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { QuizItemAnalysis } from "@/lib/types/analytics";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, BarChart3, AlertTriangle, CheckCircle2, Clock } from "lucide-react";
+import { QuizItemAnalysis } from "@/lib/types/analytics";
+import { AlertTriangle,ArrowLeft,BarChart3 } from "lucide-react";
+import Link from "next/link";
 
 const mockItemAnalysis: QuizItemAnalysis[] = [
   {

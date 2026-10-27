@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { AuditLogEntry } from "@/lib/types/examination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  ShieldCheck, FileText, Download, Lock, Search, Filter, 
-  CheckCircle2, AlertTriangle, Clock, Key
+import { AuditLogEntry } from "@/lib/types/examination";
+import {
+Download,
+Search,
+ShieldCheck
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockAuditLogs: AuditLogEntry[] = [
@@ -17,7 +18,7 @@ const mockAuditLogs: AuditLogEntry[] = [
 ];
 
 export function ComplianceAuditLogger() {
-  const [logs, setLogs] = useState<AuditLogEntry[]>(mockAuditLogs);
+  const [logs] = useState<AuditLogEntry[]>(mockAuditLogs);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleExportCompliance = () => {

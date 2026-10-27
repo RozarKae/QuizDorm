@@ -1,15 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { OrganizationItem } from "@/lib/types/organization";
-import { useOrganization } from "@/components/organization/OrganizationContext";
 import { OrganizationCard } from "@/components/organization/OrganizationCard";
+import { useOrganization } from "@/components/organization/OrganizationContext";
 import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/empty-state";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { EmptyState } from "@/components/ui/empty-state";
-import { School, Plus, Search, Building2, Globe, Users } from "lucide-react";
+import { Building2,Plus,Search } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export default function OrganizationsPage() {

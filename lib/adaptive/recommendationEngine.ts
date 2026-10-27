@@ -1,4 +1,4 @@
-import { AIRecommendationItem, StudentKnowledgeProfile } from "@/lib/types/adaptive";
+import { AIRecommendationItem,StudentKnowledgeProfile } from "@/lib/types/adaptive";
 import { KnowledgeProfileManager } from "./profileManager";
 
 export class AIRecommendationEngine {

@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
-import { QuestionItem } from "@/lib/types/question";
 import { QuestionTypeBadge } from "@/components/question-bank/QuestionTypeBadge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { Search, Plus, Check } from "lucide-react";
-import { getStoredQuestions, getAllTopics, getAllGradeLevels } from "@/lib/data/question-bank";
+import { getAllGradeLevels,getAllTopics,getStoredQuestions } from "@/lib/data/question-bank";
 import { doesQuestionMatchTopic } from "@/lib/data/taxonomy";
+import { QuestionItem } from "@/lib/types/question";
+import { Check,Plus,Search } from "lucide-react";
+import { useEffect,useMemo,useState } from "react";
 import { toast } from "sonner";
 
 interface QuizQuestionPickerModalProps {
@@ -19,7 +19,7 @@ interface QuizQuestionPickerModalProps {
 }
 
 export function QuizQuestionPickerModal({ open, onOpenChange, onQuestionsSelected }: QuizQuestionPickerModalProps) {
-  const [bankQuestions, setBankQuestions] = useState<QuestionItem[]>([]);
+  const [bankQuestions, setBankQuestions] = useState<QuestionItem[]>(() => getStoredQuestions());
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTopic, setSelectedTopic] = useState("All");
   const [selectedGrade, setSelectedGrade] = useState("All");
@@ -27,17 +27,17 @@ export function QuizQuestionPickerModal({ open, onOpenChange, onQuestionsSelecte
 
   useEffect(() => {
     if (open) {
-      setBankQuestions(getStoredQuestions());
+      queueMicrotask(() => setBankQuestions(getStoredQuestions()));
     }
   }, [open]);
 
   const topicsList = useMemo(() => {
     return getAllTopics();
-  }, [bankQuestions]);
+  }, []);
 
   const gradesList = useMemo(() => {
     return getAllGradeLevels();
-  }, [bankQuestions]);
+  }, []);
 
   const filtered = useMemo(() => {
     return bankQuestions.filter((q) => {

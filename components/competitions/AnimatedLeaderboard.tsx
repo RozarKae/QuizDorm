@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { LiveParticipant } from "@/lib/types/competition";
-import { Trophy, Flame, ArrowUp, ArrowDown, Minus, ArrowRight, CheckCircle2, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { useSound } from "@/components/audio/useSound";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { LiveParticipant } from "@/lib/types/competition";
+import { AnimatePresence,motion } from "framer-motion";
+import { ArrowDown,ArrowRight,ArrowUp,CheckCircle2,Flame,Minus,Trophy,Zap } from "lucide-react";
+import { useEffect,useRef } from "react";
 
 interface AnimatedLeaderboardProps {
   participants: LiveParticipant[];

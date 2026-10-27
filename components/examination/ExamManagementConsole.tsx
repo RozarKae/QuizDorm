@@ -1,13 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
-import { HighStakesExam, ExamSession, ExamCategory } from "@/lib/types/examination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  ShieldCheck, Plus, Search, Filter, Calendar, Users, Clock, 
-  Lock, Copy, Archive, CheckCircle2, AlertCircle, Award, Layers, Sparkles
+import { ExamCategory,HighStakesExam } from "@/lib/types/examination";
+import {
+Archive,
+Copy,
+Lock,
+Plus,Search,
+ShieldCheck
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockExams: HighStakesExam[] = [
@@ -81,6 +84,17 @@ const mockExams: HighStakesExam[] = [
   },
 ];
 
+function duplicateExamConfig(exam: HighStakesExam): HighStakesExam {
+  return {
+    ...exam,
+    id: `exam-${Date.now()}`,
+    code: `${exam.code}-COPY`,
+    title: `${exam.title} (Copy)`,
+    status: "Scheduled",
+    createdAt: "Just now",
+  };
+}
+
 export function ExamManagementConsole() {
   const [exams, setExams] = useState<HighStakesExam[]>(mockExams);
   const [searchTerm, setSearchTerm] = useState("");
@@ -95,14 +109,7 @@ export function ExamManagementConsole() {
   const [newDuration, setNewDuration] = useState(180);
 
   const handleDuplicateExam = (exam: HighStakesExam) => {
-    const duplicated: HighStakesExam = {
-      ...exam,
-      id: `exam-${Date.now()}`,
-      code: `${exam.code}-COPY`,
-      title: `${exam.title} (Copy)`,
-      status: "Scheduled",
-      createdAt: "Just now",
-    };
+    const duplicated = duplicateExamConfig(exam);
     setExams([duplicated, ...exams]);
     toast.success(`Duplicated examination configuration: "${duplicated.title}"`);
   };

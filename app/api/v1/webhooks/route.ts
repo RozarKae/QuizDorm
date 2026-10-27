@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
 import { WebhookEngine } from "@/lib/developer/webhookEngine";
+import { NextResponse } from "next/server";
 
 export async function GET() {
   const endpoints = WebhookEngine.getEndpoints();

@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { AcademicImportExportService } from "@/lib/academic-integration/importExportService";
-import { Upload, FileText, CheckCircle2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AcademicImportExportService } from "@/lib/academic-integration/importExportService";
+import { FileText,Upload } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface AcademicImportWizardModalProps {
@@ -41,7 +41,7 @@ export function AcademicImportWizardModal({ open, onOpenChange }: AcademicImport
             <label className="font-bold text-gray-700 dark:text-gray-300 block mb-1">Target Record Type</label>
             <select
               value={recordType}
-              onChange={(e) => setRecordType(e.target.value as any)}
+              onChange={(e) => setRecordType(e.target.value as "students" | "teachers" | "questions")}
               className="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 font-bold"
             >
               <option value="students">Student Roster (CSV / JSON)</option>

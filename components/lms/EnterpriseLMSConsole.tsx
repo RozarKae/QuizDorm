@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { EnterpriseInstitution } from "@/lib/types/lms";
 import { Button } from "@/components/ui/button";
-import { 
-  Building2, Globe, ShieldCheck, Users, Award, 
-  CheckCircle2, Plus, Sparkles, Sliders
+import { EnterpriseInstitution } from "@/lib/types/lms";
+import {
+Building2,
+Plus,
+Sliders
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockInstitutions: EnterpriseInstitution[] = [

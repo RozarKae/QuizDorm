@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
-import { ResearchAnalyticsData } from "@/lib/types/research-studio";
 import { Button } from "@/components/ui/button";
-import { 
-  BarChart3, TrendingUp, Award, Download, Sparkles, BookOpen
+import { ResearchAnalyticsData } from "@/lib/types/research-studio";
+import {
+Award,
+BarChart3,
+Download,
+TrendingUp
 } from "lucide-react";
 import { toast } from "sonner";
 

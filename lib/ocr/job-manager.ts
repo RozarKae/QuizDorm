@@ -1,6 +1,6 @@
-import { OCRJob, OCRJobSettings, ExtractedQuestion } from "@/lib/types/ocr";
-import { OCREngineService } from "./engine";
+import { ExtractedQuestion,OCRJob,OCRJobSettings } from "@/lib/types/ocr";
 import { DuplicateDetectorService } from "./duplicate-detector";
+import { OCREngineService } from "./engine";
 
 const STORAGE_KEY = "quizdorm_ocr_jobs";
 
@@ -264,10 +264,10 @@ export class OCRJobManager {
       if (onProgressUpdate) onProgressUpdate(currentJob);
 
       return currentJob;
-    } catch (err: any) {
+    } catch (err: unknown) {
       currentJob.status = "failed";
       currentJob.currentStep = "Failed";
-      currentJob.error = err.message || "OCR processing failed";
+      currentJob.error = err instanceof Error ? err.message : "OCR processing failed";
       currentJob.updatedAt = new Date().toISOString();
       jobs[jobIndex] = currentJob;
       this.saveJobs(jobs);

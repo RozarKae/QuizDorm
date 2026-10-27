@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { ResourceRecommendation } from "@/lib/types/ai-assistant";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { 
-  Sparkles, BookOpen, Video, FileText, ExternalLink, Search, CheckCircle2
+import { ResourceRecommendation } from "@/lib/types/ai-assistant";
+import {
+BookOpen,
+ExternalLink,
+Sparkles
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockResources: ResourceRecommendation[] = [
@@ -16,8 +17,7 @@ const mockResources: ResourceRecommendation[] = [
 ];
 
 export function AIResourceRecommendationEngine() {
-  const [resources, setResources] = useState<ResourceRecommendation[]>(mockResources);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [resources] = useState<ResourceRecommendation[]>(mockResources);
 
   const handleOpenResource = (r: ResourceRecommendation) => {
     toast.success(`Opening recommended resource: "${r.title}"`);

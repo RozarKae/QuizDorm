@@ -1,15 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { Tenant } from "@/lib/types/enterprise";
-import { TenantManagerCard } from "@/components/enterprise/TenantManagerCard";
-import { SecurityOperationsCenterCard } from "@/components/enterprise/SecurityOperationsCenterCard";
 import { AuditLogTable } from "@/components/enterprise/AuditLogTable";
 import { ProviderHealthMonitorCard } from "@/components/enterprise/ProviderHealthMonitorCard";
+import { SecurityOperationsCenterCard } from "@/components/enterprise/SecurityOperationsCenterCard";
+import { TenantManagerCard } from "@/components/enterprise/TenantManagerCard";
 import { WhiteLabelDesignerModal } from "@/components/enterprise/WhiteLabelDesignerModal";
+import { Tenant } from "@/lib/types/enterprise";
+import { useState } from "react";
 
-import { ShieldCheck, Building, Activity, FileText, Lock, Sparkles, Server } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ShieldCheck } from "lucide-react";
 
 export default function EnterpriseControlCenterPage() {
   const [selectedTenant, setSelectedTenant] = useState<Tenant | null>(null);

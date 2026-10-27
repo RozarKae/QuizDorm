@@ -1,6 +1,4 @@
-import React from "react";
 import { QuestionType } from "@/lib/types/question";
-import { Badge } from "@/components/ui/badge";
 
 interface QuestionTypeBadgeProps {
   type: QuestionType;

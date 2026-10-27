@@ -1,12 +1,12 @@
-import { IAIProvider } from "./provider";
 import {
-  AIProviderType,
-  AIModel,
-  AIRequestPayload,
-  AIResponsePayload,
-  AIStreamChunk,
-  ProviderHealth,
+AIModel,
+AIProviderType,
+AIRequestPayload,
+AIResponsePayload,
+AIStreamChunk,
+ProviderHealth,
 } from "@/lib/types/ai";
+import { IAIProvider } from "./provider";
 
 export class MockAIProvider implements IAIProvider {
   id: AIProviderType = "mock";
@@ -33,6 +33,7 @@ export class MockAIProvider implements IAIProvider {
   }
 
   async generateCompletion(payload: AIRequestPayload, apiKey?: string): Promise<AIResponsePayload> {
+    void apiKey;
     const startTime = Date.now();
     await new Promise((resolve) => setTimeout(resolve, 200));
 
@@ -60,6 +61,7 @@ export class MockAIProvider implements IAIProvider {
     onChunk: (chunk: AIStreamChunk) => void,
     apiKey?: string
   ): Promise<AIResponsePayload> {
+    void apiKey;
     const startTime = Date.now();
     const requestId = payload.requestId || `req-${Date.now()}`;
 
@@ -98,6 +100,7 @@ export class MockAIProvider implements IAIProvider {
   }
 
   async checkHealth(apiKey?: string): Promise<ProviderHealth> {
+    void apiKey;
     return {
       providerId: "mock",
       providerName: "QuizDorm Edge Synthesizer",

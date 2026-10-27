@@ -1,57 +1,50 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { AIDocumentQuizModal } from "@/components/ai/AIDocumentQuizModal";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
-  Plus,
-  Search,
-  Filter,
-  Trash2,
-  Edit,
-  Eye,
-  Clock,
-  HelpCircle,
-  AlertTriangle,
-  CheckCircle2,
-  Zap,
-  Play,
-  Layers,
-  GraduationCap,
-  Sparkles,
-  BookOpen,
-  FileText,
-} from "lucide-react";
+Dialog,
+DialogContent,
+DialogDescription,
+DialogFooter,
+DialogHeader,
+DialogTitle,
+} from "@/components/ui/dialog";
+import { EmptyState } from "@/components/ui/empty-state";
+import { Input } from "@/components/ui/input";
+import { Pagination } from "@/components/ui/pagination";
+import { Select } from "@/components/ui/select";
+import { deleteQuizAction, getQuizzesAction } from "@/app/dashboard/quizzes/actions";
+import { getAllGradeLevels,getAllSubjects,getAllTopics } from "@/lib/data/question-bank";
+import { TopicSummary, deleteQuiz as removeStoredQuiz, generateInstantQuiz, getAllQuizzes, getTopicsSummary } from "@/lib/data/quizzes";
+import { DifficultyLevel } from "@/lib/types/question";
 import { QuizItem } from "@/lib/types/quiz";
 import {
-  getAllQuizzes,
-  deleteQuiz as removeStoredQuiz,
-  generateInstantQuiz,
-  getTopicsSummary,
-  TopicSummary,
-} from "@/lib/data/quizzes";
-import { getAllTopics, getAllSubjects, getAllGradeLevels } from "@/lib/data/question-bank";
-import { AIDocumentQuizModal } from "@/components/ai/AIDocumentQuizModal";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
-import { Pagination } from "@/components/ui/pagination";
-import { EmptyState } from "@/components/ui/empty-state";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@/components/ui/dialog";
+AlertTriangle,
+Clock,
+Edit,
+Eye,
+FileText,
+GraduationCap,
+HelpCircle,
+Layers,
+Play,
+Plus,
+Search,
+Sparkles,
+Trash2,
+Zap
+} from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useCallback,useEffect,useMemo,useState } from "react";
 import { toast } from "sonner";
 
 export default function QuizzesListPage() {
   const router = useRouter();
-  const [quizzes, setQuizzes] = useState<QuizItem[]>([]);
-  const [topicsSummary, setTopicsSummary] = useState<TopicSummary[]>([]);
+  const [quizzes, setQuizzes] = useState<QuizItem[]>(() => getAllQuizzes());
+  const [topicsSummary, setTopicsSummary] = useState<TopicSummary[]>(() => getTopicsSummary());
   const [searchTerm, setSearchTerm] = useState("");
   
   // Topic is the PRIMARY organization and filter
@@ -73,19 +66,32 @@ export default function QuizzesListPage() {
   const [aiDocModalOpen, setAiDocModalOpen] = useState(false);
 
   // Load quizzes from persistent repository
-  const loadData = () => {
+  const loadData = useCallback(async () => {
     const list = getAllQuizzes();
+    try {
+      const dbRes = await getQuizzesAction();
+      if (dbRes?.data && dbRes.data.length > 0) {
+        const dbIds = new Set(dbRes.data.map((q) => q.id));
+        const combined = [...dbRes.data, ...list.filter((q) => !dbIds.has(q.id))];
+        setQuizzes(combined);
+        setTopicsSummary(getTopicsSummary());
+        return;
+      }
+    } catch {
+      // Local fallback continues
+    }
     setQuizzes(list);
     setTopicsSummary(getTopicsSummary());
-  };
+  }, []);
 
   useEffect(() => {
-    loadData();
-
+    queueMicrotask(() => {
+      loadData();
+    });
     const handleUpdate = () => loadData();
     window.addEventListener("quizdorm:quizzes-updated", handleUpdate);
     return () => window.removeEventListener("quizdorm:quizzes-updated", handleUpdate);
-  }, []);
+  }, [loadData]);
 
   const allTopicsList = useMemo(() => ["All", ...getAllTopics()], []);
   const allSubjectsList = useMemo(() => ["All", ...getAllSubjects()], []);
@@ -133,7 +139,20 @@ export default function QuizzesListPage() {
     });
   }, [quizzes, searchTerm, topicFilter, gradeFilter, difficultyFilter, subjectFilter]);
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
+    const isDbRecord = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+    if (isDbRecord) {
+      try {
+        const res = await deleteQuizAction(id);
+        if (res.error) {
+          toast.error(`Database deletion error: ${res.error}`);
+          return;
+        }
+      } catch (err: unknown) {
+        toast.error(err instanceof Error ? err.message : "Failed to delete quiz from database");
+        return;
+      }
+    }
     removeStoredQuiz(id);
     setQuizzes((prev) => prev.filter((q) => q.id !== id));
     setDeleteTargetId(null);
@@ -571,7 +590,7 @@ export default function QuizzesListPage() {
         }}
         defaultSubject={subjectFilter !== "All" ? subjectFilter : "Science"}
         defaultTopic={topicFilter !== "All" ? topicFilter : ""}
-        defaultDifficulty={difficultyFilter !== "All" ? (difficultyFilter as any) : "Medium"}
+        defaultDifficulty={difficultyFilter !== "All" ? (difficultyFilter as DifficultyLevel) : "Medium"}
       />
     </div>
   );

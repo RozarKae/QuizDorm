@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { DisasterRecoveryPlan } from "@/lib/types/cloud-ops";
 import { Button } from "@/components/ui/button";
-import { 
-  ShieldCheck, RefreshCw, AlertTriangle, CheckCircle2, Database, Zap
+import { DisasterRecoveryPlan } from "@/lib/types/cloud-ops";
+import {
+CheckCircle2,
+ShieldCheck,
+Zap
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockDRPlan: DisasterRecoveryPlan = {
@@ -19,7 +21,7 @@ const mockDRPlan: DisasterRecoveryPlan = {
 };
 
 export function DisasterRecoveryControlCenter() {
-  const [drPlan, setDrPlan] = useState<DisasterRecoveryPlan>(mockDRPlan);
+  const [drPlan] = useState<DisasterRecoveryPlan>(mockDRPlan);
 
   const handleSimulateFailover = () => {
     toast.success("Simulated Disaster Recovery Failover drill! Traffic re-routed to EU-Central with zero data loss.");

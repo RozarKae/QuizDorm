@@ -1,7 +1,6 @@
-import React from "react";
-import { CalendarEvent } from "@/lib/types/academic";
-import { Calendar as CalendarIcon, Clock, Trophy, BookOpen, Flag } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { CalendarEvent } from "@/lib/types/academic";
+import { Calendar as CalendarIcon,Clock } from "lucide-react";
 
 interface AcademicCalendarWidgetProps {
   events: CalendarEvent[];

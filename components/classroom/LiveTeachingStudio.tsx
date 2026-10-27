@@ -1,14 +1,25 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Participant, LiveSession, LiveChatMessage, BreakoutRoom } from "@/lib/types/classroom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Video, VideoOff, Mic, MicOff, MonitorUp, Hand, Smile, Disc, 
-  Users, MessageSquare, Clock, ShieldCheck, DoorOpen, Play, Square,
-  Check, X, Sparkles, Volume2, UserCheck, AlertCircle, Send, Settings
+import { LiveChatMessage,Participant } from "@/lib/types/classroom";
+import {
+AlertCircle,
+Check,
+Clock,
+Disc,
+DoorOpen,
+Hand,
+MessageSquare,
+Mic,MicOff,MonitorUp,
+Send,
+Sparkles,
+Users,
+Video,VideoOff,
+Volume2,
+X
 } from "lucide-react";
+import React,{ useEffect,useState } from "react";
 import { toast } from "sonner";
 
 const mockParticipants: Participant[] = [
@@ -178,7 +189,7 @@ export function LiveTeachingStudio() {
                   <MonitorUp className="w-12 h-12 animate-pulse" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-white">Presenting "Quantum_Sim_v3.pdf"</h3>
+                  <h3 className="text-lg font-bold text-white">Presenting &ldquo;Quantum_Sim_v3.pdf&rdquo;</h3>
                   <p className="text-xs text-slate-400 max-w-md">
                     Screen sharing active in 1080p 60fps. All participants can see your shared presentation workspace.
                   </p>

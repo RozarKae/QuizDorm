@@ -1,33 +1,25 @@
 "use client";
 
-import React, { Suspense, useState, useEffect } from "react";
-import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { OfficialEmblem } from "@/components/layout/Logo";
+import { signInWithEmail } from "@/app/auth/actions";
 import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
 import PasswordInput from "@/components/auth/PasswordInput";
+import { OfficialEmblem } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { signInWithEmail } from "@/app/auth/actions";
-import { toast } from "sonner";
 import {
-  ShieldAlert,
-  Terminal,
-  Lock,
-  Key,
-  Cpu,
-  Layers,
-  ArrowRight,
-  ExternalLink,
-  Sparkles,
-  CheckCircle2,
-  AlertTriangle,
-  Server,
-  Fingerprint,
+Cpu,
+ExternalLink,
+Fingerprint,
+Layers,
+Server,
+ShieldAlert,
+Terminal
 } from "lucide-react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import React,{ Suspense,useState } from "react";
+import { toast } from "sonner";
 
 function AdminLoginContent() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const redirectedFrom = searchParams.get("redirectedFrom");
 
@@ -36,7 +28,7 @@ function AdminLoginContent() {
   const [password, setPassword] = useState("SuperAdmin#2026!");
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [systemUptime, setSystemUptime] = useState("99.98%");
+  const [systemUptime] = useState("99.98%");
 
   // Auto-fill preset credentials when toggling tabs
   const handleSelectPreset = (preset: "superadmin" | "masteradmin") => {
@@ -73,8 +65,9 @@ function AdminLoginContent() {
       toast.success("Executive session authorized!");
 
       if (typeof window !== "undefined") {
-        if ((res as any).isDemoAccount && (res as any).user) {
-          localStorage.setItem("quizdorm_demo_user", JSON.stringify((res as any).user));
+        const demoAuth = res as { isDemoAccount?: boolean; user?: unknown };
+        if (demoAuth.isDemoAccount && demoAuth.user) {
+          localStorage.setItem("quizdorm_demo_user", JSON.stringify(demoAuth.user));
         } else {
           localStorage.removeItem("quizdorm_demo_user");
         }
@@ -87,7 +80,7 @@ function AdminLoginContent() {
           : res.redirectUrl || (activePreset === "masteradmin" ? "/admin/master" : "/admin");
 
       window.location.href = destination;
-    } catch (err: any) {
+    } catch {
       setErrorMsg("Authentication handshake failure. Please retry.");
       toast.error("Failed to authenticate session.");
       setLoading(false);
@@ -109,7 +102,7 @@ function AdminLoginContent() {
               QUIZ<span className="text-[#FF4D6D]">DORM</span>
             </span>
             <span className="text-[10px] text-[#A0AEA5] uppercase tracking-widest hidden sm:inline">
-              // SOVEREIGN OS
+              {"// SOVEREIGN OS"}
             </span>
           </div>
         </div>

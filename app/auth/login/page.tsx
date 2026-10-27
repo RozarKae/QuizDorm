@@ -1,24 +1,22 @@
 "use client";
 
-import { Suspense, useState, useEffect } from "react";
 import AuthCard from "@/components/auth/AuthCard";
-import AuthHeader from "@/components/auth/AuthHeader";
-import AuthForm from "@/components/auth/AuthForm";
 import AuthFooter from "@/components/auth/AuthFooter";
-import PasswordInput from "@/components/auth/PasswordInput";
+import AuthForm from "@/components/auth/AuthForm";
+import AuthHeader from "@/components/auth/AuthHeader";
 import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
-import { Input } from "@/components/ui/input";
+import PasswordInput from "@/components/auth/PasswordInput";
 import { Button } from "@/components/ui/button";
+import { createClient,isSupabaseConfigured } from "@/lib/supabase/client";
+import { Lock } from "lucide-react";
 import Link from "next/link";
-import { useSearchParams, useRouter } from "next/navigation";
-import { signInWithEmail, signInWithGoogle } from "../actions";
-import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
+import { useSearchParams } from "next/navigation";
+import { Suspense,useEffect,useState } from "react";
 import { toast } from "sonner";
-import { Lock, Shield, CheckCircle2 } from "lucide-react";
+import { signInWithEmail,signInWithGoogle } from "../actions";
 
 function LoginContent() {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const redirectedFrom = searchParams.get("redirectedFrom");
   const roleParam = searchParams.get("role");
   const isLogout = searchParams.get("logout") === "true";
@@ -77,8 +75,9 @@ function LoginContent() {
     } else {
       toast.success("Logged in successfully!");
       if (typeof window !== "undefined") {
-        if ((res as any).isDemoAccount && (res as any).user) {
-          localStorage.setItem("quizdorm_demo_user", JSON.stringify((res as any).user));
+        const demoAuth = res as { isDemoAccount?: boolean; user?: unknown };
+        if (demoAuth.isDemoAccount && demoAuth.user) {
+          localStorage.setItem("quizdorm_demo_user", JSON.stringify(demoAuth.user));
         } else {
           // Real Supabase session: remove any stale demo accounts
           localStorage.removeItem("quizdorm_demo_user");

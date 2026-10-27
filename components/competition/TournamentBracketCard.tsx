@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { TournamentEngine } from "@/lib/competition/tournamentEngine";
 import { TournamentBracketNode } from "@/lib/types/competition";
-import { Swords, Trophy, Play, CheckCircle2 } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Swords } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function TournamentBracketCard() {

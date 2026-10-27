@@ -1,18 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import { Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle } from "@/components/ui/dialog";
 import { QuestionItem } from "@/lib/types/question";
-import { Eye, Monitor, Smartphone, Tablet, UserCheck, Shield, CheckCircle2 } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { HotspotViewer } from "./interactive/HotspotEditor";
-import { DragDropViewer } from "./interactive/DragDropBuilder";
+import { CheckCircle2,Eye,Monitor,Smartphone,Tablet,UserCheck } from "lucide-react";
+import { useState } from "react";
 import { DiagramLabelingViewer } from "./interactive/DiagramLabelingViewer";
+import { DragDropViewer } from "./interactive/DragDropBuilder";
+import { HotspotViewer } from "./interactive/HotspotEditor";
+import { InteractiveMapView } from "./interactive/InteractiveMapView";
 import { TimelineViewer } from "./interactive/TimelineViewer";
 import { AudioPlayerCard } from "./player/AudioPlayerCard";
-import { VideoQuizPlayer } from "./player/VideoQuizPlayer";
 import { CodeSnippetViewer } from "./player/CodeSnippetViewer";
-import { InteractiveMapView } from "./interactive/InteractiveMapView";
+import { VideoQuizPlayer } from "./player/VideoQuizPlayer";
 
 interface QuestionPreviewModalProps {
   question: QuestionItem;

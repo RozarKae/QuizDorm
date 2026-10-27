@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { CurriculumExchangePackage } from "@/lib/types/global-network";
-import { Share2, Download, BookOpen, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { CurriculumExchangePackage } from "@/lib/types/global-network";
+import { Download } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface CurriculumPackageCardProps {

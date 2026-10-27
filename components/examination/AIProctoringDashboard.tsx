@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { ProctorIncident, ProctorSeverity } from "@/lib/types/examination";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { 
-  Eye, AlertTriangle, ShieldAlert, Camera, Smartphone, Volume2, 
-  UserX, CheckCircle2, XCircle, Search, Filter, Sparkles, RefreshCw
+import { ProctorIncident } from "@/lib/types/examination";
+import {
+AlertTriangle,
+Eye,
+RefreshCw,
+ShieldAlert
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockIncidents: ProctorIncident[] = [
@@ -20,7 +21,7 @@ const mockIncidents: ProctorIncident[] = [
 export function AIProctoringDashboard() {
   const [incidents, setIncidents] = useState<ProctorIncident[]>(mockIncidents);
   const [selectedIncident, setSelectedIncident] = useState<ProctorIncident | null>(null);
-  const [filterSeverity, setFilterSeverity] = useState<string>("All");
+  const [filterSeverity] = useState<string>("All");
 
   const handleActionOnIncident = (id: string, newStatus: "Verified Violation" | "Dismissed") => {
     setIncidents((prev) =>

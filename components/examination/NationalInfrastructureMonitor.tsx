@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { RegionalNode } from "@/lib/types/examination";
 import { Button } from "@/components/ui/button";
-import { 
-  Server, Globe, Cpu, RefreshCw, ShieldCheck, Activity, 
-  AlertTriangle, HardDrive, Wifi, CheckCircle2, Zap
+import { RegionalNode } from "@/lib/types/examination";
+import {
+CheckCircle2,
+Globe,
+Server,
+Zap
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockNodes: RegionalNode[] = [

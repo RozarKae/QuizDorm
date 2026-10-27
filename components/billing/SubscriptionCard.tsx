@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { UserSubscription } from "@/lib/types/billing";
-import { SubscriptionManager } from "@/lib/billing/subscriptionManager";
-import { CreditCard, ShieldCheck, Users, Calendar, Sparkles } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { SubscriptionManager } from "@/lib/billing/subscriptionManager";
+import { UserSubscription } from "@/lib/types/billing";
+import { CreditCard,ShieldCheck } from "lucide-react";
 
 interface SubscriptionCardProps {
   subscription: UserSubscription;

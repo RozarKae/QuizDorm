@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { LMSConnectorManager } from "@/lib/academic-integration/lmsManager";
 import { LMSConnection } from "@/lib/types/academic-integration";
-import { BookOpen, RefreshCw, CheckCircle2, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { BookOpen,RefreshCw } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function LMSConnectorCard() {

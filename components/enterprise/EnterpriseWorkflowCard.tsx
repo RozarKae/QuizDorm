@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { EnterpriseWorkflowEngine } from "@/lib/enterprise/workflowEngine";
-import { GitMerge, CheckCircle2, Clock, ShieldCheck } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { EnterpriseWorkflowEngine } from "@/lib/enterprise/workflowEngine";
+import { GitMerge } from "lucide-react";
 
 export function EnterpriseWorkflowCard() {
   const workflows = EnterpriseWorkflowEngine.getWorkflows();

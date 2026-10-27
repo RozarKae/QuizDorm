@@ -1,6 +1,5 @@
-import React from "react";
 import { AnalyticsMetric } from "@/lib/types/analytics";
-import { TrendingUp, TrendingDown, Minus } from "lucide-react";
+import { Minus,TrendingDown,TrendingUp } from "lucide-react";
 
 interface AnalyticsKpiGridProps {
   metrics: AnalyticsMetric[];

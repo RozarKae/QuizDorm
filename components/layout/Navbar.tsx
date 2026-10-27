@@ -1,7 +1,7 @@
-import Link from "next/link";
 import Logo from "@/components/layout/Logo";
 import ThemeToggle from "@/components/layout/ThemeToggle";
 import { navigation } from "@/config/navigation";
+import Link from "next/link";
 
 export default function Navbar() {
   return (

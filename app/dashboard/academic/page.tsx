@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import { AcademicImportWizardModal } from "@/components/academic-integration/AcademicImportWizardModal";
+import { CurriculumMapperCard } from "@/components/academic-integration/CurriculumMapperCard";
 import { LMSConnectorCard } from "@/components/academic-integration/LMSConnectorCard";
 import { SISRosterSyncCard } from "@/components/academic-integration/SISRosterSyncCard";
-import { CurriculumMapperCard } from "@/components/academic-integration/CurriculumMapperCard";
-import { AcademicImportWizardModal } from "@/components/academic-integration/AcademicImportWizardModal";
+import { useState } from "react";
 
-import { School, BookOpen, Upload, Download, RefreshCw, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { School,Upload } from "lucide-react";
 
 export default function AcademicIntegrationsPage() {
   const [importModalOpen, setImportModalOpen] = useState(false);

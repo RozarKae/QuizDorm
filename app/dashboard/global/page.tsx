@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { GlobalInstitutionDirectory } from "@/lib/global-network/institutionDirectory";
-import { GlobalInstitution, InstitutionType } from "@/lib/types/global-network";
-import { GlobalInstitutionCard } from "@/components/global-network/GlobalInstitutionCard";
 import { CredentialWalletCard } from "@/components/global-network/CredentialWalletCard";
+import { GlobalInstitutionCard } from "@/components/global-network/GlobalInstitutionCard";
 import { Version3MilestoneCard } from "@/components/global-network/Version3MilestoneCard";
+import { GlobalInstitutionDirectory } from "@/lib/global-network/institutionDirectory";
+import { InstitutionType } from "@/lib/types/global-network";
+import { useState } from "react";
 
-import { Globe, Search, Share2, Award, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Globe,Search,Share2 } from "lucide-react";
 import Link from "next/link";
 
 export default function GlobalEducationHubPage() {

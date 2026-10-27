@@ -1,20 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { CloudTenant } from "@/lib/types/cloud-ops";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { CloudTenant } from "@/lib/types/cloud-ops";
 import {
-  Building2,
-  Globe,
-  Cpu,
-  ShieldCheck,
-  CheckCircle2,
-  Plus,
-  Sparkles,
-  Server,
-  Layers,
+Building2,
+Plus,
+Server
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockTenants: CloudTenant[] = [

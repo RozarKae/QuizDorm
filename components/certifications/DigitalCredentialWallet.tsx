@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { OpenBadge } from "@/lib/types/certifications";
 import { Button } from "@/components/ui/button";
-import { 
-  Award, Share2, Download, ExternalLink, ShieldCheck, Sparkles, Check
+import { OpenBadge } from "@/lib/types/certifications";
+import {
+Award,
+ExternalLink,
+Share2
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockBadges: OpenBadge[] = [
@@ -14,7 +16,7 @@ const mockBadges: OpenBadge[] = [
 ];
 
 export function DigitalCredentialWallet() {
-  const [badges, setBadges] = useState<OpenBadge[]>(mockBadges);
+  const [badges] = useState<OpenBadge[]>(mockBadges);
 
   const handleShareLinkedIn = (badgeName: string) => {
     toast.success(`Shared "${badgeName}" credential directly to your LinkedIn Profile!`);

@@ -1,14 +1,13 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { TournamentBracketCard } from "@/components/competition/TournamentBracketCard";
-import { AntiCheatConsoleCard } from "@/components/competition/AntiCheatConsoleCard";
-import { Swords, ShieldAlert, Play, Pause, ArrowLeft, Sparkles, Activity } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useSound } from "@/components/audio/useSound";
 import { useAuth } from "@/components/auth/AuthProvider";
+import { AntiCheatConsoleCard } from "@/components/competition/AntiCheatConsoleCard";
+import { TournamentBracketCard } from "@/components/competition/TournamentBracketCard";
+import { Button } from "@/components/ui/button";
 import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
+import { ArrowLeft,Pause,Play,ShieldAlert,Swords } from "lucide-react";
+import Link from "next/link";
 import { toast } from "sonner";
 
 export default function OrganizerConsolePage() {

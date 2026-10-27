@@ -1,10 +1,9 @@
-import React from "react";
 import { QuestionItem } from "@/lib/types/question";
 
 interface QuestionPaletteProps {
   questions: QuestionItem[];
   currentIndex: number;
-  answers: Record<string, any>;
+  answers: Record<string, unknown>;
   markedForReview: string[];
   onSelectQuestion: (index: number) => void;
 }

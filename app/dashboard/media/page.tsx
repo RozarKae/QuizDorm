@@ -1,29 +1,28 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { MediaAsset, MediaType, StorageQuotaUsage } from "@/lib/types/media";
-import { mediaStorage } from "@/lib/media/storage-provider";
-import { AIAssetGeneratorService } from "@/lib/media/ai-asset-generator";
-import { MediaUploadCard } from "@/components/media/MediaUploadCard";
-import { MediaLibraryGrid } from "@/components/media/MediaLibraryGrid";
 import { MediaCropTrimModal } from "@/components/media/MediaCropTrimModal";
+import { MediaLibraryGrid } from "@/components/media/MediaLibraryGrid";
+import { MediaUploadCard } from "@/components/media/MediaUploadCard";
+import { AIAssetGeneratorService } from "@/lib/media/ai-asset-generator";
+import { mediaStorage } from "@/lib/media/storage-provider";
+import { MediaAsset,StorageQuotaUsage } from "@/lib/types/media";
+import { useEffect,useState } from "react";
 
-import {
-  FileImage,
-  Upload,
-  Search,
-  Filter,
-  Star,
-  Sparkles,
-  HardDrive,
-  Image as ImageIcon,
-  Music,
-  Video,
-  Layers,
-  Plus,
-  Wand2,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+FileImage,
+Filter,
+HardDrive,
+Image as ImageIcon,
+Layers,
+Music,
+Search,
+Sparkles,
+Star,
+Upload,
+Video,
+Wand2
+} from "lucide-react";
 import { toast } from "sonner";
 
 export default function MultimediaWorkspacePage() {
@@ -38,10 +37,6 @@ export default function MultimediaWorkspacePage() {
   const [cropTrimOpen, setCropTrimOpen] = useState(false);
   const [aiGenerating, setAiGenerating] = useState(false);
 
-  useEffect(() => {
-    loadData();
-  }, []);
-
   const loadData = async () => {
     const loadedAssets = await mediaStorage.getAssets();
     setAssets(loadedAssets);
@@ -49,7 +44,21 @@ export default function MultimediaWorkspacePage() {
     setQuota(usage);
   };
 
+  useEffect(() => {
+    let active = true;
+    mediaStorage.getAssets().then((loadedAssets) => {
+      if (active) setAssets(loadedAssets);
+    });
+    mediaStorage.getQuotaUsage().then((usage) => {
+      if (active) setQuota(usage);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const handleUploadSuccess = (asset: MediaAsset) => {
+    void asset;
     loadData();
     setActiveTab("library");
   };
@@ -175,7 +184,7 @@ export default function MultimediaWorkspacePage() {
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
+                onClick={() => setActiveTab(tab.id as "library" | "upload" | "ai_assets" | "favorites" | "storage")}
                 className={`px-4 py-2.5 rounded-2xl text-xs font-bold flex items-center space-x-2 transition-all whitespace-nowrap ${
                   isActive
                     ? "bg-indigo-600 text-white shadow-md shadow-indigo-600/20"

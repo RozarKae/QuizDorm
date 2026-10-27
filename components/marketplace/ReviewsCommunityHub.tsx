@@ -1,20 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
 import { ProductReview } from "@/lib/types/marketplace";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { 
-  Star, MessageSquare, ShieldCheck, CheckCircle2, ThumbsUp
+import {
+ShieldCheck,
+Star
 } from "lucide-react";
-import { toast } from "sonner";
+import { useState } from "react";
 
 const mockReviews: ProductReview[] = [
   { id: "rev-1", productId: "prod-101", reviewerName: "Prof. Alan Turing", ratingStars: 5, comment: "Exceptional quality! The Pauli matrix numerical derivations saved our department hours of exam prep time.", date: "Feb 22, 2026", isVerifiedPurchase: true },
 ];
 
 export function ReviewsCommunityHub() {
-  const [reviews, setReviews] = useState<ProductReview[]>(mockReviews);
+  const [reviews] = useState<ProductReview[]>(mockReviews);
 
   return (
     <div className="space-y-6">

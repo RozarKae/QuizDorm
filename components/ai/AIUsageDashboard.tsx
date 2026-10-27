@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
 import { AIUsageAnalytics } from "@/lib/ai/analytics/analytics";
+import { BarChart3 } from "lucide-react";
 import { TokenUsageCard } from "./TokenUsageCard";
-import { BarChart3, TrendingUp, DollarSign, Layers } from "lucide-react";
 
 export function AIUsageDashboard() {
   const metrics = AIUsageAnalytics.getMetrics();

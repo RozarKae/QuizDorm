@@ -1,11 +1,14 @@
 "use client";
 
-import React from "react";
-import { ClassroomAnalyticsData } from "@/lib/types/classroom";
 import { Button } from "@/components/ui/button";
-import { 
-  BarChart3, TrendingUp, Users, CheckCircle2, AlertTriangle, 
-  Award, Calendar, Download, Sparkles, Activity, ShieldCheck
+import { ClassroomAnalyticsData } from "@/lib/types/classroom";
+import {
+Activity,
+AlertTriangle,
+BarChart3,
+CheckCircle2,
+Download,
+TrendingUp,Users
 } from "lucide-react";
 import { toast } from "sonner";
 

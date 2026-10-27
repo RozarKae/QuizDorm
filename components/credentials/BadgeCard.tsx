@@ -1,8 +1,8 @@
 "use client";
 
+import { AchievementBadge,BadgeLevel } from "@/lib/types/credentials";
+import { Flame,Lock,Sigma,Trophy,Zap } from "lucide-react";
 import React from "react";
-import { AchievementBadge, BadgeLevel } from "@/lib/types/credentials";
-import { Trophy, Flame, Sigma, Zap, ShieldCheck, Lock } from "lucide-react";
 
 interface BadgeCardProps {
   badge: AchievementBadge;

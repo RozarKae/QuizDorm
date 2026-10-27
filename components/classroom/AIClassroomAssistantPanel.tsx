@@ -1,13 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
-import { AILectureSummary, AITeachingInsight } from "@/lib/types/classroom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Sparkles, FileText, HelpCircle, Languages, BookOpen, CheckCircle2, 
-  Lightbulb, RefreshCw, Globe, Send, MessageSquare, Zap
+import { AILectureSummary } from "@/lib/types/classroom";
+import {
+CheckCircle2,
+FileText,
+Globe,
+Languages,
+Lightbulb,
+MessageSquare,
+RefreshCw,
+Sparkles,
+Zap
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockSummary: AILectureSummary = {
@@ -30,14 +37,8 @@ const mockSummary: AILectureSummary = {
   transcriptExcerpt: "Dr. Vance: 'Notice how when measurement angle θ is set to 45 degrees, classical correlation fails to predict the observed photon coincidence counts...'",
 };
 
-const mockInsights: AITeachingInsight[] = [
-  { id: "ins-1", metric: "Class Comprehension", insight: "88% of students correctly answered the live poll on Bell Inequality.", type: "positive" },
-  { id: "ins-2", metric: "Pacing Warning", insight: "Pacing was fast during tensor product matrix algebra (10:15 - 10:25 AM). Consider brief recap.", type: "warning" },
-  { id: "ins-3", metric: "Student Question Hotspot", insight: "3 questions centered around physical meaning of non-locality. Re-explain in next class.", type: "recommendation" },
-];
-
 export function AIClassroomAssistantPanel() {
-  const [summary, setSummary] = useState<AILectureSummary>(mockSummary);
+  const [summary] = useState<AILectureSummary>(mockSummary);
   const [selectedLanguage, setSelectedLanguage] = useState("English (US)");
   const [captionsActive, setCaptionsActive] = useState(true);
   const [studentQuestion, setStudentQuestion] = useState("");
@@ -116,7 +117,7 @@ export function AIClassroomAssistantPanel() {
             <span className="text-[10px] text-slate-400">Delay: ~200ms</span>
           </div>
           <p className="text-sm font-mono text-slate-200 bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-            "{mockSummary.transcriptExcerpt}"
+            &ldquo;{mockSummary.transcriptExcerpt}&rdquo;
           </p>
         </div>
       )}

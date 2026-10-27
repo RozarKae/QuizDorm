@@ -1,10 +1,8 @@
 "use client";
 
-import React from "react";
-import { TeacherClassInsight } from "@/lib/types/adaptive";
-import { Users, AlertTriangle, Sparkles, CheckCircle2, UserX } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { TeacherClassInsight } from "@/lib/types/adaptive";
+import { AlertTriangle,Sparkles,Users } from "lucide-react";
 
 export function TeacherInsightsCard() {
   const insight: TeacherClassInsight = {

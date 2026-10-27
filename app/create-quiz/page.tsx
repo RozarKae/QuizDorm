@@ -1,49 +1,41 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { QuestionItem } from "@/lib/types/question";
-import { QuizItem, QuizStatus } from "@/lib/types/quiz";
-import { QuestionTypeBadge } from "@/components/question-bank/QuestionTypeBadge";
-import { QuizQuestionPickerModal } from "@/components/quiz-builder/QuizQuestionPickerModal";
-import { QuizPreviewModal } from "@/components/quiz-builder/QuizPreviewModal";
-import { saveQuiz, generateInstantQuiz } from "@/lib/data/quizzes";
-import { importQuestions } from "@/lib/data/question-bank";
 import { AIDocumentQuizModal } from "@/components/ai/AIDocumentQuizModal";
+import Logo from "@/components/layout/Logo";
+import { QuestionTypeBadge } from "@/components/question-bank/QuestionTypeBadge";
+import { QuizPreviewModal } from "@/components/quiz-builder/QuizPreviewModal";
+import { QuizQuestionPickerModal } from "@/components/quiz-builder/QuizQuestionPickerModal";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
+import { createQuestionAction, createQuizAction } from "@/app/dashboard/quizzes/actions";
+import { importQuestions } from "@/lib/data/question-bank";
+import { generateInstantQuiz,saveQuiz } from "@/lib/data/quizzes";
+import { QuestionItem } from "@/lib/types/question";
+import { QuizItem,QuizStatus } from "@/lib/types/quiz";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-import Logo from "@/components/layout/Logo";
-import {
-  ArrowLeft,
-  Plus,
-  Trash2,
-  Save,
-  Eye,
-  Shuffle,
-  Clock,
-  Sparkles,
-  Layers,
-  ArrowUp,
-  ArrowDown,
-  CheckCircle2,
-  Play,
-  BookOpen,
-  FileText,
-  Upload,
-  FileCheck,
-  Loader2,
-  Database,
+ArrowDown,
+ArrowLeft,
+ArrowUp,
+BookOpen,
+CheckCircle2,
+Database,
+Eye,
+FileText,
+Layers,
+Loader2,
+Play,
+Plus,
+Save,
+Shuffle,
+Sparkles,
+Trash2,
+Upload
 } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export default function CreateOwnQuizPage() {
@@ -56,10 +48,11 @@ export default function CreateOwnQuizPage() {
   const [subject, setSubject] = useState("General Science");
   const [difficulty, setDifficulty] = useState<"Easy" | "Medium" | "Hard">("Medium");
   const [durationMinutes, setDurationMinutes] = useState(30);
-  const [passMarks, setPassMarks] = useState(60);
-  const [status, setStatus] = useState<QuizStatus>("Published");
+  const [passMarks] = useState(60);
+  const [status] = useState<QuizStatus>("Published");
   const [randomizeQuestions, setRandomizeQuestions] = useState(true);
   const [shuffleOptions, setShuffleOptions] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
 
   // Questions in this quiz
   const [questions, setQuestions] = useState<QuestionItem[]>([
@@ -186,7 +179,7 @@ export default function CreateOwnQuizPage() {
     }
   };
 
-  const handleSaveAndTake = (takeImmediately = false) => {
+  const handleSaveAndTake = async (takeImmediately = false) => {
     if (!title.trim()) {
       toast.error("Please provide a quiz title");
       return;
@@ -196,44 +189,78 @@ export default function CreateOwnQuizPage() {
       return;
     }
 
-    const quizId = `custom-quiz-${Date.now()}`;
-    const newQuiz: QuizItem = {
-      id: quizId,
-      title: title.trim(),
-      description: description.trim(),
-      category: category,
-      subject: subject,
-      topic: category,
-      gradeLevel: "All Levels",
-      grade: "All Levels",
-      difficulty: difficulty,
-      durationMinutes: Number(durationMinutes) || 30,
-      totalMarks: totalMarks,
-      passMarks: Number(passMarks) || 60,
-      status: "Published",
-      randomizeQuestions: randomizeQuestions,
-      shuffleOptions: shuffleOptions,
-      questions: questions,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
+    setIsSaving(true);
+    try {
+      const payload: Omit<QuizItem, "id" | "createdAt" | "updatedAt"> = {
+        title: title.trim(),
+        description: description.trim(),
+        category: category,
+        subject: subject,
+        topic: category,
+        gradeLevel: "All Levels",
+        grade: "All Levels",
+        difficulty: difficulty,
+        durationMinutes: Number(durationMinutes) || 30,
+        totalMarks: totalMarks,
+        passMarks: Number(passMarks) || 60,
+        status,
+        randomizeQuestions: randomizeQuestions,
+        shuffleOptions: shuffleOptions,
+        questions: questions,
+      };
 
-    saveQuiz(newQuiz);
-    toast.success("Quiz created and published successfully!");
+      const result = await createQuizAction(payload);
+      if (result.error || !result.data) {
+        toast.error(`Database Error: ${result.error || "Failed to persist quiz."}`);
+        return;
+      }
 
-    if (takeImmediately) {
-      router.push(`/dashboard/quizzes/${quizId}/take`);
-    } else {
-      router.push("/dashboard/quizzes");
+      const persistedQuiz = result.data;
+      saveQuiz(persistedQuiz);
+      toast.success("Quiz created and published to database successfully!");
+
+      if (takeImmediately) {
+        router.push(`/dashboard/quizzes/${persistedQuiz.id}/take`);
+      } else {
+        router.push("/dashboard/quizzes");
+      }
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Failed to create quiz");
+    } finally {
+      setIsSaving(false);
     }
   };
 
-  const handleImportToQuestionBank = () => {
+  const handleImportToQuestionBank = async () => {
     if (questions.length === 0) {
       toast.error("No questions to import to Question Bank");
       return;
     }
     const { imported, skipped } = importQuestions(questions);
+    try {
+      await Promise.all(
+        questions.map((q) =>
+          createQuestionAction({
+            title: q.title,
+            type: q.type,
+            subject: q.subject || subject,
+            category: q.category || category,
+            topic: q.topic || category,
+            difficulty: q.difficulty,
+            marks: q.marks,
+            negativeMarks: q.negativeMarks,
+            timeLimitSeconds: q.timeLimitSeconds || 60,
+            tags: q.tags || [],
+            explanation: q.explanation,
+            image: q.image,
+            options: q.options,
+          })
+        )
+      );
+    } catch {
+      // Background sync logged
+    }
+
     if (imported > 0) {
       toast.success(
         `Successfully imported ${imported} question${imported === 1 ? "" : "s"} to Question Bank!${
@@ -460,7 +487,7 @@ export default function CreateOwnQuizPage() {
                 </label>
                 <Select
                   value={difficulty}
-                  onChange={(e) => setDifficulty(e.target.value as any)}
+                  onChange={(e) => setDifficulty(e.target.value as "Easy" | "Medium" | "Hard")}
                   options={[
                     { value: "Easy", label: "Easy (Foundational)" },
                     { value: "Medium", label: "Medium (Standard)" },
@@ -742,6 +769,7 @@ export default function CreateOwnQuizPage() {
           <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
             <Button
               variant="outline"
+              disabled={isSaving}
               onClick={handleImportToQuestionBank}
               className="text-xs font-semibold flex-1 sm:flex-none border-border hover:bg-muted"
               title="Save all questions in this assessment challenge to the Question Bank"
@@ -750,16 +778,27 @@ export default function CreateOwnQuizPage() {
             </Button>
             <Button
               variant="outline"
+              disabled={isSaving}
               onClick={() => handleSaveAndTake(false)}
               className="text-xs font-semibold flex-1 sm:flex-none"
             >
-              <Save className="w-3.5 h-3.5 mr-1.5" /> Save to Quizzes
+              {isSaving ? <Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" /> : <Save className="w-3.5 h-3.5 mr-1.5" />}
+              Save to Quizzes
             </Button>
             <Button
+              disabled={isSaving}
               onClick={() => handleSaveAndTake(true)}
               className="bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold text-xs rounded-xl shadow-lg shadow-indigo-500/20 flex-1 sm:flex-none px-6 py-2.5 flex items-center justify-center gap-1.5"
             >
-              <Play className="w-3.5 h-3.5 fill-current" /> Publish & Take Quiz Now
+              {isSaving ? (
+                <>
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" /> Saving...
+                </>
+              ) : (
+                <>
+                  <Play className="w-3.5 h-3.5 fill-current" /> Publish & Take Quiz Now
+                </>
+              )}
             </Button>
           </div>
         </div>

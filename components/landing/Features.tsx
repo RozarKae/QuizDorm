@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { Sparkles, Swords, Trophy, Activity, Users, School, Layers, CheckCircle2 } from "lucide-react";
 import SectionDivider from "@/components/ui/section-divider";
+import { motion } from "framer-motion";
+import { Activity,CheckCircle2,Layers,School,Sparkles,Swords } from "lucide-react";
 
 export default function Features() {
   const list = [

@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { Invoice } from "@/lib/types/billing";
 import Logo from "@/components/layout/Logo";
-import { Printer, Download, CheckCircle2, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Invoice } from "@/lib/types/billing";
+import { Printer } from "lucide-react";
 
 interface InvoiceViewerModalProps {
   invoice: Invoice | null;

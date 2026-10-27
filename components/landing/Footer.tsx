@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Logo from "@/components/layout/Logo";
+import Link from "next/link";
 
 export default function Footer() {
   const quickLinks = [

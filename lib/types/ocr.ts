@@ -1,4 +1,4 @@
-import { QuestionType, DifficultyLevel } from "./question";
+import { DifficultyLevel,QuestionType } from "./question";
 
 export type OCRProviderType =
   | "mock"

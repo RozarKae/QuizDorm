@@ -1,54 +1,39 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import {
-  BillingAnalytics,
-  SubscriptionPlanId,
-  BillingCycle,
-} from "@/lib/types/billing";
 import { PaymentHistoryTable } from "@/components/billing/PaymentHistoryTable";
+import { Button } from "@/components/ui/button";
+import {
+AdminSubscriptionItem,
+AdminSubscriptionManager,
+} from "@/lib/admin/subscriptionOverrideManager";
 import { SUBSCRIPTION_PLANS } from "@/lib/billing/subscriptionManager";
 import {
-  AdminSubscriptionItem,
-  AdminSubscriptionManager,
-} from "@/lib/admin/subscriptionOverrideManager";
+BillingAnalytics,
+BillingCycle,
+SubscriptionPlanId,
+} from "@/lib/types/billing";
 import {
-  DollarSign,
-  TrendingUp,
-  Users,
-  RefreshCw,
-  BarChart3,
-  CreditCard,
-  Tag,
-  Sparkles,
-  Zap,
-  Sliders,
-  ShieldAlert,
-  CheckCircle2,
-  AlertTriangle,
-  Building,
-  School,
-  Search,
-  Filter,
-  Plus,
-  ArrowUpRight,
-  FileText,
-  Clock,
-  Layers,
-  Award,
-  ChevronRight,
+AlertTriangle,
+CheckCircle2,
+FileText,
+Layers,
+RefreshCw,
+Search,
+Sliders,
+Sparkles,
+TrendingUp,
+Users
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
+type AdminBillingTab = "subscribers" | "revenue" | "transactions";
+
 export default function AdminBillingPage() {
-  const [activeTab, setActiveTab] = useState<
-    "subscribers" | "revenue" | "transactions"
-  >("subscribers");
+  const [activeTab, setActiveTab] = useState<AdminBillingTab>("subscribers");
 
   const [subscriptions, setSubscriptions] = useState<AdminSubscriptionItem[]>(
-    []
+    () => AdminSubscriptionManager.getSubscriptions()
   );
   const [searchTerm, setSearchTerm] = useState("");
   const [planFilter, setPlanFilter] = useState<string>("all");
@@ -71,10 +56,6 @@ export default function AdminBillingPage() {
     useState<SubscriptionPlanId>("professional");
   const [targetCycle, setTargetCycle] = useState<BillingCycle>("annual");
   const [planChangeNote, setPlanChangeNote] = useState<string>("");
-
-  useEffect(() => {
-    setSubscriptions(AdminSubscriptionManager.getSubscriptions());
-  }, []);
 
   const refreshSubscriptions = () => {
     setSubscriptions(AdminSubscriptionManager.getSubscriptions());
@@ -328,7 +309,7 @@ export default function AdminBillingPage() {
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => setActiveTab(tab.id as AdminBillingTab)}
               className={`px-3.5 py-2 rounded-[4px] text-xs font-mono font-medium flex items-center space-x-2 transition-all whitespace-nowrap border ${
                 isActive
                   ? "bg-[#2A141A] border-[#FF4D6D]/40 text-[#FF4D6D] shadow-sm shadow-[#FF4D6D]/10 font-bold"

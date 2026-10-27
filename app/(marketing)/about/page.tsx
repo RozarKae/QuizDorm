@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
-import { Award, Users, ShieldCheck, Zap, Sparkles, School, Globe, ArrowRight, HeartHandshake, CheckCircle2 } from "lucide-react";
+import Navbar from "@/components/landing/Navbar";
 import { Button } from "@/components/ui/button";
+import { ArrowRight,Award,Globe,School,Sparkles } from "lucide-react";
+import Link from "next/link";
 
 export default function AboutPage() {
   return (

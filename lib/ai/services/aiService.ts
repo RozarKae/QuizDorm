@@ -1,6 +1,6 @@
-import { AIRequestPayload, AIResponsePayload, AIStreamChunk } from "@/lib/types/ai";
-import { AIRouter } from "../router/aiRouter";
+import { AIRequestPayload,AIResponsePayload,AIStreamChunk } from "@/lib/types/ai";
 import { PromptEngine } from "../prompts/promptEngine";
+import { AIRouter } from "../router/aiRouter";
 
 export class AIService {
   /**
@@ -25,7 +25,7 @@ export class AIService {
    */
   public static async executeTemplate(
     templateId: string,
-    variables: Record<string, any>,
+    variables: Record<string, unknown>,
     featureId: AIRequestPayload["featureId"]
   ): Promise<AIResponsePayload> {
     const userPrompt = PromptEngine.composeUserPrompt(templateId, variables);

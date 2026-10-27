@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { LearningPath } from "@/lib/types/lms";
 import { Button } from "@/components/ui/button";
-import { 
-  Sparkles, CheckCircle2, Lock, ArrowRight, Target, Award, Layers
+import { LearningPath } from "@/lib/types/lms";
+import {
+CheckCircle2,Lock,
+Sparkles,
+Target
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockPaths: LearningPath[] = [

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect, useCallback, useMemo } from "react";
-import { QuizItem } from "@/lib/types/quiz";
-import { QuizAttempt, AttemptStatus } from "@/lib/types/attempt";
-import { QuestionItem } from "@/lib/types/question";
 import { prepareQuizAttemptSession } from "@/lib/data/quizzes";
+import { AttemptStatus,QuizAttempt } from "@/lib/types/attempt";
+import { QuestionItem } from "@/lib/types/question";
+import { QuizItem } from "@/lib/types/quiz";
+import { useCallback,useEffect,useState } from "react";
 
 export function useQuizAttempt(
   quiz: QuizItem,
@@ -35,7 +35,7 @@ export function useQuizAttempt(
   });
 
   const [currentIdx, setCurrentIdx] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, any>>({});
+  const [answers, setAnswers] = useState<Record<string, unknown>>({});
   const [markedForReview, setMarkedForReview] = useState<string[]>([]);
   const [timeRemainingSeconds, setTimeRemainingSeconds] = useState(quiz.durationMinutes * 60);
   const [status, setStatus] = useState<AttemptStatus>("in_progress");
@@ -47,12 +47,14 @@ export function useQuizAttempt(
       const saved = localStorage.getItem(storageKey);
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (parsed.answers) setAnswers(parsed.answers);
-        if (parsed.markedForReview) setMarkedForReview(parsed.markedForReview);
-        if (parsed.timeRemainingSeconds) setTimeRemainingSeconds(parsed.timeRemainingSeconds);
-        if (Array.isArray(parsed.questions) && parsed.questions.length > 0) {
-          setAttemptQuestions(parsed.questions);
-        }
+        queueMicrotask(() => {
+          if (parsed.answers) setAnswers(parsed.answers);
+          if (parsed.markedForReview) setMarkedForReview(parsed.markedForReview);
+          if (parsed.timeRemainingSeconds) setTimeRemainingSeconds(parsed.timeRemainingSeconds);
+          if (Array.isArray(parsed.questions) && parsed.questions.length > 0) {
+            setAttemptQuestions(parsed.questions);
+          }
+        });
       }
     } catch {
       // Ignore storage errors
@@ -81,7 +83,42 @@ export function useQuizAttempt(
 
   // Submit Handler
   const submitQuiz = useCallback(
-    (reason: "manual" | "timeout" = "manual") => {
+    async (reason: "manual" | "timeout" = "manual"): Promise<QuizAttempt> => {
+      const timeTakenSeconds = quiz.durationMinutes * 60 - timeRemainingSeconds;
+      const idempotencyKey = `idemp_${quiz.id}_${effectiveAttemptId}`;
+
+      // 1. Attempt trusted server-side submission and grading
+      try {
+        const response = await fetch(`/api/quizzes/${quiz.id}/submit`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            answers,
+            timeTakenSeconds,
+            idempotencyKey,
+          }),
+        });
+
+        if (response.ok) {
+          const resJson = await response.json();
+          if (resJson.attempt) {
+            setStatus(reason === "timeout" ? "timed_out" : "submitted");
+            setSubmittedAttempt(resJson.attempt);
+            try {
+              localStorage.removeItem(storageKey);
+            } catch {
+              // Ignore
+            }
+            return resJson.attempt;
+          }
+        }
+      } catch (err) {
+        console.warn("[useQuizAttempt] Server submission error, falling back locally:", err);
+      }
+
+      // 2. Client fallback computation if server unreachable
       let correctCount = 0;
       let incorrectCount = 0;
       let unansweredCount = 0;
@@ -126,8 +163,8 @@ export function useQuizAttempt(
                 });
               } else if (Array.isArray(userAnswer)) {
                 isCorrect = pairs.every((p) => {
-                  const match = (userAnswer as any[]).find(
-                    (u: any) =>
+                  const match = (userAnswer as Array<{ id?: string; leftItem?: string; rightItem?: string }>).find(
+                    (u) =>
                       u.id === p.id ||
                       (u.leftItem && String(u.leftItem).trim().toLowerCase() === p.leftItem.trim().toLowerCase())
                   );
@@ -158,14 +195,13 @@ export function useQuizAttempt(
       const totalMarks = quiz.totalMarks || attemptQuestions.reduce((acc, q) => acc + q.marks, 0);
       const percentage = Math.round((score / (totalMarks || 1)) * 100);
       const isPassed = percentage >= quiz.passMarks;
-      const timeTakenSeconds = quiz.durationMinutes * 60 - timeRemainingSeconds;
 
       const resultAttempt: QuizAttempt = {
         id: attemptId || `att-${Date.now()}`,
         quizId: quiz.id,
         quizTitle: quiz.title,
-        userId: "usr-101",
-        userName: "Rozar Khan",
+        userId: "usr-student-local",
+        userName: "Student",
         status: reason === "timeout" ? "timed_out" : "submitted",
         startedAt: new Date(Date.now() - timeTakenSeconds * 1000).toISOString(),
         submittedAt: new Date().toISOString(),
@@ -196,7 +232,7 @@ export function useQuizAttempt(
 
       return resultAttempt;
     },
-    [answers, markedForReview, timeRemainingSeconds, quiz, storageKey, attemptId, attemptQuestions]
+    [answers, markedForReview, timeRemainingSeconds, quiz, storageKey, attemptId, effectiveAttemptId, attemptQuestions]
   );
 
   // Timer Tick Hook
@@ -217,7 +253,7 @@ export function useQuizAttempt(
     return () => clearInterval(interval);
   }, [status, submitQuiz]);
 
-  const saveAnswer = (questionId: string, answerValue: any) => {
+  const saveAnswer = (questionId: string, answerValue: unknown) => {
     setAnswers((prev) => ({ ...prev, [questionId]: answerValue }));
   };
 

@@ -1,59 +1,47 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { AISettings, AIProviderType } from "@/lib/types/ai";
-import { AISettingsManager } from "@/lib/ai/settings/settingsManager";
-import { APIKeyManager } from "@/lib/ai/security/apiKeyManager";
-import { AIConnectionManager, ConnectionTestResult } from "@/lib/ai/services/connectionManager";
-import { AIModelDiscoveryService } from "@/lib/ai/services/modelDiscovery";
-import { AIRouterStatusCard } from "@/components/ai/AIRouterStatusCard";
-import { AIHealthWidget } from "@/components/ai/AIHealthWidget";
-import { AIPlayground } from "@/components/ai/AIPlayground";
-import { PromptTemplateManager } from "@/components/ai/PromptTemplateManager";
-import { AIUsageDashboard } from "@/components/ai/AIUsageDashboard";
 import { AIDiagnosticsPanel } from "@/components/ai/AIDiagnosticsPanel";
+import { AIHealthWidget } from "@/components/ai/AIHealthWidget";
 import { AILogsViewer } from "@/components/ai/AILogsViewer";
+import { AIPlayground } from "@/components/ai/AIPlayground";
+import { AIRouterStatusCard } from "@/components/ai/AIRouterStatusCard";
+import { AIUsageDashboard } from "@/components/ai/AIUsageDashboard";
+import { PromptTemplateManager } from "@/components/ai/PromptTemplateManager";
 import { ProviderBadge } from "@/components/ai/ProviderBadge";
+import { APIKeyManager } from "@/lib/ai/security/apiKeyManager";
+import { AIConnectionManager,ConnectionTestResult } from "@/lib/ai/services/connectionManager";
+import { AISettingsManager } from "@/lib/ai/settings/settingsManager";
+import { AIProviderType,AISettings } from "@/lib/types/ai";
+import { useState } from "react";
 
-import {
-  Cpu,
-  Sparkles,
-  Zap,
-  Key,
-  Sliders,
-  Play,
-  FileText,
-  BarChart3,
-  Activity,
-  ShieldCheck,
-  RefreshCw,
-  Eye,
-  EyeOff,
-  CheckCircle2,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+Activity,
+BarChart3,
+Cpu,
+Eye,
+EyeOff,
+FileText,
+Key,
+Play,
+RefreshCw,
+Sliders,
+Sparkles
+} from "lucide-react";
 import { toast } from "sonner";
 
+type AdminAITab = "settings" | "models" | "playground" | "templates" | "analytics" | "diagnostics" | "logs";
+
 export default function AIAdminWorkspace() {
-  const [activeTab, setActiveTab] = useState<
-    "settings" | "models" | "playground" | "templates" | "analytics" | "diagnostics" | "logs"
-  >("settings");
+  const [activeTab, setActiveTab] = useState<AdminAITab>("settings");
 
   const [settings, setSettings] = useState<AISettings>(AISettingsManager.getSettings());
-  const [geminiApiKey, setGeminiApiKey] = useState("");
-  const [openaiApiKey, setOpenaiApiKey] = useState("");
+  const [geminiApiKey, setGeminiApiKey] = useState(() => APIKeyManager.getApiKey("gemini"));
+  const [openaiApiKey, setOpenaiApiKey] = useState(() => APIKeyManager.getApiKey("openai"));
   const [showKey, setShowKey] = useState(false);
 
-  const [testResult, setTestResult] = useState<ConnectionTestResult | null>(null);
+  const [, setTestResult] = useState<ConnectionTestResult | null>(null);
   const [testing, setTesting] = useState(false);
-
-  useEffect(() => {
-    const keyG = APIKeyManager.getApiKey("gemini");
-    if (keyG) setGeminiApiKey(keyG);
-
-    const keyO = APIKeyManager.getApiKey("openai");
-    if (keyO) setOpenaiApiKey(keyO);
-  }, []);
 
   const handleSaveSettings = (updates: Partial<AISettings>) => {
     const updated = AISettingsManager.saveSettings(updates);
@@ -144,7 +132,7 @@ export default function AIAdminWorkspace() {
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => setActiveTab(tab.id as AdminAITab)}
               className={`px-3.5 py-2 rounded-xl text-xs font-medium flex items-center space-x-2 transition-all whitespace-nowrap border ${
                 isActive
                   ? "bg-[#2A141A] border-[#FF4D6D]/40 text-[#FF4D6D] shadow-sm shadow-[#FF4D6D]/10"

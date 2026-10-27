@@ -1,5 +1,4 @@
-import React from "react";
-import { Activity, Clock, Target, Users } from "lucide-react";
+import { Activity,Clock,Target,Users } from "lucide-react";
 
 interface LiveAnalyticsCardProps {
   participantCount: number;

@@ -1,18 +1,20 @@
 import { GoogleGenAI } from "@google/genai";
-import { AIServerConfig } from "./aiConfig";
-import { DocumentTextExtractor } from "./pdfTextExtractor";
 import {
-  IQuestionIntelligenceProvider,
-  RawAIQuestionResponse,
-  AIProviderError,
-  AIConfigurationError,
-  AITimeoutError,
-  AIParsingError,
-} from "./IQuestionIntelligenceProvider";
-import {
-  QuestionGenerationInput,
-  PdfQuestionGenerationInput,
+BatchQuestionGenerationInput,
+PdfQuestionGenerationInput,
+QuestionGenerationInput,
 } from "../schemas/questionGenerationSchema";
+import { AIServerConfig } from "./aiConfig";
+import {
+AIConfigurationError,
+AIProviderError,
+AITimeoutError,
+IQuestionIntelligenceProvider,
+RawAIQuestionResponse
+} from "./IQuestionIntelligenceProvider";
+import { DocumentTextExtractor } from "./pdfTextExtractor";
+
+type GenerateContentResponse = Awaited<ReturnType<GoogleGenAI["models"]["generateContent"]>>;
 
 /**
  * System instruction enforcing pedagogical question authoring and distractor intelligence
@@ -103,7 +105,7 @@ export class GeminiQuestionProvider implements IQuestionIntelligenceProvider {
         }, timeoutMs);
       });
 
-      let response: any;
+      let response: GenerateContentResponse;
       let effectiveModel = model;
       try {
         response = await Promise.race([
@@ -118,12 +120,13 @@ export class GeminiQuestionProvider implements IQuestionIntelligenceProvider {
           }),
           timeoutPromise,
         ]);
-      } catch (genErr: any) {
+      } catch (genErr: unknown) {
+        const genErrObj = genErr as { message?: string; status?: number };
         const isCapacityError =
-          genErr.message?.includes("503") ||
-          genErr.message?.includes("high demand") ||
-          genErr.message?.includes("UNAVAILABLE") ||
-          genErr.status === 503;
+          genErrObj?.message?.includes("503") ||
+          genErrObj?.message?.includes("high demand") ||
+          genErrObj?.message?.includes("UNAVAILABLE") ||
+          genErrObj?.status === 503;
 
         if (
           isCapacityError &&
@@ -173,8 +176,9 @@ export class GeminiQuestionProvider implements IQuestionIntelligenceProvider {
           totalTokens: response.usageMetadata?.totalTokenCount,
         },
       };
-    } catch (err: any) {
-      if (err.name === "AbortError" || err.message?.includes("abort")) {
+    } catch (err: unknown) {
+      const errObj = err as { name?: string; message?: string; status?: number; statusCode?: number };
+      if (errObj?.name === "AbortError" || errObj?.message?.includes("abort")) {
         throw new AITimeoutError(timeoutMs, this.id);
       }
       if (
@@ -185,9 +189,9 @@ export class GeminiQuestionProvider implements IQuestionIntelligenceProvider {
         throw err;
       }
       throw new AIProviderError(
-        err.message || "Failed to execute Gemini API request",
+        errObj?.message || "Failed to execute Gemini API request",
         this.id,
-        err.status || 500,
+        errObj?.status || 500,
         this.checkIfRetryable(err)
       );
     }
@@ -325,7 +329,7 @@ Formatting Rules per Type:
         userPrompt,
       ];
 
-      let response: any;
+      let response: GenerateContentResponse;
       let effectiveModel = model;
       try {
         response = await Promise.race([
@@ -341,12 +345,13 @@ Formatting Rules per Type:
           }),
           timeoutPromise,
         ]);
-      } catch (genErr: any) {
+      } catch (genErr: unknown) {
+        const genErrObj = genErr as { message?: string; status?: number };
         const isCapacityError =
-          genErr.message?.includes("503") ||
-          genErr.message?.includes("high demand") ||
-          genErr.message?.includes("UNAVAILABLE") ||
-          genErr.status === 503;
+          genErrObj?.message?.includes("503") ||
+          genErrObj?.message?.includes("high demand") ||
+          genErrObj?.message?.includes("UNAVAILABLE") ||
+          genErrObj?.status === 503;
 
         if (
           isCapacityError &&
@@ -396,8 +401,9 @@ Formatting Rules per Type:
           totalTokens: response.usageMetadata?.totalTokenCount,
         },
       };
-    } catch (err: any) {
-      if (err.name === "AbortError" || err.message?.includes("abort")) {
+    } catch (err: unknown) {
+      const errObj = err as { name?: string; message?: string; status?: number; statusCode?: number };
+      if (errObj?.name === "AbortError" || errObj?.message?.includes("abort")) {
         throw new AITimeoutError(timeoutMs, this.id);
       }
       if (
@@ -408,9 +414,9 @@ Formatting Rules per Type:
         throw err;
       }
       throw new AIProviderError(
-        err.message || "Failed to execute Gemini API document request",
+        errObj?.message || "Failed to execute Gemini API document request",
         this.id,
-        err.status || 500,
+        errObj?.status || 500,
         this.checkIfRetryable(err)
       );
     }
@@ -499,14 +505,228 @@ Generate a JSON object adhering to this structure:
     return text;
   }
 
-  private checkIfRetryable(err: any): boolean {
-    const status = err.status || err.statusCode;
+  private checkIfRetryable(err: unknown): boolean {
+    const errObj = err as { status?: number; statusCode?: number; message?: string };
+    const status = errObj?.status || errObj?.statusCode;
     if (status === 429 || status === 503 || status === 504) return true;
     if (
-      err.message?.includes("RESOURCE_EXHAUSTED") ||
-      err.message?.includes("rate limit")
+      errObj?.message?.includes("RESOURCE_EXHAUSTED") ||
+      errObj?.message?.includes("rate limit")
     )
       return true;
     return false;
+  }
+
+  public async generateBatchQuestionsRaw(
+    input: BatchQuestionGenerationInput,
+    options?: { modelOverride?: string; timeoutMs?: number }
+  ): Promise<RawAIQuestionResponse> {
+    if (!AIServerConfig.isGeminiConfigured()) {
+      throw new AIConfigurationError(
+        "GEMINI_API_KEY is not configured in the server environment. Please set GEMINI_API_KEY in .env.local or your environment variables."
+      );
+    }
+
+    const ai = this.getClient();
+    const model = AIServerConfig.getActiveModel(options?.modelOverride);
+    const count = Math.min(20, Math.max(1, input.questionCount || 5));
+    const timeoutMs = options?.timeoutMs || Math.max(60000, count * 5000);
+
+    const userPrompt = this.constructBatchPrompt(input);
+    const startTime = Date.now();
+
+    try {
+      const abortController = new AbortController();
+      let timeoutHandle: NodeJS.Timeout | null = null;
+      const timeoutPromise = new Promise<never>((_, reject) => {
+        timeoutHandle = setTimeout(() => {
+          abortController.abort();
+          reject(new AITimeoutError(timeoutMs, this.id));
+        }, timeoutMs);
+      });
+
+      let response: GenerateContentResponse;
+      let effectiveModel = model;
+      try {
+        response = await Promise.race([
+          ai.models.generateContent({
+            model: effectiveModel,
+            contents: userPrompt,
+            config: {
+              systemInstruction: SYSTEM_INSTRUCTION,
+              responseMimeType: "application/json",
+              temperature: 0.3,
+              maxOutputTokens: 16384,
+            },
+          }),
+          timeoutPromise,
+        ]);
+      } catch (genErr: unknown) {
+        const genErrObj = genErr as { message?: string; status?: number };
+        const isCapacityError =
+          genErrObj?.message?.includes("503") ||
+          genErrObj?.message?.includes("high demand") ||
+          genErrObj?.message?.includes("UNAVAILABLE") ||
+          genErrObj?.status === 503;
+
+        if (
+          isCapacityError &&
+          !options?.modelOverride &&
+          effectiveModel !== AIServerConfig.FALLBACK_MODEL
+        ) {
+          effectiveModel = AIServerConfig.FALLBACK_MODEL;
+          response = await Promise.race([
+            ai.models.generateContent({
+              model: effectiveModel,
+              contents: userPrompt,
+              config: {
+                systemInstruction: SYSTEM_INSTRUCTION,
+                responseMimeType: "application/json",
+                temperature: 0.3,
+                maxOutputTokens: 16384,
+              },
+            }),
+            timeoutPromise,
+          ]);
+        } else {
+          throw genErr;
+        }
+      } finally {
+        if (timeoutHandle) clearTimeout(timeoutHandle);
+      }
+
+      const latencyMs = Date.now() - startTime;
+      const rawText = response.text;
+
+      if (!rawText || rawText.trim().length === 0) {
+        throw new AIProviderError(
+          "Gemini API returned an empty text response for batch generation.",
+          this.id
+        );
+      }
+
+      const cleanedJson = this.sanitizeJsonString(rawText);
+
+      return {
+        rawJsonString: cleanedJson,
+        modelUsed: effectiveModel,
+        latencyMs,
+        tokenUsage: {
+          promptTokens: response.usageMetadata?.promptTokenCount,
+          completionTokens: response.usageMetadata?.candidatesTokenCount,
+          totalTokens: response.usageMetadata?.totalTokenCount,
+        },
+      };
+    } catch (err: unknown) {
+      const errObj = err as { name?: string; message?: string; status?: number; statusCode?: number };
+      if (errObj?.name === "AbortError" || errObj?.message?.includes("abort")) {
+        throw new AITimeoutError(timeoutMs, this.id);
+      }
+      if (
+        err instanceof AIConfigurationError ||
+        err instanceof AIProviderError ||
+        err instanceof AITimeoutError
+      ) {
+        throw err;
+      }
+      throw new AIProviderError(
+        errObj?.message || "Failed to execute Gemini API batch question request",
+        this.id,
+        errObj?.status || 500,
+        this.checkIfRetryable(err)
+      );
+    }
+  }
+
+  private constructBatchPrompt(input: BatchQuestionGenerationInput): string {
+    const count = Math.min(20, Math.max(1, input.questionCount || 5));
+    const types = (input.questionTypes || ["mcq_single"]).join(", ");
+    const language = input.language || "English";
+    const blooms = input.bloomsLevel || "Understand";
+
+    let groundingSection = "";
+    if (input.sourceMode === "syllabus" && input.sourceContent) {
+      groundingSection = `
+=== SYLLABUS / CURRICULUM BLUEPRINT ===
+${input.sourceContent.slice(0, 30000)}
+=== END OF SYLLABUS ===
+
+CURRICULUM DIRECTIVE:
+1. Distribute the questions evenly across the syllabus units and topics outlined above.
+2. Ensure every question directly tests an essential curriculum concept or learning objective.
+`;
+    } else if (input.sourceMode === "text" && input.sourceContent) {
+      groundingSection = `
+=== SOURCE TEXT EXCERPT ===
+${input.sourceContent.slice(0, 30000)}
+=== END OF SOURCE TEXT ===
+
+STRICT GROUNDING DIRECTIVE:
+1. Every question, correct answer, and distractor MUST be derived exclusively from the facts, concepts, and details in the text above.
+2. DO NOT introduce external knowledge not supported by the excerpt.
+`;
+    }
+
+    return `Generate exactly ${count} rigorous educational assessment questions based on the following specification:
+
+Target Subject: "${input.subject}"
+Category: "${input.category || input.subject}"
+Topic: "${input.topic}"
+${input.subtopic ? `Subtopic: "${input.subtopic}"` : ""}
+Target Grade/Level: "${input.gradeLevel}"
+Target Cognitive Depth (Bloom's Revised Taxonomy): "${blooms}"
+Target Difficulty: "${input.difficulty}"
+Allowed Question Types: ${types}
+Language of Generation: "${language}" (All question stems, options, and explanations must be generated in ${language})
+${input.targetLearningObjective ? `Pedagogical Objective Focus: "${input.targetLearningObjective}"` : ""}
+${groundingSection}
+
+SCHEMA AND FORMAT REQUIREMENTS:
+Return a single valid JSON object strictly matching this schema:
+{
+  "documentTitle": "${input.topic} Assessment",
+  "summary": "Summary of concepts assessed in this question set",
+  "detectedSubject": "${input.subject}",
+  "detectedTopic": "${input.topic}",
+  "questions": [
+    {
+      "title": "Complete, unambiguous, self-contained question statement (in ${language})",
+      "context": null,
+      "type": "mcq_single | mcq_multiple | true_false | fill_in_the_blank | match_following | sequence_ordering",
+      "subject": "${input.subject}",
+      "category": "${input.category || input.subject}",
+      "topic": "${input.topic}",
+      "topics": ["${input.topic}"],
+      "subtopic": "${input.subtopic || "Core Principles"}",
+      "gradeLevel": "${input.gradeLevel}",
+      "learningObjective": "Specific pedagogical objective tested (min 10 chars)",
+      "bloomsLevel": "Remember | Understand | Apply | Analyze | Evaluate | Create",
+      "difficulty": "${input.difficulty}",
+      "options": [
+        { "id": "opt-1", "text": "Correct answer", "isCorrect": true, "explanation": "Why correct" },
+        { "id": "opt-2", "text": "Plausible distractor", "isCorrect": false, "explanation": "Why incorrect", "misconceptionType": "common_misconception" }
+      ],
+      "matchingPairs": [
+        { "id": "m1", "leftItem": "Item 1", "rightItem": "Match 1" }
+      ],
+      "fillBlanks": ["accepted_answer_keyword"],
+      "sequenceItems": [
+        { "id": "s1", "text": "Step 1", "order": 1 }
+      ],
+      "generalExplanation": "Master pedagogical explanation detailing step-by-step resolution (min 15 chars)",
+      "hints": ["Helpful pedagogical hint"],
+      "tags": ["ai-generated", "${input.subject.toLowerCase().replace(/\\s+/g, "-")}"]
+    }
+  ]
+}
+
+SPECIFICATIONS PER TYPE:
+- mcq_single: 4 options with exactly 1 isCorrect: true.
+- mcq_multiple: 4-5 options with 2 or more isCorrect: true.
+- true_false: exactly 2 options ("True" and "False") with 1 isCorrect: true.
+- fill_in_the_blank: title must have '[blank]' placeholder, fillBlanks contains accepted answers.
+- match_following: matchingPairs contains 3-4 distinct left/right pairs.
+- sequence_ordering: sequenceItems contains 3-5 items with order (1, 2, 3...).
+`;
   }
 }

@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { CreatorProfile } from "@/lib/types/marketplace";
-import { CheckCircle2, Star, Users, Store, DollarSign } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { CreatorProfile } from "@/lib/types/marketplace";
+import { CheckCircle2 } from "lucide-react";
 
 interface CreatorStorefrontHeaderProps {
   profile: CreatorProfile;

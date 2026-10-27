@@ -1,19 +1,20 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
-import Link from "next/link";
-import { useParams, useSearchParams } from "next/navigation";
-import { useLiveArena } from "@/lib/hooks/useLiveArena";
-import { CompetitionLobby } from "@/components/competitions/CompetitionLobby";
-import { LiveQuestionSession } from "@/components/competitions/LiveQuestionSession";
-import { AnimatedLeaderboard } from "@/components/competitions/AnimatedLeaderboard";
-import { WinnerPodiumScreen } from "@/components/competitions/WinnerPodiumScreen";
-import { HostControlPanel } from "@/components/competitions/HostControlPanel";
-import { ArrowLeft, RefreshCw, AlertCircle, User, Zap, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { AudioToggle } from "@/components/audio/AudioToggle";
 import { useSound } from "@/components/audio/useSound";
+import { AnimatedLeaderboard } from "@/components/competitions/AnimatedLeaderboard";
+import { CompetitionLobby } from "@/components/competitions/CompetitionLobby";
+import { HostControlPanel } from "@/components/competitions/HostControlPanel";
+import { LiveQuestionSession } from "@/components/competitions/LiveQuestionSession";
+import { WinnerPodiumScreen } from "@/components/competitions/WinnerPodiumScreen";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useLiveArena } from "@/lib/hooks/useLiveArena";
+import { CompetitionStatus } from "@/lib/types/competition";
+import { AlertCircle,ArrowLeft,RefreshCw,Sparkles,User,Zap } from "lucide-react";
+import Link from "next/link";
+import { useParams,useSearchParams } from "next/navigation";
+import React,{ Suspense,useState } from "react";
 import { toast } from "sonner";
 
 function StandaloneArenaContent() {
@@ -24,7 +25,7 @@ function StandaloneArenaContent() {
   const codeParam = (params?.code as string) || searchParams.get("code") || "QD-8492";
 
   const isHostParam = searchParams.get("role") === "host" || searchParams.get("host") === "true";
-  const [isHost, setIsHost] = useState<boolean>(() => {
+  const [isHost] = useState<boolean>(() => {
     if (isHostParam) return true;
     if (typeof window !== "undefined" && codeParam) {
       return Boolean(localStorage.getItem(`quizdorm_host_sec_${codeParam}`));
@@ -125,7 +126,7 @@ function StandaloneArenaContent() {
     code: session?.code || codeParam,
     hostId: "host-live",
     hostName: session?.hostName || "Arena Federation",
-    status: (session?.status === "WAITING" ? "Lobby" : session?.status === "ACTIVE" ? "Live" : "Ended") as any,
+    status: (session?.status === "WAITING" ? "Lobby" : session?.status === "ACTIVE" ? "Live" : "Ended") as CompetitionStatus,
     currentParticipantsCount: participants.length,
     participants,
     announcements,

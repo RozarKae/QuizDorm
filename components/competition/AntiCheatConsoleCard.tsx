@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { AntiCheatService } from "@/lib/competition/antiCheatService";
-import { AntiCheatFlag } from "@/lib/types/competition";
-import { ShieldAlert, AlertTriangle, CheckCircle2, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { AntiCheatService } from "@/lib/competition/antiCheatService";
+import { AntiCheatFlag } from "@/lib/types/competition";
+import { AlertTriangle,ShieldAlert } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function AntiCheatConsoleCard() {

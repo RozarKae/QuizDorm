@@ -1,6 +1,5 @@
-import React from "react";
-import { Check, X } from "lucide-react";
 import { PasswordValidationResult } from "@/lib/types/user";
+import { Check,X } from "lucide-react";
 
 interface PasswordStrengthIndicatorProps {
   password?: string;

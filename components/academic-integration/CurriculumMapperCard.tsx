@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { CurriculumMappingEngine } from "@/lib/academic-integration/curriculumMapper";
-import { Target, CheckCircle2, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { CurriculumMappingEngine } from "@/lib/academic-integration/curriculumMapper";
+import { Target } from "lucide-react";
 
 export function CurriculumMapperCard() {
   const frameworks = CurriculumMappingEngine.getFrameworks();

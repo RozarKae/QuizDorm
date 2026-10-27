@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
+import { QuestionEditor } from "@/components/question-bank/QuestionEditor";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
-import { QuestionEditor } from "@/components/question-bank/QuestionEditor";
 
 export default function EditQuestionPage({ params }: { params: { id: string } }) {
   const router = useRouter();

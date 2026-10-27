@@ -1,9 +1,7 @@
 "use client";
 
-import React from "react";
 import { ChildProfile } from "@/lib/types/parent";
-import { Users, GraduationCap, Flame, Award, ChevronRight } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { Users } from "lucide-react";
 
 interface ChildSwitcherCardProps {
   childrenList: ChildProfile[];

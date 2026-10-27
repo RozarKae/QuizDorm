@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
 import { Announcement } from "@/lib/types/communication";
-import { Megaphone, Pin, AlertTriangle, Info } from "lucide-react";
+import { Megaphone,Pin } from "lucide-react";
 
 interface AnnouncementCardProps {
   announcement: Announcement;

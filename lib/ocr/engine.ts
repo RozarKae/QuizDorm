@@ -1,6 +1,6 @@
-import { OCRJobSettings, ExtractedQuestion } from "@/lib/types/ocr";
-import { getOCRProvider } from "./providers";
+import { ExtractedQuestion,OCRJobSettings } from "@/lib/types/ocr";
 import { OCRProcessResult } from "./provider";
+import { getOCRProvider } from "./providers";
 
 export interface FileValidationResult {
   valid: boolean;
@@ -46,6 +46,7 @@ export class OCREngineService {
    * Virus scanning hook architecture stub
    */
   public static async virusScanHook(file: File | { name: string }): Promise<boolean> {
+    void file;
     // Simulated virus scan hook (integrated with enterprise endpoint if enabled)
     await new Promise((resolve) => setTimeout(resolve, 150));
     return true;
@@ -92,8 +93,8 @@ export class OCREngineService {
           if (settings.targetTopic) formData.append("topic", settings.targetTopic);
           if (settings.targetDifficulty) formData.append("difficulty", settings.targetDifficulty);
           if (settings.targetQuestionCount) formData.append("questionCount", String(settings.targetQuestionCount));
-          if ((settings as any).questionTypes?.length) {
-            formData.append("questionTypes", JSON.stringify((settings as any).questionTypes));
+          if (settings.questionTypes?.length) {
+            formData.append("questionTypes", JSON.stringify(settings.questionTypes));
           }
 
           const res = await fetch("/api/ai/pdf-to-quiz", {
@@ -124,9 +125,10 @@ export class OCREngineService {
             throw new Error(`AI Extraction Error: ${data.error}`);
           }
         }
-      } catch (docErr: any) {
+      } catch (docErr: unknown) {
         console.error("AI Document-to-quiz endpoint failure:", docErr);
-        throw new Error(docErr.message || "Failed to extract questions from uploaded document via AI.");
+        const errMsg = docErr instanceof Error ? docErr.message : "Failed to extract questions from uploaded document via AI.";
+        throw new Error(errMsg);
       }
     }
 

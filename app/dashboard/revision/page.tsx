@@ -1,21 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { SpacedRevisionItem } from "@/lib/types/adaptive";
-import { SpacedRepetitionEngine } from "@/lib/adaptive/spacedRepetition";
 import { SpacedRevisionQueue } from "@/components/adaptive/SpacedRevisionQueue";
-import { RotateCcw, Calendar, CheckCircle2, RefreshCw, Play, History } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { SpacedRepetitionEngine } from "@/lib/adaptive/spacedRepetition";
+import { SpacedRevisionItem } from "@/lib/types/adaptive";
+import { Calendar,CheckCircle2,Play,RotateCcw } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function RevisionCenterPage() {
-  const [items, setItems] = useState<SpacedRevisionItem[]>([]);
-
-  useEffect(() => {
-    loadQueue();
-  }, []);
-
+  const [items, setItems] = useState<SpacedRevisionItem[]>(() => SpacedRepetitionEngine.getRevisionQueue());
   const loadQueue = () => {
     setItems(SpacedRepetitionEngine.getRevisionQueue());
   };

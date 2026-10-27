@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { ContentVersion } from "@/lib/types/research-studio";
 import { Button } from "@/components/ui/button";
-import { 
-  GitBranch, GitCommit, GitMerge, RotateCcw, CheckCircle2, Layers
+import { ContentVersion } from "@/lib/types/research-studio";
+import {
+GitBranch,GitCommit,
+RotateCcw
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockVersions: ContentVersion[] = [
@@ -14,8 +15,8 @@ const mockVersions: ContentVersion[] = [
 ];
 
 export function VersionControlContentManagement() {
-  const [versions, setVersions] = useState<ContentVersion[]>(mockVersions);
-  const [activeBranch, setActiveBranch] = useState("main");
+  const [versions] = useState<ContentVersion[]>(mockVersions);
+  const [activeBranch] = useState("main");
 
   const handleRollback = (hash: string) => {
     toast.success(`Restored content to commit hash ${hash}!`);

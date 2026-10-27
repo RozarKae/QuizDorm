@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { QuestionImprovementSuggestion } from "@/lib/types/quality";
-import { Sparkles, Check, X, ArrowRight, Wand2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { QuestionImprovementSuggestion } from "@/lib/types/quality";
+import { Check,Sparkles,Wand2 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface AISuggestionPanelProps {

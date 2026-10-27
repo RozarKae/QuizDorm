@@ -1,5 +1,5 @@
-import { QuestionItem } from "@/lib/types/question";
 import { DuplicateAlert } from "@/lib/types/quality";
+import { QuestionItem } from "@/lib/types/question";
 
 export class DuplicateDetectionEngine {
   /**

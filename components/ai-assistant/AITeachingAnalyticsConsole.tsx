@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
-import { InstructionalAnalytics } from "@/lib/types/ai-assistant";
 import { Button } from "@/components/ui/button";
-import { 
-  BarChart3, TrendingUp, AlertTriangle, CheckCircle2, Sparkles, Download
+import { InstructionalAnalytics } from "@/lib/types/ai-assistant";
+import {
+BarChart3,
+Download,
+Sparkles,
+TrendingUp
 } from "lucide-react";
 import { toast } from "sonner";
 

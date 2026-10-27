@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { User, Mail, Lock, Shield, Camera, Save, KeyRound } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
+import { updatePassword } from "@/app/auth/actions";
 import { useAuth } from "@/components/auth/AuthProvider";
 import PasswordInput from "@/components/auth/PasswordInput";
-import PasswordStrengthIndicator, { evaluatePasswordStrength } from "@/components/auth/PasswordStrengthIndicator";
-import { updatePassword } from "@/app/auth/actions";
+import PasswordStrengthIndicator,{ evaluatePasswordStrength } from "@/components/auth/PasswordStrengthIndicator";
+import { Avatar,AvatarFallback,AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Camera,KeyRound,Lock,Mail,Save,User } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 export default function ProfilePage() {
@@ -22,8 +22,12 @@ export default function ProfilePage() {
   const [passLoading, setPassLoading] = useState(false);
 
   React.useEffect(() => {
-    if (profile?.name) setName(profile.name);
-    if (profile?.email) setEmail(profile.email);
+    if (profile) {
+      queueMicrotask(() => {
+        if (profile.name) setName(profile.name);
+        if (profile.email) setEmail(profile.email);
+      });
+    }
   }, [profile]);
 
   const handleSaveProfile = (e: React.FormEvent) => {

@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { DiscussionForumEngine } from "@/lib/community/discussionEngine";
-import { CommunityPost, DiscussionTag } from "@/lib/types/community";
 import { CommunityFeedCard } from "@/components/community/CommunityFeedCard";
-import { ReputationBadgeCard } from "@/components/community/ReputationBadgeCard";
 import { CreateDiscussionModal } from "@/components/community/CreateDiscussionModal";
+import { ReputationBadgeCard } from "@/components/community/ReputationBadgeCard";
+import { DiscussionForumEngine } from "@/lib/community/discussionEngine";
+import { DiscussionTag } from "@/lib/types/community";
+import { useState } from "react";
 
-import { Users, Plus, Search, MessageSquare, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Plus,Search,Users } from "lucide-react";
 import Link from "next/link";
 
 export default function CommunityHubPage() {

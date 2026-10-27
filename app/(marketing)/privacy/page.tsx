@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
-import { ShieldCheck, Lock, ArrowLeft, CheckCircle2, UserCheck, EyeOff, Database } from "lucide-react";
+import Navbar from "@/components/landing/Navbar";
+import { ArrowLeft,Database,EyeOff,Lock,ShieldCheck } from "lucide-react";
+import Link from "next/link";
 
 export default function PrivacyPolicyPage() {
   return (

@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { CertificationProgram } from "@/lib/types/certifications";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Award, Plus, ShieldCheck, CheckCircle2, Search, 
-  Sparkles, Layers, RefreshCw
+import { CertificationProgram } from "@/lib/types/certifications";
+import {
+Award,Plus,
+Sparkles
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockPrograms: CertificationProgram[] = [

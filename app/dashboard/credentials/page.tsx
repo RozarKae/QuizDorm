@@ -1,31 +1,27 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Certificate, AchievementBadge } from "@/lib/types/credentials";
-import { CertificateEngine } from "@/lib/credentials/certificateEngine";
 import { BadgeEngine } from "@/lib/credentials/badgeEngine";
+import { CertificateEngine } from "@/lib/credentials/certificateEngine";
+import { AchievementBadge,Certificate } from "@/lib/types/credentials";
+import { useState } from "react";
 
+import { BulkIssuanceModal } from "@/components/credentials/BulkIssuanceModal";
 import { CredentialWalletCard } from "@/components/credentials/CredentialWalletCard";
 import { QRVerificationCard } from "@/components/credentials/QRVerificationCard";
 import { TemplateDesignerModal } from "@/components/credentials/TemplateDesignerModal";
-import { BulkIssuanceModal } from "@/components/credentials/BulkIssuanceModal";
 
-import { Award, QrCode, Sliders, Users, Plus, ShieldCheck, RefreshCw, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Award,Plus,QrCode,Sliders,Users } from "lucide-react";
 import { toast } from "sonner";
 
 export default function DigitalCredentialsPage() {
   const [activeTab, setActiveTab] = useState<"wallet" | "verification" | "analytics">("wallet");
-  const [certificates, setCertificates] = useState<Certificate[]>([]);
-  const [badges, setBadges] = useState<AchievementBadge[]>([]);
+  const [certificates, setCertificates] = useState<Certificate[]>(() => CertificateEngine.getCertificates());
+  const [badges, setBadges] = useState<AchievementBadge[]>(() => BadgeEngine.getBadges());
 
   // Modals
   const [templateModalOpen, setTemplateModalOpen] = useState(false);
   const [bulkModalOpen, setBulkModalOpen] = useState(false);
-
-  useEffect(() => {
-    loadData();
-  }, []);
 
   const loadData = () => {
     setCertificates(CertificateEngine.getCertificates());
@@ -105,7 +101,7 @@ export default function DigitalCredentialsPage() {
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => setActiveTab(tab.id as "wallet" | "verification" | "analytics")}
               className={`px-4 py-2.5 rounded-2xl text-xs font-bold flex items-center space-x-2 transition-all whitespace-nowrap ${
                 isActive
                   ? "bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20"

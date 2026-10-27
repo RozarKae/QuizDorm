@@ -1,20 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
-import { StudentInformationSystemHub } from "@/components/administration/StudentInformationSystemHub";
-import { AdmissionManagementPortal } from "@/components/administration/AdmissionManagementPortal";
 import { AcademicRecordsTranscripts } from "@/components/administration/AcademicRecordsTranscripts";
-import { TimetableSchedulingStudio } from "@/components/administration/TimetableSchedulingStudio";
-import { FeeFinancialManagementHub } from "@/components/administration/FeeFinancialManagementHub";
-import { FacultyStaffManagementConsole } from "@/components/administration/FacultyStaffManagementConsole";
+import { AdmissionManagementPortal } from "@/components/administration/AdmissionManagementPortal";
 import { CertificateDocumentManagement } from "@/components/administration/CertificateDocumentManagement";
-import { ParentGuardianPortalConsole } from "@/components/administration/ParentGuardianPortalConsole";
-import { InstitutionalAdministrationConsole } from "@/components/administration/InstitutionalAdministrationConsole";
+import { FacultyStaffManagementConsole } from "@/components/administration/FacultyStaffManagementConsole";
+import { FeeFinancialManagementHub } from "@/components/administration/FeeFinancialManagementHub";
 import { GraduationAlumniManagement } from "@/components/administration/GraduationAlumniManagement";
+import { InstitutionalAdministrationConsole } from "@/components/administration/InstitutionalAdministrationConsole";
+import { ParentGuardianPortalConsole } from "@/components/administration/ParentGuardianPortalConsole";
+import { StudentInformationSystemHub } from "@/components/administration/StudentInformationSystemHub";
+import { TimetableSchedulingStudio } from "@/components/administration/TimetableSchedulingStudio";
+import React,{ useState } from "react";
 
-import { 
-  Building2, Users, FileText, GraduationCap, Calendar, 
-  CreditCard, Briefcase, Heart, Trophy, Sparkles
+import {
+Briefcase,
+Building2,
+Calendar,
+CreditCard,
+FileText,GraduationCap,
+Heart,Trophy,
+Users
 } from "lucide-react";
 
 export type AdminModuleTab = 

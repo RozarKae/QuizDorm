@@ -1,7 +1,7 @@
-import { describe, it } from "node:test";
 import assert from "node:assert";
 import fs from "node:fs";
 import path from "node:path";
+import { describe,it } from "node:test";
 import { DEFAULT_EMAIL_DOMAINS } from "../components/auth/EmailSuggestionInput";
 
 describe("Email Suggestion Input & Domain Autocomplete Suite", () => {

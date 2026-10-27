@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { StudentSupportPlan } from "@/lib/types/ai-assistant";
 import { Button } from "@/components/ui/button";
-import { 
-  Sparkles, UserCheck, AlertTriangle, CheckCircle2, 
-  Lightbulb, Calendar, RefreshCw
+import { StudentSupportPlan } from "@/lib/types/ai-assistant";
+import {
+AlertTriangle,
+Lightbulb,
+RefreshCw,
+Sparkles,UserCheck
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockSupportPlan: StudentSupportPlan = {
@@ -25,7 +27,7 @@ const mockSupportPlan: StudentSupportPlan = {
 };
 
 export function AIStudentSupportHub() {
-  const [plan, setPlan] = useState<StudentSupportPlan>(mockSupportPlan);
+  const [plan] = useState<StudentSupportPlan>(mockSupportPlan);
 
   const handleGeneratePlan = () => {
     toast.success("AI generated updated personalized 7-day study plan!");

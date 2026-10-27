@@ -1,31 +1,27 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { StudentKnowledgeProfile } from "@/lib/types/adaptive";
+import { PerformancePredictor } from "@/lib/adaptive/performancePredictor";
 import { KnowledgeProfileManager } from "@/lib/adaptive/profileManager";
 import { AIRecommendationEngine } from "@/lib/adaptive/recommendationEngine";
 import { AICoachService } from "@/lib/adaptive/studyCoach";
-import { PerformancePredictor } from "@/lib/adaptive/performancePredictor";
+import { StudentKnowledgeProfile } from "@/lib/types/adaptive";
+import { useState } from "react";
 
+import { AICoachWidget } from "@/components/adaptive/AICoachWidget";
+import { GoalTrackerCard } from "@/components/adaptive/GoalTrackerCard";
 import { KnowledgeProfileCard } from "@/components/adaptive/KnowledgeProfileCard";
 import { MasteryHeatmap } from "@/components/adaptive/MasteryHeatmap";
-import { RecommendationPanel } from "@/components/adaptive/RecommendationPanel";
-import { AICoachWidget } from "@/components/adaptive/AICoachWidget";
 import { PerformancePredictorCard } from "@/components/adaptive/PerformancePredictorCard";
-import { GoalTrackerCard } from "@/components/adaptive/GoalTrackerCard";
+import { RecommendationPanel } from "@/components/adaptive/RecommendationPanel";
 import { TeacherInsightsCard } from "@/components/adaptive/TeacherInsightsCard";
 
-import { Brain, Sparkles, Target, Users, RotateCcw, TrendingUp, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Brain,Play } from "lucide-react";
 import Link from "next/link";
 
 export default function AdaptiveLearningDashboardPage() {
-  const [profile, setProfile] = useState<StudentKnowledgeProfile>(KnowledgeProfileManager.getProfile());
+  const [profile] = useState<StudentKnowledgeProfile>(() => KnowledgeProfileManager.getProfile());
   const [roleView, setRoleView] = useState<"student" | "teacher">("student");
-
-  useEffect(() => {
-    setProfile(KnowledgeProfileManager.getProfile());
-  }, []);
 
   const recommendations = AIRecommendationEngine.getRecommendations(profile);
   const coachMessages = AICoachService.getCoachAdvice();

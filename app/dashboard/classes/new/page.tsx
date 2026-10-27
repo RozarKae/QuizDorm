@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { ArrowLeft, School, Save, Key } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
+import { ArrowLeft,Save,School } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 export default function CreateClassPage() {
@@ -16,7 +16,7 @@ export default function CreateClassPage() {
   const [description, setDescription] = useState("");
   const [department, setDepartment] = useState("Mathematics");
   const [academicYear, setAcademicYear] = useState("2025-2026");
-  const [code] = useState(`CLS-${Math.floor(1000 + Math.random() * 9000)}`);
+  const [code] = useState("CLS-8492");
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();

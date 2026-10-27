@@ -1,12 +1,11 @@
 "use client";
 
-import React from "react";
-import { AITutorChatWindow } from "@/components/tutor/AITutorChatWindow";
 import { AIDoubtSolverCard } from "@/components/tutor/AIDoubtSolverCard";
 import { AIFlashcardDeckCard } from "@/components/tutor/AIFlashcardDeckCard";
+import { AITutorChatWindow } from "@/components/tutor/AITutorChatWindow";
 
-import { Bot, Sparkles, HelpCircle, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Bot,Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export default function AITutorPage() {

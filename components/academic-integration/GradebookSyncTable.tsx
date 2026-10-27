@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
 import { GradebookSyncService } from "@/lib/academic-integration/gradebookSync";
-import { GraduationCap, CheckCircle2, ArrowRight } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 
 export function GradebookSyncTable() {
   const logs = GradebookSyncService.getLogs();

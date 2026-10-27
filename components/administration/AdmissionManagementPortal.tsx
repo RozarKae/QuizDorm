@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { AdmissionApplication } from "@/lib/types/administration";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { 
-  FileText, CheckCircle2, XCircle, Clock, Search, 
-  Award, Sparkles, Filter, Check, Eye
+import { AdmissionApplication } from "@/lib/types/administration";
+import {
+Check,
+FileText,
+Sparkles
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockApplications: AdmissionApplication[] = [

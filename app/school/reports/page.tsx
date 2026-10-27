@@ -1,22 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import {
-  BarChart3,
-  Download,
-  Users,
-  GraduationCap,
-  Building,
-  Filter,
-  CheckCircle2,
-  TrendingUp,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+Download
+} from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export default function SchoolReportsPage() {
-  const [selectedDept, setSelectedDept] = useState("all");
+  const [selectedDept] = useState("all");
 
   const departmentReports = [
     {

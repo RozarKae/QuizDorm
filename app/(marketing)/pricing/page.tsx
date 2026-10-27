@@ -1,12 +1,11 @@
 "use client";
 
-import React from "react";
-import Navbar from "@/components/landing/Navbar";
+import { CurrencySelector } from "@/components/billing/CurrencySelector";
 import Footer from "@/components/landing/Footer";
-import { Check, Sparkles, ShieldCheck } from "lucide-react";
+import Navbar from "@/components/landing/Navbar";
 import { Button } from "@/components/ui/button";
 import { useCurrency } from "@/lib/hooks/useCurrency";
-import { CurrencySelector } from "@/components/billing/CurrencySelector";
+import { Check,ShieldCheck,Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export default function PricingPage() {

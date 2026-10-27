@@ -1,7 +1,6 @@
-import React from "react";
+import { cn } from "@/lib/utils";
 import { CheckCircle2 } from "lucide-react";
 import { Button } from "./button";
-import { cn } from "@/lib/utils";
 
 interface SuccessStateProps {
   title: string;

@@ -1,13 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
-import { ClassroomResource } from "@/lib/types/classroom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Folder, FileText, Video, File, Link as LinkIcon, Music, 
-  Upload, Download, Search, Tag, Eye, Layers, Sparkles
+import { ClassroomResource } from "@/lib/types/classroom";
+import {
+Download,
+File,
+FileText,
+Folder,
+Link as LinkIcon,Music,
+Search,
+Upload,
+Video
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockResources: ClassroomResource[] = [

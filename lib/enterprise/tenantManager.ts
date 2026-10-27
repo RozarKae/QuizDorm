@@ -1,4 +1,4 @@
-import { Tenant, TenantIsolationMode } from "@/lib/types/enterprise";
+import { Tenant } from "@/lib/types/enterprise";
 
 const STORAGE_KEY_TENANTS = "quizdorm_enterprise_tenants";
 

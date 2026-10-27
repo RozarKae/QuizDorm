@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { AIFlashcardGenerator } from "@/lib/tutor/flashcardGenerator";
-import { AIFlashcard } from "@/lib/types/tutor";
-import { RotateCcw, CheckCircle2, ChevronRight, Zap } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { AIFlashcardGenerator } from "@/lib/tutor/flashcardGenerator";
+import { ChevronRight,RotateCcw } from "lucide-react";
+import { useState } from "react";
 
 export function AIFlashcardDeckCard() {
   const cards = AIFlashcardGenerator.getCards();

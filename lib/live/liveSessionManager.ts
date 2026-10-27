@@ -1,13 +1,13 @@
-import {
-  LiveSessionState,
-  PublicSessionState,
-  PublicSessionQuestion,
-  CreateSessionOptions,
-  SubmittedAnswer,
-} from "./types";
-import { LiveParticipant, AnnouncementItem } from "@/lib/types/competition";
-import { QuestionItem } from "@/lib/types/question";
 import { ALL_DEFAULT_QUESTIONS } from "@/lib/data/question-bank";
+import { AnnouncementItem,LiveParticipant } from "@/lib/types/competition";
+import { QuestionItem } from "@/lib/types/question";
+import {
+CreateSessionOptions,
+LiveSessionState,
+PublicSessionQuestion,
+PublicSessionState,
+SubmittedAnswer,
+} from "./types";
 
 // Fallback high quality seed questions
 const DEFAULT_SEED_QUESTIONS: QuestionItem[] = [
@@ -118,21 +118,26 @@ const DEFAULT_SEED_QUESTIONS: QuestionItem[] = [
   },
 ];
 
+export interface LiveSessionEvent {
+  type: string;
+  code: string;
+  timestamp: number;
+  data?: unknown;
+}
+
 // In-memory global store to survive Next.js Turbopack fast refreshes
 declare global {
-  // eslint-disable-next-line no-var
   var __QUIZDORM_LIVE_SESSIONS__: Map<string, LiveSessionState> | undefined;
-  // eslint-disable-next-line no-var
-  var __QUIZDORM_LIVE_LISTENERS__: Map<string, Set<(event: any) => void>> | undefined;
+  var __QUIZDORM_LIVE_LISTENERS__: Map<string, Set<(event: LiveSessionEvent) => void>> | undefined;
 }
 
 const sessionsStore: Map<string, LiveSessionState> =
   globalThis.__QUIZDORM_LIVE_SESSIONS__ ||
   (globalThis.__QUIZDORM_LIVE_SESSIONS__ = new Map<string, LiveSessionState>());
 
-const listenersStore: Map<string, Set<(event: any) => void>> =
+const listenersStore: Map<string, Set<(event: LiveSessionEvent) => void>> =
   globalThis.__QUIZDORM_LIVE_LISTENERS__ ||
-  (globalThis.__QUIZDORM_LIVE_LISTENERS__ = new Map<string, Set<(event: any) => void>>());
+  (globalThis.__QUIZDORM_LIVE_LISTENERS__ = new Map<string, Set<(event: LiveSessionEvent) => void>>());
 
 /**
  * Normalizes room code to uppercase, trimmed, standardized "QD-XXXX" format
@@ -168,7 +173,7 @@ export function generateCollisionResistantCode(): string {
 /**
  * Helper to emit real-time event to all connected SSE clients
  */
-function emitSessionEvent(code: string, eventType: string, payload?: any) {
+function emitSessionEvent(code: string, eventType: string, payload?: unknown) {
   const normCode = normalizeRoomCode(code);
   const listeners = listenersStore.get(normCode) || listenersStore.get(code);
   if (listeners && listeners.size > 0) {
@@ -191,7 +196,7 @@ function emitSessionEvent(code: string, eventType: string, payload?: any) {
 /**
  * Subscribe a client (SSE) to session events
  */
-export function subscribeToSession(code: string, callback: (event: any) => void): () => void {
+export function subscribeToSession(code: string, callback: (event: LiveSessionEvent) => void): () => void {
   const normCode = normalizeRoomCode(code);
   if (!listenersStore.has(normCode)) {
     listenersStore.set(normCode, new Set());
@@ -219,8 +224,8 @@ function recalculateLeaderboardRanks(session: LiveSessionState) {
   // 3. Alphabetical by name
   participantsList.sort((a, b) => {
     if (b.score !== a.score) return b.score - a.score;
-    const aTime = (a as any).totalResponseTimeMs || 0;
-    const bTime = (b as any).totalResponseTimeMs || 0;
+    const aTime = a.totalResponseTimeMs || 0;
+    const bTime = b.totalResponseTimeMs || 0;
     if (aTime !== bTime) return aTime - bTime;
     return a.name.localeCompare(b.name);
   });
@@ -241,6 +246,7 @@ export function toPublicSessionState(
   session: LiveSessionState,
   requestingParticipantId?: string
 ): PublicSessionState {
+  void requestingParticipantId;
   const now = Date.now();
   let timeRemainingSec = 0;
 
@@ -544,7 +550,7 @@ export class LiveSessionManager {
         success: false,
         participantId: "",
         participantToken: "",
-        session: null as any,
+        session: null as unknown as PublicSessionState,
         error: "INVALID_CODE: No active competition arena found with this room PIN.",
       };
     }
@@ -583,7 +589,7 @@ export class LiveSessionManager {
       // Reconnect existing participant
       participantId = existingParticipant.id;
       existingParticipant.isOnline = true;
-      (existingParticipant as any).lastSeen = Date.now();
+      existingParticipant.lastSeen = Date.now();
     } else {
       // Enroll new participant
       participantId = participant.id || `pt_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
@@ -719,7 +725,7 @@ export class LiveSessionManager {
     }
 
     participant.answersCount = (participant.answersCount || 0) + 1;
-    (participant as any).totalResponseTimeMs = ((participant as any).totalResponseTimeMs || 0) + responseTimeMs;
+    participant.totalResponseTimeMs = (participant.totalResponseTimeMs || 0) + responseTimeMs;
 
     const submission: SubmittedAnswer = {
       participantId,
@@ -771,7 +777,7 @@ export class LiveSessionManager {
       | "end"
       | "post_announcement"
       | "kick_participant",
-    payload?: any
+    payload?: { seconds?: number; text?: string; participantId?: string }
   ): {
     success: boolean;
     session?: PublicSessionState;

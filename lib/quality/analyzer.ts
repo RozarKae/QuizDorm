@@ -1,5 +1,6 @@
+import { GeneratedQuestion } from "@/lib/ai/schemas/questionGenerationSchema";
+import { AnswerValidation,QualityScoreBreakdown } from "@/lib/types/quality";
 import { QuestionItem } from "@/lib/types/question";
-import { QualityScoreBreakdown, AnswerValidation } from "@/lib/types/quality";
 import { QuestionIntelligenceValidator } from "./questionIntelligenceValidator";
 
 export class QuestionQualityAnalyzer {
@@ -8,10 +9,9 @@ export class QuestionQualityAnalyzer {
    */
   public static analyzeQuality(question: Partial<QuestionItem>): QualityScoreBreakdown {
     const text = (question.title || "").trim();
-    const options = question.options || [];
 
     // Run deep quality gates
-    const deepResult = QuestionIntelligenceValidator.validate(question as any);
+    const deepResult = QuestionIntelligenceValidator.validate(question as unknown as GeneratedQuestion);
 
     // 1. Grammar & Spelling Score
     let grammarScore = 95;
@@ -35,7 +35,7 @@ export class QuestionQualityAnalyzer {
     if (wordCount >= 10 && wordCount <= 35) readabilityScore = 96;
 
     // 6. Fairness Score
-    let fairnessScore = 95;
+    const fairnessScore = 95;
 
     // Calculate weighted overall score
     let overallScore = Math.round(
@@ -66,7 +66,7 @@ export class QuestionQualityAnalyzer {
    * Validate answer key consistency and option integrity
    */
   public static validateAnswerKey(question: Partial<QuestionItem>): AnswerValidation {
-    const deepResult = QuestionIntelligenceValidator.validate(question as any);
+    const deepResult = QuestionIntelligenceValidator.validate(question as unknown as GeneratedQuestion);
     const options = question.options || [];
     const correctOptions = options.filter((o) => o.isCorrect);
 

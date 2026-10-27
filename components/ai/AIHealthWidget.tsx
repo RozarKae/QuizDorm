@@ -1,22 +1,17 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { ProviderHealthMonitor } from "@/lib/ai/analytics/analytics";
-import { AIConnectionManager, ConnectionTestResult } from "@/lib/ai/services/connectionManager";
-import { ProviderBadge } from "./ProviderBadge";
-import { ShieldCheck, AlertTriangle, RefreshCw, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AIConnectionManager,ConnectionTestResult } from "@/lib/ai/services/connectionManager";
+import { Activity,RefreshCw } from "lucide-react";
+import { useCallback,useEffect,useState } from "react";
 import { toast } from "sonner";
+import { ProviderBadge } from "./ProviderBadge";
 
 export function AIHealthWidget() {
   const [testResults, setTestResults] = useState<ConnectionTestResult[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    runHealthCheck();
-  }, []);
-
-  const runHealthCheck = async () => {
+  const runHealthCheck = useCallback(async () => {
     setLoading(true);
     try {
       const results = await AIConnectionManager.testAllConnections();
@@ -26,7 +21,24 @@ export function AIHealthWidget() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    AIConnectionManager.testAllConnections()
+      .then((results) => {
+        if (active) setTestResults(results);
+      })
+      .catch(() => {
+        if (active) toast.error("Health check failed");
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <div className="bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-800 rounded-3xl p-6 shadow-sm space-y-4">

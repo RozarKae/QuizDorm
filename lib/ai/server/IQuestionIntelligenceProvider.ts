@@ -1,6 +1,7 @@
 import {
-  QuestionGenerationInput,
-  PdfQuestionGenerationInput,
+BatchQuestionGenerationInput,
+PdfQuestionGenerationInput,
+QuestionGenerationInput,
 } from "../schemas/questionGenerationSchema";
 
 export class AIProviderError extends Error {
@@ -72,6 +73,11 @@ export interface IQuestionIntelligenceProvider {
     buffer: Buffer,
     mimeType: string,
     input: PdfQuestionGenerationInput,
+    options?: { modelOverride?: string; timeoutMs?: number }
+  ): Promise<RawAIQuestionResponse>;
+
+  generateBatchQuestionsRaw?(
+    input: BatchQuestionGenerationInput,
     options?: { modelOverride?: string; timeoutMs?: number }
   ): Promise<RawAIQuestionResponse>;
 

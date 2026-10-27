@@ -1,4 +1,4 @@
-import { MediaAsset, MediaCollection, StorageQuotaUsage, MediaType } from "@/lib/types/media";
+import { MediaAsset,MediaType,StorageQuotaUsage } from "@/lib/types/media";
 
 export interface IMediaStorageProvider {
   id: string;
@@ -11,7 +11,6 @@ export interface IMediaStorageProvider {
 }
 
 const STORAGE_KEY_ASSETS = "quizdorm_media_assets";
-const STORAGE_KEY_COLLECTIONS = "quizdorm_media_collections";
 
 export const INITIAL_MOCK_ASSETS: MediaAsset[] = [
   {

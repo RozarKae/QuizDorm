@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
 import { PROMPT_TEMPLATE_LIBRARY } from "@/lib/ai/prompts/promptTemplates";
 import { PromptTemplate } from "@/lib/types/ai";
-import { FileText, Copy, Code, Tag, Sparkles } from "lucide-react";
+import { Copy,FileText } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function PromptTemplateManager() {

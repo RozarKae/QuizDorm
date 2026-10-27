@@ -1,13 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import { DiscussionTopic, QuestionBoardItem, LivePoll, BrainstormItem } from "@/lib/types/classroom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Users, MessageSquare, HelpCircle, BarChart3, StickyNote, ThumbsUp, 
-  CheckCircle2, Plus, Sparkles, Pin, Tag, Send
+import { BrainstormItem,DiscussionTopic,LivePoll,QuestionBoardItem } from "@/lib/types/classroom";
+import {
+BarChart3,
+CheckCircle2,
+HelpCircle,
+MessageSquare,
+Pin,
+Plus,
+StickyNote,ThumbsUp
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockDiscussions: DiscussionTopic[] = [

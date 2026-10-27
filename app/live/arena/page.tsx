@@ -1,21 +1,21 @@
 "use client";
 
-import React, { Suspense, useState, useEffect } from "react";
-import Link from "next/link";
-import { JoinArenaForm } from "@/components/competitions/JoinArenaForm";
 import { AudioToggle } from "@/components/audio/AudioToggle";
 import { useSound } from "@/components/audio/useSound";
-import {
-  Trophy,
-  Zap,
-  Users,
-  Clock,
-  ArrowRight,
-  Radio,
-  PlusCircle,
-  Home,
-} from "lucide-react";
+import { JoinArenaForm } from "@/components/competitions/JoinArenaForm";
 import { Button } from "@/components/ui/button";
+import {
+ArrowRight,
+Clock,
+Home,
+PlusCircle,
+Radio,
+Trophy,
+Users,
+Zap,
+} from "lucide-react";
+import Link from "next/link";
+import { Suspense,useEffect,useState } from "react";
 
 const STORAGE_KEY_HOSTED_COMPETITIONS = "quizdorm_hosted_competitions_v1";
 
@@ -33,19 +33,16 @@ interface HostedArenaItem {
 
 export default function LiveArenaIndexPage() {
   const { playTap, playCorrect } = useSound();
-  const [activeArenas, setActiveArenas] = useState<HostedArenaItem[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
+  const [activeArenas] = useState<HostedArenaItem[]>(() => {
     if (typeof window !== "undefined") {
       try {
         const saved = localStorage.getItem(STORAGE_KEY_HOSTED_COMPETITIONS);
         if (saved) {
           const parsed = JSON.parse(saved);
           if (Array.isArray(parsed)) {
-            const mapped = parsed.map((p: any) => ({
-              id: p.id || p.code,
-              code: p.code,
+            return parsed.map((p: Partial<HostedArenaItem>) => ({
+              id: p.id || p.code || `arena-${Date.now()}`,
+              code: p.code || "QD-0000",
               title: p.title || "Live Curriculum Arena",
               hostName: p.hostName || "Verified Organizer",
               category: p.category || "Competitive Assessment",
@@ -54,14 +51,18 @@ export default function LiveArenaIndexPage() {
               participantsCount: p.participantsCount || 0,
               timeRemaining: p.timeRemaining || "In Session",
             }));
-            setActiveArenas(mapped);
           }
         }
       } catch {
-        setActiveArenas([]);
+        return [];
       }
     }
-    setIsLoaded(true);
+    return [];
+  });
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    queueMicrotask(() => setIsLoaded(true));
   }, []);
 
   return (

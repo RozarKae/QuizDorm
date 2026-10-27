@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
 import Logo from "@/components/layout/Logo";
-import { Wifi, Battery, Sparkles, Award, Play, CheckCircle2, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Battery,Play,RotateCcw,Wifi } from "lucide-react";
 
 export function MobilePreviewFrame() {
   return (

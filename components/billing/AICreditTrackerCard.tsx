@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { UserSubscription } from "@/lib/types/billing";
-import { Sparkles, ScanText, Layers, RefreshCw } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { UserSubscription } from "@/lib/types/billing";
+import { ScanText,Sparkles } from "lucide-react";
 
 interface AICreditTrackerCardProps {
   subscription: UserSubscription;

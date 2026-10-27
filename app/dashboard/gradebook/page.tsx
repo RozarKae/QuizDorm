@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
 import { GradebookSyncTable } from "@/components/academic-integration/GradebookSyncTable";
-import { GraduationCap, RefreshCw, CheckCircle2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { GraduationCap,RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 
 export default function GradebookSyncPage() {

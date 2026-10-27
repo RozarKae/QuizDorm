@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { PredictiveScore } from "@/lib/types/performance";
-import { TrendingUp, Info, ChevronDown, ChevronUp, CheckCircle2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { PredictiveScore } from "@/lib/types/performance";
+import { CheckCircle2,ChevronDown,ChevronUp,Info,TrendingUp } from "lucide-react";
+import { useState } from "react";
 
 interface PredictiveGradeCardProps {
   prediction: PredictiveScore;

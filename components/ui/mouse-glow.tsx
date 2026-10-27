@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React,{ useEffect,useRef,useState } from "react";
 
 /**
  * Minimal & Subtle Multi-Spectral Neon Cursor Glow
@@ -13,8 +13,14 @@ import React, { useEffect, useRef, useState } from "react";
  * Tuned with feather-soft diffusion (blur: 40px) and minimal opacity (2% - 4%)
  * so text and UI remain crystal clear without visual clutter.
  */
+const emptySubscribe = () => () => {};
+
 export default function MouseGlow() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = React.useSyncExternalStore(
+    emptySubscribe,
+    () => (typeof window !== "undefined" ? window.matchMedia("(pointer: fine)").matches : false),
+    () => false
+  );
   const [isVisible, setIsVisible] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
 
@@ -28,8 +34,6 @@ export default function MouseGlow() {
     if (typeof window === "undefined") return;
     const isFinePointer = window.matchMedia("(pointer: fine)").matches;
     if (!isFinePointer) return;
-
-    setMounted(true);
 
     const handleMouseMove = (e: MouseEvent) => {
       targetPos.current = { x: e.clientX, y: e.clientY };

@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { HybridDeviceSync } from "@/lib/types/classroom";
 import { Button } from "@/components/ui/button";
-import { 
-  Tv, Monitor, Tablet, Smartphone, Wifi, WifiOff, RefreshCw, 
-  CheckCircle2, Users, Layers, Sparkles, Cast, HardDrive, ShieldCheck
+import { HybridDeviceSync } from "@/lib/types/classroom";
+import {
+Cast,HardDrive,
+Monitor,
+Smartphone,
+Tablet,
+Tv
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockDevices: HybridDeviceSync[] = [
@@ -17,7 +20,7 @@ const mockDevices: HybridDeviceSync[] = [
 ];
 
 export function HybridLearningConsole() {
-  const [devices, setDevices] = useState<HybridDeviceSync[]>(mockDevices);
+  const [devices] = useState<HybridDeviceSync[]>(mockDevices);
   const [isCasting, setIsCasting] = useState(false);
   const [offlineSyncProgress, setOfflineSyncProgress] = useState(100);
 
@@ -55,7 +58,7 @@ export function HybridLearningConsole() {
             variant="outline"
             className="bg-white/10 hover:bg-white/20 text-white border-white/20 text-xs rounded-xl backdrop-blur-md"
           >
-            <HardDrive className="w-4 h-4 mr-1.5 text-amber-400" /> Sync Offline Package
+            <HardDrive className="w-4 h-4 mr-1.5 text-amber-400" /> {offlineSyncProgress < 100 ? `Syncing (${offlineSyncProgress}%)` : "Sync Offline Package"}
           </Button>
 
           <Button

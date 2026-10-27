@@ -1,20 +1,20 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import AuthCard from "@/components/auth/AuthCard";
-import AuthHeader from "@/components/auth/AuthHeader";
-import AuthForm from "@/components/auth/AuthForm";
 import AuthFooter from "@/components/auth/AuthFooter";
-import PasswordInput from "@/components/auth/PasswordInput";
+import AuthForm from "@/components/auth/AuthForm";
+import AuthHeader from "@/components/auth/AuthHeader";
 import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
-import PasswordStrengthIndicator, { evaluatePasswordStrength } from "@/components/auth/PasswordStrengthIndicator";
-import { Input } from "@/components/ui/input";
+import PasswordInput from "@/components/auth/PasswordInput";
+import PasswordStrengthIndicator,{ evaluatePasswordStrength } from "@/components/auth/PasswordStrengthIndicator";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { createClient,isSupabaseConfigured } from "@/lib/supabase/client";
 import Link from "next/link";
-import { signUpWithEmail, signInWithGoogle } from "../actions";
-import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { toast } from "sonner";
+import { signInWithGoogle,signUpWithEmail } from "../actions";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -58,9 +58,10 @@ export default function RegisterPage() {
       if (typeof window !== "undefined") {
         localStorage.removeItem("quizdorm_demo_user");
       }
-      if ((res as any).requiresEmailVerification) {
+      const regRes = res as { requiresEmailVerification?: boolean; redirectUrl?: string };
+      if (regRes.requiresEmailVerification) {
         toast.info("Account created! Please check your email to verify your address.");
-        router.push((res as any).redirectUrl || "/auth/login");
+        router.push(regRes.redirectUrl || "/auth/login");
       } else {
         toast.success("Account created successfully!");
         window.location.href = res.redirectUrl || "/dashboard";

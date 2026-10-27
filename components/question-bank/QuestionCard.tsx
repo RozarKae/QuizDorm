@@ -1,10 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import { QuestionItem } from "@/lib/types/question";
-import { QuestionTypeBadge } from "./QuestionTypeBadge";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Edit, Trash2, Tag, HelpCircle, CheckCircle2 } from "lucide-react";
+import { QuestionItem } from "@/lib/types/question";
+import { CheckCircle2,Edit,Tag,Trash2 } from "lucide-react";
+import Link from "next/link";
+import { QuestionTypeBadge } from "./QuestionTypeBadge";
 
 interface QuestionCardProps {
   question: QuestionItem;

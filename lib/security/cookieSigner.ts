@@ -6,14 +6,32 @@
  * Prevents client-side privilege escalation and role tampering.
  */
 
-const SIGNING_KEY_SECRET =
-  process.env.COOKIE_SIGNING_SECRET ||
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
-  "quizdorm-production-hmac-sha256-signing-secret-2026";
+let runtimeSecret = "";
+
+function getSigningSecret(): string {
+  if (process.env.COOKIE_SIGNING_SECRET) {
+    return process.env.COOKIE_SIGNING_SECRET;
+  }
+  if (process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    return process.env.SUPABASE_SERVICE_ROLE_KEY;
+  }
+  if (process.env.NODE_ENV !== "production") {
+    return "quizdorm-dev-hmac-sha256-signing-secret";
+  }
+  // Production fallback: secure runtime random secret (prevents using public anon key or predictable string)
+  if (!runtimeSecret) {
+    const bytes = new Uint8Array(32);
+    crypto.getRandomValues(bytes);
+    runtimeSecret = Array.from(bytes)
+      .map((b) => b.toString(16).padStart(2, "0"))
+      .join("");
+  }
+  return runtimeSecret;
+}
 
 async function getCryptoKey(): Promise<CryptoKey> {
   const enc = new TextEncoder();
-  const keyData = enc.encode(SIGNING_KEY_SECRET);
+  const keyData = enc.encode(getSigningSecret());
   return crypto.subtle.importKey(
     "raw",
     keyData,
@@ -68,7 +86,7 @@ function fromBase64Url(base64url: string): string {
 /**
  * Signs an object payload and returns `base64UrlPayload.hexSignature`
  */
-export async function signSessionPayload(payload: any): Promise<string> {
+export async function signSessionPayload(payload: unknown): Promise<string> {
   const jsonString = JSON.stringify(payload);
   const enc = new TextEncoder();
   const data = enc.encode(jsonString);
@@ -84,7 +102,7 @@ export async function signSessionPayload(payload: any): Promise<string> {
 /**
  * Verifies and parses a signed session cookie. Returns null if tampered, malformed, or invalid.
  */
-export async function verifySessionPayload<T = any>(token: string): Promise<T | null> {
+export async function verifySessionPayload<T = unknown>(token: string): Promise<T | null> {
   if (!token || typeof token !== "string" || !token.includes(".")) {
     return null;
   }

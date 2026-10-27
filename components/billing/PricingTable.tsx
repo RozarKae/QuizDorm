@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { SUBSCRIPTION_PLANS } from "@/lib/billing/subscriptionManager";
-import { SubscriptionPlanId } from "@/lib/types/billing";
-import { useCurrency } from "@/lib/hooks/useCurrency";
 import { CurrencySelector } from "@/components/billing/CurrencySelector";
-import { Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SUBSCRIPTION_PLANS } from "@/lib/billing/subscriptionManager";
+import { useCurrency } from "@/lib/hooks/useCurrency";
+import { SubscriptionPlanId } from "@/lib/types/billing";
+import { Check } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 interface PricingTableProps {
   currentPlanId: SubscriptionPlanId;
@@ -16,7 +16,7 @@ interface PricingTableProps {
 
 export function PricingTable({ currentPlanId, onSelectPlan }: PricingTableProps) {
   const [isAnnual, setIsAnnual] = useState(true);
-  const { formatPrice, currency } = useCurrency();
+  const { formatPrice } = useCurrency();
 
   return (
     <div className="space-y-6 text-[#F2F7F3]">
@@ -110,6 +110,7 @@ export function PricingTable({ currentPlanId, onSelectPlan }: PricingTableProps)
 
               <Link href={`/checkout?plan=${plan.id}&cycle=${isAnnual ? "annual" : "monthly"}`}>
                 <Button
+                  onClick={() => onSelectPlan?.(plan.id, isAnnual)}
                   disabled={isCurrent}
                   className={`w-full text-xs font-mono font-bold rounded-[3px] h-8 tracking-wider ${
                     isCurrent

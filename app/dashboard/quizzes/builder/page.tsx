@@ -1,47 +1,37 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { QuestionItem, QuestionType } from "@/lib/types/question";
-import { QuizItem, QuizStatus } from "@/lib/types/quiz";
-import { QuestionTypeBadge } from "@/components/question-bank/QuestionTypeBadge";
-import { QuizQuestionPickerModal } from "@/components/quiz-builder/QuizQuestionPickerModal";
-import { QuizPreviewModal } from "@/components/quiz-builder/QuizPreviewModal";
 import { AIDocumentQuizModal } from "@/components/ai/AIDocumentQuizModal";
-import { importQuestions } from "@/lib/data/question-bank";
+import { QuestionTypeBadge } from "@/components/question-bank/QuestionTypeBadge";
+import { QuizPreviewModal } from "@/components/quiz-builder/QuizPreviewModal";
+import { QuizQuestionPickerModal } from "@/components/quiz-builder/QuizQuestionPickerModal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
+import { importQuestions } from "@/lib/data/question-bank";
+import { QuestionItem } from "@/lib/types/question";
+import { QuizStatus } from "@/lib/types/quiz";
 import {
-  ArrowLeft,
-  Plus,
-  Trash2,
-  Save,
-  Eye,
-  Shuffle,
-  HelpCircle,
-  Clock,
-  Award,
-  Layers,
-  ArrowUp,
-  ArrowDown,
-  CheckCircle2,
-  FileText,
-  Sparkles,
-  Database,
+ArrowDown,
+ArrowLeft,
+ArrowUp,
+Database,
+Eye,
+FileText,
+Plus,
+Save,
+Sparkles,
+Trash2
 } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export default function QuizBuilderPage() {
-  const router = useRouter();
-
   // Quiz Metadata state
   const [title, setTitle] = useState("Advanced Algebra & Calculus Championship 2026");
   const [description, setDescription] = useState("Comprehensive evaluation for high school & college calculus students.");
   const [category, setCategory] = useState("Mathematics");
-  const [subject, setSubject] = useState("Algebra");
+  const [subject] = useState("Algebra");
   const [difficulty, setDifficulty] = useState<"Easy" | "Medium" | "Hard">("Hard");
   const [durationMinutes, setDurationMinutes] = useState(45);
   const [passMarks, setPassMarks] = useState(60);
@@ -269,7 +259,7 @@ export default function QuizBuilderPage() {
               </label>
               <Select
                 value={difficulty}
-                onChange={(e) => setDifficulty(e.target.value as any)}
+                onChange={(e) => setDifficulty(e.target.value as "Easy" | "Medium" | "Hard")}
                 options={[
                   { value: "Easy", label: "Easy" },
                   { value: "Medium", label: "Medium" },

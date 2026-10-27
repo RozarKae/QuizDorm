@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { ConflictResolver } from "@/lib/mobile/conflictResolver";
-import { SyncConflictItem } from "@/lib/types/mobile";
-import { GitCompare, CheckCircle2, ShieldCheck, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ConflictResolver } from "@/lib/mobile/conflictResolver";
+import { ConflictStrategy, SyncConflictItem } from "@/lib/types/mobile";
+import { GitCompare } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface ConflictResolverModalProps {
@@ -17,7 +17,7 @@ export function ConflictResolverModal({ open, onOpenChange }: ConflictResolverMo
 
   if (!open) return null;
 
-  const handleResolve = (id: string, strategy: any) => {
+  const handleResolve = (id: string, strategy: ConflictStrategy) => {
     const updated = ConflictResolver.resolveConflict(id, strategy);
     setConflicts(updated);
     toast.success(`Conflict resolved using "${strategy}" strategy!`);

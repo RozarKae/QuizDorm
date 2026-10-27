@@ -1,6 +1,5 @@
-import React from "react";
 import { PerformanceInsight } from "@/lib/types/analytics";
-import { Sparkles, AlertTriangle, CheckCircle2, Info } from "lucide-react";
+import { AlertTriangle,CheckCircle2,Info,Sparkles } from "lucide-react";
 
 interface PerformanceInsightsCardProps {
   insights: PerformanceInsight[];

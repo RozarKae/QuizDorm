@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Users, BookOpen, Sparkles, Megaphone, CheckCircle2, 
-  Search, Upload, ArrowUpRight, Award, Layers
+import {
+BookOpen,
+Megaphone,
+Upload,
+Users
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockStudentsProgress = [
@@ -16,7 +18,7 @@ const mockStudentsProgress = [
 ];
 
 export function InstructorWorkspaceConsole() {
-  const [students, setStudents] = useState(mockStudentsProgress);
+  const [students] = useState(mockStudentsProgress);
   const [broadcastMessage, setBroadcastMessage] = useState("");
 
   const handleBroadcast = (e: React.FormEvent) => {

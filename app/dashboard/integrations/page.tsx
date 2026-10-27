@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
 import { LMSConnectorCard } from "@/components/developer/LMSConnectorCard";
-import { Boxes, Cloud, Calendar, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Boxes,Calendar,Cloud } from "lucide-react";
 
 export default function IntegrationsMarketplacePage() {
   return (

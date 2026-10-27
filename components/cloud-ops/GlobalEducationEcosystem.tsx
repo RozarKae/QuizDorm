@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { 
-  Globe, Building2, CheckCircle2, Sparkles, Cpu, Award
+import {
+CheckCircle2,
+Globe,
+Sparkles
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface NetworkNode {
@@ -21,7 +23,7 @@ const mockNodes: NetworkNode[] = [
 ];
 
 export function GlobalEducationEcosystem() {
-  const [nodes, setNodes] = useState<NetworkNode[]>(mockNodes);
+  const [nodes] = useState<NetworkNode[]>(mockNodes);
 
   const handleConnectNode = () => {
     toast.success("Connected new National Education Program node to QuizDorm EduOS Mainnet!");

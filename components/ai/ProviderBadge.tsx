@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
 import { AIProviderType } from "@/lib/types/ai";
-import { Badge } from "@/components/ui/badge";
-import { Sparkles, Cpu, Bot, Zap, HardDrive } from "lucide-react";
+import { Bot,Cpu,HardDrive,Sparkles,Zap } from "lucide-react";
+import React from "react";
 
 interface ProviderBadgeProps {
   providerId: AIProviderType;

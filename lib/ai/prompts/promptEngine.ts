@@ -14,7 +14,7 @@ export class PromptEngine {
    */
   public static interpolateVariables(
     templateStr: string,
-    variables: Record<string, any>
+    variables: Record<string, unknown>
   ): string {
     let result = templateStr;
     Object.keys(variables).forEach((key) => {
@@ -30,7 +30,7 @@ export class PromptEngine {
    */
   public static validateVariables(
     template: PromptTemplate,
-    variables: Record<string, any>
+    variables: Record<string, unknown>
   ): { valid: boolean; missing: string[] } {
     const missing = template.requiredVariables.filter(
       (v) => variables[v] === undefined || variables[v] === null
@@ -46,10 +46,10 @@ export class PromptEngine {
    */
   public static composeUserPrompt(
     templateId: string,
-    variables: Record<string, any>
+    variables: Record<string, unknown>
   ): string {
     const template = this.getTemplateById(templateId);
-    if (!template) return variables.userPrompt || "";
+    if (!template) return typeof variables.userPrompt === "string" ? variables.userPrompt : "";
 
     const validation = this.validateVariables(template, variables);
     if (!validation.valid) {

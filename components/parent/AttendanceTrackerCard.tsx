@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { AttendanceRecord } from "@/lib/types/parent";
-import { Calendar, CheckCircle2, Clock, XCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { AttendanceRecord } from "@/lib/types/parent";
+import { Calendar,CheckCircle2,Clock,XCircle } from "lucide-react";
 
 interface AttendanceTrackerCardProps {
   records: AttendanceRecord[];

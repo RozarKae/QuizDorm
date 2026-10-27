@@ -1,17 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
-import { Tenant } from "@/lib/types/enterprise";
-import { TenantManager } from "@/lib/enterprise/tenantManager";
-import { Building, ShieldCheck, Globe, Users, Sliders, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { TenantManager } from "@/lib/enterprise/tenantManager";
+import { Tenant } from "@/lib/types/enterprise";
+import { Building,Sliders } from "lucide-react";
+import { useState } from "react";
 
 interface TenantManagerCardProps {
   onOpenWhiteLabel?: (tenant: Tenant) => void;
 }
 
 export function TenantManagerCard({ onOpenWhiteLabel }: TenantManagerCardProps) {
-  const [tenants, setTenants] = useState<Tenant[]>(TenantManager.getTenants());
+  const [tenants] = useState<Tenant[]>(TenantManager.getTenants());
 
   return (
     <div className="bg-[#140C0E] border border-[rgba(240, 160, 180,0.14)] rounded-[6px] p-5 shadow-sm space-y-4">

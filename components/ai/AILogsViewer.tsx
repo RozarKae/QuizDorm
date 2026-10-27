@@ -1,21 +1,17 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { AILogEntry } from "@/lib/types/ai";
-import { AILogger } from "@/lib/ai/analytics/analytics";
-import { ProviderBadge } from "./ProviderBadge";
-import { Search, Filter, Clock, Trash2, Eye, FileText, CheckCircle2, AlertTriangle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AILogger } from "@/lib/ai/analytics/analytics";
+import { AILogEntry } from "@/lib/types/ai";
+import { FileText,RefreshCw,Search,Trash2 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
+import { ProviderBadge } from "./ProviderBadge";
 
 export function AILogsViewer() {
-  const [logs, setLogs] = useState<AILogEntry[]>([]);
+  const [logs, setLogs] = useState<AILogEntry[]>(() => AILogger.getLogs());
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
-
-  useEffect(() => {
-    loadLogs();
-  }, []);
 
   const loadLogs = () => {
     setLogs(AILogger.getLogs());

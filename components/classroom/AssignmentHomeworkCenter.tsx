@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { Assignment, HomeworkSubmission } from "@/lib/types/classroom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  FileText, Plus, Sparkles, Calendar, Clock, CheckCircle2, 
-  AlertCircle, Upload, Eye, Award, MessageSquare, Search, FileCheck, Layers
+import { Assignment,HomeworkSubmission } from "@/lib/types/classroom";
+import {
+Calendar,
+FileCheck,
+FileText,Plus,Sparkles
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockAssignments: Assignment[] = [
@@ -396,7 +397,7 @@ export function AssignmentHomeworkCenter() {
                 </span>
               </div>
               <p className="text-slate-600 dark:text-slate-300">
-                "{selectedSubForGrading.aiGradingSuggestion?.feedback}"
+                &ldquo;{selectedSubForGrading.aiGradingSuggestion?.feedback}&rdquo;
               </p>
             </div>
 

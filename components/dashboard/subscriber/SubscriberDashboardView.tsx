@@ -1,27 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import {
-  Sparkles,
-  Flame,
-  Award,
-  BookOpen,
-  ArrowRight,
-  Clock,
-  Compass,
-  Trophy,
-  Swords,
-  Zap,
-  TrendingUp,
-  Brain,
-  ShieldCheck,
-  CreditCard,
-  ChevronRight,
-  BarChart3,
-  CheckCircle2,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+ArrowRight,
+BarChart3,
+BookOpen,
+Brain,
+CheckCircle2,
+Compass,
+CreditCard,
+Flame,
+Sparkles,
+Swords,
+Trophy
+} from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function SubscriberDashboardView() {
   const [pinCode, setPinCode] = useState("");

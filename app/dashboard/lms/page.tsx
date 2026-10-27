@@ -1,28 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
-import { CourseManagementHub } from "@/components/lms/CourseManagementHub";
-import { LessonStudioPlayer } from "@/components/lms/LessonStudioPlayer";
-import { LMSContentLibrary } from "@/components/lms/LMSContentLibrary";
 import { AdaptiveLearningPaths } from "@/components/lms/AdaptiveLearningPaths";
 import { AssessmentsPracticeHub } from "@/components/lms/AssessmentsPracticeHub";
-import { StudentLearningDashboard } from "@/components/lms/StudentLearningDashboard";
-import { InstructorWorkspaceConsole } from "@/components/lms/InstructorWorkspaceConsole";
-import { LMSCommunityHub } from "@/components/lms/LMSCommunityHub";
-import { LMSAnalyticsDashboard } from "@/components/lms/LMSAnalyticsDashboard";
+import { CourseManagementHub } from "@/components/lms/CourseManagementHub";
 import { EnterpriseLMSConsole } from "@/components/lms/EnterpriseLMSConsole";
+import { InstructorWorkspaceConsole } from "@/components/lms/InstructorWorkspaceConsole";
+import { LessonStudioPlayer } from "@/components/lms/LessonStudioPlayer";
+import { LMSAnalyticsDashboard } from "@/components/lms/LMSAnalyticsDashboard";
+import { LMSCommunityHub } from "@/components/lms/LMSCommunityHub";
+import { LMSContentLibrary } from "@/components/lms/LMSContentLibrary";
+import { StudentLearningDashboard } from "@/components/lms/StudentLearningDashboard";
+import React,{ useState } from "react";
 
 import {
-  BookOpen,
-  Video,
-  Folder,
-  Target,
-  FileCode,
-  GraduationCap,
-  Users,
-  BarChart3,
-  Building2,
-  Sparkles,
+BarChart3,
+BookOpen,
+Building2,
+FileCode,
+Folder,
+GraduationCap,
+Target,
+Users,
+Video
 } from "lucide-react";
 
 export type LMSModuleTab =

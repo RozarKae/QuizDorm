@@ -1,9 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import { AssignmentItem } from "@/lib/types/academic";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Clock, Play, ArrowRight } from "lucide-react";
+import { AssignmentItem } from "@/lib/types/academic";
+import { ArrowRight,Clock,Play } from "lucide-react";
+import Link from "next/link";
 
 interface AssignmentCardProps {
   assignment: AssignmentItem;

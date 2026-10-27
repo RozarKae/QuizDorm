@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
 import { ExtractedQuestion } from "@/lib/types/ocr";
+import { AlertTriangle,Filter,Layers,Merge,Split,Trash2 } from "lucide-react";
+import { useState } from "react";
 import { ConfidenceBadge } from "./ConfidenceBadge";
-import { CheckCircle2, AlertTriangle, Layers, Split, Merge, Sparkles, Filter, Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 interface QuestionDetectionPanelProps {
   questions: ExtractedQuestion[];

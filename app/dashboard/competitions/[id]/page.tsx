@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useMemo } from "react";
-import Link from "next/link";
-import { ArrowLeft, Trophy, Users, Clock, ShieldCheck, Play, Award, Zap, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { useSound } from "@/components/audio/useSound";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft,Award,Clock,Play,Sparkles,Users } from "lucide-react";
+import Link from "next/link";
+import React,{ useMemo } from "react";
 
 const COMPETITION_DETAILS_MAP: Record<
   string,
@@ -68,7 +68,7 @@ export default function CompetitionDetailsPage({
   const { playTap } = useSound();
 
   const unwrappedParams =
-    typeof (params as any)?.then === "function"
+    typeof (params as PromiseLike<unknown>)?.then === "function"
       ? React.use(params as Promise<{ id: string }>)
       : (params as { id: string });
   const compId = unwrappedParams.id || "comp-1";

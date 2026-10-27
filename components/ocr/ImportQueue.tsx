@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { OCRJob } from "@/lib/types/ocr";
-import { ConfidenceBadge } from "./ConfidenceBadge";
-import { Loader2, FileText, CheckCircle2, AlertCircle, Eye, RefreshCw, Trash2, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { OCRJob } from "@/lib/types/ocr";
+import { AlertCircle,ArrowRight,Eye,FileText,Loader2,RefreshCw,Trash2 } from "lucide-react";
+import { ConfidenceBadge } from "./ConfidenceBadge";
 
 interface ImportQueueProps {
   jobs: OCRJob[];

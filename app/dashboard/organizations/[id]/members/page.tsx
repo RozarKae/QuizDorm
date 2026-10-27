@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { OrgMemberItem } from "@/lib/types/organization";
 import { InviteMemberModal } from "@/components/organization/InviteMemberModal";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Users, UserPlus, Search, Mail, Trash2 } from "lucide-react";
+import { OrgMemberItem } from "@/lib/types/organization";
+import { ArrowLeft,Search,Trash2,UserPlus,Users } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockMembers: OrgMemberItem[] = [

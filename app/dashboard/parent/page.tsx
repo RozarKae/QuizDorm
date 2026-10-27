@@ -1,21 +1,21 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { ParentManager } from "@/lib/parent/parentManager";
-import { ParentGuardian, ChildProfile } from "@/lib/types/parent";
 import { AttendanceService } from "@/lib/parent/attendanceService";
+import { ParentManager } from "@/lib/parent/parentManager";
+import { ParentGuardian } from "@/lib/types/parent";
+import { useState } from "react";
 
-import { ChildSwitcherCard } from "@/components/parent/ChildSwitcherCard";
-import { AttendanceTrackerCard } from "@/components/parent/AttendanceTrackerCard";
-import { ParentApprovalCard } from "@/components/parent/ParentApprovalCard";
 import { DirectChatWindow } from "@/components/communication/DirectChatWindow";
+import { AttendanceTrackerCard } from "@/components/parent/AttendanceTrackerCard";
+import { ChildSwitcherCard } from "@/components/parent/ChildSwitcherCard";
+import { ParentApprovalCard } from "@/components/parent/ParentApprovalCard";
 
-import { HeartHandshake, Sparkles, Calendar, ShieldCheck, Award, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { HeartHandshake,MessageSquare,Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export default function ParentPortalPage() {
-  const [parent, setParent] = useState<ParentGuardian>(ParentManager.getParentProfile());
+  const [parent] = useState<ParentGuardian>(ParentManager.getParentProfile());
   const [activeChildId, setActiveChildId] = useState(ParentManager.getActiveChildId());
 
   const activeChild = parent.linkedChildren.find((c) => c.id === activeChildId) || parent.linkedChildren[0];
@@ -76,7 +76,7 @@ export default function ParentPortalPage() {
       {/* Teacher Direct Messaging Window */}
       <div className="space-y-3">
         <h3 className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider flex items-center">
-          <MessageSquare className="w-4 h-4 text-indigo-600 mr-1.5" /> Direct Communication with {activeChild.name}'s Teachers
+          <MessageSquare className="w-4 h-4 text-indigo-600 mr-1.5" /> Direct Communication with {activeChild.name}&apos;s Teachers
         </h3>
         <DirectChatWindow />
       </div>

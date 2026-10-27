@@ -1,23 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
 import {
-  Bold,
-  Italic,
-  Underline,
-  List,
-  ListOrdered,
-  Code,
-  Table as TableIcon,
-  Sigma,
-  Image as ImageIcon,
-  Music,
-  Video,
-  Eye,
-  Link2,
+Bold,
+Code,
+Eye,
+Italic,
+List,
+ListOrdered,
+Sigma,
+Table as TableIcon
 } from "lucide-react";
+import { useState } from "react";
 import { EquationEditorModal } from "./EquationEditorModal";
-import { Button } from "@/components/ui/button";
 
 interface RichTextEquationEditorProps {
   value: string;

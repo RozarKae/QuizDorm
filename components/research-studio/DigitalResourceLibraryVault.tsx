@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { ResourceLibraryAsset } from "@/lib/types/research-studio";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Folder, FileText, Image as ImageIcon, Video, Search, 
-  Upload, Tag, Sparkles
+import { ResourceLibraryAsset } from "@/lib/types/research-studio";
+import {
+Folder,
+Search,
+Sparkles,
+Upload
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockAssets: ResourceLibraryAsset[] = [
@@ -16,7 +18,7 @@ const mockAssets: ResourceLibraryAsset[] = [
 ];
 
 export function DigitalResourceLibraryVault() {
-  const [assets, setAssets] = useState<ResourceLibraryAsset[]>(mockAssets);
+  const [assets] = useState<ResourceLibraryAsset[]>(mockAssets);
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleUploadAsset = () => {

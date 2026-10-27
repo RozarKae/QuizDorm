@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { AlertTriangle, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AlertTriangle,RefreshCw } from "lucide-react";
 
 export default function GlobalError({
   error,
@@ -11,6 +10,7 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  void error;
   return (
     <html>
       <body className="bg-gray-50 dark:bg-gray-950 flex items-center justify-center min-h-screen p-6 font-sans">

@@ -1,9 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import { QuizAttempt } from "@/lib/types/attempt";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Clock, Calendar, CheckCircle2, ArrowRight } from "lucide-react";
+import { QuizAttempt } from "@/lib/types/attempt";
+import { ArrowRight,Calendar,Clock } from "lucide-react";
+import Link from "next/link";
 
 interface AttemptCardProps {
   attempt: QuizAttempt;

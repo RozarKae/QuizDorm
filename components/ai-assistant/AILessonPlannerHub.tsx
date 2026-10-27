@@ -1,13 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
-import { AILessonPlan, BloomsLevel } from "@/lib/types/ai-assistant";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Sparkles, Calendar, BookOpen, Clock, CheckCircle2, 
-  Download, Layers, RefreshCw, Lightbulb, Target
+import { AILessonPlan } from "@/lib/types/ai-assistant";
+import {
+Clock,
+Download,
+Lightbulb,
+RefreshCw,
+Sparkles,
+Target
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockPlan: AILessonPlan = {
@@ -72,7 +76,7 @@ export function AILessonPlannerHub() {
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight">AI Lesson Planner & Curriculum Engine</h1>
           <p className="text-slate-300 text-xs sm:text-sm mt-1.5 max-w-xl">
-            Automate daily, weekly, and semester lesson planning mapped to Bloom's Taxonomy learning objectives, minute-by-minute timeline breakdowns, and homework suggestions.
+            Automate daily, weekly, and semester lesson planning mapped to Bloom&apos;s Taxonomy learning objectives, minute-by-minute timeline breakdowns, and homework suggestions.
           </p>
         </div>
 
@@ -124,7 +128,7 @@ export function AILessonPlannerHub() {
         {/* Bloom's Taxonomy Objectives */}
         <div className="space-y-3">
           <h3 className="font-bold text-xs text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-            <Target className="w-4 h-4 text-indigo-600" /> Bloom's Taxonomy Learning Objectives
+            <Target className="w-4 h-4 text-indigo-600" /> Bloom&apos;s Taxonomy Learning Objectives
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">

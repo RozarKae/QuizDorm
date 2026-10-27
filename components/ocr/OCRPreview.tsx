@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { OCRJob, ExtractedQuestion } from "@/lib/types/ocr";
-import { FileText, Table as TableIcon, Image as ImageIcon, Sigma, Eye, Layers, ChevronLeft, ChevronRight } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle } from "@/components/ui/dialog";
+import { OCRJob } from "@/lib/types/ocr";
+import { ChevronLeft,ChevronRight,Eye,FileText,Image as ImageIcon,Sigma,Table as TableIcon } from "lucide-react";
+import { useState } from "react";
 
 interface OCRPreviewProps {
   job: OCRJob;

@@ -1,16 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { SSOManager } from "@/lib/enterprise/ssoManager";
-import { FeatureFlagManager } from "@/lib/enterprise/featureFlagManager";
 import { EnterpriseWorkflowCard } from "@/components/enterprise/EnterpriseWorkflowCard";
-import { Building, Sliders, Lock, CheckCircle2, ShieldCheck, ToggleLeft, ToggleRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { FeatureFlagManager } from "@/lib/enterprise/featureFlagManager";
+import { SSOManager } from "@/lib/enterprise/ssoManager";
+import { Building,Lock,Sliders } from "lucide-react";
+import { useState } from "react";
 
 export default function TenantControlsPage() {
   const ssoConfigs = SSOManager.getSSOConfigs();
-  const [flags, setFlags] = useState(FeatureFlagManager.getFlags());
+  const [flags] = useState(FeatureFlagManager.getFlags());
 
   return (
     <div className="min-h-screen bg-gray-50/50 dark:bg-gray-900/50 p-4 sm:p-8 space-y-6">

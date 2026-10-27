@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { DiscussionForumEngine } from "@/lib/community/discussionEngine";
-import { DiscussionTag } from "@/lib/types/community";
-import { MessageSquare, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { DiscussionForumEngine } from "@/lib/community/discussionEngine";
+import { DiscussionTag } from "@/lib/types/community";
+import { MessageSquare } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface CreateDiscussionModalProps {

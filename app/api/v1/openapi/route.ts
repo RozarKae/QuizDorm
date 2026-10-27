@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
 import { OpenAPIGenerator } from "@/lib/developer/openapiGenerator";
+import { NextResponse } from "next/server";
 
 export async function GET() {
   const spec = OpenAPIGenerator.generateSpec();

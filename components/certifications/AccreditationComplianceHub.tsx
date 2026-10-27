@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { AccreditationStandard } from "@/lib/types/certifications";
 import { Button } from "@/components/ui/button";
-import { 
-  ShieldCheck, CheckCircle2, AlertTriangle, FileText, Sparkles
+import { AccreditationStandard } from "@/lib/types/certifications";
+import {
+ShieldCheck,
+Sparkles
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockAccreditation: AccreditationStandard[] = [
@@ -14,7 +15,7 @@ const mockAccreditation: AccreditationStandard[] = [
 ];
 
 export function AccreditationComplianceHub() {
-  const [standards, setStandards] = useState<AccreditationStandard[]>(mockAccreditation);
+  const [standards] = useState<AccreditationStandard[]>(mockAccreditation);
 
   const handleRunComplianceCheck = () => {
     toast.success("Ran Automated ISO/IEC 17024 Audit Check! 100% Compliant.");

@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { Award, Trophy, ArrowUp, ArrowDown, Minus, Search, Sparkles } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar,AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
+import { ArrowDown,ArrowUp,Minus,Search,Sparkles,Trophy } from "lucide-react";
+import { useState } from "react";
 
 interface LeaderboardUser {
   rank: number;

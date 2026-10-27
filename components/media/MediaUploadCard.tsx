@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { Upload, Image as ImageIcon, Music, Video, Sparkles, FileText, CheckCircle2 } from "lucide-react";
-import { MediaAsset, MediaType } from "@/lib/types/media";
-import { mediaStorage } from "@/lib/media/storage-provider";
-import { AIAssetGeneratorService } from "@/lib/media/ai-asset-generator";
 import { Button } from "@/components/ui/button";
+import { AIAssetGeneratorService } from "@/lib/media/ai-asset-generator";
+import { mediaStorage } from "@/lib/media/storage-provider";
+import { MediaAsset } from "@/lib/types/media";
+import { Image as ImageIcon,Music,Upload,Video } from "lucide-react";
+import React,{ useRef,useState } from "react";
 import { toast } from "sonner";
 
 interface MediaUploadCardProps {
@@ -49,8 +49,8 @@ export function MediaUploadCard({ onUploadSuccess }: MediaUploadCardProps) {
 
       toast.success(`Successfully uploaded ${asset.name}! AI Alt Text generated.`);
       onUploadSuccess(updated);
-    } catch (err: any) {
-      toast.error(err.message || "Failed to upload asset");
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Failed to upload asset");
     } finally {
       setLoading(false);
     }

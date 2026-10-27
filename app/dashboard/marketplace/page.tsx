@@ -1,20 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
-import { MarketplacePlatformHub } from "@/components/marketplace/MarketplacePlatformHub";
-import { DigitalProductMarketplace } from "@/components/marketplace/DigitalProductMarketplace";
-import { CreatorPortalStorefront } from "@/components/marketplace/CreatorPortalStorefront";
-import { InstitutionMarketplaceExchange } from "@/components/marketplace/InstitutionMarketplaceExchange";
-import { EducationalServiceMarketplace } from "@/components/marketplace/EducationalServiceMarketplace";
-import { SubscriptionCommerceEngine } from "@/components/marketplace/SubscriptionCommerceEngine";
-import { ReviewsCommunityHub } from "@/components/marketplace/ReviewsCommunityHub";
 import { AIMarketplaceAssistantHub } from "@/components/marketplace/AIMarketplaceAssistantHub";
-import { MarketplaceAnalyticsConsole } from "@/components/marketplace/MarketplaceAnalyticsConsole";
+import { CreatorPortalStorefront } from "@/components/marketplace/CreatorPortalStorefront";
+import { DigitalProductMarketplace } from "@/components/marketplace/DigitalProductMarketplace";
+import { EducationalServiceMarketplace } from "@/components/marketplace/EducationalServiceMarketplace";
 import { GlobalCommercePlatform } from "@/components/marketplace/GlobalCommercePlatform";
+import { InstitutionMarketplaceExchange } from "@/components/marketplace/InstitutionMarketplaceExchange";
+import { MarketplaceAnalyticsConsole } from "@/components/marketplace/MarketplaceAnalyticsConsole";
+import { MarketplacePlatformHub } from "@/components/marketplace/MarketplacePlatformHub";
+import { ReviewsCommunityHub } from "@/components/marketplace/ReviewsCommunityHub";
+import { SubscriptionCommerceEngine } from "@/components/marketplace/SubscriptionCommerceEngine";
+import React,{ useState } from "react";
 
-import { 
-  ShoppingBag, FileText, Store, Building2, Users, CreditCard, 
-  Star, Sparkles, BarChart3, Globe
+import {
+BarChart3,
+Building2,
+CreditCard,
+FileText,
+Globe,
+ShoppingBag,
+Sparkles,
+Star,
+Store,
+Users
 } from "lucide-react";
 
 export type MarketplaceModuleTab = 

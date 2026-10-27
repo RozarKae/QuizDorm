@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { CommunityReputationEngine } from "@/lib/community/reputationEngine";
-import { Award, Trophy, Zap, Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { CommunityReputationEngine } from "@/lib/community/reputationEngine";
+import { Award } from "lucide-react";
 
 export function ReputationBadgeCard() {
   const leaderboard = CommunityReputationEngine.getLeaderboard();

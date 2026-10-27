@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Pause, Play, FastForward, Clock, ShieldAlert, Trophy, ArrowRight, Laptop, CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight,CheckCircle2,Clock,FastForward,Laptop,Pause,Play,ShieldAlert,Trophy } from "lucide-react";
 
 interface HostControlPanelProps {
   isPaused: boolean;

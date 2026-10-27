@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { MarketplaceProduct } from "@/lib/types/marketplace";
-import { Star, Download, Tag, ShoppingCart, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MarketplaceProduct } from "@/lib/types/marketplace";
+import { ShoppingCart,Star } from "lucide-react";
 
 interface MarketplaceProductCardProps {
   product: MarketplaceProduct;

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Upload, FileSpreadsheet, FileCode, FileText, Download, ScanText, ArrowRight } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
-import Link from "next/link";
+import { Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle } from "@/components/ui/dialog";
 import { importQuestions } from "@/lib/data/question-bank";
-import { QuestionItem } from "@/lib/types/question";
+import { QuestionItem, QuestionType } from "@/lib/types/question";
+import { ArrowRight,Download,FileCode,FileSpreadsheet,FileText,ScanText,Upload } from "lucide-react";
+import Link from "next/link";
+import React,{ useState } from "react";
+import { toast } from "sonner";
 
 interface ImportDialogProps {
   open: boolean;
@@ -34,7 +34,7 @@ export function ImportDialog({ open, onOpenChange, onImportSuccess }: ImportDial
       if (format === "json" || fileName?.endsWith(".json")) {
         const parsed = JSON.parse(text);
         const list = Array.isArray(parsed) ? parsed : parsed.questions || [parsed];
-        itemsToImport = list.map((item: any, idx: number) => ({
+        itemsToImport = list.map((item: Partial<QuestionItem> & { question?: string; text?: string }, idx: number) => ({
           id: item.id || `import-json-${Date.now()}-${idx + 1}`,
           title: item.title || item.question || item.text || `Imported Question ${idx + 1}`,
           type: item.type || "mcq_single",
@@ -66,7 +66,7 @@ export function ImportDialog({ open, onOpenChange, onImportSuccess }: ImportDial
         itemsToImport = dataLines.map((line, idx) => {
           const parts = line.split(",").map((p) => p.trim().replace(/^["']|["']$/g, ""));
           const qTitle = parts[0] || `Imported Question ${idx + 1}`;
-          const qType = (parts[1] || "mcq_single") as any;
+          const qType = (parts[1] || "mcq_single") as QuestionType;
           const opt1 = parts[2] || "Option A";
           const opt2 = parts[3] || "Option B";
           const correctOpt = parts[4] || opt1;
@@ -106,8 +106,8 @@ export function ImportDialog({ open, onOpenChange, onImportSuccess }: ImportDial
       } else {
         toast.info("No valid questions found in file.");
       }
-    } catch (err: any) {
-      toast.error(`Failed to parse file: ${err.message}`);
+    } catch (err: unknown) {
+      toast.error(`Failed to parse file: ${err instanceof Error ? err.message : String(err)}`);
     }
   };
 

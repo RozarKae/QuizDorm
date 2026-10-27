@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useMemo } from "react";
+import Logo from "@/components/layout/Logo";
+import { Button } from "@/components/ui/button";
+import { ArrowRight,Compass,Home,LayoutDashboard,Swords } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Compass, Home, LayoutDashboard, Swords, BookOpen, ArrowRight, ArrowLeft } from "lucide-react";
-import Logo from "@/components/layout/Logo";
+import { useMemo } from "react";
 
 export default function NotFound() {
   const pathname = usePathname() || "";

@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { ParentApprovalRequest } from "@/lib/types/parent";
-import { ParentApprovalService } from "@/lib/parent/approvalService";
-import { ShieldCheck, Check, X, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { ParentApprovalService } from "@/lib/parent/approvalService";
+import { ParentApprovalRequest } from "@/lib/types/parent";
+import { Check,ShieldCheck } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface ParentApprovalCardProps {

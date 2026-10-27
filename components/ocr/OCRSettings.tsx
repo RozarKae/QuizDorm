@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { OCRJobSettings, OCRProviderType, OCRRecognitionMode, OCRLanguage } from "@/lib/types/ocr";
+import { Card,CardContent,CardHeader,CardTitle } from "@/components/ui/card";
 import { availableOCRProviders } from "@/lib/ocr/providers";
-import { Settings, Cpu, Languages, Sparkles, Check, FileCode2 } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { OCRJobSettings,OCRLanguage,OCRProviderType,OCRRecognitionMode } from "@/lib/types/ocr";
+import { Cpu,FileCode2,Languages,Settings,Sparkles } from "lucide-react";
 
 interface OCRSettingsProps {
   settings: OCRJobSettings;

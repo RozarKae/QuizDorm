@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { 
-  Database, RefreshCw, CheckCircle2, ShieldCheck, HardDrive, Layers
+import {
+Database,
+HardDrive,
+RefreshCw
 } from "lucide-react";
 import { toast } from "sonner";
 

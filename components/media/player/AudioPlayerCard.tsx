@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { Play, Pause, Volume2, Mic, FileText, FastForward, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { FileText,Mic,Pause,Play,Volume2 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface AudioPlayerCardProps {
@@ -18,6 +18,7 @@ export function AudioPlayerCard({
   title = "Audio Assessment Passage",
   allowDictation = false,
 }: AudioPlayerCardProps) {
+  void audioUrl;
   const [isPlaying, setIsPlaying] = useState(false);
   const [showTranscript, setShowTranscript] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
@@ -100,7 +101,7 @@ export function AudioPlayerCard({
       {/* Transcript Drawer */}
       {showTranscript && transcript && (
         <div className="p-3 bg-indigo-50/60 dark:bg-indigo-950/40 rounded-xl border border-indigo-100 dark:border-indigo-900 text-xs text-indigo-900 dark:text-indigo-200 italic">
-          "{transcript}"
+          &ldquo;{transcript}&rdquo;
         </div>
       )}
 
@@ -121,7 +122,7 @@ export function AudioPlayerCard({
             </Button>
             {recordedText && (
               <span className="text-xs font-semibold text-rose-600 dark:text-rose-400 truncate">
-                "{recordedText}"
+                &ldquo;{recordedText}&rdquo;
               </span>
             )}
           </div>

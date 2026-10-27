@@ -1,4 +1,4 @@
-import { WebhookEndpoint, WebhookDeliveryLog } from "@/lib/types/developer";
+import { WebhookDeliveryLog,WebhookEndpoint } from "@/lib/types/developer";
 
 const STORAGE_KEY_WEBHOOKS = "quizdorm_developer_webhooks";
 
@@ -27,7 +27,7 @@ export class WebhookEngine {
     }
   }
 
-  public static async triggerWebhook(event: string, payload: any): Promise<WebhookDeliveryLog[]> {
+  public static async triggerWebhook(event: string, payload: unknown): Promise<WebhookDeliveryLog[]> {
     const endpoints = this.getEndpoints().filter((e) => e.enabled && e.events.includes(event));
     const logs: WebhookDeliveryLog[] = [];
 

@@ -1,4 +1,4 @@
-import { ExtractedQuestion, DuplicateMatch } from "@/lib/types/ocr";
+import { DuplicateMatch,ExtractedQuestion } from "@/lib/types/ocr";
 import { QuestionItem } from "@/lib/types/question";
 
 export class DuplicateDetectorService {

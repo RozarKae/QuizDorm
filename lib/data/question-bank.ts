@@ -1,11 +1,10 @@
-import { QuestionItem, DifficultyLevel, QuestionType } from "@/lib/types/question";
+import { QuestionItem } from "@/lib/types/question";
 import importedQuestionsJson from "./imported-questions.json";
 import {
-  doesQuestionMatchTopic,
-  resolveTopicsForQuestion,
-  getAllStandardTopics,
-  getAllStandardSubjects,
-  STANDARD_TAXONOMY,
+doesQuestionMatchTopic,
+getAllStandardSubjects,
+getAllStandardTopics,
+resolveTopicsForQuestion
 } from "./taxonomy";
 
 export const STORAGE_KEY_QUESTIONS = "quizdorm_question_bank_v16";

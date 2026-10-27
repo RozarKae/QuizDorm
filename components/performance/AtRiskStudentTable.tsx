@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { EarlyRiskDetectionEngine } from "@/lib/performance/riskDetectionEngine";
-import { AIInterventionEngine } from "@/lib/performance/interventionEngine";
-import { AtRiskStudent } from "@/lib/types/performance";
-import { ShieldAlert, AlertTriangle, Send, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { AIInterventionEngine } from "@/lib/performance/interventionEngine";
+import { EarlyRiskDetectionEngine } from "@/lib/performance/riskDetectionEngine";
+import { AtRiskStudent } from "@/lib/types/performance";
+import { AlertTriangle,Send,ShieldAlert } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function AtRiskStudentTable() {

@@ -1,4 +1,4 @@
-import { SubscriptionPlan, UserSubscription, SubscriptionPlanId } from "@/lib/types/billing";
+import { SubscriptionPlan,SubscriptionPlanId,UserSubscription } from "@/lib/types/billing";
 
 const STORAGE_KEY_SUBSCRIPTION = "quizdorm_user_subscription";
 
@@ -137,31 +137,53 @@ export const SUBSCRIPTION_PLANS: SubscriptionPlan[] = [
 ];
 
 export const DEFAULT_USER_SUBSCRIPTION: UserSubscription = {
-  id: "sub-101",
-  userId: "usr-teacher-1",
-  userName: "Karthik Rajendran",
-  userEmail: "karthik.rajendran@saidapetmodel.edu.in",
-  organizationName: "Government Model Higher Secondary School",
-  planId: "professional",
-  billingCycle: "annual",
+  id: "sub-default-free",
+  userId: "usr-current",
+  userName: "Educator",
+  userEmail: "",
+  organizationName: "Personal Workspace",
+  planId: "free",
+  billingCycle: "monthly",
   status: "active",
   currentPeriodStart: "2026-01-01",
-  currentPeriodEnd: "2027-01-01",
-  autoRenew: true,
-  seatsAllocated: 5,
-  seatsUsed: 2,
-  aiCreditsTotal: 2500,
-  aiCreditsUsed: 620,
-  ocrCreditsTotal: 500,
-  ocrCreditsUsed: 84,
+  currentPeriodEnd: "2099-12-31",
+  autoRenew: false,
+  seatsAllocated: 1,
+  seatsUsed: 1,
+  aiCreditsTotal: 50,
+  aiCreditsUsed: 0,
+  ocrCreditsTotal: 10,
+  ocrCreditsUsed: 0,
 };
 
 export class SubscriptionManager {
+  /**
+   * Authoritative getter for current user subscription.
+   * Client-side storage has NO authority to grant paid entitlements.
+   * Any client-modified record attempting to claim a paid tier (basic, professional, institution, enterprise)
+   * is rejected and reverts to the default free tier.
+   */
   public static getSubscription(): UserSubscription {
     if (typeof window === "undefined") return DEFAULT_USER_SUBSCRIPTION;
     try {
       const saved = localStorage.getItem(STORAGE_KEY_SUBSCRIPTION);
-      return saved ? JSON.parse(saved) : DEFAULT_USER_SUBSCRIPTION;
+      if (!saved) return DEFAULT_USER_SUBSCRIPTION;
+      const parsed = JSON.parse(saved);
+
+      // Security check: Client-side storage cannot grant paid subscription entitlements.
+      if (parsed.planId && parsed.planId !== "free") {
+        console.warn("[SECURITY] Client-side paid subscription entitlement rejected: localStorage cannot grant paid plans.");
+        return DEFAULT_USER_SUBSCRIPTION;
+      }
+
+      return {
+        ...DEFAULT_USER_SUBSCRIPTION,
+        ...parsed,
+        planId: "free",
+        aiCreditsTotal: 50,
+        ocrCreditsTotal: 10,
+        seatsAllocated: 1,
+      };
     } catch {
       return DEFAULT_USER_SUBSCRIPTION;
     }
@@ -171,13 +193,30 @@ export class SubscriptionManager {
     return SUBSCRIPTION_PLANS.find((p) => p.id === planId) || SUBSCRIPTION_PLANS[0];
   }
 
+  /**
+   * Updates subscription.
+   * In production or secure environments, client code is strictly forbidden from granting paid entitlements.
+   */
   public static updateSubscription(planId: SubscriptionPlanId, cycle: UserSubscription["billingCycle"]): UserSubscription {
-    const plan = this.getPlan(planId);
+    if (planId !== "free") {
+      if (process.env.NODE_ENV === "production") {
+        throw new Error(
+          "Client-side subscription modification is forbidden in production. Subscriptions must be provisioned via verified server-side billing."
+        );
+      }
+      // In development/sandbox demonstration, log security warning and do NOT store paid entitlement
+      console.warn(
+        `[SECURITY] Attempted client-side subscription upgrade to '${planId}'. Client-side paid plan activation is disabled.`
+      );
+      return DEFAULT_USER_SUBSCRIPTION;
+    }
+
+    const plan = this.getPlan("free");
     const current = this.getSubscription();
 
     const updated: UserSubscription = {
       ...current,
-      planId,
+      planId: "free",
       billingCycle: cycle,
       status: "active",
       seatsAllocated: plan.limits.maxUsers,

@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { AcademicTranscript } from "@/lib/types/administration";
 import { Button } from "@/components/ui/button";
-import { 
-  Award, Download, CheckCircle2, GraduationCap, FileText, Sparkles, BookOpen
+import { AcademicTranscript } from "@/lib/types/administration";
+import {
+CheckCircle2,
+Download,
+GraduationCap
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockTranscript: AcademicTranscript = {
@@ -33,7 +35,7 @@ const mockTranscript: AcademicTranscript = {
 };
 
 export function AcademicRecordsTranscripts() {
-  const [transcript, setTranscript] = useState<AcademicTranscript>(mockTranscript);
+  const [transcript] = useState<AcademicTranscript>(mockTranscript);
 
   const handleExportOfficialTranscript = () => {
     toast.success("Generated Official Cryptographic Academic Transcript (PDF format)!");

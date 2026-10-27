@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
+import { Card } from "@/components/ui/card";
 import { AIUsageAnalytics } from "@/lib/ai/analytics/analytics";
-import { DollarSign, Layers, Zap, Clock } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Clock,DollarSign,Layers,Zap } from "lucide-react";
 
 export function TokenUsageCard() {
   const metrics = AIUsageAnalytics.getMetrics();

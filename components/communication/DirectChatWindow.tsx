@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { DirectMessage } from "@/lib/types/communication";
-import { DirectMessagingService } from "@/lib/communication/directMessaging";
-import { Send, User, MessageSquare, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { DirectMessagingService } from "@/lib/communication/directMessaging";
+import { DirectMessage } from "@/lib/types/communication";
+import { Send } from "lucide-react";
+import { useState } from "react";
 
 export function DirectChatWindow() {
   const [messages, setMessages] = useState<DirectMessage[]>(DirectMessagingService.getMessages());

@@ -1,7 +1,7 @@
 "use client";
 
+import { CheckCircle2,Loader2 } from "lucide-react";
 import React from "react";
-import { CheckCircle2, Loader2, ArrowRight } from "lucide-react";
 
 export type PipelineStep =
   | "Upload"

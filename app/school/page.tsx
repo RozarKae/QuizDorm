@@ -1,23 +1,19 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import {
-  School,
-  GraduationCap,
-  Users,
-  FileText,
-  BarChart3,
-  ShieldCheck,
-  Building,
-  ArrowUpRight,
-  Download,
-  Settings,
-  Calendar,
-  CheckCircle2,
-  ExternalLink,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+ArrowUpRight,
+BarChart3,
+Building,
+Download,
+FileText,
+GraduationCap,
+School,
+Settings,
+ShieldCheck,
+Users
+} from "lucide-react";
+import Link from "next/link";
 
 export default function SchoolPage() {
   const stats = [

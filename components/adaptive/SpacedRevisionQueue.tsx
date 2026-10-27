@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { SpacedRevisionItem } from "@/lib/types/adaptive";
-import { SpacedRepetitionEngine } from "@/lib/adaptive/spacedRepetition";
-import { History, Calendar, Check, RotateCcw, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SpacedRepetitionEngine } from "@/lib/adaptive/spacedRepetition";
+import { SpacedRevisionItem } from "@/lib/types/adaptive";
+import { Check,RotateCcw } from "lucide-react";
 import { toast } from "sonner";
 
 interface SpacedRevisionQueueProps {
@@ -26,7 +25,7 @@ export function SpacedRevisionQueue({ items, onRefresh }: SpacedRevisionQueuePro
       <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-3">
         <div>
           <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
-            <RotateCcw className="w-5 h-5 text-indigo-600 mr-2" /> Today's Spaced Repetition Queue (SM-2 Algorithm)
+            <RotateCcw className="w-5 h-5 text-indigo-600 mr-2" /> Today&apos;s Spaced Repetition Queue (SM-2 Algorithm)
           </h3>
           <p className="text-xs text-gray-500 dark:text-gray-400">
             Forgetting curve revision queue automatically scheduled for optimal memory retention.

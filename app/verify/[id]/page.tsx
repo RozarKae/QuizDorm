@@ -1,27 +1,22 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
-import { VerificationService } from "@/lib/credentials/verificationService";
-import { VerificationResult } from "@/lib/types/credentials";
 import { CertificatePreviewCard } from "@/components/credentials/CertificatePreviewCard";
 import Logo from "@/components/layout/Logo";
+import { VerificationService } from "@/lib/credentials/verificationService";
+import { VerificationResult } from "@/lib/types/credentials";
+import { useParams } from "next/navigation";
+import { useState } from "react";
 
-import { ShieldCheck, AlertTriangle, CheckCircle2, Lock, ExternalLink, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AlertTriangle,ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
 export default function PublicVerificationPage() {
   const params = useParams();
   const verificationId = (params?.id as string) || "VER-2026-8A4F29";
-  const [result, setResult] = useState<VerificationResult | null>(null);
-
-  useEffect(() => {
-    if (verificationId) {
-      const res = VerificationService.verifyCertificate(verificationId);
-      setResult(res);
-    }
-  }, [verificationId]);
+  const [result] = useState<VerificationResult | null>(() =>
+    VerificationService.verifyCertificate(verificationId)
+  );
 
   if (!result) {
     return (

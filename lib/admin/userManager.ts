@@ -1,5 +1,5 @@
-import { UserRole, normalizeCanonicalRole } from "@/lib/types/user";
 import { updateDemoRoleAction } from "@/app/auth/actions";
+import { UserRole,normalizeCanonicalRole } from "@/lib/types/user";
 
 export type UserStatus = "active" | "suspended" | "pending";
 export type AuthProviderType = "email" | "google" | "sso" | "saml";
@@ -279,6 +279,10 @@ export class AdminUserManager {
   }
 
   public static resetPassword(id: string): { success: boolean; tempCode: string } {
+    const user = this.getUsers().find((u) => u.id === id);
+    if (!user) {
+      return { success: false, tempCode: "" };
+    }
     const tempCode = `QD-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
     return { success: true, tempCode };
   }

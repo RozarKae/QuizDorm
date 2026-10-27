@@ -1,16 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import AuthCard from "@/components/auth/AuthCard";
-import AuthHeader from "@/components/auth/AuthHeader";
-import AuthForm from "@/components/auth/AuthForm";
 import AuthFooter from "@/components/auth/AuthFooter";
+import AuthForm from "@/components/auth/AuthForm";
+import AuthHeader from "@/components/auth/AuthHeader";
 import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { resetPasswordRequest } from "../actions";
+import { useState } from "react";
 import { toast } from "sonner";
+import { resetPasswordRequest } from "../actions";
 
 export default function ForgotPasswordPage() {
   const [submitted, setSubmitted] = useState(false);

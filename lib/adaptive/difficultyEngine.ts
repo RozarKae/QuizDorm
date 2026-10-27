@@ -1,4 +1,3 @@
-import { MasteryLevel } from "@/lib/types/adaptive";
 
 export class DynamicDifficultyEngine {
   /**

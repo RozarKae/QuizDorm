@@ -1,5 +1,4 @@
-import React from "react";
-import { Clock, AlertTriangle } from "lucide-react";
+import { AlertTriangle,Clock } from "lucide-react";
 
 interface QuizTimerProps {
   timeRemainingSeconds: number;

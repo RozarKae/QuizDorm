@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
 import { PredictedDifficulty } from "@/lib/types/quality";
-import { AlertCircle, CheckCircle2, Gauge } from "lucide-react";
+import { AlertCircle,CheckCircle2,Gauge } from "lucide-react";
 
 interface DifficultyMeterProps {
   difficulty: PredictedDifficulty;

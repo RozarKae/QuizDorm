@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { FederatedCloudManager } from "@/lib/global-network/federatedCloud";
-import { Server, CheckCircle2, Shield, Globe } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { FederatedCloudManager } from "@/lib/global-network/federatedCloud";
+import { CheckCircle2,Server } from "lucide-react";
 
 export function FederatedCloudCard() {
   const regions = FederatedCloudManager.getRegionNodes();

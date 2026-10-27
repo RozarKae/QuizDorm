@@ -1,6 +1,5 @@
-import React from "react";
-import { Bell, Info } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Bell,Info } from "lucide-react";
 
 interface NotificationCenterProps {
   notifications?: { id: string; title: string; message: string; time: string; read: boolean }[];

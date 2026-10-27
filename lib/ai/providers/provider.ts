@@ -1,10 +1,10 @@
 import {
-  AIProviderType,
-  AIModel,
-  AIRequestPayload,
-  AIResponsePayload,
-  AIStreamChunk,
-  ProviderHealth,
+AIModel,
+AIProviderType,
+AIRequestPayload,
+AIResponsePayload,
+AIStreamChunk,
+ProviderHealth,
 } from "@/lib/types/ai";
 
 export interface IAIProvider {

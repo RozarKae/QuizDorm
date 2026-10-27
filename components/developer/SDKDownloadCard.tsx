@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { Download, Code, Terminal, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Download,Terminal } from "lucide-react";
 import { toast } from "sonner";
 
 export function SDKDownloadCard() {

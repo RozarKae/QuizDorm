@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Trophy, QrCode, Key, ArrowRight, RefreshCw, AlertCircle } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { normalizeRoomCode } from "@/lib/live/liveSessionManager";
+import { AlertCircle,ArrowRight,Key,QrCode,RefreshCw,Trophy } from "lucide-react";
+import { useRouter } from "next/navigation";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 interface JoinCompetitionModalProps {

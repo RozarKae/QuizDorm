@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { PerformancePrediction } from "@/lib/types/adaptive";
-import { TrendingUp, ShieldCheck, Trophy, AlertTriangle, Activity } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { PerformancePrediction } from "@/lib/types/adaptive";
+import { TrendingUp } from "lucide-react";
 
 interface PerformancePredictorCardProps {
   prediction: PerformancePrediction;

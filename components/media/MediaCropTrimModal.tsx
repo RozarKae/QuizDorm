@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { MediaAsset } from "@/lib/types/media";
-import { Crop, Scissors, Check, X, RotateCw, Volume2 } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle } from "@/components/ui/dialog";
+import { MediaAsset } from "@/lib/types/media";
+import { Crop,Scissors,Volume2 } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface MediaCropTrimModalProps {
@@ -57,7 +58,7 @@ export function MediaCropTrimModal({
           {/* Media Preview Box */}
           <div className="h-40 rounded-2xl bg-gray-100 dark:bg-gray-900 flex items-center justify-center overflow-hidden border border-gray-200 dark:border-gray-800">
             {asset.type === "image" || asset.type === "diagram" ? (
-              <img src={asset.url} alt={asset.name} className="max-h-full object-contain" />
+              <Image src={asset.url} alt={asset.name} width={400} height={160} unoptimized className="max-h-full object-contain" />
             ) : (
               <div className="flex flex-col items-center space-y-2 text-indigo-600 dark:text-indigo-400">
                 <Volume2 className="w-8 h-8" />

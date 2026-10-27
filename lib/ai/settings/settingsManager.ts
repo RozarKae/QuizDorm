@@ -1,4 +1,4 @@
-import { AISettings, AIProviderType } from "@/lib/types/ai";
+import { AISettings } from "@/lib/types/ai";
 
 const STORAGE_KEY_SETTINGS = "quizdorm_ai_settings";
 

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { AuthoringDocument } from "@/lib/types/research-studio";
 import { Button } from "@/components/ui/button";
-import { 
-  Edit3, Eye, FileText, Sparkles, Copy, Save, Code, Layers
+import { AuthoringDocument } from "@/lib/types/research-studio";
+import {
+Edit3,Eye,FileText,
+Save
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockDoc: AuthoringDocument = {

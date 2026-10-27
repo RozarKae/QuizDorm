@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { EdgeClassroomService } from "@/lib/offline/edgeClassroom";
-import { EdgeClassroomSession } from "@/lib/types/offline";
-import { Wifi, Users, Trophy, Play, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { EdgeClassroomService } from "@/lib/offline/edgeClassroom";
+import { EdgeClassroomSession } from "@/lib/types/offline";
+import { Play,Users,Wifi } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface EdgeClassroomModalProps {

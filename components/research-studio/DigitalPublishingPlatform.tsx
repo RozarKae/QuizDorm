@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { PublishedPublication } from "@/lib/types/research-studio";
 import { Button } from "@/components/ui/button";
-import { 
-  Globe, BookOpen, ExternalLink, Download, Sparkles, CheckCircle2
+import { PublishedPublication } from "@/lib/types/research-studio";
+import {
+BookOpen,ExternalLink,
+Globe
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockPubs: PublishedPublication[] = [

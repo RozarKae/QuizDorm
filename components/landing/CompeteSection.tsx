@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Trophy, Clock, Zap, ArrowRight, Flame, Users, Sparkles, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionDivider from "@/components/ui/section-divider";
+import { Clock,Flame,Sparkles,Trophy,Users,Zap } from "lucide-react";
+import Link from "next/link";
+import { useEffect,useState } from "react";
 
 export default function CompeteSection() {
-  const [activeLeaderboard, setActiveLeaderboard] = useState([
+  const [activeLeaderboard] = useState([
     { rank: 1, name: "Karthik Rajendran", score: 2840, streak: 5, badge: "🥇", delta: "+450", school: "Govt Model HSS Saidapet, Chennai" },
     { rank: 2, name: "Fathima Nasreen", score: 2690, streak: 4, badge: "🥈", delta: "+390", school: "Al-Ameen Universal, Kochi" },
     { rank: 3, name: "Kevin Fernandez", score: 2410, streak: 3, badge: "🥉", delta: "+310", school: "The Choice School, Tripunithura" },

@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { CreatorRevenueEngine } from "@/lib/marketplace/revenueEngine";
 import { CreatorPayout } from "@/lib/types/marketplace";
-import { DollarSign, ArrowUpRight, CheckCircle2, RefreshCw } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight,DollarSign } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface CreatorRevenueCardProps {
@@ -13,7 +13,7 @@ interface CreatorRevenueCardProps {
 }
 
 export function CreatorRevenueCard({ totalSalesUSD }: CreatorRevenueCardProps) {
-  const [payouts, setPayouts] = useState<CreatorPayout[]>(CreatorRevenueEngine.getPayouts());
+  const [payouts] = useState<CreatorPayout[]>(CreatorRevenueEngine.getPayouts());
   const calc = CreatorRevenueEngine.calculateEarnings(totalSalesUSD);
 
   const handleRequestPayout = () => {

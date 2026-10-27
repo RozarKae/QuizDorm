@@ -1,76 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { QuestionItem } from "@/lib/types/question";
 import { QuestionRenderer } from "@/components/quiz-engine/QuestionRenderer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, CheckCircle2, XCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { QuestionItem } from "@/lib/types/question";
+import { AlertTriangle,ArrowLeft,CheckCircle2,ChevronLeft,ChevronRight,XCircle } from "lucide-react";
+import Link from "next/link";
+import React,{ useEffect,useState } from "react";
 
-const mockReviewQuestions: (QuestionItem & { userAnswer: any; isCorrect: boolean })[] = [
-  {
-    id: "q-1",
-    title: "What is the derivative of f(x) = x^3 + 4x^2 - 5x + 7?",
-    type: "mcq_single",
-    subject: "Mathematics",
-    category: "Algebra",
-    topic: "Calculus",
-    difficulty: "Medium",
-    marks: 4,
-    timeLimitSeconds: 60,
-    options: [
-      { id: "opt-1", text: "3x^2 + 8x - 5", isCorrect: true },
-      { id: "opt-2", text: "3x^2 + 4x - 5", isCorrect: false },
-      { id: "opt-3", text: "x^2 + 8x - 5", isCorrect: false },
-    ],
-    userAnswer: "opt-1",
-    isCorrect: true,
-    explanation: "Differentiating term by term: d/dx(x^3) = 3x^2, d/dx(4x^2) = 8x, d/dx(-5x) = -5, and d/dx(7) = 0.",
-    tags: ["calculus"],
-    createdAt: "Jul 2026",
-    updatedAt: "Jul 2026",
-  },
-  {
-    id: "q-2",
-    title: "Which of the following organic compounds contain a benzene ring?",
-    type: "mcq_multiple",
-    subject: "Science",
-    category: "Chemistry",
-    topic: "Organic Chemistry",
-    difficulty: "Hard",
-    marks: 5,
-    timeLimitSeconds: 90,
-    options: [
-      { id: "o1", text: "Toluene", isCorrect: true },
-      { id: "o2", text: "Phenol", isCorrect: true },
-      { id: "o3", text: "Methane", isCorrect: false },
-    ],
-    userAnswer: ["o1", "o2"],
-    isCorrect: true,
-    explanation: "Both toluene (methylbenzene) and phenol (hydroxybenzene) contain aromatic benzene rings.",
-    tags: ["chemistry"],
-    createdAt: "Jul 2026",
-    updatedAt: "Jul 2026",
-  },
-  {
-    id: "q-3",
-    title: "Light travels faster in water than in vacuum.",
-    type: "true_false",
-    subject: "Science",
-    category: "Physics",
-    topic: "Optics",
-    difficulty: "Easy",
-    marks: 2,
-    timeLimitSeconds: 30,
-    options: [],
-    userAnswer: "true",
-    isCorrect: false,
-    explanation: "False. Light reaches its maximum speed (c = 3x10^8 m/s) in vacuum and slows down in optical media.",
-    tags: ["physics"],
-    createdAt: "Jul 2026",
-    updatedAt: "Jul 2026",
-  },
-];
+type ReviewQuestionItem = QuestionItem & {
+  userAnswer: unknown;
+  isCorrect: boolean;
+  scoreAwarded?: number;
+};
 
 export default function AnswerReviewPage({
   params,
@@ -78,14 +19,75 @@ export default function AnswerReviewPage({
   params: Promise<{ id: string; attemptId: string }> | { id: string; attemptId: string };
 }) {
   const unwrappedParams =
-    typeof (params as any)?.then === "function"
+    typeof (params as PromiseLike<unknown>)?.then === "function"
       ? React.use(params as Promise<{ id: string; attemptId: string }>)
       : (params as { id: string; attemptId: string });
   const { id, attemptId } = unwrappedParams;
 
+  const [questions, setQuestions] = useState<ReviewQuestionItem[]>([]);
   const [currentIdx, setCurrentIdx] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const currentQ = mockReviewQuestions[currentIdx];
+  useEffect(() => {
+    let isMounted = true;
+    async function loadReview() {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch(`/api/quizzes/attempts/${attemptId}/review`);
+        if (!res.ok) {
+          const errJson = await res.json().catch(() => null);
+          throw new Error(errJson?.error || "Assessment attempt review data could not be found.");
+        }
+        const data = await res.json();
+        if (isMounted) {
+          setQuestions(data.data.questions || []);
+        }
+      } catch (err: unknown) {
+        if (isMounted) {
+          setError(err instanceof Error ? err.message : "Failed to load attempt review.");
+        }
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    }
+
+    loadReview();
+    return () => {
+      isMounted = false;
+    };
+  }, [attemptId]);
+
+  if (loading) {
+    return (
+      <div className="max-w-4xl mx-auto py-16 text-center space-y-4 font-mono">
+        <div className="inline-block w-6 h-6 border-2 border-[#FF4D6D] border-t-transparent rounded-full animate-spin" />
+        <p className="text-xs text-[#A0AEA5]">Loading question breakdown from database...</p>
+      </div>
+    );
+  }
+
+  if (error || questions.length === 0) {
+    return (
+      <div className="max-w-2xl mx-auto py-12 px-6 text-center space-y-4 bg-[#140C0E] border border-[rgba(240, 160, 180,0.18)] rounded-[8px]">
+        <AlertTriangle className="w-8 h-8 text-[#FF4D6D] mx-auto" />
+        <h2 className="text-lg font-bold font-display text-[#F2F7F3]">Review Data Unavailable</h2>
+        <p className="text-xs font-mono text-[#A0AEA5] leading-relaxed">
+          {error || "No reviewable question records found for this attempt."}
+        </p>
+        <div className="pt-2">
+          <Link href={`/dashboard/quizzes/${id}/result/${attemptId}`}>
+            <Button variant="outline" className="font-mono text-xs border-[rgba(240, 160, 180,0.2)] text-[#F2F7F3]">
+              <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back to Result
+            </Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const currentQ = questions[currentIdx];
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 py-4">
@@ -102,11 +104,11 @@ export default function AnswerReviewPage({
             <p className="text-xs font-mono text-[#A0AEA5]">Attempt ID: <span className="text-[#FF758F]">{attemptId}</span></p>
           </div>
           <div className="flex items-center space-x-1.5 overflow-x-auto max-w-[240px] p-1 bg-[#140C0E] rounded-[4px] border border-[rgba(240, 160, 180,0.14)]">
-            {mockReviewQuestions.map((q, i) => (
+            {questions.map((q, i) => (
               <button
                 key={q.id}
                 onClick={() => setCurrentIdx(i)}
-                className={`w-7 h-7 rounded-[3px] text-xs font-mono font-bold transition-all flex items-center justify-center border ${
+                className={`w-7 h-7 rounded-[3px] text-xs font-mono font-bold transition-all flex items-center justify-center border cursor-pointer ${
                   currentIdx === i
                     ? "ring-1 ring-[#F2F7F3] border-[#F2F7F3] font-extrabold"
                     : "border-transparent"
@@ -140,11 +142,11 @@ export default function AnswerReviewPage({
           <span>
             {currentQ.isCorrect
               ? `Correct Answer! Marks Awarded: +${currentQ.marks}`
-              : "Incorrect Answer. Marks Awarded: 0"}
+              : `Incorrect Answer. Marks Awarded: ${currentQ.scoreAwarded ?? 0}`}
           </span>
         </div>
         <span className="font-mono uppercase font-bold text-[#A0AEA5]">
-          Question {currentIdx + 1} of {mockReviewQuestions.length}
+          Question {currentIdx + 1} of {questions.length}
         </span>
       </div>
 
@@ -162,15 +164,15 @@ export default function AnswerReviewPage({
           variant="outline"
           disabled={currentIdx === 0}
           onClick={() => setCurrentIdx(currentIdx - 1)}
-          className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[4px] h-9 text-[#A0AEA5] hover:text-[#F2F7F3] disabled:opacity-30"
+          className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[4px] h-9 text-[#A0AEA5] hover:text-[#F2F7F3] disabled:opacity-30 cursor-pointer"
         >
           <ChevronLeft className="w-4 h-4 mr-1" /> Previous Question
         </Button>
 
         <Button
-          disabled={currentIdx === mockReviewQuestions.length - 1}
+          disabled={currentIdx === questions.length - 1}
           onClick={() => setCurrentIdx(currentIdx + 1)}
-          className="bg-[#2A141A] hover:bg-[#34151C] text-[#F2F7F3] border border-[rgba(240, 160, 180,0.2)] text-xs font-mono font-semibold rounded-[4px] h-9 disabled:opacity-30"
+          className="bg-[#2A141A] hover:bg-[#34151C] text-[#F2F7F3] border border-[rgba(240, 160, 180,0.2)] text-xs font-mono font-semibold rounded-[4px] h-9 disabled:opacity-30 cursor-pointer"
         >
           Next Question <ChevronRight className="w-4 h-4 ml-1" />
         </Button>

@@ -1,7 +1,6 @@
-import React from "react";
-import { Trash2, FolderEdit, Award, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Select } from "@/components/ui/select";
+import { Trash2,X } from "lucide-react";
 
 interface BulkActionToolbarProps {
   selectedCount: number;

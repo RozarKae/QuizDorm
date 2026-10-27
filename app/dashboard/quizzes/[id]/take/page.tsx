@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useMemo } from "react";
+import { Button } from "@/components/ui/button";
+import { ALL_DEFAULT_QUIZZES,getQuizById } from "@/lib/data/quizzes";
+import { AlertCircle,ArrowLeft,Award,Clock,HelpCircle,Play,ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Clock, HelpCircle, Award, ShieldCheck, Play, AlertCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { getQuizById, ALL_DEFAULT_QUIZZES } from "@/lib/data/quizzes";
+import React,{ useMemo } from "react";
 
 export default function QuizStartLobbyPage({ params }: { params: Promise<{ id: string }> | { id: string } }) {
   const router = useRouter();
 
-  const unwrappedParams = typeof (params as any)?.then === "function" ? React.use(params as Promise<{ id: string }>) : (params as { id: string });
+  const unwrappedParams = typeof (params as PromiseLike<unknown>)?.then === "function" ? React.use(params as Promise<{ id: string }>) : (params as { id: string });
   const quizId = unwrappedParams.id;
 
   const quiz = useMemo(() => {

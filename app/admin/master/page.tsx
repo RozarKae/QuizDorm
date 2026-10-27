@@ -1,31 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import {
-  BookOpen,
-  HelpCircle,
-  Database,
-  Sparkles,
-  ShieldCheck,
-  Users,
-  CheckCircle2,
-  ArrowUpRight,
-  Trophy,
-  Activity,
-  FileText,
-  ScanText,
-  Search,
-  Plus,
-  Layers,
-  Cpu,
-  TrendingUp,
-  Brain,
-  Award,
-  Clock,
-  ShieldAlert,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+ArrowUpRight,
+Brain,
+Database,
+HelpCircle,
+Plus,
+ScanText,
+ShieldCheck,
+Sparkles,
+Users
+} from "lucide-react";
+import Link from "next/link";
 
 export default function MasterAdminPage() {
   const stats = [

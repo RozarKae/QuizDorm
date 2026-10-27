@@ -1,4 +1,4 @@
-import { VerificationResult, Certificate } from "@/lib/types/credentials";
+import { VerificationResult } from "@/lib/types/credentials";
 import { CertificateEngine } from "./certificateEngine";
 
 export class VerificationService {

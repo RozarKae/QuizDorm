@@ -1,20 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
-import { ResearchWorkspaceHub } from "@/components/research-studio/ResearchWorkspaceHub";
-import { CurriculumDesignerStudio } from "@/components/research-studio/CurriculumDesignerStudio";
-import { ContentAuthoringStudio } from "@/components/research-studio/ContentAuthoringStudio";
+import { AcademicPublishingEcosystem } from "@/components/research-studio/AcademicPublishingEcosystem";
 import { AIContentCreationEngine } from "@/components/research-studio/AIContentCreationEngine";
-import { DigitalPublishingPlatform } from "@/components/research-studio/DigitalPublishingPlatform";
 import { CollaborationWorkspaceConsole } from "@/components/research-studio/CollaborationWorkspaceConsole";
-import { VersionControlContentManagement } from "@/components/research-studio/VersionControlContentManagement";
+import { ContentAuthoringStudio } from "@/components/research-studio/ContentAuthoringStudio";
+import { CurriculumDesignerStudio } from "@/components/research-studio/CurriculumDesignerStudio";
+import { DigitalPublishingPlatform } from "@/components/research-studio/DigitalPublishingPlatform";
 import { DigitalResourceLibraryVault } from "@/components/research-studio/DigitalResourceLibraryVault";
 import { ResearchAnalyticsDashboard } from "@/components/research-studio/ResearchAnalyticsDashboard";
-import { AcademicPublishingEcosystem } from "@/components/research-studio/AcademicPublishingEcosystem";
+import { ResearchWorkspaceHub } from "@/components/research-studio/ResearchWorkspaceHub";
+import { VersionControlContentManagement } from "@/components/research-studio/VersionControlContentManagement";
+import React,{ useState } from "react";
 
-import { 
-  BookOpen, Layers, Edit3, Sparkles, Globe, Users, 
-  GitBranch, Folder, BarChart3, ShieldCheck
+import {
+BarChart3,
+BookOpen,
+Edit3,
+Folder,
+GitBranch,
+Globe,
+Layers,
+ShieldCheck,
+Sparkles,
+Users
 } from "lucide-react";
 
 export type ResearchStudioModuleTab = 
@@ -59,7 +67,7 @@ export default function ResearchStudioPage() {
                 Research & Content Studio <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 ml-2">PHASE 4.6</span>
               </h1>
               <p className="text-xs text-slate-500">
-                Enterprise educational research and digital publishing studio featuring BibTeX/IEEE literature workspaces, Bloom's outcome curriculum builders, LaTeX authoring tools, AI content generators, ISBN publishers, Git versioning, and CrossRef DOI peer-reviewed journals.
+                Enterprise educational research and digital publishing studio featuring BibTeX/IEEE literature workspaces, Bloom&apos;s outcome curriculum builders, LaTeX authoring tools, AI content generators, ISBN publishers, Git versioning, and CrossRef DOI peer-reviewed journals.
               </p>
             </div>
           </div>

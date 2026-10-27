@@ -1,30 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
-import { MultiTenantCloudConsole } from "@/components/cloud-ops/MultiTenantCloudConsole";
-import { GlobalInfrastructureTelemetry } from "@/components/cloud-ops/GlobalInfrastructureTelemetry";
-import { DisasterRecoveryControlCenter } from "@/components/cloud-ops/DisasterRecoveryControlCenter";
-import { GlobalIdentitySecurityConsole } from "@/components/cloud-ops/GlobalIdentitySecurityConsole";
-import { GlobalDataPlatformHub } from "@/components/cloud-ops/GlobalDataPlatformHub";
 import { AICloudServicesConsole } from "@/components/cloud-ops/AICloudServicesConsole";
-import { GlobalIntegrationsPlatform } from "@/components/cloud-ops/GlobalIntegrationsPlatform";
-import { EnterpriseOperationsCenter } from "@/components/cloud-ops/EnterpriseOperationsCenter";
 import { ComplianceGovernanceDashboard } from "@/components/cloud-ops/ComplianceGovernanceDashboard";
+import { DisasterRecoveryControlCenter } from "@/components/cloud-ops/DisasterRecoveryControlCenter";
+import { EnterpriseOperationsCenter } from "@/components/cloud-ops/EnterpriseOperationsCenter";
+import { GlobalDataPlatformHub } from "@/components/cloud-ops/GlobalDataPlatformHub";
 import { GlobalEducationEcosystem } from "@/components/cloud-ops/GlobalEducationEcosystem";
+import { GlobalIdentitySecurityConsole } from "@/components/cloud-ops/GlobalIdentitySecurityConsole";
+import { GlobalInfrastructureTelemetry } from "@/components/cloud-ops/GlobalInfrastructureTelemetry";
+import { GlobalIntegrationsPlatform } from "@/components/cloud-ops/GlobalIntegrationsPlatform";
+import { MultiTenantCloudConsole } from "@/components/cloud-ops/MultiTenantCloudConsole";
+import React,{ useState } from "react";
 
 import {
-  Cloud,
-  Server,
-  ShieldCheck,
-  Lock,
-  Database,
-  Sparkles,
-  Code2,
-  Activity,
-  FileText,
-  Globe,
-  Radio,
-  Cpu,
+Activity,
+Cloud,
+Code2,
+Database,
+FileText,
+Globe,
+Lock,
+Server,
+ShieldCheck,
+Sparkles
 } from "lucide-react";
 
 export type CloudOpsModuleTab =

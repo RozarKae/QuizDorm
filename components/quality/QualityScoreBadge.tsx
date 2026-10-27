@@ -1,8 +1,6 @@
 "use client";
 
-import React from "react";
-import { Badge } from "@/components/ui/badge";
-import { Award, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { AlertTriangle,Award,CheckCircle2 } from "lucide-react";
 
 interface QualityScoreBadgeProps {
   score: number;

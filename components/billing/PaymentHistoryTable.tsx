@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { PaymentTransaction, Invoice } from "@/lib/types/billing";
-import { InvoiceEngine } from "@/lib/billing/invoiceEngine";
-import { InvoiceViewerModal } from "./InvoiceViewerModal";
-import { FileText, CheckCircle2, Download, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { InvoiceEngine } from "@/lib/billing/invoiceEngine";
+import { Invoice,PaymentTransaction } from "@/lib/types/billing";
+import { FileText } from "lucide-react";
+import { useState } from "react";
+import { InvoiceViewerModal } from "./InvoiceViewerModal";
 
 export const SAMPLE_TRANSACTIONS: PaymentTransaction[] = [
   {
@@ -54,7 +54,7 @@ export function PaymentHistoryTable() {
           Billing History & Tax Invoices
         </h3>
         <span className="text-[10px] text-[#69786F] font-mono uppercase tracking-wider">
-          PCI-DSS Compliant Ledger
+          Demonstration Ledger (Sample Data)
         </span>
       </div>
 

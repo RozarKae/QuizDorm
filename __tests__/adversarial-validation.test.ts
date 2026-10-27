@@ -1,19 +1,21 @@
-import test from "node:test";
 import assert from "node:assert/strict";
+import test from "node:test";
 
-import { QuestionIntelligenceValidator } from "../lib/quality/questionIntelligenceValidator";
-import { DuplicateDetectionEngine } from "../lib/quality/duplicateEngine";
-import { QuestionIntelligenceService } from "../lib/ai/services/questionIntelligenceService";
+import { GeneratedQuestion } from "../lib/ai/schemas/questionGenerationSchema";
 import {
-  IQuestionIntelligenceProvider,
-  RawAIQuestionResponse,
+IQuestionIntelligenceProvider,
+RawAIQuestionResponse,
 } from "../lib/ai/server/IQuestionIntelligenceProvider";
+import { QuestionIntelligenceService } from "../lib/ai/services/questionIntelligenceService";
+import { DuplicateDetectionEngine } from "../lib/quality/duplicateEngine";
+import { QuestionIntelligenceValidator } from "../lib/quality/questionIntelligenceValidator";
+import { QuestionItem } from "../lib/types/question";
 
 /**
  * Challenge 1: Four plausible-looking choices, but ZERO designated correct answers
  */
 test("Adversarial 1: Catches question with zero designated correct answers", () => {
-  const q: any = {
+  const q: Partial<GeneratedQuestion> = {
     title: "Which organelle is responsible for cellular respiration and ATP generation?",
     type: "mcq_single",
     options: [
@@ -36,7 +38,7 @@ test("Adversarial 1: Catches question with zero designated correct answers", () 
  * Challenge 2: An incorrect designated answer key with multiple correct choices in single-choice mode
  */
 test("Adversarial 2: Catches multiple correct choices marked in single-choice MCQ", () => {
-  const q: any = {
+  const q: Partial<GeneratedQuestion> = {
     title: "Which of the following are prime numbers?",
     type: "mcq_single",
     options: [
@@ -60,7 +62,7 @@ test("Adversarial 2: Catches multiple correct choices marked in single-choice MC
  * Challenge 3: Multiple defensible answers via synonymous expressions (e.g. 'Water' and 'H2O')
  */
 test("Adversarial 3: Catches synonymous options creating multiple defensible answers", () => {
-  const q: any = {
+  const q: Partial<GeneratedQuestion> = {
     title: "What is the primary chemical solvent found in human cytoplasm?",
     type: "mcq_single",
     options: [
@@ -82,7 +84,7 @@ test("Adversarial 3: Catches synonymous options creating multiple defensible ans
  * Challenge 4: Distractors belonging to the wrong conceptual category
  */
 test("Adversarial 4: Catches categorical mismatch (Year stem vs Name/Project distractors)", () => {
-  const q: any = {
+  const q: Partial<GeneratedQuestion> = {
     title: "In which year was the Indian Space Research Organisation (ISRO) founded?",
     type: "mcq_single",
     options: [
@@ -104,7 +106,7 @@ test("Adversarial 4: Catches categorical mismatch (Year stem vs Name/Project dis
  * Challenge 5: Numerically equivalent answers written in different formats ('0.5', '1/2', '50%')
  */
 test("Adversarial 5: Catches numerically equivalent options in different notations ('0.5' and '1/2')", () => {
-  const q: any = {
+  const q: Partial<GeneratedQuestion> = {
     title: "What is the probability of rolling an even number on a fair standard six-sided die?",
     type: "mcq_single",
     options: [
@@ -123,7 +125,7 @@ test("Adversarial 5: Catches numerically equivalent options in different notatio
 });
 
 test("Adversarial 5b: Catches percentage and decimal equivalence ('50%' and '0.5')", () => {
-  const q: any = {
+  const q: Partial<GeneratedQuestion> = {
     title: "What is the decimal equivalent of a fifty percent discount?",
     type: "mcq_single",
     options: [
@@ -145,7 +147,7 @@ test("Adversarial 5b: Catches percentage and decimal equivalence ('50%' and '0.5
  * Challenge 6: Correct answer conspicuously longer than distractors (>2.5x length bias)
  */
 test("Adversarial 6: Flags length clue when correct answer is conspicuously verbose", () => {
-  const q: any = {
+  const q: Partial<GeneratedQuestion> = {
     title: "What is the primary function of the Federal Reserve?",
     type: "mcq_single",
     options: [
@@ -171,7 +173,7 @@ test("Adversarial 6: Flags length clue when correct answer is conspicuously verb
  * Challenge 7: Missing context or unstated variable in mathematical question
  */
 test("Adversarial 7: Flags question asking to solve for x without an equation premise", () => {
-  const q: any = {
+  const q: Partial<GeneratedQuestion> = {
     title: "What is the value of x in the following geometric problem?",
     type: "mcq_single",
     // Note: context is omitted! No equation or diagram is provided!
@@ -194,7 +196,7 @@ test("Adversarial 7: Flags question asking to solve for x without an equation pr
  * Challenge 8: Missing explanations and rationales
  */
 test("Adversarial 8: Flags question lacking educational explanations for distractors", () => {
-  const q: any = {
+  const q: Partial<GeneratedQuestion> = {
     title: "Which gas is most abundant in Earth's atmosphere?",
     type: "mcq_single",
     options: [
@@ -215,7 +217,7 @@ test("Adversarial 8: Flags question lacking educational explanations for distrac
  * Challenge 9: Duplicate questions expressed using different wording (Semantic duplication)
  */
 test("Adversarial 9: Detects exact and near-duplicate question stems", () => {
-  const existingQuestions: any[] = [
+  const existingQuestions: Partial<QuestionItem>[] = [
     {
       id: "q-1",
       title: "What is the speed of light in a vacuum?",
@@ -227,12 +229,12 @@ test("Adversarial 9: Detects exact and near-duplicate question stems", () => {
   ];
 
   // Near duplicate with slight wording change:
-  const candidateTarget: any = {
+  const candidateTarget: Partial<QuestionItem> = {
     id: "q-cand",
     title: "What is the speed of light in vacuum?",
   };
 
-  const alerts = DuplicateDetectionEngine.detectDuplicates(candidateTarget, existingQuestions);
+  const alerts = DuplicateDetectionEngine.detectDuplicates(candidateTarget, existingQuestions as QuestionItem[]);
   assert.ok(alerts.length > 0, "Must detect near-duplicate stem");
   assert.ok(alerts[0].similarityPercent >= 80, "Similarity should be >= 80%");
   assert.equal(alerts[0].matchedQuestionId, "q-1");
@@ -277,13 +279,14 @@ test("Adversarial 10: Service safely rejects malformed AI responses without cras
  * Challenge 11: Quiz Delivery & Assessment Scoring Lifecycle Integration
  */
 test("Integration: Generated question delivers, shuffles options safely, and scores accurately", () => {
-  const generatedQ: any = {
+  const generatedQ: QuestionItem = {
     id: "gen-q-test-1",
     title: "What is the powerhouse organelle of eukaryotic cells?",
     type: "mcq_single",
     subject: "Biology",
     category: "Cell Biology",
     topic: "Organelles",
+    difficulty: "Medium",
     marks: 4,
     timeLimitSeconds: 60,
     options: [
@@ -292,6 +295,9 @@ test("Integration: Generated question delivers, shuffles options safely, and sco
       { id: "opt-dist-2", text: "Ribosome", isCorrect: false, explanation: "Protein translation." },
       { id: "opt-dist-3", text: "Nucleus", isCorrect: false, explanation: "Stores DNA." },
     ],
+    tags: ["biology"],
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   };
 
   // Simulate prepareQuizAttemptSession option shuffling
@@ -302,15 +308,15 @@ test("Integration: Generated question delivers, shuffles options safely, and sco
   };
 
   // 1. Scoring correct answer submission
-  const correctOpt = attemptSessionQuestion.options.find((o: any) => o.isCorrect);
+  const correctOpt = attemptSessionQuestion.options.find((o) => o.isCorrect);
   assert.equal(correctOpt?.id, "opt-correct");
 
-  const studentSubmissionCorrect = "opt-correct";
-  const isCorrectScored = correctOpt?.id === studentSubmissionCorrect;
+  const studentSubmissionCorrect: string = "opt-correct";
+  const isCorrectScored = (correctOpt?.id as string | undefined) === studentSubmissionCorrect;
   assert.equal(isCorrectScored, true, "Student selecting correct option ID must score as correct");
 
   // 2. Scoring incorrect distractor submission
-  const studentSubmissionIncorrect = "opt-dist-1";
-  const isIncorrectScored = correctOpt?.id === studentSubmissionIncorrect;
+  const studentSubmissionIncorrect: string = "opt-dist-1";
+  const isIncorrectScored = (correctOpt?.id as string | undefined) === studentSubmissionIncorrect;
   assert.equal(isIncorrectScored, false, "Student selecting distractor must score as incorrect");
 });

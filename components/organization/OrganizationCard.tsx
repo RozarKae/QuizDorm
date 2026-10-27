@@ -1,9 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import { OrganizationItem } from "@/lib/types/organization";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { School, Users, GraduationCap, ArrowRight, MapPin, Globe } from "lucide-react";
+import { OrganizationItem } from "@/lib/types/organization";
+import { ArrowRight,GraduationCap,MapPin,Users } from "lucide-react";
+import Link from "next/link";
 
 interface OrganizationCardProps {
   organization: OrganizationItem;

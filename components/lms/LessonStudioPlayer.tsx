@@ -1,12 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
-import { LMSLesson } from "@/lib/types/lms";
 import { Button } from "@/components/ui/button";
-import { 
-  Play, Pause, Volume2, CheckCircle2, Circle, ArrowRight, 
-  ArrowLeft, FileText, Video, Music, Sparkles, BookOpen, Layers, Clock
+import { LMSLesson } from "@/lib/types/lms";
+import {
+ArrowLeft,
+ArrowRight,
+CheckCircle2,Circle,
+Clock,
+Pause,
+Play,
+Video
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockLessons: LMSLesson[] = [

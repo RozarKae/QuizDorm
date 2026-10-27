@@ -1,7 +1,7 @@
-import { NextResponse } from "next/server";
 import { QuestionIntelligenceService } from "@/lib/ai/services/questionIntelligenceService";
-import { ExtractedQuestion } from "@/lib/types/ocr";
 import { checkRateLimit } from "@/lib/security/rateLimiter";
+import { ExtractedQuestion } from "@/lib/types/ocr";
+import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -59,7 +59,10 @@ export async function POST(request: Request) {
       );
     }
 
-    const fileName = (file as any).name || "uploaded_document.pdf";
+    const fileName =
+      (file && typeof file === "object" && "name" in file
+        ? String((file as { name: unknown }).name)
+        : "") || "uploaded_document.pdf";
     const lowerName = fileName.toLowerCase();
 
     // 1. Validate file extension and determine MIME type
@@ -134,12 +137,12 @@ export async function POST(request: Request) {
     // Parse optional generation parameters
     const subject = (formData.get("subject") as string) || undefined;
     const topic = (formData.get("topic") as string) || undefined;
-    const difficulty = (formData.get("difficulty") as any) || "Medium";
+    const difficulty = ((formData.get("difficulty") as string) as "Easy" | "Medium" | "Hard") || "Medium";
     const rawCount = formData.get("questionCount");
     const questionCount = rawCount ? Math.min(50, Math.max(1, parseInt(String(rawCount), 10))) : 10;
 
     // Parse custom question types if provided (supports all 9 types)
-    let questionTypes: any[] = [
+    let questionTypes: string[] = [
       "mcq_single",
       "mcq_multiple",
       "true_false",
@@ -228,16 +231,16 @@ export async function POST(request: Request) {
           rightItem: mp.rightItem,
         })),
         fillBlanks: q.fillBlanks,
-        sequenceItems: (q as any).sequenceItems?.map((s: any) => ({
+        sequenceItems: q.sequenceItems?.map((s) => ({
           id: s.id,
           text: s.text,
           order: s.order,
         })),
-        dragDropCategories: (q as any).dragDropCategories?.map((c: any) => ({
+        dragDropCategories: q.dragDropCategories?.map((c) => ({
           id: c.id,
           title: c.title,
         })),
-        dragDropItems: (q as any).dragDropItems?.map((i: any) => ({
+        dragDropItems: q.dragDropItems?.map((i) => ({
           id: i.id,
           text: i.text,
           categoryId: i.categoryId,
@@ -273,11 +276,12 @@ export async function POST(request: Request) {
         tokenUsage: result.tokenUsage,
       },
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const errMsg = err instanceof Error ? err.message : "An unexpected server error occurred during PDF-to-Quiz processing.";
     return NextResponse.json(
       {
         success: false,
-        error: err.message || "An unexpected server error occurred during PDF-to-Quiz processing.",
+        error: errMsg,
         errorCode: "INTERNAL_ERROR",
       },
       { status: 500 }

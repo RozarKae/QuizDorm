@@ -1,5 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
 import { LiveSessionManager } from "@/lib/live/liveSessionManager";
+import { NextRequest,NextResponse } from "next/server";
 
 export async function POST(
   req: NextRequest,
@@ -37,9 +37,10 @@ export async function POST(
       isCorrect: result.isCorrect,
       scoreAwarded: result.scoreAwarded,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const errorMsg = err instanceof Error ? err.message : "Failed to submit answer";
     return NextResponse.json(
-      { success: false, error: err.message || "Failed to submit answer" },
+      { success: false, error: errorMsg },
       { status: 500 }
     );
   }

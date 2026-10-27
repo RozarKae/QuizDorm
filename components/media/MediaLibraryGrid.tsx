@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { MediaAsset, MediaType } from "@/lib/types/media";
-import { Image as ImageIcon, Music, Video, Star, Trash2, Copy, Crop, Scissors, Sparkles, Edit, Tag, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MediaAsset } from "@/lib/types/media";
+import { Copy,Crop,Edit,Image as ImageIcon,Music,Scissors,Sparkles,Star,Trash2,Video } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface MediaLibraryGridProps {
@@ -61,13 +62,12 @@ export function MediaLibraryGrid({
             {/* Preview Box */}
             <div className="relative h-44 bg-gray-100 dark:bg-gray-900 flex items-center justify-center overflow-hidden group">
               {asset.type === "image" || asset.type === "diagram" ? (
-                <img
+                <Image
                   src={asset.url}
                   alt={asset.altText || asset.name}
-                  className="w-full h-full object-cover transition-transform group-hover:scale-105"
-                  onError={(e) => {
-                    (e.target as HTMLElement).style.display = "none";
-                  }}
+                  fill
+                  unoptimized
+                  className="object-cover transition-transform group-hover:scale-105"
                 />
               ) : asset.type === "audio" ? (
                 <div className="flex flex-col items-center space-y-2 p-4 text-center">

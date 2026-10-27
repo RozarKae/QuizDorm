@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
 import { PublicSessionState } from "@/lib/live/types";
-import { LiveParticipant, AnnouncementItem } from "@/lib/types/competition";
+import { useCallback,useEffect,useRef,useState } from "react";
 import { toast } from "sonner";
 
 interface UseLiveArenaOptions {
@@ -23,8 +22,23 @@ export function useLiveArena({
   const code = (rawCode || "").trim().toUpperCase();
 
   const [session, setSession] = useState<PublicSessionState | null>(null);
-  const [participantId, setParticipantId] = useState<string>("");
-  const [hostSecret, setHostSecret] = useState<string>(initialHostSecret || "");
+  const [participantId, setParticipantId] = useState<string>(() => {
+    if (typeof window !== "undefined" && code) {
+      return sessionStorage.getItem(`quizdorm_pid_${code}`) || localStorage.getItem(`quizdorm_pid_${code}`) || "";
+    }
+    return "";
+  });
+  const [hostSecret] = useState<string>(() => {
+    if (initialHostSecret) return initialHostSecret;
+    if (typeof window !== "undefined" && isHost && code) {
+      const stored = localStorage.getItem(`quizdorm_host_sec_${code}`);
+      if (stored) return stored;
+      const demoSecret = "secret-seed-host-8492";
+      localStorage.setItem(`quizdorm_host_sec_${code}`, demoSecret);
+      return demoSecret;
+    }
+    return "";
+  });
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [connectionError, setConnectionError] = useState<string | null>(null);
   const [userAnswerSubmitted, setUserAnswerSubmitted] = useState<boolean>(false);
@@ -33,33 +47,6 @@ export function useLiveArena({
 
   const prevQIndexRef = useRef<number>(-1);
   const sseRef = useRef<EventSource | null>(null);
-
-  // Sync host secret if passed via props or localStorage
-  useEffect(() => {
-    if (initialHostSecret) {
-      setHostSecret(initialHostSecret);
-    } else if (typeof window !== "undefined" && isHost && code) {
-      const stored = localStorage.getItem(`quizdorm_host_sec_${code}`);
-      if (stored) {
-        setHostSecret(stored);
-      } else {
-        // Fallback default secret for demo tournaments
-        const demoSecret = "secret-seed-host-8492";
-        setHostSecret(demoSecret);
-        localStorage.setItem(`quizdorm_host_sec_${code}`, demoSecret);
-      }
-    }
-  }, [initialHostSecret, isHost, code]);
-
-  // Load saved participant id from storage
-  useEffect(() => {
-    if (typeof window !== "undefined" && code && !participantId) {
-      const storedPid = sessionStorage.getItem(`quizdorm_pid_${code}`) || localStorage.getItem(`quizdorm_pid_${code}`);
-      if (storedPid) {
-        setParticipantId(storedPid);
-      }
-    }
-  }, [code, participantId]);
 
   // Fetch initial session state
   const fetchSession = useCallback(async () => {
@@ -78,8 +65,8 @@ export function useLiveArena({
         setConnectionError(data.error || "Failed to load competition session");
         return null;
       }
-    } catch (err: any) {
-      setConnectionError(err.message || "Network error reaching game arena");
+    } catch (err: unknown) {
+      setConnectionError(err instanceof Error ? err.message : "Network error reaching game arena");
       return null;
     } finally {
       setIsLoading(false);
@@ -117,9 +104,9 @@ export function useLiveArena({
           toast.error(data.error || "Unable to join room");
           return { success: false, error: data.error };
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         toast.error("Failed to connect to arena");
-        return { success: false, error: err.message };
+        return { success: false, error: err instanceof Error ? err.message : String(err) };
       } finally {
         setIsLoading(false);
       }
@@ -130,7 +117,9 @@ export function useLiveArena({
   // Auto-join if requested and participantName is present
   useEffect(() => {
     if (autoJoin && participantName && code && !participantId && !isHost) {
-      joinSession(participantName);
+      queueMicrotask(() => {
+        void joinSession(participantName);
+      });
     }
   }, [autoJoin, participantName, code, participantId, isHost, joinSession]);
 
@@ -138,7 +127,9 @@ export function useLiveArena({
   useEffect(() => {
     if (!code) return;
 
-    fetchSession();
+    queueMicrotask(() => {
+      void fetchSession();
+    });
 
     let eventSource: EventSource | null = null;
     let reconnectTimeout: NodeJS.Timeout | null = null;
@@ -186,33 +177,39 @@ export function useLiveArena({
   }, [code, fetchSession]);
 
   // Question index change detection -> reset answer submission state
+  const currentQIndex = session?.currentQuestionIndex;
   useEffect(() => {
-    if (session) {
-      if (session.currentQuestionIndex !== prevQIndexRef.current) {
-        prevQIndexRef.current = session.currentQuestionIndex;
-        setUserAnswerSubmitted(false);
-        setSelectedOptionId(null);
-      }
+    if (currentQIndex !== undefined && currentQIndex !== prevQIndexRef.current) {
+      prevQIndexRef.current = currentQIndex;
+      setUserAnswerSubmitted(false);
+      setSelectedOptionId(null);
     }
-  }, [session?.currentQuestionIndex]);
+  }, [currentQIndex]);
 
   // Local timer synchronized to server deadline
-  useEffect(() => {
-    if (!session || session.stage !== "question") return;
+  const sessionStage = session?.stage;
+  const isPaused = session?.isPaused;
+  const deadline = session?.currentQuestionDeadline;
+  const pausedTimeRemaining = session?.timeRemainingSec;
 
-    if (session.isPaused) {
-      setTimeRemaining(session.timeRemainingSec || 0);
+  useEffect(() => {
+    if (sessionStage !== "question") return;
+
+    if (isPaused) {
+      queueMicrotask(() => setTimeRemaining(pausedTimeRemaining || 0));
       return;
     }
 
+    if (!deadline) return;
+
     const timer = setInterval(() => {
       const now = Date.now();
-      const diff = Math.max(0, Math.ceil((session.currentQuestionDeadline - now) / 1000));
+      const diff = Math.max(0, Math.ceil((deadline - now) / 1000));
       setTimeRemaining(diff);
     }, 250);
 
     return () => clearInterval(timer);
-  }, [session?.stage, session?.isPaused, session?.currentQuestionDeadline, session?.timeRemainingSec]);
+  }, [sessionStage, isPaused, deadline, pausedTimeRemaining]);
 
   // Submit Answer Action
   const submitAnswer = async (optionId: string) => {
@@ -242,13 +239,13 @@ export function useLiveArena({
       } else {
         toast.error(data.error || "Answer submission rejected");
       }
-    } catch (err: any) {
+    } catch {
       toast.error("Network error submitting answer");
     }
   };
 
   // Host Action helper
-  const sendHostAction = async (action: string, payload?: any) => {
+  const sendHostAction = async (action: string, payload?: unknown) => {
     if (!code) return;
     const sec = hostSecret || (typeof window !== "undefined" ? localStorage.getItem(`quizdorm_host_sec_${code}`) : "");
     try {
@@ -271,7 +268,7 @@ export function useLiveArena({
       } else {
         toast.error(data.error || `Host action "${action}" failed`);
       }
-    } catch (err: any) {
+    } catch {
       toast.error(`Error executing ${action}`);
     }
   };

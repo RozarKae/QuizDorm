@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { Award, ShieldCheck, CheckCircle2, Key } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Award } from "lucide-react";
 
 export function CredentialWalletCard() {
   return (

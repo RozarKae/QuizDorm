@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
-import { LMSAnalyticsData } from "@/lib/types/lms";
 import { Button } from "@/components/ui/button";
-import { 
-  BarChart3, TrendingUp, Users, Clock, Download, 
-  Sparkles, CheckCircle2, Award, Activity
+import { LMSAnalyticsData } from "@/lib/types/lms";
+import {
+Activity,
+BarChart3,
+Download,
+TrendingUp
 } from "lucide-react";
 import { toast } from "sonner";
 

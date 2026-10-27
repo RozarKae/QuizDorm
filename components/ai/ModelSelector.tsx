@@ -1,10 +1,8 @@
 "use client";
 
-import React from "react";
-import { AIModel, AIProviderType } from "@/lib/types/ai";
 import { AIModelManager } from "@/lib/ai/models/modelManager";
+import { AIProviderType } from "@/lib/types/ai";
 import { ProviderBadge } from "./ProviderBadge";
-import { Cpu, DollarSign, Zap, Check } from "lucide-react";
 
 interface ModelSelectorProps {
   selectedProvider: AIProviderType;

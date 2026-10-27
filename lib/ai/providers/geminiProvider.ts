@@ -1,13 +1,13 @@
-import { IAIProvider } from "./provider";
 import {
-  AIProviderType,
-  AIModel,
-  AIRequestPayload,
-  AIResponsePayload,
-  AIStreamChunk,
-  ProviderHealth,
+AIModel,
+AIProviderType,
+AIRequestPayload,
+AIResponsePayload,
+AIStreamChunk,
+ProviderHealth,
 } from "@/lib/types/ai";
 import { GoogleGenAI } from "@google/genai";
+import { IAIProvider } from "./provider";
 
 export class GeminiProvider implements IAIProvider {
   id: AIProviderType = "gemini";
@@ -142,9 +142,10 @@ export class GeminiProvider implements IAIProvider {
           cached: false,
         },
       };
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Unknown error";
       throw new Error(
-        `Gemini Provider Execution Failed: ${err.message || "Unknown error"}`
+        `Gemini Provider Execution Failed: ${message}`
       );
     }
   }
@@ -181,12 +182,10 @@ export class GeminiProvider implements IAIProvider {
     });
 
     let accumulated = "";
-    let chunkIndex = 0;
 
     for await (const chunk of responseStream) {
       const text = chunk.text || "";
       accumulated += text;
-      chunkIndex++;
 
       onChunk({
         requestId,

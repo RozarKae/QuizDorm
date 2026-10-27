@@ -1,16 +1,13 @@
 import {
-  AIRequestPayload,
-  AIResponsePayload,
-  AIStreamChunk,
-  AIProviderType,
+AIRequestPayload,
+AIResponsePayload,
+AIStreamChunk
 } from "@/lib/types/ai";
-import { getAIProvider } from "../providers";
-import { AISettingsManager } from "../settings/settingsManager";
-import { AIModelManager } from "../models/modelManager";
-import { PromptEngine } from "../prompts/promptEngine";
-import { APIKeyManager } from "../security/apiKeyManager";
-import { AICache } from "../cache/aiCache";
 import { AILogger } from "../analytics/analytics";
+import { AICache } from "../cache/aiCache";
+import { getAIProvider } from "../providers";
+import { APIKeyManager } from "../security/apiKeyManager";
+import { AISettingsManager } from "../settings/settingsManager";
 
 export class AIRouter {
   /**
@@ -86,7 +83,8 @@ export class AIRouter {
       });
 
       return response;
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const primaryErrorMsg = err instanceof Error ? err.message : String(err);
       console.warn(`Primary AI Provider [${primaryProviderId}] failed. Initiating fallback to [${fallbackProviderId}]...`, err);
 
       // Execute Fallback Route
@@ -105,11 +103,12 @@ export class AIRouter {
           latencyMs: fallbackResponse.metadata.latencyMs,
           tokensTotal: fallbackResponse.metadata.totalTokens,
           costEstimateUSD: fallbackResponse.metadata.costUSD,
-          errorMessage: `Primary [${primaryProviderId}] failed: ${err.message}`,
+          errorMessage: `Primary [${primaryProviderId}] failed: ${primaryErrorMsg}`,
         });
 
         return fallbackResponse;
-      } catch (fallbackErr: any) {
+      } catch (fallbackErr: unknown) {
+        const fallbackErrorMsg = fallbackErr instanceof Error ? fallbackErr.message : "All AI providers offline";
         AILogger.logRequest({
           requestId,
           featureId: payload.featureId,
@@ -121,9 +120,9 @@ export class AIRouter {
           latencyMs: 0,
           tokensTotal: 0,
           costEstimateUSD: 0,
-          errorMessage: fallbackErr.message || "All AI providers offline",
+          errorMessage: fallbackErrorMsg,
         });
-        throw new Error(`AI Router Error: ${fallbackErr.message || "Execution failed"}`);
+        throw new Error(`AI Router Error: ${fallbackErrorMsg}`);
       }
     }
   }

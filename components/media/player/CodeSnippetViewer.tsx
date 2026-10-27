@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { Code, Terminal, Bug, Play, CheckCircle2 } from "lucide-react";
-import { CodeQuestionData } from "@/lib/types/media";
 import { Button } from "@/components/ui/button";
+import { CodeQuestionData } from "@/lib/types/media";
+import { Code,Terminal } from "lucide-react";
+import { useState } from "react";
 
 interface CodeSnippetViewerProps {
   codeData: CodeQuestionData;

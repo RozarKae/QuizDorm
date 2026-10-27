@@ -1,5 +1,5 @@
-import { QuestionItem } from "@/lib/types/question";
 import { CurriculumAlignment } from "@/lib/types/quality";
+import { QuestionItem } from "@/lib/types/question";
 
 export class CurriculumAligner {
   public static alignCurriculum(question: Partial<QuestionItem>): CurriculumAlignment {

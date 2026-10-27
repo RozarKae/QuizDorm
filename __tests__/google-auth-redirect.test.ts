@@ -1,5 +1,5 @@
-import test from "node:test";
 import assert from "node:assert/strict";
+import test from "node:test";
 
 test("Google Auth PKCE & Redirect Resilience Suite", async (t) => {
   await t.test("Edge Middleware auto-intercepts ?code= parameter on root or landing pages and forwards to /auth/callback", () => {

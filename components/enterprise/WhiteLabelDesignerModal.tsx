@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { Tenant } from "@/lib/types/enterprise";
-import { TenantManager } from "@/lib/enterprise/tenantManager";
-import { Sliders, Palette, Globe, Check, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { TenantManager } from "@/lib/enterprise/tenantManager";
+import { Tenant } from "@/lib/types/enterprise";
+import { Palette } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface WhiteLabelDesignerModalProps {
@@ -64,7 +64,7 @@ export function WhiteLabelDesignerModal({ tenant, open, onOpenChange }: WhiteLab
             <label className="font-bold text-gray-700 dark:text-gray-300 block mb-1">Default UI Theme</label>
             <select
               value={theme}
-              onChange={(e) => setTheme(e.target.value as any)}
+              onChange={(e) => setTheme(e.target.value as "dark" | "light" | "custom")}
               className="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 font-bold"
             >
               <option value="dark">Sleek Dark Mode (Default)</option>

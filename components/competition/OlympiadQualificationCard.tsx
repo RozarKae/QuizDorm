@@ -1,11 +1,8 @@
 "use client";
 
-import React from "react";
-import { OlympiadManager } from "@/lib/competition/olympiadManager";
-import { GlobalCompetition } from "@/lib/types/competition";
-import { Globe, Trophy, Users, Calendar, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { OlympiadManager } from "@/lib/competition/olympiadManager";
+import { Globe } from "lucide-react";
 
 export function OlympiadQualificationCard() {
   const olympiads = OlympiadManager.getOlympiads();

@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { Lock, ArrowLeft, Sparkles, Building2, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ArrowLeft,Lock,ShieldAlert,Sparkles } from "lucide-react";
+import Link from "next/link";
 
 interface LockedFeatureNoticeProps {
   title?: string;

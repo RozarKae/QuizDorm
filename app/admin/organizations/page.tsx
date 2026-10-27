@@ -1,49 +1,36 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import {
-  Building2,
-  Building,
-  School,
-  Globe,
-  Shield,
-  ShieldCheck,
-  ShieldAlert,
-  Users,
-  Search,
-  Filter,
-  RefreshCw,
-  Plus,
-  CheckCircle2,
-  XCircle,
-  AlertTriangle,
-  Sliders,
-  ExternalLink,
-  Copy,
-  Layers,
-  Lock,
-  Server,
-  Zap,
-  Tag,
-  Trash2,
-  ChevronRight,
-  Sparkles,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
 import {
-  MasterOrganization,
-  OrganizationMasterManager,
-  TenantApprovalStatus,
-  TenantIsolationTier,
-  HostingRegion,
+HostingRegion,
+MasterOrganization,
+OrganizationMasterManager,
+TenantApprovalStatus,
+TenantIsolationTier,
 } from "@/lib/admin/organizationMasterManager";
 import { SubscriptionPlanId } from "@/lib/types/billing";
 import { OrganizationType } from "@/lib/types/organization";
+import {
+AlertTriangle,
+Building,
+Building2,
+CheckCircle2,
+ExternalLink,
+Globe,
+Plus,
+RefreshCw,
+School,
+Search,
+Users
+} from "lucide-react";
+import Link from "next/link";
+import React,{ useState } from "react";
+import { toast } from "sonner";
 
 export default function AdminOrganizationsPage() {
-  const [organizations, setOrganizations] = useState<MasterOrganization[]>([]);
+  const [organizations, setOrganizations] = useState<MasterOrganization[]>(() =>
+    OrganizationMasterManager.getOrganizations()
+  );
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [typeFilter, setTypeFilter] = useState<string>("all");
@@ -65,19 +52,15 @@ export default function AdminOrganizationsPage() {
   const [formName, setFormName] = useState("");
   const [formSlug, setFormSlug] = useState("");
   const [formType, setFormType] = useState<OrganizationType>("School");
-  const [formCountry, setFormCountry] = useState("India");
-  const [formCity, setFormCity] = useState("Chennai");
+  const [formCountry] = useState("India");
+  const [formCity] = useState("Chennai");
   const [formAdminName, setFormAdminName] = useState("");
   const [formAdminEmail, setFormAdminEmail] = useState("");
   const [formPlanTier, setFormPlanTier] =
     useState<SubscriptionPlanId>("institution");
   const [formIsolation, setFormIsolation] =
     useState<TenantIsolationTier>("multi_tenant");
-  const [formRegion, setFormRegion] = useState<HostingRegion>("ap-south-1");
-
-  useEffect(() => {
-    setOrganizations(OrganizationMasterManager.getOrganizations());
-  }, []);
+  const [formRegion] = useState<HostingRegion>("ap-south-1");
 
   const refreshList = () => {
     setOrganizations(OrganizationMasterManager.getOrganizations());
@@ -217,14 +200,6 @@ export default function AdminOrganizationsPage() {
     setFormName("");
     setFormSlug("");
     setFormAdminEmail("");
-  };
-
-  const handleCopy = (text: string, label: string, e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    navigator.clipboard.writeText(text);
-    toast.success(`${label} copied to clipboard!`, {
-      description: text,
-    });
   };
 
   // Metrics Counters

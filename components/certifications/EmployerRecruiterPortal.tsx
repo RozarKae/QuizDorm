@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { VerifiedTalentCandidate } from "@/lib/types/certifications";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { 
-  Building2, Search, CheckCircle2, ShieldCheck, Mail, Sparkles
+import { VerifiedTalentCandidate } from "@/lib/types/certifications";
+import {
+Building2,
+Mail,
+ShieldCheck
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockTalent: VerifiedTalentCandidate[] = [
@@ -29,8 +30,7 @@ const mockTalent: VerifiedTalentCandidate[] = [
 ];
 
 export function EmployerRecruiterPortal() {
-  const [candidates, setCandidates] = useState<VerifiedTalentCandidate[]>(mockTalent);
-  const [skillFilter, setSkillFilter] = useState("");
+  const [candidates] = useState<VerifiedTalentCandidate[]>(mockTalent);
 
   const handleInviteInterview = (name: string) => {
     toast.success(`Interview Invitation sent to verified candidate ${name}!`);

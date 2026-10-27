@@ -1,6 +1,5 @@
-import React from "react";
 import { OrganizationBranding } from "@/lib/types/organization";
-import { Palette, Eye } from "lucide-react";
+import { Eye } from "lucide-react";
 
 interface BrandingPreviewProps {
   branding: OrganizationBranding;

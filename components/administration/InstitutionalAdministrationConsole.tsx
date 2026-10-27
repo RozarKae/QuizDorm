@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { CampusAdministration } from "@/lib/types/administration";
 import { Button } from "@/components/ui/button";
-import { 
-  Building2, Users, Trophy, ShieldCheck, Award, Plus, Sparkles
+import { CampusAdministration } from "@/lib/types/administration";
+import {
+Building2,
+Trophy,
+Users
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockCampuses: CampusAdministration[] = [
@@ -30,7 +32,7 @@ const mockCampuses: CampusAdministration[] = [
 ];
 
 export function InstitutionalAdministrationConsole() {
-  const [campuses, setCampuses] = useState<CampusAdministration[]>(mockCampuses);
+  const [campuses] = useState<CampusAdministration[]>(mockCampuses);
   const activeCampus = campuses[0];
 
   return (

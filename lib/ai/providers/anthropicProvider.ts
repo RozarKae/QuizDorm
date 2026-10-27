@@ -1,12 +1,12 @@
-import { IAIProvider } from "./provider";
 import {
-  AIProviderType,
-  AIModel,
-  AIRequestPayload,
-  AIResponsePayload,
-  AIStreamChunk,
-  ProviderHealth,
+AIModel,
+AIProviderType,
+AIRequestPayload,
+AIResponsePayload,
+AIStreamChunk,
+ProviderHealth,
 } from "@/lib/types/ai";
+import { IAIProvider } from "./provider";
 
 export class AnthropicProvider implements IAIProvider {
   id: AIProviderType = "anthropic";
@@ -33,6 +33,7 @@ export class AnthropicProvider implements IAIProvider {
   }
 
   async generateCompletion(payload: AIRequestPayload, apiKey?: string): Promise<AIResponsePayload> {
+    void apiKey;
     const startTime = Date.now();
     const modelId = payload.modelOverride || "claude-3-5-sonnet";
 
@@ -62,6 +63,7 @@ export class AnthropicProvider implements IAIProvider {
     onChunk: (chunk: AIStreamChunk) => void,
     apiKey?: string
   ): Promise<AIResponsePayload> {
+    void apiKey;
     const startTime = Date.now();
     const modelId = payload.modelOverride || "claude-3-5-sonnet";
     const requestId = payload.requestId || `req-${Date.now()}`;
@@ -101,6 +103,7 @@ export class AnthropicProvider implements IAIProvider {
   }
 
   async checkHealth(apiKey?: string): Promise<ProviderHealth> {
+    void apiKey;
     return {
       providerId: "anthropic",
       providerName: "Anthropic Claude 3.5",

@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useMemo } from "react";
-import { QuestionItem } from "@/lib/types/question";
+import { useSound } from "@/components/audio/useSound";
 import { QuestionTypeBadge } from "@/components/question-bank/QuestionTypeBadge";
 import { Input } from "@/components/ui/input";
-import { CheckCircle2, XCircle, HelpCircle, ArrowUp, ArrowDown, AlertTriangle, Layers, GripVertical } from "lucide-react";
-import { useSound } from "@/components/audio/useSound";
+import { QuestionItem } from "@/lib/types/question";
+import { AlertTriangle,ArrowDown,ArrowUp,CheckCircle2,HelpCircle,XCircle } from "lucide-react";
+import { useMemo } from "react";
 
 interface QuestionRendererProps {
   question: QuestionItem;
-  userAnswer: any;
-  onAnswerChange: (value: any) => void;
+  userAnswer: unknown;
+  onAnswerChange: (value: unknown) => void;
   showExplanation?: boolean;
 }
 
@@ -171,7 +171,7 @@ export function QuestionRenderer({
         <div className="space-y-3 pt-2">
           <label className="block text-xs font-mono uppercase tracking-wider text-[#A0AEA5]">Type your answer below:</label>
           <Input
-            value={userAnswer || ""}
+            value={typeof userAnswer === "string" || typeof userAnswer === "number" ? userAnswer : ""}
             disabled={showExplanation}
             onChange={(e) => onAnswerChange(e.target.value)}
             placeholder="Enter answer keyword..."
@@ -261,9 +261,9 @@ export function QuestionRenderer({
                       <select
                         value={studentChoice || ""}
                         onChange={(e) => {
-                          const currentAnswers =
+                          const currentAnswers: Record<string, string> =
                             typeof userAnswer === "object" && userAnswer !== null && !Array.isArray(userAnswer)
-                              ? { ...userAnswer }
+                              ? { ...(userAnswer as Record<string, string>) }
                               : {};
                           currentAnswers[p.id] = e.target.value;
                           onAnswerChange(currentAnswers);

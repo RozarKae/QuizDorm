@@ -1,13 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
-import { VirtualClassroom, ClassroomAnnouncement, ClassroomTemplate } from "@/lib/types/classroom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  School, Plus, Search, Filter, Users, Copy, Check, Megaphone, 
-  Archive, Video, BookOpen, Layers, Calendar, Sparkles, Tag, Folder
+import { ClassroomAnnouncement,ClassroomTemplate,VirtualClassroom } from "@/lib/types/classroom";
+import {
+Archive,
+BookOpen,
+Check,
+Copy,
+Filter,
+Folder,
+Layers,
+Megaphone,
+Plus,
+School,
+Search,
+Sparkles,
+Users,
+Video
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockClassrooms: VirtualClassroom[] = [

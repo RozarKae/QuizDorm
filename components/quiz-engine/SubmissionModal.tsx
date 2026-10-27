@@ -1,7 +1,6 @@
-import React from "react";
-import { AlertTriangle, CheckCircle2, Clock, HelpCircle } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle } from "@/components/ui/dialog";
+import { AlertTriangle,CheckCircle2 } from "lucide-react";
 
 interface SubmissionModalProps {
   open: boolean;
@@ -40,7 +39,7 @@ export function SubmissionModal({
           {/* Answer Breakdown */}
           <div className="grid grid-cols-3 gap-2.5 text-center font-mono">
             <div className="p-3 bg-[rgba(255, 77, 109,0.1)] border border-[rgba(255, 77, 109,0.25)] rounded-[4px]">
-              <p className="text-xl font-extrabold text-[#FF4D6D]">{answeredCount}</p>
+              <p className="text-xl font-extrabold text-[#FF4D6D]">{answeredCount} / {totalQuestions}</p>
               <p className="text-[10px] text-[#A0AEA5] font-semibold uppercase tracking-wider">Answered</p>
             </div>
             <div className="p-3 bg-[#2A141A] border border-[rgba(240, 160, 180,0.14)] rounded-[4px]">

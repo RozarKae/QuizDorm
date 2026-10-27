@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { Sparkles, Trophy, Flame } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Sparkles } from "lucide-react";
 
 export function LearningSuccessIndexCard() {
   return (

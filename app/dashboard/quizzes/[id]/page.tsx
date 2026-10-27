@@ -1,24 +1,21 @@
 "use client";
 
-import React, { useMemo } from "react";
-import Link from "next/link";
-import {
-  ArrowLeft,
-  Clock,
-  HelpCircle,
-  Award,
-  Users,
-  Play,
-  Edit,
-  Share2,
-  Layers,
-  Sparkles,
-  GraduationCap,
-  CheckCircle2,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { getQuizById, ALL_DEFAULT_QUIZZES } from "@/lib/data/quizzes";
+import { Button } from "@/components/ui/button";
+import { ALL_DEFAULT_QUIZZES,getQuizById } from "@/lib/data/quizzes";
+import {
+ArrowLeft,
+Award,
+Clock,
+GraduationCap,
+HelpCircle,
+Layers,
+Play,
+Share2,
+Sparkles
+} from "lucide-react";
+import Link from "next/link";
+import React,{ useMemo } from "react";
 import { toast } from "sonner";
 
 export default function QuizDetailsPage({
@@ -27,7 +24,7 @@ export default function QuizDetailsPage({
   params: Promise<{ id: string }> | { id: string };
 }) {
   const unwrappedParams =
-    typeof (params as any)?.then === "function"
+    typeof (params as PromiseLike<unknown>)?.then === "function"
       ? React.use(params as Promise<{ id: string }>)
       : (params as { id: string });
   const quizId = unwrappedParams.id;

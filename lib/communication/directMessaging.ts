@@ -29,13 +29,18 @@ export const DEFAULT_DIRECT_MESSAGES: DirectMessage[] = [
 
 export class DirectMessagingService {
   public static getMessages(recipientId?: string): DirectMessage[] {
-    if (typeof window === "undefined") return DEFAULT_DIRECT_MESSAGES;
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY_DIRECT_MESSAGES);
-      return saved ? JSON.parse(saved) : DEFAULT_DIRECT_MESSAGES;
-    } catch {
-      return DEFAULT_DIRECT_MESSAGES;
+    let messages = DEFAULT_DIRECT_MESSAGES;
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY_DIRECT_MESSAGES);
+        if (saved) messages = JSON.parse(saved);
+      } catch {
+        messages = DEFAULT_DIRECT_MESSAGES;
+      }
     }
+    return recipientId
+      ? messages.filter((m) => m.recipientId === recipientId || m.senderId === recipientId)
+      : messages;
   }
 
   public static sendMessage(params: {

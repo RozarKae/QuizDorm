@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { LiveParticipant } from "@/lib/types/competition";
-import { Trophy, Award, Sparkles, Share2, Home, Check, Copy, Swords, ArrowRight, ShieldCheck, UserPlus, LogIn } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
 import { useSound } from "@/components/audio/useSound";
 import { useAuth } from "@/components/auth/AuthProvider";
+import { Button } from "@/components/ui/button";
+import { LiveParticipant } from "@/lib/types/competition";
+import { motion } from "framer-motion";
+import { Check,Home,LogIn,Share2,ShieldCheck,Sparkles,Swords,Trophy,UserPlus } from "lucide-react";
+import Link from "next/link";
+import { useEffect,useState } from "react";
+import { toast } from "sonner";
 
 interface WinnerPodiumScreenProps {
   participants: LiveParticipant[];
@@ -52,8 +52,8 @@ export function WinnerPodiumScreen({
         });
         toast.success("Leaderboard shared!");
         return;
-      } catch (err: any) {
-        if (err.name === "AbortError") return;
+      } catch (err: unknown) {
+        if (err instanceof Error && err.name === "AbortError") return;
       }
     }
 

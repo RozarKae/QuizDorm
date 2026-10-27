@@ -1,6 +1,5 @@
-import React from "react";
-import { AlertCircle, Flame } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Flame } from "lucide-react";
 
 interface WeakTopicItem {
   topic: string;

@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 
 export function OfficialEmblem({ className = "w-7 h-7" }: { className?: string }) {

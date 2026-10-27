@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import QRCode from "qrcode";
-import { QrCode, Copy, Check, Share2, Maximize2, Download, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle } from "@/components/ui/dialog";
+import { Check,Copy,Download,Maximize2,QrCode,Share2 } from "lucide-react";
+import QRCode from "qrcode";
+import { useEffect,useState } from "react";
 import { toast } from "sonner";
 
 interface SessionQrCardProps {
@@ -73,8 +73,8 @@ export function SessionQrCard({ code, competitionTitle, className = "" }: Sessio
           url: joinUrl,
         });
         toast.success("Shared successfully!");
-      } catch (err: any) {
-        if (err.name !== "AbortError") {
+      } catch (err: unknown) {
+        if (err instanceof Error && err.name !== "AbortError") {
           handleCopyLink();
         }
       }

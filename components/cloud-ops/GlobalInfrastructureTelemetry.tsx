@@ -1,18 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { ClusterNode } from "@/lib/types/cloud-ops";
 import { Button } from "@/components/ui/button";
+import { ClusterNode } from "@/lib/types/cloud-ops";
 import {
-  Server,
-  Cpu,
-  Activity,
-  RefreshCw,
-  CheckCircle2,
-  Zap,
-  Globe,
-  Radio,
+Activity,
+Server,
+Zap
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockNodes: ClusterNode[] = [
@@ -46,7 +41,7 @@ const mockNodes: ClusterNode[] = [
 ];
 
 export function GlobalInfrastructureTelemetry() {
-  const [nodes, setNodes] = useState<ClusterNode[]>(mockNodes);
+  const [nodes] = useState<ClusterNode[]>(mockNodes);
 
   const handleTriggerDeployment = () => {
     toast.success("Zero-Downtime Rolling Deployment initiated across 3 Kubernetes regions!");

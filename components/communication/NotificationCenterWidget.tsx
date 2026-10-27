@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { InAppNotificationService } from "@/lib/communication/notificationService";
 import { InAppNotification } from "@/lib/types/communication";
-import { Bell, CheckCircle2, ShieldCheck, Sparkles, Award, CreditCard, ExternalLink, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Award,Bell,CreditCard,ExternalLink,ShieldCheck,Sparkles,X } from "lucide-react";
 import Link from "next/link";
+import React,{ useState } from "react";
 
 export function NotificationCenterWidget() {
   const [notifications, setNotifications] = useState<InAppNotification[]>(InAppNotificationService.getNotifications());

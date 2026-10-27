@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
 import { CampusServerCard } from "@/components/offline/CampusServerCard";
 import { OfflineStorageAnalyzerCard } from "@/components/offline/OfflineStorageAnalyzerCard";
-import { Server, RefreshCw, Database, ShieldCheck } from "lucide-react";
+import { Server } from "lucide-react";
 
 export default function CampusServerPage() {
   return (

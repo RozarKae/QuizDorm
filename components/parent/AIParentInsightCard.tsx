@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { ParentAIInsight } from "@/lib/types/parent";
-import { Sparkles, CheckCircle2, AlertTriangle, Lightbulb } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { ParentAIInsight } from "@/lib/types/parent";
+import { AlertTriangle,CheckCircle2,Lightbulb,Sparkles } from "lucide-react";
 
 interface AIParentInsightCardProps {
   insight: ParentAIInsight;

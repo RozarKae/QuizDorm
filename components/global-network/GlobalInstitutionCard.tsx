@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { GlobalInstitution } from "@/lib/types/global-network";
-import { Globe, CheckCircle2, Users, Building, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { GlobalInstitution } from "@/lib/types/global-network";
+import { CheckCircle2 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface GlobalInstitutionCardProps {

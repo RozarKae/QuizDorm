@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { AICoachMessage } from "@/lib/types/adaptive";
-import { Bot, Sparkles, MessageSquare, ArrowRight, Lightbulb } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { AICoachMessage } from "@/lib/types/adaptive";
+import { ArrowRight,Bot,Lightbulb,Sparkles } from "lucide-react";
 
 interface AICoachWidgetProps {
   messages: AICoachMessage[];

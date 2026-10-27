@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
-import { DownloadManagerCard } from "@/components/mobile/DownloadManagerCard";
 import { DeviceManagerCard } from "@/components/mobile/DeviceManagerCard";
+import { DownloadManagerCard } from "@/components/mobile/DownloadManagerCard";
 import { MobilePreviewFrame } from "@/components/mobile/MobilePreviewFrame";
-import { Smartphone, Download, ShieldCheck, HardDrive, QrCode } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Smartphone } from "lucide-react";
 import Link from "next/link";
 
 export default function MobilePlatformPage() {

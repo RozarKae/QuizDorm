@@ -1,5 +1,5 @@
+import { DifficultyLevel,PredictedDifficulty } from "@/lib/types/quality";
 import { QuestionItem } from "@/lib/types/question";
-import { PredictedDifficulty, DifficultyLevel } from "@/lib/types/quality";
 
 export class DifficultyPredictor {
   /**

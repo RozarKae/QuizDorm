@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { useOrganization } from "@/components/organization/OrganizationContext";
 import { BrandingPreview } from "@/components/organization/BrandingPreview";
-import { ImageDropzone } from "@/components/ui/image-dropzone";
+import { useOrganization } from "@/components/organization/OrganizationContext";
 import { Button } from "@/components/ui/button";
+import { ImageDropzone } from "@/components/ui/image-dropzone";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { ArrowLeft, Palette, Settings, Save, Sparkles } from "lucide-react";
+import { ArrowLeft,Palette,Save } from "lucide-react";
+import Link from "next/link";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 export default function OrganizationSettingsPage({ params }: { params: { id: string } }) {
@@ -77,7 +77,7 @@ export default function OrganizationSettingsPage({ params }: { params: { id: str
             <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400 mb-1">Default Dashboard Theme</label>
             <Select
               value={dashboardTheme}
-              onChange={(e) => setDashboardTheme(e.target.value as any)}
+              onChange={(e) => setDashboardTheme(e.target.value as "light" | "dark" | "system")}
               options={[
                 { value: "light", label: "Clean Light Mode" },
                 { value: "dark", label: "Dark Glassmorphism Mode" },

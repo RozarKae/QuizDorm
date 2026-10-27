@@ -1,28 +1,23 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import {
-  Upload,
-  FileText,
-  Camera,
-  Sparkles,
-  RotateCcw,
-  CheckCircle2,
-  Layers,
-  BookOpen,
-  Sliders,
-  Check,
-  Zap,
-  HelpCircle,
-  Hash,
-  Activity,
-  X,
-  FileCode,
-} from "lucide-react";
-import { OCRJobSettings } from "@/lib/types/ocr";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
 import { OCREngineService } from "@/lib/ocr/engine";
+import { OCRJobSettings } from "@/lib/types/ocr";
+import {
+Activity,
+BookOpen,
+Camera,
+Check,
+FileCode,
+FileText,
+Hash,
+RotateCcw,
+Sliders,
+Sparkles,
+Upload
+} from "lucide-react";
+import React,{ useRef,useState } from "react";
+import { toast } from "sonner";
 
 export interface UploadStartOptions {
   subject: string;
@@ -64,6 +59,7 @@ const PRESET_COUNTS = [
 ];
 
 export function OCRUploadCard({ settings, onUploadStart, loading = false }: OCRUploadCardProps) {
+  void settings;
   const [dragActive, setDragActive] = useState(false);
   const [stagedFile, setStagedFile] = useState<File | { name: string; type: string; content?: string; size?: number } | null>(null);
 

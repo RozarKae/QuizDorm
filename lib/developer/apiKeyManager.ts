@@ -1,4 +1,4 @@
-import { ApiKey, ApiPermissionScope } from "@/lib/types/developer";
+import { ApiKey,ApiPermissionScope } from "@/lib/types/developer";
 
 const STORAGE_KEY_API_KEYS = "quizdorm_developer_api_keys";
 

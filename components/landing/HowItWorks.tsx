@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { School, Sparkles, Trophy } from "lucide-react";
 import SectionDivider from "@/components/ui/section-divider";
+import { motion } from "framer-motion";
+import { School,Sparkles,Trophy } from "lucide-react";
 
 export default function HowItWorks() {
   const steps = [

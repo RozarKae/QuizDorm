@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { ArrowLeft, Building2, Globe, Mail, Phone, MapPin, Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ImageDropzone } from "@/components/ui/image-dropzone";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { ImageDropzone } from "@/components/ui/image-dropzone";
 import { OrganizationType } from "@/lib/types/organization";
+import { ArrowLeft,Building2,Save } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 export default function RegisterOrganizationPage() {
@@ -22,7 +22,6 @@ export default function RegisterOrganizationPage() {
   const [city, setCity] = useState("San Francisco");
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState("");
-  const [timezone, setTimezone] = useState("PST (UTC-8)");
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();

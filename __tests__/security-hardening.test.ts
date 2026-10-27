@@ -1,16 +1,16 @@
-import test, { describe } from "node:test";
 import assert from "node:assert/strict";
+import test,{ describe } from "node:test";
 
-import { signSessionPayload, verifySessionPayload } from "../lib/security/cookieSigner";
-import { checkRateLimit, resetRateLimiter } from "../lib/security/rateLimiter";
-import { securityHeaders } from "../lib/security/headers";
-import {
-  sanitizeInput,
-  stripHtmlTags,
-  sanitizeParticipantName,
-  sanitizeUrl,
-} from "../lib/security/sanitizer";
 import { LiveSessionManager } from "../lib/live/liveSessionManager";
+import { signSessionPayload,verifySessionPayload } from "../lib/security/cookieSigner";
+import { securityHeaders } from "../lib/security/headers";
+import { checkRateLimit,resetRateLimiter } from "../lib/security/rateLimiter";
+import {
+sanitizeInput,
+sanitizeParticipantName,
+sanitizeUrl,
+stripHtmlTags,
+} from "../lib/security/sanitizer";
 
 describe("Application Security Hardening & Cryptographic Integrity Suite", () => {
   describe("Phase 1 & SEC-01: Live Arena Host Sealing & Secret Protection", () => {
@@ -92,7 +92,7 @@ describe("Application Security Hardening & Cryptographic Integrity Suite", () =>
       };
 
       const signedCookie = await signSessionPayload(legitimatePayload);
-      const [payloadB64, signatureHex] = signedCookie.split(".");
+      const [, signatureHex] = signedCookie.split(".");
 
       // Attacker attempts to modify base64 payload to role: "admin"
       const tamperedJson = JSON.stringify({
@@ -131,7 +131,7 @@ describe("Application Security Hardening & Cryptographic Integrity Suite", () =>
 
     test("Handles empty, null, or garbage tokens gracefully without crashing", async () => {
       assert.strictEqual(await verifySessionPayload(""), null);
-      assert.strictEqual(await verifySessionPayload(null as any), null);
+      assert.strictEqual(await verifySessionPayload(null as unknown as string), null);
       assert.strictEqual(await verifySessionPayload("invalid.token.extra.parts"), null);
       assert.strictEqual(await verifySessionPayload("just-a-random-string"), null);
     });

@@ -1,10 +1,11 @@
 "use client";
 
-import { useLiveArena } from "./useLiveArena";
 import { CompetitionItem } from "@/lib/types/competition";
 import { QuestionItem } from "@/lib/types/question";
+import { useLiveArena } from "./useLiveArena";
 
 export function useLiveCompetition(competition?: Partial<CompetitionItem>, questions?: QuestionItem[]) {
+  void questions;
   const code = competition?.code || "QD-8492";
 
   const arena = useLiveArena({
@@ -14,6 +15,6 @@ export function useLiveCompetition(competition?: Partial<CompetitionItem>, quest
 
   return {
     ...arena,
-    setStage: (stage: any) => {},
+    setStage: () => {},
   };
 }

@@ -1,20 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import {
-  BarChart3,
-  Download,
-  ArrowUpRight,
-  TrendingUp,
-  Award,
-  CheckCircle2,
-  Users,
-  Search,
-  Filter,
-  FileSpreadsheet,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+Download,
+Filter
+} from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export default function TeacherReportsPage() {

@@ -1,13 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import { MentorBookingCard } from "@/components/community/MentorBookingCard";
+import { QuizClubCard } from "@/components/community/QuizClubCard";
 import { QuizClubManager } from "@/lib/community/clubManager";
 import { MentorshipEngine } from "@/lib/community/mentorshipEngine";
-import { QuizClubCard } from "@/components/community/QuizClubCard";
-import { MentorBookingCard } from "@/components/community/MentorBookingCard";
 
-import { Users, Shield, Calendar, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Calendar,Users } from "lucide-react";
 
 export default function QuizClubsAndMentorsPage() {
   const clubs = QuizClubManager.getClubs();

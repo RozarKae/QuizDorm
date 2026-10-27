@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { TimetableSlot } from "@/lib/types/administration";
 import { Button } from "@/components/ui/button";
-import { 
-  Calendar, Clock, AlertTriangle, CheckCircle2, Building2, Sparkles, RefreshCw
+import { TimetableSlot } from "@/lib/types/administration";
+import {
+AlertTriangle,
+Calendar,Clock,
+Sparkles
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockSlots: TimetableSlot[] = [

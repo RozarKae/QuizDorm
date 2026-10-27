@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { PracticeExercise } from "@/lib/types/lms";
 import { Button } from "@/components/ui/button";
-import { 
-  FileCode, Sparkles, CheckCircle2, Play, RefreshCw, Award, Code, HelpCircle
+import { PracticeExercise } from "@/lib/types/lms";
+import {
+Code,
+FileCode,
+Play,RefreshCw,
+Sparkles
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockExercises: PracticeExercise[] = [
@@ -32,7 +35,7 @@ const mockExercises: PracticeExercise[] = [
 ];
 
 export function AssessmentsPracticeHub() {
-  const [exercises, setExercises] = useState<PracticeExercise[]>(mockExercises);
+  const [exercises] = useState<PracticeExercise[]>(mockExercises);
   const [activeExIndex, setActiveExIndex] = useState(0);
   const [userCode, setUserCode] = useState(mockExercises[0].starterCode || "");
   const [isExecuting, setIsExecuting] = useState(false);

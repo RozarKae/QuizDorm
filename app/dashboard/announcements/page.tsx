@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { AnnouncementNotice } from "@/lib/types/academic";
 import { NotificationCenter } from "@/components/academic/NotificationCenter";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { Megaphone, Plus, Send } from "lucide-react";
+import { AnnouncementNotice } from "@/lib/types/academic";
+import { Megaphone,Plus,Send } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockNotices: AnnouncementNotice[] = [

@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { AIRecommendationItem } from "@/lib/types/adaptive";
-import { Sparkles, HelpCircle, ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AIRecommendationItem } from "@/lib/types/adaptive";
+import { ArrowRight,HelpCircle,Sparkles } from "lucide-react";
 import Link from "next/link";
 
 interface RecommendationPanelProps {

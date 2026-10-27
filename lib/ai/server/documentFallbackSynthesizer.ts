@@ -1,6 +1,6 @@
+import { QuestionIntelligenceValidator } from "../../quality/questionIntelligenceValidator";
 import { GeneratedQuestion } from "../schemas/questionGenerationSchema";
 import { DocumentQuestionItemResult } from "../services/questionIntelligenceService";
-import { QuestionIntelligenceValidator } from "../../quality/questionIntelligenceValidator";
 
 export interface FallbackSynthesisOptions {
   fileName?: string;
@@ -105,6 +105,7 @@ export class DocumentFallbackSynthesizer {
     difficulty: "Easy" | "Medium" | "Hard",
     allSentences: string[]
   ): GeneratedQuestion {
+    void allSentences;
     const words = sentence.split(/\s+/).filter((w) => w.length >= 4 && !/^(this|that|with|from|have|been|were|when)$/i.test(w));
     const keyword = words.length > 0 ? words[Math.floor(words.length / 2)].replace(/[.,!?;:()]/g, "") : "core";
 

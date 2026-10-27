@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import { useSound } from "@/components/audio/useSound";
 import { useCurrency } from "@/lib/hooks/useCurrency";
 import { CurrencyCode } from "@/lib/types/billing";
-import { ChevronDown, Check, Globe } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useSound } from "@/components/audio/useSound";
+import { AnimatePresence,motion } from "framer-motion";
+import { Check,ChevronDown,Globe } from "lucide-react";
+import { useEffect,useRef,useState } from "react";
 
 interface CurrencySelectorProps {
   className?: string;
@@ -16,6 +16,7 @@ export function CurrencySelector({
   className = "",
   variant = "compact",
 }: CurrencySelectorProps) {
+  void variant;
   const {
     currency,
     setCurrency,

@@ -1,5 +1,5 @@
-import { QuestionItem, QuestionOption } from "@/lib/types/question";
-import { AnnouncementItem, LiveParticipant } from "@/lib/types/competition";
+import { AnnouncementItem,LiveParticipant } from "@/lib/types/competition";
+import { QuestionItem } from "@/lib/types/question";
 
 export type SessionStatus = "WAITING" | "ACTIVE" | "PAUSED" | "ENDED";
 export type SessionStage = "lobby" | "question" | "leaderboard" | "winner_podium";

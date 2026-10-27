@@ -1,13 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
-import { ResearchProject, CitationItem } from "@/lib/types/research-studio";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  BookOpen, Sparkles, Plus, Copy, FileText, CheckCircle2, 
-  Search, Link as LinkIcon, RefreshCw
+import { CitationItem,ResearchProject } from "@/lib/types/research-studio";
+import {
+BookOpen,
+CheckCircle2,
+Copy,FileText,
+Plus,
+Sparkles
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockProjects: ResearchProject[] = [
@@ -43,7 +46,7 @@ const mockCitations: CitationItem[] = [
 
 export function ResearchWorkspaceHub() {
   const [projects, setProjects] = useState<ResearchProject[]>(mockProjects);
-  const [citations, setCitations] = useState<CitationItem[]>(mockCitations);
+  const [citations] = useState<CitationItem[]>(mockCitations);
   const [newTitle, setNewTitle] = useState("");
 
   const handleCreateProject = (e: React.FormEvent) => {

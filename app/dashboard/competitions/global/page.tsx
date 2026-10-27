@@ -1,13 +1,12 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { GlobalLeaderboardTable } from "@/components/competition/GlobalLeaderboardTable";
-import { EloRatingWidget } from "@/components/competition/EloRatingWidget";
-import { OlympiadQualificationCard } from "@/components/competition/OlympiadQualificationCard";
-import { Trophy, Globe, Award, Swords, Sparkles, ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useSound } from "@/components/audio/useSound";
+import { EloRatingWidget } from "@/components/competition/EloRatingWidget";
+import { GlobalLeaderboardTable } from "@/components/competition/GlobalLeaderboardTable";
+import { OlympiadQualificationCard } from "@/components/competition/OlympiadQualificationCard";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft,Globe,Swords } from "lucide-react";
+import Link from "next/link";
 
 export default function GlobalCompetitionsPage() {
   const { playTap } = useSound();

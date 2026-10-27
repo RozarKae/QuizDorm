@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { SyncEngine } from "@/lib/mobile/syncEngine";
-import { OfflineEngine } from "@/lib/mobile/offlineEngine";
-import { Wifi, WifiOff, RefreshCw, CheckCircle2, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { OfflineEngine } from "@/lib/mobile/offlineEngine";
+import { SyncEngine } from "@/lib/mobile/syncEngine";
+import { RefreshCw,Wifi,WifiOff } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function SyncStatusWidget() {
-  const [online, setOnline] = useState(OfflineEngine.isOnline());
+  const [online] = useState(OfflineEngine.isOnline());
   const [syncing, setSyncing] = useState(false);
   const [pendingCount, setPendingCount] = useState(3);
 

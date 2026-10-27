@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { LMSIntegrationService } from "@/lib/developer/lmsIntegrationService";
 import { LMSIntegration } from "@/lib/types/developer";
-import { Boxes, RefreshCw, CheckCircle2, Link2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Boxes,Link2,RefreshCw } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function LMSConnectorCard() {
-  const [integrations, setIntegrations] = useState<LMSIntegration[]>(LMSIntegrationService.getIntegrations());
+  const [integrations] = useState<LMSIntegration[]>(LMSIntegrationService.getIntegrations());
   const [syncing, setSyncing] = useState(false);
 
   const handleSyncLMS = async (name: string) => {

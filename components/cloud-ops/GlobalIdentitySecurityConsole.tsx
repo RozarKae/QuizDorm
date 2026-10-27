@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { ZeroTrustIdentity } from "@/lib/types/cloud-ops";
 import { Button } from "@/components/ui/button";
-import { 
-  ShieldCheck, Lock, Key, AlertTriangle, CheckCircle2, UserCheck, Sparkles
+import { ZeroTrustIdentity } from "@/lib/types/cloud-ops";
+import {
+Lock,
+ShieldCheck,
+Sparkles
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockIdentity: ZeroTrustIdentity[] = [
@@ -14,7 +16,7 @@ const mockIdentity: ZeroTrustIdentity[] = [
 ];
 
 export function GlobalIdentitySecurityConsole() {
-  const [identities, setIdentities] = useState<ZeroTrustIdentity[]>(mockIdentity);
+  const [identities] = useState<ZeroTrustIdentity[]>(mockIdentity);
 
   const handleRunSecurityScan = () => {
     toast.success("Zero-Trust Security Threat Scan Complete: 0 Anomalies Detected!");

@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
 import { DirectChatWindow } from "@/components/communication/DirectChatWindow";
-import { MessageSquare, Users } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 
 export default function DirectMessagingPage() {
   return (

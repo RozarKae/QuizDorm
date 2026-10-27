@@ -1,6 +1,6 @@
-import { describe, it } from "node:test";
 import assert from "node:assert";
-import { CurrencyManager, SUPPORTED_CURRENCIES } from "../lib/billing/currencyManager";
+import { describe,it } from "node:test";
+import { CurrencyManager } from "../lib/billing/currencyManager";
 import { SUBSCRIPTION_PLANS } from "../lib/billing/subscriptionManager";
 
 describe("INR Base Billing & Currency Localization Engine", () => {

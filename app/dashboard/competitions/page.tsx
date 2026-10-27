@@ -1,29 +1,26 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { CompetitionItem } from "@/lib/types/competition";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { JoinCompetitionModal } from "@/components/competitions/JoinCompetitionModal";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { JoinCompetitionModal } from "@/components/competitions/JoinCompetitionModal";
-import { useAuth } from "@/components/auth/AuthProvider";
 import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
+import { CompetitionItem } from "@/lib/types/competition";
+import { motion } from "framer-motion";
 import {
-  Trophy,
-  Users,
-  Clock,
-  Key,
-  Plus,
-  Play,
-  Trash2,
-  Search,
-  Swords,
-  Radio,
-  ShieldAlert,
-  ArrowRight,
+Clock,
+Key,
+Plus,
+Radio,
+Search,
+Swords,
+Trash2,
+Trophy,
+Users
 } from "lucide-react";
+import Link from "next/link";
+import React,{ useEffect,useState } from "react";
 import { toast } from "sonner";
 
 const STORAGE_KEY_HOSTED_COMPETITIONS = "quizdorm_hosted_competitions_v1";
@@ -32,29 +29,28 @@ export default function CompetitionsPage() {
   const { role } = useAuth();
   const canHost = GovernanceSettingsManager.canHostArena(role).allowed;
 
-  const [competitions, setCompetitions] = useState<CompetitionItem[]>([]);
+  const [competitions, setCompetitions] = useState<CompetitionItem[]>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY_HOSTED_COMPETITIONS);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          return Array.isArray(parsed) ? parsed : [];
+        }
+      } catch {
+        return [];
+      }
+    }
+    return [];
+  });
   const [isLoaded, setIsLoaded] = useState(false);
   const [activeTab, setActiveTab] = useState<"All" | "Live" | "Upcoming" | "Completed">("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [joinModalOpen, setJoinModalOpen] = useState(false);
   const [inlinePin, setInlinePin] = useState("");
 
-  // Load ONLY real actively hosted competitions (Remove hardcoded test arenas)
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      try {
-        const saved = localStorage.getItem(STORAGE_KEY_HOSTED_COMPETITIONS);
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          setCompetitions(Array.isArray(parsed) ? parsed : []);
-        } else {
-          setCompetitions([]);
-        }
-      } catch {
-        setCompetitions([]);
-      }
-    }
-    setIsLoaded(true);
+    queueMicrotask(() => setIsLoaded(true));
   }, []);
 
   const filtered = competitions.filter((comp) => {

@@ -1,24 +1,24 @@
-import test from "node:test";
 import assert from "node:assert/strict";
+import test from "node:test";
 
 // Schemas & Types
 import {
+  GeneratedQuestion,
   GeneratedQuestionSchema,
-  QuestionGenerationInputSchema,
 } from "../lib/ai/schemas/questionGenerationSchema";
 
 // Validation Engine
 import { QuestionIntelligenceValidator } from "../lib/quality/questionIntelligenceValidator";
 
 // Service & Providers
-import { QuestionIntelligenceService } from "../lib/ai/services/questionIntelligenceService";
 import {
-  IQuestionIntelligenceProvider,
-  RawAIQuestionResponse,
-  AIProviderError,
-  AITimeoutError,
+AIProviderError,
+AITimeoutError,
+IQuestionIntelligenceProvider,
+RawAIQuestionResponse,
 } from "../lib/ai/server/IQuestionIntelligenceProvider";
 import { AIServerConfig } from "../lib/ai/server/aiConfig";
+import { QuestionIntelligenceService } from "../lib/ai/services/questionIntelligenceService";
 
 /**
  * Test Suite 1: Runtime Schema Validation (Zod)
@@ -123,16 +123,16 @@ test("Schema Validation: Rejects single-choice question with zero correct answer
  */
 test("Categorical Gate: Rejects Year Question with Person/Entity Distractors (q-bank-0001 failure)", () => {
   // This is the EXACT defective question discovered in the audit:
-  const defectiveQuestion: any = {
+  const defectiveQuestion: Partial<GeneratedQuestion> = {
     title: "UPSC was established in which year?",
     type: "mcq_single",
     subject: "National Affairs",
     topic: "Indian Institutions",
     options: [
       { id: "opt-1", text: "1926", isCorrect: true, explanation: "Established on Oct 1, 1926." },
-      { id: "opt-2", text: "India's first 3D concrete-printed housing project.", isCorrect: false },
-      { id: "opt-3", text: "Amar Preet Singh", isCorrect: false },
-      { id: "opt-4", text: "Air Chief Marshal Amar Preet Singh", isCorrect: false },
+      { id: "opt-2", text: "India's first 3D concrete-printed housing project.", isCorrect: false, explanation: "Housing project." },
+      { id: "opt-3", text: "Amar Preet Singh", isCorrect: false, explanation: "Air Chief Marshal." },
+      { id: "opt-4", text: "Air Chief Marshal Amar Preet Singh", isCorrect: false, explanation: "Air Chief Marshal." },
     ],
     generalExplanation: "Correct Answer: 1926",
   };
@@ -155,15 +155,15 @@ test("Categorical Gate: Rejects Year Question with Person/Entity Distractors (q-
 
 test("Categorical Gate: Rejects Person Question with Date/Program Distractors (q-bank-0004 failure)", () => {
   // Verified audit failure: "Who is the 29th Chief of the Air Staff?" -> [Ashutosh Dixit, Rural employment, 31 Oct 2026, 128]
-  const defectivePersonQuestion: any = {
+  const defectivePersonQuestion: Partial<GeneratedQuestion> = {
     title: "Who is the 29th Chief of the Air Staff of the Indian Air Force?",
     type: "mcq_single",
     subject: "Defence",
     options: [
       { id: "opt-1", text: "Air Chief Marshal Ashutosh Dixit", isCorrect: true, explanation: "Appointed as 29th CAS." },
-      { id: "opt-2", text: "Rural employment/development", isCorrect: false },
-      { id: "opt-3", text: "31 Oct 2026", isCorrect: false },
-      { id: "opt-4", text: "128", isCorrect: false },
+      { id: "opt-2", text: "Rural employment/development", isCorrect: false, explanation: "Program name." },
+      { id: "opt-3", text: "31 Oct 2026", isCorrect: false, explanation: "Date." },
+      { id: "opt-4", text: "128", isCorrect: false, explanation: "Number." },
     ],
     generalExplanation: "Ashutosh Dixit took charge as CAS.",
   };
@@ -181,15 +181,15 @@ test("Categorical Gate: Rejects Person Question with Date/Program Distractors (q
 });
 
 test("Categorical Gate: Rejects Numerical Question with Descriptive Text Distractors", () => {
-  const defectiveNumericQuestion: any = {
+  const defectiveNumericQuestion: Partial<GeneratedQuestion> = {
     title: "How many permissible public works were notified under the rural infrastructure scheme?",
     type: "mcq_single",
     subject: "Governance",
     options: [
       { id: "opt-1", text: "375", isCorrect: true, explanation: "375 works were notified." },
-      { id: "opt-2", text: "Ashutosh Dixit", isCorrect: false },
-      { id: "opt-3", text: "Water Security", isCorrect: false },
-      { id: "opt-4", text: "HAL", isCorrect: false },
+      { id: "opt-2", text: "Ashutosh Dixit", isCorrect: false, explanation: "Person name." },
+      { id: "opt-3", text: "Water Security", isCorrect: false, explanation: "Program name." },
+      { id: "opt-4", text: "HAL", isCorrect: false, explanation: "Organization." },
     ],
     generalExplanation: "375 works were notified.",
   };
@@ -204,7 +204,7 @@ test("Categorical Gate: Rejects Numerical Question with Descriptive Text Distrac
 });
 
 test("Categorical Gate: Approves Homogeneous and Balanced Options", () => {
-  const wellFormedQuestion: any = {
+  const wellFormedQuestion: Partial<GeneratedQuestion> = {
     title: "In which year was the Union Public Service Commission (UPSC) established in India?",
     type: "mcq_single",
     subject: "Politics & Governance",
@@ -227,7 +227,7 @@ test("Categorical Gate: Approves Homogeneous and Balanced Options", () => {
  * Test Suite 3: Stem Context & Ambiguity Checks
  */
 test("Stem Gate: Flags orphan pronouns lacking context (q-bank-0006 failure)", () => {
-  const orphanQuestion: any = {
+  const orphanQuestion: Partial<GeneratedQuestion> = {
     title: "Who is he succeeding?",
     type: "mcq_single",
     options: [
@@ -247,7 +247,7 @@ test("Stem Gate: Flags orphan pronouns lacking context (q-bank-0006 failure)", (
 });
 
 test("Stem Gate: Flags raw OCR pagination delimiters (<<<PAGE_...>>>)", () => {
-  const ocrLeakedQuestion: any = {
+  const ocrLeakedQuestion: Partial<GeneratedQuestion> = {
     title: "How many permissible works were notified? <<<PAGE_13>>>",
     type: "mcq_single",
     options: [
@@ -270,7 +270,7 @@ test("Stem Gate: Flags raw OCR pagination delimiters (<<<PAGE_...>>>)", () => {
  * Test Suite 4: Duplicate & Overlapping Options
  */
 test("Options Gate: Detects exact and overlapping numerical options ('4' and 'four')", () => {
-  const overlappingQuestion: any = {
+  const overlappingQuestion: Partial<GeneratedQuestion> = {
     title: "How many fundamental pillars organize the development initiative?",
     type: "mcq_single",
     options: [
@@ -477,7 +477,7 @@ test("Security: Server-Side AI Config asserts server context safely", () => {
 });
 
 test("Categorical Gate: Approves calendar date distractors across different months", () => {
-  const dateQuestion: any = {
+  const dateQuestion: Partial<GeneratedQuestion> = {
     title: "On which date did the Constitution of India formally come into effect in 1950?",
     type: "mcq_single",
     options: [
@@ -496,7 +496,7 @@ test("Categorical Gate: Approves calendar date distractors across different mont
 });
 
 test("Categorical Gate: Retains unit inconsistency check when real physical units mismatch ('hours' vs 'days')", () => {
-  const mismatchedUnitQuestion: any = {
+  const mismatchedUnitQuestion: Partial<GeneratedQuestion> = {
     title: "How long does planet Earth take to complete one full rotation on its axis?",
     type: "mcq_single",
     options: [
@@ -514,7 +514,7 @@ test("Categorical Gate: Retains unit inconsistency check when real physical unit
 });
 
 test("Categorical Gate: Approves ordinal ranking suffixes ('1st', '2nd', '3rd', '4th')", () => {
-  const ordinalQuestion: any = {
+  const ordinalQuestion: Partial<GeneratedQuestion> = {
     title: "What was India's final standing on the overall medal tally at the 2026 Asian Games?",
     type: "mcq_single",
     options: [

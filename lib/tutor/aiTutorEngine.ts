@@ -1,4 +1,4 @@
-import { ChatMessage, SubjectTutor, ExplanationLevel } from "@/lib/types/tutor";
+import { ChatMessage,ExplanationLevel,SubjectTutor } from "@/lib/types/tutor";
 
 export const DEFAULT_MESSAGES: ChatMessage[] = [
   {

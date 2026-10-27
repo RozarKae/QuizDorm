@@ -1,4 +1,4 @@
-import { StudentKnowledgeProfile, TopicMastery, MasteryLevel } from "@/lib/types/adaptive";
+import { MasteryLevel,StudentKnowledgeProfile } from "@/lib/types/adaptive";
 
 const STORAGE_KEY_PROFILE = "quizdorm_student_profile";
 

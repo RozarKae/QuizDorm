@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { AlumniProfile } from "@/lib/types/administration";
 import { Button } from "@/components/ui/button";
-import { 
-  GraduationCap, Briefcase, MapPin, Users, Award, 
-  CheckCircle2, Sparkles, Building
+import { AlumniProfile } from "@/lib/types/administration";
+import {
+GraduationCap
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockAlumni: AlumniProfile[] = [
@@ -15,7 +14,7 @@ const mockAlumni: AlumniProfile[] = [
 ];
 
 export function GraduationAlumniManagement() {
-  const [alumni, setAlumni] = useState<AlumniProfile[]>(mockAlumni);
+  const [alumni] = useState<AlumniProfile[]>(mockAlumni);
 
   const handleRequestMentorship = (name: string) => {
     toast.success(`Mentorship connection requested with Alumni ${name}!`);
@@ -49,7 +48,7 @@ export function GraduationAlumniManagement() {
               <div className="flex items-start justify-between">
                 <div>
                   <span className="font-mono text-xs font-bold text-indigo-600 dark:text-indigo-400 px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950">
-                    Class of '{alm.graduationYear}
+                    Class of &apos;{alm.graduationYear}
                   </span>
                   <h3 className="font-bold text-slate-900 dark:text-white text-base mt-1">{alm.fullName}</h3>
                   <p className="text-xs text-slate-500">{alm.degreeEarned}</p>

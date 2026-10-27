@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { CommunicationDraft } from "@/lib/types/ai-assistant";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  MessageSquare, Mail, Send, Copy, Globe, Sparkles, Check
+import { CommunicationDraft } from "@/lib/types/ai-assistant";
+import {
+Copy,
+Mail,
+Sparkles
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockDraft: CommunicationDraft = {
@@ -20,7 +22,7 @@ const mockDraft: CommunicationDraft = {
 };
 
 export function AICommunicationAssistant() {
-  const [draft, setDraft] = useState<CommunicationDraft>(mockDraft);
+  const [draft] = useState<CommunicationDraft>(mockDraft);
   const [studentName, setStudentName] = useState("Alexander Wright");
   const [isGenerating, setIsGenerating] = useState(false);
 

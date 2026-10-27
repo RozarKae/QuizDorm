@@ -1,5 +1,5 @@
-import { OrganizationType } from "@/lib/types/organization";
 import { SubscriptionPlanId } from "@/lib/types/billing";
+import { OrganizationType } from "@/lib/types/organization";
 
 export type TenantApprovalStatus = "approved" | "pending_review" | "suspended";
 export type TenantIsolationTier = "multi_tenant" | "dedicated" | "isolated_vpc";

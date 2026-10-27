@@ -1,5 +1,6 @@
-import { QuestionItem } from "@/lib/types/question";
+import { GeneratedQuestion } from "@/lib/ai/schemas/questionGenerationSchema";
 import { DistractorAnalysis } from "@/lib/types/quality";
+import { QuestionItem } from "@/lib/types/question";
 import { QuestionIntelligenceValidator } from "./questionIntelligenceValidator";
 
 export class DistractorAnalyzer {
@@ -21,7 +22,7 @@ export class DistractorAnalyzer {
     }
 
     // Run the deep QuestionIntelligenceValidator
-    const validation = QuestionIntelligenceValidator.validate(question as any);
+    const validation = QuestionIntelligenceValidator.validate(question as unknown as GeneratedQuestion);
 
     // Extract all distractor and option-related issues
     const distractorIssues = validation.issues.filter(

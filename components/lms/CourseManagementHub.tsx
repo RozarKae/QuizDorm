@@ -1,24 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
-import { LMSCourse, CourseLevel } from "@/lib/types/lms";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { CourseLevel,LMSCourse } from "@/lib/types/lms";
 import {
-  BookOpen,
-  Plus,
-  Search,
-  Filter,
-  Star,
-  Users,
-  Clock,
-  Layers,
-  Copy,
-  Archive,
-  CheckCircle2,
-  Sparkles,
-  Folder,
+BookOpen,
+Copy,
+Plus,
+Search,
+Sparkles,
+Star
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockCourses: LMSCourse[] = [
@@ -84,6 +77,18 @@ const mockCourses: LMSCourse[] = [
   },
 ];
 
+function duplicateLMSCourse(course: LMSCourse): LMSCourse {
+  return {
+    ...course,
+    id: `course-${Date.now()}`,
+    code: `${course.code}-COPY`,
+    title: `${course.title} (Draft Copy)`,
+    status: "Draft",
+    enrolledStudents: 0,
+    createdAt: "Just now",
+  };
+}
+
 export function CourseManagementHub() {
   const [courses, setCourses] = useState<LMSCourse[]>(mockCourses);
   const [searchTerm, setSearchTerm] = useState("");
@@ -96,15 +101,7 @@ export function CourseManagementHub() {
   const [newLevel, setNewLevel] = useState<CourseLevel>("Intermediate");
 
   const handleDuplicateCourse = (course: LMSCourse) => {
-    const dup: LMSCourse = {
-      ...course,
-      id: `course-${Date.now()}`,
-      code: `${course.code}-COPY`,
-      title: `${course.title} (Draft Copy)`,
-      status: "Draft",
-      enrolledStudents: 0,
-      createdAt: "Just now",
-    };
+    const dup = duplicateLMSCourse(course);
     setCourses([dup, ...courses]);
     toast.success(`Duplicated course "${course.title}" as new draft.`);
   };

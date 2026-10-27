@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { LMSDiscussionTopic, StudyGroup } from "@/lib/types/lms";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Users, MessageSquare, Plus, Sparkles, Pin, Search, Heart, UserPlus
+import { LMSDiscussionTopic,StudyGroup } from "@/lib/types/lms";
+import {
+Pin,
+UserPlus,
+Users
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockTopics: LMSDiscussionTopic[] = [
@@ -21,7 +23,7 @@ const mockGroups: StudyGroup[] = [
 
 export function LMSCommunityHub() {
   const [topics, setTopics] = useState<LMSDiscussionTopic[]>(mockTopics);
-  const [groups, setGroups] = useState<StudyGroup[]>(mockGroups);
+  const [groups] = useState<StudyGroup[]>(mockGroups);
   const [newPostTitle, setNewPostTitle] = useState("");
 
   const handleCreatePost = (e: React.FormEvent) => {

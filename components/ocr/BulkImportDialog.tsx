@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { Upload, Layers, CheckCircle2, FileText, X } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle } from "@/components/ui/dialog";
+import { Layers,Upload,X } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
-import { OCRJobSettings } from "@/lib/types/ocr";
 
 interface BulkImportDialogProps {
   open: boolean;

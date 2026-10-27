@@ -1,5 +1,5 @@
-import { IOCREngineProvider, OCRProcessResult } from "../provider";
-import { ExtractedQuestion, OCRJobSettings, ConfidenceScores } from "@/lib/types/ocr";
+import { ConfidenceScores,ExtractedQuestion,OCRJobSettings } from "@/lib/types/ocr";
+import { IOCREngineProvider,OCRProcessResult } from "../provider";
 
 export class MockOCRProvider implements IOCREngineProvider {
   id = "mock";

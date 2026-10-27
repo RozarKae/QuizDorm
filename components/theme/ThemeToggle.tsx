@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
-import { Sun, Moon, Laptop, ChevronDown, Check } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useSound } from "@/components/audio/useSound";
-import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { AnimatePresence,motion } from "framer-motion";
+import { Check,ChevronDown,Laptop,Moon,Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import React,{ useEffect,useState } from "react";
 
 interface ThemeToggleProps {
   className?: string;
@@ -13,20 +13,18 @@ interface ThemeToggleProps {
   showLabel?: boolean;
 }
 
+const emptySubscribe = () => () => {};
+
 export function ThemeToggle({
   className = "",
   variant = "ghost",
   showLabel = false,
 }: ThemeToggleProps) {
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = React.useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { playTap } = useSound();
   const containerRef = React.useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {

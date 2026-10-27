@@ -1,13 +1,16 @@
 "use client";
 
-import React, { useState } from "react";
-import { ExamCandidate, AdmitCard } from "@/lib/types/examination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  UserCheck, QrCode, Download, FileText, Search, Plus, 
-  Building2, MapPin, Calendar, Clock, CheckCircle2, Shield
+import { ExamCandidate } from "@/lib/types/examination";
+import {
+Download,FileText,
+QrCode,
+Search,
+Shield,
+UserCheck
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockCandidates: ExamCandidate[] = [

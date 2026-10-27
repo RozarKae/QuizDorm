@@ -1,18 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  ShieldCheck, Search, QrCode, CheckCircle2, AlertTriangle, 
-  ExternalLink, Sparkles
+import {
+CheckCircle2,
+Search,
+ShieldCheck
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 export function CredentialVerificationPortal() {
   const [queryId, setQueryId] = useState("CERT-2026-9041");
   const [isSearching, setIsSearching] = useState(false);
-  const [verifiedResult, setVerifiedResult] = useState({
+  const [verifiedResult] = useState({
     credentialId: "CERT-2026-9041",
     recipient: "Alexander Wright",
     program: "Certified Full-Stack Quantum Systems Engineer (CFSQE)",

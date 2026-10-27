@@ -1,32 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import {
-  Users,
-  BookOpen,
-  Clock,
-  Award,
-  Plus,
-  Swords,
-  Sparkles,
-  ArrowUpRight,
-  TrendingUp,
-  CheckCircle2,
-  AlertCircle,
-  BarChart3,
-  Calendar,
-  Megaphone,
-  School,
-  Check,
-  ChevronRight,
-  Filter,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+ArrowUpRight,
+Award,
+BarChart3,
+BookOpen,
+Clock,
+Plus,
+School,
+Swords,
+Users
+} from "lucide-react";
+import Link from "next/link";
 
 export default function TeacherPage() {
-  const [activeTab, setActiveTab] = useState<"cohorts" | "queue" | "feed">("cohorts");
-
   const stats = [
     {
       title: "Active Students",

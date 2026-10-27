@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
 import { useAuth } from "@/components/auth/AuthProvider";
-import SubscriberDashboardView from "@/components/dashboard/subscriber/SubscriberDashboardView";
 import StudentGenZDashboardView from "@/components/dashboard/student/StudentGenZDashboardView";
+import SubscriberDashboardView from "@/components/dashboard/subscriber/SubscriberDashboardView";
 
 export default function StudentPage() {
   const { role } = useAuth();

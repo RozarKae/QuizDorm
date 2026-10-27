@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
 import { InteractiveMapRegion } from "@/lib/types/media";
-import { MapPin, Globe } from "lucide-react";
+import { Globe,MapPin } from "lucide-react";
+import { useState } from "react";
 
 interface InteractiveMapViewProps {
   regions: InteractiveMapRegion[];

@@ -1,13 +1,23 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { WhiteboardTool, WhiteboardElement } from "@/lib/types/classroom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Pencil, Eraser, Square, Circle, ArrowRight, Type, StickyNote, 
-  Sparkles, Download, Trash2, Undo, Grid, Pointer, Sigma, Eye, Save
+import { WhiteboardElement,WhiteboardTool } from "@/lib/types/classroom";
+import {
+Circle,
+Download,
+Eraser,
+Eye,
+Grid,
+Pencil,
+Pointer,
+Save,
+Sigma,
+Square,
+StickyNote,
+Trash2
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockInitialElements: WhiteboardElement[] = [
@@ -16,6 +26,18 @@ const mockInitialElements: WhiteboardElement[] = [
   { id: "el-3", type: "rectangle", x: 320, y: 60, width: 440, height: 110, color: "#6366f1", size: 2 },
   { id: "el-4", type: "sticky", x: 60, y: 260, width: 220, height: 160, color: "#bbf7d0", size: 2, text: "💡 Class Task:\nDerive the expectation value of Hamiltonian H." },
 ];
+
+function createFormulaElement(latexExpr: string, color: string, size: number): WhiteboardElement {
+  return {
+    id: `el-${Date.now()}`,
+    type: "formula",
+    x: 200,
+    y: 200,
+    color,
+    size,
+    latex: latexExpr,
+  };
+}
 
 export function SmartWhiteboardStudio() {
   const [elements, setElements] = useState<WhiteboardElement[]>(mockInitialElements);
@@ -26,22 +48,13 @@ export function SmartWhiteboardStudio() {
   const [savedBoardSnapshots, setSavedBoardSnapshots] = useState<string[]>(["Board 1 - Quantum Basics"]);
 
   // Modal / Inputs for text & LaTeX insertion
-  const [customText, setCustomText] = useState("");
   const [customLatex, setCustomLatex] = useState("");
   const [isInsertingFormula, setIsInsertingFormula] = useState(false);
 
   const colors = ["#6366f1", "#ef4444", "#10b981", "#f59e0b", "#ec4899", "#000000", "#ffffff"];
 
   const handleInsertFormula = (latexExpr: string) => {
-    const newEl: WhiteboardElement = {
-      id: `el-${Date.now()}`,
-      type: "formula",
-      x: 180 + Math.random() * 200,
-      y: 180 + Math.random() * 150,
-      color: selectedColor,
-      size: strokeSize,
-      latex: latexExpr,
-    };
+    const newEl = createFormulaElement(latexExpr, selectedColor, strokeSize);
     setElements([...elements, newEl]);
     setIsInsertingFormula(false);
     toast.success("Mathematical equation added to whiteboard canvas!");

@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { MarketplaceProductManager } from "@/lib/marketplace/productManager";
-import { ProductCategory, LicenseType } from "@/lib/types/marketplace";
-import { Plus, Store, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { MarketplaceProductManager } from "@/lib/marketplace/productManager";
+import { ProductCategory } from "@/lib/types/marketplace";
+import { Store } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface ProductPublishWizardModalProps {
@@ -64,7 +64,7 @@ export function ProductPublishWizardModal({ open, onOpenChange }: ProductPublish
             <label className="font-bold text-gray-700 dark:text-gray-300 block mb-1">Resource Category</label>
             <select
               value={category}
-              onChange={(e) => setCategory(e.target.value as any)}
+              onChange={(e) => setCategory(e.target.value as ProductCategory)}
               className="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 font-bold"
             >
               <option value="question_bank">Question Bank (400+ Qs)</option>

@@ -1,4 +1,4 @@
-import { LeaderboardEntry, RankingScope } from "@/lib/types/competition";
+import { LeaderboardEntry,RankingScope } from "@/lib/types/competition";
 
 export const DEFAULT_LEADERBOARD: LeaderboardEntry[] = [
   { rank: 1, participantId: "p-1", participantName: "Karthik Rajendran", schoolName: "Govt Model HSS Saidapet, Chennai", region: "Tamil Nadu (Chennai)", eloRating: 2450, totalPoints: 18450, winCount: 42, medal: "diamond" },
@@ -10,6 +10,7 @@ export const DEFAULT_LEADERBOARD: LeaderboardEntry[] = [
 
 export class RankingEngine {
   public static getLeaderboard(scope: RankingScope = "international"): LeaderboardEntry[] {
+    void scope;
     return DEFAULT_LEADERBOARD;
   }
 }

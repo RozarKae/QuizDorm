@@ -1,4 +1,3 @@
-import { QuestionItem } from "./question";
 
 export type BloomsTaxonomyLevel =
   | "Remember"

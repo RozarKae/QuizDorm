@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
 import { EnterpriseAuditLogger } from "@/lib/enterprise/auditLogger";
-import { ShieldAlert, AlertTriangle, CheckCircle2, Lock } from "lucide-react";
+import { AlertTriangle,ShieldAlert } from "lucide-react";
 
 export function SecurityOperationsCenterCard() {
   const alerts = EnterpriseAuditLogger.getSecurityAlerts();

@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { Trophy, Key, User, QrCode, ArrowRight, ShieldCheck, AlertCircle, CheckCircle2, Sparkles, RefreshCw } from "lucide-react";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { useAuth } from "@/components/auth/AuthProvider";
 import { normalizeRoomCode } from "@/lib/live/liveSessionManager";
+import { PublicSessionState } from "@/lib/live/types";
+import { AlertCircle,ArrowRight,Key,QrCode,RefreshCw,ShieldCheck,Trophy,User } from "lucide-react";
+import { useRouter,useSearchParams } from "next/navigation";
+import React,{ useEffect,useState } from "react";
 import { toast } from "sonner";
 
 interface JoinArenaFormProps {
@@ -23,7 +24,7 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
 
   const [code, setCode] = useState<string>(codeFromUrl ? normalizeRoomCode(codeFromUrl) : "");
   const [name, setName] = useState<string>("");
-  const [sessionMeta, setSessionMeta] = useState<any>(null);
+  const [sessionMeta, setSessionMeta] = useState<PublicSessionState | null>(null);
   const [validating, setValidating] = useState<boolean>(false);
   const [joining, setJoining] = useState<boolean>(false);
   const [errorStatus, setErrorStatus] = useState<string | null>(null);
@@ -32,7 +33,7 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
   // If code in URL changes, normalize and set
   useEffect(() => {
     if (codeFromUrl) {
-      setCode(normalizeRoomCode(codeFromUrl));
+      queueMicrotask(() => setCode(normalizeRoomCode(codeFromUrl)));
     }
   }, [codeFromUrl]);
 
@@ -40,8 +41,10 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
   useEffect(() => {
     const cleanCode = code.trim().toUpperCase();
     if (cleanCode.length < 4) {
-      setSessionMeta(null);
-      setErrorStatus(null);
+      queueMicrotask(() => {
+        setSessionMeta(null);
+        setErrorStatus(null);
+      });
       return;
     }
 
@@ -63,7 +66,7 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
           setSessionMeta(null);
           setErrorStatus(data.error || "Room PIN not found. Please check with your event host.");
         }
-      } catch (err) {
+      } catch {
         setErrorStatus("Network error validating room code.");
       } finally {
         setValidating(false);
@@ -113,7 +116,7 @@ export function JoinArenaForm({ initialCode = "" }: JoinArenaFormProps) {
         toast.error(data.error || "Failed to join session");
         setErrorStatus(data.error);
       }
-    } catch (err: any) {
+    } catch {
       toast.error("Failed to connect to arena session");
     } finally {
       setJoining(false);

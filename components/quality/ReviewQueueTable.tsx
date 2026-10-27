@@ -1,13 +1,13 @@
 "use client";
 
-import React from "react";
-import { QualityAnalysisReport } from "@/lib/types/quality";
-import { QualityScoreBadge } from "./QualityScoreBadge";
-import { BloomsIndicator } from "./BloomsIndicator";
 import { QualityReviewManager } from "@/lib/quality/qualityManager";
+import { QualityAnalysisReport } from "@/lib/types/quality";
+import React from "react";
+import { BloomsIndicator } from "./BloomsIndicator";
+import { QualityScoreBadge } from "./QualityScoreBadge";
 
-import { Check, X, ShieldCheck, AlertTriangle, Eye, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Check,ShieldCheck,X } from "lucide-react";
 import { toast } from "sonner";
 
 interface ReviewQueueTableProps {
@@ -51,7 +51,7 @@ export function ReviewQueueTable({ reports, onSelectReport, onRefresh }: ReviewQ
             <tr className="border-b border-gray-200 dark:border-gray-800 text-gray-500 font-semibold bg-gray-50/50 dark:bg-gray-900/50">
               <th className="p-4">Question Title</th>
               <th className="p-4">Quality Score</th>
-              <th className="p-4">Bloom's Level</th>
+              <th className="p-4">Bloom&apos;s Level</th>
               <th className="p-4">Difficulty</th>
               <th className="p-4">Status</th>
               <th className="p-4 text-right">Educator Actions</th>

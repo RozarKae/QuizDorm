@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { MentorProfile } from "@/lib/types/community";
-import { Star, Calendar, Users, CheckCircle2 } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { MentorProfile } from "@/lib/types/community";
+import { Calendar,CheckCircle2,Star } from "lucide-react";
 import { toast } from "sonner";
 
 interface MentorBookingCardProps {

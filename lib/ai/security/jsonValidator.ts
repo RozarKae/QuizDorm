@@ -45,10 +45,11 @@ export class AIJsonValidator {
         data: parsed,
         rawString: jsonString,
       };
-    } catch (err: any) {
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
       return {
         valid: false,
-        error: `JSON Syntax Error: ${err.message}`,
+        error: `JSON Syntax Error: ${msg}`,
         rawString: jsonString,
       };
     }

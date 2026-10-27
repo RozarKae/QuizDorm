@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
 import { ProviderHealthMonitor } from "@/lib/enterprise/healthMonitor";
-import { Activity, CheckCircle2, Zap } from "lucide-react";
+import { Activity } from "lucide-react";
 
 export function ProviderHealthMonitorCard() {
   const healthList = ProviderHealthMonitor.getHealth();

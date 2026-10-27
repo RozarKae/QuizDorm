@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { UniversalOfflineEngine } from "@/lib/offline/edgeEngine";
-import { HardDrive, PieChart, Trash2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { UniversalOfflineEngine } from "@/lib/offline/edgeEngine";
+import { HardDrive } from "lucide-react";
 
 export function OfflineStorageAnalyzerCard() {
   const stats = UniversalOfflineEngine.getStorageStats();

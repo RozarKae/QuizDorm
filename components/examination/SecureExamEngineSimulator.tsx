@@ -1,12 +1,19 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { SecureExamSession, CandidateAnswer } from "@/lib/types/examination";
 import { Button } from "@/components/ui/button";
-import { 
-  Lock, Shield, Clock, CheckCircle2, Bookmark, ArrowRight, 
-  ArrowLeft, RefreshCw, AlertTriangle, Maximize2, FileCheck, Check, Sparkles
+import { CandidateAnswer } from "@/lib/types/examination";
+import {
+AlertTriangle,
+ArrowLeft,
+ArrowRight,
+Bookmark,
+Check,
+CheckCircle2,
+Clock,
+FileCheck,
+Lock,Shield
 } from "lucide-react";
+import { useEffect,useState } from "react";
 import { toast } from "sonner";
 
 const mockQuestions = [
@@ -54,8 +61,6 @@ export function SecureExamEngineSimulator() {
     "q-1": { questionId: "q-1", selectedOptionId: "opt-b", status: "answered", savedAt: "10:14:02 AM" },
   });
   const [remainingSeconds, setRemainingSeconds] = useState(5400); // 90 mins
-  const [isFullscreen, setIsFullscreen] = useState(true);
-  const [isLockdownActive, setIsLockdownActive] = useState(true);
   const [proctorWarningCount, setProctorWarningCount] = useState(0);
   const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
 

@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { Volume2, VolumeX } from "lucide-react";
-import { useSound } from "./useSound";
 import { Button } from "@/components/ui/button";
+import { Volume2,VolumeX } from "lucide-react";
+import { useSound } from "./useSound";
 
 interface AudioToggleProps {
   className?: string;

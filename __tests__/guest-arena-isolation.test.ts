@@ -1,5 +1,5 @@
-import test from "node:test";
 import assert from "node:assert/strict";
+import test from "node:test";
 import { getCanonicalJoinUrl } from "../components/competitions/SessionQrCard";
 import { LiveSessionManager } from "../lib/live/liveSessionManager";
 
@@ -11,7 +11,7 @@ test("Guest Arena Security & Candidate Isolation Suite", async (t) => {
   });
 
   await t.test("Guest joining with PIN receives ephemeral contestant token with no persistent userId", () => {
-    const sessionRes = LiveSessionManager.createSession({
+    LiveSessionManager.createSession({
       title: "Security Isolation Arena 2026",
       code: "QD-SEC1",
       settings: {

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { AutonomousAIAgent } from "@/lib/types/ai-assistant";
 import { Button } from "@/components/ui/button";
-import { 
-  Bot, Play, RefreshCw, CheckCircle2, Terminal, Sparkles, Cpu, Layers
+import { AutonomousAIAgent } from "@/lib/types/ai-assistant";
+import {
+Bot,Play,
+Terminal
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockAgents: AutonomousAIAgent[] = [

@@ -1,50 +1,40 @@
 "use client";
 
-import React, { useState, useEffect, useMemo, useRef } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import {
-  ArrowLeft,
-  Trophy,
-  Calendar,
-  Clock,
-  Users,
-  Shield,
-  Save,
-  RefreshCw,
-  Sparkles,
-  Upload,
-  BookOpen,
-  Layers,
-  Search,
-  CheckCircle2,
-  Trash2,
-  ArrowUp,
-  ArrowDown,
-  HelpCircle,
-  FileText,
-  Image as ImageIcon,
-  Plus,
-  Zap,
-  Filter,
-  Check,
-  ShieldAlert,
-} from "lucide-react";
-import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
+import { useAuth } from "@/components/auth/AuthProvider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
+import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
 import {
-  generateCollisionResistantCode,
-  normalizeRoomCode,
-} from "@/lib/live/liveSessionManager";
-import {
-  ALL_DEFAULT_QUESTIONS,
-  getAllSubjects,
-  getAllTopics,
+ALL_DEFAULT_QUESTIONS,
+getAllSubjects
 } from "@/lib/data/question-bank";
-import { QuestionItem, DifficultyLevel } from "@/lib/types/question";
-import { useAuth } from "@/components/auth/AuthProvider";
+import {
+generateCollisionResistantCode,
+normalizeRoomCode,
+} from "@/lib/live/liveSessionManager";
+import { DifficultyLevel,QuestionItem } from "@/lib/types/question";
+import {
+ArrowDown,
+ArrowLeft,
+ArrowUp,
+BookOpen,
+Check,
+CheckCircle2,
+FileText,
+Layers,
+Plus,
+RefreshCw,
+Search,
+ShieldAlert,
+Sparkles,
+Trash2,
+Trophy,
+Upload,
+Zap
+} from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React,{ useEffect,useMemo,useRef,useState } from "react";
 import { toast } from "sonner";
 
 export default function CreateCompetitionPage() {
@@ -59,7 +49,7 @@ export default function CreateCompetitionPage() {
   const [description, setDescription] = useState(
     "Synchronized real-time multiplayer decathlon with microsecond telemetry and live podium shift."
   );
-  const [code, setCode] = useState("QD-8492");
+  const [code, setCode] = useState(() => generateCollisionResistantCode());
   const [durationMinutes, setDurationMinutes] = useState(45);
   const [timePerQuestion, setTimePerQuestion] = useState(30);
   const [maxParticipants, setMaxParticipants] = useState(500);
@@ -125,13 +115,12 @@ export default function CreateCompetitionPage() {
   const [isExtractingFile, setIsExtractingFile] = useState(false);
   const [extractedSummary, setExtractedSummary] = useState<string | null>(null);
 
-  // Initialize fresh code on mount
+  // Sync host name if profile loads
   useEffect(() => {
-    setCode(generateCollisionResistantCode());
     if (profile?.name) {
-      setHostName(profile.name);
+      queueMicrotask(() => setHostName(profile.name));
     }
-  }, [profile]);
+  }, [profile?.name]);
 
   const handleRegeneratePin = () => {
     const newPin = generateCollisionResistantCode();
@@ -256,7 +245,7 @@ export default function CreateCompetitionPage() {
         setAiGeneratedList(fallbackPicked);
         toast.info(`Generated ${fallbackPicked.length} questions for "${aiTopic}".`);
       }
-    } catch (err: any) {
+    } catch {
       toast.error("Failed to generate AI questions. Check network connection.");
     } finally {
       setIsGeneratingAi(false);
@@ -300,7 +289,7 @@ export default function CreateCompetitionPage() {
 
       const data = await res.json();
       if (data.success && data.questions && data.questions.length > 0) {
-        const formatted: QuestionItem[] = data.questions.map((q: any, idx: number) => ({
+        const formatted: QuestionItem[] = data.questions.map((q: Partial<QuestionItem>, idx: number) => ({
           id: `file-q-${Date.now()}-${idx + 1}`,
           title: q.title || `Question ${idx + 1}`,
           type: q.type || "mcq_single",
@@ -329,7 +318,7 @@ export default function CreateCompetitionPage() {
       } else {
         toast.error(data.error || "Could not extract questions from file");
       }
-    } catch (err: any) {
+    } catch {
       toast.error("Network error while extracting file. Try another document.");
     } finally {
       setIsExtractingFile(false);
@@ -406,7 +395,7 @@ export default function CreateCompetitionPage() {
             };
             localStorage.setItem(
               "quizdorm_hosted_competitions_v1",
-              JSON.stringify([newComp, ...existing.filter((c: any) => c.code !== cleanCode)])
+              JSON.stringify([newComp, ...existing.filter((c: { code?: string }) => c.code !== cleanCode)])
             );
           } catch {
             // Ignore
@@ -422,7 +411,7 @@ export default function CreateCompetitionPage() {
         toast.error(data.error || "Failed to create live session");
         setIsSubmitting(false);
       }
-    } catch (err: any) {
+    } catch {
       toast.error("Network error creating live tournament");
       setIsSubmitting(false);
     }

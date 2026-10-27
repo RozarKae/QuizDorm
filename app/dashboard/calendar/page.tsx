@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { AcademicCalendarWidget } from "@/components/academic/AcademicCalendarWidget";
 import { CalendarEvent } from "@/lib/types/academic";
 

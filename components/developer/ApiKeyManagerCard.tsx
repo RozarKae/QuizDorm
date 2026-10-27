@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { ApiKey, ApiPermissionScope } from "@/lib/types/developer";
-import { ApiKeyManager } from "@/lib/developer/apiKeyManager";
-import { Key, Plus, ShieldCheck, Copy, Eye, Lock, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ApiKeyManager } from "@/lib/developer/apiKeyManager";
+import { ApiKey } from "@/lib/types/developer";
+import { Copy,Key,Plus } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function ApiKeyManagerCard() {
@@ -108,7 +108,7 @@ export function ApiKeyManagerCard() {
                   <label className="font-bold text-gray-700 dark:text-gray-300 block mb-1">Environment</label>
                   <select
                     value={environment}
-                    onChange={(e) => setEnvironment(e.target.value as any)}
+                    onChange={(e) => setEnvironment(e.target.value as "production" | "sandbox")}
                     className="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 font-bold"
                   >
                     <option value="production">Production (`qd_live_`)</option>

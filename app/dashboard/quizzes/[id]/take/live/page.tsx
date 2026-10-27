@@ -1,19 +1,18 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
-import { useRouter } from "next/navigation";
-import { QuizItem } from "@/lib/types/quiz";
-import { useQuizAttempt } from "@/lib/hooks/useQuizAttempt";
-import { getQuizById, ALL_DEFAULT_QUIZZES } from "@/lib/data/quizzes";
-import { QuizTimer } from "@/components/quiz-engine/QuizTimer";
+import { AudioToggle } from "@/components/audio/AudioToggle";
+import { useSound } from "@/components/audio/useSound";
 import { QuestionPalette } from "@/components/quiz-engine/QuestionPalette";
 import { QuestionRenderer } from "@/components/quiz-engine/QuestionRenderer";
+import { QuizTimer } from "@/components/quiz-engine/QuizTimer";
 import { SubmissionModal } from "@/components/quiz-engine/SubmissionModal";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Bookmark, RotateCcw, Send } from "lucide-react";
+import { ALL_DEFAULT_QUIZZES,getQuizById } from "@/lib/data/quizzes";
+import { useQuizAttempt } from "@/lib/hooks/useQuizAttempt";
+import { Bookmark,ChevronLeft,ChevronRight,RotateCcw,Send } from "lucide-react";
+import { useRouter } from "next/navigation";
+import React,{ useMemo,useState } from "react";
 import { toast } from "sonner";
-import { useSound } from "@/components/audio/useSound";
-import { AudioToggle } from "@/components/audio/AudioToggle";
 
 export default function DistractionFreeQuizEnginePage({
   params,
@@ -24,7 +23,7 @@ export default function DistractionFreeQuizEnginePage({
   const [submitModalOpen, setSubmitModalOpen] = useState(false);
 
   const unwrappedParams =
-    typeof (params as any)?.then === "function"
+    typeof (params as PromiseLike<unknown>)?.then === "function"
       ? React.use(params as Promise<{ id: string }>)
       : (params as { id: string });
   const quizId = unwrappedParams.id;
@@ -46,7 +45,6 @@ export default function DistractionFreeQuizEnginePage({
     markedForReview,
     toggleMarkForReview,
     timeRemainingSeconds,
-    status,
     submitQuiz,
     questions,
     currentQuestion,
@@ -64,11 +62,15 @@ export default function DistractionFreeQuizEnginePage({
   const answeredCount = Object.keys(answers).length;
   const unansweredCount = questions.length - answeredCount;
 
-  const handleConfirmSubmit = () => {
+  const handleConfirmSubmit = async () => {
     playCorrect();
-    const attempt = submitQuiz("manual");
-    toast.success("Quiz submitted successfully!");
-    router.push(`/dashboard/quizzes/${quizId}/result/${attempt.id}`);
+    try {
+      const attempt = await submitQuiz("manual");
+      toast.success("Quiz submitted and graded successfully!");
+      router.push(`/dashboard/quizzes/${quizId}/result/${attempt.id}`);
+    } catch {
+      toast.error("Failed to submit assessment.");
+    }
   };
 
   const formatTime = (totalSec: number) => {

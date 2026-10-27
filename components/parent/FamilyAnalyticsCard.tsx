@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { TrendingUp, Clock, Award, Target, Sparkles } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { TrendingUp } from "lucide-react";
 
 interface FamilyAnalyticsCardProps {
   studentName: string;
@@ -13,7 +12,7 @@ export function FamilyAnalyticsCard({ studentName }: FamilyAnalyticsCardProps) {
     <Card className="p-6 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-3xl shadow-sm space-y-4">
       <div className="flex items-center justify-between border-b border-gray-100 dark:border-gray-800 pb-3">
         <h3 className="text-base font-bold text-gray-900 dark:text-white flex items-center">
-          <TrendingUp className="w-5 h-5 text-indigo-600 mr-2" /> Academic Growth & Family Analytics
+          <TrendingUp className="w-5 h-5 text-indigo-600 mr-2" /> {studentName}&apos;s Academic Growth & Family Analytics
         </h3>
         <span className="text-xs font-mono font-bold text-indigo-600 font-bold">
           Predicted Exam Score: 94.2%

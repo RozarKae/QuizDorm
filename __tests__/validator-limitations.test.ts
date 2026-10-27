@@ -1,7 +1,7 @@
-import test from "node:test";
 import assert from "node:assert/strict";
-import { QuestionIntelligenceValidator } from "../lib/quality/questionIntelligenceValidator";
+import test from "node:test";
 import { GeneratedQuestion } from "../lib/ai/schemas/questionGenerationSchema";
+import { QuestionIntelligenceValidator } from "../lib/quality/questionIntelligenceValidator";
 
 test("Validator Limitation 1: Passes semantically incorrect but plausible factual answer", () => {
   // Factually WRONG: Insulin is produced by beta cells of the pancreas, NOT the spleen.

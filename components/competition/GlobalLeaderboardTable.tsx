@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
 import { RankingEngine } from "@/lib/competition/rankingEngine";
-import { RankingScope, LeaderboardEntry } from "@/lib/types/competition";
-import { Trophy, Medal, Award, Globe, ShieldCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { RankingScope } from "@/lib/types/competition";
+import { Trophy } from "lucide-react";
+import { useState } from "react";
 
 export function GlobalLeaderboardTable() {
   const [scope, setScope] = useState<RankingScope>("international");

@@ -32,6 +32,8 @@ export interface LiveParticipant {
   correctCount?: number;
   isHost?: boolean;
   isOnline?: boolean;
+  lastSeen?: number;
+  totalResponseTimeMs?: number;
 }
 
 export interface CompetitionItem {

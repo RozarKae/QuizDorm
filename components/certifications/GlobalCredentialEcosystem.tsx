@@ -1,10 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { 
-  Globe, ShieldCheck, CheckCircle2, ExternalLink, Sparkles, Cpu
+import {
+CheckCircle2,
+Cpu,
+ShieldCheck,
+Sparkles
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface LedgerBlock {

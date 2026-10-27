@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { CreatorProfile } from "@/lib/types/marketplace";
 import { Button } from "@/components/ui/button";
-import { 
-  Store, DollarSign, Package, TrendingUp, Plus, ShieldCheck, Sparkles
+import { CreatorProfile } from "@/lib/types/marketplace";
+import {
+Plus,ShieldCheck,
+TrendingUp
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockCreator: CreatorProfile = {
@@ -23,7 +24,7 @@ const mockCreator: CreatorProfile = {
 };
 
 export function CreatorPortalStorefront() {
-  const [creator, setCreator] = useState<CreatorProfile>(mockCreator);
+  const [creator] = useState<CreatorProfile>(mockCreator);
 
   return (
     <div className="space-y-6">

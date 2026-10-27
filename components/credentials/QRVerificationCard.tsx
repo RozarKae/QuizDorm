@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { QrCode, Search, ShieldCheck, AlertTriangle, ExternalLink } from "lucide-react";
-import { VerificationService } from "@/lib/credentials/verificationService";
-import { VerificationResult } from "@/lib/types/credentials";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { VerificationService } from "@/lib/credentials/verificationService";
+import { VerificationResult } from "@/lib/types/credentials";
+import { AlertTriangle,ExternalLink,QrCode,Search,ShieldCheck } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export function QRVerificationCard() {
   const [verificationInput, setVerificationInput] = useState("VER-2026-8A4F29");

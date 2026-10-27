@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { QuizItem } from "@/lib/types/quiz";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Clock, ChevronLeft, ChevronRight, CheckCircle2, Monitor, Smartphone } from "lucide-react";
+import { Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle } from "@/components/ui/dialog";
+import { QuizItem } from "@/lib/types/quiz";
+import { CheckCircle2,ChevronLeft,ChevronRight,Clock,Monitor,Smartphone } from "lucide-react";
+import { useState } from "react";
 
 interface QuizPreviewModalProps {
   open: boolean;

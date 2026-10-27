@@ -1,4 +1,4 @@
-import { PerformancePrediction, StudentKnowledgeProfile } from "@/lib/types/adaptive";
+import { PerformancePrediction,StudentKnowledgeProfile } from "@/lib/types/adaptive";
 import { KnowledgeProfileManager } from "./profileManager";
 
 export class PerformancePredictor {

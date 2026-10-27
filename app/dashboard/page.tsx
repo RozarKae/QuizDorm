@@ -1,33 +1,34 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { FadeIn } from "@/components/ui/motion";
+import {
+Activity,
+ArrowUpRight,
+BarChart3,
+BookOpen,
+FileQuestion,
+Layers,
+Play,
+Plus,
+ShieldCheck,
+Trophy
+} from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/components/auth/AuthProvider";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import {
-  FileQuestion,
-  Plus,
-  Play,
-  Trophy,
-  BarChart3,
-  BookOpen,
-  Layers,
-  ArrowUpRight,
-  ShieldCheck,
-  Activity,
-  Cpu,
-  GraduationCap,
-  Sparkles,
-  Zap,
-} from "lucide-react";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion";
+import { useEffect,useState } from "react";
 
 export default function DashboardHomePage() {
   const router = useRouter();
   const { role, isLoading } = useAuth();
-  const [greeting, setGreeting] = useState("Welcome Back. Let's Make Progress.");
+  const [greeting] = useState(() => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Good Morning. Let's Make Progress.";
+    if (hour < 18) return "Good Afternoon. Focus on What Matters.";
+    return "Good Evening. Ready for the Next Challenge?";
+  });
 
   useEffect(() => {
     if (!isLoading && role) {
@@ -44,13 +45,6 @@ export default function DashboardHomePage() {
       }
     }
   }, [role, isLoading, router]);
-
-  useEffect(() => {
-    const hour = new Date().getHours();
-    if (hour < 12) setGreeting("Good Morning. Let's Make Progress.");
-    else if (hour < 18) setGreeting("Good Afternoon. Focus on What Matters.");
-    else setGreeting("Good Evening. Ready for the Next Challenge?");
-  }, []);
 
   const suites = [
     {
@@ -234,7 +228,7 @@ export default function DashboardHomePage() {
           {suites.map((suite, sIdx) => (
             <div key={sIdx} className="space-y-3">
               <div className="flex items-center space-x-2">
-                <span className="text-[10px] font-mono text-[#FF4D6D] font-bold">0{sIdx + 1} //</span>
+                <span className="text-[10px] font-mono text-[#FF4D6D] font-bold">0{sIdx + 1} {"//"}</span>
                 <span className="text-xs font-mono uppercase tracking-wider text-[#A0AEA5] font-semibold">
                   {suite.category}
                 </span>

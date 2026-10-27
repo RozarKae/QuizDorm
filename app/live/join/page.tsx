@@ -1,7 +1,7 @@
 "use client";
 
-import React, { Suspense } from "react";
 import { JoinArenaForm } from "@/components/competitions/JoinArenaForm";
+import { Suspense } from "react";
 
 export default function LiveJoinAliasPage() {
   return (

@@ -1,9 +1,7 @@
 "use client";
 
-import React from "react";
 import { AtRiskStudentTable } from "@/components/performance/AtRiskStudentTable";
-import { LearningSuccessIndexCard } from "@/components/performance/LearningSuccessIndexCard";
-import { ShieldAlert, TrendingUp } from "lucide-react";
+import { ShieldAlert } from "lucide-react";
 
 export default function RiskInterventionsPage() {
   return (

@@ -1,9 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import { ClassItem } from "@/lib/types/academic";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Users, GraduationCap, BookOpen, Key, ArrowRight } from "lucide-react";
+import { ClassItem } from "@/lib/types/academic";
+import { ArrowRight,BookOpen,GraduationCap } from "lucide-react";
 
 interface TeacherClassCardProps {
   classItem: ClassItem;

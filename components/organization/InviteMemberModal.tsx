@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { UserPlus, Mail, Link as LinkIcon, Copy, Check } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
+import { Button } from "@/components/ui/button";
+import { Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
+import { Check,Copy,Mail,UserPlus } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 interface InviteMemberModalProps {
@@ -79,7 +79,7 @@ export function InviteMemberModal({ open, onOpenChange, orgName }: InviteMemberM
               </label>
               <Select
                 value={role}
-                onChange={(e) => setRole(e.target.value as any)}
+                onChange={(e) => setRole(e.target.value as "Administrator" | "Teacher" | "Student")}
                 options={[
                   { value: "Administrator", label: "Administrator" },
                   { value: "Teacher", label: "Teacher" },

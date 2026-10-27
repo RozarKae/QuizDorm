@@ -1,24 +1,20 @@
 "use client";
 
-import Link from "next/link";
-import {
-  Users,
-  Shield,
-  BookOpen,
-  Settings,
-  Cpu,
-  Zap,
-  Activity,
-  Layers,
-  Sparkles,
-  ArrowUpRight,
-  TrendingUp,
-  Server,
-  Database,
-  BarChart3,
-  CreditCard,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+Activity,
+ArrowUpRight,
+BarChart3,
+BookOpen,
+Cpu,
+CreditCard,
+Layers,
+Server,
+Shield,
+Sparkles,
+Users
+} from "lucide-react";
+import Link from "next/link";
 
 export default function AdminPage() {
   const stats = [

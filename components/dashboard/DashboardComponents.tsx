@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowUpRight, Sparkles, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Activity,ArrowUpRight,Sparkles } from "lucide-react";
+import Link from "next/link";
 
 // 1. PageHeader — Semantic Style
 interface PageHeaderProps {

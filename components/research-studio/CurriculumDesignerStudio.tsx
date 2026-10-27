@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { CurriculumDesign } from "@/lib/types/research-studio";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { 
-  Layers, Target, CheckCircle2, Sparkles, Plus, BookOpen, ShieldCheck
+import { CurriculumDesign } from "@/lib/types/research-studio";
+import {
+CheckCircle2,
+Layers,
+ShieldCheck,
+Sparkles,
+Target
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockCurriculum: CurriculumDesign = {
@@ -25,7 +28,7 @@ const mockCurriculum: CurriculumDesign = {
 };
 
 export function CurriculumDesignerStudio() {
-  const [curriculum, setCurriculum] = useState<CurriculumDesign>(mockCurriculum);
+  const [curriculum] = useState<CurriculumDesign>(mockCurriculum);
 
   const handlePublishCurriculum = () => {
     toast.success("Curriculum Published & Mapped to ABET Academic Accreditation Standards!");
@@ -43,7 +46,7 @@ export function CurriculumDesignerStudio() {
             <Layers className="w-6 h-6 text-purple-600" /> Academic Curriculum & Outcome Architect
           </h2>
           <p className="text-xs text-slate-500 mt-1">
-            Design structured academic curricula, Bloom's Taxonomy learning outcome statements, competency frameworks, and accreditation mappings.
+            Design structured academic curricula, Bloom&apos;s Taxonomy learning outcome statements, competency frameworks, and accreditation mappings.
           </p>
         </div>
 
@@ -72,7 +75,7 @@ export function CurriculumDesignerStudio() {
         {/* Learning Outcome Statement Mapping */}
         <div className="space-y-3">
           <h4 className="font-bold text-xs text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-            <Target className="w-4 h-4 text-purple-600" /> Bloom's Taxonomy Learning Outcomes
+            <Target className="w-4 h-4 text-purple-600" /> Bloom&apos;s Taxonomy Learning Outcomes
           </h4>
 
           <div className="space-y-2">

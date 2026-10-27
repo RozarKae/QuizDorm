@@ -1,51 +1,34 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import {
-  Users,
-  Shield,
-  Search,
-  Filter,
-  UserCheck,
-  UserX,
-  Key,
-  Copy,
-  Plus,
-  RefreshCw,
-  MoreVertical,
-  Building,
-  GraduationCap,
-  School,
-  CheckCircle2,
-  AlertTriangle,
-  Clock,
-  Sparkles,
-  ExternalLink,
-  Laptop,
-  Globe,
-  Trash2,
-  Lock,
-  ChevronRight,
-  UserPlus,
-  Database,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
-import { Badge } from "@/components/ui/badge";
-import { toast } from "sonner";
-import {
-  AdminUser,
-  AdminUserManager,
-  UserStatus,
-  AuthProviderType,
-} from "@/lib/admin/userManager";
-import { UserRole, getRoleDisplayName } from "@/lib/types/user";
+import { Button } from "@/components/ui/button";
 import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
+import {
+AdminUser,
+AdminUserManager,
+UserStatus
+} from "@/lib/admin/userManager";
+import { UserRole,getRoleDisplayName } from "@/lib/types/user";
+import {
+Copy,
+Database,
+Key,
+Laptop,
+RefreshCw,
+School,
+Search,
+Shield,
+Trash2,
+UserCheck,
+UserPlus,
+UserX,
+Users
+} from "lucide-react";
+import React,{ useState } from "react";
+import { toast } from "sonner";
 
 export default function AdminUsersPage() {
-  const [users, setUsers] = useState<AdminUser[]>([]);
+  const [users, setUsers] = useState<AdminUser[]>(() => AdminUserManager.getUsers());
   const [searchTerm, setSearchTerm] = useState("");
   const [roleFilter, setRoleFilter] = useState<string>("all");
   const [statusFilter, setStatusFilter] = useState<string>("all");
@@ -67,13 +50,9 @@ export default function AdminUsersPage() {
   const [newDept, setNewDept] = useState("General Department");
 
   // Platform Governance State
-  const [instQuestionAllowed, setInstQuestionAllowed] = useState(true);
-
-  // Load initial data
-  useEffect(() => {
-    setUsers(AdminUserManager.getUsers());
-    setInstQuestionAllowed(GovernanceSettingsManager.getSettings().institutionQuestionBankAdding);
-  }, []);
+  const [instQuestionAllowed, setInstQuestionAllowed] = useState(
+    () => GovernanceSettingsManager.getSettings().institutionQuestionBankAdding
+  );
 
   const handleToggleInstitutionQuestionAdding = () => {
     const nextVal = !instQuestionAllowed;
@@ -221,12 +200,6 @@ export default function AdminUsersPage() {
       u.role === "teacher" ||
       u.role === "institution" ||
       u.role === "school"
-  ).length;
-  const memberSubscriberCount = users.filter(
-    (u) =>
-      u.role === "member" ||
-      u.role === "student" ||
-      u.role === "subscriber"
   ).length;
   const suspendedCount = users.filter((u) => u.status === "suspended").length;
   const activeSessionsTotal = users.reduce((acc, u) => acc + u.activeSessionsCount, 0);

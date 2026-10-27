@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import Logo from "@/components/layout/Logo";
-import { Button } from "@/components/ui/button";
-import { Menu, X, ArrowRight, LayoutDashboard } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/components/auth/AuthProvider";
+import Logo from "@/components/layout/Logo";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { Button } from "@/components/ui/button";
+import { AnimatePresence,motion } from "framer-motion";
+import { ArrowRight,LayoutDashboard,Menu,X } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

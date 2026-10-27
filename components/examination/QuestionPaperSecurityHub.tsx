@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { EncryptedQuestionPaper } from "@/lib/types/examination";
 import { Button } from "@/components/ui/button";
-import { 
-  Lock, Key, ShieldCheck, FileCheck, CheckCircle2, Clock, 
-  AlertTriangle, RefreshCw, Layers, Sparkles, UserCheck, Eye
+import { EncryptedQuestionPaper } from "@/lib/types/examination";
+import {
+AlertTriangle,
+CheckCircle2,
+Eye,
+Lock
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockPapers: EncryptedQuestionPaper[] = [
@@ -54,6 +56,7 @@ export function QuestionPaperSecurityHub() {
   const [selectedPaper, setSelectedPaper] = useState<EncryptedQuestionPaper | null>(null);
 
   const handleTriggerEmergencyPaper = (id: string) => {
+    void id;
     toast.warning("EMERGENCY REPLACEMENT TRIGGERED: Encrypted Backup Set B deployed to all examination centers!");
   };
 

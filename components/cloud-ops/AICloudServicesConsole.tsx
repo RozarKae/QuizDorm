@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { AIModelInstance } from "@/lib/types/cloud-ops";
 import { Button } from "@/components/ui/button";
-import { 
-  Sparkles, Cpu, Activity, Server, Zap, CheckCircle2
+import { AIModelInstance } from "@/lib/types/cloud-ops";
+import {
+Cpu,
+Sparkles,
+Zap
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockAIModels: AIModelInstance[] = [
@@ -14,7 +16,7 @@ const mockAIModels: AIModelInstance[] = [
 ];
 
 export function AICloudServicesConsole() {
-  const [models, setModels] = useState<AIModelInstance[]>(mockAIModels);
+  const [models] = useState<AIModelInstance[]>(mockAIModels);
 
   const handleWarmupModel = (name: string) => {
     toast.success(`Triggered GPU cluster warm-up and cache sync for "${name}"!`);

@@ -70,7 +70,7 @@ export class AIServerConfig {
     assertServerContext();
     if (
       requestedModel &&
-      this.SUPPORTED_GEMINI_MODELS.includes(requestedModel as any)
+      (this.SUPPORTED_GEMINI_MODELS as readonly string[]).includes(requestedModel)
     ) {
       return requestedModel;
     }

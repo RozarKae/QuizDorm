@@ -1,32 +1,24 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { QualityAnalysisReport } from "@/lib/types/quality";
-import { QuestionItem } from "@/lib/types/question";
-import { QualityReviewManager } from "@/lib/quality/qualityManager";
-import { QualityScoreBadge } from "@/components/quality/QualityScoreBadge";
-import { BloomsIndicator } from "@/components/quality/BloomsIndicator";
+import { DuplicateViewer } from "@/components/quality/DuplicateViewer";
 import { QualityReportCard } from "@/components/quality/QualityReportCard";
 import { ReviewQueueTable } from "@/components/quality/ReviewQueueTable";
-import { DuplicateViewer } from "@/components/quality/DuplicateViewer";
+import { QualityReviewManager } from "@/lib/quality/qualityManager";
+import { QualityAnalysisReport } from "@/lib/types/quality";
+import { DifficultyLevel, QuestionItem } from "@/lib/types/question";
+import { useState } from "react";
 
-import {
-  ShieldCheck,
-  CheckCircle2,
-  AlertTriangle,
-  Layers,
-  Sparkles,
-  RefreshCw,
-  GitCompare,
-  Search,
-  Filter,
-  BarChart3,
-  Brain,
-  Wand2,
-  FileText,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import {
+AlertTriangle,
+BarChart3,
+CheckCircle2,
+GitCompare,
+RefreshCw,
+ShieldCheck,
+Wand2
+} from "lucide-react";
 import { toast } from "sonner";
 
 // Sample Question Bank items for demonstration
@@ -76,7 +68,14 @@ const SAMPLE_QUESTIONS: QuestionItem[] = [
 
 export default function QualityDashboardPage() {
   const [activeTab, setActiveTab] = useState<"queue" | "inspector" | "bulk" | "duplicates" | "analytics">("queue");
-  const [reports, setReports] = useState<QualityAnalysisReport[]>([]);
+  const [reports, setReports] = useState<QualityAnalysisReport[]>(() => {
+    let existing = QualityReviewManager.getReports();
+    if (existing.length === 0) {
+      SAMPLE_QUESTIONS.forEach((q) => QualityReviewManager.analyzeQuestion(q, SAMPLE_QUESTIONS));
+      existing = QualityReviewManager.getReports();
+    }
+    return existing;
+  });
   const [selectedReport, setSelectedReport] = useState<QualityAnalysisReport | null>(null);
 
   // Single Question Inspector state
@@ -84,16 +83,13 @@ export default function QualityDashboardPage() {
   const [inspectSubject, setInspectSubject] = useState(SAMPLE_QUESTIONS[0].subject);
   const [inspectDifficulty, setInspectDifficulty] = useState(SAMPLE_QUESTIONS[0].difficulty);
   const [inspectExplanation, setInspectExplanation] = useState(SAMPLE_QUESTIONS[0].explanation || "");
-  const [currentInspectionReport, setCurrentInspectionReport] = useState<QualityAnalysisReport | null>(null);
+  const [currentInspectionReport, setCurrentInspectionReport] = useState<QualityAnalysisReport | null>(() =>
+    QualityReviewManager.analyzeQuestion(SAMPLE_QUESTIONS[0], SAMPLE_QUESTIONS)
+  );
 
   // Bulk review state
   const [bulkAnalyzing, setBulkAnalyzing] = useState(false);
   const [bulkProgress, setBulkProgress] = useState(0);
-
-  useEffect(() => {
-    loadReports();
-    runInspection(SAMPLE_QUESTIONS[0]);
-  }, []);
 
   const loadReports = () => {
     // Generate initial reports for sample questions if empty
@@ -150,7 +146,7 @@ export default function QualityDashboardPage() {
               AI Question Quality & Intelligent Validation Dashboard
             </h1>
             <p className="text-xs sm:text-sm text-rose-100/80 max-w-2xl">
-              Automated 360-degree educational quality evaluation, Bloom's Taxonomy classification, difficulty prediction, distractor analysis, and Educator Review Queue.
+              Automated 360-degree educational quality evaluation, Bloom&apos;s Taxonomy classification, difficulty prediction, distractor analysis, and Educator Review Queue.
             </p>
           </div>
 
@@ -218,7 +214,7 @@ export default function QualityDashboardPage() {
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => setActiveTab(tab.id as "queue" | "inspector" | "bulk" | "duplicates" | "analytics")}
               className={`px-4 py-2.5 rounded-2xl text-xs font-bold flex items-center space-x-2 transition-all whitespace-nowrap ${
                 isActive
                   ? "bg-rose-600 text-white shadow-md shadow-rose-600/20"
@@ -267,7 +263,7 @@ export default function QualityDashboardPage() {
                   runInspection({
                     title: e.target.value,
                     subject: inspectSubject,
-                    difficulty: inspectDifficulty as any,
+                    difficulty: inspectDifficulty as DifficultyLevel,
                     explanation: inspectExplanation,
                   });
                 }}
@@ -294,7 +290,7 @@ export default function QualityDashboardPage() {
                 <label className="text-xs font-bold text-gray-700 dark:text-gray-300 block mb-1">Educator Difficulty</label>
                 <select
                   value={inspectDifficulty}
-                  onChange={(e) => setInspectDifficulty(e.target.value as any)}
+                  onChange={(e) => setInspectDifficulty(e.target.value as DifficultyLevel)}
                   className="w-full text-xs p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900"
                 >
                   <option value="Easy">Easy</option>
@@ -378,7 +374,7 @@ export default function QualityDashboardPage() {
               <div className="text-2xl font-bold text-rose-600 font-mono">{overallAvgQuality}/100</div>
             </div>
             <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900">
-              <span className="text-gray-500 font-medium">Bloom's Taxonomy Spread</span>
+              <span className="text-gray-500 font-medium">Bloom&apos;s Taxonomy Spread</span>
               <div className="text-xs font-bold text-indigo-600 mt-1">Remember (40%) • Apply (35%) • Analyze (25%)</div>
             </div>
             <div className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900">

@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
-import { User, Settings, HelpCircle, LogOut, Sun, Moon, Laptop } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useAuth } from "@/components/auth/AuthProvider";
 import { signOutUser } from "@/app/auth/actions";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { Avatar,AvatarFallback,AvatarImage } from "@/components/ui/avatar";
+import { AnimatePresence,motion } from "framer-motion";
+import { HelpCircle,Laptop,LogOut,Moon,Settings,Sun,User } from "lucide-react";
 import { useTheme } from "next-themes";
+import Link from "next/link";
+import { useEffect,useRef,useState } from "react";
 
 interface ProfileMenuProps {
   role: string;

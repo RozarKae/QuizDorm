@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { WorkflowAutomationEngine } from "@/lib/communication/automationEngine";
-import { Zap, Play, CheckCircle2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { WorkflowAutomationEngine } from "@/lib/communication/automationEngine";
+import { Zap } from "lucide-react";
 
 export function AutomationRulesCard() {
   const rules = WorkflowAutomationEngine.getRules();
@@ -29,7 +28,7 @@ export function AutomationRulesCard() {
               </span>
             </div>
 
-            <p className="text-gray-500 italic font-mono text-[11px]">"{rule.messageTemplate}"</p>
+            <p className="text-gray-500 italic font-mono text-[11px]">&ldquo;{rule.messageTemplate}&rdquo;</p>
 
             <div className="flex items-center justify-between text-[10px] text-gray-400 font-mono pt-1">
               <span>Channels: {rule.channels.join(", ").toUpperCase()}</span>

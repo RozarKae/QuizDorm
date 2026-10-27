@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
 import { TimelineEventItem } from "@/lib/types/media";
-import { Clock, ArrowDown, ArrowUp } from "lucide-react";
+import { ArrowDown,ArrowUp,Clock } from "lucide-react";
+import { useState } from "react";
 
 interface TimelineViewerProps {
   events: TimelineEventItem[];

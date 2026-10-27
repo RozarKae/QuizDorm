@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { CampusServerManager } from "@/lib/offline/campusServer";
 import { CampusServerNode } from "@/lib/types/offline";
-import { Server, RefreshCw, CheckCircle2, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { RefreshCw,Server } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function CampusServerCard() {

@@ -1,4 +1,4 @@
-import { GlobalInstitution, InstitutionType } from "@/lib/types/global-network";
+import { GlobalInstitution,InstitutionType } from "@/lib/types/global-network";
 
 const STORAGE_KEY_INSTITUTIONS = "quizdorm_global_institutions";
 

@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import { Play, Pause, Video, Clock, HelpCircle, CheckCircle2 } from "lucide-react";
 import { VideoTimestampMarker } from "@/lib/types/media";
-import { Button } from "@/components/ui/button";
+import { Clock,HelpCircle,Pause,Play,Video } from "lucide-react";
+import { useState } from "react";
 
 interface VideoQuizPlayerProps {
   videoUrl?: string;
@@ -19,6 +18,7 @@ export function VideoQuizPlayer({
   ],
   title = "Educational Assessment Video",
 }: VideoQuizPlayerProps) {
+  void videoUrl;
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [activeQuestion, setActiveQuestion] = useState<VideoTimestampMarker | null>(null);

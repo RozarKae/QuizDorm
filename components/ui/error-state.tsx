@@ -1,7 +1,6 @@
-import React from "react";
-import { AlertTriangle, RefreshCw } from "lucide-react";
-import { Button } from "./button";
 import { cn } from "@/lib/utils";
+import { AlertTriangle,RefreshCw } from "lucide-react";
+import { Button } from "./button";
 
 interface ErrorStateProps {
   title?: string;

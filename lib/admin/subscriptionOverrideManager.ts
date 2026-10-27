@@ -1,9 +1,8 @@
-import {
-  SubscriptionPlanId,
-  BillingCycle,
-  SubscriptionPlan,
-} from "@/lib/types/billing";
 import { SUBSCRIPTION_PLANS } from "@/lib/billing/subscriptionManager";
+import {
+BillingCycle,
+SubscriptionPlanId
+} from "@/lib/types/billing";
 
 export interface AdminSubscriptionItem {
   id: string; // e.g. "sub-101"

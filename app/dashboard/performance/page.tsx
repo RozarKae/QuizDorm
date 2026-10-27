@@ -1,13 +1,12 @@
 "use client";
 
-import React from "react";
-import { PredictiveAnalyticsEngine } from "@/lib/performance/predictiveEngine";
+import { LearningSuccessIndexCard } from "@/components/performance/LearningSuccessIndexCard";
 import { PredictiveGradeCard } from "@/components/performance/PredictiveGradeCard";
 import { WhatIfSimulatorCard } from "@/components/performance/WhatIfSimulatorCard";
-import { LearningSuccessIndexCard } from "@/components/performance/LearningSuccessIndexCard";
+import { PredictiveAnalyticsEngine } from "@/lib/performance/predictiveEngine";
 
-import { TrendingUp, ShieldAlert, Sparkles, Sliders } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ShieldAlert,Sparkles,TrendingUp } from "lucide-react";
 import Link from "next/link";
 
 export default function PerformanceCoachPage() {

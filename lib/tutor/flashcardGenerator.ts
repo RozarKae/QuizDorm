@@ -1,4 +1,4 @@
-import { AIFlashcard, SubjectTutor } from "@/lib/types/tutor";
+import { AIFlashcard,SubjectTutor } from "@/lib/types/tutor";
 
 export const DEFAULT_FLASHCARDS: AIFlashcard[] = [
   { id: "fc-1", subject: "mathematics", frontText: "What is the Power Rule for Derivatives?", backText: "The derivative of x^n with respect to x is n * x^(n-1).", formula: "d/dx(x^n) = n·x^(n-1)", intervalDays: 3, masteryLevel: 4 },

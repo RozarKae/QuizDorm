@@ -1,10 +1,7 @@
 "use client";
 
-import React from "react";
 import { DuplicateAlert } from "@/lib/types/quality";
-import { Copy, AlertTriangle, ArrowRight, CheckCircle2, GitCompare } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { CheckCircle2,GitCompare } from "lucide-react";
 
 interface DuplicateViewerProps {
   alerts: DuplicateAlert[];

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
 import { BloomsTaxonomyLevel } from "@/lib/types/quality";
-import { Brain, ChevronDown } from "lucide-react";
+import { Brain } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface BloomsIndicatorProps {

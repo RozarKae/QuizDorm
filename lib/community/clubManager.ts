@@ -1,4 +1,4 @@
-import { QuizClub, ClubCategory } from "@/lib/types/community";
+import { ClubCategory,QuizClub } from "@/lib/types/community";
 
 const STORAGE_KEY_CLUBS = "quizdorm_community_clubs";
 

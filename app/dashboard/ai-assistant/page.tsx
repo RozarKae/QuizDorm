@@ -1,20 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
-import { AILessonPlannerHub } from "@/components/ai-assistant/AILessonPlannerHub";
-import { AIContentGeneratorStudio } from "@/components/ai-assistant/AIContentGeneratorStudio";
 import { AIAssessmentAssistantConsole } from "@/components/ai-assistant/AIAssessmentAssistantConsole";
 import { AIClassroomCopilot } from "@/components/ai-assistant/AIClassroomCopilot";
-import { AIStudentSupportHub } from "@/components/ai-assistant/AIStudentSupportHub";
 import { AICommunicationAssistant } from "@/components/ai-assistant/AICommunicationAssistant";
-import { AITeachingAnalyticsConsole } from "@/components/ai-assistant/AITeachingAnalyticsConsole";
+import { AIContentGeneratorStudio } from "@/components/ai-assistant/AIContentGeneratorStudio";
+import { AILessonPlannerHub } from "@/components/ai-assistant/AILessonPlannerHub";
 import { AIResourceRecommendationEngine } from "@/components/ai-assistant/AIResourceRecommendationEngine";
+import { AIStudentSupportHub } from "@/components/ai-assistant/AIStudentSupportHub";
 import { AITeacherWorkspaceDashboard } from "@/components/ai-assistant/AITeacherWorkspaceDashboard";
+import { AITeachingAnalyticsConsole } from "@/components/ai-assistant/AITeachingAnalyticsConsole";
 import { AutonomousAIAgentsConsole } from "@/components/ai-assistant/AutonomousAIAgentsConsole";
+import React,{ useState } from "react";
 
-import { 
-  Sparkles, FileText, FileCheck, Zap, UserCheck, Mail, 
-  BarChart3, BookOpen, Calendar, Bot
+import {
+BarChart3,BookOpen,
+Bot,
+Calendar,
+FileCheck,
+FileText,
+Mail,
+Sparkles,
+UserCheck,
+Zap
 } from "lucide-react";
 
 export type AIAssistantModuleTab = 

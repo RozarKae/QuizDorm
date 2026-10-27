@@ -1,6 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
 import { LiveSessionManager } from "@/lib/live/liveSessionManager";
 import { CreateSessionOptions } from "@/lib/live/types";
+import { NextRequest,NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
@@ -30,9 +30,10 @@ export async function POST(req: NextRequest) {
       hostSecret,
       session,
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const errorMsg = err instanceof Error ? err.message : "Failed to create live session";
     return NextResponse.json(
-      { success: false, error: err.message || "Failed to create live session" },
+      { success: false, error: errorMsg },
       { status: 500 }
     );
   }

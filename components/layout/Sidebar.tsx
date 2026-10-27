@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { navigation } from '@/config/navigation';
+import Link from 'next/link';
 
 export default function Sidebar() {
   return (

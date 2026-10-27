@@ -37,7 +37,7 @@ export interface WebhookDeliveryLog {
   id: string;
   endpointId: string;
   event: string;
-  payload: any;
+  payload: unknown;
   responseStatusCode: number;
   durationMs: number;
   timestamp: string;
@@ -86,5 +86,5 @@ export interface OpenAPISpec {
     version: string;
     description: string;
   };
-  paths: Record<string, any>;
+  paths: Record<string, unknown>;
 }

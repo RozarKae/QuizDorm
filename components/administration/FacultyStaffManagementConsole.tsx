@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { FacultyStaffProfile } from "@/lib/types/administration";
 import { Button } from "@/components/ui/button";
-import { 
-  Users, UserCheck, Briefcase, Calendar, CheckCircle2, Clock, Mail
+import { FacultyStaffProfile } from "@/lib/types/administration";
+import {
+Briefcase,
+UserCheck
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockStaff: FacultyStaffProfile[] = [
@@ -14,7 +15,7 @@ const mockStaff: FacultyStaffProfile[] = [
 ];
 
 export function FacultyStaffManagementConsole() {
-  const [staffList, setStaffList] = useState<FacultyStaffProfile[]>(mockStaff);
+  const [staffList] = useState<FacultyStaffProfile[]>(mockStaff);
 
   return (
     <div className="space-y-6">

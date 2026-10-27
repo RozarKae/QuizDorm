@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { QuestionItem } from "@/lib/types/question";
-import { PublicSessionQuestion } from "@/lib/live/types";
-import { Clock, Zap, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { PublicSessionQuestion } from "@/lib/live/types";
+import { QuestionItem } from "@/lib/types/question";
+import { CheckCircle2,Clock,Zap } from "lucide-react";
 
 interface LiveQuestionSessionProps {
   question: QuestionItem | PublicSessionQuestion;

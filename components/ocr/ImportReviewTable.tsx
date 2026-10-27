@@ -1,42 +1,43 @@
 "use client";
 
-import React, { useState } from "react";
-import { ExtractedQuestion, ExtractedQuestionOption, ConfidenceScores } from "@/lib/types/ocr";
-import { QuestionType, DifficultyLevel } from "@/lib/types/question";
-import { ConfidenceBadge } from "./ConfidenceBadge";
+import { Button } from "@/components/ui/button";
+import { saveQuiz } from "@/lib/data/quizzes";
 import { AIEnhancerService } from "@/lib/ocr/ai-enhancer";
+import { ExtractedQuestion,ExtractedQuestionOption } from "@/lib/types/ocr";
+import { DifficultyLevel,QuestionItem,QuestionType } from "@/lib/types/question";
+import { QuizItem } from "@/lib/types/quiz";
 import {
-  Edit3,
-  CheckCircle2,
-  Sparkles,
-  Wand2,
-  Split,
-  Merge,
-  Trash2,
-  Plus,
-  AlertTriangle,
-  Save,
-  Check,
-  HelpCircle,
-  X,
-  Sigma,
-  Table as TableIcon,
-  Copy,
-  Eye,
-  Play,
+AlertTriangle,
+Check,
+CheckCircle2,
+Edit3,
+Eye,
+HelpCircle,
+Play,
+Plus,
+Sparkles,
+Trash2,
+Wand2,
+X
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { saveQuiz } from "@/lib/data/quizzes";
-import { QuizItem } from "@/lib/types/quiz";
-import { QuestionItem } from "@/lib/types/question";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import { toast } from "sonner";
+import { ConfidenceBadge } from "./ConfidenceBadge";
 
 interface ImportReviewTableProps {
   questions: ExtractedQuestion[];
   onUpdateQuestions: (questions: ExtractedQuestion[]) => void;
   onSaveToQuestionBank: (questions: ExtractedQuestion[]) => void;
   onOpenPreview?: () => void;
+}
+
+function createOption(text: string, isCorrect = false): ExtractedQuestionOption {
+  return {
+    id: `opt-${Date.now()}`,
+    text,
+    isCorrect,
+  };
 }
 
 export function ImportReviewTable({
@@ -112,14 +113,12 @@ export function ImportReviewTable({
     router.push(`/dashboard/quizzes/${quizId}/take/live`);
   };
 
-  const activeQuestion = questions.find((q) => q.id === selectedQuestionId) || questions[0];
-
   const handleSelectQuestion = (q: ExtractedQuestion) => {
     setSelectedQuestionId(q.id);
     setEditingQuestion({ ...q });
   };
 
-  const handleFieldChange = (field: keyof ExtractedQuestion, value: any) => {
+  const handleFieldChange = (field: keyof ExtractedQuestion, value: unknown) => {
     if (!editingQuestion) return;
     const updated = { ...editingQuestion, [field]: value, status: "edited" as const };
     setEditingQuestion(updated);
@@ -154,11 +153,7 @@ export function ImportReviewTable({
 
   const handleAddOption = () => {
     if (!editingQuestion) return;
-    const newOpt: ExtractedQuestionOption = {
-      id: `opt-${Date.now()}`,
-      text: "New Option",
-      isCorrect: false,
-    };
+    const newOpt = createOption("New Option", false);
     const updated = { ...editingQuestion, options: [...editingQuestion.options, newOpt], status: "edited" as const };
     setEditingQuestion(updated);
     updateGlobalQuestions(updated);

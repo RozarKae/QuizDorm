@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
 import Logo from "@/components/layout/Logo";
-import { MobileAuthService } from "@/lib/mobile/mobileAuth";
-import { Smartphone, Fingerprint, Lock, Play, RotateCcw, Award, CheckCircle2, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { MobileAuthService } from "@/lib/mobile/mobileAuth";
+import { Fingerprint,Lock,Play,RotateCcw } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function StandaloneMobilePwaPage() {
   const [unlocked, setUnlocked] = useState(true);

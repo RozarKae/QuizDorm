@@ -1,71 +1,49 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { QuizAttempt } from "@/lib/types/attempt";
 import { AttemptCard } from "@/components/quiz-engine/AttemptCard";
-import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
-import { Pagination } from "@/components/ui/pagination";
+import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
-import { History, Search, ArrowLeft } from "lucide-react";
-
-const mockAttempts: QuizAttempt[] = [
-  {
-    id: "att-901",
-    quizId: "q-101",
-    quizTitle: "Advanced Algebra & Calculus Challenge",
-    userId: "usr-101",
-    userName: "Rozar Khan",
-    status: "submitted",
-    startedAt: "2026-07-23T12:00:00Z",
-    submittedAt: "2026-07-23T12:32:00Z",
-    timeTakenSeconds: 1920,
-    durationMinutes: 45,
-    answers: {},
-    markedForReview: [],
-    score: 85,
-    totalMarks: 100,
-    passMarks: 60,
-    percentage: 85,
-    isPassed: true,
-    correctCount: 21,
-    incorrectCount: 3,
-    unansweredCount: 1,
-    questions: [],
-  },
-  {
-    id: "att-902",
-    quizId: "q-102",
-    quizTitle: "Organic Chemistry & Molecular Structures",
-    userId: "usr-101",
-    userName: "Rozar Khan",
-    status: "submitted",
-    startedAt: "2026-07-20T10:00:00Z",
-    submittedAt: "2026-07-20T10:28:00Z",
-    timeTakenSeconds: 1680,
-    durationMinutes: 30,
-    answers: {},
-    markedForReview: [],
-    score: 45,
-    totalMarks: 100,
-    passMarks: 60,
-    percentage: 45,
-    isPassed: false,
-    correctCount: 12,
-    incorrectCount: 10,
-    unansweredCount: 3,
-    questions: [],
-  },
-];
+import { Input } from "@/components/ui/input";
+import { Pagination } from "@/components/ui/pagination";
+import { Select } from "@/components/ui/select";
+import { QuizAttempt } from "@/lib/types/attempt";
+import { AlertCircle, ArrowLeft, History, Loader2, RefreshCw, Search } from "lucide-react";
+import Link from "next/link";
+import { useCallback, useEffect, useState } from "react";
 
 export default function AttemptHistoryPage() {
+  const [attempts, setAttempts] = useState<QuizAttempt[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const filtered = mockAttempts.filter((att) => {
-    const matchesSearch = att.quizTitle.toLowerCase().includes(searchTerm.toLowerCase());
+  const fetchAttempts = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const res = await fetch("/api/quizzes/attempts");
+      const json = await res.json();
+      if (!res.ok) {
+        throw new Error(json.error || "Failed to load attempt history");
+      }
+      setAttempts(json.attempts || []);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to load attempt history");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    queueMicrotask(() => {
+      fetchAttempts();
+    });
+  }, [fetchAttempts]);
+
+  const filtered = attempts.filter((att) => {
+    const matchesSearch = (att.quizTitle || "").toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus =
       statusFilter === "All" ||
       (statusFilter === "Passed" && att.isPassed) ||
@@ -84,6 +62,19 @@ export default function AttemptHistoryPage() {
         </h1>
         <p className="text-sm text-gray-500">Track and review all your previous quiz submissions and test performance</p>
       </div>
+
+      {/* Error notification */}
+      {error && (
+        <div className="p-4 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900 rounded-xl flex items-center justify-between">
+          <div className="flex items-center space-x-3 text-red-700 dark:text-red-400">
+            <AlertCircle className="w-5 h-5 shrink-0" />
+            <p className="text-sm font-medium">{error}</p>
+          </div>
+          <Button variant="outline" size="sm" onClick={fetchAttempts} className="text-xs">
+            <RefreshCw className="w-3.5 h-3.5 mr-1" /> Retry
+          </Button>
+        </div>
+      )}
 
       {/* Filter Bar */}
       <div className="bg-white dark:bg-gray-950 p-4 rounded-2xl border border-gray-100 dark:border-gray-850 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -109,11 +100,20 @@ export default function AttemptHistoryPage() {
         />
       </div>
 
-      {/* List */}
-      {filtered.length === 0 ? (
+      {/* Loading state */}
+      {loading ? (
+        <div className="flex flex-col items-center justify-center p-12 bg-white dark:bg-gray-950 rounded-2xl border border-gray-100 dark:border-gray-850">
+          <Loader2 className="w-8 h-8 text-indigo-600 animate-spin mb-3" />
+          <p className="text-sm text-gray-500">Loading your attempt records from database...</p>
+        </div>
+      ) : filtered.length === 0 ? (
         <EmptyState
           title="No Quiz Attempts Found"
-          description="You haven't completed any quizzes matching the selected filters."
+          description={
+            attempts.length === 0
+              ? "You haven't completed any quizzes yet. Start a quiz to build your history."
+              : "No attempts match your current search and filter settings."
+          }
           actionLabel="Explore Quizzes"
           onAction={() => (window.location.href = "/dashboard/quizzes")}
         />
@@ -126,7 +126,9 @@ export default function AttemptHistoryPage() {
       )}
 
       {/* Pagination */}
-      <Pagination currentPage={currentPage} totalPages={1} onPageChange={setCurrentPage} />
+      {!loading && filtered.length > 0 && (
+        <Pagination currentPage={currentPage} totalPages={1} onPageChange={setCurrentPage} />
+      )}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { NetworkStatus, OfflineCacheItem } from "@/lib/types/offline";
+import { NetworkStatus,OfflineCacheItem } from "@/lib/types/offline";
 
 const STORAGE_KEY_CACHE = "quizdorm_universal_offline";
 

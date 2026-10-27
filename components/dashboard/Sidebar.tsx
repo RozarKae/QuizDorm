@@ -1,65 +1,65 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { signOutUser } from "@/app/auth/actions";
+import { AudioToggle } from "@/components/audio/AudioToggle";
+import { useSound } from "@/components/audio/useSound";
+import { useAuth } from "@/components/auth/AuthProvider";
+import Logo from "@/components/layout/Logo";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { Button } from "@/components/ui/button";
+import { dashboardNavConfig,NavItem } from "@/config/dashboard-nav";
 import { motion } from "framer-motion";
 import {
-  LayoutDashboard,
-  HelpCircle,
-  PlusSquare,
-  Trophy,
-  Award,
-  User,
-  Settings,
-  ChevronLeft,
-  ChevronRight,
-  X,
-  Database,
-  Building2,
-  School,
-  BookOpen,
-  Calendar,
-  Megaphone,
-  ScanText,
-  FileImage,
-  Cpu,
-  ShieldCheck,
-  Brain,
-  RotateCcw,
-  CreditCard,
-  MessageSquare,
-  Code2,
-  Boxes,
-  ShieldAlert,
-  Building,
-  Smartphone,
-  Laptop,
-  RefreshCw,
-  HeartHandshake,
-  Baby,
-  WifiOff,
-  Server,
-  GraduationCap,
-  Swords,
-  ShoppingBag,
-  Store,
-  Bot,
-  Sparkles,
-  TrendingUp,
-  Users,
-  Globe,
-  Share2,
-  LogOut,
+Award,
+Baby,
+BookOpen,
+Bot,
+Boxes,
+Brain,
+Building,
+Building2,
+Calendar,
+ChevronLeft,
+ChevronRight,
+Code2,
+Cpu,
+CreditCard,
+Database,
+FileImage,
+Globe,
+GraduationCap,
+HeartHandshake,
+HelpCircle,
+Laptop,
+LayoutDashboard,
+LogOut,
+Megaphone,
+MessageSquare,
+PlusSquare,
+RefreshCw,
+RotateCcw,
+ScanText,
+School,
+Server,
+Settings,
+Share2,
+ShieldAlert,
+ShieldCheck,
+ShoppingBag,
+Smartphone,
+Sparkles,
+Store,
+Swords,
+TrendingUp,
+Trophy,
+User,
+Users,
+WifiOff,
+X,
 } from "lucide-react";
-import Logo from "@/components/layout/Logo";
-import { dashboardNavConfig, NavItem } from "@/config/dashboard-nav";
-import { Button } from "@/components/ui/button";
-import { useAuth } from "@/components/auth/AuthProvider";
-import { signOutUser } from "@/app/auth/actions";
-import { useSound } from "@/components/audio/useSound";
-import { AudioToggle } from "@/components/audio/AudioToggle";
-import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React,{ useMemo,useState } from "react";
 
 interface SidebarProps {
   role: string;

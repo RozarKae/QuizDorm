@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Upload, X, Image as ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Image as ImageIcon,X } from "lucide-react";
+import React,{ useState } from "react";
 
 interface ImageDropzoneProps {
   value?: string;

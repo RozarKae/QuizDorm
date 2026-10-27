@@ -1,4 +1,4 @@
-import { CommunityPost, DiscussionTag } from "@/lib/types/community";
+import { CommunityPost,DiscussionTag } from "@/lib/types/community";
 
 const STORAGE_KEY_POSTS = "quizdorm_community_posts";
 

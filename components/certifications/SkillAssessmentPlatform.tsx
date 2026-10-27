@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
 import { Button } from "@/components/ui/button";
-import { 
-  Sparkles, CheckCircle2, TrendingUp, Award, BarChart3
+import {
+CheckCircle2,
+Sparkles
 } from "lucide-react";
 import { toast } from "sonner";
 

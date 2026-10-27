@@ -1,12 +1,11 @@
 "use client";
 
-import React from "react";
-import { ApiKeyManagerCard } from "@/components/developer/ApiKeyManagerCard";
-import { WebhookManagerCard } from "@/components/developer/WebhookManagerCard";
 import { ApiExplorerWidget } from "@/components/developer/ApiExplorerWidget";
+import { ApiKeyManagerCard } from "@/components/developer/ApiKeyManagerCard";
 import { SDKDownloadCard } from "@/components/developer/SDKDownloadCard";
-import { Code2, Terminal, Globe, Key, FileText, ExternalLink } from "lucide-react";
+import { WebhookManagerCard } from "@/components/developer/WebhookManagerCard";
 import { Button } from "@/components/ui/button";
+import { Code2,FileText } from "lucide-react";
 import Link from "next/link";
 
 export default function DeveloperPortalPage() {

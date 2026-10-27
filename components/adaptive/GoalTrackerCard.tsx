@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { LearningPathGoal } from "@/lib/types/adaptive";
-import { Target, Plus, CheckCircle2, Calendar } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { LearningPathGoal } from "@/lib/types/adaptive";
+import { Plus,Target } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function GoalTrackerCard() {

@@ -1,4 +1,4 @@
-import { InAppNotification, NotificationCategory } from "@/lib/types/communication";
+import { InAppNotification,NotificationCategory } from "@/lib/types/communication";
 
 const STORAGE_KEY_NOTIFICATIONS = "quizdorm_inapp_notifications";
 

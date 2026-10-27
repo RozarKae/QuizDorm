@@ -1,11 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { IssuedCertificate } from "@/lib/types/certifications";
 import { Button } from "@/components/ui/button";
-import { 
-  Award, QrCode, Download, ShieldCheck, CheckCircle2, Sparkles
+import { IssuedCertificate } from "@/lib/types/certifications";
+import {
+Award,
+Download,
+QrCode,
+ShieldCheck
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockCertificate: IssuedCertificate = {
@@ -25,7 +28,7 @@ const mockCertificate: IssuedCertificate = {
 };
 
 export function DigitalCertificateGenerator() {
-  const [cert, setCert] = useState<IssuedCertificate>(mockCertificate);
+  const [cert] = useState<IssuedCertificate>(mockCertificate);
 
   const handleDownloadPDF = () => {
     toast.success(`Downloaded High-Resolution Digital Certificate (PDF) for ${cert.credentialIdNumber}!`);

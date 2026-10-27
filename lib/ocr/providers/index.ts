@@ -1,6 +1,6 @@
+import { OCRProviderType } from "@/lib/types/ocr";
 import { IOCREngineProvider } from "../provider";
 import { MockOCRProvider } from "./mockProvider";
-import { OCRProviderType } from "@/lib/types/ocr";
 
 export const availableOCRProviders: { id: OCRProviderType; name: string; description: string; badge?: string }[] = [
   {

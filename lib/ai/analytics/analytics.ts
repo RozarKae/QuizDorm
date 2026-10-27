@@ -1,4 +1,4 @@
-import { AILogEntry, ProviderHealth, AIProviderType } from "@/lib/types/ai";
+import { AILogEntry,ProviderHealth } from "@/lib/types/ai";
 import { getAllAIProviders } from "../providers";
 
 const STORAGE_KEY_LOGS = "quizdorm_ai_logs";

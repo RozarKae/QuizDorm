@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { AILearningPathEngine } from "@/lib/tutor/learningPathEngine";
-import { CheckCircle2, Circle, Lock, ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { AILearningPathEngine } from "@/lib/tutor/learningPathEngine";
+import { ArrowRight,CheckCircle2,Circle,Lock } from "lucide-react";
 
 export function AILearningPathCard() {
   const milestones = AILearningPathEngine.getMilestones();
@@ -17,7 +16,7 @@ export function AILearningPathCard() {
       </div>
 
       <div className="space-y-3 text-xs">
-        {milestones.map((m, idx) => (
+        {milestones.map((m) => (
           <div key={m.id} className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800 flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-6 h-6 rounded-full font-bold flex items-center justify-center text-xs">

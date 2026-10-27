@@ -1,23 +1,21 @@
 "use client";
 
-import React from "react";
-import { QualityAnalysisReport } from "@/lib/types/quality";
-import { QualityScoreBadge } from "./QualityScoreBadge";
+import { QualityAnalysisReport,QuestionImprovementSuggestion } from "@/lib/types/quality";
+import { AISuggestionPanel } from "./AISuggestionPanel";
 import { BloomsIndicator } from "./BloomsIndicator";
 import { DifficultyMeter } from "./DifficultyMeter";
-import { AISuggestionPanel } from "./AISuggestionPanel";
 import { DuplicateViewer } from "./DuplicateViewer";
+import { QualityScoreBadge } from "./QualityScoreBadge";
 
-import { ShieldCheck, Sparkles, CheckCircle2, AlertTriangle, Layers, BookOpen } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 interface QualityReportCardProps {
   report: QualityAnalysisReport;
-  onApplySuggestion?: (sug: any) => void;
+  onApplySuggestion?: (sug: QuestionImprovementSuggestion) => void;
 }
 
 export function QualityReportCard({ report, onApplySuggestion }: QualityReportCardProps) {
-  const { qualityBreakdown, bloomsLevel, difficulty, duplicateAlerts, suggestions, biasFairness, answerValidation } = report;
+  const { qualityBreakdown, bloomsLevel, difficulty, duplicateAlerts, suggestions } = report;
 
   return (
     <Card className="p-6 bg-white dark:bg-gray-950 border-gray-200 dark:border-gray-800 rounded-3xl shadow-sm space-y-6">

@@ -1,4 +1,4 @@
-import { SyncStatus, SyncMode } from "@/lib/types/mobile";
+import { SyncMode,SyncStatus } from "@/lib/types/mobile";
 
 export class SyncEngine {
   private static status: SyncStatus = "idle";
@@ -13,6 +13,7 @@ export class SyncEngine {
   }
 
   public static async performSync(mode: SyncMode = "incremental"): Promise<boolean> {
+    void mode;
     this.status = "syncing";
     await new Promise((r) => setTimeout(r, 800)); // Simulated sync processing
     this.pendingCount = 0;

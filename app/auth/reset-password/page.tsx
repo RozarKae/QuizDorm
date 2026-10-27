@@ -1,17 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import AuthCard from "@/components/auth/AuthCard";
-import AuthHeader from "@/components/auth/AuthHeader";
-import AuthForm from "@/components/auth/AuthForm";
 import AuthFooter from "@/components/auth/AuthFooter";
+import AuthForm from "@/components/auth/AuthForm";
+import AuthHeader from "@/components/auth/AuthHeader";
 import PasswordInput from "@/components/auth/PasswordInput";
-import PasswordStrengthIndicator, { evaluatePasswordStrength } from "@/components/auth/PasswordStrengthIndicator";
+import PasswordStrengthIndicator,{ evaluatePasswordStrength } from "@/components/auth/PasswordStrengthIndicator";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { updatePassword } from "../actions";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
+import { updatePassword } from "../actions";
 
 export default function ResetPasswordPage() {
   const [password, setPassword] = useState("");

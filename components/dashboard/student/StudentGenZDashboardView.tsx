@@ -1,28 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import {
-  Zap,
-  Flame,
-  Swords,
-  Trophy,
-  Award,
-  BookOpen,
-  Calendar,
-  Clock,
-  Sparkles,
-  Play,
-  ArrowRight,
-  CheckCircle2,
-  Circle,
-  Users,
-  Target,
-  Gamepad2,
-  Crown,
-  Bell,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+BookOpen,
+CheckCircle2,
+Circle,
+Crown,
+Flame,
+Gamepad2,
+Swords,
+Target,
+Trophy
+} from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function StudentGenZDashboardView() {
   const [pinCode, setPinCode] = useState("");

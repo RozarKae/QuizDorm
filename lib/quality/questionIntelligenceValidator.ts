@@ -1,4 +1,4 @@
-import { GeneratedQuestion, GeneratedOption } from "../ai/schemas/questionGenerationSchema";
+import { GeneratedOption,GeneratedQuestion } from "../ai/schemas/questionGenerationSchema";
 
 export type IssueSeverity = "error" | "warning" | "info";
 
@@ -665,7 +665,7 @@ export class QuestionIntelligenceValidator {
     // e.g. "128 km", "375", "4", "30%", "$500"
     const numberUnitMatch = correctText.match(/^([$€£₹]?)\s*([\d,.]+)\s*([a-zA-Z/%]*)$/);
     if (numberUnitMatch && !isYear) {
-      const [, correctPrefix, correctNumStr, correctUnit] = numberUnitMatch;
+      const [, correctPrefix, , correctUnit] = numberUnitMatch;
       const hasUnit = Boolean(correctPrefix || correctUnit);
 
       distractors.forEach((d, dIdx) => {
@@ -733,7 +733,6 @@ export class QuestionIntelligenceValidator {
     }
 
     // 5. Length Balance Check (Allows natural variance, but flags extreme outliers)
-    const lengths = options.map((o) => o.text.trim().length);
     const avgDistractorLength =
       distractors.reduce((acc, d) => acc + d.text.length, 0) / (distractors.length || 1);
 

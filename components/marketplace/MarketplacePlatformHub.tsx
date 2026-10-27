@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { MarketplaceProduct, ProductCategory } from "@/lib/types/marketplace";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  ShoppingBag, Search, Star, Download, Heart, Sparkles, 
-  Tag, Filter, CheckCircle2
+import { MarketplaceProduct } from "@/lib/types/marketplace";
+import {
+Search,
+ShoppingBag,
+Sparkles,
+Star
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockProducts: MarketplaceProduct[] = [
@@ -42,7 +44,7 @@ const mockProducts: MarketplaceProduct[] = [
 ];
 
 export function MarketplacePlatformHub() {
-  const [products, setProducts] = useState<MarketplaceProduct[]>(mockProducts);
+  const [products] = useState<MarketplaceProduct[]>(mockProducts);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 

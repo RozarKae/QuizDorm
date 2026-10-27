@@ -1,48 +1,37 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import {
-  Sparkles,
-  Upload,
-  FileText,
-  CheckCircle2,
-  Trash2,
-  Play,
-  Save,
-  Plus,
-  ArrowRight,
-  Clock,
-  Award,
-  Zap,
-  RotateCcw,
-  FileCheck,
-  AlertCircle,
-  AlertTriangle,
-  X,
-  Download,
-  Layers,
-  Cpu,
-  Check,
-  Edit3,
-  HelpCircle,
-  FileCode,
-  FileSpreadsheet,
-} from "lucide-react";
-import { QuestionItem, QuestionType, DifficultyLevel } from "@/lib/types/question";
-import { QuizItem } from "@/lib/types/quiz";
-import { saveQuiz } from "@/lib/data/quizzes";
-import { importQuestions } from "@/lib/data/question-bank";
-import { resolveTopicsForQuestion } from "@/lib/data/taxonomy";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import {
+Dialog,
+DialogContent,
+DialogDescription,
+DialogTitle
+} from "@/components/ui/dialog";
+import { importQuestions } from "@/lib/data/question-bank";
+import { saveQuiz } from "@/lib/data/quizzes";
+import { resolveTopicsForQuestion } from "@/lib/data/taxonomy";
+import { DifficultyLevel,QuestionItem,QuestionType } from "@/lib/types/question";
+import { QuizItem } from "@/lib/types/quiz";
+import {
+AlertCircle,
+AlertTriangle,
+Check,
+CheckCircle2,
+Cpu,
+Download,
+FileCheck,
+Play,
+Plus,
+RotateCcw,
+Save,
+Sparkles,
+Trash2,
+Upload,
+X,
+Zap
+} from "lucide-react";
+import { useRouter } from "next/navigation";
+import React,{ useEffect,useRef,useState } from "react";
 import { toast } from "sonner";
 
 // Sample document presets for immediate 1-click testing
@@ -324,8 +313,8 @@ export function AIDocumentQuizModal({
       if (data.detectedTopic && !topic) setTopic(data.detectedTopic);
 
       // Format to QuestionItem array
-      const rawQuestions: any[] = data.questions || [];
-      const formatted: QuestionItem[] = rawQuestions.map((q: any, idx: number) => {
+      const rawQuestions: Partial<QuestionItem>[] = data.questions || [];
+      const formatted: QuestionItem[] = rawQuestions.map((q, idx: number) => {
         const itemDifficulty: DifficultyLevel = q.difficulty || difficulty || "Medium";
         const qSubject = q.subject || data.detectedSubject || subject || "General";
         const qTopic = q.topic || data.detectedTopic || topic || "Curriculum Unit";
@@ -353,29 +342,32 @@ export function AIDocumentQuizModal({
           difficulty: itemDifficulty,
           marks: q.marks || (itemDifficulty === "Hard" ? 5 : itemDifficulty === "Medium" ? 4 : 2),
           timeLimitSeconds: q.timeLimitSeconds || 60,
-          options: (q.options || []).map((opt: any, oIdx: number) => ({
+          options: (q.options || []).map((opt, oIdx: number) => ({
             id: opt.id || `opt-${oIdx + 1}`,
             text: opt.text || "",
             isCorrect: Boolean(opt.isCorrect),
           })),
-          matchingPairs: q.matchingPairs?.map((mp: any) => ({
+          matchingPairs: q.matchingPairs?.map((mp) => ({
             id: mp.id || `mp-${Math.random()}`,
             leftItem: mp.leftItem,
             rightItem: mp.rightItem,
           })),
           fillBlanks: q.fillBlanks || [],
           sequenceItems: q.sequenceItems,
-          dragDropCategories: (q.dragDropCategories || []).map((c: any) => ({
+          dragDropCategories: (q.dragDropCategories || []).map((c) => ({
             id: c.id,
-            name: c.name || c.title || c.id,
-            title: c.title || c.name || c.id,
+            name: c.name || (c as { title?: string }).title || c.id,
+            title: (c as { title?: string }).title || c.name || c.id,
           })),
-          dragDropItems: (q.dragDropItems || []).map((item: any) => ({
-            id: item.id,
-            text: item.text,
-            targetCategoryId: item.targetCategoryId || item.categoryId || "",
-            categoryId: item.categoryId || item.targetCategoryId || "",
-          })),
+          dragDropItems: (q.dragDropItems || []).map((item) => {
+            const itemObj = item as { targetCategoryId?: string; categoryId?: string; id: string; text: string };
+            return {
+              id: itemObj.id,
+              text: itemObj.text,
+              targetCategoryId: itemObj.targetCategoryId || itemObj.categoryId || "",
+              categoryId: itemObj.categoryId || itemObj.targetCategoryId || "",
+            };
+          }),
           explanation: q.explanation || "Curriculum-derived solution rationale.",
           hints: q.hints || [],
           tags: qTags,
@@ -400,9 +392,9 @@ export function AIDocumentQuizModal({
       } else {
         toast.success(`Generated and validated ${formatted.length} curriculum questions.`);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       if (timerRef.current) clearInterval(timerRef.current);
-      const msg = err.message || "Failed to generate questions from document";
+      const msg = err instanceof Error ? err.message : "Failed to generate questions from document";
       setGenerationError(msg);
       toast.error(msg);
       setPhase("config");
@@ -1186,7 +1178,7 @@ export function AIDocumentQuizModal({
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono">
                         {question.dragDropCategories.map((cat) => (
                           <div key={cat.id} className="p-2.5 rounded-[4px] bg-[#1D1013] border border-[rgba(240, 160, 180,0.14)] space-y-1.5">
-                            <div className="font-bold text-[#FF4D6D]">{(cat as any).title || cat.name || cat.id}</div>
+                            <div className="font-bold text-[#FF4D6D]">{(cat as { title?: string }).title || cat.name || cat.id}</div>
                             <div className="flex flex-wrap gap-1">
                               {(question.dragDropItems || [])
                                 .filter((i) => i.categoryId === cat.id || i.targetCategoryId === cat.id)

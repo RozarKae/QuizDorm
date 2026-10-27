@@ -1,11 +1,10 @@
-import { describe, it } from "node:test";
 import assert from "node:assert";
 import fs from "node:fs";
 import path from "node:path";
+import { describe,it } from "node:test";
 
 describe("Universal Theme Harmony & Contrast Suite", () => {
   const globalsCssPath = path.join(process.cwd(), "app/globals.css");
-  const faviconSvgPath = path.join(process.cwd(), "public/favicon.svg");
   const logoComponentPath = path.join(process.cwd(), "components/layout/Logo.tsx");
 
   it("Verifies globals.css includes Universal Theme Harmonizer rules", () => {

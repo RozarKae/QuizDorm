@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { SISConnectorManager } from "@/lib/academic-integration/sisManager";
-import { School, Users, CheckCircle2, RefreshCw } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { SISConnectorManager } from "@/lib/academic-integration/sisManager";
+import { RefreshCw,School } from "lucide-react";
 import { toast } from "sonner";
 
 export function SISRosterSyncCard() {

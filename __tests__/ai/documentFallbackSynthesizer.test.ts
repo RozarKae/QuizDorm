@@ -1,8 +1,8 @@
-import test from "node:test";
-import assert from "node:assert";
 import { DocumentFallbackSynthesizer } from "@/lib/ai/server/documentFallbackSynthesizer";
-import { QuestionIntelligenceService } from "@/lib/ai/services/questionIntelligenceService";
 import { IQuestionIntelligenceProvider } from "@/lib/ai/server/IQuestionIntelligenceProvider";
+import { QuestionIntelligenceService } from "@/lib/ai/services/questionIntelligenceService";
+import assert from "node:assert";
+import test from "node:test";
 
 test("DocumentFallbackSynthesizer: synthesizes questions across all supported types from raw text", () => {
   const sampleText = `

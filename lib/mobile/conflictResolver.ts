@@ -1,4 +1,4 @@
-import { SyncConflictItem, ConflictStrategy } from "@/lib/types/mobile";
+import { ConflictStrategy,SyncConflictItem } from "@/lib/types/mobile";
 
 export const DEFAULT_CONFLICTS: SyncConflictItem[] = [
   {
@@ -20,6 +20,7 @@ export class ConflictResolver {
   }
 
   public static resolveConflict(id: string, strategy: ConflictStrategy): SyncConflictItem[] {
+    void strategy;
     const list = this.getConflicts();
     return list.map((c) => (c.id === id ? { ...c, resolved: true } : c));
   }

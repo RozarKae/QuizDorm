@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { CertificateTemplate, CertificateBackgroundStyle } from "@/lib/types/credentials";
-import { CertificateTemplateManager } from "@/lib/credentials/templateManager";
-import { Sliders, Check, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { CertificateBackgroundStyle } from "@/lib/types/credentials";
+import { Sliders } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface TemplateDesignerModalProps {
@@ -47,7 +46,7 @@ export function TemplateDesignerModal({ open, onOpenChange }: TemplateDesignerMo
             <label className="font-bold text-gray-700 dark:text-gray-300 block mb-1">Background Theme & Border Style</label>
             <select
               value={bgStyle}
-              onChange={(e) => setBgStyle(e.target.value as any)}
+              onChange={(e) => setBgStyle(e.target.value as CertificateBackgroundStyle)}
               className="w-full p-2.5 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 font-bold"
             >
               <option value="classic_gold">Classic Gold Foil Academic</option>

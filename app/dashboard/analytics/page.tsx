@@ -1,19 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
 import { AnalyticsKpiGrid } from "@/components/analytics/AnalyticsKpiGrid";
-import { LineChartWidget } from "@/components/analytics/LineChartWidget";
 import { BarChartWidget } from "@/components/analytics/BarChartWidget";
 import { DonutChartWidget } from "@/components/analytics/DonutChartWidget";
-import { WeakTopicsHeatmap } from "@/components/analytics/WeakTopicsHeatmap";
-import { PerformanceInsightsCard } from "@/components/analytics/PerformanceInsightsCard";
 import { ExportReportDialog } from "@/components/analytics/ExportReportDialog";
+import { LineChartWidget } from "@/components/analytics/LineChartWidget";
+import { PerformanceInsightsCard } from "@/components/analytics/PerformanceInsightsCard";
+import { WeakTopicsHeatmap } from "@/components/analytics/WeakTopicsHeatmap";
 import { Button } from "@/components/ui/button";
 import { Select } from "@/components/ui/select";
-import { BarChart3, Download, Sparkles, Users, Trophy } from "lucide-react";
+import { BarChart3,Download } from "lucide-react";
+import { useState } from "react";
+
+type RolePerspective = "SuperAdmin" | "Organization" | "Teacher" | "Student";
 
 export default function AnalyticsHubPage() {
-  const [rolePerspective, setRolePerspective] = useState<"SuperAdmin" | "Organization" | "Teacher" | "Student">("Teacher");
+  const [rolePerspective, setRolePerspective] = useState<RolePerspective>("Teacher");
   const [exportOpen, setExportOpen] = useState(false);
 
   const metricsMap = {
@@ -111,7 +113,7 @@ export default function AnalyticsHubPage() {
           <div className="flex flex-wrap items-center gap-3">
             <Select
               value={rolePerspective}
-              onChange={(e) => setRolePerspective(e.target.value as any)}
+              onChange={(e) => setRolePerspective(e.target.value as RolePerspective)}
               options={[
                 { value: "Teacher", label: "Faculty Mentor Perspective" },
                 { value: "Student", label: "Scholar Perspective" },

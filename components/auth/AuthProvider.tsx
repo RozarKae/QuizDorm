@@ -1,9 +1,9 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
-import { User, Session } from "@supabase/supabase-js";
-import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
-import { UserProfile, UserRole, normalizeCanonicalRole } from "@/lib/types/user";
+import { createClient,isSupabaseConfigured } from "@/lib/supabase/client";
+import { UserProfile,UserRole,normalizeCanonicalRole } from "@/lib/types/user";
+import { Session,User } from "@supabase/supabase-js";
+import { createContext,useContext,useEffect,useState } from "react";
 
 interface AuthContextType {
   user: User | null;
@@ -14,16 +14,6 @@ interface AuthContextType {
   logout: () => Promise<void>;
   updateProfileState: (updated: Partial<UserProfile>) => void;
 }
-
-const defaultProfile: UserProfile = {
-  id: "usr-rk-akbar-01",
-  name: "RK Akbar",
-  email: "rkakbar@quizdorm.edu",
-  role: "subscriber",
-  avatar: "",
-  createdAt: "Jul 16, 2026",
-  updatedAt: "Oct 21, 2026",
-};
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
@@ -205,7 +195,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
         subscription = data.subscription;
       }
     } catch {
-      setIsLoading(false);
+      queueMicrotask(() => setIsLoading(false));
     }
 
     return () => {

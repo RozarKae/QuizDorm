@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { Star, School, Award, Quote } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar,AvatarFallback } from "@/components/ui/avatar";
 import SectionDivider from "@/components/ui/section-divider";
+import { motion } from "framer-motion";
+import { Quote,School,Star } from "lucide-react";
 
 const testimonials = [
   {

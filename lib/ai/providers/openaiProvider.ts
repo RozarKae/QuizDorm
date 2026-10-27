@@ -1,12 +1,12 @@
-import { IAIProvider } from "./provider";
 import {
-  AIProviderType,
-  AIModel,
-  AIRequestPayload,
-  AIResponsePayload,
-  AIStreamChunk,
-  ProviderHealth,
+AIModel,
+AIProviderType,
+AIRequestPayload,
+AIResponsePayload,
+AIStreamChunk,
+ProviderHealth,
 } from "@/lib/types/ai";
+import { IAIProvider } from "./provider";
 
 export class OpenAIProvider implements IAIProvider {
   id: AIProviderType = "openai";
@@ -47,6 +47,7 @@ export class OpenAIProvider implements IAIProvider {
   }
 
   async generateCompletion(payload: AIRequestPayload, apiKey?: string): Promise<AIResponsePayload> {
+    void apiKey;
     const startTime = Date.now();
     const modelId = payload.modelOverride || "gpt-4o";
 
@@ -77,6 +78,7 @@ export class OpenAIProvider implements IAIProvider {
     onChunk: (chunk: AIStreamChunk) => void,
     apiKey?: string
   ): Promise<AIResponsePayload> {
+    void apiKey;
     const startTime = Date.now();
     const modelId = payload.modelOverride || "gpt-4o";
     const requestId = payload.requestId || `req-${Date.now()}`;
@@ -116,6 +118,7 @@ export class OpenAIProvider implements IAIProvider {
   }
 
   async checkHealth(apiKey?: string): Promise<ProviderHealth> {
+    void apiKey;
     return {
       providerId: "openai",
       providerName: "OpenAI (GPT-4o)",

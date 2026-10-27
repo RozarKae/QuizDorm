@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { Terminal, Zap, Loader2, CheckCircle2 } from "lucide-react";
 import { AIResponseMetadata } from "@/lib/types/ai";
+import { CheckCircle2,Loader2,Terminal } from "lucide-react";
 
 interface StreamingViewerProps {
   streamedText: string;

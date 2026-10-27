@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
-import { AIMarketplaceRecommendation } from "@/lib/types/marketplace";
 import { Button } from "@/components/ui/button";
-import { 
-  Sparkles, CheckCircle2, TrendingUp, Lightbulb, ShoppingBag
+import { AIMarketplaceRecommendation } from "@/lib/types/marketplace";
+import {
+ShoppingBag,
+Sparkles
 } from "lucide-react";
 import { toast } from "sonner";
 

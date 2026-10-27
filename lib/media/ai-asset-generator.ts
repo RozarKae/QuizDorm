@@ -1,4 +1,4 @@
-import { MediaAsset, MediaType } from "@/lib/types/media";
+import { MediaAsset,MediaType } from "@/lib/types/media";
 
 export class AIAssetGeneratorService {
   /**

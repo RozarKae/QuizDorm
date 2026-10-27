@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { CreatorProfileManager } from "@/lib/marketplace/creatorManager";
-import { CreatorStorefrontHeader } from "@/components/marketplace/CreatorStorefrontHeader";
 import { CreatorRevenueCard } from "@/components/marketplace/CreatorRevenueCard";
+import { CreatorStorefrontHeader } from "@/components/marketplace/CreatorStorefrontHeader";
 import { ProductPublishWizardModal } from "@/components/marketplace/ProductPublishWizardModal";
+import { CreatorProfileManager } from "@/lib/marketplace/creatorManager";
+import { useState } from "react";
 
-import { Store, Plus, DollarSign, BookOpen, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Plus,Store } from "lucide-react";
 
 export default function CreatorStudioPage() {
   const profile = CreatorProfileManager.getProfile();

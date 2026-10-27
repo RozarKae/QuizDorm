@@ -1,28 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { InstitutionalLicense } from "@/lib/types/marketplace";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Building2, Users, Calculator, CheckCircle2, Sparkles, ShieldCheck
+import {
+Building2,
+Calculator
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
-const mockLicenses: InstitutionalLicense[] = [
-  {
-    licenseId: "lic-101",
-    institutionName: "Metropolitan Institute of Technology",
-    productTitle: "1,000+ Quantum Physics MCQs Site License",
-    seatCount: 500,
-    unitPriceUSD: 20.0,
-    totalPriceUSD: 10000.0,
-    validityMonths: 12,
-  },
-];
-
 export function InstitutionMarketplaceExchange() {
-  const [licenses, setLicenses] = useState<InstitutionalLicense[]>(mockLicenses);
   const [seats, setSeats] = useState(250);
 
   const handleCalculateBulk = () => {

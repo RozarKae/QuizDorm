@@ -1,4 +1,4 @@
-import { Certificate, CertificateCategory } from "@/lib/types/credentials";
+import { Certificate,CertificateCategory } from "@/lib/types/credentials";
 
 const STORAGE_KEY_CERTIFICATES = "quizdorm_issued_certificates";
 

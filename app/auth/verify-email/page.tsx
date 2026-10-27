@@ -1,21 +1,19 @@
 "use client";
 
-import { Suspense, useState, useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
 import AuthCard from "@/components/auth/AuthCard";
 import AuthFooter from "@/components/auth/AuthFooter";
-import { Button } from "@/components/ui/button";
-import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
-import { Input } from "@/components/ui/input";
-import Link from "next/link";
-import { resendVerificationEmail } from "../actions";
-import { toast } from "sonner";
-import { CheckCircle2, Mail, ArrowRight, Sparkles, ShieldCheck, UserCheck } from "lucide-react";
 import { useAuth } from "@/components/auth/AuthProvider";
+import EmailSuggestionInput from "@/components/auth/EmailSuggestionInput";
+import { Button } from "@/components/ui/button";
+import { ArrowRight,CheckCircle2,Mail } from "lucide-react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { Suspense,useEffect,useState } from "react";
+import { toast } from "sonner";
+import { resendVerificationEmail } from "../actions";
 
 function VerifyEmailContent() {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const { user, profile, role } = useAuth();
 
   const isVerifiedParam = searchParams.get("verified") === "true";
@@ -25,17 +23,14 @@ function VerifyEmailContent() {
   const [email, setEmail] = useState(emailParam);
   const [resending, setResending] = useState(false);
   const [countdown, setCountdown] = useState(4);
-  const [isVerified, setIsVerified] = useState(isVerifiedParam);
-
-  // Check if URL hash contains confirmation access token or if user is logged in
-  useEffect(() => {
+  const [isVerified] = useState(() => {
+    if (isVerifiedParam) return true;
     if (typeof window !== "undefined") {
       const hash = window.location.hash;
-      if (hash.includes("access_token") || hash.includes("type=signup") || hash.includes("type=email") || isVerifiedParam) {
-        setIsVerified(true);
-      }
+      return hash.includes("access_token") || hash.includes("type=signup") || hash.includes("type=email");
     }
-  }, [isVerifiedParam]);
+    return false;
+  });
 
   const getWorkspaceUrl = (r: string) => {
     if (r === "admin") return "/admin";

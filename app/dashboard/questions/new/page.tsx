@@ -1,18 +1,20 @@
 "use client";
 
-import React from "react";
+import { AIQuestionGeneratorModal } from "@/components/ai/AIQuestionGeneratorModal";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { QuestionEditor } from "@/components/question-bank/QuestionEditor";
+import { Button } from "@/components/ui/button";
+import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
+import { ArrowLeft,ShieldAlert,Sparkles } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, ShieldAlert } from "lucide-react";
-import { QuestionEditor } from "@/components/question-bank/QuestionEditor";
-import { useAuth } from "@/components/auth/AuthProvider";
-import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
-import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export default function CreateQuestionPage() {
   const router = useRouter();
   const { role } = useAuth();
   const addPermission = GovernanceSettingsManager.canAddQuestions(role);
+  const [aiModalOpen, setAiModalOpen] = useState(false);
 
   if (!addPermission.allowed) {
     return (
@@ -41,14 +43,29 @@ export default function CreateQuestionPage() {
 
   return (
     <div className="space-y-6">
-      <div>
+      <div className="flex items-center justify-between">
         <Link href="/dashboard/questions" className="inline-flex items-center text-xs font-medium text-gray-500 hover:text-gray-900 dark:hover:text-white mb-2">
           <ArrowLeft className="w-3.5 h-3.5 mr-1" /> Back to Question Bank
         </Link>
+        <Button
+          size="sm"
+          onClick={() => setAiModalOpen(true)}
+          className="text-xs font-mono rounded-[4px] bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white font-bold h-8 shadow-[0_0_12px_rgba(245,158,11,0.3)] transition-all"
+        >
+          <Sparkles className="w-3.5 h-3.5 mr-1.5 animate-pulse text-amber-200" /> AI Question Generator
+        </Button>
       </div>
 
       <QuestionEditor
         onSave={() => {
+          router.push("/dashboard/questions");
+        }}
+      />
+
+      <AIQuestionGeneratorModal
+        open={aiModalOpen}
+        onOpenChange={setAiModalOpen}
+        onQuestionsSaved={() => {
           router.push("/dashboard/questions");
         }}
       />

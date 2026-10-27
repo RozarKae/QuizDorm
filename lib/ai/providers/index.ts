@@ -1,9 +1,9 @@
-import { IAIProvider } from "./provider";
-import { GeminiProvider } from "./geminiProvider";
-import { OpenAIProvider } from "./openaiProvider";
-import { AnthropicProvider } from "./anthropicProvider";
-import { MockAIProvider } from "./mockProvider";
 import { AIProviderType } from "@/lib/types/ai";
+import { AnthropicProvider } from "./anthropicProvider";
+import { GeminiProvider } from "./geminiProvider";
+import { MockAIProvider } from "./mockProvider";
+import { OpenAIProvider } from "./openaiProvider";
+import { IAIProvider } from "./provider";
 
 const providerRegistry: Record<string, IAIProvider> = {
   gemini: new GeminiProvider(),

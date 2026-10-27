@@ -1,7 +1,6 @@
+import { DifficultyLevel,QuestionItem } from "@/lib/types/question";
 import { QuizItem } from "@/lib/types/quiz";
-import { QuestionItem, DifficultyLevel } from "@/lib/types/question";
-import { ALL_DEFAULT_QUESTIONS, getStoredQuestions } from "./question-bank";
-import { doesQuestionMatchTopic } from "./taxonomy";
+import { ALL_DEFAULT_QUESTIONS,getStoredQuestions } from "./question-bank";
 
 export const STORAGE_KEY_QUIZZES = "quizdorm_quizzes_v2";
 

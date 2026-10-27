@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { cn } from "@/lib/utils";
 
 interface SectionDividerProps {
@@ -14,6 +13,7 @@ export default function SectionDivider({
   className,
   label,
 }: SectionDividerProps) {
+  void variant;
   return (
     <div className={cn("relative py-12 flex items-center justify-center max-w-7xl mx-auto px-4", className)}>
       <div className="w-full h-px bg-border" />

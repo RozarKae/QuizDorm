@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
-import { CertificationAnalyticsData } from "@/lib/types/certifications";
 import { Button } from "@/components/ui/button";
-import { 
-  BarChart3, TrendingUp, Award, Download, CheckCircle2, Building2
+import { CertificationAnalyticsData } from "@/lib/types/certifications";
+import {
+BarChart3,
+Download,
+TrendingUp
 } from "lucide-react";
 import { toast } from "sonner";
 

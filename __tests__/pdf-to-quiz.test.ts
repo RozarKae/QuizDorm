@@ -1,24 +1,24 @@
-import test from "node:test";
 import assert from "node:assert/strict";
+import test from "node:test";
 
 // Schemas & Types
 import {
-  GeneratedQuestionSchema,
-  BatchGeneratedQuestionsSchema,
-  PdfQuestionGenerationInputSchema,
+BatchGeneratedQuestionsSchema,
+GeneratedQuestion,
+GeneratedQuestionSchema,
+PdfQuestionGenerationInputSchema,
 } from "../lib/ai/schemas/questionGenerationSchema";
 
 // Validation Engine
 import { QuestionIntelligenceValidator } from "../lib/quality/questionIntelligenceValidator";
 
 // OCR Engine & File Validation
-import { OCREngineService } from "../lib/ocr/engine";
 import { DocumentFallbackSynthesizer } from "../lib/ai/server/documentFallbackSynthesizer";
+import { OCREngineService } from "../lib/ocr/engine";
 
 // Question Bank Persistence & Deduplication
-import { importQuestions, getAllQuestions } from "../lib/data/question-bank";
+import { getAllQuestions,importQuestions } from "../lib/data/question-bank";
 import { QuestionItem } from "../lib/types/question";
-import { ExtractedQuestion } from "../lib/types/ocr";
 
 /**
  * Suite 1: PDF Document Server & Client File Validation
@@ -419,7 +419,7 @@ test("Fill-in-the-Blank: Schema validation, normalization, and scoring", () => {
   assert.equal(parsed.success, true, "Valid fill_in_the_blank must pass schema");
 
   // 2. Quality Gate
-  const valResult = QuestionIntelligenceValidator.validate(validFibPayload as any);
+  const valResult = QuestionIntelligenceValidator.validate(validFibPayload as GeneratedQuestion);
   assert.equal(valResult.isValid, true, "Valid fill_in_the_blank must pass pedagogical validator");
   assert.equal(valResult.recommendedStatus, "approved");
 
@@ -479,7 +479,7 @@ test("Match Following: Schema validation, ambiguity rejection, and pair scoring"
   assert.equal(parsed.success, true, "Valid match_following must pass schema");
 
   // 2. Quality Gate
-  const valResult = QuestionIntelligenceValidator.validate(validMatchingPayload as any);
+  const valResult = QuestionIntelligenceValidator.validate(validMatchingPayload as GeneratedQuestion);
   assert.equal(valResult.isValid, true, "Valid match_following must pass quality gate");
   assert.equal(valResult.recommendedStatus, "approved");
 

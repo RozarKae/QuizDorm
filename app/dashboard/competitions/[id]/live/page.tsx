@@ -1,18 +1,19 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from "react";
-import Link from "next/link";
-import { useParams, useSearchParams } from "next/navigation";
-import { useLiveArena } from "@/lib/hooks/useLiveArena";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { AnimatedLeaderboard } from "@/components/competitions/AnimatedLeaderboard";
 import { CompetitionLobby } from "@/components/competitions/CompetitionLobby";
 import { HostControlPanel } from "@/components/competitions/HostControlPanel";
-import { LiveQuestionSession } from "@/components/competitions/LiveQuestionSession";
-import { AnimatedLeaderboard } from "@/components/competitions/AnimatedLeaderboard";
-import { WinnerPodiumScreen } from "@/components/competitions/WinnerPodiumScreen";
 import { LiveAnalyticsCard } from "@/components/competitions/LiveAnalyticsCard";
+import { LiveQuestionSession } from "@/components/competitions/LiveQuestionSession";
+import { WinnerPodiumScreen } from "@/components/competitions/WinnerPodiumScreen";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Monitor, User, AlertCircle, RefreshCw } from "lucide-react";
-import { useAuth } from "@/components/auth/AuthProvider";
+import { useLiveArena } from "@/lib/hooks/useLiveArena";
+import { CompetitionStatus } from "@/lib/types/competition";
+import { AlertCircle,ArrowLeft,Monitor,RefreshCw,User } from "lucide-react";
+import Link from "next/link";
+import { useParams,useSearchParams } from "next/navigation";
+import { Suspense,useEffect,useState } from "react";
 
 function LiveArenaContent() {
   const routeParams = useParams();
@@ -31,7 +32,6 @@ function LiveArenaContent() {
   const {
     session,
     stage,
-    status,
     currentQIndex,
     currentQuestion,
     totalQuestions,
@@ -44,7 +44,6 @@ function LiveArenaContent() {
     submissionsCount,
     connectedSystemsCount,
     submissionDistribution,
-    recentActivityFeed,
     isLoading,
     connectionError,
     currentParticipant,
@@ -116,7 +115,7 @@ function LiveArenaContent() {
     code: session?.code || codeParam,
     hostId: "usr-1",
     hostName: session?.hostName || "TN & Kerala Science Olympiad Council",
-    status: (session?.status === "WAITING" ? "Lobby" : session?.status === "ACTIVE" ? "Live" : "Ended") as any,
+    status: (session?.status === "WAITING" ? "Lobby" : session?.status === "ACTIVE" ? "Live" : "Ended") as CompetitionStatus,
     startDate: "Today",
     startTime: "Live Now",
     durationMinutes: session?.settings?.durationMinutes || 45,

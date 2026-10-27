@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { AICertificationRoadmap } from "@/lib/types/certifications";
 import { Button } from "@/components/ui/button";
-import { 
-  Sparkles, CheckCircle2, Target, Calendar, Lightbulb, RefreshCw
+import { AICertificationRoadmap } from "@/lib/types/certifications";
+import {
+RefreshCw,
+Sparkles,
+Target
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockRoadmap: AICertificationRoadmap = {
@@ -20,7 +22,7 @@ const mockRoadmap: AICertificationRoadmap = {
 };
 
 export function AICertificationAssistantHub() {
-  const [roadmap, setRoadmap] = useState<AICertificationRoadmap>(mockRoadmap);
+  const [roadmap] = useState<AICertificationRoadmap>(mockRoadmap);
 
   const handleGenerateRoadmap = () => {
     toast.success("AI generated personalized 30-day certification study plan!");
@@ -48,7 +50,7 @@ export function AICertificationAssistantHub() {
       {/* Recommended Certification Path Cards */}
       <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
         <h3 className="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-2">
-          <Target className="w-4 h-4 text-purple-600" /> Recommended Certification Path for "{roadmap.targetRole}"
+          <Target className="w-4 h-4 text-purple-600" /> Recommended Certification Path for &ldquo;{roadmap.targetRole}&rdquo;
         </h3>
 
         <div className="space-y-3">

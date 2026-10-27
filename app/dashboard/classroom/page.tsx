@@ -1,20 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
+import { AIClassroomAssistantPanel } from "@/components/classroom/AIClassroomAssistantPanel";
+import { AssignmentHomeworkCenter } from "@/components/classroom/AssignmentHomeworkCenter";
+import { AttendanceAutomationSystem } from "@/components/classroom/AttendanceAutomationSystem";
+import { ClassroomAnalyticsDashboard } from "@/components/classroom/ClassroomAnalyticsDashboard";
+import { ClassroomCollaborationHub } from "@/components/classroom/ClassroomCollaborationHub";
 import { ClassroomManagementHub } from "@/components/classroom/ClassroomManagementHub";
+import { ClassroomResourceLibrary } from "@/components/classroom/ClassroomResourceLibrary";
+import { HybridLearningConsole } from "@/components/classroom/HybridLearningConsole";
 import { LiveTeachingStudio } from "@/components/classroom/LiveTeachingStudio";
 import { SmartWhiteboardStudio } from "@/components/classroom/SmartWhiteboardStudio";
-import { AttendanceAutomationSystem } from "@/components/classroom/AttendanceAutomationSystem";
-import { AssignmentHomeworkCenter } from "@/components/classroom/AssignmentHomeworkCenter";
-import { ClassroomCollaborationHub } from "@/components/classroom/ClassroomCollaborationHub";
-import { ClassroomResourceLibrary } from "@/components/classroom/ClassroomResourceLibrary";
-import { AIClassroomAssistantPanel } from "@/components/classroom/AIClassroomAssistantPanel";
-import { ClassroomAnalyticsDashboard } from "@/components/classroom/ClassroomAnalyticsDashboard";
-import { HybridLearningConsole } from "@/components/classroom/HybridLearningConsole";
-import { 
-  School, Video, PenTool, UserCheck, FileText, MessageSquare, 
-  Folder, Sparkles, BarChart3, Cast, GraduationCap
+import {
+BarChart3,Cast,
+FileText,
+Folder,
+GraduationCap,
+MessageSquare,
+PenTool,
+School,
+Sparkles,
+UserCheck,
+Video
 } from "lucide-react";
+import React,{ useState } from "react";
 
 export type DigitalClassroomModuleTab = 
   | "management" 

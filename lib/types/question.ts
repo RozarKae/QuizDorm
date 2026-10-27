@@ -1,12 +1,12 @@
 import {
-  HotspotRegion,
-  DragDropCategory,
-  DragDropItem,
-  DiagramLabelPin,
-  TimelineEventItem,
-  VideoTimestampMarker,
-  CodeQuestionData,
-  InteractiveMapRegion,
+CodeQuestionData,
+DiagramLabelPin,
+DragDropCategory,
+DragDropItem,
+HotspotRegion,
+InteractiveMapRegion,
+TimelineEventItem,
+VideoTimestampMarker,
 } from "./media";
 
 export type QuestionType =

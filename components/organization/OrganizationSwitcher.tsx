@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { useOrganization } from "./OrganizationContext";
-import { School, ChevronDown, Check, Plus, Building2 } from "lucide-react";
+import { Check,ChevronDown,Plus } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import { useOrganization } from "./OrganizationContext";
 
 export function OrganizationSwitcher() {
   const { activeOrg, organizations, switchOrganization } = useOrganization();

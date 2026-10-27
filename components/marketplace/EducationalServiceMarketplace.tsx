@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { EducationalService } from "@/lib/types/marketplace";
 import { Button } from "@/components/ui/button";
-import { 
-  Users, Calendar, Clock, Star, CheckCircle2, Sparkles, MessageSquare
+import { EducationalService } from "@/lib/types/marketplace";
+import {
+Calendar,
+Star,
+Users
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockServices: EducationalService[] = [
@@ -14,7 +16,7 @@ const mockServices: EducationalService[] = [
 ];
 
 export function EducationalServiceMarketplace() {
-  const [services, setServices] = useState<EducationalService[]>(mockServices);
+  const [services] = useState<EducationalService[]>(mockServices);
 
   const handleBookService = (title: string) => {
     toast.success(`Booked consultation session for "${title}"!`);

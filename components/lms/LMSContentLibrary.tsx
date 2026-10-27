@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { LMSContentResource } from "@/lib/types/lms";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Folder, FileText, Video, Music, File, Download, Upload, 
-  Search, Tag, Cloud, ExternalLink
+import { LMSContentResource } from "@/lib/types/lms";
+import {
+Download,
+Folder,
+Search,
+Upload
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockContent: LMSContentResource[] = [

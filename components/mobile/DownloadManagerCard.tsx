@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { OfflineEngine } from "@/lib/mobile/offlineEngine";
-import { DownloadManager } from "@/lib/mobile/downloadManager";
-import { OfflineQuizBundle } from "@/lib/types/mobile";
-import { Download, CheckCircle2, RefreshCw, HardDrive } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DownloadManager } from "@/lib/mobile/downloadManager";
+import { OfflineEngine } from "@/lib/mobile/offlineEngine";
+import { OfflineQuizBundle } from "@/lib/types/mobile";
+import { CheckCircle2,Download,HardDrive } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function DownloadManagerCard() {

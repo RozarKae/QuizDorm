@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
-import { CurriculumExchangeEngine } from "@/lib/global-network/curriculumExchange";
 import { CurriculumPackageCard } from "@/components/global-network/CurriculumPackageCard";
 import { FederatedCloudCard } from "@/components/global-network/FederatedCloudCard";
+import { CurriculumExchangeEngine } from "@/lib/global-network/curriculumExchange";
 
-import { Share2, Globe, Server, CheckCircle2 } from "lucide-react";
+import { Share2 } from "lucide-react";
 
 export default function CurriculumExchangePage() {
   const packages = CurriculumExchangeEngine.getPackages();

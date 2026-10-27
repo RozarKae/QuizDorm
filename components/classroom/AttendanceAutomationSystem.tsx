@@ -1,13 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
-import { AttendanceRecord, AttendanceMethod } from "@/lib/types/classroom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  UserCheck, QrCode, Key, MapPin, Scan, Download, CheckCircle2, 
-  XCircle, Clock, AlertTriangle, RefreshCw, Sparkles, Filter, Search
+import { AttendanceMethod,AttendanceRecord } from "@/lib/types/classroom";
+import {
+CheckCircle2,
+Clock,
+Download,
+Key,MapPin,
+QrCode,
+RefreshCw,
+Scan,
+Search,
+UserCheck,
+XCircle
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockAttendanceRecords: AttendanceRecord[] = [
@@ -85,7 +93,6 @@ export function AttendanceAutomationSystem() {
   const presentCount = records.filter((r) => r.status === "Present").length;
   const lateCount = records.filter((r) => r.status === "Late").length;
   const absentCount = records.filter((r) => r.status === "Absent").length;
-  const excusedCount = records.filter((r) => r.status === "Excused").length;
   const attendancePercentage = Math.round(((presentCount + lateCount) / total) * 100);
 
   return (

@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
-import { StudentLearningProfile } from "@/lib/types/lms";
 import { Button } from "@/components/ui/button";
-import { 
-  Flame, Award, Clock, BookOpen, Sparkles, TrendingUp, 
-  AlertTriangle, CheckCircle2, Target
+import { StudentLearningProfile } from "@/lib/types/lms";
+import {
+Award,
+CheckCircle2,
+Flame,
+Sparkles
 } from "lucide-react";
 import { toast } from "sonner";
 

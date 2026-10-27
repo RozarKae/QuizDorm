@@ -1,30 +1,20 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import {
-  Users,
-  Search,
-  Filter,
-  CreditCard,
-  Sparkles,
-  Trophy,
-  Award,
-  CheckCircle2,
-  Clock,
-  UserX,
-  UserCheck,
-  RefreshCw,
-  Plus,
-  ShieldAlert,
-  ArrowLeft,
-  ChevronRight,
-  Flame,
-  Zap,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+ArrowLeft,
+Flame,
+RefreshCw,
+Search,
+Sparkles,
+Trophy,
+UserCheck,
+Users,
+UserX
+} from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 import { toast } from "sonner";
-import { AdminUser, AdminUserManager } from "@/lib/admin/userManager";
 
 interface ScholarSubscriber {
   id: string;

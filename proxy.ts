@@ -7,29 +7,54 @@ export async function proxy(request: NextRequest) {
     request,
   });
 
+  const createRedirect = (url: URL | string, status = 307) => {
+    const res = NextResponse.redirect(url, status);
+    supabaseResponse.cookies.getAll().forEach((c) => {
+      res.cookies.set(c);
+    });
+    return res;
+  };
+
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   let user = null;
 
-  // 1. Check for active demo test session first (strictly verified via HMAC-SHA256 signature)
+  // 1. Check for active demo test session (strictly permitted only in non-production environments)
+  const isProduction = process.env.NODE_ENV === "production";
+  const allowDemoAuth = !isProduction && process.env.ALLOW_DEMO_ACCOUNTS !== "false";
+
   const demoCookie = request.cookies.get("quizdorm_demo_session")?.value;
   if (demoCookie) {
-    try {
-      const verified = await verifySessionPayload<any>(demoCookie);
-      if (verified && verified.id && verified.user_metadata?.role) {
-        user = verified;
-      } else {
-        // Tampered, forged, or invalid signature - obliterate cookie
-        supabaseResponse.cookies.delete("quizdorm_demo_session");
-        supabaseResponse.cookies.set("quizdorm_demo_session", "", {
-          path: "/",
-          maxAge: 0,
-          expires: new Date(0),
-        });
+    if (!allowDemoAuth) {
+      // In production, demo session cookies are strictly unauthorized
+      supabaseResponse.cookies.delete("quizdorm_demo_session");
+      supabaseResponse.cookies.set("quizdorm_demo_session", "", {
+        path: "/",
+        maxAge: 0,
+        expires: new Date(0),
+      });
+      user = null;
+    } else {
+      try {
+        const verified = await verifySessionPayload<{
+          id?: string;
+          user_metadata?: { role?: string };
+        }>(demoCookie);
+        if (verified && verified.id && verified.user_metadata?.role) {
+          user = verified;
+        } else {
+          // Tampered, forged, or invalid signature - obliterate cookie
+          supabaseResponse.cookies.delete("quizdorm_demo_session");
+          supabaseResponse.cookies.set("quizdorm_demo_session", "", {
+            path: "/",
+            maxAge: 0,
+            expires: new Date(0),
+          });
+        }
+      } catch {
+        // Ignore
       }
-    } catch {
-      // Ignore
     }
   }
 
@@ -221,11 +246,11 @@ export async function proxy(request: NextRequest) {
         // Administrative path -> redirect directly to Sovereign Admin Gateway
         const adminLoginUrl = new URL("/admin/login", request.url);
         adminLoginUrl.searchParams.set("redirectedFrom", pathname);
-        return NextResponse.redirect(adminLoginUrl);
+        return createRedirect(adminLoginUrl);
       }
       const loginUrl = new URL("/auth/login", request.url);
       loginUrl.searchParams.set("redirectedFrom", pathname);
-      return NextResponse.redirect(loginUrl);
+      return createRedirect(loginUrl);
     }
   }
 

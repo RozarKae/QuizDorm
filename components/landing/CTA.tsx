@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { ArrowRight,Sparkles,Trophy } from "lucide-react";
+import Link from "next/link";
 
 export default function CTA() {
   return (
@@ -26,7 +25,7 @@ export default function CTA() {
                 THE COGNITIVE DORMITORY
               </span>
               <span className="font-mono text-[11px] text-slate-500 dark:text-[#A0AEA5]">
-                // UNIVERSAL QUIZ HABITAT
+                {"// UNIVERSAL QUIZ HABITAT"}
               </span>
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-[#F2F7F3] leading-tight">

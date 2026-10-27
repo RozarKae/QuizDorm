@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { Settings, Moon, Sun, Bell, Shield, Sliders, LogOut, Volume2, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Select } from "@/components/ui/select";
-import ThemeToggle from "@/components/layout/ThemeToggle";
-import { useAuth } from "@/components/auth/AuthProvider";
 import { signOutUser } from "@/app/auth/actions";
-import { toast } from "sonner";
 import { useSound } from "@/components/audio/useSound";
+import { useAuth } from "@/components/auth/AuthProvider";
+import ThemeToggle from "@/components/layout/ThemeToggle";
+import { Button } from "@/components/ui/button";
+import { Select } from "@/components/ui/select";
+import { Tabs,TabsContent,TabsList,TabsTrigger } from "@/components/ui/tabs";
+import { Bell,LogOut,Play,Settings,Shield,Sliders,Sun,Volume2 } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function SettingsPage() {
   const [emailNotifications, setEmailNotifications] = useState(true);

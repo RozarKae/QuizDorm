@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { DeveloperAPIRoute } from "@/lib/types/cloud-ops";
 import { Button } from "@/components/ui/button";
-import { 
-  Code2, Terminal, CheckCircle2, Globe, Send, Sparkles
+import { DeveloperAPIRoute } from "@/lib/types/cloud-ops";
+import {
+Code2,
+Send
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockAPIs: DeveloperAPIRoute[] = [
@@ -15,7 +16,7 @@ const mockAPIs: DeveloperAPIRoute[] = [
 ];
 
 export function GlobalIntegrationsPlatform() {
-  const [apis, setApis] = useState<DeveloperAPIRoute[]>(mockAPIs);
+  const [apis] = useState<DeveloperAPIRoute[]>(mockAPIs);
 
   const handleTestEndpoint = (ep: string) => {
     toast.success(`API Gateway test call to '${ep}' returned HTTP 200 OK (14ms)!`);

@@ -13,7 +13,7 @@ export interface QuizAttempt {
   submittedAt?: string;
   timeTakenSeconds: number;
   durationMinutes: number;
-  answers: Record<string, any>; // questionId -> answer
+  answers: Record<string, unknown>; // questionId -> answer
   markedForReview: string[]; // questionIds
   score: number;
   totalMarks: number;

@@ -1,48 +1,47 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
-import Link from "next/link";
-import { QuestionItem, QuestionType, DifficultyLevel } from "@/lib/types/question";
-import { QuestionCard } from "@/components/question-bank/QuestionCard";
+import { AIQuestionGeneratorModal } from "@/components/ai/AIQuestionGeneratorModal";
+import { useAuth } from "@/components/auth/AuthProvider";
 import { BulkActionToolbar } from "@/components/question-bank/BulkActionToolbar";
-import { ImportDialog } from "@/components/question-bank/ImportDialog";
-import { ExportDialog } from "@/components/question-bank/ExportDialog";
 import { CategoryManagerModal } from "@/components/question-bank/CategoryManagerModal";
+import { ExportDialog } from "@/components/question-bank/ExportDialog";
+import { ImportDialog } from "@/components/question-bank/ImportDialog";
+import { QuestionCard } from "@/components/question-bank/QuestionCard";
 import { QuestionTypeBadge } from "@/components/question-bank/QuestionTypeBadge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
-import { Pagination } from "@/components/ui/pagination";
 import { EmptyState } from "@/components/ui/empty-state";
-import { Badge } from "@/components/ui/badge";
-import { useAuth } from "@/components/auth/AuthProvider";
+import { Input } from "@/components/ui/input";
+import { Pagination } from "@/components/ui/pagination";
+import { deleteQuestionAction, getQuestionsAction } from "@/app/dashboard/quizzes/actions";
+import { Select } from "@/components/ui/select";
 import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
 import {
-  getStoredQuestions,
-  saveStoredQuestions,
-  deleteQuestion,
-  getAllTopics,
-  getAllGradeLevels,
-  getAllSubjects,
+deleteQuestion,
+getAllGradeLevels,
+getAllSubjects,
+getAllTopics,
+getStoredQuestions,
+saveStoredQuestions,
 } from "@/lib/data/question-bank";
 import { doesQuestionMatchTopic } from "@/lib/data/taxonomy";
+import { DifficultyLevel,QuestionItem } from "@/lib/types/question";
 import {
-  Plus,
-  Search,
-  LayoutGrid,
-  List,
-  Upload,
-  Download,
-  BookOpen,
-  Trash2,
-  Edit,
-  Database,
-  ScanText,
-  Layers,
-  Filter,
-  GraduationCap,
-  Sparkles,
+BookOpen,
+Database,
+Download,
+Edit,
+Layers,
+LayoutGrid,
+List,
+Plus,
+ScanText,
+Search,
+Sparkles,
+Trash2,
+Upload
 } from "lucide-react";
+import Link from "next/link";
+import { useCallback,useEffect,useMemo,useState } from "react";
 import { toast } from "sonner";
 
 const PAGE_SIZE = 24;
@@ -51,8 +50,8 @@ export default function QuestionBankPage() {
   const { role } = useAuth();
   const addPermission = GovernanceSettingsManager.canAddQuestions(role);
 
-  const [questions, setQuestions] = useState<QuestionItem[]>([]);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [questions, setQuestions] = useState<QuestionItem[]>(() => getStoredQuestions());
+  const [isLoaded, setIsLoaded] = useState(true);
   const [viewMode, setViewMode] = useState<"grid" | "table">("grid");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTopic, setSelectedTopic] = useState("All");
@@ -67,17 +66,31 @@ export default function QuestionBankPage() {
   const [importOpen, setImportOpen] = useState(false);
   const [exportOpen, setExportOpen] = useState(false);
   const [categoryOpen, setCategoryOpen] = useState(false);
+  const [aiModalOpen, setAiModalOpen] = useState(false);
 
   // Sync with persistent question bank
-  const reloadQuestions = () => {
+  const reloadQuestions = useCallback(async () => {
     const list = getStoredQuestions();
+    try {
+      const dbRes = await getQuestionsAction();
+      if (dbRes?.data && dbRes.data.length > 0) {
+        const dbIds = new Set(dbRes.data.map((q) => q.id));
+        const combined = [...dbRes.data, ...list.filter((q) => !dbIds.has(q.id))];
+        setQuestions(combined);
+        setIsLoaded(true);
+        return;
+      }
+    } catch {
+      // Local fallback
+    }
     setQuestions(list);
     setIsLoaded(true);
-  };
+  }, []);
 
   useEffect(() => {
-    reloadQuestions();
-
+    queueMicrotask(() => {
+      reloadQuestions();
+    });
     const handleUpdate = () => {
       reloadQuestions();
     };
@@ -86,19 +99,19 @@ export default function QuestionBankPage() {
     return () => {
       window.removeEventListener("quizdorm:questions-updated", handleUpdate);
     };
-  }, []);
+  }, [reloadQuestions]);
 
   const topicsList = useMemo(() => {
     return getAllTopics();
-  }, [questions]);
+  }, []);
 
   const gradesList = useMemo(() => {
     return getAllGradeLevels();
-  }, [questions]);
+  }, []);
 
   const subjectsList = useMemo(() => {
     return getAllSubjects();
-  }, [questions]);
+  }, []);
 
   // Topic pill options (top 10 most frequent + All)
   const topTopics = useMemo(() => {
@@ -146,8 +159,10 @@ export default function QuestionBankPage() {
 
   // Reset page on filter changes
   useEffect(() => {
-    setCurrentPage(1);
-    setSelectedIds([]);
+    queueMicrotask(() => {
+      setCurrentPage(1);
+      setSelectedIds([]);
+    });
   }, [searchTerm, selectedTopic, selectedGrade, selectedSubject, selectedDifficulty, selectedType]);
 
   const totalPages = Math.max(1, Math.ceil(filteredQuestions.length / PAGE_SIZE));
@@ -168,7 +183,20 @@ export default function QuestionBankPage() {
     }
   };
 
-  const handleDeleteOne = (id: string) => {
+  const handleDeleteOne = async (id: string) => {
+    const isDbRecord = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+    if (isDbRecord) {
+      try {
+        const res = await deleteQuestionAction(id);
+        if (res.error) {
+          toast.error(`Database deletion error: ${res.error}`);
+          return;
+        }
+      } catch (err: unknown) {
+        toast.error(err instanceof Error ? err.message : "Failed to delete question from database");
+        return;
+      }
+    }
     deleteQuestion(id);
     setQuestions((prev) => prev.filter((item) => item.id !== id));
     toast.success("Question deleted from question bank");
@@ -223,6 +251,13 @@ export default function QuestionBankPage() {
         <div className="flex flex-wrap items-center gap-2">
           {addPermission.allowed ? (
             <>
+              <Button
+                size="sm"
+                onClick={() => setAiModalOpen(true)}
+                className="text-xs font-mono rounded-[4px] bg-gradient-to-r from-amber-500 to-indigo-600 hover:from-amber-400 hover:to-indigo-500 text-white font-bold h-8 shadow-[0_0_12px_rgba(245,158,11,0.3)] transition-all"
+              >
+                <Sparkles className="w-3.5 h-3.5 mr-1.5 animate-pulse text-amber-200" /> AI Question Generator
+              </Button>
               <Link href="/dashboard/ocr">
                 <Button size="sm" variant="outline" className="text-xs font-mono border-[rgba(240, 160, 180,0.18)] rounded-[4px] bg-[#1D1013] text-[#F2F7F3] hover:text-[#FF4D6D] hover:bg-[#2A141A] h-8 transition-colors">
                   <ScanText className="w-3.5 h-3.5 mr-1.5 text-[#FF758F]" /> AI OCR Digitizer
@@ -591,6 +626,7 @@ export default function QuestionBankPage() {
       <ImportDialog open={importOpen} onOpenChange={setImportOpen} />
       <ExportDialog open={exportOpen} onOpenChange={setExportOpen} count={selectedIds.length || filteredQuestions.length} />
       <CategoryManagerModal open={categoryOpen} onOpenChange={setCategoryOpen} />
+      <AIQuestionGeneratorModal open={aiModalOpen} onOpenChange={setAiModalOpen} />
     </div>
   );
 }

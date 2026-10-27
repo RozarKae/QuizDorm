@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { DeviceManager } from "@/lib/mobile/deviceManager";
 import { MobileDevice } from "@/lib/types/mobile";
-import { Smartphone, Tablet, ShieldCheck, Fingerprint, Lock } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Fingerprint,Smartphone,Tablet } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function DeviceManagerCard() {

@@ -1,26 +1,22 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { UserSubscription, SubscriptionPlanId } from "@/lib/types/billing";
-import { SubscriptionManager } from "@/lib/billing/subscriptionManager";
-import { SubscriptionCard } from "@/components/billing/SubscriptionCard";
 import { AICreditTrackerCard } from "@/components/billing/AICreditTrackerCard";
-import { PricingTable } from "@/components/billing/PricingTable";
 import { PaymentHistoryTable } from "@/components/billing/PaymentHistoryTable";
+import { PricingTable } from "@/components/billing/PricingTable";
+import { SubscriptionCard } from "@/components/billing/SubscriptionCard";
 import { CouponManager } from "@/lib/billing/couponManager";
+import { SubscriptionManager } from "@/lib/billing/subscriptionManager";
+import { UserSubscription } from "@/lib/types/billing";
+import { useState } from "react";
 
-import { CreditCard, Sparkles, Tag, ShieldCheck, ArrowRight, Zap, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { CreditCard } from "lucide-react";
 import { toast } from "sonner";
 
 export default function BillingDashboardPage() {
-  const [subscription, setSubscription] = useState<UserSubscription>(SubscriptionManager.getSubscription());
+  const [subscription] = useState<UserSubscription>(() => SubscriptionManager.getSubscription());
   const [couponCode, setCouponCode] = useState("");
-
-  useEffect(() => {
-    setSubscription(SubscriptionManager.getSubscription());
-  }, []);
 
   const handleApplyCoupon = () => {
     if (!couponCode.trim()) return;

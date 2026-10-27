@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { MockCommunicationProvider } from "@/lib/communication/providers/mockCommunicationProviders";
-import { ChannelType } from "@/lib/types/communication";
-import { Send, Mail, MessageSquare, PhoneCall, Bell, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { MockCommunicationProvider } from "@/lib/communication/providers/mockCommunicationProviders";
+import { ChannelType } from "@/lib/types/communication";
+import { Bell,Mail,MessageSquare,PhoneCall,Send } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface MessageComposerModalProps {
@@ -84,12 +84,12 @@ export function MessageComposerModal({ open, onOpenChange }: MessageComposerModa
                 { id: "sms", label: "SMS (Twilio)", icon: <MessageSquare className="w-3.5 h-3.5" /> },
                 { id: "whatsapp", label: "WhatsApp", icon: <PhoneCall className="w-3.5 h-3.5" /> },
               ].map((c) => {
-                const isSel = selectedChannels.includes(c.id as any);
+                const isSel = selectedChannels.includes(c.id as ChannelType);
                 return (
                   <button
                     key={c.id}
                     type="button"
-                    onClick={() => toggleChannel(c.id as any)}
+                    onClick={() => toggleChannel(c.id as ChannelType)}
                     className={`p-2.5 rounded-xl border text-xs font-bold flex items-center justify-center space-x-1 transition-all ${
                       isSel
                         ? "border-indigo-600 bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300"

@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { SyncStatusWidget } from "@/components/mobile/SyncStatusWidget";
 import { ConflictResolverModal } from "@/components/mobile/ConflictResolverModal";
-import { RefreshCw, GitCompare, HardDrive, ShieldCheck, CheckCircle2 } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { SyncStatusWidget } from "@/components/mobile/SyncStatusWidget";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { GitCompare,HardDrive,RefreshCw } from "lucide-react";
+import { useState } from "react";
 
 export default function OfflineSyncPage() {
   const [conflictModalOpen, setConflictModalOpen] = useState(false);

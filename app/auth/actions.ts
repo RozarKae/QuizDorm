@@ -1,12 +1,12 @@
 "use server";
 
-import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
-import { cookies, headers } from "next/headers";
+import { signSessionPayload,verifySessionPayload } from "@/lib/security/cookieSigner";
+import { createClient,isSupabaseConfigured } from "@/lib/supabase/server";
+import { cookies,headers } from "next/headers";
 import { z } from "zod";
-import { signSessionPayload, verifySessionPayload } from "@/lib/security/cookieSigner";
+import { TEST_ACCOUNTS } from "./constants";
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
-import { TEST_ACCOUNTS } from "./constants";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address format"),
@@ -41,6 +41,17 @@ const signupSchema = z
     path: ["confirmPassword"],
   });
 
+/**
+ * Determines whether demo account authentication bypass is permitted.
+ * Strictly prohibited in production environments.
+ */
+export async function isDemoAuthAllowed(): Promise<boolean> {
+  if (process.env.NODE_ENV === "production") {
+    return false;
+  }
+  return process.env.ALLOW_DEMO_ACCOUNTS !== "false";
+}
+
 export async function signInWithEmail(formData: FormData) {
   const email = (formData.get("email") as string)?.trim().toLowerCase();
   const password = formData.get("password") as string;
@@ -50,10 +61,13 @@ export async function signInWithEmail(formData: FormData) {
     return { error: result.error.issues[0].message };
   }
 
-  // Check if credentials match any of the test accounts
-  const testAccount = Object.values(TEST_ACCOUNTS).find(
-    (acc) => acc.email.toLowerCase() === email
-  );
+  // Check if credentials match any of the test accounts (development environment only)
+  const allowDemo = await isDemoAuthAllowed();
+  const testAccount = allowDemo
+    ? Object.values(TEST_ACCOUNTS).find(
+        (acc) => acc.email.toLowerCase() === email
+      )
+    : undefined;
 
   if (testAccount) {
     if (testAccount.password !== password) {
@@ -112,7 +126,7 @@ export async function signInWithEmail(formData: FormData) {
           role: testAccount.role,
         },
       };
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Failed to set demo cookie:", err);
     }
   }
@@ -175,8 +189,9 @@ export async function signInWithEmail(formData: FormData) {
         role,
       },
     };
-  } catch (err: any) {
-    return { error: err.message || "Failed to authenticate with server" };
+  } catch (err: unknown) {
+    const errMsg = err instanceof Error ? err.message : "Failed to authenticate with server";
+    return { error: errMsg };
   }
 }
 
@@ -199,6 +214,13 @@ export async function signUpWithEmail(formData: FormData) {
   const username = email.split("@")[0] + Math.floor(Math.random() * 1000);
   
   if (!isSupabaseConfigured()) {
+    if (!(await isDemoAuthAllowed())) {
+      return {
+        error:
+          "Registration service is currently unavailable in production. Please contact system administration.",
+      };
+    }
+
     try {
       const cookieStore = await cookies();
       const sessionPayload = {
@@ -329,8 +351,9 @@ export async function signUpWithEmail(formData: FormData) {
       requiresEmailVerification: true,
       redirectUrl: `/auth/verify-email?email=${encodeURIComponent(email)}`,
     };
-  } catch (err: any) {
-    return { error: err.message || "Failed to create account on server" };
+  } catch (err: unknown) {
+    const errMsg = err instanceof Error ? err.message : "Failed to create account on server";
+    return { error: errMsg };
   }
 }
 
@@ -368,7 +391,7 @@ export async function updateDemoRoleAction(newRole: string) {
     const existingCookie = cookieStore.get("quizdorm_demo_session")?.value;
     if (!existingCookie) return { error: "No active session found" };
 
-    const current = await verifySessionPayload<any>(existingCookie);
+    const current = await verifySessionPayload<{ user_metadata?: { role?: string; [key: string]: unknown } }>(existingCookie);
     if (!current) return { error: "Invalid or tampered session" };
 
     current.user_metadata = current.user_metadata || {};
@@ -383,8 +406,9 @@ export async function updateDemoRoleAction(newRole: string) {
       maxAge: 60 * 60 * 24 * 7,
     });
     return { success: true };
-  } catch (err: any) {
-    return { error: err.message || "Failed to update session role" };
+  } catch (err: unknown) {
+    const errMsg = err instanceof Error ? err.message : "Failed to update session role";
+    return { error: errMsg };
   }
 }
 
@@ -499,8 +523,9 @@ export async function signInWithGoogle(clientOrigin?: string) {
     }
 
     return { url: data.url };
-  } catch (err: any) {
-    return { error: err.message || "Failed to initiate Google authentication" };
+  } catch (err: unknown) {
+    const errMsg = err instanceof Error ? err.message : "Failed to initiate Google authentication";
+    return { error: errMsg };
   }
 }
 

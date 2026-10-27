@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { 
-  Globe, DollarSign, ShieldCheck, CheckCircle2, Sparkles, Cpu
+import {
+Globe
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function GlobalCommercePlatform() {

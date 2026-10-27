@@ -1,7 +1,7 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
-import { OrganizationItem, OrganizationBranding } from "@/lib/types/organization";
+import { OrganizationBranding,OrganizationItem } from "@/lib/types/organization";
+import React,{ createContext,useContext,useState } from "react";
 
 const mockOrganizations: OrganizationItem[] = [
   {

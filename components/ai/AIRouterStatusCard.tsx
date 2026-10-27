@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
+import { Card } from "@/components/ui/card";
 import { AISettings } from "@/lib/types/ai";
+import { Cpu,ShieldCheck } from "lucide-react";
 import { ProviderBadge } from "./ProviderBadge";
-import { Cpu, ShieldCheck, Zap, RefreshCw, Layers } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 interface AIRouterStatusCardProps {
   settings: AISettings;

@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { TopicMastery } from "@/lib/types/adaptive";
-import { Layers, AlertTriangle, CheckCircle2, TrendingUp } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { TopicMastery } from "@/lib/types/adaptive";
+import { Layers } from "lucide-react";
 
 interface MasteryHeatmapProps {
   topics: TopicMastery[];

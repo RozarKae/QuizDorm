@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { AssignmentItem } from "@/lib/types/academic";
+import { useAuth } from "@/components/auth/AuthProvider";
+import { LockedFeatureNotice } from "@/components/dashboard/LockedFeatureNotice";
 import { AssignmentCard } from "@/components/student/AssignmentCard";
 import { QuizAssignModal } from "@/components/teacher/QuizAssignModal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { BookOpen, Plus, Search } from "lucide-react";
-import { useAuth } from "@/components/auth/AuthProvider";
-import { LockedFeatureNotice } from "@/components/dashboard/LockedFeatureNotice";
+import { AssignmentItem } from "@/lib/types/academic";
+import { BookOpen,Plus,Search } from "lucide-react";
+import { useState } from "react";
 
 const mockAssignments: AssignmentItem[] = [
   {

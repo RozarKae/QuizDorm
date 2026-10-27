@@ -1,4 +1,4 @@
-import { LearningPathMilestone, SubjectTutor } from "@/lib/types/tutor";
+import { LearningPathMilestone,SubjectTutor } from "@/lib/types/tutor";
 
 export const DEFAULT_MILESTONES: LearningPathMilestone[] = [
   { id: "m-1", title: "Polynomial Differentiation & Limits", subject: "mathematics", estimatedMins: 30, status: "completed" },
@@ -9,6 +9,7 @@ export const DEFAULT_MILESTONES: LearningPathMilestone[] = [
 
 export class AILearningPathEngine {
   public static getMilestones(subject?: SubjectTutor): LearningPathMilestone[] {
+    void subject;
     return DEFAULT_MILESTONES;
   }
 }

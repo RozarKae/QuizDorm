@@ -1,11 +1,11 @@
 "use client";
 
-import React from "react";
-import { ParentPortalSummary } from "@/lib/types/administration";
 import { Button } from "@/components/ui/button";
-import { 
-  Users, Heart, Sparkles, CheckCircle2, Clock, 
-  CreditCard, MessageSquare, BookOpen
+import { ParentPortalSummary } from "@/lib/types/administration";
+import {
+Heart,
+MessageSquare,
+Sparkles
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -31,7 +31,7 @@ export function ParentGuardianPortalConsole() {
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight">Parent Portal — {mockSummary.studentName}</h1>
           <p className="text-slate-300 text-xs sm:text-sm mt-1.5 max-w-xl">
-            Real-time visibility into your child's attendance records, GPA progress, fee status, teacher notices, and AI progress summaries.
+            Real-time visibility into your child&apos;s attendance records, GPA progress, fee status, teacher notices, and AI progress summaries.
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export function ParentGuardianPortalConsole() {
           <Sparkles className="w-4 h-4 text-amber-500" /> AI Executive Progress Digest for Parent
         </h3>
         <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed bg-purple-500/5 p-4 rounded-xl border border-purple-500/20">
-          "{mockSummary.aiProgressSummary}"
+          &ldquo;{mockSummary.aiProgressSummary}&rdquo;
         </p>
       </div>
     </div>

@@ -1,13 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
-import { SISStudentProfile } from "@/lib/types/administration";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Users, UserPlus, Search, Filter, ShieldCheck, Heart, 
-  FileText, Phone, Mail, GraduationCap, CheckCircle2, QrCode
+import { SISStudentProfile } from "@/lib/types/administration";
+import {
+Heart,
+QrCode,
+Search,
+ShieldCheck,
+UserPlus,
+Users
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockStudents: SISStudentProfile[] = [

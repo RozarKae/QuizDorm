@@ -1,5 +1,5 @@
-import { QuestionItem } from "@/lib/types/question";
 import { BiasFairnessReport } from "@/lib/types/quality";
+import { QuestionItem } from "@/lib/types/question";
 
 export class BiasFairnessEngine {
   public static auditBias(question: Partial<QuestionItem>): BiasFairnessReport {
@@ -9,7 +9,7 @@ export class BiasFairnessEngine {
 
     let genderBias = false;
     let culturalBias = false;
-    let sensitiveContent = false;
+    const sensitiveContent = false;
 
     // Check gender assumptions
     if (text.includes("mankind") || text.includes("man-made") || text.includes("fireman")) {

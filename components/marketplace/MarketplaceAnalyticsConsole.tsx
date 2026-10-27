@@ -1,10 +1,11 @@
 "use client";
 
-import React from "react";
-import { MarketplaceSalesAnalytics } from "@/lib/types/marketplace";
 import { Button } from "@/components/ui/button";
-import { 
-  BarChart3, TrendingUp, DollarSign, Download, ShoppingBag
+import { MarketplaceSalesAnalytics } from "@/lib/types/marketplace";
+import {
+BarChart3,
+Download,
+TrendingUp
 } from "lucide-react";
 import { toast } from "sonner";
 

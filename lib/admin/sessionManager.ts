@@ -1,4 +1,4 @@
-import { UserRole, normalizeCanonicalRole } from "@/lib/types/user";
+import { UserRole,normalizeCanonicalRole } from "@/lib/types/user";
 
 export type SessionStatus = "active" | "idle" | "revoked" | "flagged";
 export type SessionRiskScore = "low" | "medium" | "high" | "critical";

@@ -1,7 +1,7 @@
-import React from "react";
-import { FolderOpen } from "lucide-react";
-import { Button } from "./button";
 import { cn } from "@/lib/utils";
+import { FolderOpen } from "lucide-react";
+import React from "react";
+import { Button } from "./button";
 
 interface EmptyStateProps {
   icon?: React.ElementType;

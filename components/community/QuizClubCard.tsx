@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { QuizClubManager } from "@/lib/community/clubManager";
 import { QuizClub } from "@/lib/types/community";
-import { Users, CheckCircle2, UserPlus, Shield } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { CheckCircle2,UserPlus } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface QuizClubCardProps {

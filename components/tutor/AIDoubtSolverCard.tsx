@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { AIDoubtSolver } from "@/lib/tutor/doubtSolver";
-import { Sparkles, HelpCircle, Lightbulb, CheckCircle2 } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { AIDoubtSolver } from "@/lib/tutor/doubtSolver";
+import { HelpCircle,Lightbulb,Sparkles } from "lucide-react";
+import { useState } from "react";
 
 export function AIDoubtSolverCard() {
   const [doubtText, setDoubtText] = useState("What is the derivative of f(x) = x^3 + 4x^2 - 5x + 7?");
-  const [solutionResult, setSolutionResult] = useState<any>(null);
+  const [solutionResult, setSolutionResult] = useState<{ solution: string; keyFormula?: string; realWorldAnalogy: string } | null>(null);
 
   const handleSolve = async () => {
     const res = await AIDoubtSolver.solveDoubt(doubtText, "mathematics");

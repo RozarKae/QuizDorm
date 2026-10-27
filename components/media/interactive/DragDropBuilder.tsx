@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { DragDropCategory, DragDropItem } from "@/lib/types/media";
-import { Move, Plus, Trash2, Layers, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DragDropCategory,DragDropItem } from "@/lib/types/media";
+import { Move,Plus,Trash2 } from "lucide-react";
+import { useState } from "react";
 
 interface DragDropBuilderProps {
   categories: DragDropCategory[];

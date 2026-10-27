@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-import { StudentKnowledgeProfile } from "@/lib/types/adaptive";
-import { Award, Flame, Target, Zap, Clock, TrendingUp } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { StudentKnowledgeProfile } from "@/lib/types/adaptive";
+import { Award,Clock,Flame,Target,Zap } from "lucide-react";
 
 interface KnowledgeProfileCardProps {
   profile: StudentKnowledgeProfile;

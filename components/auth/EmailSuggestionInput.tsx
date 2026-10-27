@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useRef, useEffect, useId, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import React,{ useCallback,useId,useRef,useState } from "react";
 
 export const DEFAULT_EMAIL_DOMAINS = [
   "@quizdorm.com",
@@ -262,7 +262,6 @@ export default function EmailSuggestionInput({
               <span className="text-[9px] opacity-70">↑↓ Navigate · ↵ Select</span>
             </div>
             {matchingDomains.map((domain, index) => {
-              const suggestedFull = `${prefix}${domain}`;
               const isSelected = highlightedIndex === index;
               return (
                 <button

@@ -1,12 +1,12 @@
-import Navbar from "@/components/landing/Navbar";
-import Hero from "@/components/landing/Hero";
-import Features from "@/components/landing/Features";
+import AIStudioSection from "@/components/landing/AIStudioSection";
+import AnalyticsSection from "@/components/landing/AnalyticsSection";
 import Audience from "@/components/landing/Audience";
 import CompeteSection from "@/components/landing/CompeteSection";
-import AnalyticsSection from "@/components/landing/AnalyticsSection";
-import AIStudioSection from "@/components/landing/AIStudioSection";
 import CTA from "@/components/landing/CTA";
+import Features from "@/components/landing/Features";
 import Footer from "@/components/landing/Footer";
+import Hero from "@/components/landing/Hero";
+import Navbar from "@/components/landing/Navbar";
 
 /**
  * QuizDorm // Project Aurora Cinematic Experience

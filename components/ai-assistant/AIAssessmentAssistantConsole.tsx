@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { AIAssessmentDraft } from "@/lib/types/ai-assistant";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Sparkles, CheckCircle2, RefreshCw, FileCheck, Sliders, Layers
+import { AIAssessmentDraft } from "@/lib/types/ai-assistant";
+import {
+FileCheck,
+RefreshCw,
+Sparkles
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockDraft: AIAssessmentDraft = {
@@ -26,7 +28,7 @@ const mockDraft: AIAssessmentDraft = {
 };
 
 export function AIAssessmentAssistantConsole() {
-  const [draft, setDraft] = useState<AIAssessmentDraft>(mockDraft);
+  const [draft] = useState<AIAssessmentDraft>(mockDraft);
   const [promptTopic, setPromptTopic] = useState("Quantum Mechanics");
   const [isGenerating, setIsGenerating] = useState(false);
 

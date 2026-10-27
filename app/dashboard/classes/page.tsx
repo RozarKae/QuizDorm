@@ -1,14 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { ClassItem } from "@/lib/types/academic";
-import { TeacherClassCard } from "@/components/teacher/TeacherClassCard";
 import { QuizAssignModal } from "@/components/teacher/QuizAssignModal";
+import { TeacherClassCard } from "@/components/teacher/TeacherClassCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select } from "@/components/ui/select";
-import { School, Plus, Search, Users } from "lucide-react";
+import { ClassItem } from "@/lib/types/academic";
+import { Plus,School,Search } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 const mockClasses: ClassItem[] = [
   { id: "cls-1", name: "Grade 12-A Calculus", description: "Advanced calculus and differential equations section", department: "Mathematics", academicYear: "2025-2026", teacherId: "t1", teacherName: "Dr. Robert Vance", coTeachers: [], studentCount: 34, quizCount: 12, code: "CLS-8819", createdAt: "Jan 2026" },
@@ -16,7 +15,7 @@ const mockClasses: ClassItem[] = [
 ];
 
 export default function ClassesPage() {
-  const [classes, setClasses] = useState<ClassItem[]>(mockClasses);
+  const [classes] = useState<ClassItem[]>(mockClasses);
   const [searchTerm, setSearchTerm] = useState("");
   const [quizAssignOpen, setQuizAssignOpen] = useState(false);
 

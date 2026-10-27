@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { Trophy, Award, Flame, Zap } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Trophy } from "lucide-react";
 
 export function EloRatingWidget() {
   return (

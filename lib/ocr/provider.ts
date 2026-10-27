@@ -1,4 +1,4 @@
-import { ExtractedQuestion, OCRJobSettings, ConfidenceScores } from "@/lib/types/ocr";
+import { ConfidenceScores,ExtractedQuestion,OCRJobSettings } from "@/lib/types/ocr";
 
 export interface OCRProcessResult {
   rawText: string;

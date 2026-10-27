@@ -1,17 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import {
-  BarChart3,
-  Download,
-  Shield,
-  Server,
-  Activity,
-  CheckCircle2,
-  Filter,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+Download,
+Filter
+} from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export default function AdminReportsPage() {

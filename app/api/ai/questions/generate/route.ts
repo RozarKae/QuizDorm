@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
 import { QuestionIntelligenceService } from "@/lib/ai/services/questionIntelligenceService";
 import { checkRateLimit } from "@/lib/security/rateLimiter";
+import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
 
@@ -40,6 +40,60 @@ export async function POST(request: Request) {
       );
     }
 
+    const isBatchRequest =
+      Boolean(body.isBatch) ||
+      (typeof body.questionCount === "number" && body.questionCount > 1) ||
+      body.sourceMode === "syllabus" ||
+      body.sourceMode === "text";
+
+    if (isBatchRequest) {
+      const batchResult = await QuestionIntelligenceService.generateBatch(body);
+      if (!batchResult.success) {
+        const statusCode =
+          batchResult.errorCode === "CONFIGURATION_ERROR"
+            ? 503
+            : batchResult.errorCode === "INVALID_INPUT"
+            ? 400
+            : batchResult.errorCode === "MALFORMED_JSON" || batchResult.errorCode === "SCHEMA_VALIDATION_FAILURE"
+            ? 422
+            : 500;
+
+        return NextResponse.json(
+          {
+            success: false,
+            error: batchResult.error,
+            errorCode: batchResult.errorCode,
+          },
+          { status: statusCode }
+        );
+      }
+
+      return NextResponse.json({
+        success: true,
+        isBatch: true,
+        documentTitle: batchResult.documentTitle,
+        summary: batchResult.summary,
+        detectedSubject: batchResult.detectedSubject,
+        detectedTopic: batchResult.detectedTopic,
+        data: batchResult.questions.map((item) => item.question),
+        items: batchResult.questions,
+        count: batchResult.questions.length,
+        validationSummary: {
+          total: batchResult.questions.length,
+          approved: batchResult.questions.filter((q) => q.validation.recommendedStatus === "approved").length,
+          averageQualityScore: Math.round(
+            batchResult.questions.reduce((sum, q) => sum + (q.validation.qualityScore || 0), 0) /
+              (batchResult.questions.length || 1)
+          ),
+        },
+        metadata: {
+          modelUsed: batchResult.modelUsed,
+          latencyMs: batchResult.latencyMs,
+          tokenUsage: batchResult.tokenUsage,
+        },
+      });
+    }
+
     const result = await QuestionIntelligenceService.generateAndValidate(body);
 
     if (!result.success) {
@@ -73,11 +127,12 @@ export async function POST(request: Request) {
         tokenUsage: result.tokenUsage,
       },
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : "Internal server error occurred during question generation.";
     return NextResponse.json(
       {
         success: false,
-        error: err.message || "Internal server error occurred during question generation.",
+        error: errorMessage,
         errorCode: "INTERNAL_ERROR",
       },
       { status: 500 }

@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import { Code2, Play, CheckCircle2, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Code2,Play } from "lucide-react";
+import { useState } from "react";
 
 export function ApiExplorerWidget() {
   const [selectedEndpoint, setSelectedEndpoint] = useState("/api/v1/questions");

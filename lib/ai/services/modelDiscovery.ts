@@ -1,4 +1,4 @@
-import { AIModel, AIProviderType } from "@/lib/types/ai";
+import { AIModel,AIProviderType } from "@/lib/types/ai";
 import { AIModelManager } from "../models/modelManager";
 import { getAIProvider } from "../providers";
 

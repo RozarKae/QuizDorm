@@ -1,9 +1,9 @@
-import { NextResponse } from "next/server";
 import {
-  getAllQuizzes,
-  getTopicsSummary,
-  generateInstantQuiz,
+generateInstantQuiz,
+getAllQuizzes,
+getTopicsSummary,
 } from "@/lib/data/quizzes";
+import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
   const url = new URL(request.url);
@@ -41,7 +41,7 @@ export async function GET(request: Request) {
     );
   }
 
-  const response: Record<string, any> = {
+  const response: Record<string, unknown> = {
     status: "success",
     version: "v1.0",
     filters: {

@@ -1,9 +1,11 @@
-import { describe, it } from "node:test";
 import assert from "node:assert";
-import { normalizeCanonicalRole, getRoleDisplayName } from "../lib/types/user";
+import fs from "node:fs";
+import path from "node:path";
+import { describe,it } from "node:test";
 import { TEST_ACCOUNTS } from "../app/auth/constants";
 import { dashboardNavConfig } from "../config/dashboard-nav";
 import { SEED_ADMIN_USERS } from "../lib/admin/userManager";
+import { getRoleDisplayName,normalizeCanonicalRole } from "../lib/types/user";
 
 describe("SuperAdmin and MasterAdmin Governance Split", () => {
   describe("Role Normalization and Display Names", () => {
@@ -95,9 +97,6 @@ describe("SuperAdmin and MasterAdmin Governance Split", () => {
     });
 
     it("verifies Option 2 Sovereign Admin Gateway (/admin/login) file and routing rules", () => {
-      const fs = require("node:fs");
-      const path = require("node:path");
-
       const adminLoginPath = path.join(process.cwd(), "app/admin/login/page.tsx");
       assert.ok(fs.existsSync(adminLoginPath), "app/admin/login/page.tsx must exist");
 

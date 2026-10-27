@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
-import { OperationsCenterMetric } from "@/lib/types/cloud-ops";
 import { Button } from "@/components/ui/button";
-import { 
-  Activity, TrendingUp, ShieldCheck, Download, Cpu, HardDrive
+import { OperationsCenterMetric } from "@/lib/types/cloud-ops";
+import {
+Activity,
+Download
 } from "lucide-react";
 import { toast } from "sonner";
 

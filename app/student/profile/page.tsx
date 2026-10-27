@@ -1,4 +1,4 @@
-import { PageHeader, DashboardContainer, EmptyDashboard } from "@/components/dashboard/DashboardComponents";
+import { DashboardContainer,EmptyDashboard,PageHeader } from "@/components/dashboard/DashboardComponents";
 
 export default function StudentProfilePage() {
   return (

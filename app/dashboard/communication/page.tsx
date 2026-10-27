@@ -1,19 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
 import { AnnouncementService } from "@/lib/communication/announcementService";
 import { Announcement } from "@/lib/types/communication";
+import { useState } from "react";
 
-import { NotificationCenterWidget } from "@/components/communication/NotificationCenterWidget";
 import { AnnouncementCard } from "@/components/communication/AnnouncementCard";
-import { MessageComposerModal } from "@/components/communication/MessageComposerModal";
 import { AutomationRulesCard } from "@/components/communication/AutomationRulesCard";
+import { MessageComposerModal } from "@/components/communication/MessageComposerModal";
+import { NotificationCenterWidget } from "@/components/communication/NotificationCenterWidget";
 
-import { Megaphone, Send, Zap, Bell, Plus, ShieldCheck, Mail, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Megaphone,Send } from "lucide-react";
 
 export default function CommunicationHubPage() {
-  const [announcements, setAnnouncements] = useState<Announcement[]>(AnnouncementService.getAnnouncements());
+  const [announcements] = useState<Announcement[]>(AnnouncementService.getAnnouncements());
   const [composerOpen, setComposerOpen] = useState(false);
 
   return (

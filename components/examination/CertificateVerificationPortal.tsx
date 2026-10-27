@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { DigitalCertificate } from "@/lib/types/examination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  Award, QrCode, Download, ShieldCheck, CheckCircle2, 
-  Search, Lock, Copy, FileText, Check, ExternalLink
+import { DigitalCertificate } from "@/lib/types/examination";
+import {
+CheckCircle2,
+Download,
+QrCode,
+ShieldCheck
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockCertificates: DigitalCertificate[] = [
@@ -42,7 +44,7 @@ const mockCertificates: DigitalCertificate[] = [
 ];
 
 export function CertificateVerificationPortal() {
-  const [certificates, setCertificates] = useState<DigitalCertificate[]>(mockCertificates);
+  const [certificates] = useState<DigitalCertificate[]>(mockCertificates);
   const [verifySearch, setVerifySearch] = useState("");
   const [verificationResult, setVerificationResult] = useState<DigitalCertificate | null>(null);
 

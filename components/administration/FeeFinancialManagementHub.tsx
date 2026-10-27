@@ -1,13 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { FeeInvoice } from "@/lib/types/administration";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { 
-  CreditCard, DollarSign, Download, CheckCircle2, 
-  AlertCircle, Search, FileText, Sparkles
+import { FeeInvoice } from "@/lib/types/administration";
+import {
+CreditCard,
+Download
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockInvoices: FeeInvoice[] = [

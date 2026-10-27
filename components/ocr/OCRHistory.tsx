@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { OCRJob } from "@/lib/types/ocr";
-import { Search, Filter, Calendar, FileText, CheckCircle2, AlertCircle, Clock, Trash2, Eye, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { OCRJob } from "@/lib/types/ocr";
+import { Clock,Eye,FileText,Filter,Search,Trash2 } from "lucide-react";
+import { useState } from "react";
 
 interface OCRHistoryProps {
   jobs: OCRJob[];

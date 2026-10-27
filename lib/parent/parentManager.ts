@@ -1,4 +1,4 @@
-import { ParentGuardian, ChildProfile } from "@/lib/types/parent";
+import { ChildProfile,ParentGuardian } from "@/lib/types/parent";
 
 const STORAGE_KEY_PARENT = "quizdorm_parent_profile";
 const STORAGE_KEY_ACTIVE_CHILD = "quizdorm_active_child_id";

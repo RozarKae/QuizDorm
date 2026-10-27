@@ -1,19 +1,18 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { FadeIn,OrbitalRings } from "@/components/ui/motion";
 import {
-  ArrowRight,
-  BookOpen,
-  Sparkles,
-  CheckCircle2,
-  Trophy,
-  Zap,
-  Layers,
-  Activity,
+Activity,
+ArrowRight,
+BookOpen,
+CheckCircle2,
+Layers,
+Sparkles,
+Trophy,
+Zap,
 } from "lucide-react";
-import { FadeIn, StaggerContainer, StaggerItem, OrbitalRings } from "@/components/ui/motion";
+import Link from "next/link";
 
 export default function Hero() {
   return (

@@ -1,14 +1,14 @@
-import test from "node:test";
 import assert from "node:assert/strict";
+import test from "node:test";
 import QRCode from "qrcode";
 
-import {
-  LiveSessionManager,
-  normalizeRoomCode,
-  generateCollisionResistantCode,
-  toPublicSessionState,
-} from "../lib/live/liveSessionManager";
 import { getCanonicalJoinUrl } from "../components/competitions/SessionQrCard";
+import {
+generateCollisionResistantCode,
+LiveSessionManager,
+normalizeRoomCode,
+toPublicSessionState,
+} from "../lib/live/liveSessionManager";
 
 test("Live Arena - Code Normalization & Collision Resistance", () => {
   // Test code normalization
@@ -47,12 +47,12 @@ test("Scenario A: Host creates live session and receives secret token", () => {
 
   // Verify public state hides secret
   const publicState = toPublicSessionState(session);
-  assert.equal((publicState as any).hostSecret, undefined);
+  assert.equal((publicState as { hostSecret?: string }).hostSecret, undefined);
   assert.equal(publicState.status, "WAITING");
 });
 
 test("Scenario B & C: Three independent participants join via QR, direct link, and PIN", () => {
-  const { session, hostSecret } = LiveSessionManager.createSession({
+  const { session } = LiveSessionManager.createSession({
     title: "Physics Challenge 2026",
     hostName: "Oakridge Academy",
   });

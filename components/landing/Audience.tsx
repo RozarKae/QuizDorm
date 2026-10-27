@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { School, Users, GraduationCap, Trophy, ArrowRight } from "lucide-react";
 import SectionDivider from "@/components/ui/section-divider";
+import { motion } from "framer-motion";
+import { ArrowRight,GraduationCap,School,Trophy,Users } from "lucide-react";
+import Link from "next/link";
 
 export default function Audience() {
   const cards = [

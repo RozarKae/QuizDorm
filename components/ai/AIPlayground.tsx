@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { AIProviderType, AIResponsePayload, AIStreamChunk } from "@/lib/types/ai";
+import { Button } from "@/components/ui/button";
+import { AIRouter } from "@/lib/ai/router/aiRouter";
+import { AIProviderType,AIResponsePayload,AIStreamChunk } from "@/lib/types/ai";
+import { Play,Sparkles } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
 import { ModelSelector } from "./ModelSelector";
 import { StreamingViewer } from "./StreamingViewer";
-import { AIRouter } from "@/lib/ai/router/aiRouter";
-import { Play, Sparkles, Sliders, Code2, RefreshCw } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
 
 export function AIPlayground() {
   const [provider, setProvider] = useState<AIProviderType>("gemini");
@@ -15,7 +15,7 @@ export function AIPlayground() {
   const [systemPrompt, setSystemPrompt] = useState("You are QuizDorm AI, an expert educational assessment assistant.");
   const [userPrompt, setUserPrompt] = useState("Explain Newton's Second Law of Motion ($F = ma$) in simple terms for a 9th grade physics quiz.");
   const [temperature, setTemperature] = useState(0.7);
-  const [maxTokens, setMaxTokens] = useState(1024);
+  const [maxTokens] = useState(1024);
   const [enableStreaming, setEnableStreaming] = useState(true);
 
   const [loading, setLoading] = useState(false);
@@ -56,8 +56,8 @@ export function AIPlayground() {
         setStreamedContent(result.content);
         toast.success("AI Completion response received!");
       }
-    } catch (err: any) {
-      toast.error(err.message || "Playground request failed");
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Playground request failed");
     } finally {
       setLoading(false);
     }

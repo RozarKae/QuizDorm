@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { GeneratedContent } from "@/lib/types/ai-assistant";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
-  FileText, Sparkles, Copy, Download, RefreshCw, Layers, Check, BookOpen
+import { GeneratedContent } from "@/lib/types/ai-assistant";
+import {
+Copy,
+FileText,
+RefreshCw,
+Sparkles
 } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
 
 const mockContent: GeneratedContent = {

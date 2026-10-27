@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
 import { HotspotRegion } from "@/lib/types/media";
-import { Target, Plus, Trash2, CheckCircle2, AlertCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Target,Trash2 } from "lucide-react";
+import Image from "next/image";
+import React,{ useState } from "react";
 
 interface HotspotEditorProps {
   imageUrl: string;
@@ -57,10 +57,10 @@ export function HotspotEditor({ imageUrl, regions, onChange }: HotspotEditorProp
         onClick={handleAddRegion}
         className="relative w-full h-80 bg-gray-900 rounded-2xl overflow-hidden cursor-crosshair border border-gray-200 dark:border-gray-800 select-none"
       >
-        <img src={imageUrl || "/images/placeholders/brain-diagram.png"} alt="Hotspot Base" className="w-full h-full object-contain" />
+        <Image src={imageUrl || "/images/placeholders/brain-diagram.png"} alt="Hotspot Base" fill unoptimized className="object-contain" />
 
         {/* Hotspot Region Overlay Boxes */}
-        {regions.map((region, idx) => {
+        {regions.map((region) => {
           const isSelected = selectedRegionId === region.id;
 
           return (
@@ -154,7 +154,7 @@ export function HotspotViewer({
   return (
     <div className="space-y-3">
       <div className="relative w-full h-80 bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 select-none">
-        <img src={imageUrl || "/images/placeholders/brain-diagram.png"} alt="Hotspot Assessment" className="w-full h-full object-contain" />
+        <Image src={imageUrl || "/images/placeholders/brain-diagram.png"} alt="Hotspot Assessment" fill unoptimized className="object-contain" />
 
         {regions.map((region) => {
           const isSelected = selectedRegionId === region.id;

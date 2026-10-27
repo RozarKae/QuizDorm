@@ -1,46 +1,35 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import {
-  Laptop,
-  Smartphone,
-  Tablet,
-  Radio,
-  Shield,
-  ShieldAlert,
-  ShieldCheck,
-  AlertTriangle,
-  Globe,
-  Clock,
-  Search,
-  Filter,
-  RefreshCw,
-  PowerOff,
-  UserX,
-  Copy,
-  ExternalLink,
-  Lock,
-  XCircle,
-  CheckCircle2,
-  Cpu,
-  Trash2,
-  Server,
-  Zap,
-} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
 import {
-  AdminSession,
-  AdminSessionManager,
-  SessionStatus,
-  SessionRiskScore,
-  DeviceCategory,
+AdminSession,
+AdminSessionManager,
+DeviceCategory
 } from "@/lib/admin/sessionManager";
 import { getRoleDisplayName } from "@/lib/types/user";
+import {
+AlertTriangle,
+Clock,
+Copy,
+Laptop,
+PowerOff,
+Radio,
+RefreshCw,
+Search,
+ShieldAlert,
+ShieldCheck,
+Smartphone,
+Tablet,
+Trash2,
+UserX
+} from "lucide-react";
+import React,{ useState } from "react";
+import { toast } from "sonner";
 
 export default function AdminSessionsPage() {
-  const [sessions, setSessions] = useState<AdminSession[]>([]);
+  const [sessions, setSessions] = useState<AdminSession[]>(() =>
+    AdminSessionManager.getSessions()
+  );
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [riskFilter, setRiskFilter] = useState<string>("all");
@@ -48,11 +37,6 @@ export default function AdminSessionsPage() {
 
   // Inspection Modal State
   const [selectedSession, setSelectedSession] = useState<AdminSession | null>(null);
-
-  // Load sessions
-  useEffect(() => {
-    setSessions(AdminSessionManager.getSessions());
-  }, []);
 
   const refreshList = () => {
     setSessions(AdminSessionManager.getSessions());

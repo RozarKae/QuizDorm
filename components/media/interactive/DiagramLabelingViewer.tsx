@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
 import { DiagramLabelPin } from "@/lib/types/media";
-import { Tag, CheckCircle2 } from "lucide-react";
+import { Tag } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
 
 interface DiagramLabelingViewerProps {
   imageUrl: string;
@@ -33,7 +34,7 @@ export function DiagramLabelingViewer({
       </div>
 
       <div className="relative w-full h-80 bg-gray-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 select-none">
-        <img src={imageUrl || "/images/placeholders/brain-diagram.png"} alt="Diagram Assessment" className="w-full h-full object-contain" />
+        <Image src={imageUrl || "/images/placeholders/brain-diagram.png"} alt="Diagram Assessment" fill unoptimized className="object-contain" />
 
         {pins.map((pin, idx) => (
           <div

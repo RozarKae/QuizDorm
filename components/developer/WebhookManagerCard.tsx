@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { WebhookEndpoint } from "@/lib/types/developer";
-import { WebhookEngine } from "@/lib/developer/webhookEngine";
-import { Globe, Play, CheckCircle2, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { WebhookEngine } from "@/lib/developer/webhookEngine";
+import { WebhookEndpoint } from "@/lib/types/developer";
+import { Globe,Play,RefreshCw } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 export function WebhookManagerCard() {
-  const [endpoints, setEndpoints] = useState<WebhookEndpoint[]>(WebhookEngine.getEndpoints());
+  const [endpoints] = useState<WebhookEndpoint[]>(WebhookEngine.getEndpoints());
   const [testing, setTesting] = useState(false);
 
   const handleTestWebhook = async () => {

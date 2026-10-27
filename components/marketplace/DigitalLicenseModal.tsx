@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { MarketplaceProduct, LicenseType } from "@/lib/types/marketplace";
-import { DigitalLicensingEngine } from "@/lib/marketplace/licensingEngine";
-import { ShieldCheck, CheckCircle2, ShoppingCart, Key } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DigitalLicensingEngine } from "@/lib/marketplace/licensingEngine";
+import { LicenseType,MarketplaceProduct } from "@/lib/types/marketplace";
+import { ShieldCheck,ShoppingCart } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface DigitalLicenseModalProps {

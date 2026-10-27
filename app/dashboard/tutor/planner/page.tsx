@@ -1,11 +1,10 @@
 "use client";
 
-import React from "react";
-import { AIStudyCoachWidget } from "@/components/tutor/AIStudyCoachWidget";
-import { AILearningPathCard } from "@/components/tutor/AILearningPathCard";
 import { AIFlashcardDeckCard } from "@/components/tutor/AIFlashcardDeckCard";
+import { AILearningPathCard } from "@/components/tutor/AILearningPathCard";
+import { AIStudyCoachWidget } from "@/components/tutor/AIStudyCoachWidget";
 
-import { Sparkles, Bot, ArrowRight, Target } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export default function AIStudyCoachPlannerPage() {
   return (

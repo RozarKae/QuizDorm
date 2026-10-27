@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
-import { CompetitionItem, LiveParticipant, AnnouncementItem } from "@/lib/types/competition";
-import { SessionQrCard } from "./SessionQrCard";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Users, Play, Megaphone, Send, Sparkles, Clock, ShieldCheck, UserCheck } from "lucide-react";
+import { AnnouncementItem,CompetitionItem,LiveParticipant } from "@/lib/types/competition";
+import { Clock,Megaphone,Play,Send,ShieldCheck,Sparkles,UserCheck,Users } from "lucide-react";
+import React,{ useState } from "react";
 import { toast } from "sonner";
+import { SessionQrCard } from "./SessionQrCard";
 
 interface CompetitionLobbyProps {
   competition: CompetitionItem;

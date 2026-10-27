@@ -60,7 +60,7 @@ export interface AIRequestPayload {
   featureId: "question_gen" | "ocr_enhance" | "quality_review" | "explanation" | "tutor" | "recommendations" | "test_prompt";
   systemPrompt?: string;
   userPrompt: string;
-  variables?: Record<string, any>;
+  variables?: Record<string, unknown>;
   temperature?: number;
   topP?: number;
   maxTokens?: number;
@@ -86,7 +86,7 @@ export interface AIResponseMetadata {
 export interface AIResponsePayload {
   content: string;
   metadata: AIResponseMetadata;
-  rawResponse?: any;
+  rawResponse?: unknown;
 }
 
 export interface AIStreamChunk {

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { MarketplaceProduct } from "@/lib/types/marketplace";
 import { Button } from "@/components/ui/button";
-import { 
-  FileText, Download, Eye, Star, CheckCircle2, Sparkles, ShoppingBag
+import { MarketplaceProduct } from "@/lib/types/marketplace";
+import {
+Download,
+FileText
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockDigitalProducts: MarketplaceProduct[] = [
@@ -26,7 +27,7 @@ const mockDigitalProducts: MarketplaceProduct[] = [
 ];
 
 export function DigitalProductMarketplace() {
-  const [products, setProducts] = useState<MarketplaceProduct[]>(mockDigitalProducts);
+  const [products] = useState<MarketplaceProduct[]>(mockDigitalProducts);
 
   return (
     <div className="space-y-6">

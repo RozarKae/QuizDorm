@@ -1,15 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { UniversalOfflineEngine } from "@/lib/offline/edgeEngine";
-import { EdgeClassroomModal } from "@/components/offline/EdgeClassroomModal";
 import { DownloadManagerCard } from "@/components/mobile/DownloadManagerCard";
-import { RecoveryQueueTable } from "@/components/offline/RecoveryQueueTable";
+import { EdgeClassroomModal } from "@/components/offline/EdgeClassroomModal";
 import { OfflineStorageAnalyzerCard } from "@/components/offline/OfflineStorageAnalyzerCard";
+import { RecoveryQueueTable } from "@/components/offline/RecoveryQueueTable";
+import { UniversalOfflineEngine } from "@/lib/offline/edgeEngine";
+import { useState } from "react";
 
-import { WifiOff, Wifi, Play, RotateCcw, HardDrive, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Play,Wifi,WifiOff } from "lucide-react";
 
 export default function EdgeOfflineOSPage() {
   const [edgeModalOpen, setEdgeModalOpen] = useState(false);

@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Sparkles, FileText, Cpu, CheckCircle2, ArrowRight, Layers, FileCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { AIDocumentQuizModal } from "@/components/ai/AIDocumentQuizModal";
+import { Button } from "@/components/ui/button";
 import SectionDivider from "@/components/ui/section-divider";
+import { ArrowRight,CheckCircle2,Cpu,FileCheck,Sparkles } from "lucide-react";
+import { useState } from "react";
 
 export default function AIStudioSection() {
   const [modalOpen, setModalOpen] = useState(false);

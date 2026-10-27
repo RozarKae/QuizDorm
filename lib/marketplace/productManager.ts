@@ -1,4 +1,4 @@
-import { MarketplaceProduct, ProductCategory } from "@/lib/types/marketplace";
+import { MarketplaceProduct,ProductCategory } from "@/lib/types/marketplace";
 
 const STORAGE_KEY_PRODUCTS = "quizdorm_marketplace_products";
 

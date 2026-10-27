@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { 
-  Globe, ShieldCheck, ExternalLink, Award, Sparkles, CheckCircle2
+import {
+ExternalLink,
+Globe
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 interface PeerReviewPaper {
@@ -22,7 +23,7 @@ const mockPapers: PeerReviewPaper[] = [
 ];
 
 export function AcademicPublishingEcosystem() {
-  const [papers, setPapers] = useState<PeerReviewPaper[]>(mockPapers);
+  const [papers] = useState<PeerReviewPaper[]>(mockPapers);
 
   const handleMintDOI = (title: string) => {
     toast.success(`DOI Minted & Registered with CrossRef for paper: "${title}"`);

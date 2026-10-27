@@ -1,44 +1,38 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { OCRJob, OCRJobSettings, ExtractedQuestion } from "@/lib/types/ocr";
-import { QuestionItem } from "@/lib/types/question";
-import { importQuestions } from "@/lib/data/question-bank";
-import { OCRJobManager } from "@/lib/ocr/job-manager";
-import { OCREngineService } from "@/lib/ocr/engine";
-import { OCRUploadCard } from "@/components/ocr/OCRUploadCard";
+import { AIDocumentQuizModal } from "@/components/ai/AIDocumentQuizModal";
+import { BulkImportDialog } from "@/components/ocr/BulkImportDialog";
+import { ImportProgress } from "@/components/ocr/ImportProgress";
 import { ImportQueue } from "@/components/ocr/ImportQueue";
 import { ImportReviewTable } from "@/components/ocr/ImportReviewTable";
-import { ImportProgress } from "@/components/ocr/ImportProgress";
-import { OCRSettings } from "@/components/ocr/OCRSettings";
 import { OCRHistory } from "@/components/ocr/OCRHistory";
 import { OCRPreview } from "@/components/ocr/OCRPreview";
-import { BulkImportDialog } from "@/components/ocr/BulkImportDialog";
-import { QuestionDetectionPanel } from "@/components/ocr/QuestionDetectionPanel";
-import { AIDocumentQuizModal } from "@/components/ai/AIDocumentQuizModal";
+import { OCRSettings } from "@/components/ocr/OCRSettings";
+import { OCRUploadCard } from "@/components/ocr/OCRUploadCard";
+import { importQuestions } from "@/lib/data/question-bank";
+import { OCRJobManager } from "@/lib/ocr/job-manager";
+import { ExtractedQuestion,OCRJob,OCRJobSettings } from "@/lib/types/ocr";
+import { QuestionItem } from "@/lib/types/question";
+import { useState } from "react";
 
-import {
-  ScanText,
-  Upload,
-  Clock,
-  Layers,
-  FileCheck,
-  CheckCircle2,
-  AlertTriangle,
-  Settings,
-  Sparkles,
-  RefreshCw,
-  Plus,
-  Eye,
-  ShieldCheck,
-  Zap,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
 import { useAuth } from "@/components/auth/AuthProvider";
+import { Button } from "@/components/ui/button";
 import { GovernanceSettingsManager } from "@/lib/admin/governanceSettingsManager";
+import {
+ArrowLeft,
+CheckCircle2,
+Clock,
+Layers,
+Plus,
+ScanText,
+Settings,
+ShieldAlert,
+Sparkles,
+Upload,
+Zap
+} from "lucide-react";
 import Link from "next/link";
-import { ArrowLeft, ShieldAlert } from "lucide-react";
+import { toast } from "sonner";
 
 export default function DocumentIntelligenceWorkspace() {
   const { role } = useAuth();
@@ -48,8 +42,12 @@ export default function DocumentIntelligenceWorkspace() {
     "upload" | "queue" | "review" | "history" | "settings"
   >("upload");
 
-  const [jobs, setJobs] = useState<OCRJob[]>([]);
-  const [selectedJob, setSelectedJob] = useState<OCRJob | null>(null);
+  const [jobs, setJobs] = useState<OCRJob[]>(() => OCRJobManager.getJobs());
+  const [selectedJob, setSelectedJob] = useState<OCRJob | null>(() => {
+    const loadedJobs = OCRJobManager.getJobs();
+    const reviewReady = loadedJobs.find((j) => j.status === "review_ready");
+    return reviewReady || (loadedJobs.length > 0 ? loadedJobs[0] : null);
+  });
   const [previewJob, setPreviewJob] = useState<OCRJob | null>(null);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [bulkDialogOpen, setBulkDialogOpen] = useState(false);
@@ -66,23 +64,9 @@ export default function DocumentIntelligenceWorkspace() {
     virusScanPassed: true,
   });
 
-  // Load jobs from localStorage / persistent manager
-  useEffect(() => {
-    const loadedJobs = OCRJobManager.getJobs();
-    setJobs(loadedJobs);
-
-    // Default select review ready job if available
-    const reviewReady = loadedJobs.find((j) => j.status === "review_ready");
-    if (reviewReady) {
-      setSelectedJob(reviewReady);
-    } else if (loadedJobs.length > 0) {
-      setSelectedJob(loadedJobs[0]);
-    }
-  }, []);
-
   const handleUploadStart = async (
     file: File | { name: string; type: string; content?: string },
-    options: any
+    options: string | { subject?: string; topic?: string; questionCount?: number; difficulty?: string; questionTypes?: string[] }
   ) => {
     setLoading(true);
     try {
@@ -129,8 +113,8 @@ export default function DocumentIntelligenceWorkspace() {
         .finally(() => {
           setLoading(false);
         });
-    } catch (err: any) {
-      toast.error(err.message || "Failed to start OCR job");
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Failed to start OCR job");
       setLoading(false);
     }
   };
@@ -233,24 +217,6 @@ export default function DocumentIntelligenceWorkspace() {
         `Successfully saved all ${result.imported} questions from ${selectedJob.fileName} to Question Bank!`
       );
     }
-  };
-
-  const handleSplitQuestion = (q: ExtractedQuestion) => {
-    if (!selectedJob) return;
-    const [q1, q2] = OCREngineService.splitQuestion(q);
-    const updated = selectedJob.extractedQuestions.flatMap((item) => (item.id === q.id ? [q1, q2] : [item]));
-    handleUpdateQuestions(updated);
-    toast.success("Question split into 2 separate items!");
-  };
-
-  const handleMergeQuestions = (q1: ExtractedQuestion, q2: ExtractedQuestion) => {
-    if (!selectedJob) return;
-    const merged = OCREngineService.mergeQuestions(q1, q2);
-    const updated = selectedJob.extractedQuestions
-      .filter((item) => item.id !== q2.id)
-      .map((item) => (item.id === q1.id ? merged : item));
-    handleUpdateQuestions(updated);
-    toast.success("Questions merged successfully!");
   };
 
   const reviewReadyJobs = jobs.filter((j) => j.status === "review_ready");
@@ -383,7 +349,7 @@ export default function DocumentIntelligenceWorkspace() {
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => setActiveTab(tab.id as "upload" | "queue" | "review" | "history" | "settings")}
               className={`px-3 py-2 rounded-[4px] text-xs font-mono font-medium flex items-center space-x-2 transition-all whitespace-nowrap ${
                 isActive
                   ? "bg-[#2A141A] text-[#FF4D6D] border border-[rgba(255, 77, 109,0.3)] shadow-xs font-semibold"

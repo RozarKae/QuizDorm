@@ -1,4 +1,4 @@
-import { BulkIssuanceRequest, Certificate } from "@/lib/types/credentials";
+import { BulkIssuanceRequest,Certificate } from "@/lib/types/credentials";
 import { CertificateEngine } from "./certificateEngine";
 
 export class BulkCertificateIssuer {

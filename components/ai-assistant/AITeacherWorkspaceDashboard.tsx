@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
-import { TeacherWorkspaceAgenda } from "@/lib/types/ai-assistant";
 import { Button } from "@/components/ui/button";
-import { 
-  Sparkles, Calendar, CheckCircle2, Circle, Clock, Mic, 
-  MicOff, AlertTriangle, Layers, ArrowUpRight
+import { TeacherWorkspaceAgenda } from "@/lib/types/ai-assistant";
+import {
+AlertTriangle,
+Calendar,CheckCircle2,Circle,
+Mic,
+MicOff,
+Sparkles
 } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
 const mockAgenda: TeacherWorkspaceAgenda = {
@@ -70,7 +73,7 @@ export function AITeacherWorkspaceDashboard() {
         <div className="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
             <h3 className="font-bold text-slate-900 dark:text-white text-base flex items-center gap-2">
-              <Calendar className="w-5 h-5 text-indigo-600" /> Today's Teaching Agenda ({agenda.date})
+              <Calendar className="w-5 h-5 text-indigo-600" /> Today&apos;s Teaching Agenda ({agenda.date})
             </h3>
           </div>
 

@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { AITutorEngine, DEFAULT_MESSAGES } from "@/lib/tutor/aiTutorEngine";
-import { ChatMessage, SubjectTutor, ExplanationLevel } from "@/lib/types/tutor";
-import { Bot, Send, Sparkles, BookOpen, User, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { AITutorEngine,DEFAULT_MESSAGES } from "@/lib/tutor/aiTutorEngine";
+import { ChatMessage,ExplanationLevel,SubjectTutor } from "@/lib/types/tutor";
+import { Bot,Send,User } from "lucide-react";
+import { useState } from "react";
 
 export function AITutorChatWindow() {
   const [messages, setMessages] = useState<ChatMessage[]>(DEFAULT_MESSAGES);
